@@ -1,0 +1,68 @@
+{
+  "capability": "Governance Validation",
+  "status": "PASS",
+  "timestamp": "2026-07-05T22:36:18.747086+00:00",
+  "summary": "Governance validation completed with status PASS.",
+  "results": [
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/governance/Permanent_Project_Operating_Model.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/governance/Repository_Principles.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/governance/Engineering_Lifecycle.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/governance/Definition_of_Done.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/governance/Product_Portfolio.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/architecture/Architecture_Decision_Log.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/architecture/decisions/ADR-001-Platform-Repository-Creation.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/architecture/decisions/ADR-002-Platform-Product-Boundary.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/architecture/decisions/ADR-003-Repository-Managed-Governance.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/architecture/decisions/ADR-004-Platform-Engineering-Automation-Foundation.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/architecture/decisions/ADR-005-Portfolio-Integration-and-Repository-Independence.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Finance exclusions are governed by product boundary documents",
+      "path": null
+    }
+  ]
+}

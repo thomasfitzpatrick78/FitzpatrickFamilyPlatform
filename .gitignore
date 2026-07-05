@@ -1,0 +1,18 @@
+# Operating system files
+.DS_Store
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments
+.venv/
+venv/
+.env
+
+# Local scratch
+.tmp/
+.cache/

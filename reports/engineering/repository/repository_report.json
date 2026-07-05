@@ -1,0 +1,148 @@
+{
+  "capability": "Repository Validation",
+  "status": "PASS",
+  "timestamp": "2026-07-05T22:36:18.705750+00:00",
+  "summary": "Repository validation completed with status PASS.",
+  "results": [
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/governance"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/product"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/architecture/decisions"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/portfolio"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/requirements"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/specifications"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/standards"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "docs/milestones"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "engineering/platform_eap"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "engineering/tests"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required directory exists",
+      "path": "reports/engineering"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "README.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/governance/Permanent_Project_Operating_Model.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/governance/Repository_Principles.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/governance/Engineering_Lifecycle.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/governance/Definition_of_Done.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/product/Product_Vision.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/product/Capability_Model.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/product/Product_Backlog.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/product/Product_Roadmap.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/product/Product_Governance.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/architecture/Architecture_Decision_Log.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/architecture/Architecture_Backlog.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/standards/Documentation_Standards.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Required file exists",
+      "path": "docs/standards/Development_Workflow.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "No governed-path cache or system artifacts detected",
+      "path": null
+    },
+    {
+      "severity": "INFO",
+      "message": "Current branch: main",
+      "path": null
+    },
+    {
+      "severity": "INFO",
+      "message": "Working tree clean outside generated engineering reports",
+      "path": null
+    }
+  ]
+}
