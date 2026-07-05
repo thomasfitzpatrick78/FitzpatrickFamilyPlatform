@@ -1,9 +1,17 @@
 from pathlib import Path
+import shutil
 
 from engineering.platform_eap import cli
 
 
+def remove_generated_caches():
+    for path in cli.ROOT.joinpath("engineering").rglob("__pycache__"):
+        shutil.rmtree(path)
+
+
+
 def test_repository_validation_passes_with_required_structure():
+    remove_generated_caches()
     report = cli.repository_validate()
     assert report.status in {"PASS", "PASS WITH WARNINGS"}
     assert not [r for r in report.results if r.severity == "ERROR"]
@@ -17,6 +25,7 @@ def test_governance_validation_passes_with_initial_adrs():
 
 
 def test_release_readiness_aggregates_validation():
+    remove_generated_caches()
     report = cli.release_readiness()
     assert report.status in {"PASS", "PASS WITH WARNINGS"}
     assert any("Repository validation" in r.message for r in report.results)
@@ -24,6 +33,7 @@ def test_release_readiness_aggregates_validation():
 
 
 def test_milestone_closeout_has_required_artifacts():
+    remove_generated_caches()
     report = cli.milestone_closeout()
     assert report.status in {"PASS", "PASS WITH WARNINGS"}
     assert not [r for r in report.results if r.severity == "ERROR"]
