@@ -1,14 +1,16 @@
 id: net-switch-2-5gbe-2
 record_type: network_device
 name: 2.5Gb Network Switch 2
-description: Second 2.5Gb household network switch.
+description: Planned second TP-Link 2.5Gb household network switch.
 owner: owner-family-platform
 location: loc-home
-lifecycle_status: active
-health_status: unknown
+lifecycle_status: planned
+health_status: planned
 monitoring_ready: false
-model: TBD
+model: TP-Link 2.5Gb switch
 port_count: TBD
+arrival_status: pending delivery
+unknowns: exact model, port count, placement, and management capability TBD
 dependencies:
   - net-asus-mesh-router-primary
 network_dependencies:

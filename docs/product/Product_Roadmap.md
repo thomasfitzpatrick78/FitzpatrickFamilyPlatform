@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Active
 
@@ -35,11 +35,12 @@ Planned outcomes:
 
 Near-term candidates should build from Infrastructure Registry v1.0:
 
-- Device inventory.
-- Network topology.
-- Service registry.
-- Platform health foundation.
-- Platform operating environment.
+- Infrastructure operations readiness.
+- Remote access architecture selection.
+- Local service hosting architecture selection.
+- Pi-hole migration readiness.
+- Beelink onboarding readiness.
+- Network modernization readiness.
 - First Home Automation capability readiness assessment after registry foundation.
 
 ---
@@ -70,6 +71,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - Shared package extraction.
 - Runtime monitoring until registry validation is established.
 - Dashboards until registry records and health status are validated.
+- Beelink bring-up until onboarding readiness is reviewed.
+- Deployment automation until registry-driven lifecycle gates are approved.
 
 ---
 
@@ -87,5 +90,6 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added PLAT-13.1 Infrastructure Operations Readiness near-term roadmap items. |
 | 1.1 | Added Infrastructure Registry v1.0 as the first Platform feature milestone for Milestone 12. |
 | 1.0 | Initial Platform product roadmap. |

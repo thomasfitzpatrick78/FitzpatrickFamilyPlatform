@@ -1,19 +1,21 @@
 id: dev-raspberry-pi-pihole
 record_type: physical_device
 name: Raspberry Pi Pi-hole Device
-description: Raspberry Pi currently running Pi-hole for household network support.
+description: Raspberry Pi currently running Pi-hole for household network support at 192.168.50.67.
 owner: owner-family-platform
 location: loc-home
 lifecycle_status: active
 health_status: unknown
 monitoring_ready: true
 model: Raspberry Pi
-operating_system: TBD
+operating_system: Raspbian GNU/Linux 10 / Debian Buster
+ssh_access: pi@192.168.50.67
+ip_address: 192.168.50.67
+unknowns: hardware generation and storage media TBD
 dependencies:
-  - net-switch-2-5gbe-1
+  - net-asus-mesh-router-primary
 network_dependencies:
-  - net-switch-2-5gbe-1
-power_dependencies:
-  - dev-ups-battery-backup
+  - net-asus-mesh-router-primary
+power_dependencies: []
 administrative_dependencies:
   - dev-toms-macbook-admin

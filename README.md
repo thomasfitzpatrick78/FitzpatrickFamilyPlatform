@@ -45,6 +45,7 @@ Finance remains exclusively owned by the Fitzpatrick Family Financial Assistant 
 docs/
   architecture/
     decisions/
+  engineering-organization/
   governance/
   milestones/
   portfolio/
@@ -85,6 +86,8 @@ Infrastructure Registry validation is included in `./platform-eap repository val
 This repository is authoritative for Fitzpatrick Family Platform product, architecture, engineering, milestone, validation, and release knowledge.
 
 Portfolio relationships are documented under `docs/portfolio/`.
+
+Engineering Organization operating-model artifacts are documented under `docs/engineering-organization/`.
 
 ## Registry CLI
 

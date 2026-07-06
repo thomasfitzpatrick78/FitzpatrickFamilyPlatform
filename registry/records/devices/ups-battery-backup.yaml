@@ -1,12 +1,14 @@
 id: dev-ups-battery-backup
 record_type: physical_device
 name: UPS Battery Backup
-description: UPS battery backup supporting household infrastructure power continuity.
+description: Planned CyberPower UPS battery backup for household infrastructure power continuity.
 owner: owner-family-platform
 location: loc-home
-lifecycle_status: active
-health_status: unknown
+lifecycle_status: planned
+health_status: planned
 monitoring_ready: false
-model: TBD
+model: CyberPower UPS
 protected_loads: TBD
+arrival_status: pending delivery
+unknowns: exact model, runtime capacity, protected loads, management interface, and battery health reporting TBD
 dependencies: []

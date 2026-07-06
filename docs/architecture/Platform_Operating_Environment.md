@@ -1,6 +1,6 @@
 # Platform Operating Environment
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -31,9 +31,9 @@ The current Platform operating environment baseline includes:
 | Area | Registry Evidence | Operating Baseline |
 |------|-------------------|--------------------|
 | Administration | [`dev-toms-macbook-admin`](../../registry/records/devices/toms-macbook-admin.yaml), [`host-toms-macbook-admin`](../../registry/records/hosts/toms-macbook-admin.yaml) | Tom's MacBook is the current administration workstation for repository and household infrastructure work. |
-| General Platform host | [`dev-beelink-mini-pc`](../../registry/records/devices/beelink-mini-pc.yaml), [`host-beelink-mini-pc`](../../registry/records/hosts/beelink-mini-pc.yaml) | Beelink is the active general-purpose Platform host candidate for planned services. |
-| Current network service host | [`dev-raspberry-pi-pihole`](../../registry/records/devices/raspberry-pi-pihole.yaml), [`host-raspberry-pi-pihole`](../../registry/records/hosts/raspberry-pi-pihole.yaml) | Raspberry Pi currently hosts Pi-hole DNS service. |
-| Power continuity | [`dev-ups-battery-backup`](../../registry/records/devices/ups-battery-backup.yaml) | UPS is represented as the power continuity dependency for core infrastructure where known or planned. |
+| Future Platform host | [`dev-beelink-mini-pc`](../../registry/records/devices/beelink-mini-pc.yaml), [`host-beelink-mini-pc`](../../registry/records/hosts/beelink-mini-pc.yaml) | Beelink is planned and not yet available. It is the intended future host candidate for planned services after governed onboarding. |
+| Current network service host | [`dev-raspberry-pi-pihole`](../../registry/records/devices/raspberry-pi-pihole.yaml), [`host-raspberry-pi-pihole`](../../registry/records/hosts/raspberry-pi-pihole.yaml) | Raspberry Pi currently hosts Pi-hole DNS service at `192.168.50.67` on Raspbian GNU/Linux 10 / Debian Buster. |
+| Power continuity | [`dev-ups-battery-backup`](../../registry/records/devices/ups-battery-backup.yaml) | CyberPower UPS is planned and pending delivery. |
 | Active services | [`svc-pihole-dns`](../../registry/records/services/pihole-dns.yaml), [`svc-platform-eap`](../../registry/records/services/platform-eap.yaml), [`svc-infrastructure-registry-validation`](../../registry/records/services/infrastructure-registry-validation.yaml) | Current services are represented as registry records with host, service, network, power, and administrative dependencies where known. |
 | Planned services | [`svc-home-assistant`](../../registry/records/planned_services/home-assistant.yaml), [`svc-mqtt-broker`](../../registry/records/planned_services/mqtt-broker.yaml), [`svc-ollama-local-ai`](../../registry/records/planned_services/ollama-local-ai.yaml), [`svc-platform-monitoring-dashboard`](../../registry/records/planned_services/platform-monitoring-dashboard.yaml), [`svc-remote-management`](../../registry/records/planned_services/remote-management.yaml) | Planned services are documented for placement readiness but are not deployed by Milestone 12. |
 
@@ -64,7 +64,7 @@ Current assumptions are:
 - Pi-hole DNS is hosted on the Raspberry Pi host.
 - Platform EAP is repository-managed and currently associated with the Tom MacBook admin host.
 - Infrastructure Registry validation depends on Platform EAP rather than being separately hosted.
-- Beelink is the active target host for planned Platform services where practical.
+- Beelink is the planned target host for planned Platform services where practical after arrival and governed onboarding.
 - `host-home-server` remains a planned logical host concept and should not be treated as deployed runtime infrastructure until registry lifecycle status changes.
 
 Any future service placement change must update the relevant service registry record before documentation summaries are updated.
@@ -118,7 +118,7 @@ Service hosting readiness is determined from registry state:
 
 | Host | Readiness | Evidence |
 |------|-----------|----------|
-| Beelink Mini PC Host | Ready as active planned-service target; operating system remains `TBD`. | [`host-beelink-mini-pc`](../../registry/records/hosts/beelink-mini-pc.yaml) |
+| Beelink Mini PC Host | Planned target; not yet available; operating system, IP address, runtime model, and storage layout remain `TBD`. | [`host-beelink-mini-pc`](../../registry/records/hosts/beelink-mini-pc.yaml) |
 | Raspberry Pi Pi-hole Host | Ready for current Pi-hole service; not designated as the general planned-service host. | [`host-raspberry-pi-pihole`](../../registry/records/hosts/raspberry-pi-pihole.yaml) |
 | Tom MacBook Admin Host | Ready for administration and repository-managed Platform EAP execution; not a durable always-on service host. | [`host-toms-macbook-admin`](../../registry/records/hosts/toms-macbook-admin.yaml) |
 | Home Server Host | Planned logical host concept; not active operating baseline. | [`host-home-server`](../../registry/records/hosts/home-server.yaml) |
@@ -163,6 +163,7 @@ WS-12.6 does not implement:
 - [Infrastructure Registry Architecture](Infrastructure_Registry_Architecture.md)
 - [Network Topology Model](Network_Topology_Model.md)
 - [Platform Digital Twin Integrity Model](Platform_Digital_Twin_Integrity_Model.md)
+- [Infrastructure Operations Readiness](Infrastructure_Operations_Readiness.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
 - [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
 
@@ -172,4 +173,5 @@ WS-12.6 does not implement:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Updated Beelink, UPS, and Pi-hole operating environment summaries for PLAT-13.1 readiness context. |
 | 1.0 | Initial WS-12.6 Platform operating environment baseline. |

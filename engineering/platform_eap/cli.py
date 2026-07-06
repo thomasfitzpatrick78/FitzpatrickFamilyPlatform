@@ -121,6 +121,7 @@ REGISTRY_DEPENDENCY_TYPE_RULES = {
 }
 REGISTRY_SERVICE_TYPES = {"service", "planned_service"}
 REGISTRY_VALID_HOST_LIFECYCLES = {"active", "planned"}
+REGISTRY_UNKNOWN_MARKERS = {"TBD", "unknown"}
 
 
 def parse_registry_yaml(path: Path) -> dict[str, object]:
@@ -230,6 +231,14 @@ def dependency_cycle_messages(records: dict[str, dict[str, object]]) -> list[str
     for record_id in sorted(graph):
         visit(record_id)
     return [" -> ".join(cycle) for cycle in sorted(cycles)]
+
+
+def record_unknown_fields(record: dict[str, object]) -> list[str]:
+    unknown_fields: list[str] = []
+    for key, value in record.items():
+        if isinstance(value, str) and any(marker.lower() in value.lower() for marker in REGISTRY_UNKNOWN_MARKERS):
+            unknown_fields.append(key)
+    return sorted(unknown_fields)
 
 
 def load_registry_records(records_root: Path | None = None) -> tuple[dict[str, dict[str, object]], dict[str, Path], list[CheckResult]]:
@@ -438,6 +447,9 @@ def validate_registry(records_root: Path | None = None, schema_path: Path | None
         for term in REGISTRY_FORBIDDEN_SCOPE_TERMS:
             if term in raw_text:
                 results.append(CheckResult("ERROR", f"Forbidden finance scope term found in registry record: {term}", display))
+        unknown_fields = record_unknown_fields(record)
+        if unknown_fields:
+            results.append(CheckResult("INFO", f"Registry record explicitly tracks unknown or TBD fields: {', '.join(unknown_fields)}", display))
     for cycle in dependency_cycle_messages(parsed_records):
         results.append(CheckResult("ERROR", f"Circular registry dependency detected: {cycle}"))
     if not any(result.severity == "ERROR" for result in results):

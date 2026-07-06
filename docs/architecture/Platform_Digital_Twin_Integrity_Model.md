@@ -1,6 +1,6 @@
 # Platform Digital Twin Integrity Model
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -41,6 +41,7 @@ Platform EAP repository validation checks the following registry integrity rules
 - Planned services with host relationships must reference planned or active host targets.
 - Active services without a valid host path are treated as orphaned services.
 - Service dependency chains must not contain circular dependencies.
+- Records with explicit `TBD` or unknown markers are reported as static readiness information.
 
 ---
 
@@ -58,6 +59,12 @@ Cycle detection applies to service dependency chains.
 
 Other topology relationships, such as administrative access or network reachability, may form real-world loops and are therefore validated for reference integrity and type correctness rather than circularity.
 
+## Unknown Field Reporting
+
+Registry records may intentionally use `TBD` or `unknowns` fields for details that are not yet confirmed.
+
+Platform EAP reports these markers as information so architecture review can distinguish known gaps from missing records. These markers do not imply runtime health status and do not trigger discovery, polling, or automation.
+
 ---
 
 ## Related Documents
@@ -66,6 +73,7 @@ Other topology relationships, such as administrative access or network reachabil
 - [Infrastructure Registry Architecture](Infrastructure_Registry_Architecture.md)
 - [Network Topology Model](Network_Topology_Model.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
+- [Infrastructure Operations Readiness](Infrastructure_Operations_Readiness.md)
 
 ---
 
@@ -73,4 +81,5 @@ Other topology relationships, such as administrative access or network reachabil
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added static unknown and TBD field reporting for PLAT-13.1 readiness. |
 | 1.0 | Initial WS-12.5 Platform Digital Twin integrity validation model. |

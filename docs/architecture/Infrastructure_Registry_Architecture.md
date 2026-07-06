@@ -1,6 +1,6 @@
 # Infrastructure Registry Architecture
 
-**Document Version:** 1.1
+**Document Version:** 1.3
 
 **Status:** Active
 
@@ -117,12 +117,21 @@ The registry may evolve toward:
 
 Future evolution requires governed requirements, ADRs when applicable, specifications, validation, and evidence.
 
+Milestone 13 introduces the registry-driven Platform lifecycle pattern:
+
+```text
+Authoritative Registry -> Validation -> Automation -> Observability -> AI Reasoning
+```
+
+The registry and validation stages must remain authoritative before future automation, observability, or AI reasoning stages are implemented.
+
 ---
 
 ## Related Documents
 
 - [ADR-006 - Registry Driven Infrastructure Foundation](decisions/ADR-006-Registry-Driven-Infrastructure-Foundation.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
+- [Registry-Driven Platform Lifecycle](Registry_Driven_Platform_Lifecycle.md)
 - [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
 
 ---
@@ -131,6 +140,7 @@ Future evolution requires governed requirements, ADRs when applicable, specifica
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added Milestone 13 registry-driven Platform lifecycle pattern. |
 | 1.2 | Added WS-12.4 topology relationship model with classified dependency validation. |
 | 1.1 | Updated for WS-12.1 registry structure, YAML records, and Platform EAP validation integration. |
 | 1.0 | Initial Infrastructure Registry architecture for Milestone 12. |

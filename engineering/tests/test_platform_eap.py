@@ -235,6 +235,7 @@ def test_registry_validation_passes_for_repository_records():
     results = cli.validate_registry()
     assert not [r for r in results if r.severity == "ERROR"]
     assert any("Registry validation passed" in r.message for r in results)
+    assert any("explicitly tracks unknown or TBD fields" in r.message for r in results)
 
 
 def test_repository_validation_includes_registry_validation():

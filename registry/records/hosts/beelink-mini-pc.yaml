@@ -1,13 +1,15 @@
 id: host-beelink-mini-pc
 record_type: host
 name: Beelink Mini PC Host
-description: Host representation for the Beelink mini PC.
+description: Planned host representation for the Beelink mini PC after device arrival and governed onboarding.
 owner: owner-family-platform
 location: loc-home
-lifecycle_status: active
-health_status: unknown
+lifecycle_status: planned
+health_status: planned
 monitoring_ready: true
 operating_system: TBD
+arrival_status: not yet available
+unknowns: operating system, hostname, IP address, virtualization model, container runtime, and storage layout TBD
 dependencies:
   - dev-beelink-mini-pc
   - net-switch-2-5gbe-1

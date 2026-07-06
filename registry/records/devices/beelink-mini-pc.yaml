@@ -1,14 +1,16 @@
 id: dev-beelink-mini-pc
 record_type: physical_device
 name: Beelink Mini PC
-description: Beelink mini PC available for Platform infrastructure workloads.
+description: Planned Beelink mini PC target for future Platform infrastructure workloads after device arrival.
 owner: owner-family-platform
 location: loc-home
-lifecycle_status: active
-health_status: unknown
+lifecycle_status: planned
+health_status: planned
 monitoring_ready: true
 model: TBD
 serial_number: TBD
+arrival_status: not yet available
+unknowns: arrival date, model, CPU, memory, storage, operating system, and network interface details TBD
 dependencies:
   - net-switch-2-5gbe-1
 network_dependencies:

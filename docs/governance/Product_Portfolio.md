@@ -18,8 +18,19 @@ This document defines the Platform repository product scope within the Fitzpatri
 
 | Product | Repository | Scope |
 |---------|------------|-------|
+| AI Engineering Organization | `FitzpatrickFamilyPlatform` | Governed AI engineering operating model |
 | Fitzpatrick Family Financial Assistant | `FamilyFinanceAssistant` | Finance |
 | Fitzpatrick Family Platform | `FitzpatrickFamilyPlatform` | Infrastructure, Home Automation, Energy Management, AI Services, Shared Services, Family Intelligence |
+
+---
+
+## Engineering Organization Position
+
+The AI Engineering Organization is the flagship product of the Fitzpatrick Family Platform Engineering Organization.
+
+The Fitzpatrick Family Platform is the reference implementation for the Engineering Organization operating model.
+
+The Fitzpatrick Family Financial Assistant is the flagship customer-facing application enabled by the Engineering Organization and Platform.
 
 ---
 
@@ -41,6 +52,7 @@ It follows established portfolio patterns without sharing implementation code wi
 
 ## Related Documents
 
+- [Engineering Organization Foundation](../engineering-organization/README.md)
 - [Portfolio Integration](../portfolio/Portfolio_Integration.md)
 - [Cross-Repository Governance](../portfolio/Cross_Repository_Governance.md)
 - [Product Vision](../product/Product_Vision.md)
@@ -52,3 +64,4 @@ It follows established portfolio patterns without sharing implementation code wi
 | Version | Description |
 |---------|-------------|
 | 1.0 | Initial Platform product portfolio definition. |
+| 1.1 | Added Engineering Organization portfolio position. |

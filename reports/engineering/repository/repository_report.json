@@ -1,7 +1,7 @@
 {
   "capability": "Repository Validation",
   "status": "PASS",
-  "timestamp": "2026-07-06T00:30:00.334587+00:00",
+  "timestamp": "2026-07-06T20:47:01.014107+00:00",
   "summary": "Repository validation completed with status PASS.",
   "results": [
     {
@@ -163,6 +163,111 @@
       "severity": "INFO",
       "message": "Registry schema exists",
       "path": "registry/schema/infrastructure_registry_schema.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: model, serial_number, unknowns",
+      "path": "registry/records/devices/beelink-mini-pc.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, model",
+      "path": "registry/records/devices/family-nas.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, unknowns",
+      "path": "registry/records/devices/raspberry-pi-pihole.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, model, quantity",
+      "path": "registry/records/devices/tapo-hubs.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, serial_number",
+      "path": "registry/records/devices/toms-macbook-admin.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: protected_loads, unknowns",
+      "path": "registry/records/devices/ups-battery-backup.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: operating_system, unknowns",
+      "path": "registry/records/hosts/beelink-mini-pc.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, unknowns",
+      "path": "registry/records/hosts/raspberry-pi-pihole.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status",
+      "path": "registry/records/hosts/toms-macbook-admin.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, management_interface, model",
+      "path": "registry/records/network_devices/asus-mesh-node.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, management_interface, model",
+      "path": "registry/records/network_devices/asus-mesh-router-primary.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, management_interface, model",
+      "path": "registry/records/network_devices/frontier-fiber-ont.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, model",
+      "path": "registry/records/network_devices/home-router.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: port_count, unknowns",
+      "path": "registry/records/network_devices/network-switch-2-5gbe-1.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: port_count, unknowns",
+      "path": "registry/records/network_devices/network-switch-2-5gbe-2.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
+      "path": "registry/records/planned_services/home-assistant.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/planned_services/mqtt-broker.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
+      "path": "registry/records/planned_services/ollama-local-ai.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
+      "path": "registry/records/planned_services/platform-monitoring-dashboard.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
+      "path": "registry/records/planned_services/remote-management.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, unknowns",
+      "path": "registry/records/services/pihole-dns.yaml"
     },
     {
       "severity": "INFO",

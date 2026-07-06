@@ -9,7 +9,12 @@ health_status: unknown
 monitoring_ready: true
 service_interface: DNS
 runtime_status: running
-unknowns: version and management URL TBD
+ip_address: 192.168.50.67
+pihole_core_version: v5.15.5
+pihole_web_version: v6.0
+pihole_ftl_version: v6.4.1
+migration_direction: migrate to Beelink using Docker or VM after Beelink arrives; keep Raspberry Pi intact as rollback
+unknowns: management URL and final Beelink runtime model TBD
 dependencies:
   - host-raspberry-pi-pihole
   - net-asus-mesh-router-primary
@@ -17,7 +22,6 @@ host_dependencies:
   - host-raspberry-pi-pihole
 network_dependencies:
   - net-asus-mesh-router-primary
-power_dependencies:
-  - dev-ups-battery-backup
+power_dependencies: []
 administrative_dependencies:
   - dev-toms-macbook-admin

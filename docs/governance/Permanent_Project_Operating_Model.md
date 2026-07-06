@@ -22,6 +22,8 @@ The repository is the authoritative source of truth for Platform product, archit
 
 Conversations are working sessions. Approved decisions become durable only when synchronized into this repository.
 
+The AI Engineering Organization is governed as a first-class product. Strategic governance remains outside implementation chats and is handled by the Architecture Review Board and Chief Architect conversation.
+
 ---
 
 ## Product Boundary
@@ -95,6 +97,7 @@ Release
 
 | Layer | Governing Artifact |
 |-------|--------------------|
+| Engineering Organization Governance | Engineering Organization Foundation artifacts |
 | Portfolio Governance | Portfolio Integration and Cross-Repository Governance |
 | Project Governance | Permanent Project Operating Model |
 | Product Governance | Product Vision, Capability Model, Product Backlog, Product Roadmap, Product Governance |
@@ -108,6 +111,7 @@ Release
 
 ## Related Documents
 
+- [Engineering Organization Foundation](../engineering-organization/README.md)
 - [Repository Principles](Repository_Principles.md)
 - [Engineering Lifecycle](Engineering_Lifecycle.md)
 - [Definition of Done](Definition_of_Done.md)
@@ -121,3 +125,4 @@ Release
 | Version | Description |
 |---------|-------------|
 | 1.0 | Initial Platform operating model. |
+| 1.1 | Added Engineering Organization governance layer and authority boundary. |

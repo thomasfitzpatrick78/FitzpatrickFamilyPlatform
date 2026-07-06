@@ -1,0 +1,53 @@
+# Architecture Pattern Library
+
+**Document Version:** 1.0
+
+**Status:** Active
+
+**Milestone:** EO-13.0
+
+---
+
+## Purpose
+
+This starter library records proven architecture and delivery patterns that may be reused by the Engineering Organization.
+
+---
+
+## Promotion Criteria
+
+A pattern may be added or promoted when:
+
+- It has been used successfully in at least one governed workstream.
+- Its value is supported by validation, review evidence, or repeated delivery experience.
+- Its boundary and authority are clear.
+- It does not create unnecessary coupling between repositories.
+
+---
+
+## Starter Patterns
+
+| Pattern | Description | Evidence |
+|---------|-------------|----------|
+| Repository-Managed Governance | Durable governance lives in Markdown and structured repository artifacts. | Milestone 11 governance foundation. |
+| Registry as Authority | Structured registries are authoritative for domains requiring consistent state. | Milestone 12 Infrastructure Registry. |
+| Evidence-Based Readiness | Readiness is shown through tests, validators, and generated reports. | `platform-eap` validation suite. |
+| One Chat per Workstream | Each approved workstream receives a dedicated Codex chat. | EO-13.0 operating model. |
+| Architecture Review Return | Implementation chats return for review before decisions become durable. | EO-13.0 delivery model. |
+
+---
+
+## Related Documents
+
+- [Engineering Capability Model](Engineering_Capability_Model.md)
+- [Engineering Organization Roadmap](Engineering_Organization_Roadmap.md)
+- [Architecture Decision Log](../architecture/Architecture_Decision_Log.md)
+- [Shared Engineering Strategy](../portfolio/Shared_Engineering_Strategy.md)
+
+---
+
+## Revision History
+
+| Version | Description |
+|---------|-------------|
+| 1.0 | Initial Architecture Pattern Library starter. |
