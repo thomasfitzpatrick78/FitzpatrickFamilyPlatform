@@ -1,0 +1,19 @@
+id: net-switch-2-5gbe-1
+record_type: network_device
+name: 2.5Gb Network Switch 1
+description: First 2.5Gb household network switch.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: false
+model: TBD
+port_count: TBD
+dependencies:
+  - net-asus-mesh-router-primary
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

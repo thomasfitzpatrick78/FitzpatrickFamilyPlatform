@@ -1,0 +1,12 @@
+id: dev-ups-battery-backup
+record_type: physical_device
+name: UPS Battery Backup
+description: UPS battery backup supporting household infrastructure power continuity.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: false
+model: TBD
+protected_loads: TBD
+dependencies: []

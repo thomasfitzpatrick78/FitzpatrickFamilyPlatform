@@ -1,0 +1,19 @@
+id: svc-platform-eap
+record_type: service
+name: Platform Engineering Automation
+description: placeholder
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: healthy
+monitoring_ready: false
+service_interface: local command
+runtime_status: repository-managed
+unknowns: execution host varies by operator workstation
+dependencies:
+  - host-toms-macbook-admin
+host_dependencies:
+  - host-toms-macbook-admin
+service_dependencies: []
+administrative_dependencies:
+  - dev-toms-macbook-admin

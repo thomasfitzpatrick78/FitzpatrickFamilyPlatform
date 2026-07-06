@@ -1,0 +1,17 @@
+id: dev-toms-macbook-admin
+record_type: physical_device
+name: Tom MacBook Admin Workstation
+description: Tom's MacBook used as an administration workstation for Platform repository and household infrastructure work.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: false
+model: MacBook
+serial_number: TBD
+dependencies:
+  - net-asus-mesh-router-primary
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies: []
+administrative_dependencies: []

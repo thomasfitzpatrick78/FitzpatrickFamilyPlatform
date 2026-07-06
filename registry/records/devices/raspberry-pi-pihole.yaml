@@ -1,0 +1,19 @@
+id: dev-raspberry-pi-pihole
+record_type: physical_device
+name: Raspberry Pi Pi-hole Device
+description: Raspberry Pi currently running Pi-hole for household network support.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+model: Raspberry Pi
+operating_system: TBD
+dependencies:
+  - net-switch-2-5gbe-1
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

@@ -1,0 +1,23 @@
+id: svc-platform-monitoring-dashboard
+record_type: planned_service
+name: Platform Monitoring Dashboard
+description: Planned dashboard service for future Platform health and monitoring views.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: true
+service_interface: TBD
+runtime_status: planned
+unknowns: dashboard technology and data source model TBD
+dependencies:
+  - svc-infrastructure-registry-validation
+  - host-beelink-mini-pc
+host_dependencies:
+  - host-beelink-mini-pc
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

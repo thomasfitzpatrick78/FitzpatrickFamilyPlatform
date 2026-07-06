@@ -1,0 +1,16 @@
+id: net-frontier-fiber-ont
+record_type: network_device
+name: Frontier Fiber ONT Modem
+description: Frontier fiber ONT or modem providing household internet service handoff.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: false
+model: TBD
+management_interface: TBD
+dependencies: []
+network_dependencies: []
+power_dependencies: []
+administrative_dependencies:
+  - dev-toms-macbook-admin

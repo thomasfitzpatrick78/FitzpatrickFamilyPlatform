@@ -1,0 +1,22 @@
+id: svc-ollama-local-ai
+record_type: planned_service
+name: Ollama Local AI Service
+description: Planned local AI service candidate for future governed Platform AI Services capability.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: true
+service_interface: TBD
+runtime_status: planned
+unknowns: model set, host placement, resource needs, and privacy controls TBD
+dependencies:
+  - host-beelink-mini-pc
+host_dependencies:
+  - host-beelink-mini-pc
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

@@ -1,0 +1,18 @@
+id: host-toms-macbook-admin
+record_type: host
+name: Tom MacBook Admin Host
+description: Host representation for Tom's MacBook as an administration workstation.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: false
+operating_system: macOS
+dependencies:
+  - dev-toms-macbook-admin
+  - net-asus-mesh-router-primary
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies: []
+administrative_dependencies:
+  - dev-toms-macbook-admin

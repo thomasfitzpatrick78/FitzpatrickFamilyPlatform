@@ -1,0 +1,23 @@
+id: svc-pihole-dns
+record_type: service
+name: Pi-hole DNS Service
+description: Pi-hole DNS service currently running on the Raspberry Pi.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+service_interface: DNS
+runtime_status: running
+unknowns: version and management URL TBD
+dependencies:
+  - host-raspberry-pi-pihole
+  - net-asus-mesh-router-primary
+host_dependencies:
+  - host-raspberry-pi-pihole
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

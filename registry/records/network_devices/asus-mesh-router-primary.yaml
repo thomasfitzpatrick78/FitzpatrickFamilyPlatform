@@ -1,0 +1,19 @@
+id: net-asus-mesh-router-primary
+record_type: network_device
+name: ASUS Mesh Router Primary
+description: Primary ASUS mesh router for household network routing and wireless access.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+model: TBD
+management_interface: TBD
+dependencies:
+  - net-frontier-fiber-ont
+network_dependencies:
+  - net-frontier-fiber-ont
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

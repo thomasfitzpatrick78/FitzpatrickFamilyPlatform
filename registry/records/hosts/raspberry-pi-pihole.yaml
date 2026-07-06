@@ -1,0 +1,19 @@
+id: host-raspberry-pi-pihole
+record_type: host
+name: Raspberry Pi Pi-hole Host
+description: Host representation for the Raspberry Pi currently running Pi-hole.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+operating_system: TBD
+dependencies:
+  - dev-raspberry-pi-pihole
+  - net-switch-2-5gbe-1
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

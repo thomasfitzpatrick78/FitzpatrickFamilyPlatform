@@ -1,0 +1,10 @@
+id: loc-home
+record_type: location
+name: Fitzpatrick Household
+description: Primary household location for Platform infrastructure assets.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unmonitored
+monitoring_ready: false
+dependencies: []

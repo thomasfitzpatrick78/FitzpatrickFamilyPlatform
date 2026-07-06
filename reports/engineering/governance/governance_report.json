@@ -1,7 +1,7 @@
 {
   "capability": "Governance Validation",
   "status": "PASS",
-  "timestamp": "2026-07-05T22:45:36.945875+00:00",
+  "timestamp": "2026-07-06T00:29:02.150272+00:00",
   "summary": "Governance validation completed with status PASS.",
   "results": [
     {
@@ -58,6 +58,11 @@
       "severity": "INFO",
       "message": "Governance artifact exists",
       "path": "docs/architecture/decisions/ADR-005-Portfolio-Integration-and-Repository-Independence.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "Governance artifact exists",
+      "path": "docs/architecture/decisions/ADR-006-Registry-Driven-Infrastructure-Foundation.md"
     },
     {
       "severity": "INFO",

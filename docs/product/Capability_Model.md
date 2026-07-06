@@ -1,10 +1,10 @@
 # Capability Model
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
-**Milestone:** Milestone 11
+**Milestone:** Milestone 12
 
 ---
 
@@ -24,7 +24,9 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Business Objective:** Make future household systems durable and maintainable.
 
-**Initial Epics:** Household environment inventory; backup and recovery coordination; repository and runtime readiness.
+**Initial Epics:** Infrastructure Registry v1.0; household environment inventory; backup and recovery coordination; repository and runtime readiness.
+
+**Milestone 12 Capability:** Infrastructure Registry v1.0 is the first usable Platform capability. It will support physical devices, network devices, hosts, services, planned services, locations, ownership, lifecycle status, health status, dependencies, and future monitoring readiness.
 
 ### Home Automation
 
@@ -79,6 +81,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 - [Product Vision](Product_Vision.md)
 - [Product Backlog](Product_Backlog.md)
 - [Product Roadmap](Product_Roadmap.md)
+- [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
 
 ---
 
@@ -86,4 +89,5 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added Infrastructure Registry v1.0 as the first usable Infrastructure capability for Milestone 12. |
 | 1.0 | Initial Platform capability model. |

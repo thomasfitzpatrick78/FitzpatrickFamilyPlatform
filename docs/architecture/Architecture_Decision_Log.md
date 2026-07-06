@@ -1,10 +1,10 @@
 # Architecture Decision Log
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
-**Milestone:** Milestone 11
+**Milestone:** Milestone 12
 
 ---
 
@@ -39,6 +39,7 @@ Baselined
 | ADR-003 | Repository-Managed Governance | Governance Architecture | Approved | Yes | M11.0 | Milestone 11 |
 | ADR-004 | Platform Engineering Automation Foundation | Engineering Architecture | Approved | Yes | M11.0 | Milestone 11 |
 | ADR-005 | Portfolio Integration and Repository Independence | Portfolio Architecture | Approved | Yes | M11.0 | Milestone 11 |
+| ADR-006 | Registry Driven Infrastructure Foundation | Infrastructure Architecture | Approved | No | Pending | Milestone 12 |
 
 ---
 
@@ -64,6 +65,10 @@ Baselined
 
 - ADR-005 - Portfolio Integration and Repository Independence
 
+### Infrastructure Architecture
+
+- ADR-006 - Registry Driven Infrastructure Foundation
+
 ---
 
 ## Future Decisions
@@ -76,4 +81,5 @@ Each new ADR shall receive the next sequential repository-local ADR number, be r
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added ADR-006 for Registry Driven Infrastructure Foundation. |
 | 1.0 | Initial Platform Architecture Decision Log. |

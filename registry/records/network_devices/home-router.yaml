@@ -1,0 +1,17 @@
+id: net-home-router
+record_type: network_device
+name: Home Router Legacy Alias
+description: Legacy alias retained for continuity; primary routing is represented by the ASUS mesh router primary record.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: replacement
+health_status: unknown
+monitoring_ready: false
+model: TBD
+dependencies:
+  - net-asus-mesh-router-primary
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies: []
+administrative_dependencies:
+  - dev-toms-macbook-admin

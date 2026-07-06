@@ -1,0 +1,18 @@
+id: dev-family-nas
+record_type: physical_device
+name: Family NAS
+description: Representative storage device for household platform planning.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+model: TBD
+dependencies:
+  - net-switch-2-5gbe-2
+network_dependencies:
+  - net-switch-2-5gbe-2
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

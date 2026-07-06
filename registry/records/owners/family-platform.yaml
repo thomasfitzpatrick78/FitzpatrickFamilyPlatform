@@ -1,0 +1,10 @@
+id: owner-family-platform
+record_type: owner
+name: Fitzpatrick Family Platform Steward
+description: Stewardship owner for Platform infrastructure registry records.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unmonitored
+monitoring_ready: false
+dependencies: []

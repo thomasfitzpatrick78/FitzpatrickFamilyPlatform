@@ -1,0 +1,23 @@
+id: svc-remote-management
+record_type: planned_service
+name: Remote Management Service
+description: Planned remote management service candidate for future governed infrastructure administration.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: true
+service_interface: TBD
+runtime_status: planned
+unknowns: access model, authentication, authorization, and safety controls TBD
+dependencies:
+  - host-beelink-mini-pc
+  - net-asus-mesh-router-primary
+host_dependencies:
+  - host-beelink-mini-pc
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

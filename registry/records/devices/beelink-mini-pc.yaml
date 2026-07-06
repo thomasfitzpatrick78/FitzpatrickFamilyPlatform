@@ -1,0 +1,19 @@
+id: dev-beelink-mini-pc
+record_type: physical_device
+name: Beelink Mini PC
+description: Beelink mini PC available for Platform infrastructure workloads.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+model: TBD
+serial_number: TBD
+dependencies:
+  - net-switch-2-5gbe-1
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

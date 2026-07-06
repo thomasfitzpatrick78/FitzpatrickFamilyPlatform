@@ -1,0 +1,53 @@
+schema_id: infrastructure_registry_v1
+schema_version: 1.0
+record_extension: .yaml
+required_fields:
+  - id
+  - record_type
+  - name
+  - description
+  - owner
+  - location
+  - lifecycle_status
+  - health_status
+  - monitoring_ready
+  - dependencies
+allowed_record_types:
+  - location
+  - owner
+  - physical_device
+  - network_device
+  - host
+  - service
+  - planned_service
+allowed_lifecycle_statuses:
+  - planned
+  - active
+  - retired
+  - replacement
+allowed_health_statuses:
+  - planned
+  - healthy
+  - degraded
+  - unmonitored
+  - unknown
+boolean_fields:
+  - monitoring_ready
+reference_fields:
+  owner: owner
+  location: location
+list_reference_fields:
+  dependencies: any
+finance_scope_exclusions:
+  - finance
+  - banking
+  - budgeting
+  - transaction
+  - investment
+
+classified_dependency_fields:
+  network_dependencies: any
+  host_dependencies: any
+  service_dependencies: any
+  power_dependencies: any
+  administrative_dependencies: any

@@ -1,0 +1,19 @@
+id: svc-home-automation-hub
+record_type: planned_service
+name: Home Automation Hub
+description: Planned service placeholder for future governed home automation capabilities.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: true
+dependencies:
+  - host-home-server
+host_dependencies:
+  - host-beelink-mini-pc
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

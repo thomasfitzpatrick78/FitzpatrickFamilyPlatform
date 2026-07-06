@@ -1,0 +1,18 @@
+id: net-asus-mesh-node
+record_type: network_device
+name: ASUS Mesh Node
+description: ASUS mesh node extending household wireless network coverage.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+model: TBD
+management_interface: TBD
+dependencies:
+  - net-asus-mesh-router-primary
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies: []
+administrative_dependencies:
+  - dev-toms-macbook-admin

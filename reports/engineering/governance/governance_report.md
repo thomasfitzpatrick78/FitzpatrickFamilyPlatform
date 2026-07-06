@@ -2,7 +2,7 @@
 
 **Status:** PASS
 
-**Timestamp:** 2026-07-05T22:45:36.945875+00:00
+**Timestamp:** 2026-07-06T00:29:02.150272+00:00
 
 **Summary:** Governance validation completed with status PASS.
 
@@ -10,7 +10,7 @@
 
 - Errors: 0
 - Warnings: 0
-- Information: 12
+- Information: 13
 
 ## Results
 
@@ -25,4 +25,5 @@
 - INFO: Governance artifact exists (`docs/architecture/decisions/ADR-003-Repository-Managed-Governance.md`)
 - INFO: Governance artifact exists (`docs/architecture/decisions/ADR-004-Platform-Engineering-Automation-Foundation.md`)
 - INFO: Governance artifact exists (`docs/architecture/decisions/ADR-005-Portfolio-Integration-and-Repository-Independence.md`)
+- INFO: Governance artifact exists (`docs/architecture/decisions/ADR-006-Registry-Driven-Infrastructure-Foundation.md`)
 - INFO: Finance exclusions are governed by product boundary documents

@@ -76,6 +76,8 @@ python3 -m pytest engineering/tests
 ./platform-eap capabilities
 ```
 
+Infrastructure Registry validation is included in `./platform-eap repository validate`.
+
 ---
 
 ## Authoritative Governance
@@ -83,3 +85,15 @@ python3 -m pytest engineering/tests
 This repository is authoritative for Fitzpatrick Family Platform product, architecture, engineering, milestone, validation, and release knowledge.
 
 Portfolio relationships are documented under `docs/portfolio/`.
+
+## Registry CLI
+
+Milestone 12 introduces read-only registry inspection commands:
+
+```bash
+./platform-eap registry list
+./platform-eap registry show <record-id>
+./platform-eap registry validate
+```
+
+These commands inspect the Infrastructure Registry as the Platform Digital Twin and do not mutate registry records.

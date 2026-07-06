@@ -1,0 +1,17 @@
+id: svc-infrastructure-registry-validation
+record_type: service
+name: Infrastructure Registry Validation
+description: Platform EAP validation capability that validates Infrastructure Registry schema, records, references, and scope exclusions.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: healthy
+monitoring_ready: false
+service_interface: platform-eap repository validate
+runtime_status: repository-managed
+dependencies:
+  - svc-platform-eap
+service_dependencies:
+  - svc-platform-eap
+administrative_dependencies:
+  - dev-toms-macbook-admin

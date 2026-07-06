@@ -1,0 +1,23 @@
+id: svc-home-assistant
+record_type: planned_service
+name: Home Assistant
+description: Planned Home Assistant service for future governed home automation capabilities.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: true
+service_interface: TBD
+runtime_status: planned
+unknowns: host placement, installation method, and integration scope TBD
+dependencies:
+  - host-beelink-mini-pc
+  - net-asus-mesh-router-primary
+host_dependencies:
+  - host-beelink-mini-pc
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

@@ -1,0 +1,19 @@
+id: host-beelink-mini-pc
+record_type: host
+name: Beelink Mini PC Host
+description: Host representation for the Beelink mini PC.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: true
+operating_system: TBD
+dependencies:
+  - dev-beelink-mini-pc
+  - net-switch-2-5gbe-1
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

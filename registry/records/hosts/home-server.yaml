@@ -1,0 +1,20 @@
+id: host-home-server
+record_type: host
+name: Home Server
+description: Planned home server role represented through the Beelink mini PC host and storage dependency records.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: true
+dependencies:
+  - host-beelink-mini-pc
+  - dev-family-nas
+host_dependencies:
+  - host-beelink-mini-pc
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

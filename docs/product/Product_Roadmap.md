@@ -1,10 +1,10 @@
 # Product Roadmap
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
-**Milestone:** Milestone 11
+**Milestone:** Milestone 12
 
 ---
 
@@ -16,30 +16,31 @@ This roadmap organizes Platform direction by milestone horizon without prescribi
 
 ## Current Milestone
 
-### Milestone 11
+### Milestone 12
 
-Focus: create the governed Platform repository and engineering foundation.
+Focus: establish Infrastructure Registry v1.0 as the first usable Platform capability.
 
-Delivered outcomes:
+Planned outcomes:
 
-- Product governance baseline.
-- Architecture governance baseline.
-- Repository validation foundation.
-- Governance validation foundation.
-- Release readiness evidence.
-- Milestone closeout framework.
-- Engineering metrics reports.
+- Git-native structured infrastructure registry architecture.
+- YAML or JSON registry record model.
+- Human-readable documentation derived from registry records.
+- Validation-first registry design.
+- Workstreams for devices, topology, services, health foundation, and operating environment.
+- Future readiness for monitoring, dashboards, and automation.
 
 ---
 
 ## Near-Term Roadmap
 
-Near-term candidates should prepare for the first Platform feature milestone:
+Near-term candidates should build from Infrastructure Registry v1.0:
 
-- Platform runtime architecture options.
-- First Home Automation capability readiness assessment.
-- Infrastructure operating model refinement.
-- Initial shared service conventions.
+- Device inventory.
+- Network topology.
+- Service registry.
+- Platform health foundation.
+- Platform operating environment.
+- First Home Automation capability readiness assessment after registry foundation.
 
 ---
 
@@ -67,6 +68,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - Cloud services.
 - GitHub Actions.
 - Shared package extraction.
+- Runtime monitoring until registry validation is established.
+- Dashboards until registry records and health status are validated.
 
 ---
 
@@ -75,6 +78,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - [Product Backlog](Product_Backlog.md)
 - [Capability Model](Capability_Model.md)
 - [Architecture Backlog](../architecture/Architecture_Backlog.md)
+- [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
+- [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
 
 ---
 
@@ -82,4 +87,5 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added Infrastructure Registry v1.0 as the first Platform feature milestone for Milestone 12. |
 | 1.0 | Initial Platform product roadmap. |
