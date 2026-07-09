@@ -1,16 +1,22 @@
 id: dev-beelink-mini-pc
 record_type: physical_device
 name: Beelink Mini PC
-description: Planned Beelink mini PC target for future Platform infrastructure workloads after device arrival.
+description: Delivered Beelink Mini S target for future Platform infrastructure workloads after governed Day 0 / Day 1 onboarding.
 owner: owner-family-platform
 location: loc-home
 lifecycle_status: planned
 health_status: planned
 monitoring_ready: true
-model: TBD
+model: Beelink Mini S
+planned_role: Platform Node 001
+cpu: Intel N150
+memory: 16GB
+storage: 512GB
+power_input: 12V / 3A
 serial_number: TBD
-arrival_status: not yet available
-unknowns: arrival date, model, CPU, memory, storage, operating system, and network interface details TBD
+arrival_status: delivered; pending physical setup and governed onboarding
+onboarding_status: pending Day 0 / Day 1 bring-up validation
+unknowns: serial number, operating system, BIOS settings, hostname, IP address, and network interface details TBD
 dependencies:
   - net-switch-2-5gbe-1
 network_dependencies:

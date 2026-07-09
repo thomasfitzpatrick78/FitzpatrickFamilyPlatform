@@ -1,7 +1,7 @@
 {
   "capability": "Repository Validation",
   "status": "PASS",
-  "timestamp": "2026-07-06T20:47:01.014107+00:00",
+  "timestamp": "2026-07-09T23:06:21.890729+00:00",
   "summary": "Repository validation completed with status PASS.",
   "results": [
     {
@@ -166,7 +166,7 @@
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: model, serial_number, unknowns",
+      "message": "Registry record explicitly tracks unknown or TBD fields: serial_number, unknowns",
       "path": "registry/records/devices/beelink-mini-pc.yaml"
     },
     {
@@ -196,7 +196,7 @@
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: operating_system, unknowns",
+      "message": "Registry record explicitly tracks unknown or TBD fields: admin_user_status, operating_system, unknowns",
       "path": "registry/records/hosts/beelink-mini-pc.yaml"
     },
     {
@@ -231,12 +231,12 @@
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: port_count, unknowns",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
       "path": "registry/records/network_devices/network-switch-2-5gbe-1.yaml"
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: port_count, unknowns",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
       "path": "registry/records/network_devices/network-switch-2-5gbe-2.yaml"
     },
     {

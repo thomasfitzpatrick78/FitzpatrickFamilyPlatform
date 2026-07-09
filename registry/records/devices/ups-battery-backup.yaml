@@ -1,14 +1,15 @@
 id: dev-ups-battery-backup
 record_type: physical_device
 name: UPS Battery Backup
-description: Planned CyberPower UPS battery backup for household infrastructure power continuity.
+description: Delivered CyberPower CP850PFCLCD UPS battery backup for household infrastructure power continuity.
 owner: owner-family-platform
 location: loc-home
 lifecycle_status: planned
 health_status: planned
 monitoring_ready: false
-model: CyberPower UPS
+model: CyberPower CP850PFCLCD
+capacity: 850VA / 510W
 protected_loads: TBD
-arrival_status: pending delivery
-unknowns: exact model, runtime capacity, protected loads, management interface, and battery health reporting TBD
+arrival_status: delivered; pending placement, protected-load confirmation, and onboarding validation
+unknowns: protected loads, runtime estimate under actual load, management interface, and battery health reporting TBD
 dependencies: []

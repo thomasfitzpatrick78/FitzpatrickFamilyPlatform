@@ -72,6 +72,29 @@ Known facts are recorded directly. Unknown model numbers, serial numbers, manage
 
 `TBD` values do not bypass required registry validation. Required fields, references, lifecycle status, health status, monitoring readiness, and finance-scope exclusions remain validated by Platform EAP.
 
+---
+
+## PLAT-13.3 Delivered Hardware Inventory
+
+PLAT-13.3 records delivered hardware facts for Beelink bring-up planning while preserving pending lifecycle state.
+
+Delivered hardware now recorded in registry:
+
+- Beelink Mini S, Intel N150, 16GB memory, 512GB storage, 12V / 3A input.
+- Two TP-Link TL-SG108S-M2 8-port 2.5G unmanaged switches.
+- CyberPower CP850PFCLCD UPS, 850VA / 510W.
+
+The Beelink remains `planned` and pending onboarding until physical setup, OS baseline, static DHCP reservation, local SSH access, and validation evidence are completed and reviewed.
+
+Architecture Review Board decisions for PLAT-13.3:
+
+- Ubuntu Server 24.04 LTS is the approved Beelink operating system baseline.
+- The factory Windows installation will be erased during Ubuntu Server installation. No Windows image will be created. This node is being commissioned as Platform Node 001 and Windows is not part of the Platform operating model.
+- Registry evidence must be captured immediately after BIOS verification, Ubuntu installation, networking completion, and SSH verification.
+- Docker installation is out of scope and deferred to a future workstream.
+
+PLAT-13.3 does not migrate Pi-hole, change router DNS, install planned services, implement monitoring, implement remote management, or modernize the network.
+
 
 ---
 

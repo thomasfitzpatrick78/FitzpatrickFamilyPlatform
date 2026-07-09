@@ -1,15 +1,25 @@
 id: host-beelink-mini-pc
 record_type: host
 name: Beelink Mini PC Host
-description: Planned host representation for the Beelink mini PC after device arrival and governed onboarding.
+description: Planned host representation for the delivered Beelink Mini S after governed onboarding.
 owner: owner-family-platform
 location: loc-home
 lifecycle_status: planned
 health_status: planned
 monitoring_ready: true
 operating_system: TBD
-arrival_status: not yet available
-unknowns: operating system, hostname, IP address, virtualization model, container runtime, and storage layout TBD
+approved_operating_system: Ubuntu Server 24.04 LTS
+planned_role: Platform Node 001
+hardware_device: dev-beelink-mini-pc
+hostname_standard: platform-node-001
+arrival_status: delivered; pending physical setup and governed onboarding
+onboarding_status: pending Day 0 / Day 1 bring-up validation
+factory_windows_disposition: erase during Ubuntu Server installation; no Windows image will be created
+static_dhcp_reservation: planned after MAC address is recorded; no router DNS change approved
+ssh_status: planned local-network administration only after OS installation and key-based access are configured
+admin_user_status: planned non-root administrative account with sudo; username TBD
+docker_readiness: future workstream only; do not install Docker during PLAT-13.3
+unknowns: operating system, MAC address, IP address, admin username, virtualization model, container runtime, storage layout, and backup target TBD
 dependencies:
   - dev-beelink-mini-pc
   - net-switch-2-5gbe-1

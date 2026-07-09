@@ -1,6 +1,6 @@
 # Milestone 13 - Infrastructure Operations Readiness
 
-**Document Version:** 1.0
+**Document Version:** 1.2
 
 **Status:** Planned
 
@@ -19,6 +19,7 @@ Prepare the Fitzpatrick Family Platform for managed infrastructure operations wh
 | Workstream | Name | Objective |
 |------------|------|-----------|
 | PLAT-13.1 | Infrastructure Operations Readiness | Define static readiness architecture, options, standards, and checklists for future managed infrastructure operations. |
+| PLAT-13.3 | Beelink Bring-up | Define governed Day 0 / Day 1 onboarding instructions for the delivered Beelink Mini S without service migration or production DNS changes. |
 
 ---
 
@@ -30,7 +31,7 @@ Milestone 13 continues the registry-driven Platform lifecycle:
 Authoritative Registry -> Validation -> Automation -> Observability -> AI Reasoning
 ```
 
-PLAT-13.1 advances the first two stages only. It may prepare future automation and observability, but it does not implement runtime monitoring, polling, discovery, deployment automation, remote management, or dashboards.
+PLAT-13.1 and PLAT-13.3 advance the first two stages only. They may prepare future automation and observability, but they do not implement runtime monitoring, polling, discovery, deployment automation, remote management, or dashboards.
 
 ---
 
@@ -51,6 +52,17 @@ PLAT-13.1 includes:
 - Registry-driven Platform lifecycle pattern documentation.
 - Static validation and reporting improvements aligned with Platform EAP.
 
+PLAT-13.3 includes:
+
+- Registry updates for delivered Beelink Mini S hardware facts.
+- Registry updates for delivered TP-Link TL-SG108S-M2 switches and CyberPower CP850PFCLCD UPS.
+- Governed Day 0 / Day 1 Beelink bring-up instructions.
+- Ubuntu Server 24.04 LTS operating baseline approval.
+- Factory Windows erase disposition with no Windows image created.
+- Registry evidence checkpoints after BIOS verification, Ubuntu installation, networking completion, and SSH verification.
+- Explicit rollback and no-impact guidance preserving Raspberry Pi Pi-hole service.
+- Validation evidence for documentation and registry changes.
+
 ---
 
 ## Non-Goals
@@ -67,6 +79,15 @@ PLAT-13.1 does not implement:
 - Remote management implementation.
 - Finance functionality.
 
+PLAT-13.3 does not implement:
+
+- Pi-hole migration.
+- Router DNS changes.
+- Home Assistant, MQTT, Ollama, monitoring, dashboard, or remote management installation.
+- Network modernization.
+- Docker installation.
+- Beelink active lifecycle transition before physical setup and validation.
+
 ---
 
 ## Acceptance Criteria
@@ -81,6 +102,16 @@ PLAT-13.1 is ready for architecture review when:
 - Platform EAP reports explicit unknown fields during static registry validation.
 - Existing repository validation commands have been attempted and results are recorded.
 
+PLAT-13.3 is ready for architecture review when:
+
+- Delivered hardware facts are recorded in registry records.
+- The UPS model is recorded as CyberPower CP850PFCLCD, not CP1000PFCLCD.
+- The Beelink Day 0 / Day 1 bring-up guide covers physical inspection, safe first power-on, BIOS inspection, OS approach, hostname, static DHCP reservation, SSH setup, admin user approach, Docker readiness, validation, and rollback/no-impact guidance.
+- The guide identifies Ubuntu Server 24.04 LTS as the approved operating system and factory Windows as erased with no Windows image created.
+- The guide requires registry evidence capture immediately after BIOS verification, Ubuntu installation, networking completion, and SSH verification.
+- The Beelink remains `planned` or pending onboarding until physical setup is completed and verified.
+- Validation commands have been attempted and results are recorded.
+
 ---
 
 ## Related Documents
@@ -91,6 +122,7 @@ PLAT-13.1 is ready for architecture review when:
 - [Container Hosting Standards](../../architecture/Container_Hosting_Standards.md)
 - [Backup and Rollback Strategy](../../architecture/Backup_and_Rollback_Strategy.md)
 - [Registry-Driven Platform Lifecycle](../../architecture/Registry_Driven_Platform_Lifecycle.md)
+- [Beelink Day 0 / Day 1 Bring-up Guide](../../architecture/Beelink_Onboarding_Readiness_Checklist.md)
 
 ---
 
@@ -98,4 +130,6 @@ PLAT-13.1 is ready for architecture review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Applied PLAT-13.3 Architecture Review Board decisions for OS baseline, Windows disposition, registry evidence checkpoints, and Docker deferral. |
+| 1.1 | Added PLAT-13.3 Beelink bring-up planning scope and architecture review criteria. |
 | 1.0 | Initial PLAT-13.1 Infrastructure Operations Readiness plan. |

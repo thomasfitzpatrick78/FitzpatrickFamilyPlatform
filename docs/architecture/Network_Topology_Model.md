@@ -46,18 +46,18 @@ The current registry represents the following topology relationships:
 Frontier ONT
   -> ASUS Mesh Router Primary
       -> ASUS Mesh Node
-      -> 2.5Gb Network Switch 1
+      -> TP-Link TL-SG108S-M2 Switch 1
           -> Raspberry Pi Pi-hole Host
           -> Beelink Mini PC Host
-      -> 2.5Gb Network Switch 2
+      -> TP-Link TL-SG108S-M2 Switch 2
           -> Family NAS
       -> Tapo Hubs
       -> Tom MacBook Admin Workstation
 
-UPS Battery Backup
+CyberPower CP850PFCLCD UPS
   -> ASUS Mesh Router Primary
-  -> 2.5Gb Network Switch 1
-  -> 2.5Gb Network Switch 2
+  -> TP-Link TL-SG108S-M2 Switch 1
+  -> TP-Link TL-SG108S-M2 Switch 2
   -> Beelink Mini PC
   -> Raspberry Pi Pi-hole Device
   -> Family NAS
@@ -100,5 +100,6 @@ WS-12.4 does not implement network discovery, live topology generation, monitori
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Updated delivered TP-Link switch and CyberPower CP850PFCLCD labels for PLAT-13.3 planning context. |
 | 1.1 | Updated validation guidance for WS-12.5 Platform Digital Twin integrity checks. |
 | 1.0 | Initial WS-12.4 network topology model. |
