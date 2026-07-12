@@ -1,7 +1,7 @@
 {
   "capability": "Repository Validation",
   "status": "PASS",
-  "timestamp": "2026-07-12T18:35:43.763341+00:00",
+  "timestamp": "2026-07-12T18:57:50.768678+00:00",
   "summary": "Repository validation completed with status PASS.",
   "results": [
     {
@@ -241,11 +241,6 @@
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: planned_port, unknowns",
-      "path": "registry/records/planned_services/cadvisor.yaml"
-    },
-    {
-      "severity": "INFO",
       "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
       "path": "registry/records/planned_services/controlled-container-updates.yaml"
     },
@@ -266,11 +261,6 @@
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
-      "path": "registry/records/planned_services/node-exporter.yaml"
-    },
-    {
-      "severity": "INFO",
       "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
       "path": "registry/records/planned_services/ollama-local-ai.yaml"
     },
@@ -288,11 +278,6 @@
       "severity": "INFO",
       "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
       "path": "registry/records/planned_services/platform-monitoring-dashboard.yaml"
-    },
-    {
-      "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
-      "path": "registry/records/planned_services/prometheus.yaml"
     },
     {
       "severity": "INFO",

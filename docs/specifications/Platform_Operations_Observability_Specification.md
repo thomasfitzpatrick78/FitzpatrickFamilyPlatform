@@ -83,6 +83,62 @@ Proton VPN on the MacBook intentionally uses Proton DNS while connected. That op
 
 ---
 
+## PLAT-13.6.2 Metrics Foundation Implementation Package
+
+PLAT-13.6.2 prepares repository-managed implementation artifacts for the first metrics deployment.
+
+This implementation package is approved for user execution on the Beelink, but it does not claim that monitoring is already deployed.
+
+Approved components:
+
+- Prometheus `prom/prometheus:v2.55.1`.
+- Node Exporter `prom/node-exporter:v1.8.2`.
+- cAdvisor `gcr.io/cadvisor/cadvisor:v0.49.1`.
+
+Approved repository paths:
+
+- `platform/compose/monitoring/compose.yaml`.
+- `platform/compose/monitoring/.env.example`.
+- `platform/compose/monitoring/prometheus/prometheus.yml`.
+- `platform/compose/monitoring/README.md`.
+- `docs/operations/Metrics_Foundation_Runbook.md`.
+- `docs/operations/Metrics_Foundation_Evidence_Template.md`.
+
+Approved live paths:
+
+- `/platform/compose/monitoring`.
+- `/platform/data/monitoring/prometheus`.
+- `/platform/documentation/operations`.
+
+Implementation decisions:
+
+- Prometheus binds to `192.168.50.127:9090`.
+- Node Exporter is exposed only on the `platform-monitoring` Docker network.
+- cAdvisor is exposed only on the `platform-monitoring` Docker network.
+- cAdvisor is not published on host TCP `8080`, which remains Pi-hole admin.
+- Prometheus retention is `15d`.
+- Prometheus runs as UID/GID `65534:65534`, and its data directory must use that ownership with non-global-write permissions.
+- Docker socket is not mounted into Prometheus.
+- cAdvisor uses read-only host metadata mounts, `privileged: false`, `cap_drop: ALL`, and `no-new-privileges:true`.
+- Image digests are captured during live evidence after images are pulled.
+- The runtime `.env` is created only on the Beelink and is not committed.
+
+Explicitly out of scope for PLAT-13.6.2:
+
+- Grafana.
+- Alertmanager and notification delivery.
+- Backup automation.
+- Restore execution.
+- Watchtower or unattended updates.
+- Pi-hole configuration changes.
+- DNS or router changes.
+- Raspberry Pi changes.
+- Internet exposure.
+- Remote monitoring outside the trusted home network.
+- Milestone closeout, release tagging, or deployment claims beyond the metrics foundation.
+
+---
+
 ## Target Ports
 
 | Component | Port | Exposure |
@@ -91,8 +147,8 @@ Proton VPN on the MacBook intentionally uses Proton DNS while connected. That op
 | Pi-hole admin | TCP 8080 | Trusted home network only |
 | Prometheus | TCP 9090 | Trusted home network only when implemented |
 | Grafana | TCP 3000 | Trusted home network only when implemented |
-| Node Exporter | TCP 9100 | Prometheus/home network only when implemented |
-| cAdvisor | TCP 8080 or assigned alternative | Must avoid Pi-hole admin conflict; trusted home network only |
+| Node Exporter | TCP 9100 | Prometheus internal Docker network only for PLAT-13.6.2 |
+| cAdvisor | TCP 8080 internal only | Must avoid Pi-hole admin conflict; no host-published port for PLAT-13.6.2 |
 
 No monitoring interface may be exposed to the Internet.
 
@@ -263,6 +319,15 @@ PLAT-13.6 repository-only planning is complete when:
 - No live infrastructure changes are performed.
 - No secrets are committed.
 
+PLAT-13.6.2 Metrics Foundation implementation readiness is complete when:
+
+- The monitoring Compose template is repository-managed.
+- Prometheus scrape configuration is repository-managed.
+- Registry records preserve planned lifecycle while documenting approved implementation details.
+- The live runbook includes preflight, deployment, validation, reboot, rollback, and stop gates.
+- Tests verify exposure, image tag, persistence, and scope guardrails.
+- No live execution results are claimed by repository artifacts.
+
 ---
 
 ## Related Documents
@@ -272,6 +337,8 @@ PLAT-13.6 repository-only planning is complete when:
 - [Production Service Cutover Checklist](../governance/Production_Service_Cutover_Checklist.md)
 - [Pi-hole Service Objectives](../operations/Pi-hole_Service_Objectives.md)
 - [Incident Response Runbooks](../operations/Incident_Response_Runbooks.md)
+- [Metrics Foundation Runbook](../operations/Metrics_Foundation_Runbook.md)
+- [Metrics Foundation Evidence Template](../operations/Metrics_Foundation_Evidence_Template.md)
 
 ---
 
@@ -280,3 +347,4 @@ PLAT-13.6 repository-only planning is complete when:
 | Version | Description |
 |---------|-------------|
 | 1.0 | Initial PLAT-13.6 operations and observability specification. |
+| 1.1 | Added PLAT-13.6.2 Metrics Foundation implementation package, scope boundaries, and readiness criteria. |

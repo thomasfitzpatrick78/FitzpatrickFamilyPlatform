@@ -9,10 +9,19 @@ health_status: planned
 monitoring_ready: false
 service_interface: metrics
 planned_port: TCP 9090
+planned_bind_address: 192.168.50.127
+planned_image: prom/prometheus:v2.55.1
+planned_retention: 15d
 planned_storage: /platform/data/monitoring/prometheus
+planned_runtime_uid_gid: 65534:65534
+planned_storage_mode: 0750
 planned_compose_path: /platform/compose/monitoring
+repository_compose_path: platform/compose/monitoring
+repository_config_path: platform/compose/monitoring/prometheus/prometheus.yml
+implementation_status: PLAT-13.6.2 repository template prepared; pending user-executed live deployment and evidence
 access_boundary: trusted home network only
-unknowns: retention storage size, exact scrape targets, and rule files TBD
+approved_scrape_targets: prometheus:9090, node-exporter:9100, cadvisor:8080
+unknowns: image digest pending live Gate 9; live target health and storage growth evidence pending live Gate 11
 dependencies:
   - host-beelink-mini-pc
   - svc-docker-engine

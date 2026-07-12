@@ -9,6 +9,16 @@ def remove_generated_caches():
         shutil.rmtree(path)
 
 
+def compose_service_block(compose: str, service_name: str) -> str:
+    marker = f"  {service_name}:\n"
+    start = compose.index(marker)
+    next_service = compose.find("\n  ", start + len(marker))
+    while next_service != -1 and compose[next_service + 3 : next_service + 4] == " ":
+        next_service = compose.find("\n  ", next_service + 1)
+    end = next_service if next_service != -1 else compose.find("\nnetworks:", start)
+    return compose[start:end]
+
+
 
 def test_repository_validation_passes_with_required_structure():
     remove_generated_caches()
@@ -525,6 +535,94 @@ def test_plat_13_6_planned_observability_registry_records_exist():
     assert required.issubset(records)
     assert all(records[record_id]["record_type"] == "planned_service" for record_id in required)
     assert all(records[record_id]["lifecycle_status"] == "planned" for record_id in required)
+
+
+def test_plat_13_6_2_metrics_foundation_templates_are_governed():
+    required = [
+        "platform/compose/monitoring/compose.yaml",
+        "platform/compose/monitoring/.env.example",
+        "platform/compose/monitoring/prometheus/prometheus.yml",
+        "platform/compose/monitoring/README.md",
+        "docs/operations/Metrics_Foundation_Runbook.md",
+        "docs/operations/Metrics_Foundation_Evidence_Template.md",
+    ]
+    missing = [path for path in required if not (cli.ROOT / path).is_file()]
+    assert not missing
+    assert not (cli.ROOT / "platform/compose/monitoring/.env").exists()
+
+
+def test_plat_13_6_2_metrics_foundation_compose_guardrails():
+    compose = (cli.ROOT / "platform/compose/monitoring/compose.yaml").read_text(encoding="utf-8")
+    prometheus = compose_service_block(compose, "prometheus")
+    node_exporter = compose_service_block(compose, "node-exporter")
+    cadvisor = compose_service_block(compose, "cadvisor")
+    assert ":latest" not in compose
+    assert "prom/prometheus:v2.55.1" in compose
+    assert "prom/node-exporter:v1.8.2" in compose
+    assert "gcr.io/cadvisor/cadvisor:v0.49.1" in compose
+    assert 'ports:\n      - "${MONITORING_BIND_IP:-192.168.50.127}:9090:9090"' in prometheus
+    assert "ports:" not in node_exporter
+    assert "ports:" not in cadvisor
+    assert 'expose:\n      - "9100"' in node_exporter
+    assert 'expose:\n      - "8080"' in cadvisor
+    assert "network_mode" not in compose
+    assert "53:53" not in compose
+    assert "${MONITORING_BIND_IP:-192.168.50.127}:9090:9090" in compose
+    assert "0.0.0.0:9090:9090" not in compose
+    assert "[::]" not in compose
+    assert "network_mode: host" not in compose
+    assert "9090:9090" in compose
+    assert "docker.sock" not in compose
+    assert "53:53" not in compose
+    assert 'expose:\n      - "9100"' in compose
+    assert 'expose:\n      - "8080"' in compose
+    assert "privileged: false" in compose
+    assert "cap_drop:\n      - ALL" in compose
+    assert "user: \"65534:65534\"" in compose
+    assert "platform-monitoring" in compose
+
+
+def test_plat_13_6_2_metrics_foundation_prometheus_targets_are_internal_service_names():
+    prometheus = (cli.ROOT / "platform/compose/monitoring/prometheus/prometheus.yml").read_text(encoding="utf-8")
+    assert "prometheus:9090" in prometheus
+    assert "node-exporter:9100" in prometheus
+    assert "cadvisor:8080" in prometheus
+    assert "192.168.50.127:9100" not in prometheus
+    assert "192.168.50.127:8080" not in prometheus
+
+
+def test_plat_13_6_2_metrics_foundation_runbook_has_gates_and_scope_boundaries():
+    runbook = (cli.ROOT / "docs/operations/Metrics_Foundation_Runbook.md").read_text(encoding="utf-8")
+    for gate in range(1, 13):
+        assert f"Gate {gate}" in runbook
+    assert "Rollback Procedure" in runbook
+    assert "Do not deploy Grafana" in runbook
+    assert "Do not change Pi-hole configuration" in runbook
+    assert "Do not change router DNS" in runbook
+    assert "node_filesystem_size_bytes" in runbook
+    assert "docker compose up -d --force-recreate --no-deps prometheus" in runbook
+    assert "Do not run `docker compose down -v`" in runbook
+    assert "Do not run `docker system prune`" in runbook
+    assert "This is the required stop point" in runbook
+
+
+def test_plat_13_6_2_metrics_registry_keeps_lifecycle_planned_but_records_ready_details():
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    prometheus = records["svc-prometheus"]
+    node_exporter = records["svc-node-exporter"]
+    cadvisor = records["svc-cadvisor"]
+    assert prometheus["lifecycle_status"] == "planned"
+    assert node_exporter["lifecycle_status"] == "planned"
+    assert cadvisor["lifecycle_status"] == "planned"
+    assert prometheus["planned_image"] == "prom/prometheus:v2.55.1"
+    assert prometheus["planned_bind_address"] == "192.168.50.127"
+    assert prometheus["planned_retention"] == "15d"
+    assert prometheus["planned_runtime_uid_gid"] == "65534:65534"
+    assert prometheus["planned_storage_mode"] == "0750"
+    assert node_exporter["planned_exposure"] == "internal Docker network only; no LAN-published port"
+    assert cadvisor["planned_port"] == "TCP 8080 internal Docker network only; not published to host"
+    assert "cap_drop ALL" in cadvisor["privilege_summary"]
 
 
 def test_plat_13_6_cutover_checklist_governs_dhcp_prerequisite():

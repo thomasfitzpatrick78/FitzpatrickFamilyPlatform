@@ -8,9 +8,17 @@ lifecycle_status: planned
 health_status: planned
 monitoring_ready: false
 service_interface: container metrics exporter
-planned_port: TBD; must avoid Pi-hole admin TCP 8080 conflict
-access_boundary: Prometheus and trusted home network only
-unknowns: final port, Docker socket exposure, mount constraints, and capabilities TBD
+planned_port: TCP 8080 internal Docker network only; not published to host
+planned_image: gcr.io/cadvisor/cadvisor:v0.49.1
+planned_exposure: internal Docker network only; no LAN-published port
+planned_network: platform-monitoring
+repository_compose_path: platform/compose/monitoring
+implementation_status: PLAT-13.6.2 repository template prepared; pending user-executed live deployment and evidence
+access_boundary: Prometheus internal Docker network only
+mount_summary: /, /var/run, /sys, /var/lib/docker, and /dev/disk mounted read-only for container metrics
+privilege_summary: no host-published port; privileged false; cap_drop ALL; no-new-privileges true; no devices
+residual_risk: cAdvisor has sensitive host and container visibility; LAN publication and Internet exposure are prohibited
+unknowns: image digest pending live Gate 9; live scrape health pending live Gate 11
 dependencies:
   - host-beelink-mini-pc
   - svc-docker-engine
