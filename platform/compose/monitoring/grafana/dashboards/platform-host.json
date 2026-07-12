@@ -1,0 +1,122 @@
+{
+  "uid": "platform-host",
+  "title": "Platform Host Dashboard",
+  "description": "Beelink host health, capacity, and Prometheus scrape status for the Platform operations baseline.",
+  "tags": ["platform", "host", "plat-13.6.3"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Beelink Target Up",
+      "description": "Node Exporter scrape state. 1 means Prometheus can scrape the host target.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"node-exporter\"}"}]
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Uptime",
+      "description": "Elapsed seconds since last host boot, derived from Node Exporter boot time.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "s", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "time() - node_boot_time_seconds"}]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "CPU Utilization",
+      "description": "Average non-idle CPU percentage across host CPUs.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
+      "fieldConfig": {"defaults": {"unit": "percentunit", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "1 - avg(rate(node_cpu_seconds_total{mode=\"idle\"}[5m]))"}]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Load",
+      "description": "One minute system load.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "node_load1"}]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Memory Available",
+      "description": "Available host memory.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "node_memory_MemAvailable_bytes"}]
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "Memory Used",
+      "description": "Total host memory minus available host memory.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes"}]
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "Root Filesystem Usage",
+      "description": "Root filesystem used percentage where Node Exporter exposes the root mount.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+      "fieldConfig": {"defaults": {"unit": "percentunit", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "1 - (node_filesystem_avail_bytes{mountpoint=\"/\"} / node_filesystem_size_bytes{mountpoint=\"/\"})"}]
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "Disk I/O",
+      "description": "Read and write bytes per second where disk metrics are exposed.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+      "fieldConfig": {"defaults": {"unit": "Bps", "noValue": "No data"}, "overrides": []},
+      "targets": [
+        {"refId": "A", "expr": "sum(rate(node_disk_read_bytes_total[5m]))", "legendFormat": "read"},
+        {"refId": "B", "expr": "sum(rate(node_disk_written_bytes_total[5m]))", "legendFormat": "write"}
+      ]
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "Network Traffic",
+      "description": "Host receive and transmit bytes per second, excluding loopback.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 20},
+      "fieldConfig": {"defaults": {"unit": "Bps", "noValue": "No data"}, "overrides": []},
+      "targets": [
+        {"refId": "A", "expr": "sum(rate(node_network_receive_bytes_total{device!=\"lo\"}[5m]))", "legendFormat": "receive"},
+        {"refId": "B", "expr": "sum(rate(node_network_transmit_bytes_total{device!=\"lo\"}[5m]))", "legendFormat": "transmit"}
+      ]
+    },
+    {
+      "id": 10,
+      "type": "stat",
+      "title": "Prometheus Scrape Health",
+      "description": "All current Prometheus target states. Use the Metrics Foundation Health dashboard for detail.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 20},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up"}]
+    }
+  ]
+}

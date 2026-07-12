@@ -1,0 +1,109 @@
+{
+  "uid": "docker-containers",
+  "title": "Docker and Container Dashboard",
+  "description": "Docker container visibility from cAdvisor through Prometheus. Container name labels must be confirmed during live validation.",
+  "tags": ["platform", "docker", "containers", "plat-13.6.3"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "cAdvisor Target Up",
+      "description": "cAdvisor scrape state. 1 means Prometheus can scrape container metrics.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 4, "w": 8, "x": 0, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"cadvisor\"}"}]
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Observed Containers",
+      "description": "Count of container series recently seen by cAdvisor.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 4, "w": 8, "x": 8, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "count(container_last_seen)"}]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Prometheus Target Health",
+      "description": "Scrape states for all targets visible to Prometheus.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 4, "w": 8, "x": 16, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up"}]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "CPU by Container",
+      "description": "Container CPU seconds per second. Name label availability is verified during live dashboard validation.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
+      "fieldConfig": {"defaults": {"unit": "cores", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "topk(10, sum by (name) (rate(container_cpu_usage_seconds_total{image!=\"\"}[5m])))", "legendFormat": "{{name}}"}]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Memory by Container",
+      "description": "Container working set memory where cAdvisor exposes image-backed container labels.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
+      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "topk(10, sum by (name) (container_memory_working_set_bytes{image!=\"\"}))", "legendFormat": "{{name}}"}]
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Network Traffic by Container",
+      "description": "Container receive and transmit bytes per second.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+      "fieldConfig": {"defaults": {"unit": "Bps", "noValue": "No data"}, "overrides": []},
+      "targets": [
+        {"refId": "A", "expr": "topk(10, sum by (name) (rate(container_network_receive_bytes_total{image!=\"\"}[5m])))", "legendFormat": "{{name}} receive"},
+        {"refId": "B", "expr": "topk(10, sum by (name) (rate(container_network_transmit_bytes_total{image!=\"\"}[5m])))", "legendFormat": "{{name}} transmit"}
+      ]
+    },
+    {
+      "id": 7,
+      "type": "table",
+      "title": "Container Last Seen",
+      "description": "Last observed cAdvisor sample timestamp by container label.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+      "fieldConfig": {"defaults": {"unit": "dateTimeAsIso", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "max by (name) (container_last_seen{image!=\"\"})", "format": "table", "instant": true}]
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "Container Filesystem Usage",
+      "description": "Container filesystem usage where cAdvisor storage metrics are available.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 20},
+      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "topk(10, sum by (name) (container_fs_usage_bytes{image!=\"\"}))", "legendFormat": "{{name}}"}]
+    },
+    {
+      "id": 9,
+      "type": "stat",
+      "title": "Pi-hole and Monitoring Containers",
+      "description": "Presence check for named containers when cAdvisor exposes Docker container names.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 20},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "count by (name) (container_last_seen{name=~\".*(pihole|prometheus|node-exporter|cadvisor|grafana).*\"})"}]
+    }
+  ]
+}

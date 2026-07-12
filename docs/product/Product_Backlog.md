@@ -52,7 +52,7 @@ Infrastructure Operations Readiness prepares future managed infrastructure work 
 
 Beelink Day 0 / Day 1 Bring-up planning records delivered hardware facts and onboarding instructions without migrating Pi-hole, changing router DNS, installing planned services, or marking the Beelink active.
 
-Platform Operations and Observability has completed the governed PLAT-13.6.2 Metrics Foundation deployment for Prometheus, Node Exporter, and cAdvisor. Grafana, backup automation, restore validation, alerting, incident response execution, and controlled update practices remain planned.
+Platform Operations and Observability has completed the governed PLAT-13.6.2 Metrics Foundation deployment for Prometheus, Node Exporter, and cAdvisor. PLAT-13.6.3 has prepared the repository-managed Grafana Operations Dashboard package for Architecture Gatekeeper review without live deployment. Backup automation, restore validation, alerting, incident response execution, and controlled update practices remain planned.
 
 ---
 
@@ -69,6 +69,7 @@ Platform Operations and Observability has completed the governed PLAT-13.6.2 Met
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded PLAT-13.6.3 Operations Dashboard repository preparation without live deployment. |
 | 1.5 | Recorded completed PLAT-13.6.2 Metrics Foundation while preserving later operations work as planned. |
 | 1.4 | Added PLAT-PB-012 Platform Operations and Observability backlog item for PLAT-13.6. |
 | 1.3 | Added PLAT-PB-011 Beelink Day 0 / Day 1 Bring-up Plan backlog item for PLAT-13.3. |

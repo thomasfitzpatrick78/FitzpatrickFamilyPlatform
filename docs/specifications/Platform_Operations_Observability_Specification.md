@@ -1,6 +1,6 @@
 # Platform Operations and Observability Specification
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Planned
 
@@ -12,9 +12,9 @@
 
 ## Purpose
 
-This specification defines the governed target state for Platform operations and observability and records the verified PLAT-13.6.2 Metrics Foundation deployment.
+This specification defines the governed target state for Platform operations and observability, records the verified PLAT-13.6.2 Metrics Foundation deployment, and records the repository-prepared PLAT-13.6.3 Operations Dashboard package.
 
-It does not deploy Grafana, backups, alerts, scripts, timers, dashboards, restore validation, or controlled updates.
+It does not execute live Grafana deployment, backups, alerts, scripts, timers, restore validation, or controlled updates.
 
 ---
 
@@ -76,7 +76,7 @@ Proton VPN on the MacBook intentionally uses Proton DNS while connected. That op
 | Prometheus | Metrics collection, retention, target health | Active |
 | Node Exporter | Beelink/Linux host metrics | Active |
 | cAdvisor | Docker and container metrics | Active |
-| Grafana | Governed dashboards and alert visibility | Planned |
+| Grafana | Governed dashboards and future alert visibility | Implementation-ready |
 | Pi-hole checks | DNS, admin, health, and customer-facing service validation | Planned |
 | Backup scripts | Backup, checksum, report, and retention workflow | Planned |
 | Restore validation | Isolated restore proof and reporting | Planned |
@@ -141,6 +141,60 @@ Explicitly out of scope for PLAT-13.6.2:
 
 ---
 
+## PLAT-13.6.3 Operations Dashboard Implementation Package
+
+PLAT-13.6.3 prepares the repository-managed Grafana dashboard layer without executing live deployment.
+
+Approved components:
+
+- Grafana `grafana/grafana:13.1.0`.
+- Prometheus datasource provisioned as `Prometheus`.
+- Repository-managed dashboard provisioning.
+- Four purpose-built dashboards aligned to current Metrics Foundation data.
+
+Approved repository paths:
+
+- `platform/compose/monitoring/compose.yaml`.
+- `platform/compose/monitoring/.env.example`.
+- `platform/compose/monitoring/grafana/provisioning/datasources/prometheus.yml`.
+- `platform/compose/monitoring/grafana/provisioning/dashboards/dashboards.yml`.
+- `platform/compose/monitoring/grafana/dashboards/platform-host.json`.
+- `platform/compose/monitoring/grafana/dashboards/docker-containers.json`.
+- `platform/compose/monitoring/grafana/dashboards/pihole-operations.json`.
+- `platform/compose/monitoring/grafana/dashboards/metrics-foundation-health.json`.
+- `docs/specifications/Platform_Operations_Dashboard.md`.
+- `docs/operations/Operations_Dashboard_Runbook.md`.
+- `docs/operations/Operations_Dashboard_Evidence_Template.md`.
+
+Approved implementation decisions:
+
+- Grafana binds to `192.168.50.127:3000`.
+- Grafana joins the existing `platform-monitoring` network.
+- Grafana reads Prometheus at `http://prometheus:9090`.
+- Grafana does not query Node Exporter or cAdvisor directly.
+- Grafana data persists at `/platform/data/monitoring/grafana`.
+- Grafana runs as UID/GID `472:472`.
+- Grafana admin password is supplied only through the Beelink-local `.env` file.
+- `.env.example` contains placeholders only.
+- Grafana dashboard refresh interval is 30 seconds.
+- Grafana digest is captured only after the governed live pull.
+
+Dashboard inventory:
+
+- Platform Host Dashboard.
+- Docker and Container Dashboard.
+- Pi-hole Operations Dashboard.
+- Metrics Foundation Health Dashboard.
+
+Explicitly out of scope for PLAT-13.6.3 repository preparation:
+
+- Live Grafana deployment before Architecture Gatekeeper approval.
+- Alert rules, notification delivery, backups, restore validation, or automated updates.
+- Pi-hole, Prometheus, Node Exporter, cAdvisor, Docker, router, ASUS router, Raspberry Pi, or DNS configuration changes.
+- Pi-hole query counts, blocked percentages, domain rankings, client analytics, or other application metrics that are not exported to Prometheus.
+- Milestone closeout, release tagging, or production claims for Grafana.
+
+---
 
 ## Target Ports
 
@@ -149,7 +203,7 @@ Explicitly out of scope for PLAT-13.6.2:
 | Pi-hole DNS | TCP/UDP 53 | Home network production DNS |
 | Pi-hole admin | TCP 8080 | Trusted home network only |
 | Prometheus | TCP 9090 | Trusted home network only |
-| Grafana | TCP 3000 | Trusted home network only when implemented |
+| Grafana | TCP 3000 | Trusted home network only when implemented; planned binding `192.168.50.127:3000` |
 | Node Exporter | TCP 9100 | Prometheus internal Docker network only for PLAT-13.6.2 |
 | cAdvisor | TCP 8080 internal only | Must avoid Pi-hole admin conflict; no host-published port for PLAT-13.6.2 |
 
@@ -205,7 +259,7 @@ These paths describe target and active state. PLAT-13.6.2 has created the monito
 3. Pi-hole service checks validate DNS response and container health.
 4. Prometheus scrapes metrics and service targets.
 5. Prometheus evaluates alert rules.
-6. Grafana reads Prometheus through a provisioned data source.
+6. Grafana reads Prometheus through a provisioned data source after PLAT-13.6.3 live deployment is approved and executed.
 7. Backup, restore, and update workflows produce evidence reports for review.
 
 ---
@@ -344,6 +398,8 @@ PLAT-13.6.2 operational closeout is complete when:
 
 ## Related Documents
 
+- [Platform Operations Dashboard](Platform_Operations_Dashboard.md)
+
 - [ADR-007 - Governed Operations and Observability](../architecture/decisions/ADR-007-Governed-Operations-and-Observability.md)
 - [Platform Service Lifecycle](../governance/Service_Lifecycle.md)
 - [Production Service Cutover Checklist](../governance/Production_Service_Cutover_Checklist.md)
@@ -359,6 +415,7 @@ PLAT-13.6.2 operational closeout is complete when:
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added PLAT-13.6.3 Operations Dashboard implementation-ready package. |
 | 1.2 | Recorded PLAT-13.6.2 live Metrics Foundation validation and active service state. |
 | 1.1 | Added PLAT-13.6.2 Metrics Foundation implementation package, scope boundaries, and readiness criteria. |
 | 1.0 | Initial PLAT-13.6 operations and observability specification. |

@@ -70,7 +70,7 @@ PLAT-13.6 includes these work packages:
 |--------------|------|-----------|------------|
 | PLAT-13.6.1 | Operations Baseline and Governance | Capture current Beelink, Docker, and Pi-hole production baseline; establish service lifecycle, cutover, severity, evidence, and ownership practices. | PLAT-13.3 |
 | PLAT-13.6.2 | Metrics Foundation | Complete governed Prometheus, Node Exporter, cAdvisor, retention, storage, exposure, validation, persistence, reboot, and Pi-hole non-regression evidence. | PLAT-13.6.1 |
-| PLAT-13.6.3 | Operations Dashboard | Plan Grafana provisioning, dashboard requirements, and alert visibility. | PLAT-13.6.2 |
+| PLAT-13.6.3 | Operations Dashboard | Prepare repository-managed Grafana provisioning, dashboard definitions, live runbook, evidence template, and dashboard governance without live deployment. | PLAT-13.6.2 |
 | PLAT-13.6.4 | Backup and Recovery v1.0 | Define backup scope, exclusions, checksums, retention, restore validation, and reporting. | PLAT-13.6.1 |
 | PLAT-13.6.5 | Alerts and Incident Response | Define alert requirements, incident severity, response, escalation, and evidence. | PLAT-13.6.2; PLAT-13.6.4 |
 | PLAT-13.6.6 | Controlled Update Management | Define image version, digest, backup, validation, observation, and rollback policy. | PLAT-13.6.4; PLAT-13.6.5 |
@@ -113,7 +113,7 @@ PLAT-13.3 does not implement:
 
 PLAT-13.6 does not implement beyond the completed PLAT-13.6.2 Metrics Foundation:
 
-- Grafana, alerting, backup scripts, restore tests, timers, or controlled update automation.
+- Live Grafana deployment, alerting, backup scripts, restore tests, timers, or controlled update automation.
 - Router DNS changes.
 - Production DNS changes.
 - Raspberry Pi rollback decommissioning.
@@ -150,7 +150,8 @@ PLAT-13.6 is ready for Architecture Gatekeeper review when:
 - Service lifecycle and production cutover checklist are integrated into governance.
 - Present Beelink, Docker, Pi-hole, and Raspberry Pi rollback facts are represented in registry records.
 - Prometheus, Node Exporter, and cAdvisor are documented with live PLAT-13.6.2 evidence.
-- Planned Grafana, backup, restore, alert, and update capabilities remain documented without claiming live implementation.
+- Grafana dashboard artifacts are prepared for Architecture Gatekeeper review without claiming live implementation.
+- Planned backup, restore, alert, and update capabilities remain documented without claiming live implementation.
 - Tests and EAP validations have been attempted and results are recorded.
 
 ---
@@ -174,6 +175,7 @@ PLAT-13.6 is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Prepared PLAT-13.6.3 Operations Dashboard repository package while preserving Grafana as not deployed. |
 | 1.4 | Recorded PLAT-13.6.2 Metrics Foundation live operational closeout while preserving later work packages as planned. |
 | 1.3 | Added PLAT-13.6 Platform Operations and Observability work packages, dependencies, non-goals, and review criteria. |
 | 1.2 | Applied PLAT-13.3 Architecture Review Board decisions for OS baseline, Windows disposition, registry evidence checkpoints, and Docker deferral. |

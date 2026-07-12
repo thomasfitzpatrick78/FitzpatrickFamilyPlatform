@@ -28,7 +28,7 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Milestone 12 Capability:** Infrastructure Registry v1.0 is the first usable Platform capability. It will support physical devices, network devices, hosts, services, planned services, locations, ownership, lifecycle status, health status, dependencies, and future monitoring readiness.
 
-**Milestone 13 Capability:** Platform Operations and Observability establishes governed ownership, service lifecycle, cutover, observability, backup, restore validation, incident response, and controlled update practices for the Beelink-hosted Pi-hole production service and future Platform services. PLAT-13.6.2 has completed the initial Metrics Foundation with Prometheus, Node Exporter, and cAdvisor.
+**Milestone 13 Capability:** Platform Operations and Observability establishes governed ownership, service lifecycle, cutover, observability, backup, restore validation, incident response, and controlled update practices for the Beelink-hosted Pi-hole production service and future Platform services. PLAT-13.6.2 has completed the initial Metrics Foundation with Prometheus, Node Exporter, and cAdvisor. PLAT-13.6.3 prepares the governed Grafana Operations Dashboard package for review without live deployment.
 
 ### Home Automation
 
@@ -91,6 +91,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Added PLAT-13.6.3 governed Operations Dashboard repository preparation. |
 | 1.3 | Recorded PLAT-13.6.2 Metrics Foundation as the first active observability capability slice. |
 | 1.2 | Added Milestone 13 Platform Operations and Observability capability scope. |
 | 1.1 | Added Infrastructure Registry v1.0 as the first usable Infrastructure capability for Milestone 12. |

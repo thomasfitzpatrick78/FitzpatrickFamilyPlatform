@@ -1,0 +1,96 @@
+{
+  "uid": "metrics-foundation-health",
+  "title": "Metrics Foundation Health Dashboard",
+  "description": "Prometheus, Node Exporter, cAdvisor, scrape performance, ingestion, storage, and dashboard-data freshness.",
+  "tags": ["platform", "metrics-foundation", "prometheus", "plat-13.6.3"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Prometheus Target States",
+      "description": "Current target states for Prometheus, Node Exporter, and cAdvisor.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 0, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up"}]
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Node Exporter Health",
+      "description": "Node Exporter target scrape state.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 8, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"node-exporter\"}"}]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "cAdvisor Health",
+      "description": "cAdvisor target scrape state.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 16, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"cadvisor\"}"}]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Scrape Duration",
+      "description": "Prometheus scrape duration by job.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 5},
+      "fieldConfig": {"defaults": {"unit": "s", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "scrape_duration_seconds", "legendFormat": "{{job}}"}]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Scrape Samples",
+      "description": "Samples scraped by Prometheus per target.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 5},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "scrape_samples_scraped", "legendFormat": "{{job}}"}]
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Prometheus Head Series",
+      "description": "Current active time series in the Prometheus TSDB head block.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 13},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "prometheus_tsdb_head_series"}]
+    },
+    {
+      "id": 7,
+      "type": "timeseries",
+      "title": "Prometheus Storage Blocks",
+      "description": "Prometheus storage block size when exposed by the pinned Prometheus version.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 13},
+      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "prometheus_tsdb_storage_blocks_bytes"}]
+    },
+    {
+      "id": 8,
+      "type": "stat",
+      "title": "Dashboard Data Freshness",
+      "description": "Seconds since Prometheus last scraped each target.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 21},
+      "fieldConfig": {"defaults": {"unit": "s", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "time() - timestamp(up)"}]
+    }
+  ]
+}

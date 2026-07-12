@@ -10,7 +10,7 @@
 
 **Baseline:** PLAT-13.6.2 Metrics Foundation live validation recorded
 
-**Implemented:** Partially - Prometheus, Node Exporter, and cAdvisor Metrics Foundation active; Grafana, alerts, backups, restore validation, and controlled updates remain planned.
+**Implemented:** Partially - Prometheus, Node Exporter, and cAdvisor Metrics Foundation active; Grafana repository package implementation-ready; alerts, backups, restore validation, and controlled updates remain planned.
 
 ---
 
@@ -18,7 +18,7 @@
 
 The Beelink now hosts the production Pi-hole DNS and blocking service in Docker.
 
-The Platform needs governed operational visibility before additional production services are added. PLAT-13.6.2 has implemented the initial Metrics Foundation; Grafana, alerting, backup, restore validation, and update governance remain governed future work.
+The Platform needs governed operational visibility before additional production services are added. PLAT-13.6.2 has implemented the initial Metrics Foundation. PLAT-13.6.3 prepares Grafana as a repository-provisioned dashboard layer without live deployment. Alerting, backup, restore validation, and update governance remain governed future work.
 
 ---
 
@@ -55,7 +55,9 @@ Option A was selected because it gives the Platform a reusable operating model t
 
 Prometheus scrapes host, Docker, container, and service targets. Grafana reads Prometheus as a provisioned data source and presents governed dashboards. Alert rules are defined in repository-managed configuration where practical. Backup and update workflows produce evidence that can be reviewed through the same operational model.
 
-The PLAT-13.6.2 Metrics Foundation portion of the target deployment is implemented and validated. Grafana, alerting, backup, restore validation, and controlled update implementation remain future work.
+The PLAT-13.6.2 Metrics Foundation portion of the target deployment is implemented and validated. The PLAT-13.6.3 Grafana dashboard package is implementation-ready for Architecture Gatekeeper review. Live Grafana deployment, alerting, backup, restore validation, and controlled update implementation remain future work.
+
+Grafana must be provisioned from repository-managed datasource and dashboard files. Prometheus remains the single governed metrics data source for dashboards; Grafana must not query Node Exporter or cAdvisor directly.
 
 ---
 
@@ -75,7 +77,7 @@ The PLAT-13.6.2 Metrics Foundation portion of the target deployment is implement
 
 ## Persistence Model
 
-Prometheus persistent data is stored under `/platform/data/monitoring/prometheus`. Grafana persistent data remains planned under governed Platform paths such as `/platform/data/monitoring/`.
+Prometheus persistent data is stored under `/platform/data/monitoring/prometheus`. Grafana persistent data is planned under `/platform/data/monitoring/grafana` with UID/GID `472:472` and non-global-write permissions.
 
 Configuration is represented in repository-managed templates or specifications before live deployment.
 
@@ -157,5 +159,6 @@ The same observability architecture should support Home Assistant, MQTT, Ollama,
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added PLAT-13.6.3 repository-provisioned Grafana dashboard implementation decision without live deployment. |
 | 1.1 | Recorded PLAT-13.6.2 Metrics Foundation implementation status while preserving remaining planned observability work. |
 | 1.0 | Initial ADR selecting governed Prometheus operations and observability architecture. |

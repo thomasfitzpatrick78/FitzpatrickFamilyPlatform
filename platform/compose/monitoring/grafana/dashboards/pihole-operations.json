@@ -1,0 +1,94 @@
+{
+  "uid": "pihole-operations",
+  "title": "Pi-hole Operations Dashboard",
+  "description": "Infrastructure operations view for the Beelink-hosted Pi-hole service. This dashboard intentionally does not claim Pi-hole query analytics.",
+  "tags": ["platform", "pihole", "operations", "plat-13.6.3"],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "text",
+      "title": "Service Ownership and Recovery Reference",
+      "description": "Customer-facing DNS ownership and recovery context.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 0, "y": 0},
+      "options": {
+        "mode": "markdown",
+        "content": "Owner: Family Platform. Production DNS runs on Beelink at 192.168.50.127. Raspberry Pi rollback DNS host remains 192.168.50.67. Use the Operations Dashboard runbook for validation and rollback gates."
+      }
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Beelink Host Up",
+      "description": "Host scrape state supporting the Pi-hole service.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 8, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"node-exporter\"}"}]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Pi-hole Container Presence",
+      "description": "Container presence when cAdvisor exposes a Docker name label matching Pi-hole. No data means the label is unavailable or the container was not matched.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 16, "y": 0},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "count(container_last_seen{name=~\".*pihole.*\"})"}]
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Pi-hole Container CPU When Available",
+      "description": "Pi-hole container CPU only when cAdvisor name labels support reliable matching.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 5},
+      "fieldConfig": {"defaults": {"unit": "cores", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "sum(rate(container_cpu_usage_seconds_total{name=~\".*pihole.*\"}[5m]))"}]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Pi-hole Container Memory When Available",
+      "description": "Pi-hole container memory only when cAdvisor name labels support reliable matching.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 5},
+      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "sum(container_memory_working_set_bytes{name=~\".*pihole.*\"})"}]
+    },
+    {
+      "id": 6,
+      "type": "timeseries",
+      "title": "Host Capacity Signals Affecting Pi-hole",
+      "description": "Host CPU, memory, and root filesystem signals that can affect DNS service reliability.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 13},
+      "fieldConfig": {"defaults": {"unit": "percentunit", "noValue": "No data"}, "overrides": []},
+      "targets": [
+        {"refId": "A", "expr": "1 - avg(rate(node_cpu_seconds_total{mode=\"idle\"}[5m]))", "legendFormat": "cpu used"},
+        {"refId": "B", "expr": "1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)", "legendFormat": "memory used"},
+        {"refId": "C", "expr": "1 - (node_filesystem_avail_bytes{mountpoint=\"/\"} / node_filesystem_size_bytes{mountpoint=\"/\"})", "legendFormat": "root filesystem used"}
+      ]
+    },
+    {
+      "id": 7,
+      "type": "text",
+      "title": "Future DNS and Admin Availability Checks",
+      "description": "Placeholder for future probe integration. This panel avoids fabricated healthy values.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 13},
+      "options": {
+        "mode": "markdown",
+        "content": "DNS service availability and Pi-hole admin interface availability are not exported to Prometheus yet. Future work may add governed probes or an approved Pi-hole exporter. Until then, use the live runbook checks for DNS, blocking, and admin UI validation."
+      }
+    }
+  ]
+}

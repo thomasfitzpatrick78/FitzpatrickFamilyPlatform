@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import shutil
 
@@ -617,6 +618,136 @@ def test_plat_13_6_2_metrics_foundation_compose_guardrails():
     assert "cap_drop:\n      - ALL" in compose
     assert "user: \"65534:65534\"" in compose
     assert "platform-monitoring" in compose
+
+
+def test_plat_13_6_3_operations_dashboard_templates_are_governed():
+    required = [
+        "docs/specifications/Platform_Operations_Dashboard.md",
+        "docs/operations/Operations_Dashboard_Runbook.md",
+        "docs/operations/Operations_Dashboard_Evidence_Template.md",
+        "platform/compose/monitoring/grafana/provisioning/datasources/prometheus.yml",
+        "platform/compose/monitoring/grafana/provisioning/dashboards/dashboards.yml",
+        "platform/compose/monitoring/grafana/dashboards/platform-host.json",
+        "platform/compose/monitoring/grafana/dashboards/docker-containers.json",
+        "platform/compose/monitoring/grafana/dashboards/pihole-operations.json",
+        "platform/compose/monitoring/grafana/dashboards/metrics-foundation-health.json",
+    ]
+    missing = [path for path in required if not (cli.ROOT / path).is_file()]
+    assert not missing
+    assert not (cli.ROOT / "platform/compose/monitoring/.env").exists()
+
+
+def test_plat_13_6_3_operations_dashboard_compose_guardrails():
+    compose = (cli.ROOT / "platform/compose/monitoring/compose.yaml").read_text(encoding="utf-8")
+    grafana = compose_service_block(compose, "grafana")
+    prometheus = compose_service_block(compose, "prometheus")
+    node_exporter = compose_service_block(compose, "node-exporter")
+    cadvisor = compose_service_block(compose, "cadvisor")
+    assert "grafana/grafana:13.1.0" in grafana
+    assert ":latest" not in compose
+    assert "grafana/grafana:latest" not in compose
+    assert "grafana/grafana:main" not in compose
+    assert "grafana/grafana:master" not in compose
+    assert "grafana/grafana:edge" not in compose
+    assert 'ports:\n      - "${MONITORING_BIND_IP:-192.168.50.127}:3000:3000"' in grafana
+    assert "0.0.0.0:3000:3000" not in compose
+    assert "[::]" not in compose
+    assert "network_mode" not in grafana
+    assert "network_mode: host" not in compose
+    assert "/platform/data/monitoring/grafana:/var/lib/grafana" in grafana
+    assert "user: \"472:472\"" in grafana
+    assert "docker.sock" not in grafana
+    assert "cap_drop:\n      - ALL" in grafana
+    assert "GF_AUTH_ANONYMOUS_ENABLED: \"false\"" in grafana
+    assert "GF_USERS_ALLOW_SIGN_UP: \"false\"" in grafana
+    assert "GF_SECURITY_ADMIN_PASSWORD" in grafana
+    assert 'ports:\n      - "${MONITORING_BIND_IP:-192.168.50.127}:9090:9090"' in prometheus
+    assert "ports:" not in node_exporter
+    assert "ports:" not in cadvisor
+    assert "53:53" not in compose
+    assert "8080:8080" not in compose
+
+
+def test_plat_13_6_3_operations_dashboard_env_example_uses_placeholder_only():
+    env_example = (cli.ROOT / "platform/compose/monitoring/.env.example").read_text(encoding="utf-8")
+    assert "GRAFANA_ADMIN_PASSWORD=REPLACE_WITH_STRONG_BEELINK_LOCAL_PASSWORD" in env_example
+    assert "changeme" not in env_example.lower()
+    assert "admin123" not in env_example.lower()
+    assert "MONITORING_BIND_IP=192.168.50.127" in env_example
+
+
+def test_plat_13_6_3_operations_dashboard_provisioning_uses_prometheus_only():
+    datasource = (cli.ROOT / "platform/compose/monitoring/grafana/provisioning/datasources/prometheus.yml").read_text(encoding="utf-8")
+    dashboards = (cli.ROOT / "platform/compose/monitoring/grafana/provisioning/dashboards/dashboards.yml").read_text(encoding="utf-8")
+    assert "name: Prometheus" in datasource
+    assert "uid: prometheus" in datasource
+    assert "url: http://prometheus:9090" in datasource
+    assert "isDefault: true" in datasource
+    assert "path: /var/lib/grafana/dashboards" in dashboards
+    assert "updateIntervalSeconds: 30" in dashboards
+    assert "node-exporter:9100" not in datasource
+    assert "cadvisor:8080" not in datasource
+
+
+def test_plat_13_6_3_operations_dashboard_json_parses_and_references_prometheus():
+    dashboard_paths = sorted((cli.ROOT / "platform/compose/monitoring/grafana/dashboards").glob("*.json"))
+    assert [path.name for path in dashboard_paths] == [
+        "docker-containers.json",
+        "metrics-foundation-health.json",
+        "pihole-operations.json",
+        "platform-host.json",
+    ]
+    for path in dashboard_paths:
+        dashboard = json.loads(path.read_text(encoding="utf-8"))
+        assert dashboard["refresh"] == "30s"
+        assert dashboard["title"]
+        assert dashboard["description"]
+        assert dashboard["panels"]
+        panel_text = json.dumps(dashboard["panels"])
+        assert '"uid": "prometheus"' in panel_text
+        assert "node-exporter:9100" not in panel_text
+        assert "cadvisor:8080" not in panel_text
+    pihole_dashboard = json.loads((cli.ROOT / "platform/compose/monitoring/grafana/dashboards/pihole-operations.json").read_text(encoding="utf-8"))
+    pihole_text = json.dumps(pihole_dashboard).lower()
+    assert "query count" not in pihole_text
+    assert "blocked percentage" not in pihole_text
+    assert "domain ranking" not in pihole_text
+
+
+def test_plat_13_6_3_grafana_registry_state_remains_non_active():
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    grafana = records["svc-grafana"]
+    assert grafana["record_type"] == "planned_service"
+    assert grafana["lifecycle_status"] == "planned"
+    assert grafana["health_status"] == "planned"
+    assert grafana["monitoring_ready"] is False
+    assert grafana["planned_image"] == "grafana/grafana:13.1.0"
+    assert grafana["planned_endpoint"] == "http://192.168.50.127:3000"
+    assert grafana["planned_storage"] == "/platform/data/monitoring/grafana"
+    assert "image digest pending governed live pull" in grafana["unknowns"]
+
+
+def test_plat_13_6_3_runbook_protects_existing_env_and_proves_persistence():
+    runbook = (cli.ROOT / "docs/operations/Operations_Dashboard_Runbook.md").read_text(encoding="utf-8")
+    assert ".env.backup.$(date +%Y%m%d-%H%M%S)" in runbook
+    assert "Extend the existing Beelink-local" in runbook
+    assert "MONITORING_BIND_IP=192.168.50.127" in runbook
+    assert "PROMETHEUS_RETENTION=15d" in runbook
+    assert "GRAFANA_ADMIN_PASSWORD\"{print $1\"=<set>\"}" in runbook
+    assert "database-backed preference" in runbook
+    assert "docker compose stop grafana && docker compose rm -f grafana && docker compose up -d grafana" in runbook
+    assert "Do not run `down -v`" in runbook
+    assert "docker system prune" in runbook
+
+
+def test_plat_13_6_lifecycle_distinguishes_metrics_complete_from_dashboard_ready():
+    spec = (cli.ROOT / "docs/specifications/Platform_Operations_Observability_Specification.md").read_text(encoding="utf-8")
+    dashboard_contract = (cli.ROOT / "docs/specifications/Platform_Operations_Dashboard.md").read_text(encoding="utf-8")
+    assert "PLAT-13.6.2 operational closeout is complete" in spec
+    assert "PLAT-13.6.3 prepares the repository-managed Grafana dashboard layer without executing live deployment" in spec
+    assert "Lifecycle state | Implementation-ready; not live until deployment evidence is reviewed" in dashboard_contract
+    assert "Grafana digest is captured only after the governed live pull" in spec
 
 
 def test_plat_13_6_2_metrics_foundation_prometheus_targets_are_internal_service_names():

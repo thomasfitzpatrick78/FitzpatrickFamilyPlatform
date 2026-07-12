@@ -38,7 +38,9 @@ Prometheus is active at `192.168.50.127:9090` with 15-day local retention at `/p
 
 Node Exporter and cAdvisor are active on the internal `platform-monitoring` Docker network only.
 
-Grafana, alerts, backup automation, restore validation, and controlled updates remain planned and are not deployed.
+Grafana has a repository-managed PLAT-13.6.3 implementation-ready package for Architecture Gatekeeper review, including Compose service definition, provisioning files, dashboards, runbook, and evidence template. Grafana is not deployed.
+
+Alerts, backup automation, restore validation, and controlled updates remain planned and are not deployed.
 
 ---
 
@@ -56,6 +58,7 @@ Grafana, alerts, backup automation, restore validation, and controlled updates r
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Recorded PLAT-13.6.3 Operations Dashboard repository package as implementation-ready and not deployed. |
 | 1.3 | Recorded active PLAT-13.6.2 Metrics Foundation state and remaining planned operations capabilities. |
 | 1.2 | Updated current architecture state for active Beelink-hosted Pi-hole and ADR-007 governed observability planning. |
 | 1.1 | Added Milestone 12 Registry Driven Infrastructure Foundation architecture state. |

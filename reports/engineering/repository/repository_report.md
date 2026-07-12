@@ -2,7 +2,7 @@
 
 **Status:** PASS
 
-**Timestamp:** 2026-07-12T18:57:50.768678+00:00
+**Timestamp:** 2026-07-12T20:49:05.978660+00:00
 
 **Summary:** Repository validation completed with status PASS.
 
@@ -10,7 +10,7 @@
 
 - Errors: 0
 - Warnings: 0
-- Information: 63
+- Information: 65
 
 ## Results
 
@@ -62,7 +62,6 @@
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/network_devices/network-switch-2-5gbe-1.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/network_devices/network-switch-2-5gbe-2.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/controlled-container-updates.yaml`)
-- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/grafana.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/home-assistant.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/mqtt-broker.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/ollama-local-ai.yaml`)
@@ -70,9 +69,12 @@
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/platform-backup-recovery.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/platform-monitoring-dashboard.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/remote-management.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/cadvisor.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/docker-engine.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/node-exporter.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/pihole-dns.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, unknowns (`registry/records/services/pihole-raspberry-pi-rollback.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/prometheus.yaml`)
 - INFO: Registry validation passed for 36 records
 - INFO: Platform Digital Twin integrity validation passed
 - INFO: Current branch: main
