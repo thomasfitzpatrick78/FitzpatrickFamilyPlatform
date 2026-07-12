@@ -1,6 +1,6 @@
 # Infrastructure Operations Readiness Specification
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Planned
 
@@ -42,6 +42,8 @@ Registry records shall:
 - Identify Ubuntu Server 24.04 LTS as the approved Beelink operating system baseline.
 - Identify factory Windows as erased during Ubuntu Server installation with no Windows image created.
 - Require registry evidence capture immediately after BIOS verification, Ubuntu installation, networking completion, and SSH verification.
+- Identify PLAT-13.6 verified production baseline as Beelink `beelink` at `192.168.50.127`, Docker active, Pi-hole active on Beelink, and Raspberry Pi retained as rollback.
+- Keep Prometheus, Grafana, Node Exporter, cAdvisor, backup automation, restore validation, alerts, and controlled updates as planned until future implementation approval.
 - Identify delivered switches as TP-Link TL-SG108S-M2 8-port 2.5G unmanaged switches.
 - Identify delivered UPS as CyberPower CP850PFCLCD, 850VA / 510W.
 - Track unknowns explicitly using `TBD` or `unknowns`.
@@ -97,6 +99,7 @@ PLAT-13.1 adds informational reporting for explicit unknown or `TBD` markers. Th
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added PLAT-13.6 production baseline and planned operations/observability boundary. |
 | 1.2 | Applied PLAT-13.3 Architecture Review Board operating system, Windows disposition, evidence checkpoint, and Docker deferral decisions. |
 | 1.1 | Added PLAT-13.3 delivered hardware registry requirements and Beelink Day 0 / Day 1 planning boundary. |
 | 1.0 | Initial PLAT-13.1 specification. |

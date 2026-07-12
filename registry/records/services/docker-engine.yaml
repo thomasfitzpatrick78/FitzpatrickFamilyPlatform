@@ -1,0 +1,24 @@
+id: svc-docker-engine
+record_type: service
+name: Docker Engine
+description: Active Docker runtime on the Beelink Platform host.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: healthy
+monitoring_ready: true
+runtime_status: enabled and active after reboot
+compose_plugin_status: installed
+production_host: beelink
+platform_root: /platform
+unknowns: production image inventory and digest policy evidence TBD
+dependencies:
+  - host-beelink-mini-pc
+host_dependencies:
+  - host-beelink-mini-pc
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

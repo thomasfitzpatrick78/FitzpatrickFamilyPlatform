@@ -1,0 +1,24 @@
+id: svc-pihole-raspberry-pi-rollback
+record_type: service
+name: Raspberry Pi Pi-hole Rollback Service
+description: Raspberry Pi Pi-hole instance retained as immediate rollback DNS service.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: replacement
+health_status: unknown
+monitoring_ready: true
+service_interface: DNS
+runtime_status: powered on and unchanged
+ip_address: 192.168.50.67
+rollback_for: svc-pihole-dns
+unknowns: current container or package health after Beelink cutover TBD
+dependencies:
+  - host-raspberry-pi-pihole
+  - net-asus-mesh-router-primary
+host_dependencies:
+  - host-raspberry-pi-pihole
+network_dependencies:
+  - net-asus-mesh-router-primary
+power_dependencies: []
+administrative_dependencies:
+  - dev-toms-macbook-admin

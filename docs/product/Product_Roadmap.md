@@ -40,6 +40,7 @@ Near-term candidates should build from Infrastructure Registry v1.0:
 - Local service hosting architecture selection.
 - Pi-hole migration readiness.
 - Beelink Day 0 / Day 1 bring-up planning for delivered Platform Node 001 hardware.
+- Platform operations and observability planning for active Beelink-hosted Pi-hole service.
 - Network modernization readiness.
 - First Home Automation capability readiness assessment after registry foundation.
 
@@ -72,8 +73,9 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - Runtime monitoring until registry validation is established.
 - Dashboards until registry records and health status are validated.
 - Beelink activation until Day 0 / Day 1 onboarding evidence is reviewed.
-- Pi-hole migration from Raspberry Pi until Beelink onboarding and migration architecture are separately approved.
+- Further Pi-hole production changes until PLAT-13.6 backup, observability, and controlled update requirements are reviewed.
 - Deployment automation until registry-driven lifecycle gates are approved.
+- Monitoring deployment, alerting, backup automation, restore validation, and controlled updates until PLAT-13.6 plans are reviewed.
 
 ---
 
@@ -91,6 +93,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Added PLAT-13.6 operations and observability planning to the near-term roadmap. |
 | 1.3 | Added PLAT-13.3 Beelink Day 0 / Day 1 bring-up planning to the near-term roadmap. |
 | 1.2 | Added PLAT-13.1 Infrastructure Operations Readiness near-term roadmap items. |
 | 1.1 | Added Infrastructure Registry v1.0 as the first Platform feature milestone for Milestone 12. |

@@ -1,0 +1,28 @@
+id: svc-prometheus
+record_type: planned_service
+name: Prometheus Metrics Service
+description: Planned Prometheus service for Platform metrics collection, target health, retention, and alert rules.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: metrics
+planned_port: TCP 9090
+planned_storage: /platform/data/monitoring/prometheus
+planned_compose_path: /platform/compose/monitoring
+access_boundary: trusted home network only
+unknowns: retention storage size, exact scrape targets, and rule files TBD
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

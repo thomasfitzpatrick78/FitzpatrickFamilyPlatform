@@ -24,9 +24,11 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Business Objective:** Make future household systems durable and maintainable.
 
-**Initial Epics:** Infrastructure Registry v1.0; household environment inventory; backup and recovery coordination; repository and runtime readiness.
+**Initial Epics:** Infrastructure Registry v1.0; household environment inventory; backup and recovery coordination; repository and runtime readiness; operations and observability.
 
 **Milestone 12 Capability:** Infrastructure Registry v1.0 is the first usable Platform capability. It will support physical devices, network devices, hosts, services, planned services, locations, ownership, lifecycle status, health status, dependencies, and future monitoring readiness.
+
+**Milestone 13 Capability:** Platform Operations and Observability establishes governed ownership, service lifecycle, cutover, observability, backup, restore validation, incident response, and controlled update practices for the Beelink-hosted Pi-hole production service and future Platform services.
 
 ### Home Automation
 
@@ -89,5 +91,6 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added Milestone 13 Platform Operations and Observability capability scope. |
 | 1.1 | Added Infrastructure Registry v1.0 as the first usable Infrastructure capability for Milestone 12. |
 | 1.0 | Initial Platform capability model. |

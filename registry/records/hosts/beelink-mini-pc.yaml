@@ -1,25 +1,32 @@
 id: host-beelink-mini-pc
 record_type: host
 name: Beelink Mini PC Host
-description: Planned host representation for the delivered Beelink Mini S after governed onboarding.
+description: Active Beelink host representation for Platform Node 001 and Beelink-hosted Pi-hole production service.
 owner: owner-family-platform
 location: loc-home
-lifecycle_status: planned
-health_status: planned
+lifecycle_status: active
+health_status: healthy
 monitoring_ready: true
-operating_system: TBD
-approved_operating_system: Ubuntu Server 24.04 LTS
+operating_system: Ubuntu Server 26.04 LTS
+architecture: x86_64
+approved_operating_system: Ubuntu Server 26.04 LTS
 planned_role: Platform Node 001
+production_role: Platform Node 001
 hardware_device: dev-beelink-mini-pc
-hostname_standard: platform-node-001
-arrival_status: delivered; pending physical setup and governed onboarding
-onboarding_status: pending Day 0 / Day 1 bring-up validation
-factory_windows_disposition: erase during Ubuntu Server installation; no Windows image will be created
-static_dhcp_reservation: planned after MAC address is recorded; no router DNS change approved
-ssh_status: planned local-network administration only after OS installation and key-based access are configured
-admin_user_status: planned non-root administrative account with sudo; username TBD
-docker_readiness: future workstream only; do not install Docker during PLAT-13.3
-unknowns: operating system, MAC address, IP address, admin username, virtualization model, container runtime, storage layout, and backup target TBD
+hostname: beelink
+hostname_standard: beelink
+ip_address: 192.168.50.127
+mac_address: 78:55:36:09:D2:45
+arrival_status: delivered and commissioned
+onboarding_status: production baseline verified for PLAT-13.6 planning
+factory_windows_disposition: erased during Ubuntu Server installation; no Windows image created
+static_dhcp_reservation: required and verified production prerequisite
+ssh_status: enabled with Ed25519 key authentication
+admin_user_status: trusted administrator account configured; username not recorded in repository
+docker_readiness: Docker Engine installed and enabled; Docker Compose plugin installed
+platform_root: /platform
+platform_directories: /platform/compose, /platform/data, /platform/backups, /platform/scripts, /platform/logs, /platform/documentation
+unknowns: backup restore validation status and production image digest inventory TBD
 dependencies:
   - dev-beelink-mini-pc
   - net-switch-2-5gbe-1

@@ -1,27 +1,37 @@
 id: svc-pihole-dns
 record_type: service
 name: Pi-hole DNS Service
-description: Pi-hole DNS service currently running on the Raspberry Pi.
+description: Active family DNS and blocking service hosted in Docker on the Beelink.
 owner: owner-family-platform
 location: loc-home
 lifecycle_status: active
-health_status: unknown
+health_status: healthy
 monitoring_ready: true
-service_interface: DNS
+service_interface: DNS and Pi-hole admin
 runtime_status: running
-ip_address: 192.168.50.67
-pihole_core_version: v5.15.5
-pihole_web_version: v6.0
-pihole_ftl_version: v6.4.1
-migration_direction: migrate to Beelink using Docker or VM after Beelink arrives; keep Raspberry Pi intact as rollback
-unknowns: management URL and final Beelink runtime model TBD
+production_host: beelink
+ip_address: 192.168.50.127
+dns_ports: TCP/UDP 53
+admin_port: TCP 8080
+container_name: pihole
+compose_path: /platform/compose/pihole
+persistent_configuration: /platform/data/pihole/etc-pihole
+availability_role: production
+validation_status: container healthy, DNS resolution verified, blocklist enforcement verified, router DNS cutover completed
+rollback_service: svc-pihole-raspberry-pi-rollback
+customer_users: household devices and family members
+unknowns: production image version, image digest, backup status, and restore validation status TBD
 dependencies:
-  - host-raspberry-pi-pihole
+  - host-beelink-mini-pc
+  - svc-docker-engine
   - net-asus-mesh-router-primary
 host_dependencies:
-  - host-raspberry-pi-pihole
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
 network_dependencies:
   - net-asus-mesh-router-primary
-power_dependencies: []
+power_dependencies:
+  - dev-ups-battery-backup
 administrative_dependencies:
   - dev-toms-macbook-admin

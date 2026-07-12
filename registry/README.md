@@ -60,7 +60,8 @@ WS-12.2 adds real Fitzpatrick home infrastructure device records using the appro
 Device records include:
 
 - Beelink mini PC.
-- Raspberry Pi currently running Pi-hole.
+- Beelink mini PC running the production Pi-hole service.
+- Raspberry Pi retained as Pi-hole rollback infrastructure.
 - Frontier fiber ONT or modem.
 - ASUS mesh router and node devices.
 - Two 2.5Gb network switches.
@@ -84,7 +85,7 @@ Delivered hardware now recorded in registry:
 - Two TP-Link TL-SG108S-M2 8-port 2.5G unmanaged switches.
 - CyberPower CP850PFCLCD UPS, 850VA / 510W.
 
-The Beelink remains `planned` and pending onboarding until physical setup, OS baseline, static DHCP reservation, local SSH access, and validation evidence are completed and reviewed.
+PLAT-13.6 records that the Beelink has since become the active production Platform host.
 
 Architecture Review Board decisions for PLAT-13.3:
 
@@ -98,13 +99,39 @@ PLAT-13.3 does not migrate Pi-hole, change router DNS, install planned services,
 
 ---
 
+## PLAT-13.6 Operations and Observability Registry Updates
+
+PLAT-13.6 records the verified production baseline and planned observability capabilities.
+
+Present state now recorded in registry:
+
+- Beelink host `beelink` is active at `192.168.50.127` with MAC `78:55:36:09:D2:45`.
+- Ubuntu Server 26.04 LTS is recorded as the verified Beelink operating system.
+- Docker Engine is active and enabled on the Beelink.
+- Pi-hole DNS is active in Docker on the Beelink.
+- Raspberry Pi at `192.168.50.67` remains powered on and unchanged as the immediate rollback DNS host.
+
+Planned capabilities now represented as planned services:
+
+- Prometheus.
+- Node Exporter.
+- cAdvisor.
+- Grafana.
+- Platform backup and recovery.
+- Platform alerting.
+- Controlled container updates.
+
+These records do not deploy monitoring, backups, alerts, restore validation, update automation, packages, containers, or services.
+
+---
+
 ## WS-12.3 Service Registry
 
 WS-12.3 adds known and planned Platform service records using the approved Infrastructure Registry schema.
 
 Active service records include:
 
-- Pi-hole DNS service running on the Raspberry Pi.
+- Pi-hole DNS service.
 - Platform Engineering Automation / `platform-eap` validation capability.
 - Infrastructure Registry validation capability.
 

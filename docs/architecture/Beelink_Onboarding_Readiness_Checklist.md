@@ -1,8 +1,8 @@
 # Beelink Day 0 / Day 1 Bring-up Guide
 
-**Document Version:** 2.1
+**Document Version:** 2.3
 
-**Status:** Planned
+**Status:** Superseded by PLAT-13.6 production baseline
 
 **Milestone:** Milestone 13
 
@@ -12,9 +12,11 @@
 
 ## Purpose
 
-This guide defines the governed Day 0 / Day 1 bring-up plan for the first managed Platform compute node.
+This guide defined the governed Day 0 / Day 1 bring-up plan for the first managed Platform compute node.
 
-The Beelink Mini S is delivered hardware, but it remains pending onboarding in the Infrastructure Registry until physical setup, OS baseline, network reservation, SSH access, and validation evidence are completed.
+PLAT-13.6 records that the Beelink has since become the active production Platform host at `192.168.50.127`, hostname `beelink`, running Ubuntu Server 26.04 LTS and Docker-hosted Pi-hole.
+
+Do not execute the Ubuntu installer procedure in this historical guide against the current production host.
 
 The Infrastructure Registry remains authoritative. This guide is an operating procedure derived from registry records, not a second inventory.
 
@@ -29,6 +31,7 @@ The Infrastructure Registry remains authoritative. This guide is an operating pr
 - Lifecycle status: `planned`.
 - Health status: `planned`.
 - Arrival status: delivered; pending physical setup and governed onboarding.
+- Current onboarding status: superseded; production baseline recorded in PLAT-13.6.
 - Planned switch dependency: `net-switch-2-5gbe-1`.
 - Power dependency: `dev-ups-battery-backup`.
 - Administrative dependency: `dev-toms-macbook-admin`.
@@ -38,6 +41,22 @@ Delivered supporting hardware:
 - Beelink Mini S, Intel N150, 16GB memory, 512GB storage, 12V / 3A input.
 - Two TP-Link TL-SG108S-M2 8-port 2.5G unmanaged switches.
 - CyberPower CP850PFCLCD UPS, 850VA / 510W.
+
+Verified BIOS evidence:
+
+- BIOS vendor: American Megatrends.
+- BIOS version: MS2V001.
+- BIOS build date: 2025-04-08.
+- Serial number: BN1506GF80211.
+- CPU: Intel N150.
+- CPU topology: 4 cores / 4 threads.
+- Memory: 16384 MB.
+- Memory frequency: 3200 MHz.
+- Boot Option Filter: UEFI only.
+- CSM Support: Enabled.
+- Secure Boot: Disabled / Not Active.
+- Fast Boot: Disabled.
+- Windows Boot Manager is present on the 512GB SSD.
 
 ---
 
@@ -100,38 +119,57 @@ No-impact rule:
 
 ---
 
-## Day 0 - BIOS Access
+## Day 0 - BIOS Evidence and Decision
 
-1. During boot, press the vendor BIOS setup key shown on screen.
-2. If no prompt appears, try common Beelink access keys: `Delete`, `F2`, or `Esc`.
-3. Record the BIOS version and boot mode.
-4. Do not change settings unless the change is explicitly listed below and reviewed before save.
+The Beelink has been powered on and inspected in BIOS.
 
-BIOS settings to inspect:
+Verified BIOS facts:
 
-| Setting | Expected Review | Action |
-|---------|-----------------|--------|
-| Boot mode | UEFI preferred | Record value; do not change unless OS install requires it. |
-| Secure Boot | Determine default state | Record value; decide based on selected OS installer support. |
-| Virtualization | Intel virtualization support present | Enable only if OS/runtime plan requires VM support. |
-| Wake on LAN | Off unless a future approved management plan requires it | Leave disabled for Day 0 unless already required by reviewed design. |
-| Power restore after outage | Review default behavior | Prefer safe/manual restart until UPS behavior is understood. |
-| Boot order | Internal storage and installer media order | Change only for OS installation media, then restore expected order. |
-| Fan or thermal profile | Confirm default or balanced profile | Record if visible. |
+1. BIOS vendor is American Megatrends.
+2. BIOS version is MS2V001.
+3. BIOS build date is 2025-04-08.
+4. Serial number is BN1506GF80211.
+5. CPU is Intel N150.
+6. CPU topology is 4 cores / 4 threads.
+7. Memory is 16384 MB.
+8. Memory frequency is 3200 MHz.
+9. Boot Option Filter is UEFI only.
+10. CSM Support is Enabled.
+11. Secure Boot is Disabled / Not Active.
+12. Fast Boot is Disabled.
+13. Windows Boot Manager is present on the 512GB SSD.
+
+Architecture Review Board BIOS decision:
+
+1. No BIOS configuration changes are required.
+2. The current UEFI-only boot configuration is acceptable.
+3. CSM remains enabled.
+4. Secure Boot remains disabled.
+5. Fast Boot remains disabled.
+6. Do not change boot mode.
+7. Do not change Intel ME settings.
+8. Do not change TPM settings.
+9. Do not change Wake-on-LAN settings.
+10. Do not change power recovery settings.
+11. Do not change chipset settings.
+12. Do not change CPU settings.
+13. Do not change memory settings.
+14. Exit BIOS without saving changes unless selecting the USB installer through a one-time boot menu requires a temporary selection.
 
 Registry evidence checkpoint:
 
-1. Immediately after BIOS inspection, update the registry evidence with the BIOS version, boot mode, Secure Boot setting, virtualization setting, Wake on LAN setting, power restore setting, and any intentional boot order change.
-2. Do not wait until the end of the procedure to capture BIOS evidence.
-3. Do not change Beelink lifecycle status during this checkpoint.
+1. BIOS evidence has been added to `registry/records/devices/beelink-mini-pc.yaml`.
+2. The serial number has been added to `registry/records/devices/beelink-mini-pc.yaml`.
+3. Beelink lifecycle status remains `planned`.
+4. Beelink onboarding status is BIOS inspected and pending Ubuntu Server installation.
 
 ---
 
-## Day 1 - OS Decision and Installation Approach
+## Day 1 - Approved Ubuntu Operating System
 
-Approved Day 1 operating system:
+Approved operating system:
 
-- Ubuntu Server 24.04 LTS.
+- Ubuntu Server 24.04 LTS, 64-bit, minimal/server installation, no desktop.
 
 Rationale:
 
@@ -140,146 +178,182 @@ Rationale:
 
 Factory Windows disposition:
 
-- The factory Windows installation will be erased during Ubuntu Server installation.
-- No Windows image will be created.
-- This node is being commissioned as Platform Node 001 and Windows is not part of the Platform operating model.
+1. The factory Windows installation will be erased.
+2. No Windows image or recovery backup will be created.
+3. This is an approved Architecture Review Board decision.
+4. The internal 512GB SSD will be dedicated to Ubuntu Server.
+5. Windows is not part of the Platform operating model.
 
-Preferred Day 1 direction:
+Scope boundary for this checkpoint:
 
-- Install Ubuntu Server 24.04 LTS for long-lived Platform host use.
-- Keep the installation minimal.
-- Avoid desktop environment packages unless needed for local recovery.
-- Use full-disk installation and erase the factory Windows installation.
-- Record the selected OS in `registry/records/hosts/beelink-mini-pc.yaml` after installation.
-
-Decision gates before install:
-
-1. Confirm Ubuntu Server 24.04 LTS supports Intel N150 hardware, wired networking, SSH server, and future Docker readiness.
-2. Confirm installation media checksum where practical.
-3. Confirm the target disk is the Beelink internal 512GB storage.
-4. Confirm no Pi-hole, Home Assistant, MQTT, Ollama, monitoring, dashboard, or remote management service will be installed during OS baseline.
-5. Confirm the Raspberry Pi remains the active Pi-hole DNS host.
-
-Installation approach:
-
-1. Create OS installer media from the admin workstation.
-2. Boot the Beelink from installer media.
-3. Install Ubuntu Server 24.04 LTS to internal storage.
-4. Apply only baseline OS security updates.
-5. Record OS name, version, kernel if relevant, and install date in the host record or follow-up evidence.
-6. Leave service deployment for a later approved workstream.
-
-Registry evidence checkpoint:
-
-1. Immediately after Ubuntu installation and first successful boot, update the registry evidence with OS name, OS version, kernel version, installation date, hostname, CPU, memory, and storage facts.
-2. Record the factory Windows disposition as erased with no Windows image created in the host registry evidence.
-3. Do not wait until the end of the procedure to capture OS evidence.
-4. Do not change Beelink lifecycle status during this checkpoint.
+1. Create the Ubuntu Server installer USB.
+2. Boot the Beelink from the installer USB.
+3. Install Ubuntu Server 24.04 LTS.
+4. Stop when Ubuntu successfully reaches a login prompt.
+5. Do not proceed to DHCP reservation, SSH key hardening, firewall setup, package updates, Docker, or service installation in this checkpoint.
 
 ---
 
-## Day 1 - Hostname Standard
+## Day 1 - Create Ubuntu Server USB Installer on macOS
 
-The standard hostname for Platform Node 001 is:
+Use Tom's MacBook to create the installer.
 
-```text
-platform-node-001
-```
+Requirements:
 
-Rules:
-
-- Use lowercase letters, numbers, and hyphens.
-- Do not reuse Raspberry Pi hostnames or service names.
-- Record any deviation in the host registry record before validation.
-
----
-
-## Day 1 - Static DHCP Reservation Plan
-
-The Beelink should use router-managed static DHCP reservation rather than unmanaged manual IP assignment unless a later network architecture decision changes this standard.
+1. Tom's MacBook.
+2. A USB flash drive that can be erased.
+3. The official Ubuntu website.
+4. The official balenaEtcher application, unless a future repository standard selects another USB writing tool.
 
 Steps:
 
-1. Boot the installed OS on the local network without changing router DNS.
-2. Identify the wired Ethernet MAC address from the OS or router client list.
-3. Select an IP address that does not conflict with existing active infrastructure.
-4. Create a DHCP reservation for hostname `platform-node-001`.
-5. Reboot or renew DHCP lease and confirm the reserved IP is assigned.
-6. Record the MAC address and reserved IP in `registry/records/hosts/beelink-mini-pc.yaml`.
+1. On Tom's MacBook, open a browser.
+2. Go to the official Ubuntu website.
+3. Download Ubuntu Server 24.04 LTS for AMD64.
+4. Go to the official balenaEtcher website.
+5. Download and install balenaEtcher for macOS.
+6. Insert the USB flash drive into Tom's MacBook.
+7. Stop if the USB flash drive contains files that must be saved.
+8. Open Finder and identify the USB flash drive by name and size.
+9. If more than one external drive is connected, eject any drive that is not needed.
+10. Stop if there is any uncertainty about which drive is the USB flash drive.
+11. Open balenaEtcher.
+12. Choose the Ubuntu Server 24.04 LTS ISO file.
+13. Choose the USB flash drive.
+14. Confirm that the selected target is the USB flash drive, not the MacBook internal disk and not a backup drive.
+15. Start the flash operation.
+16. Approve the macOS permission prompts if they appear.
+17. Wait for balenaEtcher to finish writing and verifying the USB installer.
+18. Confirm balenaEtcher reports completion.
+19. Eject the USB flash drive from macOS.
+20. Remove the USB flash drive from Tom's MacBook.
 
-Registry evidence checkpoint:
+Important:
 
-1. Immediately after network onboarding, update the registry evidence with the Ethernet MAC address, reserved IP address, hostname, intended switch/router path, and confirmation that router DNS was not changed.
-2. Do not wait until the end of the procedure to capture networking evidence.
-3. Do not change Beelink lifecycle status during this checkpoint.
-
-Guardrails:
-
-- Do not change the DHCP server itself unless already active on the router.
-- Do not point clients or router DNS to the Beelink.
-- Do not move Pi-hole IP `192.168.50.67`.
-- Do not treat IP reachability as service readiness.
+- Creating the installer erases the USB flash drive.
+- Stop if the selected USB drive is uncertain.
+- Use only official Ubuntu and balenaEtcher sources.
 
 ---
 
-## Day 1 - SSH Setup
-
-SSH is allowed for local-network administration after the OS baseline is complete.
+## Day 1 - Boot Beelink from Ubuntu USB Installer
 
 Steps:
 
-1. Install or enable the OpenSSH server from the selected OS package repository.
-2. Create or select a non-root administrative account.
-3. Add Tom's admin workstation public SSH key to the administrative account.
-4. Disable direct root SSH login if the OS permits it.
-5. Prefer key-based authentication.
-6. Confirm local-network SSH login from Tom's MacBook.
-7. Record SSH access status in the host registry record.
+1. If the Beelink is currently in BIOS, exit without saving changes.
+2. If the Beelink is powered on, shut it down.
+3. Insert the completed Ubuntu Server USB installer into the Beelink.
+4. Confirm monitor, keyboard, and mouse are connected.
+5. Press the Beelink power button.
+6. Try `F7` first to open the one-time boot menu, based on the Beelink chassis label.
+7. If `F7` does not open the boot menu, restart and enter BIOS.
+8. In BIOS, select the UEFI USB entry for the Ubuntu installer.
+9. Prefer the one-time boot menu or one-time UEFI USB selection.
+10. Avoid changing permanent boot order unless the installer cannot otherwise be started.
+11. Select the UEFI entry for the USB installer.
+12. Continue only when the Ubuntu Server installer starts.
 
-Registry evidence checkpoint:
+Stop conditions:
 
-1. Immediately after SSH validation, update the registry evidence with SSH status, admin user approach, key-based access status, root login policy, and confirmation that SSH is local-network only.
-2. Do not wait until the end of the procedure to capture SSH evidence.
-3. Do not change Beelink lifecycle status during this checkpoint.
-
-Do not expose SSH to the internet. Remote management remains a planned service and is not implemented by this workstream.
-
----
-
-## Day 1 - Admin User Approach
-
-Use a named non-root administrative account with sudo privileges.
-
-Rules:
-
-- Do not use `root` for routine administration.
-- Do not use shared family passwords in repository files.
-- Do not commit secrets, SSH private keys, or recovery codes.
-- Record the admin username only if it is safe and useful for future operations.
-- Keep break-glass recovery local to the device and outside the repository.
+1. Stop if the USB drive is not listed.
+2. Stop if only a non-UEFI USB option is shown.
+3. Stop if Windows starts unexpectedly and the installer cannot be selected.
+4. Stop before changing BIOS settings other than a temporary USB boot selection.
 
 ---
 
-## Day 1 - Docker Installation Readiness
+## Day 1 - Install Ubuntu Server 24.04 LTS
 
-Docker is explicitly out of scope for this guide.
+Follow the Ubuntu Server installer screens.
 
-The procedure stops after the operating baseline has been validated. Docker installation will be performed in a future workstream.
+Steps:
 
-Before Docker installation is approved in a future workstream, confirm:
+1. Select the preferred language.
+2. Select the keyboard layout.
+3. Choose Ubuntu Server installation.
+4. Choose the minimal/server installation path.
+5. Do not choose a desktop installation.
+6. Connect Ethernet during installation only if needed for installer network setup.
+7. If the installer detects network automatically, continue.
+8. If the installer asks for proxy settings, leave proxy blank unless the home network requires one.
+9. Use the default Ubuntu mirror unless there is a clear reason to choose another mirror.
+10. At storage setup, choose guided storage.
+11. Choose use entire disk.
+12. Select the internal 512GB SSD.
+13. Confirm that the factory Windows installation will be erased.
+14. Confirm that no Windows image or recovery backup will be created.
+15. Continue only if the selected disk is the internal 512GB SSD.
+16. Stop if the disk selection is uncertain.
+17. Set hostname to `platform-node-001`.
+18. Create a named non-root administrator account.
+19. Use a strong password.
+20. Do not use `root` as the normal administrator account.
+21. Select OpenSSH server only if the installer offers it as a standard server option.
+22. Do not configure SSH keys during this checkpoint unless they are already available and clearly understood.
+23. Do not select extra server snaps.
+24. Do not select optional services.
+25. Do not install Docker.
+26. Do not install Pi-hole.
+27. Do not install Home Assistant, MQTT, Ollama, monitoring, dashboards, or remote management tools.
+28. Let the installation complete.
+29. Remove the USB installer only when the installer prompts for removal.
+30. Reboot when prompted.
+31. Stop when Ubuntu reaches a login prompt.
 
-1. OS name and version are recorded.
-2. Hostname is `platform-node-001`.
-3. Static DHCP reservation is recorded.
-4. SSH local administration is validated.
-5. Storage layout and backup target are documented.
-6. Pi-hole rollback host remains intact.
-7. Container hosting standards have been reviewed.
-8. A future service deployment plan identifies exact workloads and rollback criteria.
+Checkpoint report to provide after installation:
 
-Stop condition:
+1. Whether Ubuntu reached a login prompt.
+2. The username created.
+3. Any IP address shown on screen.
+4. Any installer warnings or errors.
+5. Whether Windows was removed successfully.
+6. Any unexpected screen.
 
-- If Docker installation is requested during PLAT-13.3, stop and return to Architecture Review Board review.
+Do not continue past the login prompt in this checkpoint.
+
+---
+
+## Deferred - Network Onboarding
+
+Network onboarding is deferred until the next approved checkpoint.
+
+Do not perform these steps yet:
+
+1. Do not create an ASUS router DHCP reservation.
+2. Do not change router DNS.
+3. Do not assign a static IP.
+4. Do not record a final MAC address or IP address until the networking checkpoint is approved.
+5. Do not treat any temporary installer IP address as the final Platform Node 001 address.
+
+---
+
+## Deferred - SSH Hardening and Administration
+
+SSH hardening is deferred until the next approved checkpoint.
+
+Do not perform these steps yet:
+
+1. Do not copy MacBook SSH keys.
+2. Do not disable password login.
+3. Do not change root SSH login policy.
+4. Do not expose SSH to the internet.
+5. Do not implement remote management.
+
+---
+
+## Deferred - Operating Baseline Expansion
+
+Operating baseline expansion is deferred until the next approved checkpoint.
+
+Do not perform these steps yet:
+
+1. Do not run package updates after first login.
+2. Do not configure firewall rules.
+3. Do not configure automatic updates.
+4. Do not configure monitoring.
+5. Do not configure dashboards.
+6. Do not install Docker.
+7. Do not install Platform services.
 
 ---
 
@@ -290,13 +364,15 @@ Stop condition:
 | Registry | Hardware facts recorded | Updated Beelink, switch, and UPS records |
 | Lifecycle | Beelink remains planned or pending onboarding | `lifecycle_status: planned` and onboarding status |
 | Power | UPS model corrected to CP850PFCLCD | Updated UPS record |
-| BIOS | BIOS settings inspected | Recorded BIOS notes |
-| OS | Ubuntu Server 24.04 LTS installed only after Day 0 gates | Host OS field updated when complete |
-| Hostname | Hostname set to `platform-node-001` | OS hostname and registry record |
-| Network | Static DHCP reservation planned or recorded | MAC and IP fields when known |
-| SSH | Local SSH key-based access validated | SSH status field or evidence note |
+| BIOS | BIOS settings inspected with no configuration changes required | Verified BIOS facts recorded |
+| BIOS Decision | CSM remains enabled, Secure Boot remains disabled, Fast Boot remains disabled | No saved BIOS changes |
+| USB Installer | Ubuntu Server 24.04 LTS AMD64 installer created from macOS | balenaEtcher completion confirmation |
+| OS | Ubuntu Server 24.04 LTS installed only after Day 0 gates | Stop at Ubuntu login prompt |
+| Hostname | Hostname set to `platform-node-001` during installation | Login prompt or installer summary |
+| Network | DHCP reservation and final network onboarding deferred | No router DNS changes |
+| SSH | SSH hardening and key setup deferred | No SSH verification claimed |
 | Services | No service migration or install performed | Pi-hole remains on Raspberry Pi |
-| Docker | Docker not installed | Procedure stops after operating baseline validation |
+| Docker | Docker not installed | Procedure stops at Ubuntu login prompt |
 | Validation | Platform EAP commands pass | Validation reports or command output |
 
 ---
@@ -345,6 +421,8 @@ The Beelink may become active Platform Node 001 only after a future reviewed upd
 
 | Version | Description |
 |---------|-------------|
+| 2.3 | Marked runbook superseded by PLAT-13.6 production baseline and warned against re-running installer steps on the active host. |
+| 2.2 | Added verified BIOS evidence, no-change BIOS decision, macOS Ubuntu USB installer steps, USB boot steps, Ubuntu installation steps, and stop-at-login checkpoint boundary. |
 | 2.1 | Applied Architecture Review Board decisions for Ubuntu Server 24.04 LTS, factory Windows erase disposition, milestone-level registry evidence capture, and Docker out-of-scope boundary. |
 | 2.0 | Replaced readiness checklist with governed PLAT-13.3 Day 0 / Day 1 Beelink bring-up guide using delivered hardware facts. |
 | 1.0 | Initial Beelink onboarding readiness checklist. |

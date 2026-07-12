@@ -1,8 +1,8 @@
 # Pi-hole Migration Readiness Plan
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Planned
+**Status:** Superseded by PLAT-13.6 production baseline
 
 **Milestone:** Milestone 13
 
@@ -10,31 +10,28 @@
 
 ## Purpose
 
-This plan defines readiness for a future Pi-hole migration from Raspberry Pi to Beelink.
+This plan defined readiness for the Pi-hole migration from Raspberry Pi to Beelink.
 
-No migration, repair, upgrade, deployment, cutover, or runtime validation is implemented by PLAT-13.1.
+The migration has since completed. PLAT-13.6 records the Beelink-hosted Pi-hole production baseline and preserves the Raspberry Pi as rollback.
 
 ---
 
 ## Current State
 
-Registry records identify:
+Registry records now identify:
 
 - Pi-hole service: `svc-pihole-dns`.
-- Current host: `host-raspberry-pi-pihole`.
-- Current device: `dev-raspberry-pi-pihole`.
-- Current IP address: `192.168.50.67`.
-- Current SSH access: `pi@192.168.50.67`.
-- Raspberry Pi OS: Raspbian GNU/Linux 10 / Debian Buster.
-- Pi-hole mixed version state: Core `v5.15.5`, Web `v6.0`, FTL `v6.4.1`.
+- Current production host: `host-beelink-mini-pc`.
+- Current production IP address: `192.168.50.127`.
+- Current runtime: Docker on Beelink.
+- Rollback service: `svc-pihole-raspberry-pi-rollback`.
+- Rollback host: `host-raspberry-pi-pihole` at `192.168.50.67`.
 
 ---
 
 ## Approved Direction
 
-Migrate Pi-hole to the Beelink using Docker or a VM after Beelink arrives.
-
-The Raspberry Pi should remain intact as rollback after migration.
+Maintain Beelink-hosted Pi-hole as production service and keep Raspberry Pi intact as rollback.
 
 ---
 
@@ -45,22 +42,21 @@ The Raspberry Pi should remain intact as rollback after migration.
 | Current Pi-hole service record includes version state | Complete |
 | Current Raspberry Pi IP and SSH access are recorded | Complete |
 | Beelink is represented as planned infrastructure | Complete |
-| Target runtime model selected: Docker on host or VM | TBD |
-| Beelink OS, IP, hostname, and storage layout recorded | TBD |
-| Pi-hole backup/export process selected | TBD |
-| DNS cutover plan written | TBD |
-| Rollback trigger and steps written | TBD |
-| Post-cutover validation criteria written | TBD |
+| Target runtime model selected: Docker on host | Complete |
+| Beelink OS, IP, hostname, and storage layout recorded | Partial - host, IP, OS, runtime, and platform root recorded; storage layout details continue in PLAT-13.6 |
+| Pi-hole backup/export process selected | Planned in PLAT-13.6 |
+| DNS cutover completed | Complete |
+| Rollback trigger and steps written | Planned in PLAT-13.6 incident runbooks |
+| Post-cutover validation criteria written | Planned in PLAT-13.6 service objectives |
 
 ---
 
 ## Non-Goals
 
 - Do not force repair or update on the old Raspberry Pi.
-- Do not bring up Beelink.
-- Do not create Docker or VM deployment artifacts.
-- Do not change DNS.
-- Do not implement monitoring or dashboards.
+- Do not decommission Raspberry Pi rollback.
+- Do not change DNS in PLAT-13.6 repository-only planning.
+- Do not deploy monitoring or dashboards in PLAT-13.6 repository-only planning.
 
 ---
 
@@ -68,4 +64,5 @@ The Raspberry Pi should remain intact as rollback after migration.
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Marked migration readiness plan superseded by Beelink-hosted Pi-hole production baseline and PLAT-13.6 operations planning. |
 | 1.0 | Initial Pi-hole migration readiness plan. |

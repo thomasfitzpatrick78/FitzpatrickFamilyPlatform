@@ -1,7 +1,7 @@
 id: host-raspberry-pi-pihole
 record_type: host
 name: Raspberry Pi Pi-hole Host
-description: Host representation for the Raspberry Pi currently running Pi-hole at 192.168.50.67.
+description: Host representation for the Raspberry Pi retained as immediate rollback DNS host at 192.168.50.67.
 owner: owner-family-platform
 location: loc-home
 lifecycle_status: active
@@ -11,6 +11,7 @@ operating_system: Raspbian GNU/Linux 10 / Debian Buster
 ssh_access: pi@192.168.50.67
 ip_address: 192.168.50.67
 unknowns: package baseline and storage health TBD
+rollback_role: immediate DNS rollback host for Pi-hole
 dependencies:
   - dev-raspberry-pi-pihole
   - net-asus-mesh-router-primary

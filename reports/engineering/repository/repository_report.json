@@ -1,7 +1,7 @@
 {
   "capability": "Repository Validation",
   "status": "PASS",
-  "timestamp": "2026-07-09T23:06:21.890729+00:00",
+  "timestamp": "2026-07-12T18:35:43.763341+00:00",
   "summary": "Repository validation completed with status PASS.",
   "results": [
     {
@@ -166,7 +166,7 @@
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: serial_number, unknowns",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
       "path": "registry/records/devices/beelink-mini-pc.yaml"
     },
     {
@@ -196,7 +196,7 @@
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: admin_user_status, operating_system, unknowns",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
       "path": "registry/records/hosts/beelink-mini-pc.yaml"
     },
     {
@@ -241,6 +241,21 @@
     },
     {
       "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: planned_port, unknowns",
+      "path": "registry/records/planned_services/cadvisor.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/planned_services/controlled-container-updates.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/planned_services/grafana.yaml"
+    },
+    {
+      "severity": "INFO",
       "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
       "path": "registry/records/planned_services/home-assistant.yaml"
     },
@@ -251,8 +266,23 @@
     },
     {
       "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/planned_services/node-exporter.yaml"
+    },
+    {
+      "severity": "INFO",
       "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
       "path": "registry/records/planned_services/ollama-local-ai.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/planned_services/platform-alerting.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/planned_services/platform-backup-recovery.yaml"
     },
     {
       "severity": "INFO",
@@ -261,17 +291,32 @@
     },
     {
       "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/planned_services/prometheus.yaml"
+    },
+    {
+      "severity": "INFO",
       "message": "Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns",
       "path": "registry/records/planned_services/remote-management.yaml"
     },
     {
       "severity": "INFO",
-      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, unknowns",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
+      "path": "registry/records/services/docker-engine.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
       "path": "registry/records/services/pihole-dns.yaml"
     },
     {
       "severity": "INFO",
-      "message": "Registry validation passed for 27 records",
+      "message": "Registry record explicitly tracks unknown or TBD fields: health_status, unknowns",
+      "path": "registry/records/services/pihole-raspberry-pi-rollback.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry validation passed for 36 records",
       "path": null
     },
     {

@@ -1,6 +1,6 @@
 # Local Service Hosting Architecture Options
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Planned
 
@@ -10,9 +10,9 @@
 
 ## Purpose
 
-This document records local service hosting options for planned Platform services after Beelink arrival and onboarding.
+This document records local service hosting options for Platform services after Beelink onboarding.
 
-No service is deployed by PLAT-13.1.
+Pi-hole is now deployed on Beelink using Docker. Monitoring, dashboards, backup automation, and additional services remain planned until approved implementation.
 
 ---
 
@@ -20,7 +20,7 @@ No service is deployed by PLAT-13.1.
 
 | Option | Fit | Benefits | Risks / Unknowns |
 |--------|-----|----------|------------------|
-| Docker on Beelink host OS | Strong candidate for Pi-hole and lightweight services | Simple operations model; good rollback through compose files and volumes | Host OS, storage layout, and backup process TBD |
+| Docker on Beelink host OS | Selected for Pi-hole and strong candidate for lightweight services | Simple operations model; good rollback through compose files and volumes | Backup, restore validation, monitoring, and update governance must mature. |
 | VM on Beelink with Docker inside VM | Strong isolation candidate | Clear rollback boundary and snapshot path | Hypervisor choice, resource overhead, and USB/network passthrough TBD |
 | Bare-metal service install | Weak candidate | Fewer layers | Harder rollback; more host drift |
 | Keep service on Raspberry Pi | Rollback and continuity candidate | Existing Pi-hole service remains intact | Aging OS and mixed Pi-hole version state |
@@ -29,7 +29,7 @@ No service is deployed by PLAT-13.1.
 
 ## Service Placement Guidance
 
-- Pi-hole migration target is Beelink using Docker or VM after Beelink arrives.
+- Pi-hole production service is hosted on Beelink using Docker.
 - Raspberry Pi should remain intact as rollback after migration.
 - Planned services should remain `planned_service` records until deployed.
 - Host placement must be reflected in `host_dependencies` before implementation.
@@ -55,4 +55,5 @@ Before selecting Docker-on-host or VM-hosting, record:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Updated hosting options for Beelink-hosted Docker Pi-hole production baseline and PLAT-13.6 planning. |
 | 1.0 | Initial local service hosting architecture options. |

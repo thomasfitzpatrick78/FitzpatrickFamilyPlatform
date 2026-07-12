@@ -1,12 +1,12 @@
 {
   "capability": "Engineering Metrics",
   "status": "PASS",
-  "timestamp": "2026-07-09T23:04:41.497790+00:00",
+  "timestamp": "2026-07-12T18:34:22.583951+00:00",
   "summary": "Engineering metrics generated with status PASS.",
   "results": [
     {
       "severity": "INFO",
-      "message": "Markdown documents: 60",
+      "message": "Markdown documents: 68",
       "path": null
     },
     {
@@ -16,7 +16,7 @@
     },
     {
       "severity": "INFO",
-      "message": "Architecture decisions: 6",
+      "message": "Architecture decisions: 7",
       "path": null
     },
     {

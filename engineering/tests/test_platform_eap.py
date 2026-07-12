@@ -91,7 +91,7 @@ def test_registry_cli_show_outputs_record_by_id(capsys):
     assert "# Registry Record: svc-pihole-dns" in output
     assert "Path: registry/records/services/pihole-dns.yaml" in output
     assert "name: Pi-hole DNS Service" in output
-    assert "host_dependencies: host-raspberry-pi-pihole" in output
+    assert "host_dependencies: host-beelink-mini-pc" in output
 
 
 def test_registry_cli_show_missing_record_returns_error(capsys):
@@ -468,3 +468,85 @@ def test_registry_validation_detects_circular_dependencies(tmp_path):
     )
     results = cli.validate_registry(records_root=records, schema_path=schema)
     assert any("Circular registry dependency detected" in r.message for r in results)
+
+
+def test_plat_13_6_required_governed_artifacts_exist():
+    required = [
+        "docs/governance/Service_Lifecycle.md",
+        "docs/governance/Production_Service_Cutover_Checklist.md",
+        "docs/architecture/decisions/ADR-007-Governed-Operations-and-Observability.md",
+        "docs/specifications/Platform_Operations_Observability_Specification.md",
+        "docs/architecture/Backup_Restore_Operations_Specification.md",
+        "docs/architecture/Controlled_Container_Update_Specification.md",
+        "docs/operations/Pi-hole_Service_Objectives.md",
+        "docs/operations/Incident_Response_Runbooks.md",
+    ]
+    missing = [path for path in required if not (cli.ROOT / path).is_file()]
+    assert not missing
+
+
+def test_plat_13_6_adr_is_indexed():
+    index = (cli.ROOT / "docs/architecture/Architecture_Decision_Log.md").read_text(encoding="utf-8")
+    adr = (cli.ROOT / "docs/architecture/decisions/ADR-007-Governed-Operations-and-Observability.md").read_text(encoding="utf-8")
+    assert "ADR-007 | Governed Operations and Observability" in index
+    assert "Option A" in adr
+    assert "Prometheus" in adr
+    assert "Grafana" in adr
+
+
+def test_plat_13_6_registry_represents_active_pihole_on_beelink_and_rollback():
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    beelink = records["host-beelink-mini-pc"]
+    pihole = records["svc-pihole-dns"]
+    rollback = records["svc-pihole-raspberry-pi-rollback"]
+    assert beelink["lifecycle_status"] == "active"
+    assert beelink["ip_address"] == "192.168.50.127"
+    assert beelink["mac_address"] == "78:55:36:09:D2:45"
+    assert pihole["host_dependencies"] == ["host-beelink-mini-pc"]
+    assert "svc-docker-engine" in pihole["service_dependencies"]
+    assert pihole["ip_address"] == "192.168.50.127"
+    assert rollback["lifecycle_status"] == "replacement"
+    assert rollback["ip_address"] == "192.168.50.67"
+
+
+def test_plat_13_6_planned_observability_registry_records_exist():
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    required = {
+        "svc-prometheus",
+        "svc-node-exporter",
+        "svc-cadvisor",
+        "svc-grafana",
+        "svc-platform-backup-recovery",
+        "svc-platform-alerting",
+        "svc-controlled-container-updates",
+    }
+    assert required.issubset(records)
+    assert all(records[record_id]["record_type"] == "planned_service" for record_id in required)
+    assert all(records[record_id]["lifecycle_status"] == "planned" for record_id in required)
+
+
+def test_plat_13_6_cutover_checklist_governs_dhcp_prerequisite():
+    checklist = (cli.ROOT / "docs/governance/Production_Service_Cutover_Checklist.md").read_text(encoding="utf-8")
+    lifecycle = (cli.ROOT / "docs/governance/Service_Lifecycle.md").read_text(encoding="utf-8")
+    assert "DHCP reservation" in checklist
+    assert "verified through reboot, lease renewal" in checklist
+    assert "stable network identity" in lifecycle
+
+
+def test_plat_13_6_documents_do_not_commit_secret_assignments():
+    suspicious = []
+    needles = [
+        "PIHOLE_PASSWORD=",
+        "GF_SECURITY_ADMIN_PASSWORD=",
+        "password:",
+        "token:",
+        "api_key:",
+    ]
+    for path in list((cli.ROOT / "docs").rglob("*.md")) + list((cli.ROOT / "registry").rglob("*.yaml")):
+        text = path.read_text(encoding="utf-8")
+        for needle in needles:
+            if needle in text:
+                suspicious.append(f"{path.relative_to(cli.ROOT)} contains {needle}")
+    assert not suspicious

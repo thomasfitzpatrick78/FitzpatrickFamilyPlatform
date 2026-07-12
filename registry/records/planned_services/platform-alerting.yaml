@@ -1,0 +1,26 @@
+id: svc-platform-alerting
+record_type: planned_service
+name: Platform Alerting
+description: Planned alerting capability for host, Docker, Pi-hole, backup, restore validation, and monitoring stack health.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: alerting
+unknowns: notification channel and first safe fired-alert test method TBD
+dependencies:
+  - host-beelink-mini-pc
+  - svc-prometheus
+  - svc-grafana
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-prometheus
+  - svc-grafana
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

@@ -1,22 +1,39 @@
 id: dev-beelink-mini-pc
 record_type: physical_device
 name: Beelink Mini PC
-description: Delivered Beelink Mini S target for future Platform infrastructure workloads after governed Day 0 / Day 1 onboarding.
+description: Beelink Mini S active Platform host for Beelink-hosted Pi-hole and future managed Platform services.
 owner: owner-family-platform
 location: loc-home
-lifecycle_status: planned
-health_status: planned
+lifecycle_status: active
+health_status: healthy
 monitoring_ready: true
 model: Beelink Mini S
 planned_role: Platform Node 001
 cpu: Intel N150
+cpu_topology: 4 cores / 4 threads
 memory: 16GB
+memory_reported_mb: 16384
+memory_frequency: 3200 MHz
 storage: 512GB
 power_input: 12V / 3A
-serial_number: TBD
+serial_number: BN1506GF80211
+bios_vendor: American Megatrends
+bios_version: MS2V001
+bios_build_date: 2025-04-08
+bios_boot_option_filter: UEFI only
+bios_csm_support: Enabled
+bios_secure_boot: Disabled / Not Active
+bios_fast_boot: Disabled
+bios_windows_boot_manager_present: true
+bios_decision: no BIOS configuration changes required
 arrival_status: delivered; pending physical setup and governed onboarding
-onboarding_status: pending Day 0 / Day 1 bring-up validation
-unknowns: serial number, operating system, BIOS settings, hostname, IP address, and network interface details TBD
+onboarding_status: production host baseline verified for PLAT-13.6 planning
+production_role: Platform Node 001
+hostname: beelink
+ip_address: 192.168.50.127
+mac_address: 78:55:36:09:D2:45
+network_identity: DHCP reservation required and verified as production prerequisite
+unknowns: future monitoring exporter placement and backup validation status TBD
 dependencies:
   - net-switch-2-5gbe-1
 network_dependencies:

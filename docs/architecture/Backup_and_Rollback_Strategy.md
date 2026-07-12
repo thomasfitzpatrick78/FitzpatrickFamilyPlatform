@@ -1,6 +1,6 @@
 # Backup and Rollback Strategy
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Planned
 
@@ -12,7 +12,7 @@
 
 This document defines backup and rollback readiness for future managed infrastructure changes.
 
-No backup automation or restore orchestration is implemented by PLAT-13.1.
+No backup automation or restore orchestration is implemented by PLAT-13.6 repository-only planning.
 
 ---
 
@@ -21,8 +21,8 @@ No backup automation or restore orchestration is implemented by PLAT-13.1.
 | Layer | Source of Truth | Readiness Expectation |
 |-------|-----------------|-----------------------|
 | Registry and documentation | Git repository | Commit reviewed registry changes before treating them as authoritative. |
-| Raspberry Pi Pi-hole | Current Raspberry Pi at `192.168.50.67` | Keep intact through migration and preserve as rollback. |
-| Future Beelink host | Planned Beelink registry records | Establish OS, storage, and backup target before service deployment. |
+| Beelink-hosted Pi-hole | `svc-pihole-dns` on `host-beelink-mini-pc` | Define backup, restore validation, and controlled update requirements before further production changes. |
+| Raspberry Pi Pi-hole rollback | Raspberry Pi at `192.168.50.67` | Keep intact as immediate rollback. |
 | Future containers | Future service records and deployment artifacts | Define persistent volume backup and restore before cutover. |
 | Network modernization | Network device registry records | Record physical topology and rollback cabling before changes. |
 
@@ -30,15 +30,14 @@ No backup automation or restore orchestration is implemented by PLAT-13.1.
 
 ## Pi-hole Rollback Position
 
-The Raspberry Pi should remain the rollback path for Pi-hole after migration.
+The Raspberry Pi remains the rollback path for Pi-hole after migration.
 
 Rollback readiness requires:
 
 - Current Raspberry Pi IP and SSH access recorded.
-- Current Pi-hole version state recorded.
-- No forced repair or update on the Raspberry Pi before migration.
-- DNS cutover steps documented before execution.
-- Post-cutover rollback trigger defined before execution.
+- No decommission or forced repair of Raspberry Pi in PLAT-13.6.
+- Beelink Pi-hole backup and restore validation defined before further production changes.
+- Rollback trigger and incident response documented.
 
 ---
 
@@ -59,4 +58,5 @@ Before implementing backup automation, define:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Updated backup and rollback position for active Beelink-hosted Pi-hole and Raspberry Pi rollback under PLAT-13.6. |
 | 1.0 | Initial backup and rollback strategy. |

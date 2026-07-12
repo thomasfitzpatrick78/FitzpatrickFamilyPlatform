@@ -2,7 +2,7 @@
 
 **Status:** PASS
 
-**Timestamp:** 2026-07-09T23:06:21.890729+00:00
+**Timestamp:** 2026-07-12T18:35:43.763341+00:00
 
 **Summary:** Repository validation completed with status PASS.
 
@@ -10,7 +10,7 @@
 
 - Errors: 0
 - Warnings: 0
-- Information: 57
+- Information: 66
 
 ## Results
 
@@ -46,13 +46,13 @@
 - INFO: Required file exists (`docs/standards/Development_Workflow.md`)
 - INFO: No governed-path cache or system artifacts detected
 - INFO: Registry schema exists (`registry/schema/infrastructure_registry_schema.yaml`)
-- INFO: Registry record explicitly tracks unknown or TBD fields: serial_number, unknowns (`registry/records/devices/beelink-mini-pc.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/devices/beelink-mini-pc.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, model (`registry/records/devices/family-nas.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, unknowns (`registry/records/devices/raspberry-pi-pihole.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, model, quantity (`registry/records/devices/tapo-hubs.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, serial_number (`registry/records/devices/toms-macbook-admin.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: protected_loads, unknowns (`registry/records/devices/ups-battery-backup.yaml`)
-- INFO: Registry record explicitly tracks unknown or TBD fields: admin_user_status, operating_system, unknowns (`registry/records/hosts/beelink-mini-pc.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/hosts/beelink-mini-pc.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, unknowns (`registry/records/hosts/raspberry-pi-pihole.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status (`registry/records/hosts/toms-macbook-admin.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, management_interface, model (`registry/records/network_devices/asus-mesh-node.yaml`)
@@ -61,13 +61,22 @@
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, model (`registry/records/network_devices/home-router.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/network_devices/network-switch-2-5gbe-1.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/network_devices/network-switch-2-5gbe-2.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: planned_port, unknowns (`registry/records/planned_services/cadvisor.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/controlled-container-updates.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/grafana.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/home-assistant.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/mqtt-broker.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/node-exporter.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/ollama-local-ai.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/platform-alerting.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/platform-backup-recovery.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/platform-monitoring-dashboard.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/planned_services/prometheus.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: service_interface, unknowns (`registry/records/planned_services/remote-management.yaml`)
-- INFO: Registry record explicitly tracks unknown or TBD fields: health_status, unknowns (`registry/records/services/pihole-dns.yaml`)
-- INFO: Registry validation passed for 27 records
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/docker-engine.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/pihole-dns.yaml`)
+- INFO: Registry record explicitly tracks unknown or TBD fields: health_status, unknowns (`registry/records/services/pihole-raspberry-pi-rollback.yaml`)
+- INFO: Registry validation passed for 36 records
 - INFO: Platform Digital Twin integrity validation passed
 - INFO: Current branch: main
 - INFO: Working tree clean outside generated engineering reports

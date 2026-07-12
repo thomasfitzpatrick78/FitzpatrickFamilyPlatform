@@ -1,6 +1,6 @@
 # Definition of Done
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -33,6 +33,8 @@ A work item is complete only when applicable criteria are satisfied:
 - Documentation synchronized.
 - Evidence reports generated.
 - Repository hygiene is clean.
+- Production service work includes lifecycle, cutover, backup, rollback, observability, and evidence expectations where applicable.
+- Production service promotion requires stable network identity such as a verified DHCP reservation where applicable.
 - No finance functionality is introduced.
 
 ---
@@ -54,4 +56,5 @@ A milestone is complete only when:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added production service lifecycle, cutover, and stable network identity completion expectations. |
 | 1.0 | Initial Platform Definition of Done. |

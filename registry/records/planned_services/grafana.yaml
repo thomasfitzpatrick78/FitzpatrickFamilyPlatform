@@ -1,0 +1,31 @@
+id: svc-grafana
+record_type: planned_service
+name: Grafana Operations Dashboard
+description: Planned Grafana service for governed Platform dashboards and alert visibility.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: dashboards and alert visibility
+planned_port: TCP 3000
+planned_storage: /platform/data/monitoring/grafana
+planned_compose_path: /platform/compose/monitoring
+access_boundary: trusted home network only
+secret_model: environment variables or approved secret mechanism; no committed credentials
+unknowns: dashboard inventory and initial credential mechanism TBD
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+  - svc-prometheus
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+  - svc-prometheus
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

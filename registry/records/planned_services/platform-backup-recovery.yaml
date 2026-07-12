@@ -1,0 +1,25 @@
+id: svc-platform-backup-recovery
+record_type: planned_service
+name: Platform Backup and Recovery
+description: Planned backup, checksum, restore-validation, retention, and reporting capability for Pi-hole and monitoring.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: backup and recovery operations
+planned_paths: /platform/backups, /platform/scripts/backup, /platform/scripts/restore, /platform/scripts/validation
+unknowns: off-host backup target, restore-validation cadence, and reporting format TBD
+dependencies:
+  - host-beelink-mini-pc
+  - svc-pihole-dns
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-pihole-dns
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

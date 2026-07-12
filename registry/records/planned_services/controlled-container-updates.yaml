@@ -1,0 +1,27 @@
+id: svc-controlled-container-updates
+record_type: planned_service
+name: Controlled Container Updates
+description: Planned governed production container update process for version pinning, digest recording, backup, validation, observation, and rollback.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: update governance
+automation_policy: no unattended production updates in this milestone
+unknowns: image inventory, digest source, and update evidence format TBD
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+  - svc-platform-backup-recovery
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+  - svc-platform-backup-recovery
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

@@ -1,6 +1,6 @@
 # Network Topology Model
 
-**Document Version:** 1.1
+**Document Version:** 1.3
 
 **Status:** Active
 
@@ -47,8 +47,11 @@ Frontier ONT
   -> ASUS Mesh Router Primary
       -> ASUS Mesh Node
       -> TP-Link TL-SG108S-M2 Switch 1
-          -> Raspberry Pi Pi-hole Host
           -> Beelink Mini PC Host
+              -> Docker Engine
+                  -> Pi-hole DNS Service
+                  -> Planned monitoring services
+          -> Raspberry Pi Pi-hole Rollback Host
       -> TP-Link TL-SG108S-M2 Switch 2
           -> Family NAS
       -> Tapo Hubs
@@ -100,6 +103,7 @@ WS-12.4 does not implement network discovery, live topology generation, monitori
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Updated represented topology for Beelink-hosted Pi-hole, Docker, planned monitoring, and Raspberry Pi rollback under PLAT-13.6. |
 | 1.2 | Updated delivered TP-Link switch and CyberPower CP850PFCLCD labels for PLAT-13.3 planning context. |
 | 1.1 | Updated validation guidance for WS-12.5 Platform Digital Twin integrity checks. |
 | 1.0 | Initial WS-12.4 network topology model. |
