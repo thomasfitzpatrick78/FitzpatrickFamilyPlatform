@@ -1,6 +1,6 @@
 # Milestone 13 - Infrastructure Operations Readiness
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 
 **Status:** Planned
 
@@ -192,6 +192,15 @@ EO-13.1 is ready for Architecture Gatekeeper review when:
 - Existing PLAT-13.6.3A and PLAT-13.6.3B working-tree changes are preserved.
 - PLAT-13.6 and Milestone 13 remain open.
 
+Milestone 13 closeout preparation is ready for Architecture Gatekeeper review when:
+
+- Milestone 13 Closeout Package records Engineering Organization, Shared Platform, and customer-facing application improvement.
+- Engineering Organization Evolution is complete in the closeout package.
+- Capability maturity observations are evidence-based and do not assign unsupported scores.
+- Grafana, cAdvisor, Container Metrics, persistence, reboot validation, and Docker daemon metrics unresolved states are explicit.
+- Milestone 13 Transition Package carries EO, PLAT, and FFFA planning into Milestone 14.
+- No tag, live infrastructure change, PLAT-13.6 closeout, or Milestone 13 closeout is claimed before final approval.
+
 ---
 
 ## Related Documents
@@ -211,6 +220,8 @@ EO-13.1 is ready for Architecture Gatekeeper review when:
 - [Engineering Principles](../../governance/Engineering_Principles.md)
 - [Milestone Closeout Template](../templates/Milestone_Closeout_Template.md)
 - [Milestone Transition Package Template](../templates/Milestone_Transition_Package_Template.md)
+- [Milestone 13 Closeout Package](Milestone_13_Closeout_Package.md)
+- [Milestone 13 Transition Package](Milestone_13_Transition_Package.md)
 
 ---
 
@@ -218,6 +229,7 @@ EO-13.1 is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Added Milestone 13 closeout and transition package review criteria. |
 | 1.8 | Added EO-13.1 governance evolution, closeout preparation, and Milestone 14 transition alignment while keeping PLAT-13.6 and Milestone 13 open. |
 | 1.7 | Added PLAT-13.6.3B governed Docker container metrics replacement preparation. |
 | 1.6 | Added PLAT-13.6.3A Docker 29 container metrics compatibility correction scope. |

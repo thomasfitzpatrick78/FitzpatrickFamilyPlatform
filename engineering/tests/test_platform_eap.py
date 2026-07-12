@@ -1224,3 +1224,71 @@ def test_eo_13_1_repository_only_scope_does_not_add_runtime_artifacts_or_secrets
         if "real_password" in text or "private_key" in text or "api_token=" in text:
             suspicious.append(str(path.relative_to(cli.ROOT)))
     assert not suspicious
+
+
+def test_milestone_13_closeout_package_is_prepared_not_closed():
+    closeout = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Closeout_Package.md")
+    milestone = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Infrastructure_Operations_Readiness.md")
+    assert "**Status:** Prepared for Architecture Gatekeeper review" in closeout
+    assert "It does not create a tag, close PLAT-13.6, close Milestone 13, or authorize live infrastructure work." in closeout
+    assert "Milestone 13 Closeout Package" in milestone
+    assert "Milestone 13 Transition Package" in milestone
+    assert "No tag, live infrastructure change, PLAT-13.6 closeout, or Milestone 13 closeout is claimed" in milestone
+
+
+def test_milestone_13_closeout_records_engineering_investment_rule_evidence():
+    closeout = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Closeout_Package.md")
+    assert "Engineering Investment Rule Evidence" in closeout
+    assert "Engineering Organization improvement" in closeout
+    assert "Shared Platform improvement" in closeout
+    assert "Customer-facing application improvement" in closeout
+    assert "Product Backlog `FFFA-PB-001`" in closeout
+    assert "not FFFA implementation in this repository" in closeout
+
+
+def test_milestone_13_closeout_has_engineering_organization_evolution_sections():
+    closeout = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Closeout_Package.md")
+    required = [
+        "AI Roles Introduced or Refined",
+        "Engineering-Process Improvements",
+        "Governance Artifacts Added or Changed",
+        "Repeated Practices Evaluated for Promotion",
+        "Reusable Architecture or Delivery Patterns",
+        "Capability Maturity Movement",
+        "Engineering Effectiveness Observations",
+        "Lessons Learned",
+        "Implications for the Next Milestone",
+    ]
+    for heading in required:
+        assert f"### {heading}" in closeout
+    assert "No numeric maturity score is assigned" in closeout
+
+
+def test_milestone_13_closeout_preserves_unresolved_operational_state():
+    closeout = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Closeout_Package.md")
+    transition = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Transition_Package.md")
+    combined = closeout + "\n" + transition
+    required = [
+        "Grafana | Deployed for validation, but full dashboard validation is incomplete.",
+        "cAdvisor | Active but degraded",
+        "Repository-prepared only",
+        "Grafana persistence | Incomplete.",
+        "Final reboot validation | Incomplete.",
+        "Docker daemon metrics | Deferred and disabled.",
+        "PLAT-13.6.3B live completion | Not claimed.",
+    ]
+    for text in required:
+        assert text in combined
+    assert "live container-metrics replacement" in closeout
+    assert "cAdvisor retirement" in closeout
+
+
+def test_milestone_13_transition_package_sets_milestone_14_eo_plat_fffa_plan():
+    transition = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Transition_Package.md")
+    assert "**Status:** Prepared for Architecture Gatekeeper review" in transition
+    assert "EO-14.1 AI Role Catalog Operationalization" in transition
+    assert "Complete governed Container Metrics replacement" in transition
+    assert "Select customer-facing capability candidate" in transition
+    assert "FFFA candidate absence blocks full Milestone 14 Engineering Investment Rule traceability" in transition
+    assert "Milestone 13 tag creation" in transition
+    assert "Any live infrastructure action" in transition
