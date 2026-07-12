@@ -1,0 +1,52 @@
+id: svc-otel-docker-stats
+record_type: planned_service
+name: OpenTelemetry Docker Stats Collector
+description: Implementation-ready OpenTelemetry Collector Contrib service for Docker Stats metrics through the restricted Docker API proxy.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: internal Prometheus-format metrics endpoint
+planned_host: beelink
+planned_compose_path: /platform/compose/monitoring
+repository_compose_path: platform/compose/monitoring/compose.yaml
+repository_config_path: platform/compose/monitoring/otel/config.yaml
+repository_documentation: platform/compose/monitoring/otel/README.md
+planned_network: platform-monitoring
+host_published_port: none
+internal_port: TCP 9464
+health_port: TCP 13133 internal only
+image: otel/opentelemetry-collector-contrib:0.156.0
+image_digest: pending governed live pull
+version_source: official OpenTelemetry Collector release v0.156.0
+access_boundary: Prometheus scrapes internal Docker network endpoint only
+socket_model: no Docker or containerd socket mount; Docker API access only through svc-docker-api-proxy
+receiver: docker_stats
+collection_interval: 15s
+metadata_allowlist: container name from receiver resource attributes plus Docker Compose project, service, and container number labels
+metadata_denied: environment variables, command arguments, raw metadata, secrets, and broad labels
+exporter: internal Prometheus exporter on otel-docker-stats:9464
+security_classification: privileged telemetry integration dependent on restricted proxy boundary
+resource_limits: 256 MiB memory limit; 0.50 CPU
+implementation_status: repository-prepared; not deployed; not active; not healthy; live metric inventory required
+evidence_required: Docker 29 compatibility, emitted metric names, labels, Pi-hole identity, CPU, memory, network, block I/O, uptime or state if available, sensitive metadata review
+runbook: docs/operations/Docker_Container_Metrics_Replacement_Runbook.md
+evidence_template: docs/operations/Docker_Container_Metrics_Replacement_Evidence_Template.md
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+  - svc-docker-api-proxy
+  - svc-prometheus
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+  - svc-docker-api-proxy
+  - svc-prometheus
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

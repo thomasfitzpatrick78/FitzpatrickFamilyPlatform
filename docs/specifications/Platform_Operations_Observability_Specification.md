@@ -1,6 +1,6 @@
 # Platform Operations and Observability Specification
 
-**Document Version:** 1.3
+**Document Version:** 1.6
 
 **Status:** Planned
 
@@ -12,7 +12,7 @@
 
 ## Purpose
 
-This specification defines the governed target state for Platform operations and observability, records the verified PLAT-13.6.2 Metrics Foundation deployment, and records the repository-prepared PLAT-13.6.3 Operations Dashboard package.
+This specification defines the governed target state for Platform operations and observability, records the verified PLAT-13.6.2 Metrics Foundation deployment, records the PLAT-13.6.3 Operations Dashboard package, records the PLAT-13.6.3A Docker 29/containerd container metrics compatibility correction, records the PLAT-13.6.3B repository-prepared Docker metrics replacement, and aligns the implementation to the technology-neutral Container Metrics capability.
 
 It does not execute live Grafana deployment, backups, alerts, scripts, timers, restore validation, or controlled updates.
 
@@ -33,8 +33,10 @@ Trusted Home Network
   |           |     |
   |           |     |-- Pi-hole container (active production)
   |           |     |-- Prometheus (active)
-  |           |     |-- Grafana (planned)
+  |           |     |-- Grafana (validation incomplete)
   |           |     |-- cAdvisor (active)
+  |           |     |-- Docker API proxy (planned)
+  |           |     |-- OTel Docker Stats Collector (planned)
   |           |
   |           |-- Node Exporter (active)
   |           |-- Backup / restore / validation scripts (planned)
@@ -56,6 +58,9 @@ Trusted Home Network
 | Administration | SSH with Ed25519 key authentication |
 | Docker Engine | Installed, enabled, active after reboot |
 | Docker Compose plugin | Installed |
+| Docker storage driver | `overlayfs` |
+| Docker driver type | `io.containerd.snapshotter.v1` |
+| cgroup driver/version | `systemd` / cgroup v2 |
 | Platform root | `/platform` |
 | Production Pi-hole container | `pihole` |
 | Pi-hole Compose path | `/platform/compose/pihole` |
@@ -75,12 +80,26 @@ Proton VPN on the MacBook intentionally uses Proton DNS while connected. That op
 |-----------|----------------|-------|
 | Prometheus | Metrics collection, retention, target health | Active |
 | Node Exporter | Beelink/Linux host metrics | Active |
-| cAdvisor | Docker and container metrics | Active |
-| Grafana | Governed dashboards and future alert visibility | Implementation-ready |
+| cAdvisor | Host/cgroup metrics; Docker-container discovery degraded under Docker 29/containerd | Active degraded |
+| Grafana | Governed dashboards and future alert visibility | Deployed for validation; closeout incomplete |
+| Docker API proxy | Restricted Docker API boundary for Docker Stats collection | Repository-prepared; not deployed |
+| OTel Docker Stats Collector | Docker Stats receiver and internal Prometheus-format endpoint | Repository-prepared; not deployed |
 | Pi-hole checks | DNS, admin, health, and customer-facing service validation | Planned |
 | Backup scripts | Backup, checksum, report, and retention workflow | Planned |
 | Restore validation | Isolated restore proof and reporting | Planned |
 | Controlled update workflow | Version, digest, backup, deployment, observation, rollback | Planned |
+
+---
+
+## Container Metrics Capability Abstraction
+
+Container Metrics is the governed capability. Docker is the current implementation context for Milestone 13.
+
+Future implementations may include Podman, containerd, Kubernetes, Incus, or LXC when requirements, architecture, security boundaries, collectors, and live evidence support them.
+
+Governed consumers, including Grafana and future customer-facing applications, consume Container Metrics through Prometheus rather than runtime-specific APIs. Runtime-specific collectors, proxies, receivers, and scrape jobs are replaceable implementation components.
+
+EO-13.1 creates no live architecture change, no new runtime adapter service, and no deployment authorization.
 
 ---
 
@@ -124,6 +143,7 @@ Implementation decisions:
 - Image digests were captured during live evidence after images were pulled.
 - The runtime `.env` is created only on the Beelink and is not committed.
 - Prometheus targets, host metrics, container metrics, persistence, reboot behavior, and Pi-hole non-regression are verified.
+- PLAT-13.6.3A supersedes the container-metric completeness claim: the cAdvisor endpoint is active and scrapeable, but Docker-container discovery is degraded under Docker 29/containerd and must not be used for container-level dashboard claims until corrected.
 
 Explicitly out of scope for PLAT-13.6.2:
 
@@ -143,7 +163,7 @@ Explicitly out of scope for PLAT-13.6.2:
 
 ## PLAT-13.6.3 Operations Dashboard Implementation Package
 
-PLAT-13.6.3 prepares the repository-managed Grafana dashboard layer without executing live deployment.
+PLAT-13.6.3 prepared the repository-managed Grafana dashboard layer. Live validation has begun, but PLAT-13.6.3 closeout is blocked by the PLAT-13.6.3A Docker 29/containerd container metrics compatibility finding.
 
 Approved components:
 
@@ -177,7 +197,7 @@ Approved implementation decisions:
 - Grafana admin password is supplied only through the Beelink-local `.env` file.
 - `.env.example` contains placeholders only.
 - Grafana dashboard refresh interval is 30 seconds.
-- Grafana digest is captured only after the governed live pull.
+- Grafana digest is captured only after the governed live pull and final closeout evidence remains pending.
 
 Dashboard inventory:
 
@@ -186,13 +206,59 @@ Dashboard inventory:
 - Pi-hole Operations Dashboard.
 - Metrics Foundation Health Dashboard.
 
-Explicitly out of scope for PLAT-13.6.3 repository preparation:
+Explicitly out of scope for PLAT-13.6.3 closeout before PLAT-13.6.3A review:
 
-- Live Grafana deployment before Architecture Gatekeeper approval.
+- Claiming Grafana persistence or reboot validation complete.
+- Claiming Docker-container dashboard accuracy complete.
 - Alert rules, notification delivery, backups, restore validation, or automated updates.
 - Pi-hole, Prometheus, Node Exporter, cAdvisor, Docker, router, ASUS router, Raspberry Pi, or DNS configuration changes.
 - Pi-hole query counts, blocked percentages, domain rankings, client analytics, or other application metrics that are not exported to Prometheus.
 - Milestone closeout, release tagging, or production claims for Grafana.
+
+---
+
+## PLAT-13.6.3A Docker 29 Container Metrics Compatibility Correction
+
+Live dashboard validation found that cAdvisor remains scrapeable but does not provide reliable Docker-container identity under Docker Engine `29.6.1` with driver type `io.containerd.snapshotter.v1` and cgroup v2.
+
+Governed finding:
+
+- Docker 29 and the containerd-backed image store remain the approved Platform baseline.
+- cAdvisor target up is not equivalent to complete Docker-container observability.
+- Docker-container resource dashboards must not count host/systemd cgroups as Docker containers.
+- Pi-hole container resource metrics are unavailable pending a compatible container metrics source.
+- Persistence and reboot validation for PLAT-13.6.3 remain paused until dashboard accuracy is corrected and reviewed.
+
+Rejected changes:
+
+- Docker storage backend migration.
+- Docker downgrade.
+- Disabling the containerd image store.
+- Legacy overlay2 migration.
+- Docker data deletion.
+- Pi-hole recreation or modification.
+
+Candidate direction:
+
+- Preserve cAdvisor for limited host/cgroup scrape visibility.
+- Add a planned Docker 29/containerd-compatible container metrics source after Architecture Gatekeeper approval and live proof.
+- Keep Prometheus as the central governed metrics data source.
+
+## PLAT-13.6.3B Docker Container Metrics Replacement Preparation
+
+PLAT-13.6.3B prepares the approved A3 replacement architecture without live deployment:
+
+- Docker Engine 29.6.1 and the containerd-backed image store remain the governed baseline.
+- Node Exporter remains the authoritative host metrics source.
+- cAdvisor remains active/degraded and non-authoritative for named Docker-container metrics.
+- `tecnativa/docker-socket-proxy:0.4.2` is prepared as the only service with Docker socket access.
+- `otel/opentelemetry-collector-contrib:0.156.0` is prepared with the Docker Stats receiver.
+- OTel connects to `http://docker-api-proxy:2375` and has no Docker or containerd socket mount.
+- OTel exposes an internal Prometheus-format endpoint on `otel-docker-stats:9464`.
+- Prometheus remains the single metrics store and Grafana datasource.
+- Docker daemon Prometheus metrics remain deferred and disabled.
+
+Required live proof includes proxy denial behavior, emitted metric names, metadata inventory, Pi-hole identity, CPU, memory, network, block I/O, uptime/state where available, sensitive-data exclusion, persistence, reboot behavior, and Pi-hole non-regression.
 
 ---
 
@@ -203,9 +269,11 @@ Explicitly out of scope for PLAT-13.6.3 repository preparation:
 | Pi-hole DNS | TCP/UDP 53 | Home network production DNS |
 | Pi-hole admin | TCP 8080 | Trusted home network only |
 | Prometheus | TCP 9090 | Trusted home network only |
-| Grafana | TCP 3000 | Trusted home network only when implemented; planned binding `192.168.50.127:3000` |
+| Grafana | TCP 3000 | Trusted home network only; validation endpoint `192.168.50.127:3000` |
 | Node Exporter | TCP 9100 | Prometheus internal Docker network only for PLAT-13.6.2 |
 | cAdvisor | TCP 8080 internal only | Must avoid Pi-hole admin conflict; no host-published port for PLAT-13.6.2 |
+| Docker API proxy | TCP 2375 internal only | Restricted Docker API proxy; no host-published port |
+| OTel Docker Stats | TCP 9464 internal only | Prometheus scrape endpoint; no host-published port |
 
 No monitoring interface may be exposed to the Internet.
 
@@ -399,7 +467,9 @@ PLAT-13.6.2 operational closeout is complete when:
 ## Related Documents
 
 - [Platform Operations Dashboard](Platform_Operations_Dashboard.md)
-
+- [Docker 29 Container Metrics Compatibility Assessment](../architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md)
+- [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
+- [Docker Container Metrics Replacement Runbook](../operations/Docker_Container_Metrics_Replacement_Runbook.md)
 - [ADR-007 - Governed Operations and Observability](../architecture/decisions/ADR-007-Governed-Operations-and-Observability.md)
 - [Platform Service Lifecycle](../governance/Service_Lifecycle.md)
 - [Production Service Cutover Checklist](../governance/Production_Service_Cutover_Checklist.md)
@@ -415,6 +485,9 @@ PLAT-13.6.2 operational closeout is complete when:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Added EO-13.1 technology-neutral Container Metrics capability abstraction. |
+| 1.5 | Added PLAT-13.6.3B restricted Docker API proxy and OTel Docker Stats preparation. |
+| 1.4 | Recorded PLAT-13.6.3A Docker 29/containerd container metrics compatibility correction. |
 | 1.3 | Added PLAT-13.6.3 Operations Dashboard implementation-ready package. |
 | 1.2 | Recorded PLAT-13.6.2 live Metrics Foundation validation and active service state. |
 | 1.1 | Added PLAT-13.6.2 Metrics Foundation implementation package, scope boundaries, and readiness criteria. |

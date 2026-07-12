@@ -26,7 +26,7 @@ repository_compose_path: platform/compose/monitoring
 repository_config_path: platform/compose/monitoring/prometheus/prometheus.yml
 implementation_status: PLAT-13.6.2 live deployment, target validation, persistence validation, reboot validation, and Pi-hole non-regression complete
 access_boundary: trusted home network only
-scrape_targets: prometheus:9090, node-exporter:9100, cadvisor:8080
+scrape_targets: prometheus:9090, node-exporter:9100, cadvisor:8080; otel-docker-stats:9464 prepared but not live-validated
 persistence_validation: passed after Prometheus-only container recreation
 reboot_validation: passed
 evidence: docs/operations/Metrics_Foundation_Implementation_Evidence.md

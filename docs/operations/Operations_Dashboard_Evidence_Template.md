@@ -2,7 +2,7 @@
 
 **Document Version:** 1.0
 
-**Status:** Template; not executed
+**Status:** Template; PLAT-13.6.3A compatibility correction pending
 
 **Milestone:** Milestone 13
 
@@ -23,6 +23,7 @@
 | Beelink IP | TBD |
 | Grafana endpoint | TBD |
 | Result | TBD |
+| Architecture Gatekeeper decision | TBD |
 
 ---
 
@@ -83,6 +84,37 @@
 | Docker and Container Dashboard | TBD | TBD | TBD | TBD |
 | Pi-hole Operations Dashboard | TBD | TBD | TBD | TBD |
 | Metrics Foundation Health Dashboard | TBD | TBD | TBD | TBD |
+
+---
+
+## Docker 29 Compatibility Evidence
+
+| Field | Evidence |
+|-------|----------|
+| Docker version | TBD |
+| Docker storage driver | TBD |
+| Docker DriverStatus driver-type | TBD |
+| Docker root | TBD |
+| cgroup driver | TBD |
+| cgroup version | TBD |
+| cAdvisor version | `gcr.io/cadvisor/cadvisor:v0.49.1` |
+| cAdvisor target up | TBD |
+| cAdvisor compatibility result | TBD |
+| Docker container discovery result | TBD |
+| Container label availability | TBD |
+| Host/systemd cgroup visibility | TBD |
+| Dashboard accuracy result | TBD |
+| Blocked gate | TBD |
+| Accepted stop point | TBD |
+
+Diagnostic queries:
+
+```text
+up{job="cadvisor"}
+count(container_last_seen)
+topk(20, container_last_seen)
+count by (name) (container_last_seen{name=~".*(pihole|prometheus|node-exporter|cadvisor|grafana).*"})
+```
 
 ---
 

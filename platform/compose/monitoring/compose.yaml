@@ -14,6 +14,8 @@ services:
       GF_AUTH_ANONYMOUS_ENABLED: "false"
       GF_SERVER_ROOT_URL: "http://${MONITORING_BIND_IP:-192.168.50.127}:3000/"
       GF_INSTALL_PLUGINS: ""
+      GF_PLUGINS_PREINSTALL_DISABLED: "true"
+      GF_PLUGINS_PREINSTALL_AUTO_UPDATE: "false"
     volumes:
       - /platform/data/monitoring/grafana:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
@@ -50,12 +52,93 @@ services:
     depends_on:
       - node-exporter
       - cadvisor
+      - otel-docker-stats
     user: "65534:65534"
     read_only: true
     cap_drop:
       - ALL
     security_opt:
       - no-new-privileges:true
+
+  docker-api-proxy:
+    image: tecnativa/docker-socket-proxy:0.4.2
+    container_name: docker-api-proxy
+    restart: unless-stopped
+    expose:
+      - "2375"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - monitoring
+    environment:
+      LOG_LEVEL: "info"
+      AUTH: "0"
+      BUILD: "0"
+      COMMIT: "0"
+      CONFIGS: "0"
+      CONTAINERS: "1"
+      DISTRIBUTION: "0"
+      EVENTS: "0"
+      EXEC: "0"
+      GRPC: "0"
+      IMAGES: "0"
+      INFO: "1"
+      NETWORKS: "0"
+      NODES: "0"
+      PING: "1"
+      PLUGINS: "0"
+      POST: "0"
+      SECRETS: "0"
+      SERVICES: "0"
+      SESSION: "0"
+      SWARM: "0"
+      SYSTEM: "0"
+      TASKS: "0"
+      VERSION: "1"
+      VOLUMES: "0"
+      ALLOW_START: "0"
+      ALLOW_STOP: "0"
+      ALLOW_RESTARTS: "0"
+      ALLOW_PAUSE: "0"
+      ALLOW_UNPAUSE: "0"
+    read_only: true
+    tmpfs:
+      - /run
+      - /tmp
+      - /var/lib/haproxy
+    privileged: false
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 128m
+    cpus: "0.25"
+
+  otel-docker-stats:
+    image: otel/opentelemetry-collector-contrib:0.156.0
+    container_name: otel-docker-stats
+    restart: unless-stopped
+    command:
+      - "--config=/etc/otelcol-contrib/config.yaml"
+    expose:
+      - "9464"
+      - "13133"
+    volumes:
+      - ./otel/config.yaml:/etc/otelcol-contrib/config.yaml:ro
+    networks:
+      - monitoring
+    depends_on:
+      - docker-api-proxy
+    read_only: true
+    tmpfs:
+      - /tmp
+    privileged: false
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    cpus: "0.50"
 
   node-exporter:
     image: prom/node-exporter:v1.8.2

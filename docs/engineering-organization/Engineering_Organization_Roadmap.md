@@ -1,6 +1,6 @@
 # Engineering Organization Roadmap
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -10,7 +10,7 @@
 
 ## Purpose
 
-This document defines the initial roadmap for the Engineering Organization product.
+This document defines the roadmap for the Engineering Organization governed capability.
 
 ---
 
@@ -19,6 +19,8 @@ This document defines the initial roadmap for the Engineering Organization produ
 | Horizon | Theme | Outcomes |
 |---------|-------|----------|
 | EO-13.0 | Organization foundation | Vision, roles, capability model, delivery model, workspace model, backlog, roadmap, memory concept, and pattern library starter. |
+| EO-13.1 | Governance evolution | Manifesto, AI role catalog, Engineering Investment Rule, closeout evolution, maturity model, principles, and milestone transition templates. |
+| EO-14 | Operationalization planning | AI role operationalization, Execution Agent specification, governed automation framework, Operations Analyst planning, metrics, maturity assessment, and approval model. |
 | Near Term | Evidence and review hardening | Architecture review checklist, workstream closeout evidence, and impact assessment usage in milestone planning. |
 | Mid Term | Practice promotion | Promote proven repeated workstream practices into governed standards, templates, or validators. |
 | Later | Cross-repository operating model | Evaluate which Engineering Organization practices should become portfolio-level or reusable across repositories. |
@@ -31,12 +33,16 @@ This document defines the initial roadmap for the Engineering Organization produ
 - Evidence outweighs opinion.
 - Govern proven practices, not speculative ones.
 - Customer value remains visible in every milestone.
+- The Engineering Investment Rule is evaluated at milestone planning, review, and closeout.
+- Execution Agent and Operations Analyst remain planned roles until future governance activates them.
 
 ---
 
 ## Related Documents
 
 - [Portfolio Strategy](Portfolio_Strategy.md)
+- [Engineering Organization Manifesto](Engineering_Organization_Manifesto.md)
+- [Engineering Organization Capability Maturity Model](Engineering_Organization_Capability_Maturity_Model.md)
 - [Engineering Organization Backlog](Engineering_Organization_Backlog.md)
 - [Architecture Pattern Library](Architecture_Pattern_Library.md)
 - [Engineering Lifecycle](../governance/Engineering_Lifecycle.md)
@@ -47,4 +53,5 @@ This document defines the initial roadmap for the Engineering Organization produ
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-13.1 governance evolution and EO-14 operationalization planning. |
 | 1.0 | Initial Engineering Organization roadmap. |

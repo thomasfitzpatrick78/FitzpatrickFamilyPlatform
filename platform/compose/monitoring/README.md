@@ -1,8 +1,8 @@
 # Platform Monitoring Compose Template
 
-**Status:** Active PLAT-13.6.2 Metrics Foundation configuration.
+**Status:** Active PLAT-13.6.2 Metrics Foundation configuration with PLAT-13.6.3B implementation-ready container metrics replacement.
 
-This directory contains repository-managed configuration for the active Metrics Foundation and the PLAT-13.6.3 implementation-ready Grafana Operations Dashboard package.
+This directory contains repository-managed configuration for the active Metrics Foundation, the PLAT-13.6.3 Grafana Operations Dashboard package, and the PLAT-13.6.3B restricted Docker API proxy plus OpenTelemetry Docker Stats Collector preparation.
 
 Live deployment evidence is recorded in [Metrics Foundation Implementation Evidence](../../../docs/operations/Metrics_Foundation_Implementation_Evidence.md).
 
@@ -15,7 +15,9 @@ Live deployment evidence is recorded in [Metrics Foundation Implementation Evide
 | Grafana | `grafana/grafana:13.1.0` | Governed dashboards provisioned from repository-managed files; implementation-ready, not yet deployed |
 | Prometheus | `prom/prometheus:v2.55.1` | Metrics collection, local retention, target health |
 | Node Exporter | `prom/node-exporter:v1.8.2` | Beelink/Linux host metrics |
-| cAdvisor | `gcr.io/cadvisor/cadvisor:v0.49.1` | Docker and container resource metrics |
+| cAdvisor | `gcr.io/cadvisor/cadvisor:v0.49.1` | Active/degraded host and cgroup scrape target; not authoritative for named Docker-container metrics under Docker 29/containerd |
+| Docker API proxy | `tecnativa/docker-socket-proxy:0.4.2` | Implementation-ready restricted Docker API proxy; not deployed |
+| OTel Docker Stats Collector | `otel/opentelemetry-collector-contrib:0.156.0` | Implementation-ready Docker Stats receiver and internal Prometheus endpoint; not deployed |
 
 Image digests were recorded during live Gate 9 evidence capture after images were pulled on the Beelink.
 
@@ -25,10 +27,12 @@ Image sources:
 - `prom/prometheus` is the official Prometheus image published by the Prometheus project on Docker Hub.
 - `prom/node-exporter` is the official Node Exporter image published by the Prometheus project on Docker Hub.
 - `gcr.io/cadvisor/cadvisor` is the cAdvisor image published by the cAdvisor project.
+- `tecnativa/docker-socket-proxy` is the selected restricted Docker API proxy image from the Tecnativa project.
+- `otel/opentelemetry-collector-contrib` is the selected OpenTelemetry Collector Contrib image for the Docker Stats receiver.
 
 No image uses `latest`, rolling, prerelease, `main`, `master`, `edge`, or another uncontrolled tag.
 
-Grafana digest capture is intentionally deferred until the governed live pull on the Beelink. Future image updates must follow the controlled update workflow; unattended updates are not approved.
+Grafana, Docker API proxy, and OTel Collector digest capture is intentionally deferred until governed live pulls on the Beelink. Future image updates must follow the controlled update workflow; unattended updates are not approved.
 
 ---
 
@@ -40,9 +44,18 @@ Grafana digest capture is intentionally deferred until the governed live pull on
 - Node Exporter is exposed only on the internal `platform-monitoring` Docker network.
 - cAdvisor is exposed only on the internal `platform-monitoring` Docker network.
 - cAdvisor is not published on host TCP `8080`, which belongs to Pi-hole admin.
+- Docker API proxy exposes only internal TCP `2375` on `platform-monitoring`; it has no host-published port.
+- OTel Docker Stats exposes only internal TCP `9464` and health TCP `13133` on `platform-monitoring`; it has no host-published port.
+- OTel does not mount the Docker socket. Docker socket access is restricted to the proxy with a read-only mount.
 - Grafana joins the existing `platform-monitoring` Docker network and reads Prometheus at `http://prometheus:9090`.
-- Grafana must not query Node Exporter or cAdvisor directly.
+- Grafana must not query Node Exporter, cAdvisor, Docker API proxy, or OTel directly.
 - No monitoring interface is approved for Internet exposure.
+
+Grafana plugin preinstall and plugin auto-update are disabled through `GF_PLUGINS_PREINSTALL_DISABLED=true` and `GF_PLUGINS_PREINSTALL_AUTO_UPDATE=false`.
+
+cAdvisor is active and scrapeable, but PLAT-13.6.3A records degraded Docker-container discovery under Docker 29.6.1 with the containerd-backed image store. Dashboards must not treat cAdvisor target health as complete Docker-container observability.
+
+PLAT-13.6.3B prepares OTel Docker Stats through a restricted Docker API proxy. The replacement remains implementation-ready only until live proxy denial proof, OTel metric inventory, Pi-hole identity proof, persistence validation, and reboot validation pass.
 
 ---
 
@@ -91,6 +104,8 @@ PLAT-13.6.3 provisions:
 
 Dashboards refresh every 30 seconds and use the provisioned Prometheus datasource. Manual dashboard edits in the Grafana UI are not authoritative.
 
+Do not place `.gitkeep` files in scanned Grafana provisioning subdirectories. Empty provisioning directories such as `alerting` or `plugins` should be created live only when an approved valid provisioning file is needed.
+
 ---
 
 ## cAdvisor Privilege Review
@@ -113,6 +128,18 @@ Residual risk: cAdvisor receives sensitive host visibility. It is not published 
 
 ---
 
+## Docker API Proxy and OTel Privilege Review
+
+| Component | Boundary | Required reason | Residual risk |
+|-----------|----------|-----------------|---------------|
+| Docker API proxy | Read-only `/var/run/docker.sock` mount, internal network only, no host port | Allows Docker Stats receiver read/list/inspect/stat access without mounting the socket into OTel | Docker socket access can still imply host-control risk if proxy policy fails |
+| OTel Docker Stats Collector | HTTP access only to `docker-api-proxy:2375`, no direct socket, internal Prometheus endpoint only | Collects Docker container metrics and exports them to Prometheus | Receiver maturity is alpha; exact metrics and labels require live proof |
+| Prometheus | Scrapes `otel-docker-stats:9464` internally | Keeps Prometheus as the single metrics store and Grafana datasource | New target must not be treated as healthy before live deployment |
+
+Proxy allowed capability groups are limited to `PING`, `VERSION`, `INFO`, and `CONTAINERS`. Mutation, management, auth, image, network, volume, service, swarm, exec, secret, config, system, task, and POST surfaces are disabled.
+
+---
+
 ## Related Documents
 
 - [Metrics Foundation Runbook](../../../docs/operations/Metrics_Foundation_Runbook.md)
@@ -121,4 +148,8 @@ Residual risk: cAdvisor receives sensitive host visibility. It is not published 
 - [Operations Dashboard Runbook](../../../docs/operations/Operations_Dashboard_Runbook.md)
 - [Operations Dashboard Evidence Template](../../../docs/operations/Operations_Dashboard_Evidence_Template.md)
 - [Platform Operations Dashboard](../../../docs/specifications/Platform_Operations_Dashboard.md)
+- [Docker 29 Container Metrics Compatibility Assessment](../../../docs/architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Platform Operations and Observability Specification](../../../docs/specifications/Platform_Operations_Observability_Specification.md)
+- [Privileged Infrastructure Integration Standard](../../../docs/governance/Privileged_Infrastructure_Integration_Standard.md)
+- [Docker Container Metrics Replacement Runbook](../../../docs/operations/Docker_Container_Metrics_Replacement_Runbook.md)
+- [Docker Container Metrics Replacement Evidence Template](../../../docs/operations/Docker_Container_Metrics_Replacement_Evidence_Template.md)

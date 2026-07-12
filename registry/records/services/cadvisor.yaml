@@ -1,14 +1,14 @@
 id: svc-cadvisor
 record_type: service
 name: cAdvisor
-description: Active container metrics exporter for Docker and container health visibility.
+description: Active cAdvisor scrape target with degraded Docker-container discovery under Docker 29/containerd image store.
 owner: owner-family-platform
 location: loc-home
 lifecycle_status: active
-health_status: healthy
-monitoring_ready: true
-service_interface: container metrics exporter
-runtime_status: running and healthy after reboot validation
+health_status: degraded
+monitoring_ready: false
+service_interface: limited host and systemd cgroup metrics exporter; Docker-container discovery degraded
+runtime_status: endpoint running and scrapeable; Docker-container metric identity degraded
 production_host: beelink
 internal_port: TCP 8080
 host_published_port: none
@@ -18,14 +18,16 @@ image_digest: gcr.io/cadvisor/cadvisor@sha256:3cde6faf0791ebf7b41d6f8ae7145466fe
 exposure: internal Docker network only; no LAN-published port
 docker_network: platform-monitoring
 repository_compose_path: platform/compose/monitoring
-implementation_status: PLAT-13.6.2 live deployment and container-metric validation complete
+implementation_status: PLAT-13.6.2 endpoint active; PLAT-13.6.3A compatibility defect recorded for Docker-container discovery
 access_boundary: Prometheus internal Docker network only
 mount_summary: /, /var/run, /sys, /var/lib/docker, and /dev/disk mounted read-only for container metrics
 privilege_summary: no host-published port; privileged false; cap_drop ALL; no-new-privileges true; no devices
-residual_risk: cAdvisor has sensitive host and container visibility; LAN publication and Internet exposure are prohibited
+residual_risk: cAdvisor has sensitive host and cgroup visibility; LAN publication and Internet exposure are prohibited; Docker-container observability objective is not fully met
 scraped_by: svc-prometheus
 evidence: docs/operations/Metrics_Foundation_Implementation_Evidence.md
-unknowns: future alert rules and dashboard integration TBD
+compatibility_finding: docs/architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md
+docker_container_discovery: degraded under Docker 29.6.1 with driver type io.containerd.snapshotter.v1
+unknowns: replacement Docker-container metrics source, future alert rules, and dashboard integration TBD
 dependencies:
   - host-beelink-mini-pc
   - svc-docker-engine

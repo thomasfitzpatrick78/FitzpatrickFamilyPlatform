@@ -1,11 +1,11 @@
 {
   "uid": "metrics-foundation-health",
   "title": "Metrics Foundation Health Dashboard",
-  "description": "Prometheus, Node Exporter, cAdvisor, scrape performance, ingestion, storage, and dashboard-data freshness.",
-  "tags": ["platform", "metrics-foundation", "prometheus", "plat-13.6.3"],
+  "description": "Prometheus, Node Exporter, cAdvisor scrape health, storage, dashboard-data freshness, and prepared OTel Docker Stats replacement state. cAdvisor target health is separated from Docker-container discovery quality.",
+  "tags": ["platform", "metrics-foundation", "prometheus", "plat-13.6.3", "plat-13.6.3a", "plat-13.6.3b"],
   "timezone": "browser",
   "schemaVersion": 39,
-  "version": 1,
+  "version": 3,
   "refresh": "30s",
   "time": {
     "from": "now-6h",
@@ -16,7 +16,7 @@
       "id": 1,
       "type": "stat",
       "title": "Prometheus Target States",
-      "description": "Current target states for Prometheus, Node Exporter, and cAdvisor.",
+      "description": "Current target states for Prometheus, Node Exporter, cAdvisor, and any prepared OTel job after live deployment.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "gridPos": {"h": 5, "w": 8, "x": 0, "y": 0},
       "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
@@ -35,8 +35,8 @@
     {
       "id": 3,
       "type": "stat",
-      "title": "cAdvisor Health",
-      "description": "cAdvisor target scrape state.",
+      "title": "cAdvisor Target Health",
+      "description": "cAdvisor target scrape state. This does not prove Docker-container discovery on Docker 29/containerd.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "gridPos": {"h": 5, "w": 8, "x": 16, "y": 0},
       "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
@@ -44,43 +44,45 @@
     },
     {
       "id": 4,
-      "type": "timeseries",
-      "title": "Scrape Duration",
-      "description": "Prometheus scrape duration by job.",
+      "type": "text",
+      "title": "cAdvisor Capability Limitation",
+      "description": "Current Docker-container observability limitation.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 5},
-      "fieldConfig": {"defaults": {"unit": "s", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "scrape_duration_seconds", "legendFormat": "{{job}}"}]
+      "gridPos": {"h": 6, "w": 12, "x": 0, "y": 5},
+      "options": {
+        "mode": "markdown",
+        "content": "cAdvisor is scrapeable, but Docker-container discovery is **limited/degraded** under Docker 29.6.1 with the containerd-backed image store. Treat cAdvisor target health separately from container-level observability completeness."
+      }
     },
     {
       "id": 5,
       "type": "timeseries",
-      "title": "Scrape Samples",
-      "description": "Samples scraped by Prometheus per target.",
+      "title": "Scrape Duration",
+      "description": "Prometheus scrape duration by job.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 5},
-      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "scrape_samples_scraped", "legendFormat": "{{job}}"}]
+      "gridPos": {"h": 6, "w": 12, "x": 12, "y": 5},
+      "fieldConfig": {"defaults": {"unit": "s", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "scrape_duration_seconds", "legendFormat": "{{job}}"}]
     },
     {
       "id": 6,
       "type": "timeseries",
-      "title": "Prometheus Head Series",
-      "description": "Current active time series in the Prometheus TSDB head block.",
+      "title": "Scrape Samples",
+      "description": "Samples scraped by Prometheus per target.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 13},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 11},
       "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "prometheus_tsdb_head_series"}]
+      "targets": [{"refId": "A", "expr": "scrape_samples_scraped", "legendFormat": "{{job}}"}]
     },
     {
       "id": 7,
       "type": "timeseries",
-      "title": "Prometheus Storage Blocks",
-      "description": "Prometheus storage block size when exposed by the pinned Prometheus version.",
+      "title": "Prometheus Head Series",
+      "description": "Current active time series in the Prometheus TSDB head block.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 13},
-      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "prometheus_tsdb_storage_blocks_bytes"}]
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 11},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "prometheus_tsdb_head_series"}]
     },
     {
       "id": 8,
@@ -88,9 +90,31 @@
       "title": "Dashboard Data Freshness",
       "description": "Seconds since Prometheus last scraped each target.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 21},
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 19},
       "fieldConfig": {"defaults": {"unit": "s", "noValue": "No data"}, "overrides": []},
       "targets": [{"refId": "A", "expr": "time() - timestamp(up)"}]
+    },
+    {
+      "id": 9,
+      "type": "stat",
+      "title": "OTel Docker Stats Target",
+      "description": "Prepared replacement scrape target. No data is expected before proxy, Collector, and Prometheus reload are live-proven.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 0, "y": 27},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "Pending live deployment"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"otel-docker-stats\"}"}]
+    },
+    {
+      "id": 10,
+      "type": "text",
+      "title": "Container Metrics Source State",
+      "description": "Separates cAdvisor scrape availability from OTel Docker-container collection readiness.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 16, "x": 8, "y": 27},
+      "options": {
+        "mode": "markdown",
+        "content": "cAdvisor remains active/degraded: target availability does not prove Docker-container discovery. OTel Docker Stats is repository-prepared through a restricted Docker API proxy and remains pending live proof. Prometheus remains the only Grafana data source; Grafana must not query cAdvisor, Node Exporter, the proxy, or OTel directly."
+      }
     }
   ]
 }

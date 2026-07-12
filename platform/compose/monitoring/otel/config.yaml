@@ -1,0 +1,43 @@
+receivers:
+  docker_stats:
+    endpoint: http://docker-api-proxy:2375
+    collection_interval: 15s
+    timeout: 10s
+    container_labels_to_metric_labels:
+      com.docker.compose.project: docker_compose_project
+      com.docker.compose.service: docker_compose_service
+      com.docker.compose.container-number: docker_compose_container_number
+
+processors:
+  memory_limiter:
+    check_interval: 15s
+    limit_mib: 160
+    spike_limit_mib: 40
+  batch:
+    timeout: 10s
+    send_batch_size: 1024
+
+exporters:
+  prometheus:
+    endpoint: 0.0.0.0:9464
+    namespace: docker
+    resource_to_telemetry_conversion:
+      enabled: false
+    add_metric_suffixes: true
+
+extensions:
+  health_check:
+    endpoint: 0.0.0.0:13133
+
+service:
+  extensions:
+    - health_check
+  pipelines:
+    metrics:
+      receivers:
+        - docker_stats
+      processors:
+        - memory_limiter
+        - batch
+      exporters:
+        - prometheus

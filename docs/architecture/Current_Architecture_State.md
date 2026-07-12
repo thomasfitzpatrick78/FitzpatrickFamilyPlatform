@@ -10,7 +10,7 @@
 
 ## Summary
 
-The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service and the active PLAT-13.6.2 Metrics Foundation.
+The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
 Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability.
 
@@ -38,7 +38,11 @@ Prometheus is active at `192.168.50.127:9090` with 15-day local retention at `/p
 
 Node Exporter and cAdvisor are active on the internal `platform-monitoring` Docker network only.
 
-Grafana has a repository-managed PLAT-13.6.3 implementation-ready package for Architecture Gatekeeper review, including Compose service definition, provisioning files, dashboards, runbook, and evidence template. Grafana is not deployed.
+PLAT-13.6.3A records a Docker 29/containerd compatibility defect: cAdvisor is scrapeable, but Docker-container discovery is degraded because friendly Docker container names and Compose labels are not reliable under the current Docker 29.6.1 `io.containerd.snapshotter.v1` image-store model.
+
+PLAT-13.6.3B prepares the approved replacement architecture in the repository: a restricted Docker API proxy, an OpenTelemetry Collector Contrib Docker Stats receiver, and an internal Prometheus scrape target. These services are not deployed, active, healthy, or validated. Exact OTel metric names, Pi-hole identity, proxy denial proof, persistence, and reboot behavior require live evidence before dashboard closeout.
+
+Grafana has been deployed for validation, but PLAT-13.6.3 closeout remains incomplete. Live dashboard validation is paused pending Architecture Gatekeeper review of the container metrics correction.
 
 Alerts, backup automation, restore validation, and controlled updates remain planned and are not deployed.
 
@@ -51,6 +55,9 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 - [Infrastructure Registry Architecture](Infrastructure_Registry_Architecture.md)
 - [ADR-006 - Registry Driven Infrastructure Foundation](decisions/ADR-006-Registry-Driven-Infrastructure-Foundation.md)
 - [ADR-007 - Governed Operations and Observability](decisions/ADR-007-Governed-Operations-and-Observability.md)
+- [Docker 29 Container Metrics Compatibility Assessment](Docker_29_Container_Metrics_Compatibility_Assessment.md)
+- [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
+- [Docker Container Metrics Replacement Runbook](../operations/Docker_Container_Metrics_Replacement_Runbook.md)
 
 ---
 
@@ -58,6 +65,8 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded PLAT-13.6.3B repository-prepared Docker API proxy and OpenTelemetry Docker Stats replacement architecture. |
+| 1.5 | Recorded PLAT-13.6.3A Docker 29/containerd cAdvisor compatibility defect and paused dashboard validation. |
 | 1.4 | Recorded PLAT-13.6.3 Operations Dashboard repository package as implementation-ready and not deployed. |
 | 1.3 | Recorded active PLAT-13.6.2 Metrics Foundation state and remaining planned operations capabilities. |
 | 1.2 | Updated current architecture state for active Beelink-hosted Pi-hole and ADR-007 governed observability planning. |

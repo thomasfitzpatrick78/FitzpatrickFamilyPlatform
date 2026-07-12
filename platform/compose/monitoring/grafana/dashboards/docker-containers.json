@@ -1,11 +1,11 @@
 {
   "uid": "docker-containers",
   "title": "Docker and Container Dashboard",
-  "description": "Docker container visibility from cAdvisor through Prometheus. Container name labels must be confirmed during live validation.",
-  "tags": ["platform", "docker", "containers", "plat-13.6.3"],
+  "description": "Docker runtime visibility with an explicit Docker 29/containerd compatibility limitation. cAdvisor target health is visible, and the OTel Docker Stats replacement is prepared but not accepted until live metric inventory proves exact labels and metric names.",
+  "tags": ["platform", "docker", "containers", "plat-13.6.3", "plat-13.6.3a", "plat-13.6.3b"],
   "timezone": "browser",
   "schemaVersion": 39,
-  "version": 1,
+  "version": 3,
   "refresh": "30s",
   "time": {
     "from": "now-6h",
@@ -16,7 +16,7 @@
       "id": 1,
       "type": "stat",
       "title": "cAdvisor Target Up",
-      "description": "cAdvisor scrape state. 1 means Prometheus can scrape container metrics.",
+      "description": "Prometheus scrape state only. A healthy target does not prove Docker-container discovery under Docker 29/containerd.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "gridPos": {"h": 4, "w": 8, "x": 0, "y": 0},
       "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
@@ -25,8 +25,8 @@
     {
       "id": 2,
       "type": "stat",
-      "title": "Observed Containers",
-      "description": "Count of container series recently seen by cAdvisor.",
+      "title": "Host/Systemd cgroup Series",
+      "description": "Diagnostic count of cAdvisor cgroup series. This is not a Docker container count.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "gridPos": {"h": 4, "w": 8, "x": 8, "y": 0},
       "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
@@ -36,7 +36,7 @@
       "id": 3,
       "type": "stat",
       "title": "Prometheus Target Health",
-      "description": "Scrape states for all targets visible to Prometheus.",
+      "description": "Scrape states for all current Prometheus targets.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "gridPos": {"h": 4, "w": 8, "x": 16, "y": 0},
       "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
@@ -44,66 +44,69 @@
     },
     {
       "id": 4,
-      "type": "timeseries",
-      "title": "CPU by Container",
-      "description": "Container CPU seconds per second. Name label availability is verified during live dashboard validation.",
+      "type": "text",
+      "title": "Docker-Container Discovery Status",
+      "description": "Compatibility finding for Docker 29 with the containerd-backed image store.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
-      "fieldConfig": {"defaults": {"unit": "cores", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "topk(10, sum by (name) (rate(container_cpu_usage_seconds_total{image!=\"\"}[5m])))", "legendFormat": "{{name}}"}]
+      "gridPos": {"h": 7, "w": 12, "x": 0, "y": 4},
+      "options": {
+        "mode": "markdown",
+        "content": "Docker-container discovery is currently **unavailable/degraded** through cAdvisor on Docker 29.6.1 with driver type `io.containerd.snapshotter.v1`. cAdvisor is scrapeable, but friendly Docker container names and Compose service labels are not reliable. Do not treat broad cgroup counts as Docker container counts."
+      }
     },
     {
       "id": 5,
-      "type": "timeseries",
-      "title": "Memory by Container",
-      "description": "Container working set memory where cAdvisor exposes image-backed container labels.",
+      "type": "table",
+      "title": "cAdvisor Visible cgroups",
+      "description": "Diagnostic view of labels currently exposed by cAdvisor. This may show host/systemd cgroups rather than Docker containers.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 4},
-      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "topk(10, sum by (name) (container_memory_working_set_bytes{image!=\"\"}))", "legendFormat": "{{name}}"}]
+      "gridPos": {"h": 7, "w": 12, "x": 12, "y": 4},
+      "fieldConfig": {"defaults": {"unit": "dateTimeAsIso", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "topk(20, container_last_seen)", "format": "table", "instant": true}]
     },
     {
       "id": 6,
-      "type": "timeseries",
-      "title": "Network Traffic by Container",
-      "description": "Container receive and transmit bytes per second.",
+      "type": "text",
+      "title": "Provisional OTel Docker Stats Panels",
+      "description": "Planned replacement panels. These are not live operational metrics until the OTel metric inventory is accepted.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
-      "fieldConfig": {"defaults": {"unit": "Bps", "noValue": "No data"}, "overrides": []},
-      "targets": [
-        {"refId": "A", "expr": "topk(10, sum by (name) (rate(container_network_receive_bytes_total{image!=\"\"}[5m])))", "legendFormat": "{{name}} receive"},
-        {"refId": "B", "expr": "topk(10, sum by (name) (rate(container_network_transmit_bytes_total{image!=\"\"}[5m])))", "legendFormat": "{{name}} transmit"}
-      ]
+      "gridPos": {"h": 6, "w": 12, "x": 0, "y": 11},
+      "options": {
+        "mode": "markdown",
+        "content": "Planned Docker Stats replacement panels: actual Docker container count, named container presence, CPU by container/service, memory by container/service, network receive/transmit, block I/O read/write, and last-seen or state if emitted reliably. Pre-deployment `No data` is expected. Final PromQL must be based on live `otel-docker-stats` metric inventory and must not count host/systemd cgroups."
+      }
     },
     {
       "id": 7,
-      "type": "table",
-      "title": "Container Last Seen",
-      "description": "Last observed cAdvisor sample timestamp by container label.",
+      "type": "timeseries",
+      "title": "cAdvisor Scrape Duration",
+      "description": "Scrape duration for the cAdvisor target. This measures scrape performance, not Docker-container discovery quality.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
-      "fieldConfig": {"defaults": {"unit": "dateTimeAsIso", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "max by (name) (container_last_seen{image!=\"\"})", "format": "table", "instant": true}]
+      "gridPos": {"h": 6, "w": 12, "x": 12, "y": 11},
+      "fieldConfig": {"defaults": {"unit": "s", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "scrape_duration_seconds{job=\"cadvisor\"}"}]
     },
     {
       "id": 8,
-      "type": "timeseries",
-      "title": "Container Filesystem Usage",
-      "description": "Container filesystem usage where cAdvisor storage metrics are available.",
+      "type": "stat",
+      "title": "OTel Docker Stats Target",
+      "description": "Prepared replacement scrape target. No data is expected until the proxy and Collector are deployed and Prometheus has reloaded the scrape job.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 20},
-      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "topk(10, sum by (name) (container_fs_usage_bytes{image!=\"\"}))", "legendFormat": "{{name}}"}]
+      "gridPos": {"h": 4, "w": 8, "x": 0, "y": 17},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "Pending live deployment"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"otel-docker-stats\"}"}]
     },
     {
       "id": 9,
-      "type": "stat",
-      "title": "Pi-hole and Monitoring Containers",
-      "description": "Presence check for named containers when cAdvisor exposes Docker container names.",
+      "type": "text",
+      "title": "Replacement Acceptance Gates",
+      "description": "Required proof before this dashboard can claim Docker-container observability.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 20},
-      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "count by (name) (container_last_seen{name=~\".*(pihole|prometheus|node-exporter|cadvisor|grafana).*\"})"}]
+      "gridPos": {"h": 4, "w": 16, "x": 8, "y": 17},
+      "options": {
+        "mode": "markdown",
+        "content": "Accept OTel panels only after live evidence proves Docker 29.6.1 compatibility, proxy denial behavior, stable container names, Compose project/service/container-number labels, Pi-hole identity, CPU, memory, network, block I/O, sensitive-metadata exclusion, persistence, reboot behavior, and Pi-hole non-regression."
+      }
     }
   ]
 }

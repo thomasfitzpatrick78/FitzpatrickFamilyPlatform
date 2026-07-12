@@ -55,6 +55,7 @@ Prepare the Platform for future managed infrastructure operations while preservi
 - Docker installation shall remain out of scope for PLAT-13.3 and be deferred to a future workstream.
 - Raspberry Pi Pi-hole remained active until the approved migration workstream completed; PLAT-13.6 records it as rollback infrastructure.
 - PLAT-13.6.2 records the approved live Metrics Foundation deployment for Prometheus, Node Exporter, and cAdvisor.
+- PLAT-13.6.3B may prepare repository-managed restricted Docker API proxy and OTel Docker Stats configuration, but must not deploy it or mark it active before live proof.
 - PLAT-13.6 shall not deploy Grafana, backups, alerts, restore validation, update automation, or additional live infrastructure changes without separate approval.
 - Finance functionality remains excluded.
 

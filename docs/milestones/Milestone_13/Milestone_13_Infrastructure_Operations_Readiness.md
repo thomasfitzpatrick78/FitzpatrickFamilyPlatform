@@ -1,6 +1,6 @@
 # Milestone 13 - Infrastructure Operations Readiness
 
-**Document Version:** 1.2
+**Document Version:** 1.8
 
 **Status:** Planned
 
@@ -21,6 +21,7 @@ Prepare the Fitzpatrick Family Platform for managed infrastructure operations wh
 | PLAT-13.1 | Infrastructure Operations Readiness | Define static readiness architecture, options, standards, and checklists for future managed infrastructure operations. |
 | PLAT-13.3 | Beelink Bring-up | Define governed Day 0 / Day 1 onboarding instructions for the delivered Beelink Mini S without service migration or production DNS changes. |
 | PLAT-13.6 | Platform Operations and Observability | Define governed operations, observability, backup, restore, alerting, and controlled update practices for the active Beelink-hosted Pi-hole platform. |
+| EO-13.1 | Engineering Organization Governance Evolution | Formalize the AI-operated Engineering Organization as a governed portfolio capability before Milestone 13 closeout. |
 
 ---
 
@@ -71,6 +72,8 @@ PLAT-13.6 includes these work packages:
 | PLAT-13.6.1 | Operations Baseline and Governance | Capture current Beelink, Docker, and Pi-hole production baseline; establish service lifecycle, cutover, severity, evidence, and ownership practices. | PLAT-13.3 |
 | PLAT-13.6.2 | Metrics Foundation | Complete governed Prometheus, Node Exporter, cAdvisor, retention, storage, exposure, validation, persistence, reboot, and Pi-hole non-regression evidence. | PLAT-13.6.1 |
 | PLAT-13.6.3 | Operations Dashboard | Prepare repository-managed Grafana provisioning, dashboard definitions, live runbook, evidence template, and dashboard governance without live deployment. | PLAT-13.6.2 |
+| PLAT-13.6.3A | Docker 29 Container Metrics Compatibility Correction | Correct cAdvisor/Docker 29 container metrics assumptions, dashboard claims, and replacement metrics planning without live deployment. | PLAT-13.6.3 |
+| PLAT-13.6.3B | Governed Docker Container Metrics Replacement | Prepare restricted Docker API proxy, OTel Docker Stats Collector, Prometheus scrape job, dashboard migration strategy, registry records, runbook, evidence, and tests without live deployment. | PLAT-13.6.3A |
 | PLAT-13.6.4 | Backup and Recovery v1.0 | Define backup scope, exclusions, checksums, retention, restore validation, and reporting. | PLAT-13.6.1 |
 | PLAT-13.6.5 | Alerts and Incident Response | Define alert requirements, incident severity, response, escalation, and evidence. | PLAT-13.6.2; PLAT-13.6.4 |
 | PLAT-13.6.6 | Controlled Update Management | Define image version, digest, backup, validation, observation, and rollback policy. | PLAT-13.6.4; PLAT-13.6.5 |
@@ -85,6 +88,19 @@ Proposed execution order:
 5. PLAT-13.6.5 Alerts and Incident Response.
 6. PLAT-13.6.6 Controlled Update Management.
 7. PLAT-13.6.7 Application and Organization Integration.
+
+EO-13.1 prepares, but does not complete, Milestone 13 closeout governance for:
+
+1. Production Platform Operations Foundation.
+2. Engineering Governance Maturation.
+3. AI Engineering Organization Governance.
+4. Platform as Reference Implementation.
+5. Execution Agent and Operations Analyst roadmap.
+6. Engineering Investment Rule.
+7. Engineering Organization Evolution.
+8. Privileged Infrastructure Integration Standard.
+9. Container Metrics abstraction.
+10. Transition to coordinated EO, PLAT, and FFFA workstreams.
 
 ---
 
@@ -120,6 +136,14 @@ PLAT-13.6 does not implement beyond the completed PLAT-13.6.2 Metrics Foundation
 - Unattended production container updates.
 - Internet exposure of monitoring interfaces.
 
+EO-13.1 does not implement:
+
+- Live infrastructure execution.
+- Docker, Pi-hole, DNS, router, Prometheus, Grafana, or networking changes.
+- PLAT-13.6 closeout.
+- Milestone 13 closeout.
+- Release, tag, push, deployment, or production lifecycle promotion.
+
 ---
 
 ## Acceptance Criteria
@@ -151,8 +175,22 @@ PLAT-13.6 is ready for Architecture Gatekeeper review when:
 - Present Beelink, Docker, Pi-hole, and Raspberry Pi rollback facts are represented in registry records.
 - Prometheus, Node Exporter, and cAdvisor are documented with live PLAT-13.6.2 evidence.
 - Grafana dashboard artifacts are prepared for Architecture Gatekeeper review without claiming live implementation.
+- PLAT-13.6.3A records the Docker 29/containerd cAdvisor compatibility limitation and keeps dashboard claims accurate.
+- PLAT-13.6.3B prepares the replacement source as implementation-ready only; proxy, OTel, Prometheus target, Pi-hole identity, persistence, and reboot evidence remain future live gates.
 - Planned backup, restore, alert, and update capabilities remain documented without claiming live implementation.
 - Tests and EAP validations have been attempted and results are recorded.
+
+EO-13.1 is ready for Architecture Gatekeeper review when:
+
+- The AI-operated Engineering Organization is represented as a first-class governed capability.
+- The three-pillar portfolio model is explicit.
+- The Engineering Investment Rule is governed.
+- Engineering Organization Evolution is mandatory at closeout.
+- AI Role Catalog, Manifesto, Engineering Principles, maturity model, closeout template, and transition template are indexed.
+- Product vision, capability model, roadmap, backlog, lifecycle, and Definition of Done are aligned.
+- Milestone 14 contains coordinated EO, PLAT, and FFFA planning.
+- Existing PLAT-13.6.3A and PLAT-13.6.3B working-tree changes are preserved.
+- PLAT-13.6 and Milestone 13 remain open.
 
 ---
 
@@ -168,6 +206,11 @@ PLAT-13.6 is ready for Architecture Gatekeeper review when:
 - [PLAT-13.6 Operations and Observability Specification](../../specifications/Platform_Operations_Observability_Specification.md)
 - [Platform Service Lifecycle](../../governance/Service_Lifecycle.md)
 - [Production Service Cutover Checklist](../../governance/Production_Service_Cutover_Checklist.md)
+- [Engineering Organization Manifesto](../../engineering-organization/Engineering_Organization_Manifesto.md)
+- [AI Role Catalog](../../engineering-organization/AI_Role_Catalog.md)
+- [Engineering Principles](../../governance/Engineering_Principles.md)
+- [Milestone Closeout Template](../templates/Milestone_Closeout_Template.md)
+- [Milestone Transition Package Template](../templates/Milestone_Transition_Package_Template.md)
 
 ---
 
@@ -175,6 +218,9 @@ PLAT-13.6 is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.8 | Added EO-13.1 governance evolution, closeout preparation, and Milestone 14 transition alignment while keeping PLAT-13.6 and Milestone 13 open. |
+| 1.7 | Added PLAT-13.6.3B governed Docker container metrics replacement preparation. |
+| 1.6 | Added PLAT-13.6.3A Docker 29 container metrics compatibility correction scope. |
 | 1.5 | Prepared PLAT-13.6.3 Operations Dashboard repository package while preserving Grafana as not deployed. |
 | 1.4 | Recorded PLAT-13.6.2 Metrics Foundation live operational closeout while preserving later work packages as planned. |
 | 1.3 | Added PLAT-13.6 Platform Operations and Observability work packages, dependencies, non-goals, and review criteria. |

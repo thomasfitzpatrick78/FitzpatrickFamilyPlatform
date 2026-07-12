@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 1.2
+**Document Version:** 1.9
 
 **Status:** Active
 
@@ -10,7 +10,7 @@
 
 ## Purpose
 
-This roadmap organizes Platform direction by milestone horizon without prescribing implementation details.
+This roadmap organizes portfolio direction by milestone horizon without prescribing implementation details.
 
 ---
 
@@ -40,9 +40,40 @@ Near-term candidates should build from Infrastructure Registry v1.0:
 - Local service hosting architecture selection.
 - Pi-hole migration readiness.
 - Beelink Day 0 / Day 1 bring-up planning for delivered Platform Node 001 hardware.
-- Platform operations and observability for active Beelink-hosted Pi-hole service, including completed PLAT-13.6.2 Metrics Foundation, PLAT-13.6.3 repository-prepared Operations Dashboard, and planned alerting, backup, restore, and update work.
+- Platform operations and observability for active Beelink-hosted Pi-hole service, including completed PLAT-13.6.2 Metrics Foundation, PLAT-13.6.3 Grafana dashboard validation, PLAT-13.6.3A Docker-container metrics correction, PLAT-13.6.3B restricted proxy plus OTel Docker Stats preparation, and planned alerting, backup, restore, and update work.
 - Network modernization readiness.
 - First Home Automation capability readiness assessment after registry foundation.
+
+---
+
+## Milestone 14 Planning Streams
+
+Milestone 14 planning is coordinated across EO, PLAT, and FFFA streams. These candidates are planned, not approved for implementation by this roadmap.
+
+### EO - Engineering Organization
+
+- EO-14.1 AI Role Catalog Operationalization.
+- EO-14.2 Execution Agent Specification.
+- EO-14.3 Governed Automation Framework.
+- EO-14.4 Operations Analyst / Operations Intelligence.
+- EO-14.5 Engineering Organization Metrics.
+- EO-14.6 Capability Maturity Assessment.
+- EO-14.7 AI Collaboration and Approval Model.
+
+### PLAT - Shared Platform
+
+- Complete governed Container Metrics replacement.
+- Platform alerting.
+- Backup and recovery.
+- Restore validation.
+- Controlled updates.
+- Observability integration.
+
+### FFFA - Customer-Facing Application
+
+- Identify one approved Fitzpatrick Family Financial Assistant customer-facing capability candidate through existing FFFA backlog and roadmap governance.
+- Preserve repository independence and avoid inventing detailed FFFA implementation scope in this repository.
+- Use the selected candidate to satisfy Milestone 14 Engineering Investment Rule traceability.
 
 ---
 
@@ -86,6 +117,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - [Architecture Backlog](../architecture/Architecture_Backlog.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
 - [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
+- [Engineering Organization Roadmap](../engineering-organization/Engineering_Organization_Roadmap.md)
 
 ---
 
@@ -93,6 +125,9 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Added planned Milestone 14 EO, PLAT, and FFFA roadmap streams for Engineering Investment Rule traceability. |
+| 1.8 | Added PLAT-13.6.3B governed Docker-container metrics replacement preparation. |
+| 1.7 | Added PLAT-13.6.3A Docker-container metrics correction to near-term roadmap. |
 | 1.6 | Added PLAT-13.6.3 repository-prepared Operations Dashboard to near-term roadmap. |
 | 1.5 | Updated roadmap for completed PLAT-13.6.2 Metrics Foundation and remaining planned operations work. |
 | 1.4 | Added PLAT-13.6 operations and observability planning to the near-term roadmap. |

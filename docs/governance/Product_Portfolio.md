@@ -1,6 +1,6 @@
 # Product Portfolio
 
-**Document Version:** 1.0
+**Document Version:** 1.2
 
 **Status:** Active
 
@@ -16,19 +16,19 @@ This document defines the Platform repository product scope within the Fitzpatri
 
 ## Portfolio Position
 
-| Product | Repository | Scope |
-|---------|------------|-------|
-| AI Engineering Organization | `FitzpatrickFamilyPlatform` | Governed AI engineering operating model |
-| Fitzpatrick Family Financial Assistant | `FamilyFinanceAssistant` | Finance |
-| Fitzpatrick Family Platform | `FitzpatrickFamilyPlatform` | Infrastructure, Home Automation, Energy Management, AI Services, Shared Services, Family Intelligence |
+| Portfolio Pillar | Repository | Scope |
+|------------------|------------|-------|
+| Engineering Organization | `FitzpatrickFamilyPlatform` | Governed AI-operated engineering operating capability, roles, governance, lifecycle, delivery system, maturity, and engineering memory |
+| Shared Platform | `FitzpatrickFamilyPlatform` | Infrastructure, Home Automation, Energy Management, AI Services, Shared Services, Family Intelligence, observability, registry, and Digital Twin |
+| Customer-Facing Applications | Multiple repositories | User-facing products and experiences, led by the Fitzpatrick Family Financial Assistant |
 
 ---
 
 ## Engineering Organization Position
 
-The AI Engineering Organization is the flagship product of the Fitzpatrick Family Platform Engineering Organization.
+The AI-operated Engineering Organization is a first-class governed capability and the primary operating capability.
 
-The Fitzpatrick Family Platform is the reference implementation for the Engineering Organization operating model.
+The Fitzpatrick Family Platform is the reference implementation for the Engineering Organization operating model and the Shared Platform technical foundation.
 
 The Fitzpatrick Family Financial Assistant is the flagship customer-facing application enabled by the Engineering Organization and Platform.
 
@@ -63,5 +63,6 @@ It follows established portfolio patterns without sharing implementation code wi
 
 | Version | Description |
 |---------|-------------|
-| 1.0 | Initial Platform product portfolio definition. |
+| 1.2 | Aligned portfolio to EO-13.1 three-pillar governed capability model. |
 | 1.1 | Added Engineering Organization portfolio position. |
+| 1.0 | Initial Platform product portfolio definition. |

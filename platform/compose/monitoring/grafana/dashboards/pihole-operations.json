@@ -1,11 +1,11 @@
 {
   "uid": "pihole-operations",
   "title": "Pi-hole Operations Dashboard",
-  "description": "Infrastructure operations view for the Beelink-hosted Pi-hole service. This dashboard intentionally does not claim Pi-hole query analytics.",
-  "tags": ["platform", "pihole", "operations", "plat-13.6.3"],
+  "description": "Infrastructure operations view for the Beelink-hosted Pi-hole service. Pi-hole application analytics are not exported, and container-specific resource metrics are prepared through OTel Docker Stats but not live-proven.",
+  "tags": ["platform", "pihole", "operations", "plat-13.6.3", "plat-13.6.3a", "plat-13.6.3b"],
   "timezone": "browser",
   "schemaVersion": 39,
-  "version": 1,
+  "version": 3,
   "refresh": "30s",
   "time": {
     "from": "now-6h",
@@ -36,41 +36,23 @@
     },
     {
       "id": 3,
-      "type": "stat",
-      "title": "Pi-hole Container Presence",
-      "description": "Container presence when cAdvisor exposes a Docker name label matching Pi-hole. No data means the label is unavailable or the container was not matched.",
+      "type": "text",
+      "title": "Pi-hole Container Metrics Status",
+      "description": "Current limitation caused by Docker 29/containerd cAdvisor compatibility.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
       "gridPos": {"h": 5, "w": 8, "x": 16, "y": 0},
-      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "count(container_last_seen{name=~\".*pihole.*\"})"}]
+      "options": {
+        "mode": "markdown",
+        "content": "Pi-hole container presence, CPU, memory, network, and block I/O are **unavailable pending a compatible Docker-container metrics exporter**. PLAT-13.6.3B prepares OTel Docker Stats through a restricted Docker API proxy, but live metric inventory must prove Compose identity before these panels become operational."
+      }
     },
     {
       "id": 4,
       "type": "timeseries",
-      "title": "Pi-hole Container CPU When Available",
-      "description": "Pi-hole container CPU only when cAdvisor name labels support reliable matching.",
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 5},
-      "fieldConfig": {"defaults": {"unit": "cores", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "sum(rate(container_cpu_usage_seconds_total{name=~\".*pihole.*\"}[5m]))"}]
-    },
-    {
-      "id": 5,
-      "type": "timeseries",
-      "title": "Pi-hole Container Memory When Available",
-      "description": "Pi-hole container memory only when cAdvisor name labels support reliable matching.",
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 5},
-      "fieldConfig": {"defaults": {"unit": "bytes", "noValue": "No data"}, "overrides": []},
-      "targets": [{"refId": "A", "expr": "sum(container_memory_working_set_bytes{name=~\".*pihole.*\"})"}]
-    },
-    {
-      "id": 6,
-      "type": "timeseries",
       "title": "Host Capacity Signals Affecting Pi-hole",
       "description": "Host CPU, memory, and root filesystem signals that can affect DNS service reliability.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 13},
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 5},
       "fieldConfig": {"defaults": {"unit": "percentunit", "noValue": "No data"}, "overrides": []},
       "targets": [
         {"refId": "A", "expr": "1 - avg(rate(node_cpu_seconds_total{mode=\"idle\"}[5m]))", "legendFormat": "cpu used"},
@@ -79,15 +61,47 @@
       ]
     },
     {
-      "id": 7,
+      "id": 5,
+      "type": "stat",
+      "title": "Prometheus Scrape Health",
+      "description": "Prometheus target states. cAdvisor up does not prove Docker-container discovery.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 5},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "No data"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up"}]
+    },
+    {
+      "id": 6,
       "type": "text",
       "title": "Future DNS and Admin Availability Checks",
       "description": "Placeholder for future probe integration. This panel avoids fabricated healthy values.",
       "datasource": {"type": "prometheus", "uid": "prometheus"},
-      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 13},
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 13},
       "options": {
         "mode": "markdown",
         "content": "DNS service availability and Pi-hole admin interface availability are not exported to Prometheus yet. Future work may add governed probes or an approved Pi-hole exporter. Until then, use the live runbook checks for DNS, blocking, and admin UI validation."
+      }
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "OTel Docker Stats Target",
+      "description": "Prepared replacement source for Pi-hole container identity and resource panels. No data is expected before live deployment.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 8, "x": 0, "y": 21},
+      "fieldConfig": {"defaults": {"unit": "short", "noValue": "Pending live deployment"}, "overrides": []},
+      "targets": [{"refId": "A", "expr": "up{job=\"otel-docker-stats\"}"}]
+    },
+    {
+      "id": 8,
+      "type": "text",
+      "title": "Provisional Pi-hole Container Panels",
+      "description": "Panel acceptance requirements for OTel Docker Stats.",
+      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "gridPos": {"h": 5, "w": 16, "x": 8, "y": 21},
+      "options": {
+        "mode": "markdown",
+        "content": "Planned panels: Pi-hole container presence by Compose service or container name, CPU, memory, network receive/transmit, and block I/O. Final PromQL must use live OTel metric inventory and must not fabricate Pi-hole application analytics such as DNS totals, block-rate summaries, client views, ranked domains, DNS probes, or admin-page probe status."
       }
     }
   ]

@@ -1,0 +1,43 @@
+id: svc-docker-api-proxy
+record_type: planned_service
+name: Restricted Docker API Proxy
+description: Implementation-ready restricted Docker API proxy for governed Docker Stats collection under Docker 29/containerd.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: internal Docker API proxy
+planned_host: beelink
+planned_compose_path: /platform/compose/monitoring
+repository_compose_path: platform/compose/monitoring/compose.yaml
+repository_documentation: platform/compose/monitoring/docker-api-proxy/README.md
+planned_network: platform-monitoring
+host_published_port: none
+internal_port: TCP 2375
+image: tecnativa/docker-socket-proxy:0.4.2
+image_digest: pending governed live pull
+version_source: official Tecnativa docker-socket-proxy release v0.4.2
+access_boundary: internal Docker network only; no LAN or Internet exposure
+socket_model: read-only /var/run/docker.sock mounted into proxy only
+api_policy: deny by default; allow PING, VERSION, INFO, and CONTAINERS for Docker Stats read/list/inspect/stat behavior
+denied_capabilities: POST, AUTH, BUILD, COMMIT, CONFIGS, DISTRIBUTION, EVENTS, EXEC, GRPC, IMAGES, NETWORKS, NODES, PLUGINS, SECRETS, SERVICES, SESSION, SWARM, SYSTEM, TASKS, VOLUMES, container start/stop/restart/pause/unpause
+security_classification: privileged infrastructure integration; Docker socket boundary reduces but does not eliminate host-control risk
+resource_limits: 128 MiB memory limit; 0.25 CPU
+implementation_status: repository-prepared; not deployed; not active; not healthy; live denial proof required
+evidence_required: image digest, proxy allowlist and denial proof, socket mount inventory, no host port, Pi-hole non-regression
+runbook: docs/operations/Docker_Container_Metrics_Replacement_Runbook.md
+evidence_template: docs/operations/Docker_Container_Metrics_Replacement_Evidence_Template.md
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

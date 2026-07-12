@@ -1,28 +1,30 @@
 id: svc-grafana
-record_type: planned_service
+record_type: service
 name: Grafana Operations Dashboard
-description: Implementation-ready Grafana service package for governed Platform operations dashboards and future alert visibility.
+description: Grafana Operations Dashboard deployed for validation with PLAT-13.6.3A container metrics compatibility correction pending.
 owner: owner-family-platform
 location: loc-home
-lifecycle_status: planned
-health_status: planned
+lifecycle_status: active
+health_status: degraded
 monitoring_ready: false
 service_interface: dashboards and alert visibility
-planned_port: TCP 3000
-planned_endpoint: http://192.168.50.127:3000
-planned_storage: /platform/data/monitoring/grafana
-planned_compose_path: /platform/compose/monitoring
-planned_image: grafana/grafana:13.1.0
-planned_runtime_user: 472:472
-planned_network: platform-monitoring
-planned_datasource: Prometheus at http://prometheus:9090
+port: TCP 3000
+endpoint: http://192.168.50.127:3000
+storage: /platform/data/monitoring/grafana
+compose_path: /platform/compose/monitoring
+image: grafana/grafana:13.1.0
+runtime_user: 472:472
+docker_network: platform-monitoring
+datasource: Prometheus at http://prometheus:9090
 access_boundary: trusted home network only
 secret_model: Beelink-local .env with GRAFANA_ADMIN_PASSWORD; no committed credentials
 dashboard_inventory: Platform Host Dashboard; Docker and Container Dashboard; Pi-hole Operations Dashboard; Metrics Foundation Health Dashboard
 evidence_template: docs/operations/Operations_Dashboard_Evidence_Template.md
 runbook: docs/operations/Operations_Dashboard_Runbook.md
 governance_contract: docs/specifications/Platform_Operations_Dashboard.md
-unknowns: image digest pending governed live pull; live provisioning evidence pending Architecture Gatekeeper approval
+implementation_status: deployed-pending-validation; PLAT-13.6.3 not complete
+validation_status: blocked on Docker 29/containerd container metrics compatibility correction; PLAT-13.6.3B replacement is repository-prepared but not live-proven
+unknowns: final governed closeout evidence, live Docker-container metric inventory, Pi-hole identity proof, persistence proof, reboot proof, and Architecture Gatekeeper authorization
 dependencies:
   - host-beelink-mini-pc
   - svc-docker-engine

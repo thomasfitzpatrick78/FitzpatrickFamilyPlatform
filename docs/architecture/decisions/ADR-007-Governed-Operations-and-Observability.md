@@ -10,7 +10,7 @@
 
 **Baseline:** PLAT-13.6.2 Metrics Foundation live validation recorded
 
-**Implemented:** Partially - Prometheus, Node Exporter, and cAdvisor Metrics Foundation active; Grafana repository package implementation-ready; alerts, backups, restore validation, and controlled updates remain planned.
+**Implemented:** Partially - Prometheus and Node Exporter active; cAdvisor scrape target active with Docker-container discovery degraded under Docker 29/containerd; Grafana deployed for validation with closeout blocked; alerts, backups, restore validation, and controlled updates remain planned.
 
 ---
 
@@ -58,6 +58,10 @@ Prometheus scrapes host, Docker, container, and service targets. Grafana reads P
 The PLAT-13.6.2 Metrics Foundation portion of the target deployment is implemented and validated. The PLAT-13.6.3 Grafana dashboard package is implementation-ready for Architecture Gatekeeper review. Live Grafana deployment, alerting, backup, restore validation, and controlled update implementation remain future work.
 
 Grafana must be provisioned from repository-managed datasource and dashboard files. Prometheus remains the single governed metrics data source for dashboards; Grafana must not query Node Exporter or cAdvisor directly.
+
+PLAT-13.6.3A implementation finding: Docker 29.6.1 with the containerd-backed image store (`io.containerd.snapshotter.v1`) is the governed Platform runtime baseline. cAdvisor `v0.49.1` is not accepted as sufficient Docker-container observability under that baseline because it remains scrapeable but does not reliably discover Docker containers with stable names or Compose labels. Legacy Docker storage migration, Docker downgrade, disabling the containerd image store, deleting Docker data, or recreating Pi-hole are rejected. Future container metrics must be repository-managed, version-pinned, LAN/internal-only, Prometheus-scraped, and evidence-validated before dashboards claim Docker-container resource visibility.
+
+PLAT-13.6.3B implementation pattern: preserve Docker Engine 29.6.1, preserve Node Exporter, retain cAdvisor as active/degraded, and add an implementation-ready restricted Docker API proxy plus OpenTelemetry Collector Contrib Docker Stats receiver. The Collector exposes only an internal Prometheus-format endpoint, Prometheus remains the single metrics store and Grafana datasource, and Docker daemon Prometheus metrics remain deferred. The replacement is repository-prepared only until live proxy denial proof, OTel metric inventory, Pi-hole identity proof, persistence validation, and reboot validation pass.
 
 ---
 
@@ -159,6 +163,8 @@ The same observability architecture should support Home Assistant, MQTT, Ollama,
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Recorded PLAT-13.6.3B restricted Docker API proxy and OpenTelemetry Docker Stats implementation pattern. |
+| 1.3 | Recorded PLAT-13.6.3A Docker 29/containerd cAdvisor compatibility finding and rejected Docker storage migration. |
 | 1.2 | Added PLAT-13.6.3 repository-provisioned Grafana dashboard implementation decision without live deployment. |
 | 1.1 | Recorded PLAT-13.6.2 Metrics Foundation implementation status while preserving remaining planned observability work. |
 | 1.0 | Initial ADR selecting governed Prometheus operations and observability architecture. |

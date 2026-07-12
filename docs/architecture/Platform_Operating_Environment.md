@@ -1,6 +1,6 @@
 # Platform Operating Environment
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
 **Status:** Active
 
@@ -34,8 +34,8 @@ The current Platform operating environment baseline includes:
 | Production Platform host | [`dev-beelink-mini-pc`](../../registry/records/devices/beelink-mini-pc.yaml), [`host-beelink-mini-pc`](../../registry/records/hosts/beelink-mini-pc.yaml) | Beelink Mini S is active as Platform Node 001, hostname `beelink`, at `192.168.50.127` with Docker Engine and Beelink-hosted Pi-hole. |
 | Rollback DNS host | [`dev-raspberry-pi-pihole`](../../registry/records/devices/raspberry-pi-pihole.yaml), [`host-raspberry-pi-pihole`](../../registry/records/hosts/raspberry-pi-pihole.yaml) | Raspberry Pi remains powered on and unchanged at `192.168.50.67` as immediate Pi-hole rollback host. |
 | Power continuity | [`dev-ups-battery-backup`](../../registry/records/devices/ups-battery-backup.yaml) | CyberPower CP850PFCLCD UPS is delivered and pending protected-load validation. |
-| Active services | [`svc-pihole-dns`](../../registry/records/services/pihole-dns.yaml), [`svc-docker-engine`](../../registry/records/services/docker-engine.yaml), [`svc-prometheus`](../../registry/records/services/prometheus.yaml), [`svc-node-exporter`](../../registry/records/services/node-exporter.yaml), [`svc-cadvisor`](../../registry/records/services/cadvisor.yaml), [`svc-platform-eap`](../../registry/records/services/platform-eap.yaml), [`svc-infrastructure-registry-validation`](../../registry/records/services/infrastructure-registry-validation.yaml) | Current services are represented as registry records with host, service, network, power, and administrative dependencies where known. |
-| Planned services | [`svc-home-assistant`](../../registry/records/planned_services/home-assistant.yaml), [`svc-mqtt-broker`](../../registry/records/planned_services/mqtt-broker.yaml), [`svc-ollama-local-ai`](../../registry/records/planned_services/ollama-local-ai.yaml), [`svc-platform-monitoring-dashboard`](../../registry/records/planned_services/platform-monitoring-dashboard.yaml), [`svc-remote-management`](../../registry/records/planned_services/remote-management.yaml) | Planned services are documented for placement readiness but are not deployed by Milestone 12. |
+| Active services | [`svc-pihole-dns`](../../registry/records/services/pihole-dns.yaml), [`svc-docker-engine`](../../registry/records/services/docker-engine.yaml), [`svc-prometheus`](../../registry/records/services/prometheus.yaml), [`svc-node-exporter`](../../registry/records/services/node-exporter.yaml), [`svc-cadvisor`](../../registry/records/services/cadvisor.yaml), [`svc-grafana`](../../registry/records/services/grafana.yaml), [`svc-platform-eap`](../../registry/records/services/platform-eap.yaml), [`svc-infrastructure-registry-validation`](../../registry/records/services/infrastructure-registry-validation.yaml) | Current services are represented as registry records with host, service, network, power, and administrative dependencies where known. Grafana is active but validation incomplete. |
+| Planned services | [`svc-home-assistant`](../../registry/records/planned_services/home-assistant.yaml), [`svc-mqtt-broker`](../../registry/records/planned_services/mqtt-broker.yaml), [`svc-ollama-local-ai`](../../registry/records/planned_services/ollama-local-ai.yaml), [`svc-platform-monitoring-dashboard`](../../registry/records/planned_services/platform-monitoring-dashboard.yaml), [`svc-docker-api-proxy`](../../registry/records/planned_services/docker-api-proxy.yaml), [`svc-otel-docker-stats`](../../registry/records/planned_services/otel-docker-stats.yaml), [`svc-remote-management`](../../registry/records/planned_services/remote-management.yaml) | Planned services are documented for placement readiness but are not deployed by Milestone 12. |
 
 ---
 
@@ -65,7 +65,7 @@ Current assumptions are:
 - Raspberry Pi remains the immediate rollback DNS host.
 - Platform EAP is repository-managed and currently associated with the Tom MacBook admin host.
 - Infrastructure Registry validation depends on Platform EAP rather than being separately hosted.
-- Beelink Mini S is the active Platform host for Pi-hole and the active PLAT-13.6.2 Metrics Foundation. Grafana, alerts, backups, restore validation, and controlled updates remain planned.
+- Beelink Mini S is the active Platform host for Pi-hole and the active PLAT-13.6.2 Metrics Foundation. Docker Engine `29.6.1` uses storage driver `overlayfs` with driver type `io.containerd.snapshotter.v1`, systemd cgroup driver, and cgroup v2. Grafana is deployed for validation, but PLAT-13.6.3 closeout is paused because cAdvisor Docker-container discovery is degraded under this Docker model. PLAT-13.6.3B prepares a restricted Docker API proxy plus OTel Docker Stats replacement in the repository only; it is not deployed or validated. Alerts, backups, restore validation, and controlled updates remain planned.
 - `host-home-server` remains a planned logical host concept and should not be treated as deployed runtime infrastructure until registry lifecycle status changes.
 
 Any future service placement change must update the relevant service registry record before documentation summaries are updated.
@@ -174,6 +174,7 @@ WS-12.6 does not implement:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded Docker 29/containerd storage model and PLAT-13.6.3A cAdvisor compatibility limitation. |
 | 1.4 | Added active PLAT-13.6.2 Metrics Foundation services to the operating baseline. |
 | 1.3 | Updated operating baseline for PLAT-13.6 active Beelink, Docker, Pi-hole, and Raspberry Pi rollback state. |
 | 1.2 | Updated Beelink and UPS operating baseline for PLAT-13.3 delivered hardware facts. |

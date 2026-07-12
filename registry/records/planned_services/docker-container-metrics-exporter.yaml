@@ -1,0 +1,41 @@
+id: svc-docker-container-metrics-exporter
+record_type: planned_service
+name: Docker Container Metrics Exporter
+description: Umbrella planning record for the Docker 29/containerd-compatible container metrics replacement now prepared as a restricted Docker API proxy plus OpenTelemetry Docker Stats Collector.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+service_interface: Docker/container metrics exporter candidate
+planned_host: beelink
+planned_compose_path: /platform/compose/monitoring
+planned_network: platform-monitoring
+planned_datasource: Prometheus scrape target otel-docker-stats after Architecture Gatekeeper approval and live proof
+access_boundary: internal Docker network only unless separately approved
+socket_model: Docker socket is restricted to svc-docker-api-proxy; OpenTelemetry Collector has no direct socket mount
+implementation_status: repository-prepared implementation package; not deployed; not active; exact metric names and digests pending live proof
+selected_components: svc-docker-api-proxy and svc-otel-docker-stats
+docker_daemon_metrics_status: deferred follow-on gate; not enabled in this package
+compatibility_target: Docker 29.6.1, containerd image store driver type io.containerd.snapshotter.v1, cgroup v2
+evidence_required: Docker container discovery, stable container labels, CPU, memory, network, filesystem, last-seen or state, Pi-hole non-regression
+unknowns: image digests, exact Prometheus metrics, live compatibility proof, proxy denial proof, Pi-hole identity proof
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+  - svc-docker-api-proxy
+  - svc-otel-docker-stats
+  - svc-prometheus
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+  - svc-docker-api-proxy
+  - svc-otel-docker-stats
+  - svc-prometheus
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

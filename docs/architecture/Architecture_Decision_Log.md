@@ -1,6 +1,6 @@
 # Architecture Decision Log
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Active
 
@@ -41,6 +41,7 @@ Baselined
 | ADR-005 | Portfolio Integration and Repository Independence | Portfolio Architecture | Approved | Yes | M11.0 | Milestone 11 |
 | ADR-006 | Registry Driven Infrastructure Foundation | Infrastructure Architecture | Approved | No | Pending | Milestone 12 |
 | ADR-007 | Governed Operations and Observability | Infrastructure Architecture | Approved | No | Pending | Milestone 13 |
+| ADR-008 | AI-Operated Engineering Organization Portfolio Model | Governance Architecture | Approved | No | Pending | EO-13.1 |
 
 ---
 
@@ -57,6 +58,7 @@ Baselined
 ### Governance Architecture
 
 - ADR-003 - Repository-Managed Governance
+- ADR-008 - AI-Operated Engineering Organization Portfolio Model
 
 ### Engineering Architecture
 
@@ -83,6 +85,7 @@ Each new ADR shall receive the next sequential repository-local ADR number, be r
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added ADR-008 for the AI-operated Engineering Organization portfolio model. |
 | 1.2 | Added ADR-007 for Governed Operations and Observability. |
 | 1.1 | Added ADR-006 for Registry Driven Infrastructure Foundation. |
 | 1.0 | Initial Platform Architecture Decision Log. |

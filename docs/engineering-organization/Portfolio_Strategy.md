@@ -1,6 +1,6 @@
 # Portfolio Strategy
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -18,23 +18,23 @@ This document defines how the Engineering Organization coordinates product value
 
 The portfolio strategy uses the Fitzpatrick Family Platform as the reference implementation for an AI-operated Engineering Organization while keeping customer-facing value visible through application outcomes.
 
-| Portfolio Layer | Product Role | Primary Value |
-|-----------------|--------------|---------------|
-| Engineering Organization | Flagship product | Governed AI engineering operating model. |
-| Fitzpatrick Family Platform | Reference implementation | Shared capabilities, automation, registry, and validation foundation. |
-| Fitzpatrick Family Financial Assistant | Flagship customer-facing application | Direct household assistance and customer-visible value. |
+| Portfolio Pillar | Role | Primary Value |
+|------------------|------|---------------|
+| Engineering Organization | Primary governed operating capability | AI roles, governance, lifecycle, delivery system, maturity, and engineering memory. |
+| Shared Platform | Technical foundation and reference implementation | Shared capabilities, infrastructure, services, observability, registry, and Digital Twin. |
+| Customer-Facing Applications | User-facing products and experiences | Direct household outcomes, led by the Fitzpatrick Family Financial Assistant. |
 
 ---
 
 ## Milestone Rule
 
-Every milestone shall strengthen:
+Every milestone must measurably strengthen:
 
 1. The Engineering Organization.
-2. The Platform.
+2. The Shared Platform.
 3. At least one customer-facing application.
 
-This rule keeps operating-model investments tied to practical delivery.
+This rule applies at the milestone level and keeps operating-model investments tied to practical delivery. A milestone exception requires Architecture Gatekeeper and Product Strategy Board approval, documented rationale, a compensating plan, and closeout disclosure.
 
 ---
 
@@ -54,6 +54,7 @@ This rule keeps operating-model investments tied to practical delivery.
 - [Engineering Organization Roadmap](Engineering_Organization_Roadmap.md)
 - [Product Portfolio](../governance/Product_Portfolio.md)
 - [Portfolio Integration](../portfolio/Portfolio_Integration.md)
+- [Permanent Project Operating Model](../governance/Permanent_Project_Operating_Model.md)
 
 ---
 
@@ -61,4 +62,5 @@ This rule keeps operating-model investments tied to practical delivery.
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Aligned portfolio strategy to EO-13.1 three-pillar model and Engineering Investment Rule exception governance. |
 | 1.0 | Initial Engineering Organization portfolio strategy. |

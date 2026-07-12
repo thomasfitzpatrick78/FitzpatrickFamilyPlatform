@@ -525,10 +525,10 @@ def test_plat_13_6_planned_observability_registry_records_exist():
     records, _, errors = cli.load_registry_records()
     assert not errors
     required = {
-        "svc-grafana",
         "svc-platform-backup-recovery",
         "svc-platform-alerting",
         "svc-controlled-container-updates",
+        "svc-docker-container-metrics-exporter",
     }
     assert required.issubset(records)
     assert all(records[record_id]["record_type"] == "planned_service" for record_id in required)
@@ -549,7 +549,7 @@ def test_plat_13_6_2_metrics_foundation_active_registry_records_exist():
     assert cadvisor["lifecycle_status"] == "active"
     assert prometheus["health_status"] == "healthy"
     assert node_exporter["health_status"] == "healthy"
-    assert cadvisor["health_status"] == "healthy"
+    assert cadvisor["health_status"] == "degraded"
     assert prometheus["ip_address"] == "192.168.50.127"
     assert prometheus["port"] == "TCP 9090"
     assert node_exporter["exposure"] == "internal Docker network only; no LAN-published port"
@@ -610,7 +610,9 @@ def test_plat_13_6_2_metrics_foundation_compose_guardrails():
     assert "[::]" not in compose
     assert "network_mode: host" not in compose
     assert "9090:9090" in compose
-    assert "docker.sock" not in compose
+    assert "docker.sock" not in prometheus
+    assert "docker.sock" not in node_exporter
+    assert "docker.sock" not in cadvisor
     assert "53:53" not in compose
     assert 'expose:\n      - "9100"' in compose
     assert 'expose:\n      - "8080"' in compose
@@ -635,6 +637,7 @@ def test_plat_13_6_3_operations_dashboard_templates_are_governed():
     missing = [path for path in required if not (cli.ROOT / path).is_file()]
     assert not missing
     assert not (cli.ROOT / "platform/compose/monitoring/.env").exists()
+    assert not list((cli.ROOT / "platform/compose/monitoring/grafana/provisioning").rglob(".gitkeep"))
 
 
 def test_plat_13_6_3_operations_dashboard_compose_guardrails():
@@ -661,11 +664,14 @@ def test_plat_13_6_3_operations_dashboard_compose_guardrails():
     assert "GF_AUTH_ANONYMOUS_ENABLED: \"false\"" in grafana
     assert "GF_USERS_ALLOW_SIGN_UP: \"false\"" in grafana
     assert "GF_SECURITY_ADMIN_PASSWORD" in grafana
+    assert "GF_PLUGINS_PREINSTALL_DISABLED: \"true\"" in grafana
+    assert "GF_PLUGINS_PREINSTALL_AUTO_UPDATE: \"false\"" in grafana
     assert 'ports:\n      - "${MONITORING_BIND_IP:-192.168.50.127}:9090:9090"' in prometheus
     assert "ports:" not in node_exporter
     assert "ports:" not in cadvisor
     assert "53:53" not in compose
     assert "8080:8080" not in compose
+    assert "containerd.sock" not in compose
 
 
 def test_plat_13_6_3_operations_dashboard_env_example_uses_placeholder_only():
@@ -712,20 +718,39 @@ def test_plat_13_6_3_operations_dashboard_json_parses_and_references_prometheus(
     assert "query count" not in pihole_text
     assert "blocked percentage" not in pihole_text
     assert "domain ranking" not in pihole_text
+    assert "unavailable pending a compatible docker-container metrics exporter" in pihole_text
 
 
-def test_plat_13_6_3_grafana_registry_state_remains_non_active():
+def test_plat_13_6_3a_dashboard_claims_are_not_misleading():
+    docker_dashboard = json.loads((cli.ROOT / "platform/compose/monitoring/grafana/dashboards/docker-containers.json").read_text(encoding="utf-8"))
+    docker_text = json.dumps(docker_dashboard).lower()
+    assert "observed containers" not in docker_text
+    assert "host/systemd cgroup series" in docker_text
+    assert "this is not a docker container count" in docker_text
+    assert "docker-container discovery is currently" in docker_text
+    panel_titles = [panel["title"].lower() for panel in docker_dashboard["panels"]]
+    assert "cpu by container" not in panel_titles
+    assert "memory by container" not in panel_titles
+    assert "count(container_last_seen)" in docker_text
+    metrics_dashboard = json.loads((cli.ROOT / "platform/compose/monitoring/grafana/dashboards/metrics-foundation-health.json").read_text(encoding="utf-8"))
+    metrics_text = json.dumps(metrics_dashboard).lower()
+    assert "cadvisor target health" in metrics_text
+    assert "does not prove docker-container discovery" in metrics_text
+
+
+def test_plat_13_6_3a_grafana_registry_state_is_validation_incomplete():
     records, _, errors = cli.load_registry_records()
     assert not errors
     grafana = records["svc-grafana"]
-    assert grafana["record_type"] == "planned_service"
-    assert grafana["lifecycle_status"] == "planned"
-    assert grafana["health_status"] == "planned"
+    assert grafana["record_type"] == "service"
+    assert grafana["lifecycle_status"] == "active"
+    assert grafana["health_status"] == "degraded"
     assert grafana["monitoring_ready"] is False
-    assert grafana["planned_image"] == "grafana/grafana:13.1.0"
-    assert grafana["planned_endpoint"] == "http://192.168.50.127:3000"
-    assert grafana["planned_storage"] == "/platform/data/monitoring/grafana"
-    assert "image digest pending governed live pull" in grafana["unknowns"]
+    assert grafana["image"] == "grafana/grafana:13.1.0"
+    assert grafana["endpoint"] == "http://192.168.50.127:3000"
+    assert grafana["storage"] == "/platform/data/monitoring/grafana"
+    assert grafana["implementation_status"] == "deployed-pending-validation; PLAT-13.6.3 not complete"
+    assert "blocked on Docker 29/containerd" in grafana["validation_status"]
 
 
 def test_plat_13_6_3_runbook_protects_existing_env_and_proves_persistence():
@@ -745,9 +770,10 @@ def test_plat_13_6_lifecycle_distinguishes_metrics_complete_from_dashboard_ready
     spec = (cli.ROOT / "docs/specifications/Platform_Operations_Observability_Specification.md").read_text(encoding="utf-8")
     dashboard_contract = (cli.ROOT / "docs/specifications/Platform_Operations_Dashboard.md").read_text(encoding="utf-8")
     assert "PLAT-13.6.2 operational closeout is complete" in spec
-    assert "PLAT-13.6.3 prepares the repository-managed Grafana dashboard layer without executing live deployment" in spec
-    assert "Lifecycle state | Implementation-ready; not live until deployment evidence is reviewed" in dashboard_contract
-    assert "Grafana digest is captured only after the governed live pull" in spec
+    assert "PLAT-13.6.3 prepared the repository-managed Grafana dashboard layer" in spec
+    assert "PLAT-13.6.3A Docker 29 Container Metrics Compatibility Correction" in spec
+    assert "Lifecycle state | Deployed for validation; PLAT-13.6.3 closeout blocked" in dashboard_contract
+    assert "PLAT-13.6.3 persistence and reboot validation remain incomplete" in dashboard_contract
 
 
 def test_plat_13_6_2_metrics_foundation_prometheus_targets_are_internal_service_names():
@@ -789,8 +815,30 @@ def test_plat_13_6_2_metrics_registry_records_active_live_details():
     assert prometheus["runtime_uid_gid"] == "65534:65534"
     assert prometheus["storage_mode"] == "0750"
     assert node_exporter["exposure"] == "internal Docker network only; no LAN-published port"
+    assert cadvisor["health_status"] == "degraded"
+    assert cadvisor["monitoring_ready"] is False
     assert cadvisor["internal_port"] == "TCP 8080"
+    assert "Docker-container discovery" in cadvisor["implementation_status"]
     assert "cap_drop ALL" in cadvisor["privilege_summary"]
+
+
+def test_plat_13_6_3a_compatibility_finding_and_candidate_are_governed():
+    assessment = cli.ROOT / "docs/architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md"
+    assert assessment.is_file()
+    text = assessment.read_text(encoding="utf-8")
+    assert "Docker Engine | `29.6.1`" in text
+    assert "Driver type | `io.containerd.snapshotter.v1`" in text
+    assert "Changing Docker storage backend" in text
+    assert "Rejected" in text
+    assert "OpenTelemetry Collector" in text
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    candidate = records["svc-docker-container-metrics-exporter"]
+    assert candidate["record_type"] == "planned_service"
+    assert candidate["lifecycle_status"] == "planned"
+    assert candidate["health_status"] == "planned"
+    assert candidate["monitoring_ready"] is False
+    assert "not deployed" in candidate["implementation_status"]
 
 
 def test_plat_13_6_cutover_checklist_governs_dhcp_prerequisite():
@@ -815,4 +863,364 @@ def test_plat_13_6_documents_do_not_commit_secret_assignments():
         for needle in needles:
             if needle in text:
                 suspicious.append(f"{path.relative_to(cli.ROOT)} contains {needle}")
+    assert not suspicious
+
+
+def test_plat_13_6_3b_compose_adds_restricted_proxy_and_otel_only():
+    compose = (cli.ROOT / "platform/compose/monitoring/compose.yaml").read_text(encoding="utf-8")
+    proxy = compose_service_block(compose, "docker-api-proxy")
+    otel = compose_service_block(compose, "otel-docker-stats")
+    grafana = compose_service_block(compose, "grafana")
+    prometheus = compose_service_block(compose, "prometheus")
+    node_exporter = compose_service_block(compose, "node-exporter")
+    cadvisor = compose_service_block(compose, "cadvisor")
+
+    assert "tecnativa/docker-socket-proxy:0.4.2" in proxy
+    assert "otel/opentelemetry-collector-contrib:0.156.0" in otel
+    assert ":latest" not in compose
+    assert "/var/run/docker.sock:/var/run/docker.sock:ro" in proxy
+    assert compose.count("docker.sock") == 2
+    assert "docker.sock" not in otel
+    assert "containerd.sock" not in compose
+    assert "ports:" not in proxy
+    assert "ports:" not in otel
+    assert 'expose:\n      - "2375"' in proxy
+    assert 'expose:\n      - "9464"' in otel
+    assert '- "13133"' in otel
+    assert "network_mode" not in proxy
+    assert "network_mode" not in otel
+    assert "network_mode: host" not in compose
+    assert "privileged: false" in proxy
+    assert "privileged: false" in otel
+    assert "cap_drop:\n      - ALL" in proxy
+    assert "cap_drop:\n      - ALL" in otel
+    assert "no-new-privileges:true" in proxy
+    assert "no-new-privileges:true" in otel
+    assert "restart: unless-stopped" in proxy
+    assert "restart: unless-stopped" in otel
+    assert "platform-monitoring" in compose
+    assert 'ports:\n      - "${MONITORING_BIND_IP:-192.168.50.127}:3000:3000"' in grafana
+    assert 'ports:\n      - "${MONITORING_BIND_IP:-192.168.50.127}:9090:9090"' in prometheus
+    assert "ports:" not in node_exporter
+    assert "ports:" not in cadvisor
+
+
+def test_plat_13_6_3b_proxy_policy_is_deny_by_default():
+    compose = (cli.ROOT / "platform/compose/monitoring/compose.yaml").read_text(encoding="utf-8")
+    proxy = compose_service_block(compose, "docker-api-proxy")
+    enabled = [
+        'CONTAINERS: "1"',
+        'INFO: "1"',
+        'PING: "1"',
+        'VERSION: "1"',
+    ]
+    disabled = [
+        "AUTH", "BUILD", "COMMIT", "CONFIGS", "DISTRIBUTION", "EVENTS",
+        "EXEC", "GRPC", "IMAGES", "NETWORKS", "NODES", "PLUGINS",
+        "POST", "SECRETS", "SERVICES", "SESSION", "SWARM", "SYSTEM",
+        "TASKS", "VOLUMES", "ALLOW_START", "ALLOW_STOP",
+        "ALLOW_RESTARTS", "ALLOW_PAUSE", "ALLOW_UNPAUSE",
+    ]
+    for setting in enabled:
+        assert setting in proxy
+    for setting in disabled:
+        assert f'{setting}: "0"' in proxy
+    assert 'POST: "1"' not in proxy
+
+
+def test_plat_13_6_3b_otel_config_uses_proxy_and_internal_prometheus_only():
+    config = (cli.ROOT / "platform/compose/monitoring/otel/config.yaml").read_text(encoding="utf-8")
+    assert "docker_stats:" in config
+    assert "endpoint: http://docker-api-proxy:2375" in config
+    assert "collection_interval: 15s" in config
+    assert "env_vars_to_metric_labels" not in config
+    assert "container_labels_to_metric_labels:" in config
+    assert "com.docker.compose.project: docker_compose_project" in config
+    assert "com.docker.compose.service: docker_compose_service" in config
+    assert "com.docker.compose.container-number: docker_compose_container_number" in config
+    assert "memory_limiter:" in config
+    assert "batch:" in config
+    assert "prometheus:" in config
+    assert "endpoint: 0.0.0.0:9464" in config
+    assert "otlp" not in config.lower()
+    assert "traces:" not in config
+    assert "logs:" not in config
+
+
+def test_plat_13_6_3b_prometheus_scrapes_otel_and_preserves_existing_jobs():
+    prometheus = (cli.ROOT / "platform/compose/monitoring/prometheus/prometheus.yml").read_text(encoding="utf-8")
+    assert "job_name: prometheus" in prometheus
+    assert "job_name: node-exporter" in prometheus
+    assert "job_name: cadvisor" in prometheus
+    assert "job_name: otel-docker-stats" in prometheus
+    assert "otel-docker-stats:9464" in prometheus
+    assert "scrape_interval: 15s" in prometheus
+    assert "docker-api-proxy" not in prometheus
+    assert "192.168.50.127:9464" not in prometheus
+
+
+def test_plat_13_6_3b_registry_records_remain_planned_not_active():
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    proxy = records["svc-docker-api-proxy"]
+    otel = records["svc-otel-docker-stats"]
+    candidate = records["svc-docker-container-metrics-exporter"]
+    cadvisor = records["svc-cadvisor"]
+    grafana = records["svc-grafana"]
+    assert proxy["record_type"] == "planned_service"
+    assert proxy["lifecycle_status"] == "planned"
+    assert proxy["health_status"] == "planned"
+    assert proxy["monitoring_ready"] is False
+    assert proxy["image"] == "tecnativa/docker-socket-proxy:0.4.2"
+    assert proxy["host_published_port"] == "none"
+    assert "read-only /var/run/docker.sock" in proxy["socket_model"]
+    assert "not deployed" in proxy["implementation_status"]
+    assert otel["record_type"] == "planned_service"
+    assert otel["lifecycle_status"] == "planned"
+    assert otel["health_status"] == "planned"
+    assert otel["monitoring_ready"] is False
+    assert otel["image"] == "otel/opentelemetry-collector-contrib:0.156.0"
+    assert otel["host_published_port"] == "none"
+    assert "no Docker or containerd socket" in otel["socket_model"]
+    assert "not deployed" in otel["implementation_status"]
+    assert "svc-docker-api-proxy" in candidate["service_dependencies"]
+    assert "svc-otel-docker-stats" in candidate["service_dependencies"]
+    assert cadvisor["lifecycle_status"] == "active"
+    assert cadvisor["health_status"] == "degraded"
+    assert grafana["lifecycle_status"] == "active"
+    assert grafana["health_status"] == "degraded"
+
+
+def test_plat_13_6_3b_dashboards_are_provisional_not_false_complete():
+    docker_dashboard = json.loads((cli.ROOT / "platform/compose/monitoring/grafana/dashboards/docker-containers.json").read_text(encoding="utf-8"))
+    pihole_dashboard = json.loads((cli.ROOT / "platform/compose/monitoring/grafana/dashboards/pihole-operations.json").read_text(encoding="utf-8"))
+    metrics_dashboard = json.loads((cli.ROOT / "platform/compose/monitoring/grafana/dashboards/metrics-foundation-health.json").read_text(encoding="utf-8"))
+    all_text = json.dumps([docker_dashboard, pihole_dashboard, metrics_dashboard]).lower()
+    assert "up{job=\\\"otel-docker-stats\\\"}" in all_text
+    assert "pending live deployment" in all_text
+    assert "provisional" in all_text
+    assert "metric inventory" in all_text
+    assert "host/systemd cgroups" in all_text
+    assert "query count" not in all_text
+    assert "block-rate summaries" in all_text
+    assert "client analytics" not in all_text
+    assert "domain rankings" not in all_text
+
+
+def test_plat_13_6_3b_governance_runbook_and_evidence_exist():
+    required = [
+        "docs/governance/Privileged_Infrastructure_Integration_Standard.md",
+        "docs/operations/Docker_Container_Metrics_Replacement_Runbook.md",
+        "docs/operations/Docker_Container_Metrics_Replacement_Evidence_Template.md",
+        "platform/compose/monitoring/docker-api-proxy/README.md",
+        "platform/compose/monitoring/otel/README.md",
+    ]
+    missing = [path for path in required if not (cli.ROOT / path).is_file()]
+    assert not missing
+    standard = (cli.ROOT / "docs/governance/Privileged_Infrastructure_Integration_Standard.md").read_text(encoding="utf-8")
+    runbook = (cli.ROOT / "docs/operations/Docker_Container_Metrics_Replacement_Runbook.md").read_text(encoding="utf-8")
+    evidence = (cli.ROOT / "docs/operations/Docker_Container_Metrics_Replacement_Evidence_Template.md").read_text(encoding="utf-8")
+    assert "Deny API capabilities by default" in standard
+    assert "A restricted proxy reduces exposure but does not make privileged socket access risk-free" in standard
+    for gate in range(1, 16):
+        assert f"Gate {gate}" in runbook
+    assert "Do not run `docker compose down -v`" in runbook
+    assert "Do not send a mutation request that could alter containers merely to prove denial" in runbook
+    assert "Proxy Security Evidence" in evidence
+    assert "Metric and Metadata Inventory" in evidence
+
+
+def read_repo_text(relative_path: str) -> str:
+    return (cli.ROOT / relative_path).read_text(encoding="utf-8")
+
+
+def test_eo_13_1_governed_artifacts_exist_and_are_indexed():
+    required = [
+        "docs/engineering-organization/Engineering_Organization_Manifesto.md",
+        "docs/engineering-organization/AI_Role_Catalog.md",
+        "docs/engineering-organization/Engineering_Organization_Capability_Maturity_Model.md",
+        "docs/governance/Engineering_Principles.md",
+        "docs/milestones/templates/Milestone_Closeout_Template.md",
+        "docs/milestones/templates/Milestone_Transition_Package_Template.md",
+        "docs/architecture/decisions/ADR-008-AI-Operated-Engineering-Organization-Portfolio-Model.md",
+    ]
+    missing = [path for path in required if not (cli.ROOT / path).is_file()]
+    assert not missing
+    index = read_repo_text("docs/engineering-organization/README.md")
+    assert "Engineering_Organization_Manifesto.md" in index
+    assert "Engineering_Organization_Capability_Maturity_Model.md" in index
+    assert "Engineering_Principles.md" in index
+    adr_index = read_repo_text("docs/architecture/Architecture_Decision_Log.md")
+    assert "ADR-008 | AI-Operated Engineering Organization Portfolio Model" in adr_index
+
+
+def test_eo_13_1_engineering_investment_rule_is_permanent_governance():
+    operating_model = read_repo_text("docs/governance/Permanent_Project_Operating_Model.md")
+    definition = read_repo_text("docs/governance/Definition_of_Done.md")
+    lifecycle = read_repo_text("docs/governance/Engineering_Lifecycle.md")
+    for text in [operating_model, definition, lifecycle]:
+        assert "Engineering Investment Rule" in text
+        assert "Engineering Organization" in text
+        assert "Shared Platform" in text
+        assert "customer-facing application" in text.lower()
+    assert "Architecture Gatekeeper approval" in operating_model
+    assert "Product Strategy Board approval" in operating_model
+    assert "formally approved exception" in operating_model
+
+
+def test_eo_13_1_closeout_requires_three_pillars_and_evolution():
+    template = read_repo_text("docs/milestones/templates/Milestone_Closeout_Template.md")
+    definition = read_repo_text("docs/governance/Definition_of_Done.md")
+    lifecycle = read_repo_text("docs/governance/Engineering_Lifecycle.md")
+    for text in [template, definition, lifecycle]:
+        assert "Engineering Organization Evolution" in text
+        assert "Engineering Organization improvement" in text
+        assert "Shared Platform improvement" in text
+        assert "Customer-facing application improvement" in text
+    required_subsections = [
+        "AI roles introduced or refined",
+        "Engineering-process improvements",
+        "Governance artifacts added or changed",
+        "Repeated practices evaluated for promotion",
+        "Reusable architecture or delivery patterns",
+        "Capability maturity movement",
+        "Engineering effectiveness observations",
+        "Lessons learned",
+        "Implications for the next milestone",
+    ]
+    for subsection in required_subsections:
+        assert subsection in template
+
+
+def test_eo_13_1_ai_role_catalog_contains_approved_roles_and_boundaries():
+    catalog = read_repo_text("docs/engineering-organization/AI_Role_Catalog.md")
+    roles = [
+        "Chief Architect / Architecture Gatekeeper",
+        "Engineering Organization Advisor",
+        "Product Strategy Board",
+        "Codex Implementation Engineer",
+        "Execution Agent",
+        "Operations Analyst",
+    ]
+    for role in roles:
+        assert f"### {role}" in catalog
+    assert "Architecture decisions | Chief Architect / Architecture Gatekeeper" in catalog
+    assert "Product decisions | Product Strategy Board" in catalog
+    assert "Repository implementation | Codex Implementation Engineer" in catalog
+    assert "Live execution | Execution Agent, when approved" in catalog
+    assert "Operational interpretation | Operations Analyst, when approved" in catalog
+    assert "Must not act as autonomous architecture authority" in catalog
+    assert catalog.count("**Lifecycle State:** Planned") >= 2
+    assert catalog.count("**Lifecycle State:** Active") >= 4
+
+
+def test_eo_13_1_maturity_model_uses_evidence_not_unsupported_scores():
+    maturity = read_repo_text("docs/engineering-organization/Engineering_Organization_Capability_Maturity_Model.md")
+    for level in ["Level 0", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]:
+        assert level in maturity
+    for capability in [
+        "Architecture governance",
+        "Product governance",
+        "Repository governance",
+        "Delivery automation",
+        "AI role coordination",
+        "Live execution safety",
+        "Observability",
+        "Capability planning",
+    ]:
+        assert capability in maturity
+    assert "does not assign maturity scores unless evidence is captured" in maturity
+    assert "distinguish current state from planned state" in maturity
+
+
+def test_eo_13_1_portfolio_model_distinguishes_reference_and_flagship_application():
+    sources = [
+        read_repo_text("docs/engineering-organization/Engineering_Organization_Manifesto.md"),
+        read_repo_text("docs/product/Product_Vision.md"),
+        read_repo_text("docs/governance/Product_Portfolio.md"),
+        read_repo_text("docs/architecture/decisions/ADR-008-AI-Operated-Engineering-Organization-Portfolio-Model.md"),
+    ]
+    combined = "\n".join(sources)
+    assert "Fitzpatrick Family Platform is the reference implementation" in combined
+    assert "Fitzpatrick Family Financial Assistant is the flagship customer-facing application" in combined
+    assert "Engineering Organization" in combined
+    assert "Shared Platform" in combined
+    assert "Customer-Facing Applications" in combined
+    assert "first-class governed capability" in combined
+
+
+def test_eo_13_1_capability_model_contains_three_pillars_and_child_capabilities():
+    capability = read_repo_text("docs/product/Capability_Model.md")
+    assert "### Engineering Organization" in capability
+    assert "### Shared Platform" in capability
+    assert "### Customer-Facing Applications" in capability
+    for child in [
+        "AI Roles and Responsibilities",
+        "Engineering Governance",
+        "Architecture Governance",
+        "Product and Portfolio Governance",
+        "Delivery Automation",
+        "Governed Live Execution",
+        "Engineering Metrics",
+        "Capability Maturity",
+        "Knowledge and Evidence Management",
+        "Operations Intelligence",
+    ]:
+        assert child in capability
+
+
+def test_eo_13_1_milestone_14_has_coordinated_planning_streams_only():
+    roadmap = read_repo_text("docs/product/Product_Roadmap.md")
+    backlog = read_repo_text("docs/product/Product_Backlog.md")
+    eo_backlog = read_repo_text("docs/engineering-organization/Engineering_Organization_Backlog.md")
+    for text in [roadmap, backlog]:
+        assert "EO - Engineering Organization" in roadmap
+        assert "PLAT - Shared Platform" in roadmap
+        assert "FFFA - Customer-Facing Application" in roadmap
+        assert "planned, not approved for implementation" in text.lower()
+    for item in ["EO-14.1", "EO-14.2", "EO-14.3", "EO-14.4", "EO-14.5", "EO-14.6", "EO-14.7"]:
+        assert item in eo_backlog
+    assert "FFFA-PB-001" in backlog
+    assert "Existing FFFA backlog and roadmap governance" in backlog
+
+
+def test_eo_13_1_preserves_open_milestone_and_plat_13_6_state():
+    milestone = read_repo_text("docs/milestones/Milestone_13/Milestone_13_Infrastructure_Operations_Readiness.md")
+    assert "**Status:** Planned" in milestone
+    assert "PLAT-13.6 | Platform Operations and Observability" in milestone
+    assert "EO-13.1 | Engineering Organization Governance Evolution" in milestone
+    assert "PLAT-13.6 and Milestone 13 remain open" in milestone
+    assert "does not implement" in milestone
+    assert "Release, tag, push, deployment, or production lifecycle promotion" in milestone
+
+
+def test_eo_13_1_container_metrics_abstraction_preserves_plat_13_6_3b():
+    spec = read_repo_text("docs/specifications/Platform_Operations_Observability_Specification.md")
+    assessment = read_repo_text("docs/architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md")
+    compose = read_repo_text("platform/compose/monitoring/compose.yaml")
+    assert "Container Metrics is the governed capability" in spec
+    assert "Docker is the current implementation context" in spec
+    assert "Podman, containerd, Kubernetes, Incus, or LXC" in spec
+    assert "through Prometheus rather than runtime-specific APIs" in spec
+    assert "no live architecture change" in spec
+    assert "tecnativa/docker-socket-proxy:0.4.2" in compose
+    assert "otel/opentelemetry-collector-contrib:0.156.0" in compose
+    assert "replaceable implementation component" in assessment
+
+
+def test_eo_13_1_repository_only_scope_does_not_add_runtime_artifacts_or_secrets():
+    forbidden_paths = [
+        "platform/compose/monitoring/.env",
+        "platform/compose/monitoring/grafana/grafana.db",
+        "platform/compose/monitoring/prometheus/data",
+        ".DS_Store",
+        ".pytest_cache",
+    ]
+    for relative_path in forbidden_paths:
+        assert not (cli.ROOT / relative_path).exists()
+    suspicious = []
+    for path in list((cli.ROOT / "docs").rglob("*.md")) + list((cli.ROOT / "registry").rglob("*.yaml")):
+        text = path.read_text(encoding="utf-8").lower()
+        if "real_password" in text or "private_key" in text or "api_token=" in text:
+            suspicious.append(str(path.relative_to(cli.ROOT)))
     assert not suspicious

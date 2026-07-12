@@ -2,7 +2,7 @@
 
 **Document Version:** 1.0
 
-**Status:** Implementation-ready; not yet executed
+**Status:** Paused pending PLAT-13.6.3A Architecture Gatekeeper review
 
 **Milestone:** Milestone 13
 
@@ -14,7 +14,7 @@
 
 This runbook gives Tom the governed gates to deploy and validate Grafana as the Platform operations dashboard layer on the Beelink.
 
-Do not run these steps until the Architecture Gatekeeper approves the repository package.
+Live validation is paused at PLAT-13.6.3A because cAdvisor is scrapeable but Docker-container discovery is degraded under Docker 29 with the containerd-backed image store. Do not resume these steps until the Architecture Gatekeeper approves the repository correction package.
 
 This runbook does not deploy alerts, notification delivery, backups, restore validation, automated updates, Pi-hole changes, router DNS changes, ASUS router changes, Raspberry Pi changes, or Internet exposure.
 
@@ -36,6 +36,13 @@ This runbook does not deploy alerts, notification delivery, backups, restore val
 | Refresh interval | 30 seconds |
 
 The Grafana image digest must be recorded only after the live Beelink pull.
+
+Grafana plugin preinstall and plugin auto-update must remain disabled through:
+
+```text
+GF_PLUGINS_PREINSTALL_DISABLED=true
+GF_PLUGINS_PREINSTALL_AUTO_UPDATE=false
+```
 
 ---
 
@@ -65,6 +72,12 @@ Confirm active containers and disk space:
 ssh tom@192.168.50.127 'docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" && df -h /platform'
 ```
 
+Record Docker storage and cgroup model:
+
+```bash
+ssh tom@192.168.50.127 'docker info --format "Server={{.ServerVersion}} StorageDriver={{.Driver}} DockerRoot={{.DockerRootDir}} CgroupDriver={{.CgroupDriver}} CgroupVersion={{.CgroupVersion}} DriverStatus={{json .DriverStatus}}"'
+```
+
 Confirm monitoring network and Grafana port availability:
 
 ```bash
@@ -76,6 +89,9 @@ PASS:
 - Hostname is `beelink`.
 - IP includes `192.168.50.127`.
 - Docker and Compose print versions.
+- Docker storage driver remains `overlayfs`.
+- Docker DriverStatus includes `io.containerd.snapshotter.v1`.
+- cgroup driver is `systemd` and cgroup version is `2`.
 - `platform-monitoring` exists.
 - TCP 3000 is available.
 
@@ -83,6 +99,7 @@ STOP:
 
 - Host identity is wrong.
 - Docker or Compose is unavailable.
+- Docker storage backend differs from the governed baseline.
 - TCP 3000 is already in use.
 - The monitoring network is missing unexpectedly.
 
@@ -110,12 +127,15 @@ Record Prometheus state:
 ssh tom@192.168.50.127 'docker inspect -f "{{.Id}} {{.RestartCount}} {{.State.Status}}" prometheus'
 ```
 
-Verify Prometheus targets and one host and container metric:
+Verify Prometheus targets, one host metric, and the cAdvisor compatibility diagnostic queries:
 
 ```bash
 ssh tom@192.168.50.127 'curl -s "http://192.168.50.127:9090/api/v1/query?query=up"'
 ssh tom@192.168.50.127 'curl -s "http://192.168.50.127:9090/api/v1/query?query=node_load1"'
 ssh tom@192.168.50.127 'curl -s "http://192.168.50.127:9090/api/v1/query?query=container_last_seen"'
+ssh tom@192.168.50.127 'curl -sG "http://192.168.50.127:9090/api/v1/query" --data-urlencode "query=count(container_last_seen)"'
+ssh tom@192.168.50.127 'curl -sG "http://192.168.50.127:9090/api/v1/query" --data-urlencode "query=topk(20, container_last_seen)"'
+ssh tom@192.168.50.127 'curl -sG "http://192.168.50.127:9090/api/v1/query" --data-urlencode "query=count by (name) (container_last_seen{name=~\".*(pihole|prometheus|node-exporter|cadvisor|grafana).*\"})"'
 ```
 
 PASS:
@@ -124,13 +144,17 @@ PASS:
 - DNS and blocking match the current home-network baseline.
 - Pi-hole admin UI returns an HTTP response.
 - Prometheus is running and all expected targets are up.
-- Host and container metric queries return data.
+- Host metric queries return data.
+- cAdvisor target is up.
+- Docker-container discovery is confirmed only if stable Docker container names or Compose labels are visible.
 
 STOP:
 
 - Pi-hole or Prometheus is already unhealthy.
 - Existing targets are down.
 - Required baseline metrics are missing.
+- Only host/systemd cgroups are visible from cAdvisor.
+- Docker-container discovery is not proven.
 
 ---
 
@@ -172,6 +196,8 @@ Expected files:
 - Datasource provisioning file.
 - Dashboard provisioning file.
 - Four dashboard JSON files.
+
+Grafana provisioning directories must contain valid provisioning files only. Do not add `.gitkeep` files under scanned provisioning subdirectories such as `alerting` or `plugins`; create those directories live only if a future approved provisioning file needs them.
 
 STOP:
 
@@ -234,10 +260,16 @@ STOP:
 
 ## Gate 6 - Compose Render
 
-Render the Compose configuration:
+Validate Compose syntax without rendering secret values:
 
 ```bash
-ssh tom@192.168.50.127 'cd /platform/compose/monitoring && docker compose config'
+ssh tom@192.168.50.127 'cd /platform/compose/monitoring && docker compose config --quiet'
+```
+
+Inspect only non-secret rendered settings:
+
+```bash
+ssh tom@192.168.50.127 'cd /platform/compose/monitoring && docker compose config | grep -E "grafana/grafana:13.1.0|192.168.50.127:3000|192.168.50.127:9090|GF_PLUGINS_PREINSTALL|GF_AUTH_ANONYMOUS_ENABLED|GF_USERS_ALLOW_SIGN_UP|platform-monitoring|/platform/data/monitoring/grafana"'
 ```
 
 Verify:
@@ -248,6 +280,7 @@ Verify:
 - Node Exporter and cAdvisor remain internal-only.
 - No DNS, Pi-hole, router, or Raspberry Pi setting appears.
 - No secret value is copied into evidence.
+- Plugin preinstall and auto-update are disabled.
 - No `network_mode: host` appears.
 - The network remains `platform-monitoring`.
 
@@ -316,6 +349,8 @@ STOP:
 
 Log in to Grafana through the browser at `http://192.168.50.127:3000`.
 
+Grafana may open on the default home page after login. Navigate to **Dashboards -> Platform Operations** before validating dashboard content.
+
 Validate:
 
 - Data source `Prometheus` exists.
@@ -324,6 +359,7 @@ Validate:
 - The four dashboards exist in the `Platform Operations` folder.
 - Dashboard panels load without broken-panel errors.
 - Pi-hole dashboard does not claim query counts, blocked percentages, domain rankings, or client analytics.
+- Docker and Container dashboard clearly states that cAdvisor target up is not Docker-container discovery.
 
 PASS:
 
@@ -355,10 +391,28 @@ For each dashboard record:
 - Whether refresh remains 30 seconds.
 - Whether metric names match the current Prometheus scrape.
 
+For the Docker and Container Dashboard, specifically validate:
+
+- cAdvisor target up is visible separately from Docker-container discovery quality.
+- The dashboard does not count host/systemd cgroups as Docker containers.
+- The dashboard does not claim Pi-hole or monitoring container resource metrics are available.
+- The dashboard stops at the documented limitation if Docker container names or Compose labels are unavailable.
+
+For the Pi-hole Operations Dashboard, specifically validate:
+
+- Pi-hole container metrics are marked unavailable pending a compatible exporter.
+- Beelink host health and operational recovery guidance remain visible.
+- DNS and admin probe placeholders remain future capability only.
+
 STOP:
 
 - A panel depends on unsupported metrics without a clear limitation.
 - A red or green interpretation implies governed thresholds that do not exist.
+- cAdvisor target up is treated as proof of Docker-container discovery.
+- Only host/systemd cgroups appear.
+- Docker-container discovery is unresolved.
+
+Do not continue to Gate 11 persistence validation or Gate 12 reboot validation while Docker-container dashboard requirements are unresolved.
 
 ---
 
@@ -425,6 +479,8 @@ Complete [Operations Dashboard Evidence Template](Operations_Dashboard_Evidence_
 
 Stop after evidence capture. Do not add alerts, backups, restore validation, controlled updates, milestone closeout, tag creation, or release claims.
 
+For PLAT-13.6.3A, the accepted stop point is Docker-container discovery unresolved under cAdvisor. Resume only after Architecture Gatekeeper selection of a compatible container metrics implementation.
+
 ---
 
 ## Rollback
@@ -470,4 +526,5 @@ Deleting Grafana data requires separate approval.
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added PLAT-13.6.3A Docker 29/containerd compatibility stop point and secret-safe validation corrections. |
 | 1.0 | Initial PLAT-13.6.3 live implementation runbook. |
