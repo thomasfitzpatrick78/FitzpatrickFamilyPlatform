@@ -1,6 +1,6 @@
 # Milestone 13 Infrastructure Operations Readiness Requirements
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
 **Status:** Planned
 
@@ -54,7 +54,8 @@ Prepare the Platform for future managed infrastructure operations while preservi
 - No planned service installation shall be bundled into Beelink bring-up planning.
 - Docker installation shall remain out of scope for PLAT-13.3 and be deferred to a future workstream.
 - Raspberry Pi Pi-hole remained active until the approved migration workstream completed; PLAT-13.6 records it as rollback infrastructure.
-- PLAT-13.6 shall document operations and observability without deploying Prometheus, Grafana, exporters, backups, alerts, update automation, or live infrastructure changes.
+- PLAT-13.6.2 records the approved live Metrics Foundation deployment for Prometheus, Node Exporter, and cAdvisor.
+- PLAT-13.6 shall not deploy Grafana, backups, alerts, restore validation, update automation, or additional live infrastructure changes without separate approval.
 - Finance functionality remains excluded.
 
 ---
@@ -71,6 +72,7 @@ Prepare the Platform for future managed infrastructure operations while preservi
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Recorded completed PLAT-13.6.2 Metrics Foundation while preserving later operations boundaries. |
 | 1.3 | Added PLAT-13.6 operations and observability planning requirements and updated Raspberry Pi role to rollback after migration. |
 | 1.2 | Applied PLAT-13.3 Architecture Review Board decisions for Ubuntu Server 24.04 LTS, factory Windows erase disposition, checkpoint evidence capture, and Docker deferral. |
 | 1.1 | Added PLAT-13.3 delivered hardware and Beelink Day 0 / Day 1 bring-up planning requirements. |

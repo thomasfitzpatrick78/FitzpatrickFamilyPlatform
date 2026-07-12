@@ -101,7 +101,7 @@ PLAT-13.3 does not migrate Pi-hole, change router DNS, install planned services,
 
 ## PLAT-13.6 Operations and Observability Registry Updates
 
-PLAT-13.6 records the verified production baseline and planned observability capabilities.
+PLAT-13.6 records the verified production baseline, the active PLAT-13.6.2 Metrics Foundation, and remaining planned operations capabilities.
 
 Present state now recorded in registry:
 
@@ -111,17 +111,22 @@ Present state now recorded in registry:
 - Pi-hole DNS is active in Docker on the Beelink.
 - Raspberry Pi at `192.168.50.67` remains powered on and unchanged as the immediate rollback DNS host.
 
-Planned capabilities now represented as planned services:
+Active Metrics Foundation services now represented as active services after PLAT-13.6.2 live validation:
 
 - Prometheus.
 - Node Exporter.
 - cAdvisor.
+
+These active services record versions, image IDs, repo digests, exposure boundaries, Prometheus persistence, reboot validation, and Pi-hole non-regression evidence.
+
+Remaining planned capabilities represented as planned services:
+
 - Grafana.
 - Platform backup and recovery.
 - Platform alerting.
 - Controlled container updates.
 
-These records do not deploy monitoring, backups, alerts, restore validation, update automation, packages, containers, or services.
+These remaining planned records do not deploy dashboards, backups, alerts, restore validation, update automation, packages, containers, or services.
 
 ---
 

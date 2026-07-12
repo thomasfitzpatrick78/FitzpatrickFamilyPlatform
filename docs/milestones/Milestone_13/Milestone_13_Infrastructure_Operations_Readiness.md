@@ -20,7 +20,7 @@ Prepare the Fitzpatrick Family Platform for managed infrastructure operations wh
 |------------|------|-----------|
 | PLAT-13.1 | Infrastructure Operations Readiness | Define static readiness architecture, options, standards, and checklists for future managed infrastructure operations. |
 | PLAT-13.3 | Beelink Bring-up | Define governed Day 0 / Day 1 onboarding instructions for the delivered Beelink Mini S without service migration or production DNS changes. |
-| PLAT-13.6 | Platform Operations and Observability | Define governed operations, observability, backup, restore, alerting, and controlled update planning for the active Beelink-hosted Pi-hole platform. |
+| PLAT-13.6 | Platform Operations and Observability | Define governed operations, observability, backup, restore, alerting, and controlled update practices for the active Beelink-hosted Pi-hole platform. |
 
 ---
 
@@ -64,12 +64,12 @@ PLAT-13.3 includes:
 - Explicit rollback and no-impact guidance preserving Raspberry Pi Pi-hole service.
 - Validation evidence for documentation and registry changes.
 
-PLAT-13.6 includes these repository-only work packages:
+PLAT-13.6 includes these work packages:
 
 | Work Package | Name | Objective | Depends On |
 |--------------|------|-----------|------------|
 | PLAT-13.6.1 | Operations Baseline and Governance | Capture current Beelink, Docker, and Pi-hole production baseline; establish service lifecycle, cutover, severity, evidence, and ownership practices. | PLAT-13.3 |
-| PLAT-13.6.2 | Metrics Foundation | Plan Prometheus, Node Exporter, cAdvisor, retention, storage, exposure, and validation gates. | PLAT-13.6.1 |
+| PLAT-13.6.2 | Metrics Foundation | Complete governed Prometheus, Node Exporter, cAdvisor, retention, storage, exposure, validation, persistence, reboot, and Pi-hole non-regression evidence. | PLAT-13.6.1 |
 | PLAT-13.6.3 | Operations Dashboard | Plan Grafana provisioning, dashboard requirements, and alert visibility. | PLAT-13.6.2 |
 | PLAT-13.6.4 | Backup and Recovery v1.0 | Define backup scope, exclusions, checksums, retention, restore validation, and reporting. | PLAT-13.6.1 |
 | PLAT-13.6.5 | Alerts and Incident Response | Define alert requirements, incident severity, response, escalation, and evidence. | PLAT-13.6.2; PLAT-13.6.4 |
@@ -111,9 +111,9 @@ PLAT-13.3 does not implement:
 - Docker installation.
 - Beelink active lifecycle transition before physical setup and validation.
 
-PLAT-13.6 does not implement:
+PLAT-13.6 does not implement beyond the completed PLAT-13.6.2 Metrics Foundation:
 
-- Prometheus, Grafana, Node Exporter, cAdvisor, exporters, alerting, backup scripts, restore tests, timers, packages, containers, or services.
+- Grafana, alerting, backup scripts, restore tests, timers, or controlled update automation.
 - Router DNS changes.
 - Production DNS changes.
 - Raspberry Pi rollback decommissioning.
@@ -149,7 +149,8 @@ PLAT-13.6 is ready for Architecture Gatekeeper review when:
 - ADR-007 records the approved governed Prometheus observability stack.
 - Service lifecycle and production cutover checklist are integrated into governance.
 - Present Beelink, Docker, Pi-hole, and Raspberry Pi rollback facts are represented in registry records.
-- Planned monitoring, backup, restore, alert, and update capabilities are documented without claiming live implementation.
+- Prometheus, Node Exporter, and cAdvisor are documented with live PLAT-13.6.2 evidence.
+- Planned Grafana, backup, restore, alert, and update capabilities remain documented without claiming live implementation.
 - Tests and EAP validations have been attempted and results are recorded.
 
 ---
@@ -173,6 +174,7 @@ PLAT-13.6 is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Recorded PLAT-13.6.2 Metrics Foundation live operational closeout while preserving later work packages as planned. |
 | 1.3 | Added PLAT-13.6 Platform Operations and Observability work packages, dependencies, non-goals, and review criteria. |
 | 1.2 | Applied PLAT-13.3 Architecture Review Board decisions for OS baseline, Windows disposition, registry evidence checkpoints, and Docker deferral. |
 | 1.1 | Added PLAT-13.3 Beelink bring-up planning scope and architecture review criteria. |

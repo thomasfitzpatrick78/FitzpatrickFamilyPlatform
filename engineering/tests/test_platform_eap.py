@@ -524,9 +524,6 @@ def test_plat_13_6_planned_observability_registry_records_exist():
     records, _, errors = cli.load_registry_records()
     assert not errors
     required = {
-        "svc-prometheus",
-        "svc-node-exporter",
-        "svc-cadvisor",
         "svc-grafana",
         "svc-platform-backup-recovery",
         "svc-platform-alerting",
@@ -535,6 +532,46 @@ def test_plat_13_6_planned_observability_registry_records_exist():
     assert required.issubset(records)
     assert all(records[record_id]["record_type"] == "planned_service" for record_id in required)
     assert all(records[record_id]["lifecycle_status"] == "planned" for record_id in required)
+
+
+def test_plat_13_6_2_metrics_foundation_active_registry_records_exist():
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    prometheus = records["svc-prometheus"]
+    node_exporter = records["svc-node-exporter"]
+    cadvisor = records["svc-cadvisor"]
+    assert prometheus["record_type"] == "service"
+    assert node_exporter["record_type"] == "service"
+    assert cadvisor["record_type"] == "service"
+    assert prometheus["lifecycle_status"] == "active"
+    assert node_exporter["lifecycle_status"] == "active"
+    assert cadvisor["lifecycle_status"] == "active"
+    assert prometheus["health_status"] == "healthy"
+    assert node_exporter["health_status"] == "healthy"
+    assert cadvisor["health_status"] == "healthy"
+    assert prometheus["ip_address"] == "192.168.50.127"
+    assert prometheus["port"] == "TCP 9090"
+    assert node_exporter["exposure"] == "internal Docker network only; no LAN-published port"
+    assert cadvisor["host_published_port"] == "none"
+    assert "svc-docker-engine" in prometheus["service_dependencies"]
+    assert "host-beelink-mini-pc" in node_exporter["host_dependencies"]
+    assert "host-beelink-mini-pc" in cadvisor["host_dependencies"]
+
+
+def test_plat_13_6_2_metrics_foundation_records_versions_digests_and_evidence():
+    records, _, errors = cli.load_registry_records()
+    assert not errors
+    expected = {
+        "svc-prometheus": "prom/prometheus@sha256:2659f4c2ebb718e7695cb9b25ffa7d6be64db013daba13e05c875451cf51b0d3",
+        "svc-node-exporter": "prom/node-exporter@sha256:4032c6d5bfd752342c3e631c2f1de93ba6b86c41db6b167b9a35372c139e7706",
+        "svc-cadvisor": "gcr.io/cadvisor/cadvisor@sha256:3cde6faf0791ebf7b41d6f8ae7145466fed712ea6f252c935294d2608b1af388",
+    }
+    for record_id, digest in expected.items():
+        record = records[record_id]
+        assert record["image_digest"] == digest
+        assert record["evidence"] == "docs/operations/Metrics_Foundation_Implementation_Evidence.md"
+    evidence = cli.ROOT / "docs/operations/Metrics_Foundation_Implementation_Evidence.md"
+    assert evidence.is_file()
 
 
 def test_plat_13_6_2_metrics_foundation_templates_are_governed():
@@ -606,22 +643,22 @@ def test_plat_13_6_2_metrics_foundation_runbook_has_gates_and_scope_boundaries()
     assert "This is the required stop point" in runbook
 
 
-def test_plat_13_6_2_metrics_registry_keeps_lifecycle_planned_but_records_ready_details():
+def test_plat_13_6_2_metrics_registry_records_active_live_details():
     records, _, errors = cli.load_registry_records()
     assert not errors
     prometheus = records["svc-prometheus"]
     node_exporter = records["svc-node-exporter"]
     cadvisor = records["svc-cadvisor"]
-    assert prometheus["lifecycle_status"] == "planned"
-    assert node_exporter["lifecycle_status"] == "planned"
-    assert cadvisor["lifecycle_status"] == "planned"
-    assert prometheus["planned_image"] == "prom/prometheus:v2.55.1"
-    assert prometheus["planned_bind_address"] == "192.168.50.127"
-    assert prometheus["planned_retention"] == "15d"
-    assert prometheus["planned_runtime_uid_gid"] == "65534:65534"
-    assert prometheus["planned_storage_mode"] == "0750"
-    assert node_exporter["planned_exposure"] == "internal Docker network only; no LAN-published port"
-    assert cadvisor["planned_port"] == "TCP 8080 internal Docker network only; not published to host"
+    assert prometheus["lifecycle_status"] == "active"
+    assert node_exporter["lifecycle_status"] == "active"
+    assert cadvisor["lifecycle_status"] == "active"
+    assert prometheus["image"] == "prom/prometheus:v2.55.1"
+    assert prometheus["ip_address"] == "192.168.50.127"
+    assert prometheus["retention"] == "15d"
+    assert prometheus["runtime_uid_gid"] == "65534:65534"
+    assert prometheus["storage_mode"] == "0750"
+    assert node_exporter["exposure"] == "internal Docker network only; no LAN-published port"
+    assert cadvisor["internal_port"] == "TCP 8080"
     assert "cap_drop ALL" in cadvisor["privilege_summary"]
 
 

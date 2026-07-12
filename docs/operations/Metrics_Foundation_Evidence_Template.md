@@ -2,7 +2,7 @@
 
 **Document Version:** 1.0
 
-**Status:** Template
+**Status:** Template; completed evidence is governed separately
 
 **Milestone:** Milestone 13
 
@@ -11,6 +11,8 @@
 ---
 
 ## Execution Summary
+
+Completed PLAT-13.6.2 live evidence is recorded in [Metrics Foundation Implementation Evidence](Metrics_Foundation_Implementation_Evidence.md).
 
 - Date:
 - Executor:

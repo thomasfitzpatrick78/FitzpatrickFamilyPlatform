@@ -1,6 +1,6 @@
 # Platform Operations and Observability Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.2
 
 **Status:** Planned
 
@@ -12,9 +12,9 @@
 
 ## Purpose
 
-This specification defines the governed target state for Platform operations and observability.
+This specification defines the governed target state for Platform operations and observability and records the verified PLAT-13.6.2 Metrics Foundation deployment.
 
-It does not deploy monitoring, backups, alerts, scripts, containers, packages, timers, dashboards, or services.
+It does not deploy Grafana, backups, alerts, scripts, timers, dashboards, restore validation, or controlled updates.
 
 ---
 
@@ -32,11 +32,11 @@ Trusted Home Network
   |           |-- Docker Engine
   |           |     |
   |           |     |-- Pi-hole container (active production)
-  |           |     |-- Prometheus (planned)
+  |           |     |-- Prometheus (active)
   |           |     |-- Grafana (planned)
-  |           |     |-- cAdvisor (planned)
+  |           |     |-- cAdvisor (active)
   |           |
-  |           |-- Node Exporter (planned)
+  |           |-- Node Exporter (active)
   |           |-- Backup / restore / validation scripts (planned)
   |
   |-- Raspberry Pi Pi-hole rollback host / 192.168.50.67
@@ -63,6 +63,7 @@ Trusted Home Network
 | Pi-hole admin port | TCP `8080` |
 | Pi-hole DNS ports | TCP/UDP `53` on `192.168.50.127` |
 | Rollback host | Raspberry Pi at `192.168.50.67`, powered on and unchanged |
+| Metrics foundation | Prometheus, Node Exporter, and cAdvisor active and validated under PLAT-13.6.2 |
 
 Proton VPN on the MacBook intentionally uses Proton DNS while connected. That operating mode is not a Pi-hole failure.
 
@@ -72,9 +73,9 @@ Proton VPN on the MacBook intentionally uses Proton DNS while connected. That op
 
 | Component | Responsibility | State |
 |-----------|----------------|-------|
-| Prometheus | Metrics collection, retention, target health, alert rule evaluation | Planned |
-| Node Exporter | Beelink/Linux host metrics | Planned |
-| cAdvisor | Docker and container metrics | Planned |
+| Prometheus | Metrics collection, retention, target health | Active |
+| Node Exporter | Beelink/Linux host metrics | Active |
+| cAdvisor | Docker and container metrics | Active |
 | Grafana | Governed dashboards and alert visibility | Planned |
 | Pi-hole checks | DNS, admin, health, and customer-facing service validation | Planned |
 | Backup scripts | Backup, checksum, report, and retention workflow | Planned |
@@ -85,9 +86,9 @@ Proton VPN on the MacBook intentionally uses Proton DNS while connected. That op
 
 ## PLAT-13.6.2 Metrics Foundation Implementation Package
 
-PLAT-13.6.2 prepares repository-managed implementation artifacts for the first metrics deployment.
+PLAT-13.6.2 prepared repository-managed implementation artifacts for the first metrics deployment.
 
-This implementation package is approved for user execution on the Beelink, but it does not claim that monitoring is already deployed.
+Live execution has since completed and is recorded in [Metrics Foundation Implementation Evidence](../operations/Metrics_Foundation_Implementation_Evidence.md).
 
 Approved components:
 
@@ -120,8 +121,9 @@ Implementation decisions:
 - Prometheus runs as UID/GID `65534:65534`, and its data directory must use that ownership with non-global-write permissions.
 - Docker socket is not mounted into Prometheus.
 - cAdvisor uses read-only host metadata mounts, `privileged: false`, `cap_drop: ALL`, and `no-new-privileges:true`.
-- Image digests are captured during live evidence after images are pulled.
+- Image digests were captured during live evidence after images were pulled.
 - The runtime `.env` is created only on the Beelink and is not committed.
+- Prometheus targets, host metrics, container metrics, persistence, reboot behavior, and Pi-hole non-regression are verified.
 
 Explicitly out of scope for PLAT-13.6.2:
 
@@ -139,13 +141,14 @@ Explicitly out of scope for PLAT-13.6.2:
 
 ---
 
+
 ## Target Ports
 
 | Component | Port | Exposure |
 |-----------|------|----------|
 | Pi-hole DNS | TCP/UDP 53 | Home network production DNS |
 | Pi-hole admin | TCP 8080 | Trusted home network only |
-| Prometheus | TCP 9090 | Trusted home network only when implemented |
+| Prometheus | TCP 9090 | Trusted home network only |
 | Grafana | TCP 3000 | Trusted home network only when implemented |
 | Node Exporter | TCP 9100 | Prometheus internal Docker network only for PLAT-13.6.2 |
 | cAdvisor | TCP 8080 internal only | Must avoid Pi-hole admin conflict; no host-published port for PLAT-13.6.2 |
@@ -156,7 +159,7 @@ No monitoring interface may be exposed to the Internet.
 
 ## Target Persistent Paths
 
-These paths describe target state. This repository workstream does not create files on the Beelink.
+These paths describe target and active state. PLAT-13.6.2 has created the monitoring Compose and Prometheus data paths on the Beelink. Grafana, backup, restore, validation, and update paths remain planned.
 
 ```text
 /platform/compose/monitoring/
@@ -309,12 +312,13 @@ If monitoring deployment fails in a future workstream, stop monitoring component
 
 ## Definition of Done
 
-PLAT-13.6 repository-only planning is complete when:
+PLAT-13.6 planning baseline is complete when:
 
 - ADR-007 records the approved architecture.
 - Service lifecycle and cutover checklist exist.
 - Present Beelink, Docker, Pi-hole, and Raspberry Pi rollback facts are recorded.
-- Prometheus, Node Exporter, cAdvisor, Grafana, alerts, backups, restore validation, and controlled updates are planned but not deployed.
+- Prometheus, Node Exporter, and cAdvisor have governed repository artifacts and live PLAT-13.6.2 evidence.
+- Grafana, alerts, backups, restore validation, and controlled updates remain planned but not deployed.
 - Tests and EAP validations pass.
 - No live infrastructure changes are performed.
 - No secrets are committed.
@@ -328,6 +332,14 @@ PLAT-13.6.2 Metrics Foundation implementation readiness is complete when:
 - Tests verify exposure, image tag, persistence, and scope guardrails.
 - No live execution results are claimed by repository artifacts.
 
+PLAT-13.6.2 operational closeout is complete when:
+
+- Prometheus, Node Exporter, and cAdvisor are represented as active registry services.
+- Versions, image IDs, and repo digests are recorded.
+- Prometheus target validation, persistence validation, reboot validation, and Pi-hole non-regression evidence is governed.
+- Later PLAT-13.6 work packages remain planned.
+- Tests and EAP validations pass.
+
 ---
 
 ## Related Documents
@@ -339,6 +351,7 @@ PLAT-13.6.2 Metrics Foundation implementation readiness is complete when:
 - [Incident Response Runbooks](../operations/Incident_Response_Runbooks.md)
 - [Metrics Foundation Runbook](../operations/Metrics_Foundation_Runbook.md)
 - [Metrics Foundation Evidence Template](../operations/Metrics_Foundation_Evidence_Template.md)
+- [Metrics Foundation Implementation Evidence](../operations/Metrics_Foundation_Implementation_Evidence.md)
 
 ---
 
@@ -346,5 +359,6 @@ PLAT-13.6.2 Metrics Foundation implementation readiness is complete when:
 
 | Version | Description |
 |---------|-------------|
-| 1.0 | Initial PLAT-13.6 operations and observability specification. |
+| 1.2 | Recorded PLAT-13.6.2 live Metrics Foundation validation and active service state. |
 | 1.1 | Added PLAT-13.6.2 Metrics Foundation implementation package, scope boundaries, and readiness criteria. |
+| 1.0 | Initial PLAT-13.6 operations and observability specification. |

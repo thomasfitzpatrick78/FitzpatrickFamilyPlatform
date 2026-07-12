@@ -1,10 +1,10 @@
 # Platform Monitoring Compose Template
 
-**Status:** Implementation-ready template for PLAT-13.6.2.
+**Status:** Active PLAT-13.6.2 Metrics Foundation configuration.
 
-This directory contains repository-managed templates for the Metrics Foundation.
+This directory contains repository-managed configuration for the active Metrics Foundation.
 
-It does not mean monitoring has been deployed.
+Live deployment evidence is recorded in [Metrics Foundation Implementation Evidence](../../../docs/operations/Metrics_Foundation_Implementation_Evidence.md).
 
 ---
 
@@ -16,7 +16,7 @@ It does not mean monitoring has been deployed.
 | Node Exporter | `prom/node-exporter:v1.8.2` | Beelink/Linux host metrics |
 | cAdvisor | `gcr.io/cadvisor/cadvisor:v0.49.1` | Docker and container resource metrics |
 
-Image digests are recorded during live Gate 9 evidence capture after images are pulled on the Beelink.
+Image digests were recorded during live Gate 9 evidence capture after images were pulled on the Beelink.
 
 Image sources:
 
@@ -25,6 +25,7 @@ Image sources:
 - `gcr.io/cadvisor/cadvisor` is the cAdvisor image published by the cAdvisor project.
 
 No image uses `latest`, rolling, prerelease, `main`, `master`, `edge`, or another uncontrolled tag.
+
 
 ---
 
@@ -50,6 +51,7 @@ Prometheus runtime data is stored at:
 Mutable runtime data must not be stored in this Git repository.
 
 The Prometheus container runs as UID/GID `65534:65534`. The live runbook creates `/platform/data/monitoring/prometheus` with that ownership and mode `0750`. The directory must not be globally writable.
+
 
 ---
 
@@ -85,4 +87,5 @@ Residual risk: cAdvisor receives sensitive host visibility. It is not published 
 
 - [Metrics Foundation Runbook](../../../docs/operations/Metrics_Foundation_Runbook.md)
 - [Metrics Foundation Evidence Template](../../../docs/operations/Metrics_Foundation_Evidence_Template.md)
+- [Metrics Foundation Implementation Evidence](../../../docs/operations/Metrics_Foundation_Implementation_Evidence.md)
 - [Platform Operations and Observability Specification](../../../docs/specifications/Platform_Operations_Observability_Specification.md)

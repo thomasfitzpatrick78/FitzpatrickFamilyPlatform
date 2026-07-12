@@ -2,7 +2,7 @@
 
 **Document Version:** 1.0
 
-**Status:** Approved for user-executed implementation
+**Status:** Live deployment verified; retained for rebuild and recovery
 
 **Milestone:** Milestone 13
 
@@ -12,7 +12,7 @@
 
 ## Purpose
 
-This runbook gives Tom the governed steps to install the first Metrics Foundation on the Beelink production Platform host.
+This runbook gives Tom the governed steps to install or rebuild the first Metrics Foundation on the Beelink production Platform host.
 
 The approved Metrics Foundation includes:
 
@@ -22,6 +22,8 @@ The approved Metrics Foundation includes:
 - Prometheus persistent storage.
 - Local target health validation.
 - Docker and host reboot validation.
+
+The initial PLAT-13.6.2 execution completed successfully on 2026-07-12. Governed live evidence is recorded in [Metrics Foundation Implementation Evidence](Metrics_Foundation_Implementation_Evidence.md).
 
 This runbook stops after the Metrics Foundation is validated. It does not deploy dashboards, alerts, backups, controlled updates, or any unrelated service.
 
@@ -47,7 +49,7 @@ This runbook stops after the Metrics Foundation is validated. It does not deploy
 
 ---
 
-## Planned State
+## Active Metrics Foundation State
 
 | Component | Image | Planned exposure |
 |-----------|-------|------------------|

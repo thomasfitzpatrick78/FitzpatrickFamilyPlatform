@@ -1,0 +1,50 @@
+id: svc-prometheus
+record_type: service
+name: Prometheus Metrics Service
+description: Active Prometheus service for Platform metrics collection, target health, and local retention.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: healthy
+monitoring_ready: true
+service_interface: metrics
+runtime_status: running and healthy after reboot validation
+production_host: beelink
+ip_address: 192.168.50.127
+port: TCP 9090
+endpoint: http://192.168.50.127:9090
+network_exposure: trusted LAN only; not Internet exposed
+image: prom/prometheus:v2.55.1
+image_id: sha256:2659f4c2ebb718e7695cb9b25ffa7d6be64db013daba13e05c875451cf51b0d3
+image_digest: prom/prometheus@sha256:2659f4c2ebb718e7695cb9b25ffa7d6be64db013daba13e05c875451cf51b0d3
+retention: 15d
+storage_path: /platform/data/monitoring/prometheus
+runtime_uid_gid: 65534:65534
+storage_mode: 0750
+compose_path: /platform/compose/monitoring
+repository_compose_path: platform/compose/monitoring
+repository_config_path: platform/compose/monitoring/prometheus/prometheus.yml
+implementation_status: PLAT-13.6.2 live deployment, target validation, persistence validation, reboot validation, and Pi-hole non-regression complete
+access_boundary: trusted home network only
+scrape_targets: prometheus:9090, node-exporter:9100, cadvisor:8080
+persistence_validation: passed after Prometheus-only container recreation
+reboot_validation: passed
+evidence: docs/operations/Metrics_Foundation_Implementation_Evidence.md
+unknowns: future alert rules, Grafana integration, backup coverage, and long-term storage growth TBD
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+  - svc-node-exporter
+  - svc-cadvisor
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+  - svc-node-exporter
+  - svc-cadvisor
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin

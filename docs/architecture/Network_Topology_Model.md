@@ -50,7 +50,10 @@ Frontier ONT
           -> Beelink Mini PC Host
               -> Docker Engine
                   -> Pi-hole DNS Service
-                  -> Planned monitoring services
+                  -> Prometheus Metrics Service
+                  -> Node Exporter
+                  -> cAdvisor
+                  -> Planned Grafana, alerting, backup, restore, and update services
           -> Raspberry Pi Pi-hole Rollback Host
       -> TP-Link TL-SG108S-M2 Switch 2
           -> Family NAS
@@ -103,6 +106,7 @@ WS-12.4 does not implement network discovery, live topology generation, monitori
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Updated represented topology for active PLAT-13.6.2 Metrics Foundation and remaining planned operations services. |
 | 1.3 | Updated represented topology for Beelink-hosted Pi-hole, Docker, planned monitoring, and Raspberry Pi rollback under PLAT-13.6. |
 | 1.2 | Updated delivered TP-Link switch and CyberPower CP850PFCLCD labels for PLAT-13.3 planning context. |
 | 1.1 | Updated validation guidance for WS-12.5 Platform Digital Twin integrity checks. |

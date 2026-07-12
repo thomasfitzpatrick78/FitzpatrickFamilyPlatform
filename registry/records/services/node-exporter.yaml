@@ -1,0 +1,39 @@
+id: svc-node-exporter
+record_type: service
+name: Node Exporter
+description: Active exporter for Beelink Linux host metrics.
+owner: owner-family-platform
+location: loc-home
+lifecycle_status: active
+health_status: healthy
+monitoring_ready: true
+service_interface: metrics exporter
+runtime_status: running and healthy after reboot validation
+production_host: beelink
+internal_port: TCP 9100
+image: prom/node-exporter:v1.8.2
+image_id: sha256:4032c6d5bfd752342c3e631c2f1de93ba6b86c41db6b167b9a35372c139e7706
+image_digest: prom/node-exporter@sha256:4032c6d5bfd752342c3e631c2f1de93ba6b86c41db6b167b9a35372c139e7706
+exposure: internal Docker network only; no LAN-published port
+docker_network: platform-monitoring
+repository_compose_path: platform/compose/monitoring
+implementation_status: PLAT-13.6.2 live deployment and host-metric validation complete
+access_boundary: Prometheus internal Docker network only
+mount_summary: root filesystem mounted read-only at /host for host metrics
+host_path_configuration: --path.rootfs=/host
+scraped_by: svc-prometheus
+evidence: docs/operations/Metrics_Foundation_Implementation_Evidence.md
+unknowns: future alert rules and dashboard integration TBD
+dependencies:
+  - host-beelink-mini-pc
+  - svc-docker-engine
+host_dependencies:
+  - host-beelink-mini-pc
+service_dependencies:
+  - svc-docker-engine
+network_dependencies:
+  - net-switch-2-5gbe-1
+power_dependencies:
+  - dev-ups-battery-backup
+administrative_dependencies:
+  - dev-toms-macbook-admin
