@@ -1,8 +1,8 @@
 {
   "capability": "Repository Validation",
-  "status": "PASS WITH WARNINGS",
-  "timestamp": "2026-07-13T21:42:26.001267+00:00",
-  "summary": "Repository validation completed with status PASS WITH WARNINGS.",
+  "status": "PASS",
+  "timestamp": "2026-07-13T21:44:22.243492+00:00",
+  "summary": "Repository validation completed with status PASS.",
   "results": [
     {
       "severity": "INFO",
@@ -325,8 +325,8 @@
       "path": null
     },
     {
-      "severity": "WARNING",
-      "message": "Working tree has active source changes",
+      "severity": "INFO",
+      "message": "Working tree clean outside generated engineering reports",
       "path": null
     }
   ]
