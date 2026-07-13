@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 1.9
+**Document Version:** 2.1
 
 **Status:** Active
 
@@ -52,28 +52,24 @@ Milestone 14 planning is coordinated across EO, PLAT, and FFFA streams. These ca
 
 ### EO - Engineering Organization
 
-- EO-14.1 AI Role Catalog Operationalization.
-- EO-14.2 Execution Agent Specification.
-- EO-14.3 Governed Automation Framework.
-- EO-14.4 Operations Analyst / Operations Intelligence.
-- EO-14.5 Engineering Organization Metrics.
-- EO-14.6 Capability Maturity Assessment.
-- EO-14.7 AI Collaboration and Approval Model.
+- EO-14.1 Execution Agent Specification.
+- EO-14.2 Operations Analyst Specification.
+- EO-14.3 Engineering Metrics v2.
+- EO-14.4 Governed Automation Framework.
 
 ### PLAT - Shared Platform
 
-- Complete governed Container Metrics replacement.
-- Platform alerting.
-- Backup and recovery.
-- Restore validation.
-- Controlled updates.
-- Observability integration.
+- PLAT-14.1 Container Metrics Modernization.
+- PLAT-14.2 Operational Excellence for backup, restore, recovery validation, alerting, runbooks, and evidence retention.
+- PLAT-14.3 Platform Health Dashboard.
+- PLAT-14.4 Platform Authentication Boundary for local reverse proxy authentication, identity-header trust, LAN-only HTTPS, certificate lifecycle, monitoring, backup, recovery, and access revocation.
 
 ### FFFA - Customer-Facing Application
 
-- Identify one approved Fitzpatrick Family Financial Assistant customer-facing capability candidate through existing FFFA backlog and roadmap governance.
+- FFFA-14.1 Transaction Categorization Intelligence.
+- FFFA-14.2 Family Financial Reporting and Presentation.
 - Preserve repository independence and avoid inventing detailed FFFA implementation scope in this repository.
-- Use the selected candidate to satisfy Milestone 14 Engineering Investment Rule traceability.
+- Use FFFA-owned personas, reporting contracts, channel specifications, and customer acceptance evidence to satisfy Milestone 14 Engineering Investment Rule traceability.
 
 ---
 
@@ -118,6 +114,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
 - [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
 - [Engineering Organization Roadmap](../engineering-organization/Engineering_Organization_Roadmap.md)
+- [Milestone 14 Portfolio Plan](../milestones/Milestone_14/Milestone_14_Portfolio_Plan.md)
 
 ---
 
@@ -125,6 +122,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 2.1 | Added Platform-owned authentication boundary roadmap scope for FFFA-14.2B. |
+| 2.0 | Aligned Milestone 14 roadmap streams to approved balanced portfolio work packages and FFFA-14 scope. |
 | 1.9 | Added planned Milestone 14 EO, PLAT, and FFFA roadmap streams for Engineering Investment Rule traceability. |
 | 1.8 | Added PLAT-13.6.3B governed Docker-container metrics replacement preparation. |
 | 1.7 | Added PLAT-13.6.3A Docker-container metrics correction to near-term roadmap. |

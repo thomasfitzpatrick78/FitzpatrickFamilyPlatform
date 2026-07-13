@@ -1,6 +1,6 @@
 # AI Role Catalog
 
-**Document Version:** 2.0
+**Document Version:** 2.1
 
 **Status:** Active
 
@@ -156,7 +156,7 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 ### Execution Agent
 
-**Lifecycle State:** Planned
+**Lifecycle State:** Planned; specified by EO-14.1
 
 **Purpose:** Execute approved live runbooks with gate-by-gate validation, evidence capture, rollback support, and strict stop-condition enforcement.
 
@@ -185,9 +185,11 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 **Escalation Conditions:** Any failed gate, unexpected runtime state, missing authorization, command ambiguity, security boundary concern, or rollback uncertainty.
 
+**Governing Specification:** [Execution Agent Specification](Execution_Agent_Specification.md)
+
 ### Operations Analyst
 
-**Lifecycle State:** Planned
+**Lifecycle State:** Planned; specified by EO-14.2
 
 **Purpose:** Interpret operational telemetry and evidence so architecture, registry, roadmap, and incident decisions remain evidence-based.
 
@@ -215,6 +217,8 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 **Escalation Conditions:** Critical service degradation, telemetry mismatch, missing evidence, suspected false dashboard claims, capacity risk, or incident response trigger.
 
+**Governing Specification:** [Operations Analyst Specification](Operations_Analyst_Specification.md)
+
 ---
 
 ## Codex Operating Model
@@ -232,6 +236,8 @@ The catalog separates architecture decisions, product decisions, repository impl
 - [Human Role Catalog](Human_Role_Catalog.md)
 - [Parallel Workstream Delivery Model](Parallel_Workstream_Delivery_Model.md)
 - [Engineering Workspace Model](Engineering_Workspace_Model.md)
+- [Execution Agent Specification](Execution_Agent_Specification.md)
+- [Operations Analyst Specification](Operations_Analyst_Specification.md)
 - [Definition of Done](../governance/Definition_of_Done.md)
 
 ---
@@ -240,5 +246,6 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 | Version | Description |
 |---------|-------------|
+| 2.1 | Linked planned Execution Agent and Operations Analyst roles to EO-14 governing specifications. |
 | 2.0 | Replaced initial delivery-team catalog with approved governed AI roles, authority boundaries, lifecycle states, and escalation conditions. |
 | 1.0 | Initial AI role catalog. |

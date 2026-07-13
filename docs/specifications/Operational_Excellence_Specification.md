@@ -1,0 +1,95 @@
+# Operational Excellence Specification
+
+**Document Version:** 1.1
+
+**Status:** Draft for Architecture Gatekeeper Review
+
+**Milestone:** PLAT-14.2
+
+---
+
+## Purpose
+
+Define prioritized Milestone 14 operational excellence scope for backup, restore, recovery validation, alerting, runbooks, evidence retention, and service-level recovery.
+
+This specification separates categories so Milestone 14 does not imply all categories will be implemented.
+
+---
+
+## Operational Categories
+
+| Category | Definition | Milestone 14 Priority |
+|----------|------------|-----------------------|
+| Repository backup | Git repository history and governance artifacts. | Confirm existing git-based protection and document gaps. |
+| Configuration backup | Service configuration, compose files, dashboards, scrape config, registry records. | High. |
+| Persistent application data backup | Runtime data volumes for services such as Grafana and future applications. | High for active services; candidate for planned services. |
+| Host backup | Operating system and host-level recovery. | Candidate pending platform owner decision. |
+| Restore testing | Isolated proof that backups can be restored. | High for selected scope. |
+| Disaster recovery | Recovery from host loss or major service failure. | Define scenarios; implementation may be deferred. |
+| Service-level recovery | Service-specific recovery objectives and runbooks. | High for Pi-hole, Prometheus, Grafana, and registry validation. |
+| Authentication recovery | Recovery of Platform-owned authentication boundary, certificates, and access-revocation capability. | High for FFFA-14.2B before real household data. |
+
+---
+
+## Alerting Scope
+
+Initial alerting requirements should cover:
+
+- Pi-hole availability and DNS health.
+- Prometheus target availability.
+- Host resource risk where validated.
+- Backup failure or stale backup evidence.
+- Grafana dashboard or data-source failure where validated.
+- Authentication boundary health and certificate validity when FFFA-14.2B is approved.
+
+Alert delivery mechanisms require human approval before activation.
+
+---
+
+## Evidence Retention
+
+Evidence should record:
+
+- Date and time.
+- Target service or host.
+- Command or validation performed.
+- Result.
+- Evidence location.
+- Data sensitivity note.
+- Reviewer.
+
+Secrets, credentials, personal financial data, and runtime-only artifacts must not be committed.
+
+---
+
+## Service Recovery Objectives
+
+Where practical, service-level recovery objectives should define:
+
+- Maximum acceptable outage.
+- Minimum backup frequency.
+- Restore validation cadence.
+- Rollback service or fallback path.
+- Required human approval.
+
+If evidence is insufficient, record the objective as a decision required before implementation.
+
+---
+
+## Acceptance Criteria
+
+PLAT-14.2 is ready for review when:
+
+- Backup, restore, recovery, alerting, runbook, evidence, and service recovery categories are separated.
+- Prioritized Milestone 14 scope is explicit.
+- Implementation deferrals are documented.
+- Human approval requirements are clear for alert activation, restore, reboot, rollback, and production changes.
+
+---
+
+## Revision History
+
+| Version | Description |
+|---------|-------------|
+| 1.1 | Added authentication boundary monitoring, backup, and recovery as Platform operational excellence scope. |
+| 1.0 | Initial PLAT-14.2 operational excellence specification. |
