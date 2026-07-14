@@ -1,6 +1,6 @@
 # Engineering Portfolio Kanban
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -41,6 +41,8 @@ It is a planning artifact. It does not authorize implementation.
 | PLAT-14.2 | Operational Excellence | FitzpatrickFamilyPlatform | Specified | High | Backup and rollback strategy | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | Recovery confidence | Backup, restore, alerts | Operations maturity | Spec, evidence template plan | Full disaster recovery implementation |
 | PLAT-14.3 | Platform Health Dashboard | FitzpatrickFamilyPlatform | Specified | Medium | PLAT-14.1; reports | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | Executive operational view | Health dashboard model | Metrics/report integration | Spec and source ownership | Unified portal |
 | PLAT-14.4 | Platform Authentication Boundary | FitzpatrickFamilyPlatform | Specified | High | FFFA-14.2B; human production approval | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | Safe household web access | Reverse proxy, identity, HTTPS, LAN controls | Cross-repository security boundary | Auth-boundary spec, package placeholder, direct-access tests | Live deployment and credentials |
+| EO-14.5 | Unify Product and Engineering Test Package Namespaces | Cross-repository / FamilyFinanceAssistant | Deferred | Medium | FFFA Architecture Backlog AB-010 | Future Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | No direct finance defect; lower release-validation friction | Reusable repository test-quality pattern | Tracks duplicate `tests.*` namespace risk across product and engineering suites | FFFA AB-010; evidence that separate `python3 -m pytest tests` and `python3 -m pytest engineering/tests` pass; future single-command acceptance evidence | Nonblocking for FFFA-14.2A; separate suite execution remains current governed workaround |
+| EO-14.6 | Standardize Reproducible Python Validation Environments | Cross-repository / FamilyFinanceAssistant | Deferred | Medium | FFFA Architecture Backlog AB-011; governed dependency declarations | Future Architecture Gatekeeper and Engineering Organization Advisor review required | Codex Implementation Engineer | Platform Administrator | No confirmed customer workbook defect; lower false-failure risk | Candidate reusable environment practice across repositories | Tracks reproducible runtime/test/native dependency setup for customer apps and Platform automation | FFFA AB-011; dependency declaration review; evidence that clean local/CI setup supports product tests, engineering tests, and Excel generation | Nonblocking for FFFA-14.2A; copied `.venv` artifacts are unsupported |
 | FFFA-14.1 | Transaction Categorization Intelligence | FamilyFinanceAssistant | Specified | High | Existing categorization behavior | Product and architecture review required | Codex Implementation Engineer | Household Accountant | Better data quality and review | None direct | Customer-facing traceability | Specification and acceptance criteria | Implementation |
 | FFFA-14.2 | Multi-Channel Financial Presentation | FamilyFinanceAssistant | Specified | High | ADR-087; reporting contract; personas | Product and architecture review required | Codex Implementation Engineer | Household Accountant | Excel-first reporting and web summary | Shared reporting pattern | Portfolio customer-value evidence | ADR, specs, customer acceptance plan | Workbook and web implementation |
 
@@ -56,4 +58,5 @@ Kanban updates must remain repository-native Markdown unless a future approved t
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-14.5 and EO-14.6 cross-repository test quality and reproducible Python environment improvement items. |
 | 1.0 | Initial Milestone 14 Engineering Portfolio Kanban. |
