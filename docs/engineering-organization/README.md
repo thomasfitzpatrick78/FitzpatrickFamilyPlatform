@@ -44,6 +44,7 @@ The Engineering Organization operates across three layers:
 - [Organizational Impact Assessment Template](Organizational_Impact_Assessment_Template.md)
 - [Architecture Pattern Library](Architecture_Pattern_Library.md)
 - [Engineering Memory Concept](Engineering_Memory_Concept.md)
+- [Customer Environment Cutover Checklist](Customer_Environment_Cutover_Checklist.md)
 
 ---
 
@@ -61,5 +62,6 @@ The Engineering Organization operates across three layers:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added reusable Customer Environment Cutover Checklist. |
 | 1.1 | Added EO-13.1 governed capability language, manifesto, maturity model, and three-pillar terminology. |
 | 1.0 | Initial Engineering Organization foundation artifact index. |

@@ -26,6 +26,12 @@ Milestone 14 introduces these draft governance enhancements for review:
 - Platform-owned authentication-boundary responsibilities for local reverse proxy, identity-header trust, LAN-only HTTPS, certificate lifecycle, identity lifecycle, authentication credentials, authentication recovery, authentication monitoring, backup, recovery, and authentication incident response.
 - Cross-repository ownership declaration preserving FFFA ownership of roles, permission definitions, role-to-permission mappings, authenticated-identity-to-role mappings, FFFA access revocation, financial-data access rules, workbook-download authorization, and report authorization.
 - Authentication-boundary pattern promoted as a governed Platform specification because it is expected to recur for household web applications.
+- Customer Environment Cutover Checklist added as reusable governance for
+  customer-facing application cutovers, including customer/development/test data
+  isolation, backup, validation, privacy, approval, and post-cutover monitoring.
+- Customer data/test environment isolation recorded as a proposed
+  cross-repository improvement after FFFA CUTOVER-001 detected persistent test
+  artifacts before customer workbook generation.
 
 ---
 
@@ -33,5 +39,6 @@ Milestone 14 introduces these draft governance enhancements for review:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added reusable customer environment cutover checklist and customer data/test isolation governance item. |
 | 1.1 | Added Platform authentication-boundary governance and reusable ownership-pattern promotion. |
 | 1.0 | Initial Platform governance change log with Milestone 14 governance enhancements. |

@@ -31,6 +31,7 @@ This document defines the governed backlog for the Engineering Organization capa
 | EO-14.5 | Capability Maturity Assessment. | Applies the maturity model at a governed review cadence. | Deferred candidate; partially informed by Engineering Metrics v2. |
 | EO-14.6 | AI Collaboration and Approval Model. | Defines collaboration boundaries and approval flow before expanded autonomy. | Deferred candidate; partially informed by role specifications. |
 | EO-14.7 | AI Role Catalog Operationalization. | Converts role definitions into repeatable workstream practice. | Absorbed into EO-14.1 and EO-14.2 for Milestone 14 planning. |
+| EO-BL-008 | Promote customer data/test environment isolation pattern. | Converts the FFFA CUTOVER-001 guard and checklist into reusable customer-application governance. | Proposed; requires Architecture Gatekeeper review. |
 
 ---
 
@@ -52,6 +53,7 @@ Backlog items that create new governance shall be promoted only when the practic
 - [Engineering Metrics v2](Engineering_Metrics_v2.md)
 - [Governed Automation Framework](Governed_Automation_Framework.md)
 - [Engineering Organization Capability Maturity Model](Engineering_Organization_Capability_Maturity_Model.md)
+- [Customer Environment Cutover Checklist](Customer_Environment_Cutover_Checklist.md)
 
 ---
 
