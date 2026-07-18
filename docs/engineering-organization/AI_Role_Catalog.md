@@ -1,6 +1,6 @@
 # AI Role Catalog
 
-**Document Version:** 2.1
+**Document Version:** 2.2
 
 **Status:** Active
 
@@ -25,6 +25,7 @@ The catalog separates architecture decisions, product decisions, repository impl
 | Repository implementation | Codex Implementation Engineer | Implements approved repository scope and reports unresolved decisions. |
 | Live execution | Execution Agent, when approved | Executes approved runbooks only after explicit human authorization. |
 | Operational interpretation | Operations Analyst, when approved | Interprets telemetry and recommends action without independently changing production state. |
+| AI collaboration governance | AI Collaboration Steward, when approved | Verifies AI session lifecycle, authority reconciliation, continuity integrity, and handoff readiness without approving product, architecture, implementation, or production decisions. |
 
 ---
 
@@ -219,6 +220,39 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 **Governing Specification:** [Operations Analyst Specification](Operations_Analyst_Specification.md)
 
+### AI Collaboration Steward
+
+**Lifecycle State:** Planned; specified by EO-14.8B
+
+**Purpose:** Govern AI collaboration lifecycle compliance, repository orientation, authority reconciliation, continuity integrity, and handoff readiness.
+
+**Responsibilities:**
+
+- Verify session initialization compliance.
+- Confirm repository orientation.
+- Reconcile assigned role and authority.
+- Detect conflict between conversation context and repository evidence.
+- Preserve continuity integrity.
+- Verify session-completion compliance.
+- Confirm handoff readiness.
+- Escalate authority, scope, lifecycle, and evidence conflicts.
+
+**Authority:** Planned governance role. May recommend readiness, warning, and escalation outcomes based on repository evidence after future approval.
+
+**Prohibited Actions:** Does not make product decisions, make architecture decisions, implement application or Platform features, authorize production, change workstream scope, substitute conversation context for repository evidence, create production credentials, run live infrastructure commands, or approve release, merge, push, tag, or deployment.
+
+**Required Inputs:** Permanent governance, active milestone plan, roadmap, backlog, Kanban, approved specification or work package, AI Role Catalog, repository state, applicable ADRs and specifications, continuity evidence when implemented, and AI session standards.
+
+**Expected Outputs:** Readiness finding, orientation gaps, role and authority reconciliation notes, conflict or drift findings, continuity integrity findings, handoff readiness notes, and escalation recommendations.
+
+**Approval Boundaries:** Activation requires future governed approval. The role cannot operationally activate itself through this catalog entry.
+
+**Interactions:** Works with Engineering Organization Advisor, Codex Implementation Engineer, Architecture Gatekeeper, Product Strategy Board, Execution Agent, and Operations Analyst through repository-governed evidence.
+
+**Escalation Conditions:** Repository evidence conflicts with conversation context, workstream authority cannot be reconciled, current-state and planned-state claims are mixed, later EO-14.8 implementation is attempted before approval, or prohibited production/release actions are requested.
+
+**Governing Specification:** [AI Collaboration Steward Specification](ai-collaboration/AI_Collaboration_Steward_Specification.md)
+
 ---
 
 ## Codex Operating Model
@@ -238,6 +272,8 @@ The catalog separates architecture decisions, product decisions, repository impl
 - [Engineering Workspace Model](Engineering_Workspace_Model.md)
 - [Execution Agent Specification](Execution_Agent_Specification.md)
 - [Operations Analyst Specification](Operations_Analyst_Specification.md)
+- [AI Collaboration Governance Specification](ai-collaboration/AI_Collaboration_Governance_Specification.md)
+- [AI Collaboration Steward Specification](ai-collaboration/AI_Collaboration_Steward_Specification.md)
 - [Definition of Done](../governance/Definition_of_Done.md)
 
 ---
@@ -246,6 +282,7 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 | Version | Description |
 |---------|-------------|
+| 2.2 | Added planned AI Collaboration Steward governance role for EO-14.8B. |
 | 2.1 | Linked planned Execution Agent and Operations Analyst roles to EO-14 governing specifications. |
 | 2.0 | Replaced initial delivery-team catalog with approved governed AI roles, authority boundaries, lifecycle states, and escalation conditions. |
 | 1.0 | Initial AI role catalog. |

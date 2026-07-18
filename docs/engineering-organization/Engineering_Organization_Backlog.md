@@ -1,10 +1,10 @@
 # Engineering Organization Backlog
 
-**Document Version:** 1.2
+**Document Version:** 1.6
 
 **Status:** Active
 
-**Milestone:** EO-13.0
+**Milestone:** EO-14
 
 ---
 
@@ -24,13 +24,14 @@ This document defines the governed backlog for the Engineering Organization capa
 | EO-BL-004 | Evaluate repeated validation commands for promotion into a governed release checklist. | Converts proven practice into durable governance. | Candidate. |
 | EO-BL-005 | Identify customer-facing application traceability requirements for future milestones. | Ensures each milestone strengthens at least one application. | Candidate. |
 | EO-BL-006 | Evaluate Engineering Memory indexing options. | Improves retrieval of durable repository knowledge. | Candidate. |
-| EO-14.1 | Execution Agent Specification. | Defines future live-execution authority, gates, evidence, handoffs, and stop conditions. | Specified for Milestone 14 review. |
+| EO-14.1 | Execution Agent Specification. | Defines future live-execution authority, gates, evidence, handoffs, and stop conditions. | Specified; EO-14.1A is next Engineering Organization work and has not started. |
 | EO-14.2 | Operations Analyst Specification. | Turns telemetry and runbook evidence into governed recommendations without production authority. | Specified for Milestone 14 review. |
 | EO-14.3 | Engineering Metrics v2. | Measures organizational capability and effectiveness with practical repository evidence. | Specified for Milestone 14 review. |
-| EO-14.4 | Governed Automation Framework. | Makes automation approval, scope, lifecycle, and evidence boundaries explicit. | Specified for Milestone 14 review. |
+| EO-14.4 | Governed Automation Framework. | Makes automation approval, scope, lifecycle, and evidence boundaries explicit. | Specified; EO-14.4A is next Engineering Organization work and has not started. |
 | EO-14.5 | Capability Maturity Assessment. | Applies the maturity model at a governed review cadence. | Deferred candidate; partially informed by Engineering Metrics v2. |
-| EO-14.6 | AI Collaboration and Approval Model. | Defines collaboration boundaries and approval flow before expanded autonomy. | Deferred candidate; partially informed by role specifications. |
+| EO-14.6 | AI Collaboration and Approval Model. | Defines collaboration boundaries and approval flow before expanded autonomy. | Superseded by EO-14.8 AI Collaboration Governance. |
 | EO-14.7 | AI Role Catalog Operationalization. | Converts role definitions into repeatable workstream practice. | Absorbed into EO-14.1 and EO-14.2 for Milestone 14 planning. |
+| EO-14.8 | AI Collaboration Governance. | Governs AI participant initialization, continuity, completion, stewardship, readiness validation, and collaboration metrics. | Complete; EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the parent capability are published as the Architecture Gatekeeper-approved baseline. Alpha, Bravo, and Charlie remain unstarted; no live work is authorized. |
 | EO-BL-008 | Promote customer data/test environment isolation pattern. | Converts the FFFA CUTOVER-001 guard and checklist into reusable customer-application governance. | Proposed; requires Architecture Gatekeeper review. |
 
 ---
@@ -54,6 +55,7 @@ Backlog items that create new governance shall be promoted only when the practic
 - [Governed Automation Framework](Governed_Automation_Framework.md)
 - [Engineering Organization Capability Maturity Model](Engineering_Organization_Capability_Maturity_Model.md)
 - [Customer Environment Cutover Checklist](Customer_Environment_Cutover_Checklist.md)
+- [AI Collaboration Governance Specification](ai-collaboration/AI_Collaboration_Governance_Specification.md)
 
 ---
 
@@ -61,6 +63,10 @@ Backlog items that create new governance shall be promoted only when the practic
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded completed EO-14.8 baseline publication and Alpha EO-14.1A and EO-14.4A as next while preserving unstarted workstreams. |
+| 1.5 | Recorded EO-14.8E implementation and parent capability completion pending final review. |
+| 1.4 | Recorded EO-14.8D implementation-review status and EO-14.8E approval dependency. |
+| 1.3 | Added EO-14.8 AI Collaboration Governance and superseded the earlier AI Collaboration and Approval Model candidate. |
 | 1.2 | Aligned EO-14 work package numbering to Milestone 14 approved Execution Agent, Operations Analyst, Engineering Metrics v2, and Governed Automation Framework scope. |
 | 1.1 | Added EO-14 planned operationalization candidates. |
 | 1.0 | Initial Engineering Organization backlog. |

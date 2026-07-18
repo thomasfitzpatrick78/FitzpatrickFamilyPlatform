@@ -52,7 +52,8 @@ def test_milestone_closeout_has_required_artifacts():
 
 def test_engineering_metrics_counts_documents_and_adrs():
     report = cli.engineering_metrics()
-    assert report.status == "PASS"
+    assert report.status in {"PASS", "PASS WITH WARNINGS"}
+    assert not [result for result in report.results if result.severity == "ERROR"]
     assert any("Markdown documents" in r.message for r in report.results)
     assert any("Architecture decisions" in r.message for r in report.results)
 

@@ -9,6 +9,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
+from engineering.platform_eap.ai_session_readiness import (
+    AISessionReadinessValidator,
+    NOT_READY,
+    PASS as READINESS_PASS,
+    write_readiness_report,
+)
+
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
 
@@ -20,6 +27,22 @@ class CheckResult:
     path: str | None = None
 
 
+@dataclass(frozen=True)
+class AISessionReadinessMetric:
+    status: str
+    error_count: int | None
+    warning_count: int | None
+    domain_count: int | None
+    generated_at: str | None
+    evidence_status: str
+    report_path: str
+    evidence_usable: bool
+    blocking_status: str
+    interpretation: str
+    caveat: str
+    source_of_truth: str = "./platform-eap ai-session readiness"
+
+
 @dataclass
 class Report:
     capability: str
@@ -27,6 +50,8 @@ class Report:
     timestamp: str
     summary: str
     results: list[CheckResult]
+    ai_session_readiness: AISessionReadinessMetric | None = None
+    platform_health: dict[str, object] | None = None
 
 
 def git_output(args: list[str]) -> str:
@@ -59,14 +84,38 @@ def write_report(name: str, report: Report) -> None:
         f"- Warnings: {len(warnings)}",
         f"- Information: {len(info)}",
         "",
-        "## Results",
-        "",
     ]
+    if report.ai_session_readiness is not None:
+        readiness = report.ai_session_readiness
+        lines.extend(
+            [
+                "## AI Session Readiness",
+                "",
+                f"- Overall readiness: {readiness.status}",
+                f"- Errors: {readiness.error_count if readiness.error_count is not None else 'unknown'}",
+                f"- Warnings: {readiness.warning_count if readiness.warning_count is not None else 'unknown'}",
+                f"- Validation domains: {readiness.domain_count if readiness.domain_count is not None else 'unknown'}",
+                f"- Evidence timestamp: {readiness.generated_at or 'unavailable'}",
+                f"- Evidence condition: {readiness.evidence_status}",
+                f"- Evidence path: `{readiness.report_path}`",
+                f"- Evidence usable: {'yes' if readiness.evidence_usable else 'no'}",
+                f"- Onboarding effect: {readiness.blocking_status}",
+                f"- Interpretation: {readiness.interpretation}",
+                f"- Caveat: {readiness.caveat}",
+                f"- Source of truth: `{readiness.source_of_truth}` and its governed Markdown and JSON reports.",
+                "",
+            ]
+        )
+    lines.extend(["## Results", ""])
     for result in report.results:
         suffix = f" (`{result.path}`)" if result.path else ""
         lines.append(f"- {result.severity}: {result.message}{suffix}")
     md.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    js.write_text(json.dumps({**asdict(report), "results": [asdict(r) for r in report.results]}, indent=2) + "\n", encoding="utf-8")
+    payload = asdict(report)
+    for optional_section in ("ai_session_readiness", "platform_health"):
+        if payload[optional_section] is None:
+            payload.pop(optional_section)
+    js.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
 def status_from(results: list[CheckResult]) -> str:
@@ -556,17 +605,162 @@ def milestone_closeout() -> Report:
     return Report("Milestone Closeout", status, now(), f"Milestone closeout completed with status {status}.", results)
 
 
-def engineering_metrics() -> Report:
+AI_SESSION_READINESS_REPORT = REPORT_ROOT / "ai_session_readiness" / "ai_session_readiness_report.json"
+READINESS_STATES = {"READY", "READY WITH WARNINGS", "NOT READY"}
+
+
+def _display_path(path: Path) -> str:
+    return str(path.relative_to(ROOT) if path.is_relative_to(ROOT) else path)
+
+
+def _unknown_readiness(path: Path, evidence_status: str, detail: str) -> AISessionReadinessMetric:
+    return AISessionReadinessMetric(
+        status="UNKNOWN",
+        error_count=None,
+        warning_count=None,
+        domain_count=None,
+        generated_at=None,
+        evidence_status=evidence_status,
+        report_path=_display_path(path),
+        evidence_usable=False,
+        blocking_status="UNKNOWN",
+        interpretation="No reliable AI onboarding readiness conclusion is possible.",
+        caveat=f"{detail} Run ./platform-eap ai-session readiness, then regenerate Engineering Metrics.",
+    )
+
+
+def load_ai_session_readiness_metric(report_path: Path | None = None) -> AISessionReadinessMetric:
+    path = AI_SESSION_READINESS_REPORT if report_path is None else report_path
+    if not path.is_file():
+        return _unknown_readiness(path, "unavailable", "The governed AI Session Readiness JSON report is unavailable.")
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return _unknown_readiness(path, "malformed", f"The governed readiness JSON report cannot be parsed: {exc}.")
+    if not isinstance(payload, dict):
+        return _unknown_readiness(path, "malformed", "The governed readiness JSON report must contain an object.")
+
+    required = {"command", "readiness", "generated_at", "domains", "errors", "warnings"}
+    missing = sorted(required - payload.keys())
+    if missing:
+        return _unknown_readiness(path, "malformed", f"Required readiness fields are missing: {', '.join(missing)}.")
+
+    readiness = payload.get("readiness")
+    generated_at = payload.get("generated_at")
+    domains = payload.get("domains")
+    errors = payload.get("errors")
+    warnings = payload.get("warnings")
+    if payload.get("command") != "./platform-eap ai-session readiness":
+        return _unknown_readiness(path, "malformed", "The readiness source command is missing or invalid.")
+    if not isinstance(readiness, str) or readiness not in READINESS_STATES:
+        return _unknown_readiness(path, "malformed", f"The readiness state is invalid: {readiness!r}.")
+    if not isinstance(generated_at, str) or not generated_at.strip():
+        return _unknown_readiness(path, "malformed", "The readiness generation timestamp is missing.")
+    try:
+        datetime.fromisoformat(generated_at.replace("Z", "+00:00"))
+    except ValueError:
+        return _unknown_readiness(path, "malformed", "The readiness generation timestamp is invalid.")
+    if not isinstance(domains, list) or not isinstance(errors, list) or not isinstance(warnings, list):
+        return _unknown_readiness(path, "malformed", "Readiness domains, errors, and warnings must be arrays.")
+    if not domains:
+        return _unknown_readiness(path, "malformed", "The readiness report contains no validation domains.")
+    if any(
+        not isinstance(domain, dict)
+        or not isinstance(domain.get("name"), str)
+        or not isinstance(domain.get("status"), str)
+        or not isinstance(domain.get("checks"), list)
+        for domain in domains
+    ):
+        return _unknown_readiness(path, "malformed", "Each readiness domain must contain a name, status, and checks array.")
+    if any(not isinstance(finding, dict) for finding in [*errors, *warnings]):
+        return _unknown_readiness(path, "malformed", "Each readiness finding must be a structured object.")
+
+    error_count = len(errors)
+    warning_count = len(warnings)
+    logically_consistent = (
+        (readiness == "READY" and error_count == 0 and warning_count == 0)
+        or (readiness == "READY WITH WARNINGS" and error_count == 0 and warning_count > 0)
+        or (readiness == "NOT READY" and error_count > 0)
+    )
+    if not logically_consistent:
+        return _unknown_readiness(path, "malformed", "The readiness state and finding counts are logically inconsistent.")
+
+    if readiness == "READY":
+        blocking_status = "NONBLOCKING"
+        interpretation = "The repository can onboard a new AI participant without known readiness warnings."
+        caveat = "Readiness describes repository onboarding evidence; it does not authorize implementation, remediation, release, or live activity."
+    elif readiness == "READY WITH WARNINGS":
+        blocking_status = "NONBLOCKING WITH CONDITIONS"
+        interpretation = "Orientation may proceed only with the reported conditions disclosed and reconciled."
+        caveat = "Warnings remain authoritative in the source readiness report and are not remediated by Engineering Metrics."
+    else:
+        blocking_status = "BLOCKING"
+        interpretation = "AI participant onboarding must stop until blocking findings are addressed and the validator is rerun."
+        caveat = "Engineering Metrics reports the blocking evidence but does not remediate it."
+    return AISessionReadinessMetric(
+        status=readiness,
+        error_count=error_count,
+        warning_count=warning_count,
+        domain_count=len(domains),
+        generated_at=generated_at,
+        evidence_status="current",
+        report_path=_display_path(path),
+        evidence_usable=True,
+        blocking_status=blocking_status,
+        interpretation=interpretation,
+        caveat=caveat,
+    )
+
+
+def ai_session_readiness_health_source(metric: AISessionReadinessMetric) -> dict[str, object]:
+    return {
+        "state": metric.status,
+        "error_count": metric.error_count,
+        "warning_count": metric.warning_count,
+        "evidence_status": metric.evidence_status,
+        "last_generated_at": metric.generated_at,
+        "source_available": metric.evidence_status != "unavailable",
+        "source_usable": metric.evidence_usable,
+        "source_report_path": metric.report_path,
+    }
+
+
+def engineering_metrics(readiness_report_path: Path | None = None) -> Report:
     md_docs = list((ROOT / "docs").rglob("*.md"))
     tests = list((ROOT / "engineering" / "tests").glob("test_*.py"))
     adrs = list((ROOT / "docs" / "architecture" / "decisions").glob("ADR-*.md"))
+    readiness = load_ai_session_readiness_metric(readiness_report_path)
     results = [
         CheckResult("INFO", f"Markdown documents: {len(md_docs)}"),
         CheckResult("INFO", f"Engineering test files: {len(tests)}"),
         CheckResult("INFO", f"Architecture decisions: {len(adrs)}"),
         CheckResult("INFO", "Engineering health baseline established"),
     ]
-    return Report("Engineering Metrics", "PASS", now(), "Engineering metrics generated with status PASS.", results)
+    readiness_severity = "INFO" if readiness.status == "READY" else "WARNING"
+    results.append(
+        CheckResult(
+            readiness_severity,
+            f"AI Session Readiness: {readiness.status}; evidence {readiness.evidence_status}; onboarding effect {readiness.blocking_status}",
+            readiness.report_path,
+        )
+    )
+    status = status_from(results)
+    if readiness.status == "UNKNOWN":
+        summary = (
+            f"Engineering metrics generated with status {status}. AI Session Readiness evidence is "
+            f"{readiness.evidence_status}; run ./platform-eap ai-session readiness and regenerate Engineering Metrics."
+        )
+    else:
+        summary = f"Engineering metrics generated with status {status}; AI Session Readiness is {readiness.status}."
+    return Report(
+        "Engineering Metrics",
+        status,
+        now(),
+        summary,
+        results,
+        ai_session_readiness=readiness,
+        platform_health={"ai_session_readiness": ai_session_readiness_health_source(readiness)},
+    )
 
 
 def capabilities() -> int:
@@ -578,6 +772,7 @@ def capabilities() -> int:
     print("PLAT-EAP-6\tInfrastructure Registry Validation\tImplemented")
     print("PLAT-EAP-7\tPlatform Digital Twin Integrity Validation\tImplemented")
     print("PLAT-EAP-8\tRegistry CLI\tImplemented")
+    print("PLAT-EAP-9\tAI Session Readiness Validation\tImplemented")
     return 0
 
 
@@ -598,6 +793,35 @@ def run_report(name: str, builder: Callable[[], Report]) -> int:
     return 1 if errors else 0
 
 
+def ai_session_readiness() -> int:
+    try:
+        result = AISessionReadinessValidator(ROOT).validate()
+        markdown_path, json_path = write_readiness_report(
+            result,
+            REPORT_ROOT / "ai_session_readiness",
+        )
+    except Exception as exc:
+        print("# AI Session Readiness Validation")
+        print("Status: EXECUTION FAILURE")
+        print(f"Unexpected execution failure: {exc}")
+        return 3
+
+    print("# AI Session Readiness Validation")
+    print(f"Overall readiness: {result.readiness}")
+    print(f"Errors: {len(result.errors)}")
+    print(f"Warnings: {len(result.warnings)}")
+    for domain in result.domains:
+        print(f"Domain: {domain.name} - {domain.status}")
+        for check in domain.checks:
+            if check.severity == READINESS_PASS:
+                continue
+            evidence = f" ({', '.join(check.evidence)})" if check.evidence else ""
+            print(f"{check.severity}: {check.message}{evidence}")
+    print(f"Markdown report: {markdown_path.relative_to(ROOT)}")
+    print(f"JSON report: {json_path.relative_to(ROOT)}")
+    return 1 if result.readiness == NOT_READY or result.errors else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if argv == ["repository", "validate"]:
@@ -610,9 +834,11 @@ def main(argv: list[str] | None = None) -> int:
         return run_report("milestone_closeout", milestone_closeout)
     if argv == ["engineering", "metrics"]:
         return run_report("engineering_metrics", engineering_metrics)
+    if argv == ["ai-session", "readiness"]:
+        return ai_session_readiness()
     if argv == ["capabilities"]:
         return capabilities()
     if argv and argv[0] == "registry":
         return registry_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|capabilities|registry>")
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry>")
     return 2

@@ -1,6 +1,6 @@
 # Operations Analyst Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -33,12 +33,22 @@ This role recommends action. It does not execute production changes, approve arc
 | Grafana dashboards | Operational trend and service-health review where metrics are validated. |
 | Prometheus and exporter evidence | Metric availability and health signal review. |
 | Repository-generated reports | Governance, registry, Digital Twin, release, milestone, and engineering-health interpretation. |
+| AI Session Readiness evidence | Organizational-onboarding health interpretation from Engineering Metrics, with `./platform-eap ai-session readiness` and its governed reports retained as source of truth. |
 | Runbook evidence | Backup, restore, reboot, rollback, and incident review. |
 | Registry records | Planned versus active service state and ownership review. |
 
 ---
 
 ## Recommendation Boundaries
+
+For AI Session Readiness evidence, the Operations Analyst uses these interpretations:
+
+- `READY`: the repository can onboard a new AI participant without known readiness warnings.
+- `READY WITH WARNINGS`: orientation may proceed only with the reported conditions disclosed and reconciled.
+- `NOT READY`: onboarding must stop until blocking findings are addressed and the validator is rerun.
+- `UNKNOWN`: no reliable onboarding-readiness conclusion is possible.
+
+These interpretations do not authorize remediation, production activity, session initialization, lifecycle promotion, or changes to the readiness source report.
 
 The Operations Analyst may recommend:
 
@@ -88,4 +98,5 @@ EO-14.2 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added governed AI Session Readiness interpretation and preserved recommendation-only authority. |
 | 1.0 | Initial Operations Analyst role specification. |

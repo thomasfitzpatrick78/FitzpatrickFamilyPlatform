@@ -1,6 +1,6 @@
 # Engineering Metrics v2
 
-**Document Version:** 1.0
+**Document Version:** 1.2
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -31,6 +31,7 @@ Metrics must improve decision quality without creating false precision where rep
 | Platform health | Validated dashboard and operational evidence. | Qualitative until PLAT-14.3 defines source boundaries. |
 | Customer-facing delivery | Persona, channel, value, and acceptance evidence. | Required milestone traceability. |
 | AI contribution | Work package evidence produced by governed AI roles. | Qualitative until role activation data exists. |
+| AI collaboration readiness | Governed AI Session Readiness JSON report. | Implemented organizational-onboarding health measure through EO-14.8E. |
 | Rework | Reopened work or validation-driven corrections. | Candidate. |
 | Escaped defects | Post-closeout defects or production incidents. | Candidate. |
 | Investment allocation | EO, PLAT, and FFFA planned/completed work packages. | Quantitative count with qualitative effort notes. |
@@ -44,6 +45,9 @@ Metrics must improve decision quality without creating false precision where rep
 - Distinguish planned, attempted, passed, failed, and deferred validation.
 - Include customer-facing value evidence for every milestone.
 - Keep metrics repository-derived unless a future approved data source is added.
+- AI collaboration readiness must consume the governed validator report without recalculating readiness or silently regenerating the report.
+- AI collaboration readiness must remain a state measure and must not be converted to a percentage, weighted score, or inferred trend.
+- Missing, malformed, invalid, timestamp-less, or logically inconsistent evidence must be represented as `UNKNOWN`, never as healthy.
 
 ---
 
@@ -55,6 +59,26 @@ EO-14.3 is ready for review when:
 - Immature metrics are identified as candidate or qualitative.
 - Investment allocation across EO, PLAT, and FFFA is explicitly represented.
 - Metrics do not require new runtime systems or personal data.
+- AI collaboration readiness is traceable to the governed validator evidence and preserves readiness state, finding counts, validation-domain count, timestamp, evidence condition, report path, usability, and onboarding effect.
+
+---
+
+## AI Session Readiness Metric Classification
+
+AI Session Readiness is an Engineering Organization organizational-onboarding health measure.
+
+| Classification | Governed Values |
+|----------------|-----------------|
+| State measure | `READY`, `READY WITH WARNINGS`, `NOT READY`, `UNKNOWN`. |
+| Supporting counts | Readiness errors, readiness warnings, and validation domains evaluated. |
+| Evidence condition | `current`, `unavailable`, or `malformed`; `stale` may be added only if a future governed freshness threshold exists. |
+| Onboarding effect | Nonblocking, nonblocking with disclosed conditions, blocking, or unknown. |
+
+The source of truth remains `./platform-eap ai-session readiness` and its governed Markdown and JSON reports. Engineering Metrics reads the latest governed JSON report. It does not call validator internals, alter the source report, remediate findings, or inspect conversation content.
+
+No arbitrary time-based staleness threshold is governed. Evidence is usable only when the JSON report is available, parseable, contains a valid readiness state and timestamp, preserves structured domains and findings, and is logically consistent with its finding counts.
+
+EO-14.8E is implemented and awaiting Architecture Gatekeeper review. EO-14.8 parent capability implementation is complete pending final review. Alpha, Bravo, and Charlie remain unstarted, and no live infrastructure work is authorized.
 
 ---
 
@@ -62,4 +86,6 @@ EO-14.3 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Classified and integrated governed AI Session Readiness evidence through EO-14.8E without duplicating validator logic. |
+| 1.1 | Added candidate AI collaboration readiness metric and EO-14.8E boundary. |
 | 1.0 | Initial Engineering Metrics v2 specification. |

@@ -1,6 +1,6 @@
 # Engineering Lifecycle
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
 **Status:** Active
 
@@ -148,6 +148,14 @@ Every milestone closeout must include:
 
 ---
 
+## AI Collaboration Lifecycle Relationship
+
+AI Collaboration Governance complements this lifecycle by governing how AI participants initialize, orient to repository evidence, confirm role authority, contribute, complete sessions, and preserve workstream continuity.
+
+The AI Collaboration Lifecycle does not replace this Engineering Lifecycle. It governs AI participation in the work while this lifecycle continues to govern the work itself.
+
+---
+
 ## Related Documents
 
 - [Permanent Project Operating Model](Permanent_Project_Operating_Model.md)
@@ -157,6 +165,7 @@ Every milestone closeout must include:
 - [Platform Service Lifecycle](Service_Lifecycle.md)
 - [Production Service Cutover Checklist](Production_Service_Cutover_Checklist.md)
 - [Privileged Infrastructure Integration Standard](Privileged_Infrastructure_Integration_Standard.md)
+- [AI Collaboration Lifecycle](../engineering-organization/ai-collaboration/AI_Collaboration_Lifecycle.md)
 
 ---
 
@@ -164,6 +173,7 @@ Every milestone closeout must include:
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Added AI Collaboration Lifecycle relationship without replacing the Engineering Lifecycle. |
 | 1.3 | Added EO-13.1 lifecycle stages, Engineering Investment Rule, controlled execution, and Engineering Organization Evolution. |
 | 1.2 | Added privileged infrastructure integration lifecycle requirements. |
 | 1.1 | Integrated governed production service lifecycle and cutover checklist. |

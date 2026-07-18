@@ -1,6 +1,6 @@
 # Definition of Done
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
 **Status:** Active
 
@@ -32,6 +32,7 @@ A work item is complete only when applicable criteria are satisfied:
 - Engineering metrics generated when applicable.
 - Documentation synchronized.
 - Evidence reports generated.
+- AI-assisted work includes session initialization, role-authority confirmation, validation evidence, completion summary, and continuity or closure treatment where applicable.
 - Repository hygiene is clean.
 - Production service work includes lifecycle, cutover, backup, rollback, observability, and evidence expectations where applicable.
 - Production service promotion requires stable network identity such as a verified DHCP reservation where applicable.
@@ -85,6 +86,8 @@ Every milestone closeout package must include:
 - [Engineering Lifecycle](Engineering_Lifecycle.md)
 - [Engineering Principles](Engineering_Principles.md)
 - [Milestone Closeout Template](../milestones/templates/Milestone_Closeout_Template.md)
+- [AI Session Initialization Standard](../engineering-organization/ai-collaboration/AI_Session_Initialization_Standard.md)
+- [AI Session Completion Standard](../engineering-organization/ai-collaboration/AI_Session_Completion_Standard.md)
 
 ---
 
@@ -92,6 +95,7 @@ Every milestone closeout package must include:
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Added AI-assisted work completion expectations for session initialization, authority confirmation, completion, and continuity treatment. |
 | 1.3 | Added Engineering Investment Rule, milestone closeout evidence, and Engineering Organization Evolution completion criteria. |
 | 1.2 | Added privileged infrastructure integration completion expectation. |
 | 1.1 | Added production service lifecycle, cutover, and stable network identity completion expectations. |

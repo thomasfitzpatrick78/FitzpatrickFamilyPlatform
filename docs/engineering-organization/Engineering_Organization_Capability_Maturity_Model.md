@@ -1,6 +1,6 @@
 # Engineering Organization Capability Maturity Model
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -51,6 +51,7 @@ The following Engineering Organization capabilities should be assessed at milest
 | Customer delivery | Customer-facing capability movement, application evidence, and value outcomes. |
 | Engineering metrics | Repository, governance, release, closeout, and capability metrics with trend interpretation. |
 | Capability planning | Coordinated EO, PLAT, and application roadmap streams with milestone-level investment traceability. |
+| AI collaboration governance | Session initialization, role authority reconciliation, workstream continuity, completion evidence, readiness validation, collaboration metrics, and drift detection. |
 
 ---
 
@@ -73,6 +74,7 @@ Assessments must:
 - [Engineering Capability Model](Engineering_Capability_Model.md)
 - [Engineering Organization Evolution Closeout Template](../milestones/templates/Milestone_Closeout_Template.md)
 - [Engineering Lifecycle](../governance/Engineering_Lifecycle.md)
+- [AI Collaboration Governance Specification](ai-collaboration/AI_Collaboration_Governance_Specification.md)
 
 ---
 
@@ -80,4 +82,5 @@ Assessments must:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added AI collaboration governance as a maturity assessment capability area. |
 | 1.0 | Initial Engineering Organization capability maturity model. |

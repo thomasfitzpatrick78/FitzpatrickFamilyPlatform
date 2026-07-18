@@ -1,6 +1,6 @@
 # Engineering Capability Model
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Active
 
@@ -28,6 +28,7 @@ This document defines the capability model for the AI-operated Engineering Organ
 | Capability Maturity | Assess Engineering Organization maturity at milestone closeout or another governed cadence. | Engineering Organization Capability Maturity Model. |
 | Registry Authority | Use registries as authoritative state where structured knowledge is required. | Infrastructure Registry under `registry/`. |
 | Engineering Memory | Preserve durable knowledge in git-managed artifacts. | Markdown governance docs, ADRs, requirements, specs, reports, and registry records. |
+| AI Collaboration Governance | Govern AI participant initialization, continuity, completion, stewardship, readiness validation planning, and collaboration-quality measurement. | EO-14.8B specification package under `docs/engineering-organization/ai-collaboration/`. |
 | Practice Promotion | Evaluate repeated practices for promotion into governed artifacts. | Architecture review and documentation updates after evidence exists. |
 
 ---
@@ -51,6 +52,7 @@ This document defines the capability model for the AI-operated Engineering Organ
 - [AI Role Catalog](AI_Role_Catalog.md)
 - [Engineering Organization Capability Maturity Model](Engineering_Organization_Capability_Maturity_Model.md)
 - [Capability Model](../product/Capability_Model.md)
+- [AI Collaboration Governance Specification](ai-collaboration/AI_Collaboration_Governance_Specification.md)
 
 ---
 
@@ -58,5 +60,6 @@ This document defines the capability model for the AI-operated Engineering Organ
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added AI Collaboration Governance capability. |
 | 1.1 | Added EO-13.1 role, live execution, operations intelligence, and maturity capabilities. |
 | 1.0 | Initial Engineering Organization capability model. |

@@ -1,0 +1,1120 @@
+{
+  "capability": "AI Session Readiness Validation",
+  "command": "./platform-eap ai-session readiness",
+  "readiness": "READY WITH WARNINGS",
+  "generated_at": "2026-07-18T00:32:49.102974+00:00",
+  "repository": {
+    "name": "FitzpatrickFamilyPlatform",
+    "path": "/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform",
+    "branch": "main",
+    "head": "7cfc8752ba6b48e8dbfb90f38d14a96fd3c92bbd",
+    "working_tree": "active source changes"
+  },
+  "domains": [
+    {
+      "name": "Repository Identity",
+      "status": "PASS WITH WARNINGS",
+      "checks": [
+        {
+          "check_id": "repository.identity",
+          "severity": "PASS",
+          "message": "Repository identity matches expected FitzpatrickFamilyPlatform.",
+          "evidence": [
+            "/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform"
+          ]
+        },
+        {
+          "check_id": "repository.branch",
+          "severity": "PASS",
+          "message": "Current branch: main",
+          "evidence": []
+        },
+        {
+          "check_id": "repository.head",
+          "severity": "PASS",
+          "message": "Current HEAD: 7cfc8752ba6b48e8dbfb90f38d14a96fd3c92bbd",
+          "evidence": []
+        },
+        {
+          "check_id": "repository.conflicts",
+          "severity": "PASS",
+          "message": "No unresolved merge conflicts detected.",
+          "evidence": []
+        },
+        {
+          "check_id": "repository.working-tree",
+          "severity": "WARNING",
+          "message": "Working tree has active source changes; preserve and reconcile them before editing.",
+          "evidence": [
+            "M docs/engineering-organization/AI_Role_Catalog.md",
+            " M docs/engineering-organization/Engineering_Capability_Model.md",
+            " M docs/engineering-organization/Engineering_Metrics_v2.md",
+            " M docs/engineering-organization/Engineering_Organization_Backlog.md",
+            " M docs/engineering-organization/Engineering_Organization_Capability_Maturity_Model.md",
+            " M docs/engineering-organization/Engineering_Organization_Roadmap.md",
+            " M docs/engineering-organization/Operations_Analyst_Specification.md",
+            " M docs/engineering-organization/Parallel_Workstream_Delivery_Model.md",
+            " M docs/engineering-organization/README.md",
+            " M docs/governance/Definition_of_Done.md",
+            " M docs/governance/Engineering_Lifecycle.md",
+            " M docs/governance/Governance_Change_Log.md",
+            " M docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md",
+            " M docs/portfolio/Engineering_Portfolio_Kanban.md",
+            " M docs/product/Product_Backlog.md",
+            " M docs/product/Product_Roadmap.md",
+            " M docs/specifications/Platform_Health_Dashboard_Specification.md",
+            " M engineering/README.md",
+            " M engineering/platform_eap/cli.py",
+            " M engineering/tests/test_platform_eap.py",
+            " M reports/engineering/engineering_metrics/README.md",
+            " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
+            " M reports/engineering/engineering_metrics/engineering_metrics_report.md",
+            " M reports/engineering/governance/governance_report.json",
+            " M reports/engineering/governance/governance_report.md",
+            " M reports/engineering/repository/repository_report.json",
+            " M reports/engineering/repository/repository_report.md",
+            "?? docs/engineering-organization/ai-collaboration/",
+            "?? engineering/platform_eap/ai_session_readiness.py",
+            "?? engineering/tests/test_ai_session_readiness.py",
+            "?? engineering/tests/test_ai_session_readiness_metrics.py"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Permanent Governance",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "governance.Permanent_Project_Operating_Model",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/governance/Permanent_Project_Operating_Model.md",
+          "evidence": [
+            "docs/governance/Permanent_Project_Operating_Model.md"
+          ]
+        },
+        {
+          "check_id": "governance.Engineering_Lifecycle",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/governance/Engineering_Lifecycle.md",
+          "evidence": [
+            "docs/governance/Engineering_Lifecycle.md"
+          ]
+        },
+        {
+          "check_id": "governance.Engineering_Principles",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/governance/Engineering_Principles.md",
+          "evidence": [
+            "docs/governance/Engineering_Principles.md"
+          ]
+        },
+        {
+          "check_id": "governance.Definition_of_Done",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/governance/Definition_of_Done.md",
+          "evidence": [
+            "docs/governance/Definition_of_Done.md"
+          ]
+        },
+        {
+          "check_id": "governance.Repository_Principles",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/governance/Repository_Principles.md",
+          "evidence": [
+            "docs/governance/Repository_Principles.md"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "AI Collaboration Capability",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "ai-collaboration.AI_Collaboration_Governance_Capability_Charter",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Capability_Charter.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Capability_Charter.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Collaboration_Governance_Specification",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Specification.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Specification.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Collaboration_Lifecycle",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Collaboration_Lifecycle.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Collaboration_Lifecycle.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Session_Initialization_Standard",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Session_Initialization_Standard.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Session_Initialization_Standard.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Session_Completion_Standard",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Session_Completion_Standard.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Session_Completion_Standard.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.Workstream_Continuity_Brief_Specification",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/Workstream_Continuity_Brief_Specification.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/Workstream_Continuity_Brief_Specification.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Collaboration_Steward_Specification",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Collaboration_Steward_Specification.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Collaboration_Steward_Specification.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Session_Readiness_Validator_Specification",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Session_Readiness_Validator_Specification.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Session_Readiness_Validator_Specification.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Collaboration_Governance_Framework",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Framework.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Framework.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.README",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/README.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/README.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Collaboration_Steward_Review_Template",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/templates/AI_Collaboration_Steward_Review_Template.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/templates/AI_Collaboration_Steward_Review_Template.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Session_Completion_Report_Template",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/templates/AI_Session_Completion_Report_Template.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/templates/AI_Session_Completion_Report_Template.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.AI_Session_Initialization_Record_Template",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/templates/AI_Session_Initialization_Record_Template.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/templates/AI_Session_Initialization_Record_Template.md"
+          ]
+        },
+        {
+          "check_id": "ai-collaboration.Workstream_Continuity_Brief_Template",
+          "severity": "PASS",
+          "message": "Required artifact exists: docs/engineering-organization/ai-collaboration/templates/Workstream_Continuity_Brief_Template.md",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/templates/Workstream_Continuity_Brief_Template.md"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Role Readiness",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "roles.catalog",
+          "severity": "PASS",
+          "message": "AI Role Catalog exists.",
+          "evidence": [
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "roles.chief-architect-architecture-gatekeeper",
+          "severity": "PASS",
+          "message": "Required role is governed: Chief Architect / Architecture Gatekeeper",
+          "evidence": [
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "roles.codex-implementation-engineer",
+          "severity": "PASS",
+          "message": "Required role is governed: Codex Implementation Engineer",
+          "evidence": [
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "roles.execution-agent",
+          "severity": "PASS",
+          "message": "Required role is governed: Execution Agent",
+          "evidence": [
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "roles.operations-analyst",
+          "severity": "PASS",
+          "message": "Required role is governed: Operations Analyst",
+          "evidence": [
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "roles.ai-collaboration-steward",
+          "severity": "PASS",
+          "message": "Required role is governed: AI Collaboration Steward",
+          "evidence": [
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Active Milestone Readiness",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "milestone.milestone",
+          "severity": "PASS",
+          "message": "Milestone identifies Milestone 14.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "milestone.kanban",
+          "severity": "PASS",
+          "message": "Kanban identifies Milestone 14.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "milestone.roadmap",
+          "severity": "PASS",
+          "message": "Roadmap identifies Milestone 14.",
+          "evidence": [
+            "docs/product/Product_Roadmap.md"
+          ]
+        },
+        {
+          "check_id": "milestone.backlog",
+          "severity": "PASS",
+          "message": "Backlog identifies Milestone 14.",
+          "evidence": [
+            "docs/product/Product_Backlog.md"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Workstream Continuity",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "continuity.architecture-integration.exists",
+          "severity": "PASS",
+          "message": "Architecture Integration continuity brief exists.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "continuity.required-fields",
+          "severity": "PASS",
+          "message": "Architecture Integration contains all required continuity fields.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "continuity.alpha.exists",
+          "severity": "PASS",
+          "message": "Alpha continuity brief exists.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "continuity.required-fields",
+          "severity": "PASS",
+          "message": "Alpha contains all required continuity fields.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "continuity.bravo.exists",
+          "severity": "PASS",
+          "message": "Bravo continuity brief exists.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "continuity.required-fields",
+          "severity": "PASS",
+          "message": "Bravo contains all required continuity fields.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "continuity.charlie.exists",
+          "severity": "PASS",
+          "message": "Charlie continuity brief exists.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "continuity.required-fields",
+          "severity": "PASS",
+          "message": "Charlie contains all required continuity fields.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Architecture Traceability",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "traceability.architecture-integration.authority",
+          "severity": "PASS",
+          "message": "Architecture Integration traces to authoritative evidence: Milestone Plan.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.authority",
+          "severity": "PASS",
+          "message": "Architecture Integration traces to authoritative evidence: Engineering Portfolio Kanban.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.authority",
+          "severity": "PASS",
+          "message": "Architecture Integration traces to authoritative evidence: EO-14.8A.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.authority",
+          "severity": "PASS",
+          "message": "Architecture Integration traces to authoritative evidence: EO-14.8B.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.milestone",
+          "severity": "PASS",
+          "message": "Architecture Integration is traceable through milestone: EO-14.8.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.kanban",
+          "severity": "PASS",
+          "message": "Architecture Integration is traceable through kanban: Architecture Gatekeeper.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.kanban",
+          "severity": "PASS",
+          "message": "Architecture Integration is traceable through kanban: EO-14.8.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.roadmap",
+          "severity": "PASS",
+          "message": "Architecture Integration is traceable through roadmap: EO-14.8.",
+          "evidence": [
+            "docs/product/Product_Roadmap.md"
+          ]
+        },
+        {
+          "check_id": "traceability.architecture-integration.backlog",
+          "severity": "PASS",
+          "message": "Architecture Integration is traceable through backlog: EO-14.8.",
+          "evidence": [
+            "docs/product/Product_Backlog.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.authority",
+          "severity": "PASS",
+          "message": "Alpha traces to authoritative evidence: Milestone Plan.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.authority",
+          "severity": "PASS",
+          "message": "Alpha traces to authoritative evidence: Engineering Portfolio Kanban.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.authority",
+          "severity": "PASS",
+          "message": "Alpha traces to authoritative evidence: EO-14.1.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.authority",
+          "severity": "PASS",
+          "message": "Alpha traces to authoritative evidence: EO-14.4.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.milestone",
+          "severity": "PASS",
+          "message": "Alpha is traceable through milestone: Alpha.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.milestone",
+          "severity": "PASS",
+          "message": "Alpha is traceable through milestone: EO-14.1A.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.milestone",
+          "severity": "PASS",
+          "message": "Alpha is traceable through milestone: EO-14.4A.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.kanban",
+          "severity": "PASS",
+          "message": "Alpha is traceable through kanban: Alpha.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.kanban",
+          "severity": "PASS",
+          "message": "Alpha is traceable through kanban: EO-14.1A.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.kanban",
+          "severity": "PASS",
+          "message": "Alpha is traceable through kanban: EO-14.4A.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.roadmap",
+          "severity": "PASS",
+          "message": "Alpha is traceable through roadmap: EO-14.1A.",
+          "evidence": [
+            "docs/product/Product_Roadmap.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.roadmap",
+          "severity": "PASS",
+          "message": "Alpha is traceable through roadmap: EO-14.4A.",
+          "evidence": [
+            "docs/product/Product_Roadmap.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.backlog",
+          "severity": "PASS",
+          "message": "Alpha is traceable through backlog: Execution Agent Specification.",
+          "evidence": [
+            "docs/product/Product_Backlog.md"
+          ]
+        },
+        {
+          "check_id": "traceability.alpha.backlog",
+          "severity": "PASS",
+          "message": "Alpha is traceable through backlog: Governed Automation Framework.",
+          "evidence": [
+            "docs/product/Product_Backlog.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.authority",
+          "severity": "PASS",
+          "message": "Bravo traces to authoritative evidence: Milestone Plan.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.authority",
+          "severity": "PASS",
+          "message": "Bravo traces to authoritative evidence: Engineering Portfolio Kanban.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.authority",
+          "severity": "PASS",
+          "message": "Bravo traces to authoritative evidence: PLAT-14.1.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.authority",
+          "severity": "PASS",
+          "message": "Bravo traces to authoritative evidence: PLAT-13.6.3B.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.milestone",
+          "severity": "PASS",
+          "message": "Bravo is traceable through milestone: Bravo.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.milestone",
+          "severity": "PASS",
+          "message": "Bravo is traceable through milestone: PLAT-14.1A.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.kanban",
+          "severity": "PASS",
+          "message": "Bravo is traceable through kanban: Bravo.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.kanban",
+          "severity": "PASS",
+          "message": "Bravo is traceable through kanban: PLAT-14.1A.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.roadmap",
+          "severity": "PASS",
+          "message": "Bravo is traceable through roadmap: PLAT-14.1A.",
+          "evidence": [
+            "docs/product/Product_Roadmap.md"
+          ]
+        },
+        {
+          "check_id": "traceability.bravo.backlog",
+          "severity": "PASS",
+          "message": "Bravo is traceable through backlog: Container Metrics Modernization.",
+          "evidence": [
+            "docs/product/Product_Backlog.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.authority",
+          "severity": "PASS",
+          "message": "Charlie traces to authoritative evidence: Milestone Plan.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.authority",
+          "severity": "PASS",
+          "message": "Charlie traces to authoritative evidence: Engineering Portfolio Kanban.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.authority",
+          "severity": "PASS",
+          "message": "Charlie traces to authoritative evidence: EO-14.2.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.authority",
+          "severity": "PASS",
+          "message": "Charlie traces to authoritative evidence: EO-14.3.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.milestone",
+          "severity": "PASS",
+          "message": "Charlie is traceable through milestone: Charlie.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.milestone",
+          "severity": "PASS",
+          "message": "Charlie is traceable through milestone: EO-14.2A.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.milestone",
+          "severity": "PASS",
+          "message": "Charlie is traceable through milestone: EO-14.3A.",
+          "evidence": [
+            "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.kanban",
+          "severity": "PASS",
+          "message": "Charlie is traceable through kanban: Charlie.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.kanban",
+          "severity": "PASS",
+          "message": "Charlie is traceable through kanban: EO-14.2A.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.kanban",
+          "severity": "PASS",
+          "message": "Charlie is traceable through kanban: EO-14.3A.",
+          "evidence": [
+            "docs/portfolio/Engineering_Portfolio_Kanban.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.roadmap",
+          "severity": "PASS",
+          "message": "Charlie is traceable through roadmap: EO-14.2A.",
+          "evidence": [
+            "docs/product/Product_Roadmap.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.roadmap",
+          "severity": "PASS",
+          "message": "Charlie is traceable through roadmap: EO-14.3A.",
+          "evidence": [
+            "docs/product/Product_Roadmap.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.backlog",
+          "severity": "PASS",
+          "message": "Charlie is traceable through backlog: Operations Analyst Specification.",
+          "evidence": [
+            "docs/product/Product_Backlog.md"
+          ]
+        },
+        {
+          "check_id": "traceability.charlie.backlog",
+          "severity": "PASS",
+          "message": "Charlie is traceable through backlog: Engineering Metrics v2.",
+          "evidence": [
+            "docs/product/Product_Backlog.md"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Parallel Workstream Consistency",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "parallel.architecture-integration.authority",
+          "severity": "PASS",
+          "message": "Architecture Integration retains the Architecture Gatekeeper coordination path.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.alpha.dependency",
+          "severity": "PASS",
+          "message": "Alpha retains required dependency: Architecture Integration.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.alpha.implementation-state",
+          "severity": "PASS",
+          "message": "Alpha does not falsely claim implementation has begun.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.bravo.dependency",
+          "severity": "PASS",
+          "message": "Bravo retains required dependency: Architecture Integration.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.bravo.dependency",
+          "severity": "PASS",
+          "message": "Bravo retains required dependency: Alpha.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.bravo.implementation-state",
+          "severity": "PASS",
+          "message": "Bravo does not falsely claim implementation has begun.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.charlie.dependency",
+          "severity": "PASS",
+          "message": "Charlie retains required dependency: Architecture Integration.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.charlie.dependency",
+          "severity": "PASS",
+          "message": "Charlie retains required dependency: Bravo.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.charlie.implementation-state",
+          "severity": "PASS",
+          "message": "Charlie does not falsely claim implementation has begun.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "parallel.circular-dependency",
+          "severity": "PASS",
+          "message": "No circular active-workstream dependency detected.",
+          "evidence": []
+        }
+      ]
+    },
+    {
+      "name": "Readiness and Freshness",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "freshness.architecture-integration.role",
+          "severity": "PASS",
+          "message": "Architecture Integration assigned role is governed: Chief Architect / Architecture Gatekeeper, Codex Implementation Engineer.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md",
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "freshness.architecture-integration.stage",
+          "severity": "PASS",
+          "message": "Architecture Integration Engineering Lifecycle stage is valid: Architecture Review.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.architecture-integration.next-gate",
+          "severity": "PASS",
+          "message": "Architecture Integration next gate is present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.architecture-integration.verification",
+          "severity": "PASS",
+          "message": "Architecture Integration freshness evidence is present: 2026-07-17.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.architecture-integration.baseline",
+          "severity": "PASS",
+          "message": "Architecture Integration repository identity and baseline evidence are present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.architecture-integration.supersession",
+          "severity": "PASS",
+          "message": "Architecture Integration supersession fields are consistent with Active.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.alpha.role",
+          "severity": "PASS",
+          "message": "Alpha assigned role is governed: Codex Implementation Engineer.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md",
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "freshness.alpha.stage",
+          "severity": "PASS",
+          "message": "Alpha Engineering Lifecycle stage is valid: Specification.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.alpha.next-gate",
+          "severity": "PASS",
+          "message": "Alpha next gate is present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.alpha.verification",
+          "severity": "PASS",
+          "message": "Alpha freshness evidence is present: 2026-07-17.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.alpha.baseline",
+          "severity": "PASS",
+          "message": "Alpha repository identity and baseline evidence are present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.alpha.supersession",
+          "severity": "PASS",
+          "message": "Alpha supersession fields are consistent with Active.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.bravo.role",
+          "severity": "PASS",
+          "message": "Bravo assigned role is governed: Codex Implementation Engineer.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md",
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "freshness.bravo.stage",
+          "severity": "PASS",
+          "message": "Bravo Engineering Lifecycle stage is valid: Specification.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.bravo.next-gate",
+          "severity": "PASS",
+          "message": "Bravo next gate is present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.bravo.verification",
+          "severity": "PASS",
+          "message": "Bravo freshness evidence is present: 2026-07-17.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.bravo.baseline",
+          "severity": "PASS",
+          "message": "Bravo repository identity and baseline evidence are present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.bravo.supersession",
+          "severity": "PASS",
+          "message": "Bravo supersession fields are consistent with Active.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.charlie.role",
+          "severity": "PASS",
+          "message": "Charlie assigned role is governed: Codex Implementation Engineer.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md",
+            "docs/engineering-organization/AI_Role_Catalog.md"
+          ]
+        },
+        {
+          "check_id": "freshness.charlie.stage",
+          "severity": "PASS",
+          "message": "Charlie Engineering Lifecycle stage is valid: Specification.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.charlie.next-gate",
+          "severity": "PASS",
+          "message": "Charlie next gate is present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.charlie.verification",
+          "severity": "PASS",
+          "message": "Charlie freshness evidence is present: 2026-07-17.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.charlie.baseline",
+          "severity": "PASS",
+          "message": "Charlie repository identity and baseline evidence are present.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        },
+        {
+          "check_id": "freshness.charlie.supersession",
+          "severity": "PASS",
+          "message": "Charlie supersession fields are consistent with Active.",
+          "evidence": [
+            "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md"
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "check_id": "repository.working-tree",
+      "severity": "WARNING",
+      "message": "Working tree has active source changes; preserve and reconcile them before editing.",
+      "evidence": [
+        "M docs/engineering-organization/AI_Role_Catalog.md",
+        " M docs/engineering-organization/Engineering_Capability_Model.md",
+        " M docs/engineering-organization/Engineering_Metrics_v2.md",
+        " M docs/engineering-organization/Engineering_Organization_Backlog.md",
+        " M docs/engineering-organization/Engineering_Organization_Capability_Maturity_Model.md",
+        " M docs/engineering-organization/Engineering_Organization_Roadmap.md",
+        " M docs/engineering-organization/Operations_Analyst_Specification.md",
+        " M docs/engineering-organization/Parallel_Workstream_Delivery_Model.md",
+        " M docs/engineering-organization/README.md",
+        " M docs/governance/Definition_of_Done.md",
+        " M docs/governance/Engineering_Lifecycle.md",
+        " M docs/governance/Governance_Change_Log.md",
+        " M docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md",
+        " M docs/portfolio/Engineering_Portfolio_Kanban.md",
+        " M docs/product/Product_Backlog.md",
+        " M docs/product/Product_Roadmap.md",
+        " M docs/specifications/Platform_Health_Dashboard_Specification.md",
+        " M engineering/README.md",
+        " M engineering/platform_eap/cli.py",
+        " M engineering/tests/test_platform_eap.py",
+        " M reports/engineering/engineering_metrics/README.md",
+        " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
+        " M reports/engineering/engineering_metrics/engineering_metrics_report.md",
+        " M reports/engineering/governance/governance_report.json",
+        " M reports/engineering/governance/governance_report.md",
+        " M reports/engineering/repository/repository_report.json",
+        " M reports/engineering/repository/repository_report.md",
+        "?? docs/engineering-organization/ai-collaboration/",
+        "?? engineering/platform_eap/ai_session_readiness.py",
+        "?? engineering/tests/test_ai_session_readiness.py",
+        "?? engineering/tests/test_ai_session_readiness_metrics.py"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Platform Health Dashboard Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -26,6 +26,7 @@ Define a governed executive operational view for Platform health across hosts, s
 | Digital Twin integrity | Repository-generated reports | Planned versus active state is governed in repository artifacts. |
 | Platform risks | Repository-generated reports | Risk interpretation requires reviewed context. |
 | Engineering health indicators | Repository-generated reports | Engineering metrics are milestone and governance evidence. |
+| AI Session Readiness | Repository-generated Engineering Metrics report sourced from the governed readiness JSON report. | Repository onboarding readiness is not Prometheus telemetry and must retain validator source-of-truth boundaries. |
 | Executive summary | Combined dashboard or report index | Final channel depends on validated sources and user need. |
 
 ---
@@ -51,6 +52,26 @@ Define a governed executive operational view for Platform health across hosts, s
 
 ---
 
+## AI Session Readiness Repository Source Contract
+
+EO-14.8E adds repository-side Platform Health visibility through the structured Engineering Metrics report. It does not deploy, provision, connect to, or modify Grafana.
+
+| Health Input | Source Field |
+|--------------|--------------|
+| Current readiness state | `platform_health.ai_session_readiness.state` |
+| Error count | `platform_health.ai_session_readiness.error_count` |
+| Warning count | `platform_health.ai_session_readiness.warning_count` |
+| Evidence condition | `platform_health.ai_session_readiness.evidence_status` |
+| Last generated time | `platform_health.ai_session_readiness.last_generated_at` |
+| Source availability | `platform_health.ai_session_readiness.source_available` and `source_usable` |
+| Source location | `platform_health.ai_session_readiness.source_report_path` |
+
+The transformation preserves `READY`, `READY WITH WARNINGS`, `NOT READY`, and `UNKNOWN`. Missing or malformed evidence must remain `UNKNOWN` and must not be rendered as healthy. `READY WITH WARNINGS` retains its warning count and disclosed conditions; `NOT READY` remains blocking. The source of truth remains `./platform-eap ai-session readiness` and its governed reports.
+
+No time-based staleness threshold is introduced by this contract. A future `stale` evidence condition requires separately governed freshness rules. Runtime Platform Health dashboard deployment remains future PLAT work, not EO-14.8E.
+
+---
+
 ## Acceptance Criteria
 
 PLAT-14.3 is ready for review when:
@@ -66,4 +87,5 @@ PLAT-14.3 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added the EO-14.8E repository-side AI Session Readiness health-source contract without live dashboard changes. |
 | 1.0 | Initial PLAT-14.3 platform health dashboard specification. |

@@ -1,10 +1,10 @@
 # Product Roadmap
 
-**Document Version:** 2.1
+**Document Version:** 2.6
 
 **Status:** Active
 
-**Milestone:** Milestone 12
+**Milestone:** Milestone 14
 
 ---
 
@@ -16,18 +16,17 @@ This roadmap organizes portfolio direction by milestone horizon without prescrib
 
 ## Current Milestone
 
-### Milestone 12
+### Milestone 14
 
-Focus: establish Infrastructure Registry v1.0 as the first usable Platform capability.
+Focus: operationalize the AI Engineering Organization through the governed Container Operational Health vertical slice while preserving separate architecture and live-execution gates.
 
 Planned outcomes:
 
-- Git-native structured infrastructure registry architecture.
-- YAML or JSON registry record model.
-- Human-readable documentation derived from registry records.
-- Validation-first registry design.
-- Workstreams for devices, topology, services, health foundation, and operating environment.
-- Future readiness for monitoring, dashboards, and automation.
+- Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
+- Advance next to Alpha through EO-14.1A and EO-14.4A under its separate authorization while preserving Alpha, Bravo, and Charlie as currently unstarted.
+- Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
+- Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
+- Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
 
 ---
 
@@ -50,24 +49,43 @@ Near-term candidates should build from Infrastructure Registry v1.0:
 
 Milestone 14 planning is coordinated across EO, PLAT, and FFFA streams. These candidates are planned, not approved for implementation by this roadmap.
 
+The approved Milestone 14 execution strategy is Option C - Governed Vertical Slice. The first governed vertical slice is Container Operational Health.
+
 ### EO - Engineering Organization
 
 - EO-14.1 Execution Agent Specification.
+- EO-14.1A Execution Agent Operationalization for the first governed vertical slice.
 - EO-14.2 Operations Analyst Specification.
+- EO-14.2A Operations Analyst Operationalization for Container Operational Health evidence interpretation.
 - EO-14.3 Engineering Metrics v2.
+- EO-14.3A Engineering Metrics v2 Refinement based on verified vertical-slice evidence.
 - EO-14.4 Governed Automation Framework.
+- EO-14.4A Governed Automation Framework Operationalization.
+- EO-14.8 AI Collaboration Governance is complete and published as the Engineering Organization baseline.
+- EO-14.8A Capability Charter is complete.
+- EO-14.8B Repository Specification Package is complete.
+- EO-14.8C Repository Implementation is complete through EO-14.8C.1 and EO-14.8C.2.
+- EO-14.8D AI Session Readiness Validator is complete.
+- EO-14.8E Engineering Metrics Integration is complete.
+- EO-14.8 parent capability is complete and Architecture Gatekeeper approved.
+- Alpha through EO-14.1A and EO-14.4A is the next Engineering Organization work package.
+- Alpha, Bravo, and Charlie remain unstarted; EO-14.8 does not authorize their implementation or any live work.
 
 ### PLAT - Shared Platform
 
 - PLAT-14.1 Container Metrics Modernization.
+- PLAT-14.1A Container Metrics Repository Implementation Package for repository-only telemetry contracts, validation, runbooks, rollback, and evidence templates.
 - PLAT-14.2 Operational Excellence for backup, restore, recovery validation, alerting, runbooks, and evidence retention.
 - PLAT-14.3 Platform Health Dashboard.
-- PLAT-14.4 Platform Authentication Boundary for local reverse proxy authentication, identity-header trust, LAN-only HTTPS, certificate lifecycle, monitoring, backup, recovery, and access revocation.
+- PLAT-14.3A Platform Health Dashboard Completion after the verified PLAT-14.1A telemetry contract.
+- PLAT-14.4 Platform Authentication Boundary for local reverse proxy authentication, identity-header trust, LAN-only HTTPS, certificate lifecycle, monitoring, backup, recovery, and access revocation; deferred unless future FFFA web implementation approval activates it.
 
 ### FFFA - Customer-Facing Application
 
 - FFFA-14.1 Transaction Categorization Intelligence.
 - FFFA-14.2 Family Financial Reporting and Presentation.
+- FFFA implementation is paused while Chris completes customer acceptance.
+- The Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
 - Preserve repository independence and avoid inventing detailed FFFA implementation scope in this repository.
 - Use FFFA-owned personas, reporting contracts, channel specifications, and customer acceptance evidence to satisfy Milestone 14 Engineering Investment Rule traceability.
 
@@ -122,8 +140,13 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 2.6 | Recorded the completed and published EO-14.8 baseline, with Alpha EO-14.1A and EO-14.4A next and all three workstreams still unstarted. |
+| 2.5 | Corrected active-milestone metadata and framing to Milestone 14 and recorded EO-14.8E implementation-review status. |
+| 2.4 | Recorded EO-14.8D implementation-review status, EO-14.8E approval dependency, and unchanged workstream boundaries. |
+| 2.3 | Added EO-14.8 AI Collaboration Governance roadmap status and Alpha, Bravo, Charlie pause treatment. |
+| 2.2 | Recorded approved Milestone 14 Option C governed vertical slice, Container Operational Health sequencing, FFFA implementation pause, and Financial Domain Foundation freeze. |
 | 2.1 | Added Platform-owned authentication boundary roadmap scope for FFFA-14.2B. |
-| 2.0 | Aligned Milestone 14 roadmap streams to approved balanced portfolio work packages and FFFA-14 scope. |
+| 2.0 | Aligned Milestone 14 roadmap streams to approved portfolio work packages and FFFA-14 scope. |
 | 1.9 | Added planned Milestone 14 EO, PLAT, and FFFA roadmap streams for Engineering Investment Rule traceability. |
 | 1.8 | Added PLAT-13.6.3B governed Docker-container metrics replacement preparation. |
 | 1.7 | Added PLAT-13.6.3A Docker-container metrics correction to near-term roadmap. |
