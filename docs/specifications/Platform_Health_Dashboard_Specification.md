@@ -1,6 +1,6 @@
 # Platform Health Dashboard Specification
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -72,6 +72,20 @@ Dashboards must not:
 
 Dashboard no-data is represented through governed evidence and assessment outcomes, normally `insufficient_evidence` when mandatory current evidence is unavailable. It is not an independent health state.
 
+The PLAT-14.1A consumer mapping must distinguish:
+
+| Condition | Dashboard Treatment |
+|-----------|---------------------|
+| No assessment exists | Render `not_evaluated`. |
+| Assessment reports insufficient evidence | Render `insufficient_evidence` with governed reasons. |
+| Provider unavailable | Render telemetry unavailability; do not infer subject failure. |
+| Required signal unavailable | Render insufficient evidence. |
+| Assessment past `valid_until` | Render expired/noncurrent; never current Healthy. |
+| Query or rendering failure | Render presentation failure without changing the assessment. |
+| Conclusive unhealthy assessment | Render governed `unhealthy` status and reasons. |
+
+PLAT-14.3A remains downstream of the published PLAT-14.1A specification, separately authorized core implementation, and verified assessment outputs. Dashboard integration, Grafana changes, and live deployment remain separate gates.
+
 ---
 
 ## AI Session Readiness Repository Source Contract
@@ -111,6 +125,7 @@ PLAT-14.3 is ready for review when:
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Container Metrics Modernization Specification](Container_Metrics_Modernization_Specification.md)
+- [Container Operational Health Specification](Container_Operational_Health_Specification.md)
 - [Operations Analyst Specification](../engineering-organization/Operations_Analyst_Specification.md)
 
 ---
@@ -119,6 +134,7 @@ PLAT-14.3 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added the aligned PLAT-14.1A assessment-expiration, provider-unavailability, and presentation-failure distinctions and preserved the downstream dashboard gate. |
 | 1.2 | Added the PLAT-14.0A Platform Operations read-only consumer boundary and authoritative no-data treatment. |
 | 1.1 | Added the EO-14.8E repository-side AI Session Readiness health-source contract without live dashboard changes. |
 | 1.0 | Initial PLAT-14.3 platform health dashboard specification. |

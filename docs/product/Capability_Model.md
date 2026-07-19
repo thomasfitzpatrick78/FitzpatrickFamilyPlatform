@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 
 **Status:** Active
 
@@ -50,7 +50,9 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Container Metrics Capability:** Docker is the current runtime implementation. Future implementations may include Podman, containerd, Kubernetes, Incus, or LXC. Grafana and customer-facing applications consume governed Container Metrics through Prometheus rather than runtime-specific APIs. Runtime-specific collectors and proxies are replaceable implementation components.
 
-**Platform Operations Bounded Context:** PLAT-14.0A defines Platform Operations as the Shared Platform domain for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. The Infrastructure Registry remains authoritative for declared state; replaceable providers produce observations; provider adapters normalize one-signal evidence; reconciliation preserves source facts; deterministic health policies require positive proof; intelligence remains advisory. The bounded context is architecture-only pending Architecture Gatekeeper publication and does not authorize PLAT-14.1A implementation or live work.
+**Platform Operations Bounded Context:** PLAT-14.0A defines Platform Operations as the Shared Platform domain for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. The Infrastructure Registry remains authoritative for declared state; replaceable providers produce observations; provider adapters normalize one-signal evidence; reconciliation preserves source facts; deterministic health policies require positive proof; intelligence remains advisory. The bounded context and contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, remain architecture-only with `Implemented: No`, and do not authorize live work.
+
+**Container Operational Health Capability:** PLAT-14.1A specifies deterministic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. It is in Specification Alignment. Repository implementation, provider adapters, privileged access, live observation, dashboard integration, and activation remain separately blocked.
 
 ### Home Automation
 
@@ -118,6 +120,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
+- [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 
 ---
 
@@ -125,6 +128,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Recorded published PLAT-14.0A architecture and added the blocked PLAT-14.1A Container Operational Health capability boundary. |
 | 1.8 | Added the PLAT-14.0A Platform Operations bounded context and five-subdomain capability boundary. |
 | 1.7 | Added EO-13.1 Engineering Organization and Customer-Facing Applications top-level capabilities plus technology-neutral Container Metrics abstraction. |
 | 1.6 | Added PLAT-13.6.3B Docker-container metrics replacement preparation. |

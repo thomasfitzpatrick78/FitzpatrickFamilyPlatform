@@ -2,12 +2,12 @@
   "capability": "AI Session Readiness Validation",
   "command": "./platform-eap ai-session readiness",
   "readiness": "READY WITH WARNINGS",
-  "generated_at": "2026-07-19T22:06:03.803247+00:00",
+  "generated_at": "2026-07-19T23:21:20.429669+00:00",
   "repository": {
     "name": "FitzpatrickFamilyPlatform",
     "path": "/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform",
     "branch": "main",
-    "head": "93fe787eea6d84a44f2117a9bde513367c7b411c",
+    "head": "c8f9bc3446cb1d5c23bf32232203109a7ff067f8",
     "working_tree": "active source changes"
   },
   "domains": [
@@ -32,7 +32,7 @@
         {
           "check_id": "repository.head",
           "severity": "PASS",
-          "message": "Current HEAD: 93fe787eea6d84a44f2117a9bde513367c7b411c",
+          "message": "Current HEAD: c8f9bc3446cb1d5c23bf32232203109a7ff067f8",
           "evidence": []
         },
         {
@@ -49,8 +49,10 @@
             "M docs/architecture/Architecture_Backlog.md",
             " M docs/architecture/Architecture_Decision_Log.md",
             " M docs/architecture/Current_Architecture_State.md",
-            " M docs/architecture/Platform_Digital_Twin_Integrity_Model.md",
-            " M docs/engineering-organization/Architecture_Pattern_Library.md",
+            " M docs/architecture/Platform_Operations_Domain_Architecture.md",
+            " M docs/architecture/decisions/ADR-009-Evidence-Before-Operational-Health.md",
+            " M docs/architecture/decisions/ADR-010-Declared-Observed-and-Reconciled-State.md",
+            " M docs/architecture/decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md",
             " M docs/engineering-organization/Operations_Analyst_Specification.md",
             " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md",
             " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md",
@@ -64,7 +66,9 @@
             " M docs/product/Product_Roadmap.md",
             " M docs/specifications/Container_Metrics_Modernization_Specification.md",
             " M docs/specifications/Infrastructure_Registry_v1.0_Specification.md",
+            " M docs/specifications/Operational_Excellence_Specification.md",
             " M docs/specifications/Platform_Health_Dashboard_Specification.md",
+            " M docs/specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md",
             " M docs/specifications/Platform_Operations_Observability_Specification.md",
             " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
             " M reports/engineering/engineering_metrics/engineering_metrics_report.md",
@@ -76,11 +80,7 @@
             " M reports/engineering/release/release_report.md",
             " M reports/engineering/repository/repository_report.json",
             " M reports/engineering/repository/repository_report.md",
-            "?? docs/architecture/Platform_Operations_Domain_Architecture.md",
-            "?? docs/architecture/decisions/ADR-009-Evidence-Before-Operational-Health.md",
-            "?? docs/architecture/decisions/ADR-010-Declared-Observed-and-Reconciled-State.md",
-            "?? docs/architecture/decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md",
-            "?? docs/specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md"
+            "?? docs/specifications/Container_Operational_Health_Specification.md"
           ]
         }
       ]
@@ -1090,8 +1090,10 @@
         "M docs/architecture/Architecture_Backlog.md",
         " M docs/architecture/Architecture_Decision_Log.md",
         " M docs/architecture/Current_Architecture_State.md",
-        " M docs/architecture/Platform_Digital_Twin_Integrity_Model.md",
-        " M docs/engineering-organization/Architecture_Pattern_Library.md",
+        " M docs/architecture/Platform_Operations_Domain_Architecture.md",
+        " M docs/architecture/decisions/ADR-009-Evidence-Before-Operational-Health.md",
+        " M docs/architecture/decisions/ADR-010-Declared-Observed-and-Reconciled-State.md",
+        " M docs/architecture/decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md",
         " M docs/engineering-organization/Operations_Analyst_Specification.md",
         " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md",
         " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md",
@@ -1105,7 +1107,9 @@
         " M docs/product/Product_Roadmap.md",
         " M docs/specifications/Container_Metrics_Modernization_Specification.md",
         " M docs/specifications/Infrastructure_Registry_v1.0_Specification.md",
+        " M docs/specifications/Operational_Excellence_Specification.md",
         " M docs/specifications/Platform_Health_Dashboard_Specification.md",
+        " M docs/specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md",
         " M docs/specifications/Platform_Operations_Observability_Specification.md",
         " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
         " M reports/engineering/engineering_metrics/engineering_metrics_report.md",
@@ -1117,11 +1121,7 @@
         " M reports/engineering/release/release_report.md",
         " M reports/engineering/repository/repository_report.json",
         " M reports/engineering/repository/repository_report.md",
-        "?? docs/architecture/Platform_Operations_Domain_Architecture.md",
-        "?? docs/architecture/decisions/ADR-009-Evidence-Before-Operational-Health.md",
-        "?? docs/architecture/decisions/ADR-010-Declared-Observed-and-Reconciled-State.md",
-        "?? docs/architecture/decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md",
-        "?? docs/specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md"
+        "?? docs/specifications/Container_Operational_Health_Specification.md"
       ]
     }
   ]

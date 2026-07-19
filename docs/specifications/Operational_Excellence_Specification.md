@@ -1,6 +1,6 @@
 # Operational Excellence Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -43,6 +43,8 @@ Initial alerting requirements should cover:
 - Authentication boundary health and certificate validity when FFFA-14.2B is approved.
 
 Alert delivery mechanisms require human approval before activation.
+
+Container-health alerts and recovery recommendations must consume validated PLAT-14.1A assessments after separately approved implementation and dashboard gates. Alerting must preserve assessment confidence, reason codes, freshness, and expiration; it must not independently reinterpret provider availability or dashboard no-data as subject failure. No alert activation is authorized by PLAT-14.1A specification alignment.
 
 ---
 
@@ -91,5 +93,6 @@ PLAT-14.2 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added the PLAT-14.1A governed-assessment dependency and preserved separate alert and live-operation approval. |
 | 1.1 | Added authentication boundary monitoring, backup, and recovery as Platform operational excellence scope. |
 | 1.0 | Initial PLAT-14.2 operational excellence specification. |

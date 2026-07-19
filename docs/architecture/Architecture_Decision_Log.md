@@ -1,6 +1,6 @@
 # Architecture Decision Log
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 
 **Status:** Active
 
@@ -42,9 +42,9 @@ Baselined
 | ADR-006 | Registry Driven Infrastructure Foundation | Infrastructure Architecture | Approved | No | Pending | Milestone 12 |
 | ADR-007 | Governed Operations and Observability | Infrastructure Architecture | Approved | No | Pending | Milestone 13 |
 | ADR-008 | AI-Operated Engineering Organization Portfolio Model | Governance Architecture | Approved | No | Pending | EO-13.1 |
-| ADR-009 | Evidence Before Operational Health | Product Architecture | Approved | No | Pending publication | PLAT-14.0A |
-| ADR-010 | Declared Observed and Reconciled State | Product Architecture | Approved | No | Pending publication | PLAT-14.0A |
-| ADR-011 | Generic Operational Evidence Envelope and Versioned Profiles | Product Architecture | Approved | No | Pending publication | PLAT-14.0A |
+| ADR-009 | Evidence Before Operational Health | Product Architecture | Approved | No | Published `c8f9bc3` | PLAT-14.0A |
+| ADR-010 | Declared Observed and Reconciled State | Product Architecture | Approved | No | Published `c8f9bc3` | PLAT-14.0A |
+| ADR-011 | Generic Operational Evidence Envelope and Versioned Profiles | Product Architecture | Approved | No | Published `c8f9bc3` | PLAT-14.0A |
 
 ---
 
@@ -91,6 +91,7 @@ Each new ADR shall receive the next sequential repository-local ADR number, be r
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded publication baseline `c8f9bc3` for ADR-009 through ADR-011 while retaining Implemented: No. |
 | 1.4 | Added ADR-009 through ADR-011 for the PLAT-14.0A Platform Operations domain architecture. |
 | 1.3 | Added ADR-008 for the AI-operated Engineering Organization portfolio model. |
 | 1.2 | Added ADR-007 for Governed Operations and Observability. |

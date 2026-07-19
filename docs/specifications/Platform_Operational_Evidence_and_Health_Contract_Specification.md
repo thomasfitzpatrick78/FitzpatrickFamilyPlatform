@@ -1,8 +1,8 @@
 # Platform Operational Evidence and Health Contract Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Draft for Architecture Gatekeeper Review
+**Status:** Published Architecture Contract; Implemented: No
 
 **Milestone:** PLAT-14.0A
 
@@ -210,6 +210,8 @@ The initial profile is limited to:
 | `container.lifecycle.observed_state` | `state` | `created`, `running`, `stopped`, `restarting`, `exited`, `missing` | `container_service_reference`, `host_reference`, `runtime_engine`; runtime references when present. |
 | `container.image.reference` | `text` | Normalized image reference | `container_service_reference`, `image_reference`. |
 | `container.image.digest` | `text` | Validated immutable digest | `container_service_reference`, `image_reference`, `image_digest`. |
+
+`container.lifecycle.expected_state` is a Registry-derived declared-state projection, not provider-produced Operational Evidence. Reconciliation may consume Infrastructure Registry state directly without creating this evidence record. A provider adapter must never emit or override declared expectation.
 
 `missing` is emitted only when a governed observation process can conclusively establish absence for the declared subject. Lack of observations alone is not conclusive absence.
 
@@ -611,6 +613,7 @@ This specification is ready for Architecture Gatekeeper review when:
 ## Related Documents
 
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
+- [Container Operational Health Specification](Container_Operational_Health_Specification.md)
 - [Infrastructure Registry v1.0 Specification](Infrastructure_Registry_v1.0_Specification.md)
 - [Platform Operations and Observability Specification](Platform_Operations_Observability_Specification.md)
 - [Container Metrics Modernization Specification](Container_Metrics_Modernization_Specification.md)
@@ -624,4 +627,5 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Clarified Registry-derived lifecycle expectation and linked the PLAT-14.1A specification-alignment baseline without changing contract version 1.0. |
 | 1.0 | Initial PLAT-14.0A generic evidence, container profile, reconciliation, health, confidence, provider, consumer, and compatibility contracts. |

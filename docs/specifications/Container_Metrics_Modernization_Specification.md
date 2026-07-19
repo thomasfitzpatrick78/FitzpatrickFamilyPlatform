@@ -1,6 +1,6 @@
 # Container Metrics Modernization Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -29,6 +29,30 @@ This specification does not authorize live deployment.
 - Final dashboard validation.
 - Final reboot validation.
 
+This telemetry-oriented scope is retained as subordinate future provider, security, observability-transport, live-validation, and presentation work. It is not the PLAT-14.1A core product definition.
+
+---
+
+## PLAT-14.1A Container Operational Health Alignment
+
+PLAT-14.1A is Container Operational Health: deterministic, explainable, repository-owned health assessments for declared container-backed Platform services using Registry state, canonical evidence, reconciliation, and versioned policies.
+
+The future core repository implementation is a provider-independent vertical slice containing contract and policy validation, Registry-linked identity resolution, fixture-only normalization proofs, reconciliation, health evaluation, deterministic JSON and Markdown, tests, and fixture-based EO contract integration. It remains blocked pending Architecture Gatekeeper review and publication of the aligned specification and separate implementation authorization.
+
+The retained provider work is classified as follows:
+
+| Existing Work | Future Classification |
+|---------------|-----------------------|
+| Restricted Docker API proxy | Privileged-access and security gate; not core health implementation. |
+| OpenTelemetry Docker Stats Collector | Future provider-adapter implementation and live metric inventory. |
+| Prometheus | Observability transport and metrics store. |
+| Docker daemon metrics | Deferred provider candidate. |
+| cAdvisor | Limited provider whose known identity limitation constrains evidence confidence. |
+| Grafana provisioning and PromQL | Presentation and dashboard-integration scope. |
+| Live metric inventory, persistence, reboot, and Pi-hole proof | Future controlled live-observation validation. |
+
+No provider owns canonical subject identity, policy, reconciliation, confidence, or health. No retained provider artifact is deleted or treated as implementation authorization.
+
 ---
 
 ## Current-State Evidence Requirements
@@ -47,7 +71,8 @@ Before implementation, evidence must confirm:
 
 ## Architecture Boundaries
 
-- PLAT-14.0A Platform Operations Domain Architecture must be published before PLAT-14.1A repository implementation begins.
+- PLAT-14.0A Platform Operations Domain Architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remains architecture-only with `Implemented: No`.
+- PLAT-14.1A is in Specification Alignment; repository implementation remains blocked.
 - Infrastructure Registry remains authoritative for declared state and canonical Platform subject linkage.
 - Docker API, Docker daemon metrics, cAdvisor, OpenTelemetry, Prometheus, and future telemetry sources are provider or transport implementations, not owners of canonical evidence or health semantics.
 - Provider observations must be normalized into the approved Generic Operational Evidence Envelope and Container Evidence Profile before authoritative reconciliation or health evaluation.
@@ -123,8 +148,9 @@ Rollback evidence must be captured if used.
 
 PLAT-14.1 is ready for implementation review when:
 
-- PLAT-14.0A has been Architecture Gatekeeper reviewed and published.
-- PLAT-14.1A scope has been aligned to the published evidence, reconciliation, health, confidence, provider, and consumer contracts without deleting approved telemetry-provider work.
+- PLAT-14.0A remains published and its lifecycle metadata is synchronized.
+- The PLAT-14.1A Container Operational Health specification, Registry identity design, policies, reason codes, outputs, fixtures, and future gates are Architecture Gatekeeper approved and published.
+- A separately authorized PLAT-14.1A repository implementation package selects the approved provider-independent vertical slice without deleting telemetry-provider work.
 - Requirements, security controls, Pi-hole protections, rollback, cutover checkpoints, and validation are approved.
 - cAdvisor retain, reduce, or retire criteria are documented.
 - Docker daemon metrics are explicitly evaluated without implicit approval.
@@ -136,6 +162,7 @@ PLAT-14.1 is ready for implementation review when:
 
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
+- [Container Operational Health Specification](Container_Operational_Health_Specification.md)
 - [Docker 29 Container Metrics Compatibility Assessment](../architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Platform Health Dashboard Specification](Platform_Health_Dashboard_Specification.md)
@@ -146,5 +173,6 @@ PLAT-14.1 is ready for implementation review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Reclassified existing telemetry work as subordinate future provider, security, transport, live-validation, and presentation scope beneath PLAT-14.1A Container Operational Health. |
 | 1.1 | Added PLAT-14.0A dependency and separated canonical Platform Operations contracts from provider and presentation implementation. |
 | 1.0 | Initial PLAT-14.1 container metrics modernization specification. |

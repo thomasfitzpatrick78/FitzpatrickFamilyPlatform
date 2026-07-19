@@ -24,17 +24,17 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Published EO-14.4A HEAD `93fe787eea6d84a44f2117a9bde513367c7b411c` on `main`; PLAT-14.0A changes remain uncommitted pending review. |
+| Baseline | Published PLAT-14.0A HEAD `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` on `main`. |
 | Current milestone | Milestone 14 - Engineering Organization Expansion and Platform Operationalization. |
 | Workstream ID and title | Alpha - Engineering Organization Controls. |
 | Assigned role | Codex Implementation Engineer. |
 | Objective | Publish the approved EO-14.4A Option B repository-side orchestration capability while preserving EO-14.1A authority and all activation and live-work gates. |
-| Current Engineering Lifecycle stage | Repository Implementation; EO-14.1A and EO-14.4A are published and remain unactivated while PLAT-14.0A is prepared for Architecture Review. |
+| Current Engineering Lifecycle stage | Repository Implementation; EO-14.1A and EO-14.4A are published and remain unactivated while PLAT-14.1A is in Specification Alignment. |
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; EO-14.8A Capability Charter; EO-14.8B specifications; EO-14.8C.1 framework; Milestone Plan; Engineering Portfolio Kanban; EO-14.1 and EO-14.4 specifications. |
 | Completed work and evidence | EO-14.8 and the Architecture Gatekeeper-approved EO-14.1A repository implementation are published. EO-14.1A includes immutable models, strict JSON parsing, deterministic validation, stable JSON and Markdown output, bounded Platform EAP commands, governed fixtures, and tests. |
 | Current work | EO-14.4A publication is complete; no additional Alpha implementation is authorized. |
-| Active repository changes | Authorized PLAT-14.0A architecture documentation only; no Alpha implementation change is authorized. |
-| Parallel workstreams | Architecture Integration is preparing PLAT-14.0A; Alpha repository implementations are published and unactivated; Bravo and Charlie implementation remain unstarted. |
+| Active repository changes | Authorized PLAT-14.1A specification documentation only; no Alpha implementation change is authorized. |
+| Parallel workstreams | Architecture Integration and Bravo are aligning PLAT-14.1A specifications; Alpha repository implementations are published and unactivated; Bravo and Charlie implementation remain unstarted. |
 | Dependencies | Architecture Integration; completed EO-14.8 capability baseline; published EO-14.1A Execution Capability; EO-14.4 specification. |
 | Integration gates | EO-14.1A remains authoritative for execution semantics; EO-14.4A Architecture Gatekeeper review and publication are satisfied; activation remains separate. |
 | Unresolved decisions | Any future automation or Execution Agent activation remains a separate Architecture Gatekeeper decision. |
@@ -42,7 +42,7 @@
 | Stop conditions | Missing or conflicting EO-14.1A authority; material architecture change; scope expansion; command-running or live-execution request; EO-14.8 functionality change; FFFA change; unapproved commit, push, merge, tag, or release. |
 | Permitted actions | Preserve and reference published Alpha contracts while preparing the separately authorized PLAT-14.0A architecture package. |
 | Prohibited actions | Activate the Execution Agent or automation; execute assignment data; persist or operate orchestration; change EO-14.8 validator behavior, Engineering Metrics behavior, Platform Health behavior, Bravo, Charlie, or FFFA; perform live work; commit, push, tag, or release. |
-| Next gate | Architecture Gatekeeper review of PLAT-14.0A; any future Alpha activation remains separate. |
+| Next gate | Architecture Gatekeeper review of the PLAT-14.1A aligned specification; any future Alpha activation remains separate. |
 | Last verification date | 2026-07-19. |
 | Superseded brief reference | None. |
 

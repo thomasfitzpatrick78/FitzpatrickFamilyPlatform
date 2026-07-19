@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 3.2
+**Document Version:** 3.3
 
 **Status:** Active
 
@@ -24,7 +24,7 @@ Planned outcomes:
 
 - Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
 - Preserve the published Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations and keep activation, Bravo, and Charlie behind separate authorization gates.
-- Prepare PLAT-14.0A Platform Operations Domain Architecture for Architecture Gatekeeper review before PLAT-14.1A repository implementation.
+- Preserve the published PLAT-14.0A Platform Operations architecture and align PLAT-14.1A Container Operational Health specifications before any repository implementation.
 - Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
 - Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
@@ -74,9 +74,9 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 
 ### PLAT - Shared Platform
 
-- PLAT-14.0A Platform Operations Domain Architecture defines the Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence bounded context and canonical contracts; publication remains pending Architecture Gatekeeper review.
+- PLAT-14.0A Platform Operations Domain Architecture and canonical contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; implementation remains absent.
 - PLAT-14.1 Container Metrics Modernization.
-- PLAT-14.1A Container Metrics Repository Implementation Package is blocked pending PLAT-14.0A publication and later architecture alignment; approved telemetry-provider work is preserved as future provider implementation.
+- PLAT-14.1A Container Operational Health is in Specification Alignment. Future implementation direction is a provider-independent repository vertical slice with fixture adapters, but implementation remains blocked pending specification publication and separate authorization. Approved telemetry work remains subordinate provider, security, transport, live-validation, or presentation scope.
 - PLAT-14.2 Operational Excellence for backup, restore, recovery validation, alerting, runbooks, and evidence retention.
 - PLAT-14.3 Platform Health Dashboard.
 - PLAT-14.3A Platform Health Dashboard Completion after the verified PLAT-14.1A telemetry contract.
@@ -136,6 +136,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - [Engineering Organization Roadmap](../engineering-organization/Engineering_Organization_Roadmap.md)
 - [Milestone 14 Portfolio Plan](../milestones/Milestone_14/Milestone_14_Portfolio_Plan.md)
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
+- [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 
 ---
 
@@ -143,6 +144,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 3.3 | Recorded PLAT-14.0A publication and PLAT-14.1A Container Operational Health specification alignment with implementation and later gates blocked. |
 | 3.2 | Added PLAT-14.0A Platform Operations domain architecture and blocked PLAT-14.1A pending publication and alignment. |
 | 3.1 | Recorded publication of the Architecture Gatekeeper-approved EO-14.4A repository implementation while preserving activation and live-work gates. |
 | 3.0 | Recorded EO-14.4A Option B repository implementation complete pending Architecture Gatekeeper review while preserving activation and live-work gates. |

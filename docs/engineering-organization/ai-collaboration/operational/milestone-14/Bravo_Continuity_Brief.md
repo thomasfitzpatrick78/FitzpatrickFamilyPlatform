@@ -24,25 +24,25 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Published EO-14.4A HEAD `93fe787eea6d84a44f2117a9bde513367c7b411c` on `main`; PLAT-14.0A changes remain uncommitted pending review. |
+| Baseline | Published PLAT-14.0A HEAD `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` on `main`. |
 | Current milestone | Milestone 14 - Engineering Organization Expansion and Platform Operationalization. |
 | Workstream ID and title | Bravo - Platform Observability. |
-| Assigned role | Codex Implementation Engineer. |
-| Objective | Prepare PLAT-14.0A Platform Operations domain architecture for review and preserve PLAT-14.1A as blocked future provider implementation. |
-| Current Engineering Lifecycle stage | Specification; PLAT-14.0A is in Architecture Review preparation and PLAT-14.1A implementation is blocked and unstarted. |
+| Assigned role | Codex Implementation Engineer acting in the work-package posture of Codex Architecture Analyst. |
+| Objective | Prepare PLAT-14.1A Container Operational Health specification alignment while preserving implementation and all later gates as blocked. |
+| Current Engineering Lifecycle stage | Specification; PLAT-14.1A is in Specification Alignment and implementation is blocked and unstarted. |
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; EO-14.8 framework; Milestone Plan; Engineering Portfolio Kanban; Infrastructure Registry; Platform Digital Twin; PLAT-14.0A work package; PLAT-14.1 and PLAT-13.6.3B architecture. |
 | Completed work and evidence | EO-14.8 is complete, repository validated, Architecture Gatekeeper approved, and published; the approved framework is instantiated for Bravo, and Bravo implementation work has not started. |
-| Current work | Define the Platform Operations bounded context, canonical evidence and health contracts, decision tables, and provider/consumer boundaries without implementation. |
-| Active repository changes | Authorized PLAT-14.0A architecture, specification, ADR, planning, continuity, and governance documentation only. |
-| Parallel workstreams | Architecture Integration active; Alpha controls published and unactivated; Bravo and Charlie implementation remain unstarted. |
+| Current work | Define PLAT-14.1A product, Registry identity, policies, health rules, outputs, fixtures, EO integration, and future gates without implementation. |
+| Active repository changes | Authorized PLAT-14.1A specification, Registry-design documentation, lifecycle synchronization, and governed reports only. |
+| Parallel workstreams | Architecture Integration active; Alpha controls published and unactivated; Bravo implementation blocked; Charlie implementation unstarted. |
 | Dependencies | Architecture Integration; completed EO-14.8 baseline; published Alpha controls; Infrastructure Registry; Platform Digital Twin; PLAT-14.1; PLAT-13.6.3B. |
-| Integration gates | PLAT-14.0A Architecture Gatekeeper review and publication before PLAT-14.1A; architecture-aligned evidence implementation before final Charlie mappings or dashboard completion. |
-| Unresolved decisions | PLAT-14.0A publication and a separately governed PLAT-14.1A implementation authorization and scope alignment. |
+| Integration gates | PLAT-14.1A specification review and publication before separately authorized Option B repository implementation; implementation evidence before Charlie or dashboard completion. |
+| Unresolved decisions | Architecture Gatekeeper approval and publication of the aligned specification; later repository implementation authorization; live validation of provisional freshness and resource policies. |
 | Risks | Repository telemetry preparation could be mistaken for authorization to connect to live infrastructure. |
 | Stop conditions | Missing Bravo authorization; unavailable Alpha controls when required; scope expansion; live connection or deployment request; EO-14.8 functionality or validator-logic changes; FFFA changes; unapproved merge, tag, or release. |
-| Permitted actions | Create and validate the authorized repository-only PLAT-14.0A domain architecture package. |
-| Prohibited actions | Begin PLAT-14.1A; connect to or change live infrastructure; use Docker or SSH; modify FFFA; create a tag or release. |
-| Next gate | Architecture Gatekeeper review and publication decision for PLAT-14.0A; PLAT-14.1A remains blocked. |
+| Permitted actions | Create and validate the authorized repository-only PLAT-14.1A specification-alignment package. |
+| Prohibited actions | Begin PLAT-14.1A implementation; connect to or change live infrastructure; use Docker or SSH; modify FFFA; commit, push, create a tag, or release. |
+| Next gate | Architecture Gatekeeper review and publication decision for the PLAT-14.1A aligned specification; implementation remains blocked. |
 | Last verification date | 2026-07-19. |
 | Superseded brief reference | None. |
 
@@ -50,4 +50,4 @@
 
 ## Continuity Notes
 
-EO-14.8 and Alpha controls are published. PLAT-14.0A is the current architecture package. Bravo implementation remains unstarted, and PLAT-14.1A is blocked pending domain-architecture publication and later authorization.
+EO-14.8, Alpha controls, and PLAT-14.0A are published. Bravo is performing PLAT-14.1A Specification Alignment. Implementation, provider, security, live-observation, dashboard, and activation work remain unstarted and unauthorized.

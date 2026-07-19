@@ -8,7 +8,7 @@
 
 **Milestone:** PLAT-14.0A
 
-**Baseline:** Pending publication
+**Baseline:** Published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`
 
 **Implemented:** No
 

@@ -1,6 +1,6 @@
 # Operations Analyst Specification
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -58,6 +58,10 @@ The Operations Analyst must not:
 - Infer execution, automation, architecture, registry, lifecycle, or production authority from evidence.
 
 Operational Intelligence is the interpreted stage after deterministic evaluation. It does not become a second source of operational truth.
+
+For PLAT-14.1A, the Operations Analyst preserves Registry identity, contract/profile/policy versions, health, confidence, reason codes, evidence references, freshness, `valid_until`, and provider findings. An expired assessment is noncurrent even when its stored health status was `healthy`. Provider loss, missing required evidence, and dashboard presentation failure remain distinct conditions.
+
+The aligned specification is not an implemented evidence source. Final EO-14.2A mappings remain blocked until a separately authorized PLAT-14.1A repository implementation produces validated assessment fixtures.
 
 ---
 
@@ -121,6 +125,7 @@ EO-14.2 is ready for review when:
 
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
+- [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 - [Platform Health Dashboard Specification](../specifications/Platform_Health_Dashboard_Specification.md)
 - [Execution Capability Usage](Execution_Capability_Usage.md)
 - [Governed Automation Framework](Governed_Automation_Framework.md)
@@ -131,6 +136,7 @@ EO-14.2 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added the PLAT-14.1A policy/version, expiration, provider-loss, and downstream-evidence alignment boundary. |
 | 1.2 | Added the PLAT-14.0A Operational Intelligence consumer boundary without changing recommendation-only authority. |
 | 1.1 | Added governed AI Session Readiness interpretation and preserved recommendation-only authority. |
 | 1.0 | Initial Operations Analyst role specification. |
