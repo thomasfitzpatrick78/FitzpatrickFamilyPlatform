@@ -1,6 +1,6 @@
 # Engineering Portfolio Kanban
 
-**Document Version:** 1.10
+**Document Version:** 1.11
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -46,9 +46,9 @@ Option C introduces three bounded repository workstreams:
 
 Live infrastructure execution remains unauthorized until separate Architecture Gatekeeper review and explicit human approval.
 
-EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation are published. EO-14.4A is the next separately authorized Alpha package.
+EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation are published. The EO-14.4A orchestration-boundary clarification is prepared for Architecture Gatekeeper review; implementation remains separately authorized and unstarted.
 
-EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and Alpha EO-14.1A repository implementation are published. Engineering Metrics consumes the governed readiness report without recalculation. EO-14.4A, Bravo, and Charlie remain unstarted, and no role activation or live work is authorized.
+EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and Alpha EO-14.1A repository implementation are published. Engineering Metrics consumes the governed readiness report without recalculation. EO-14.4A implementation, Bravo, and Charlie remain unstarted, and no role activation or live work is authorized.
 
 ---
 
@@ -66,8 +66,8 @@ EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and Alpha EO-14.1A rep
 | EO-14.8D | AI Session Readiness Validator | FitzpatrickFamilyPlatform | Done | Medium | EO-14.8C repository evidence | Complete | Codex Implementation Engineer | Platform Administrator | Governed onboarding readiness | Reusable EAP readiness engine | Repository-evidence readiness validation | Domain results, Markdown and JSON reports, focused tests | Readiness-rule changes remain separate |
 | EO-14.8E | Engineering Metrics Integration | FitzpatrickFamilyPlatform | Done | Medium | EO-14.8D governed reports | Complete | Codex Implementation Engineer | Platform Administrator | Visible onboarding readiness | Repository metrics and health-source evidence | Integrates governed readiness without recalculation | Structured and Markdown Engineering Metrics reports, Platform Health source contract, focused tests | Live dashboard deployment remains PLAT work |
 | EO-14.1A | Alpha - Engineering Organization Controls | FitzpatrickFamilyPlatform | Done | High | EO-14.8 complete; EO-14.1; approved Option B+ work package | Repository implementation complete and published; Architecture Gatekeeper approved | Codex Implementation Engineer | Platform Administrator | Safer future operations | Execution-contract readiness | Operationalizes Execution Agent boundaries without activation | Immutable models, deterministic validation, JSON and Markdown serialization, bounded CLI, fixtures, focused tests, governed validation evidence | Live Execution Agent activation |
-| EO-14.4 | Governed Automation Framework | FitzpatrickFamilyPlatform | Specified | High | Engineering Lifecycle | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | Safer automation | Automation lifecycle | Reusable governance | Framework spec | Active scheduled automation |
-| EO-14.4A | Alpha - Engineering Organization Controls | FitzpatrickFamilyPlatform | Ready for Repository Implementation | High | EO-14.8 complete; EO-14.4; EO-14.1A | Next Engineering Organization work; implementation not started | Codex Implementation Engineer | Platform Administrator | Safer future automation | Automation approval and evidence controls | Operationalizes governed automation | Automation catalog, lifecycle, approval, evidence, failure, rollback, retirement controls | Runtime automation |
+| EO-14.4 | Governed Automation Framework | FitzpatrickFamilyPlatform | Specified | High | Engineering Lifecycle; published EO-14.1A Execution Capability | Architecture alignment clarification prepared; Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | Safer automation | Automation orchestration lifecycle | Reusable governance aligned to execution contracts | Framework specification with explicit EO-14.1A ownership boundary | Active scheduled automation |
+| EO-14.4A | Alpha - Engineering Organization Controls | FitzpatrickFamilyPlatform | Specified | High | EO-14.8 complete; EO-14.4; published EO-14.1A | Architecture alignment clarification prepared for review; implementation not started | Codex Implementation Engineer | Platform Administrator | Safer future automation | Orchestration approval and lifecycle controls | Coordinates governed execution without redefining it | Orchestration flow, catalog, lifecycle, approval, failure, rollback, and retirement controls consuming EO-14.1A validation, evidence, and completion packages | Orchestration runtime and all automation operation |
 | PLAT-14.1 | Container Metrics Modernization | FitzpatrickFamilyPlatform | Specified | High | PLAT-13.6.3B; human production approval | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | More accurate operations visibility | Container telemetry modernization | Evidence-first platform execution | Spec, runbook criteria, validation plan | Live deployment |
 | PLAT-14.1A | Bravo - Platform Observability | FitzpatrickFamilyPlatform | Ready for Repository Implementation | High | EO-14.8 complete; Alpha controls; PLAT-14.1; PLAT-13.6.3B | Ready; implementation not started | Codex Implementation Engineer | Platform Administrator | Future container health visibility | Repository telemetry contract | Vertical-slice platform evidence | Restricted Docker API proxy config, OTel config, Prometheus integration, Docker daemon metrics config, Grafana provisioning contracts, static validation, runbooks, rollback, evidence templates | Docker execution, SSH, live Prometheus/Grafana changes |
 | EO-14.2 | Operations Analyst | FitzpatrickFamilyPlatform | Specified | Medium | Observability evidence | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | Better operational interpretation | Health trend review | Defines analysis role | Role spec, evidence sources | Live operations authority |
@@ -91,7 +91,7 @@ EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and Alpha EO-14.1A rep
 | Gate | Requirement |
 |------|-------------|
 | AI collaboration controls before Alpha, Bravo, and Charlie | Satisfied by the completed, Architecture Gatekeeper-approved EO-14.8 capability baseline; each later workstream still requires its separately authorized work package. |
-| Alpha before live request | EO-14.1A and EO-14.4A must define execution and automation controls before any future live deployment request. |
+| Alpha before live request | EO-14.1A defines execution semantics; EO-14.4A defines orchestration flow and lifecycle progression that consume those semantics. Both must precede any future live deployment request. |
 | Bravo before final Charlie mappings | PLAT-14.1A must define and validate the repository telemetry contract before final EO-14.2A or EO-14.3A mappings. |
 | Charlie evidence-state discipline | EO-14.2A and EO-14.3A must distinguish known, unknown, stale, unavailable, and failed evidence. |
 | Dashboard follows telemetry contract | PLAT-14.3A follows the verified PLAT-14.1A telemetry contract. |
@@ -110,6 +110,7 @@ Kanban updates must remain repository-native Markdown unless a future approved t
 
 | Version | Description |
 |---------|-------------|
+| 1.11 | Recorded the EO-14.4A orchestration-to-execution ownership clarification for Architecture Gatekeeper review without starting implementation or activation. |
 | 1.10 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation with activation and later work packages unchanged. |
 | 1.9 | Recorded EO-14.1A repository implementation in Validation pending Architecture Gatekeeper review, with EO-14.4A, Bravo, Charlie, activation, and live work unchanged. |
 | 1.8 | Recorded EO-14.8 capability completion and baseline publication, with Alpha EO-14.1A and EO-14.4A next and all three workstreams still unstarted. |

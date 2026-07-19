@@ -1,6 +1,6 @@
 # Milestone 14 - Operationalizing the AI Engineering Organization
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -55,7 +55,7 @@ The Fitzpatrick Family Financial Assistant remains the flagship customer-facing 
 
 This repository preserves FFFA as the Milestone 14 customer-value pillar through published FFFA specifications, ADR-087, personas, reporting contracts, and customer acceptance evidence. It does not authorize new FFFA implementation.
 
-EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved EO-14.1A repository implementation are published. EO-14.4A, Bravo, and Charlie remain unstarted, and no Execution Agent activation or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
+EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved EO-14.1A repository implementation are published. The EO-14.4A orchestration-boundary clarification is prepared for Architecture Gatekeeper review; EO-14.4A implementation, Bravo, and Charlie remain unstarted, and no Execution Agent activation or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
 
 ---
 
@@ -70,7 +70,7 @@ EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved EO-
 | EO-14.3 | Engineering Metrics v2 | FitzpatrickFamilyPlatform | Define practical evidence-based engineering metrics. | Metrics v2 specification and acceptance criteria. |
 | EO-14.3A | Engineering Metrics v2 Refinement | FitzpatrickFamilyPlatform | Map vertical-slice evidence into Engineering Metrics v2 without false precision. | Metric mapping and validation evidence. |
 | EO-14.4 | Governed Automation Framework | FitzpatrickFamilyPlatform | Define automation proposal, approval, operation, review, and retirement. | Automation framework specification. |
-| EO-14.4A | Governed Automation Framework Operationalization | FitzpatrickFamilyPlatform | Define automation catalog, lifecycle, evidence, failure, rollback, and retirement controls for the first vertical slice. | Automation control package. |
+| EO-14.4A | Governed Automation Framework Operationalization | FitzpatrickFamilyPlatform | Define orchestration flow and automation lifecycle controls for the first vertical slice while consuming EO-14.1A execution semantics. | Automation orchestration specification aligned to EO-14.1A execution validation, evidence, and completion packages. |
 | EO-14.8 | AI Collaboration Governance | FitzpatrickFamilyPlatform | Govern AI participant initialization, continuity, completion, stewardship, readiness validation, and readiness observability. | Complete; Architecture Gatekeeper approved; Engineering Organization baseline published. |
 | EO-14.8A | AI Collaboration Governance Capability Charter | FitzpatrickFamilyPlatform | Approved architectural constitution for AI Collaboration Governance. | Complete. |
 | EO-14.8B | AI Collaboration Governance Repository Specification Package | FitzpatrickFamilyPlatform | Specify charter, lifecycle, standards, continuity brief, Steward role, and future readiness validator. | Complete. |
@@ -96,7 +96,7 @@ EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved EO-
 |----------|--------------|--------------|
 | 0 | EO-14.8 AI Collaboration Governance | Complete; Architecture Gatekeeper approved and capability baseline published before Alpha, Bravo, or Charlie repository implementation begins. |
 | 1 | EO-14.1A Execution Agent Operationalization | Repository implementation published; activation remains separate and unauthorized. |
-| 2 | EO-14.4A Governed Automation Framework Operationalization | Automation lifecycle, catalog, approval, evidence, failure, rollback, and retirement controls must be specified before automation use. |
+| 2 | EO-14.4A Governed Automation Framework Operationalization | Orchestration flow, lifecycle, approval, failure, rollback, and retirement controls must be specified before automation use and must consume EO-14.1A execution validation, evidence, and completion packages. |
 | 3 | PLAT-14.1A Container Metrics Repository Implementation Package | Repository telemetry contract, runbooks, rollback instructions, and evidence templates must be statically validated before live execution is requested. |
 | 4 | EO-14.2A Operations Analyst Operationalization | Analysis procedures consume verified evidence and distinguish known, unknown, stale, unavailable, and failed signals. |
 | 5 | PLAT-14.3A Platform Health Dashboard Completion | Dashboard completion follows the verified PLAT-14.1 telemetry contract. |
@@ -105,7 +105,7 @@ EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved EO-
 
 This sequence is a governed integration model. It does not authorize live execution.
 
-EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation are published. EO-14.4A is the next separately authorized Alpha package; Bravo and Charlie remain unstarted.
+EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation are published. EO-14.4A architecture alignment is prepared for Architecture Gatekeeper review; its implementation remains a separate authorization, and Bravo and Charlie remain unstarted.
 
 ---
 
@@ -118,7 +118,7 @@ EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository imple
 **Responsibilities:**
 
 - Execution Capability, activation-boundary, and execution-contract design.
-- Automation lifecycle, catalog, approval, evidence, failure, rollback, and retirement controls.
+- Automation orchestration flow, lifecycle, catalog, approval, failure, rollback, and retirement controls that consume EO-14.1A execution artifacts.
 - Repository-only implementation.
 
 **Boundary:** Alpha defines controls before any future live deployment request. It does not activate the Execution Agent for production or authorize automation against live infrastructure.
@@ -159,7 +159,7 @@ EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository imple
 | Gate | Requirement |
 |------|-------------|
 | AI collaboration controls before Alpha, Bravo, and Charlie | Satisfied by the completed, Architecture Gatekeeper-approved EO-14.8 capability baseline; each later workstream still requires its separately authorized work package. |
-| Alpha controls before live request | Alpha must define execution and automation controls before any future live deployment request. |
+| Alpha controls before live request | EO-14.1A defines execution semantics; EO-14.4A defines orchestration flow and lifecycle progression that consume those semantics. Both controls must precede any future live deployment request. |
 | Bravo telemetry before final Charlie mappings | Bravo must define and validate the repository telemetry contract before final Charlie metric mappings. |
 | Charlie evidence-state discipline | Charlie must distinguish known, unknown, stale, unavailable, and failed evidence. |
 | Dashboard follows telemetry contract | PLAT-14.3 dashboard completion follows the verified PLAT-14.1 telemetry contract. |
@@ -175,7 +175,7 @@ EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository imple
 | Milestone 13 closeout baseline and tag `milestone-13`. | All workstreams. | Milestone 14 implementation authorization. |
 | PLAT-13.6.3B container metrics architecture. | PLAT-14.1A, PLAT-14.3A. | Container telemetry repository package and dashboard source mapping. |
 | Privileged Infrastructure Integration Standard. | EO-14.1A, EO-14.4A, PLAT-14.1A, PLAT-14.2. | Any future live infrastructure execution. |
-| Alpha controls. | PLAT-14.1A and any future live deployment request. | Execution, automation, and evidence contracts. |
+| Alpha controls. | PLAT-14.1A and any future live deployment request. | EO-14.1A execution contracts and EO-14.4A orchestration controls. |
 | AI Collaboration Governance. | Alpha, Bravo, Charlie, and future parallel AI workstreams. | Governed initialization, continuity, completion, and handoff readiness. |
 | Bravo repository telemetry contract. | EO-14.2A, EO-14.3A, PLAT-14.3A. | Final metric mappings and dashboard completion. |
 | FFFA customer acceptance. | FFFA implementation continuation. | Any new FFFA implementation scope. |
@@ -187,7 +187,7 @@ EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository imple
 
 Milestone 14 Option C evidence should include:
 
-- Alpha execution-contract and automation-control artifacts.
+- Alpha EO-14.1A execution-contract artifacts and EO-14.4A orchestration-control artifacts that consume them without redefining execution semantics.
 - AI Collaboration Governance specification package, EO-14.8D readiness reports and tests, and EO-14.8E Engineering Metrics and repository-side Platform Health evidence.
 - Bravo repository telemetry contract, static validation, runbooks, rollback instructions, and evidence templates.
 - Charlie evidence-state model and metric mapping that does not invent telemetry.
@@ -204,7 +204,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 - Option C - Governed Vertical Slice is recorded as the approved execution strategy.
 - Container Operational Health is defined as the first governed vertical slice.
 - Alpha, Bravo, and Charlie workstreams are defined with boundaries, dependencies, non-goals, and evidence expectations.
-- EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and EO-14.1A repository implementation are recorded published; EO-14.4A, Bravo, and Charlie remain unstarted.
+- EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and EO-14.1A repository implementation are recorded published; EO-14.4A architecture alignment is prepared for review while its implementation, Bravo, and Charlie remain unstarted.
 - FFFA implementation pause and Financial Domain Foundation freeze are explicit.
 - Repository implementation and future controlled live deployment are separated.
 - PLAT-14.4 authentication-boundary work remains deferred unless a future dependency explicitly activates it.
@@ -220,7 +220,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 | Alpha, Bravo, or Charlie resumes without governed AI collaboration controls. | Pause those workstreams until EO-14.8 controls are approved and implemented sufficiently for governed initialization and continuity. |
 | Charlie invents telemetry before Bravo validates the contract. | Require Charlie to use unknown, stale, unavailable, and failed states until Bravo evidence exists. |
 | Execution Agent boundaries blur into architecture authority. | Keep Execution Agent activation and execution contracts under Alpha and require Architecture Gatekeeper review. |
-| Automation bypasses human approval. | Governed Automation Framework controls must be operationalized before automation use. |
+| Automation duplicates or bypasses governed execution semantics. | Require EO-14.4A orchestration to consume EO-14.1A assignments, validation, evidence, and completion packages, with human approval preserved before automation use. |
 | Dashboard claims overstate container health. | PLAT-14.3A follows the verified PLAT-14.1 telemetry contract. |
 | FFFA implementation resumes before customer acceptance. | Record implementation pause and Financial Domain Foundation freeze in milestone planning. |
 
@@ -280,6 +280,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Clarified EO-14.4A as orchestration over the published EO-14.1A Execution Capability while preserving separate implementation, activation, and live-work gates. |
 | 1.8 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation while preserving activation, EO-14.4A, Bravo, Charlie, FFFA, and live-work gates. |
 | 1.7 | Recorded EO-14.1A Option B+ Execution Capability repository implementation pending Architecture Gatekeeper review, with activation, EO-14.4A, Bravo, Charlie, FFFA, and live work unchanged. |
 | 1.6 | Closed and published the Architecture Gatekeeper-approved EO-14.8 capability baseline and identified Alpha EO-14.1A and EO-14.4A as next while preserving unstarted workstream boundaries. |

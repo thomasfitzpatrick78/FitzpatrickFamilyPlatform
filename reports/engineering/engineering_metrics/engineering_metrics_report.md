@@ -2,7 +2,7 @@
 
 **Status:** PASS WITH WARNINGS
 
-**Timestamp:** 2026-07-19T19:04:29.968982+00:00
+**Timestamp:** 2026-07-19T19:33:48.148760+00:00
 
 **Summary:** Engineering metrics generated with status PASS WITH WARNINGS; AI Session Readiness is READY WITH WARNINGS.
 
@@ -18,7 +18,7 @@
 - Errors: 0
 - Warnings: 1
 - Validation domains: 9
-- Evidence timestamp: 2026-07-19T19:04:29.849112+00:00
+- Evidence timestamp: 2026-07-19T19:33:48.027268+00:00
 - Evidence condition: current
 - Evidence path: `reports/engineering/ai_session_readiness/ai_session_readiness_report.json`
 - Evidence usable: yes
