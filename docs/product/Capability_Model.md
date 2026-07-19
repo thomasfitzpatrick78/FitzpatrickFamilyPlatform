@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 
 **Status:** Active
 
@@ -49,6 +49,8 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 **Milestone 13 Capability:** Platform Operations and Observability establishes governed ownership, service lifecycle, cutover, observability, backup, restore validation, incident response, and controlled update practices for the Beelink-hosted Pi-hole production service and future Platform services. PLAT-13.6.2 has completed the initial Metrics Foundation with Prometheus, Node Exporter, and cAdvisor. PLAT-13.6.3 prepares the governed Grafana Operations Dashboard package, PLAT-13.6.3A corrects Docker 29/containerd container metrics assumptions, and PLAT-13.6.3B prepares a restricted Docker API proxy plus OTel Docker Stats replacement before dashboard closeout.
 
 **Container Metrics Capability:** Docker is the current runtime implementation. Future implementations may include Podman, containerd, Kubernetes, Incus, or LXC. Grafana and customer-facing applications consume governed Container Metrics through Prometheus rather than runtime-specific APIs. Runtime-specific collectors and proxies are replaceable implementation components.
+
+**Platform Operations Bounded Context:** PLAT-14.0A defines Platform Operations as the Shared Platform domain for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. The Infrastructure Registry remains authoritative for declared state; replaceable providers produce observations; provider adapters normalize one-signal evidence; reconciliation preserves source facts; deterministic health policies require positive proof; intelligence remains advisory. The bounded context is architecture-only pending Architecture Gatekeeper publication and does not authorize PLAT-14.1A implementation or live work.
 
 ### Home Automation
 
@@ -114,6 +116,8 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 - [Product Backlog](Product_Backlog.md)
 - [Product Roadmap](Product_Roadmap.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
+- [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
+- [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 
 ---
 
@@ -121,6 +125,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.8 | Added the PLAT-14.0A Platform Operations bounded context and five-subdomain capability boundary. |
 | 1.7 | Added EO-13.1 Engineering Organization and Customer-Facing Applications top-level capabilities plus technology-neutral Container Metrics abstraction. |
 | 1.6 | Added PLAT-13.6.3B Docker-container metrics replacement preparation. |
 | 1.5 | Added PLAT-13.6.3A Docker-container metrics compatibility correction. |

@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 2.2
+**Document Version:** 2.3
 
 **Status:** Active
 
@@ -38,6 +38,9 @@ Milestone 14 records these governance enhancements:
 - EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 parent capability are complete, Architecture Gatekeeper approved, repository validated, and published as the Engineering Organization baseline.
 - Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations are published. Bravo and Charlie remain unstarted, and no automation, role activation, or live work is authorized.
 - EO-14.8 does not activate ongoing AI Collaboration Steward automation. Future Platform Health dashboard runtime deployment remains PLAT work.
+- PLAT-14.0A Platform Operations Domain Architecture prepared for Architecture Gatekeeper review with separate Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence subdomains; ADR-009 through ADR-011 record the approved direction.
+- PLAT-14.1A is blocked pending PLAT-14.0A publication and later architecture alignment. Existing Docker API proxy, OpenTelemetry, Prometheus, Docker daemon, cAdvisor, and Grafana planning is preserved as provider, transport, or presentation scope rather than canonical health authority.
+- Capability-First Operationalization remains an unpromoted candidate pattern; PLAT-14.0A adds product-domain architecture before provider implementation but does not provide completed downstream or live evidence.
 
 ---
 
@@ -45,6 +48,7 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 2.3 | Added PLAT-14.0A Platform Operations architecture, PLAT-14.1A blocking dependency, and unpromoted Capability-First candidate treatment. |
 | 2.2 | Recorded publication of the Architecture Gatekeeper-approved EO-14.4A repository implementation while preserving separate activation and live-work gates. |
 | 2.1 | Recorded EO-14.4A Option B repository implementation and direct EO-14.1A reuse without automation activation, runtime operation, or live work. |
 | 2.0 | Clarified EO-14.4A as orchestration over the published EO-14.1A Execution Capability without implementing automation or changing activation and live-work gates. |

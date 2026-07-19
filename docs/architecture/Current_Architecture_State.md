@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.3
+**Document Version:** 1.7
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 now prepares PLAT-14.0A Platform Operations Domain Architecture for Architecture Gatekeeper review before PLAT-14.1A implementation.
 
 ---
 
@@ -27,6 +27,8 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - Git-native YAML or JSON registry records planned as authoritative infrastructure knowledge.
 - Validation-first design selected before monitoring, dashboards, or automation.
 - Governed operations and observability architecture selected in ADR-007.
+- Platform Operations bounded-context direction recorded in ADR-009 through ADR-011, with declared state, normalized evidence, reconciliation, deterministic health, and advisory intelligence kept separate.
+- PLAT-14.1A blocked pending PLAT-14.0A publication and later architecture alignment; no implementation or live work started.
 
 ---
 
@@ -55,6 +57,11 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 - [Infrastructure Registry Architecture](Infrastructure_Registry_Architecture.md)
 - [ADR-006 - Registry Driven Infrastructure Foundation](decisions/ADR-006-Registry-Driven-Infrastructure-Foundation.md)
 - [ADR-007 - Governed Operations and Observability](decisions/ADR-007-Governed-Operations-and-Observability.md)
+- [Platform Operations Domain Architecture](Platform_Operations_Domain_Architecture.md)
+- [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
+- [ADR-009 - Evidence Before Operational Health](decisions/ADR-009-Evidence-Before-Operational-Health.md)
+- [ADR-010 - Declared Observed and Reconciled State](decisions/ADR-010-Declared-Observed-and-Reconciled-State.md)
+- [ADR-011 - Generic Operational Evidence Envelope and Versioned Profiles](decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md)
 - [Docker 29 Container Metrics Compatibility Assessment](Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Docker Container Metrics Replacement Runbook](../operations/Docker_Container_Metrics_Replacement_Runbook.md)
@@ -65,6 +72,7 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Added PLAT-14.0A Platform Operations domain architecture and the blocked PLAT-14.1A dependency state. |
 | 1.6 | Recorded PLAT-13.6.3B repository-prepared Docker API proxy and OpenTelemetry Docker Stats replacement architecture. |
 | 1.5 | Recorded PLAT-13.6.3A Docker 29/containerd cAdvisor compatibility defect and paused dashboard validation. |
 | 1.4 | Recorded PLAT-13.6.3 Operations Dashboard repository package as implementation-ready and not deployed. |

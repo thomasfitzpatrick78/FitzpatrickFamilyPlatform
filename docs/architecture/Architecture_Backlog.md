@@ -1,6 +1,6 @@
 # Architecture Backlog
 
-**Document Version:** 1.3
+**Document Version:** 1.5
 
 **Status:** Active
 
@@ -23,6 +23,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 | AB-008 | High | Platform runtime architecture options | Candidate | Deferred until Infrastructure operations readiness establishes options and gates. |
 | AB-009 | High | Platform Digital Twin lifecycle state model | Candidate | Future enhancement proposal for explicit states: Planned -> Delivered -> Powered -> BIOS Verified -> OS Installed -> Network Connected -> SSH Verified -> Docker Ready -> Platform Active. Do not implement lifecycle changes in PLAT-13.3. |
 | AB-010 | High | Governed operations and observability | Active | ADR-007 selects governed Prometheus, Node Exporter, cAdvisor, and Grafana target architecture for PLAT-13.6 planning. |
+| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | PLAT-14.0A and ADR-009 through ADR-011 are prepared for Architecture Gatekeeper review; PLAT-14.1A is blocked pending publication and alignment. |
 | AB-002 | High | Home Automation safety model | Candidate | Needed before device or automation workflows. |
 | AB-003 | Medium | AI Services privacy and safety model | Candidate | Required before AI service implementation. |
 | AB-004 | Medium | Energy data model | Candidate | Required before energy tracking implementation. |
@@ -36,6 +37,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 - [Architecture Decision Log](Architecture_Decision_Log.md)
 - [Current Architecture State](Current_Architecture_State.md)
 - [Infrastructure Registry Architecture](Infrastructure_Registry_Architecture.md)
+- [Platform Operations Domain Architecture](Platform_Operations_Domain_Architecture.md)
 
 ---
 
@@ -43,6 +45,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Added PLAT-14.0A Platform Operations domain architecture and PLAT-14.1A blocking dependency. |
 | 1.4 | Added governed operations and observability architecture topic for PLAT-13.6. |
 | 1.3 | Added future Platform Digital Twin lifecycle state model proposal from PLAT-13.3 Architecture Review Board decision. |
 | 1.2 | Added PLAT-13.1 Infrastructure operations readiness architecture topic. |

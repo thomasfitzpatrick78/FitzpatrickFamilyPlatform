@@ -1,6 +1,6 @@
 # Platform Health Dashboard Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -19,7 +19,7 @@ Define a governed executive operational view for Platform health across hosts, s
 | Information | Primary Home | Rationale |
 |-------------|--------------|-----------|
 | Host and service time-series health | Grafana | Operational telemetry belongs in dashboards when metric sources are validated. |
-| Container metrics | Grafana after PLAT-14.1 validation | Container panels must wait for modernized metrics proof. |
+| Container operational health | Grafana or repository report after PLAT-14.0A publication and architecture-aligned PLAT-14.1A validation | Container views render governed assessments and must wait for normalized evidence and health proof. |
 | Monitoring target status | Grafana and repository evidence | Live state in Grafana; validation snapshots in repository reports. |
 | Backup status | Repository-generated reports initially | Backup evidence may come from runbooks before live dashboard integration. |
 | Registry integrity | Repository-generated reports | Registry validation is repository-first. |
@@ -52,6 +52,28 @@ Define a governed executive operational view for Platform health across hosts, s
 
 ---
 
+## Platform Operations Consumer Contract
+
+For Container Operational Health, PLAT-14.3A and future dashboards consume the published PLAT-14.0A Operational Health Assessment contract and later verified PLAT-14.1A evidence. Dashboards may render:
+
+- Health status.
+- Assessment confidence.
+- Freshness and validity.
+- Governed reason codes and findings.
+- Supporting evidence and reconciliation references.
+
+Dashboards must not:
+
+- Calculate authoritative container health independently through PromQL, dashboard expressions, panel mappings, or presentation logic.
+- Treat missing, stale, ambiguous, conflicting, or incomplete data as Healthy.
+- Treat provider or scrape-target health as proof of subject health.
+- Replace Platform-owned subject identity with provider labels or runtime identifiers.
+- Interpret health as permission for execution, automation, lifecycle promotion, or live change.
+
+Dashboard no-data is represented through governed evidence and assessment outcomes, normally `insufficient_evidence` when mandatory current evidence is unavailable. It is not an independent health state.
+
+---
+
 ## AI Session Readiness Repository Source Contract
 
 EO-14.8E adds repository-side Platform Health visibility through the structured Engineering Metrics report. It does not deploy, provision, connect to, or modify Grafana.
@@ -79,7 +101,17 @@ PLAT-14.3 is ready for review when:
 - Grafana versus repository-report ownership is defined.
 - Future-scope information is separated from Milestone 14 scope.
 - Executive health indicators include evidence and avoid unsupported precision.
-- Container-health dashboard work depends on PLAT-14.1 metric validation.
+- Container-health dashboard work depends on PLAT-14.0A publication, architecture-aligned PLAT-14.1A contract validation, and verified evidence.
+- Presentation preserves governed health, confidence, freshness, reasons, and no-data semantics without recalculation.
+
+---
+
+## Related Documents
+
+- [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
+- [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
+- [Container Metrics Modernization Specification](Container_Metrics_Modernization_Specification.md)
+- [Operations Analyst Specification](../engineering-organization/Operations_Analyst_Specification.md)
 
 ---
 
@@ -87,5 +119,6 @@ PLAT-14.3 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added the PLAT-14.0A Platform Operations read-only consumer boundary and authoritative no-data treatment. |
 | 1.1 | Added the EO-14.8E repository-side AI Session Readiness health-source contract without live dashboard changes. |
 | 1.0 | Initial PLAT-14.3 platform health dashboard specification. |

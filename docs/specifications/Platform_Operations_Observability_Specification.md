@@ -1,6 +1,6 @@
 # Platform Operations and Observability Specification
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 
 **Status:** Planned
 
@@ -100,6 +100,25 @@ Future implementations may include Podman, containerd, Kubernetes, Incus, or LXC
 Governed consumers, including Grafana and future customer-facing applications, consume Container Metrics through Prometheus rather than runtime-specific APIs. Runtime-specific collectors, proxies, receivers, and scrape jobs are replaceable implementation components.
 
 EO-13.1 creates no live architecture change, no new runtime adapter service, and no deployment authorization.
+
+---
+
+## PLAT-14.0A Platform Operations Domain Boundary
+
+PLAT-14.0A places the existing observability topology inside a broader provider-independent Platform Operations bounded context:
+
+```text
+Infrastructure Registry declared state
+  -> provider observations from the approved observability topology
+  -> normalized Platform Operational Evidence
+  -> reconciliation
+  -> deterministic Operational Health
+  -> advisory Operational Intelligence and read-only presentation
+```
+
+ADR-007 remains authoritative for the Prometheus observability stack and the approved restricted proxy plus OpenTelemetry replacement pattern. PLAT-14.0A does not remove or redesign those components. It establishes that Docker, cAdvisor, OpenTelemetry, Prometheus, and Grafana are provider, transport, or presentation concerns and do not own Platform subject identity, normalized evidence semantics, confidence, reconciliation, or authoritative health.
+
+PLAT-14.1A remains blocked pending PLAT-14.0A publication and a separately approved architecture-aligned implementation package. No provider adapter, configuration, dashboard, or live behavior is implemented by PLAT-14.0A.
 
 ---
 
@@ -467,6 +486,8 @@ PLAT-13.6.2 operational closeout is complete when:
 ## Related Documents
 
 - [Platform Operations Dashboard](Platform_Operations_Dashboard.md)
+- [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
+- [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Docker 29 Container Metrics Compatibility Assessment](../architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Docker Container Metrics Replacement Runbook](../operations/Docker_Container_Metrics_Replacement_Runbook.md)
@@ -485,6 +506,7 @@ PLAT-13.6.2 operational closeout is complete when:
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Added the PLAT-14.0A Platform Operations domain boundary above the existing provider and observability topology. |
 | 1.6 | Added EO-13.1 technology-neutral Container Metrics capability abstraction. |
 | 1.5 | Added PLAT-13.6.3B restricted Docker API proxy and OTel Docker Stats preparation. |
 | 1.4 | Recorded PLAT-13.6.3A Docker 29/containerd container metrics compatibility correction. |

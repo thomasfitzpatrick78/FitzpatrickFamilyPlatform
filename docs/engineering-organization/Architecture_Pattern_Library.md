@@ -1,6 +1,6 @@
 # Architecture Pattern Library
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -37,12 +37,23 @@ A pattern may be added or promoted when:
 
 ---
 
+## Candidate Pattern Under Evaluation
+
+| Candidate | Current Evidence | Promotion Boundary |
+|-----------|------------------|--------------------|
+| Capability-First Operationalization | EO-14.8 governance and published, unactivated EO-14.1A execution and EO-14.4A orchestration controls precede PLAT-14.0A Platform Operations product architecture. | Not promoted. PLAT-14.1A remains unimplemented, no complete downstream consumer journey or live evidence exists, and repeatability has not been demonstrated. Architecture Gatekeeper review and future governed workstream evidence are required. |
+
+PLAT-14.0A strengthens the candidate by requiring product-domain architecture before provider implementation. It does not establish sufficient evidence for permanent Engineering Lifecycle governance.
+
+---
+
 ## Related Documents
 
 - [Engineering Capability Model](Engineering_Capability_Model.md)
 - [Engineering Organization Roadmap](Engineering_Organization_Roadmap.md)
 - [Architecture Decision Log](../architecture/Architecture_Decision_Log.md)
 - [Shared Engineering Strategy](../portfolio/Shared_Engineering_Strategy.md)
+- [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 
 ---
 
@@ -50,4 +61,5 @@ A pattern may be added or promoted when:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Recorded Capability-First Operationalization as an unpromoted candidate informed by PLAT-14.0A. |
 | 1.0 | Initial Architecture Pattern Library starter. |

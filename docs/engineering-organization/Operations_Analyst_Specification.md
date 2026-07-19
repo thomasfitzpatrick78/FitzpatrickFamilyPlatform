@@ -1,6 +1,6 @@
 # Operations Analyst Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -36,6 +36,28 @@ This role recommends action. It does not execute production changes, approve arc
 | AI Session Readiness evidence | Organizational-onboarding health interpretation from Engineering Metrics, with `./platform-eap ai-session readiness` and its governed reports retained as source of truth. |
 | Runbook evidence | Backup, restore, reboot, rollback, and incident review. |
 | Registry records | Planned versus active service state and ownership review. |
+
+---
+
+## Platform Operations Consumer Boundary
+
+For Container Operational Health, the Operations Analyst consumes published PLAT-14.0A Operational Evidence, reconciliation, and Operational Health Assessment contracts after a later implementation produces validated artifacts.
+
+The Operations Analyst may:
+
+- Interpret governed health status, confidence, freshness, reasons, findings, and validity.
+- Compare reviewed assessments over time when their contract and policy versions are compatible.
+- Identify risks, provider limitations, gaps, and improvement candidates.
+- Recommend investigation, policy review, backlog work, dashboard correction, or a separately approved runbook.
+
+The Operations Analyst must not:
+
+- Modify source evidence, reconciliation, or authoritative health assessments.
+- Recalculate authoritative health or replace governed reason codes with an independent score.
+- Treat provider availability, dashboard no-data, or scrape success as subject health.
+- Infer execution, automation, architecture, registry, lifecycle, or production authority from evidence.
+
+Operational Intelligence is the interpreted stage after deterministic evaluation. It does not become a second source of operational truth.
 
 ---
 
@@ -91,6 +113,17 @@ EO-14.2 is ready for review when:
 - Recommendation boundaries preserve human approval before production.
 - The role consumes Execution Agent evidence without becoming an execution role.
 - Outputs are evidence-based and avoid false precision.
+- Platform Operations evidence, reconciliation, health, confidence, and interpretation boundaries are preserved without authoritative recalculation.
+
+---
+
+## Related Documents
+
+- [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
+- [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
+- [Platform Health Dashboard Specification](../specifications/Platform_Health_Dashboard_Specification.md)
+- [Execution Capability Usage](Execution_Capability_Usage.md)
+- [Governed Automation Framework](Governed_Automation_Framework.md)
 
 ---
 
@@ -98,5 +131,6 @@ EO-14.2 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added the PLAT-14.0A Operational Intelligence consumer boundary without changing recommendation-only authority. |
 | 1.1 | Added governed AI Session Readiness interpretation and preserved recommendation-only authority. |
 | 1.0 | Initial Operations Analyst role specification. |

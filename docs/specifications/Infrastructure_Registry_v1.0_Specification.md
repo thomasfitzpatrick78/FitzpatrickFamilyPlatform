@@ -1,6 +1,6 @@
 # Infrastructure Registry v1.0 Specification
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 
 **Status:** Active
 
@@ -120,6 +120,13 @@ WS-12.5 treats registry records as a static Platform Digital Twin and validates 
 Platform EAP validation remains local-file based and deterministic. It does not execute runtime health checks, network polling, service discovery, monitoring, dashboards, or automation.
 
 
+## PLAT-14.0A Declared-State Relationship
+
+The Infrastructure Registry remains the authoritative source for Platform declared state, stable subject linkage, ownership, lifecycle, dependencies, and repository-recorded health fields. PLAT-14.0A does not create a parallel inventory and does not allow provider observations, reconciliation, or health evaluation to mutate registry records automatically.
+
+Future Platform Operational Evidence uses a Platform-owned subject identifier linked to a valid registry record. Provider runtime identifiers remain provenance. A PLAT-14.0A Operational Health Assessment is a separate versioned artifact and is not silently written into the registry `health_status` field or treated as lifecycle promotion. Any future mapping or registry update requires separate governed review and evidence.
+
+
 ## Platform Operating Environment
 
 WS-12.6 defines the Platform operating environment baseline from Infrastructure Registry records.
@@ -155,6 +162,8 @@ Milestone 12 planning does not authorize:
 - [Infrastructure Registry Architecture](../architecture/Infrastructure_Registry_Architecture.md)
 - [Platform Operating Environment](../architecture/Platform_Operating_Environment.md)
 - [Infrastructure Registry CLI](../architecture/Infrastructure_Registry_CLI.md)
+- [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
+- [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
 
 ---
@@ -163,6 +172,7 @@ Milestone 12 planning does not authorize:
 
 | Version | Description |
 |---------|-------------|
+| 1.8 | Added the PLAT-14.0A declared-state, subject-linkage, and no-implicit-mutation boundary. |
 | 1.7 | Added WS-12.7 read-only Registry CLI requirements. |
 | 1.6 | Added WS-12.6 Platform operating environment baseline requirements. |
 | 1.5 | Added WS-12.5 Platform Digital Twin integrity validation requirements. |

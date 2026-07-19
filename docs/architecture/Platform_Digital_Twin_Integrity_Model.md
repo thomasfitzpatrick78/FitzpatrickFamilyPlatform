@@ -1,6 +1,6 @@
 # Platform Digital Twin Integrity Model
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Active
 
@@ -21,6 +21,8 @@ The Infrastructure Registry is treated as a Platform Digital Twin: a Git-native 
 Platform Digital Twin integrity validation is deterministic and local-file based.
 
 It validates the consistency of registry records stored under `registry/records/`. It does not perform runtime health checks, network polling, service discovery, monitoring, dashboards, automation, or remote management.
+
+PLAT-14.0A preserves this boundary. Platform Operations uses valid registry references as declared-state authority and creates separate evidence, reconciliation, and health records. Runtime observations never mutate the Digital Twin implicitly, and a health assessment never becomes a registry lifecycle promotion.
 
 ---
 
@@ -74,6 +76,8 @@ Platform EAP reports these markers as information so architecture review can dis
 - [Network Topology Model](Network_Topology_Model.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
 - [Infrastructure Operations Readiness](Infrastructure_Operations_Readiness.md)
+- [Platform Operations Domain Architecture](Platform_Operations_Domain_Architecture.md)
+- [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 
 ---
 
@@ -81,5 +85,6 @@ Platform EAP reports these markers as information so architecture review can dis
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added the PLAT-14.0A declared-state boundary and separation from evidence, reconciliation, and health. |
 | 1.1 | Added static unknown and TBD field reporting for PLAT-13.1 readiness. |
 | 1.0 | Initial WS-12.5 Platform Digital Twin integrity validation model. |
