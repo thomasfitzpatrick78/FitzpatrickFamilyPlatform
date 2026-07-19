@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 2.6
+**Document Version:** 2.8
 
 **Status:** Active
 
@@ -38,7 +38,7 @@ This document defines the initial repository-managed Product Backlog for the Fit
 | PLAT-PB-011 | High | Infrastructure | Platform node onboarding | Beelink Day 0 / Day 1 Bring-up Plan | Milestone 13 | Planned | PLAT-PB-009; delivered Beelink Mini S |
 | PLAT-PB-012 | High | Infrastructure | Operations and observability | Platform Operations and Observability | Milestone 13 | Planned | Active Beelink-hosted Pi-hole; active PLAT-13.6.2 Metrics Foundation; ADR-007 |
 | EO-PB-013 | High | Engineering Organization | Governance evolution | Engineering Organization Governance Evolution | Milestone 13 | Planned | EO-13.0 foundation artifacts |
-| EO-PB-014 | High | Engineering Organization | Governed live execution | Execution Agent Specification | Milestone 14 | Planned | AI Role Catalog; privileged infrastructure integration standard |
+| EO-PB-014 | High | Engineering Organization | Governed live execution | Execution Agent Specification and repository-side Execution Capability | Milestone 14 | Planned | EO-14.1A repository implementation published; live role activation remains planned; AI Role Catalog; privileged infrastructure integration standard |
 | EO-PB-015 | High | Engineering Organization | Operations intelligence | Operations Analyst Specification | Milestone 14 | Planned | PLAT observability evidence |
 | EO-PB-016 | Medium | Engineering Organization | Engineering metrics | Engineering Metrics v2 | Milestone 14 | Planned | EAP reports; maturity model |
 | EO-PB-017 | High | Engineering Organization | Governed automation | Governed Automation Framework | Milestone 14 | Planned | Engineering Lifecycle |
@@ -78,7 +78,7 @@ Milestone 14 backlog candidates are planned, not approved for implementation. Th
 
 The first vertical slice coordinates EO-14.1A Execution Agent Operationalization, EO-14.4A Governed Automation Framework Operationalization, PLAT-14.1A Container Metrics Repository Implementation Package, EO-14.2A Operations Analyst Operationalization, PLAT-14.3A Platform Health Dashboard Completion, EO-14.3A Engineering Metrics v2 Refinement, and later PLAT-14.2 Operational Excellence through separate approval gates.
 
-EO-14.8 AI Collaboration Governance is the completed, Architecture Gatekeeper-approved parent capability for AI participant initialization, continuity, completion, stewardship, readiness validation, and collaboration metrics. EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the parent capability are published as the Engineering Organization baseline. Alpha through EO-14.1A and EO-14.4A is the next Engineering Organization work package. Alpha, Bravo, and Charlie remain unstarted, and no live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
+EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation are published. EO-14.4A, Bravo, and Charlie remain unstarted, and no role activation or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
 
 FFFA detail is owned by the FamilyFinanceAssistant repository; this repository records portfolio traceability to FFFA-14.1 and FFFA-14.2 using Existing FFFA backlog and roadmap governance. FFFA implementation is paused while Chris completes customer acceptance, and the Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
 
@@ -101,6 +101,8 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 
 | Version | Description |
 |---------|-------------|
+| 2.8 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation while retaining the planned live-role state and later gates. |
+| 2.7 | Recorded EO-14.1A repository implementation pending Architecture Gatekeeper review while retaining the planned live-role state and unchanged EO-14.4A, Bravo, Charlie, and live-work gates. |
 | 2.6 | Recorded EO-14.8 completion and baseline publication, with Alpha EO-14.1A and EO-14.4A next and all three workstreams still unstarted. |
 | 2.5 | Corrected active-milestone metadata to Milestone 14 and recorded EO-14.8E implementation and parent final-review state. |
 | 2.4 | Recorded EO-14.8D implementation-review status, EO-14.8E approval dependency, and unchanged workstream boundaries. |

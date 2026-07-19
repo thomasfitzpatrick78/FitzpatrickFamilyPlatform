@@ -1,6 +1,6 @@
 # Engineering Portfolio Kanban
 
-**Document Version:** 1.8
+**Document Version:** 1.10
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -46,9 +46,9 @@ Option C introduces three bounded repository workstreams:
 
 Live infrastructure execution remains unauthorized until separate Architecture Gatekeeper review and explicit human approval.
 
-EO-14.8 has completed governed continuity initialization for Alpha, Bravo, and Charlie. Architecture Gatekeeper approval is recorded and the capability is published as the Engineering Organization baseline. Alpha through EO-14.1A and EO-14.4A is the next Engineering Organization work package, but no Alpha implementation has started.
+EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation are published. EO-14.4A is the next separately authorized Alpha package.
 
-EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 parent capability are complete. Engineering Metrics consumes the governed readiness report without recalculation, and repository-side Platform Health visibility preserves the same evidence. Alpha, Bravo, and Charlie remain unstarted, and no live work is authorized.
+EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and Alpha EO-14.1A repository implementation are published. Engineering Metrics consumes the governed readiness report without recalculation. EO-14.4A, Bravo, and Charlie remain unstarted, and no role activation or live work is authorized.
 
 ---
 
@@ -65,7 +65,7 @@ EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 
 | EO-14.8C.2 | AI Collaboration Governance Milestone 14 Operationalization | FitzpatrickFamilyPlatform | Done | High | EO-14.8C.1 | Complete | Codex Implementation Engineer | Platform Administrator | Governed Milestone 14 continuity | Operational continuity instances | Initializes bounded workstreams | Four continuity briefs, limited Steward review, validation evidence | Alpha, Bravo, and Charlie implementation |
 | EO-14.8D | AI Session Readiness Validator | FitzpatrickFamilyPlatform | Done | Medium | EO-14.8C repository evidence | Complete | Codex Implementation Engineer | Platform Administrator | Governed onboarding readiness | Reusable EAP readiness engine | Repository-evidence readiness validation | Domain results, Markdown and JSON reports, focused tests | Readiness-rule changes remain separate |
 | EO-14.8E | Engineering Metrics Integration | FitzpatrickFamilyPlatform | Done | Medium | EO-14.8D governed reports | Complete | Codex Implementation Engineer | Platform Administrator | Visible onboarding readiness | Repository metrics and health-source evidence | Integrates governed readiness without recalculation | Structured and Markdown Engineering Metrics reports, Platform Health source contract, focused tests | Live dashboard deployment remains PLAT work |
-| EO-14.1A | Alpha - Engineering Organization Controls | FitzpatrickFamilyPlatform | Ready for Repository Implementation | High | EO-14.8 complete; EO-14.1; Architecture Gatekeeper review | Next Engineering Organization work; implementation not started | Codex Implementation Engineer | Platform Administrator | Safer future operations | Execution-contract readiness | Operationalizes Execution Agent boundaries | Execution contract, activation boundary, handoff model, validation evidence | Live Execution Agent activation |
+| EO-14.1A | Alpha - Engineering Organization Controls | FitzpatrickFamilyPlatform | Done | High | EO-14.8 complete; EO-14.1; approved Option B+ work package | Repository implementation complete and published; Architecture Gatekeeper approved | Codex Implementation Engineer | Platform Administrator | Safer future operations | Execution-contract readiness | Operationalizes Execution Agent boundaries without activation | Immutable models, deterministic validation, JSON and Markdown serialization, bounded CLI, fixtures, focused tests, governed validation evidence | Live Execution Agent activation |
 | EO-14.4 | Governed Automation Framework | FitzpatrickFamilyPlatform | Specified | High | Engineering Lifecycle | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | Safer automation | Automation lifecycle | Reusable governance | Framework spec | Active scheduled automation |
 | EO-14.4A | Alpha - Engineering Organization Controls | FitzpatrickFamilyPlatform | Ready for Repository Implementation | High | EO-14.8 complete; EO-14.4; EO-14.1A | Next Engineering Organization work; implementation not started | Codex Implementation Engineer | Platform Administrator | Safer future automation | Automation approval and evidence controls | Operationalizes governed automation | Automation catalog, lifecycle, approval, evidence, failure, rollback, retirement controls | Runtime automation |
 | PLAT-14.1 | Container Metrics Modernization | FitzpatrickFamilyPlatform | Specified | High | PLAT-13.6.3B; human production approval | Architecture Gatekeeper review required | Codex Implementation Engineer | Platform Administrator | More accurate operations visibility | Container telemetry modernization | Evidence-first platform execution | Spec, runbook criteria, validation plan | Live deployment |
@@ -110,6 +110,8 @@ Kanban updates must remain repository-native Markdown unless a future approved t
 
 | Version | Description |
 |---------|-------------|
+| 1.10 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation with activation and later work packages unchanged. |
+| 1.9 | Recorded EO-14.1A repository implementation in Validation pending Architecture Gatekeeper review, with EO-14.4A, Bravo, Charlie, activation, and live work unchanged. |
 | 1.8 | Recorded EO-14.8 capability completion and baseline publication, with Alpha EO-14.1A and EO-14.4A next and all three workstreams still unstarted. |
 | 1.7 | Recorded EO-14.8E implementation, parent final-review state, and unchanged Alpha, Bravo, Charlie and live-operation boundaries. |
 | 1.6 | Recorded EO-14.8D implementation-review status, EO-14.8E approval dependency, and unchanged workstream and live-operation boundaries. |

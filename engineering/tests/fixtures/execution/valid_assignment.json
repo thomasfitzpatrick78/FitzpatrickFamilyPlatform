@@ -1,0 +1,32 @@
+{
+  "model_version": "eo-14.1a-v1",
+  "assignment_id": "EO-14.1A-FIXTURE",
+  "title": "Validate governed execution capability fixture",
+  "governed_role": "execution_agent",
+  "authorized_scope": [
+    "engineering/platform_eap",
+    "engineering/tests"
+  ],
+  "permitted_actions": [
+    "validate governed execution data"
+  ],
+  "prohibited_actions": [
+    "execute assignment content",
+    "push repository changes"
+  ],
+  "required_validations": [
+    "execution-capability-tests"
+  ],
+  "required_evidence": [
+    {
+      "requirement_id": "EVIDENCE-REQUIREMENT-1",
+      "evidence_type": "test_result",
+      "validation_requirement": "execution-capability-tests"
+    }
+  ],
+  "human_approval_requirements": [],
+  "source_references": [
+    "docs/engineering-organization/Execution_Agent_Specification.md"
+  ],
+  "repository_baseline": "c6e982fe1af5e570c407b9c04ed8c489d865e257"
+}

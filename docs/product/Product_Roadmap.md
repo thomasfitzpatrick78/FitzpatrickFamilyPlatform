@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 2.6
+**Document Version:** 2.8
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ Focus: operationalize the AI Engineering Organization through the governed Conta
 Planned outcomes:
 
 - Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
-- Advance next to Alpha through EO-14.1A and EO-14.4A under its separate authorization while preserving Alpha, Bravo, and Charlie as currently unstarted.
+- Preserve the published Architecture Gatekeeper-approved EO-14.1A repository implementation and keep EO-14.4A, Bravo, and Charlie behind separate authorization gates.
 - Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
 - Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
@@ -54,7 +54,7 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 ### EO - Engineering Organization
 
 - EO-14.1 Execution Agent Specification.
-- EO-14.1A Execution Agent Operationalization for the first governed vertical slice.
+- EO-14.1A Execution Agent Operationalization repository implementation is published; role activation remains separate.
 - EO-14.2 Operations Analyst Specification.
 - EO-14.2A Operations Analyst Operationalization for Container Operational Health evidence interpretation.
 - EO-14.3 Engineering Metrics v2.
@@ -68,8 +68,8 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 - EO-14.8D AI Session Readiness Validator is complete.
 - EO-14.8E Engineering Metrics Integration is complete.
 - EO-14.8 parent capability is complete and Architecture Gatekeeper approved.
-- Alpha through EO-14.1A and EO-14.4A is the next Engineering Organization work package.
-- Alpha, Bravo, and Charlie remain unstarted; EO-14.8 does not authorize their implementation or any live work.
+- Alpha EO-14.1A repository implementation is published; EO-14.4A is the next separately governed Alpha package.
+- Bravo and Charlie remain unstarted; no Execution Agent activation or live work is authorized.
 
 ### PLAT - Shared Platform
 
@@ -140,6 +140,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 2.8 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation while preserving separate activation and later work packages. |
+| 2.7 | Recorded EO-14.1A repository implementation pending Architecture Gatekeeper review, with EO-14.4A, Bravo, Charlie, activation, and live work unchanged. |
 | 2.6 | Recorded the completed and published EO-14.8 baseline, with Alpha EO-14.1A and EO-14.4A next and all three workstreams still unstarted. |
 | 2.5 | Corrected active-milestone metadata and framing to Milestone 14 and recorded EO-14.8E implementation-review status. |
 | 2.4 | Recorded EO-14.8D implementation-review status, EO-14.8E approval dependency, and unchanged workstream boundaries. |

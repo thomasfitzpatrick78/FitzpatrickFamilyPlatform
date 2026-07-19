@@ -1,0 +1,97 @@
+{
+  "model_version": "eo-14.1a-v1",
+  "assignment": {
+    "model_version": "eo-14.1a-v1",
+    "assignment_id": "EO-14.1A-FIXTURE",
+    "title": "Validate governed execution capability fixture",
+    "governed_role": "execution_agent",
+    "authorized_scope": [
+      "engineering/platform_eap",
+      "engineering/tests"
+    ],
+    "permitted_actions": [
+      "validate governed execution data"
+    ],
+    "prohibited_actions": [
+      "execute assignment content",
+      "push repository changes"
+    ],
+    "required_validations": [
+      "execution-capability-tests"
+    ],
+    "required_evidence": [
+      {
+        "requirement_id": "EVIDENCE-REQUIREMENT-1",
+        "evidence_type": "test_result",
+        "validation_requirement": "execution-capability-tests"
+      }
+    ],
+    "human_approval_requirements": [],
+    "source_references": [
+      "docs/engineering-organization/Execution_Agent_Specification.md"
+    ],
+    "repository_baseline": "c6e982fe1af5e570c407b9c04ed8c489d865e257"
+  },
+  "participant": {
+    "participant_id": "fixture-participant"
+  },
+  "execution_context": {
+    "model_version": "eo-14.1a-v1",
+    "participant": {
+      "participant_id": "fixture-participant"
+    },
+    "governed_role": "execution_agent",
+    "assignment_id": "EO-14.1A-FIXTURE",
+    "repository_identity": "FitzpatrickFamilyPlatform",
+    "branch": "main",
+    "starting_head": "c6e982fe1af5e570c407b9c04ed8c489d865e257",
+    "working_tree_state": "authorized active changes",
+    "execution_started_at": "2026-07-19T18:30:00+00:00",
+    "approval_state": []
+  },
+  "execution_result": {
+    "model_version": "eo-14.1a-v1",
+    "assignment_id": "EO-14.1A-FIXTURE",
+    "outcome_status": "completed",
+    "summary": "Validated the governed execution capability fixture.",
+    "actions_performed": [
+      "validate governed execution data"
+    ],
+    "files_changed": [],
+    "validations_executed": [
+      "execution-capability-tests"
+    ],
+    "evidence_ids": [
+      "EVIDENCE-1"
+    ],
+    "unresolved_issues": [],
+    "deviations_or_escalations": [],
+    "completed_at": "2026-07-19T18:45:00+00:00"
+  },
+  "validation_findings": [
+    {
+      "severity": "INFO",
+      "code": "tests.pass",
+      "message": "Execution capability tests passed."
+    }
+  ],
+  "evidence_inventory": [
+    {
+      "model_version": "eo-14.1a-v1",
+      "evidence_id": "EVIDENCE-1",
+      "evidence_type": "test_result",
+      "source_activity": "python3 -m pytest -p no:cacheprovider engineering/tests/test_execution_capability.py",
+      "result": "Execution capability fixture validation passed.",
+      "timestamp": "2026-07-19T18:45:00+00:00",
+      "assignment_id": "EO-14.1A-FIXTURE",
+      "validation_requirement": "execution-capability-tests",
+      "artifact_path": "engineering/tests/test_execution_capability.py"
+    }
+  ],
+  "unresolved_decisions": [],
+  "recommended_next_approval_gate": "Architecture Gatekeeper review",
+  "commit_occurred": false,
+  "push_occurred": false,
+  "activation_occurred": false,
+  "live_changes_occurred": false
+}

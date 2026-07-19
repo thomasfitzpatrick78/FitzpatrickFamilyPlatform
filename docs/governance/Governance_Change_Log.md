@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 1.7
+**Document Version:** 1.9
 
 **Status:** Active
 
@@ -19,6 +19,7 @@ Milestone 14 records these governance enhancements:
 - Option C governed vertical-slice planning across EO, PLAT, and FFFA workstreams, with Container Operational Health as the first governed vertical slice.
 - Execution Agent specification before any governed live-execution activation.
 - EO-14.1A Option B+ layered, Participant-aware Execution Capability clarification, separating Participant from Governed Role and defining Policy, Assignment, Execution, Validation, Evidence, and Handoff boundaries without implementing a generalized agent framework or runtime capability.
+- EO-14.1A repository-side Execution Capability implementation with immutable governed models, strict untrusted-input parsing, deterministic validation, stable JSON and Markdown output, a bounded validation/render CLI, and explicit no-activation and no-command-execution boundaries.
 - Operations Analyst specification before operational recommendations are treated as governed role outputs.
 - Engineering Metrics v2 with evidence-based and no-false-precision rules.
 - Governed Automation Framework for proposal, approval, operation, review, and retirement.
@@ -35,7 +36,7 @@ Milestone 14 records these governance enhancements:
   cross-repository improvement after FFFA CUTOVER-001 detected persistent test
   artifacts before customer workbook generation.
 - EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 parent capability are complete, Architecture Gatekeeper approved, repository validated, and published as the Engineering Organization baseline.
-- Alpha through EO-14.1A and EO-14.4A is the next Engineering Organization work package. Alpha, Bravo, and Charlie remain ready but unstarted; readiness does not itself authorize implementation or live work.
+- Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation is published. EO-14.4A, Bravo, and Charlie remain ready but unstarted; publication does not authorize role activation or live work.
 - EO-14.8 does not activate ongoing AI Collaboration Steward automation. Future Platform Health dashboard runtime deployment remains PLAT work.
 
 ---
@@ -44,6 +45,8 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation with activation and later work gates unchanged. |
+| 1.8 | Recorded EO-14.1A repository-side Execution Capability implementation and preserved separate Architecture Gatekeeper review, role activation, EO-14.4A, and live-work gates. |
 | 1.7 | Recorded the Architecture Gatekeeper-approved EO-14.1A Option B+ specification clarification and unchanged no-runtime-activation boundary. |
 | 1.6 | Recorded EO-14.8 capability completion, validation, Architecture Gatekeeper approval, baseline publication, and next Alpha responsibility. |
 | 1.5 | Recorded EO-14.8E observability integration, parent implementation completion, and unchanged live-work boundary. |

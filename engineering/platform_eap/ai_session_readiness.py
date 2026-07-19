@@ -676,14 +676,30 @@ class AISessionReadinessValidator:
                 workstream_rows = [
                     line for line in kanban.splitlines() if line.startswith("|") and f"{name} -" in line
                 ]
-                if not workstream_rows or not all(
-                    "implementation not started" in line.lower() for line in workstream_rows
-                ):
+                if name == "Alpha":
+                    eo_14_1a = [line.lower() for line in workstream_rows if "| eo-14.1a |" in line.lower()]
+                    eo_14_4a = [line.lower() for line in workstream_rows if "| eo-14.4a |" in line.lower()]
+                    planning_state_ok = (
+                        len(eo_14_1a) == 1
+                        and "repository implementation complete" in eo_14_1a[0]
+                        and len(eo_14_4a) == 1
+                        and "implementation not started" in eo_14_4a[0]
+                    )
+                    warning_message = (
+                        "Kanban does not preserve EO-14.1A as repository implemented pending review "
+                        "and EO-14.4A as unstarted."
+                    )
+                else:
+                    planning_state_ok = bool(workstream_rows) and all(
+                        "implementation not started" in line.lower() for line in workstream_rows
+                    )
+                    warning_message = f"Kanban does not clearly preserve {name}'s unstarted implementation state."
+                if not planning_state_ok:
                     checks.append(
                         ReadinessCheck(
                             f"parallel.{name.lower()}.planning-state",
                             WARNING,
-                            f"Kanban does not clearly preserve {name}'s unstarted implementation state.",
+                            warning_message,
                             [self.configuration.planning_artifacts["kanban"]],
                         )
                     )

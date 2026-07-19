@@ -1,8 +1,8 @@
 # Execution Agent Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.3
 
-**Status:** Draft for Architecture Gatekeeper Review
+**Status:** Repository Implementation Published; Execution Agent Not Activated
 
 **Milestone:** EO-14.1
 
@@ -19,6 +19,20 @@ The Execution Agent is the governed AI role responsible for executing approved w
 This specification defines the role before activation. It does not grant access, create credentials, authorize infrastructure changes, or approve production execution.
 
 EO-14.1A operationalizes only the Execution Agent specification and its repository-governed execution boundaries. Option B+ separates participant, assignment, execution, validation, evidence, and handoff concerns so that the behavioral model can evolve without architectural redesign. These are logical architecture boundaries, not required software modules, and they do not create a generalized AI agent framework.
+
+## Implementation Status
+
+EO-14.1A now provides a repository-side Execution Capability implemented with immutable standard-library data models, bounded enums, strict JSON parsing, deterministic structured findings, stable JSON serialization, and safe Markdown rendering.
+
+The implementation includes:
+
+- distinct `Participant` and `GovernedRole` representations, with only `execution_agent` supported;
+- validated policy, assignment, approval, execution-context, execution-result, evidence, and completion representations;
+- fail-closed conformance checks for missing evidence, validation omissions, out-of-scope files, prohibited actions, baseline mismatches, unsafe artifact paths, secret-like evidence, and unauthorized live-impacting claims;
+- repository-local CLI commands for assignment validation, completion validation, and completion rendering;
+- comprehensive focused tests and governed example fixtures.
+
+The capability is a validator and renderer, not a command runner. The Architecture Gatekeeper-approved repository implementation is published. Publication does not activate the Execution Agent, authorize live work, implement EO-14.4A, or create runtime participant state. Any activation remains a future Architecture Gatekeeper approval.
 
 ---
 
@@ -215,5 +229,7 @@ EO-14.1 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Recorded Architecture Gatekeeper-approved EO-14.1A repository implementation publication while preserving separate Execution Agent activation, EO-14.4A, and live-work gates. |
+| 1.2 | Recorded EO-14.1A repository implementation of the Option B+ Execution Capability, deterministic validation, stable serialization, bounded CLI, tests, and unchanged activation boundary. |
 | 1.1 | Captured the Architecture Gatekeeper-approved Option B+ participant-aware layered capability, assignment boundary, session independence, future-extensibility boundary, and explicit EO-14.1A non-goals. |
 | 1.0 | Initial Execution Agent role specification. |

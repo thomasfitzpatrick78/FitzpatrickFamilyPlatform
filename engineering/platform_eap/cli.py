@@ -15,6 +15,14 @@ from engineering.platform_eap.ai_session_readiness import (
     PASS as READINESS_PASS,
     write_readiness_report,
 )
+from engineering.platform_eap.execution_capability import (
+    ExecutionDataError,
+    FindingSeverity,
+    validate_assignment,
+    validate_completion_package,
+)
+from engineering.platform_eap.execution_io import assignment_from_json, completion_from_json
+from engineering.platform_eap.execution_rendering import render_completion_markdown
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -784,7 +792,65 @@ def capabilities() -> int:
     print("PLAT-EAP-7\tPlatform Digital Twin Integrity Validation\tImplemented")
     print("PLAT-EAP-8\tRegistry CLI\tImplemented")
     print("PLAT-EAP-9\tAI Session Readiness Validation\tImplemented")
+    print("PLAT-EAP-10\tGoverned Execution Capability\tImplemented")
     return 0
+
+
+def _execution_input_path(path_value: str) -> Path:
+    root = ROOT.resolve()
+    supplied = Path(path_value)
+    candidate = (supplied if supplied.is_absolute() else root / supplied).resolve()
+    if not candidate.is_relative_to(root):
+        raise ExecutionDataError("Execution input path must remain inside the repository.")
+    if not candidate.is_file():
+        raise ExecutionDataError(f"Execution input file not found: {path_value}.")
+    return candidate
+
+
+def _print_execution_findings(title: str, findings: list[object]) -> int:
+    errors = [finding for finding in findings if getattr(finding, "severity", None) == FindingSeverity.ERROR]
+    warnings = [finding for finding in findings if getattr(finding, "severity", None) == FindingSeverity.WARNING]
+    print(f"# {title}")
+    print(f"Status: {'FAIL' if errors else 'PASS WITH WARNINGS' if warnings else 'PASS'}")
+    print(f"Errors: {len(errors)}")
+    print(f"Warnings: {len(warnings)}")
+    for finding in findings:
+        path = f" ({finding.path})" if finding.path else ""
+        print(f"{finding.severity.value}: {finding.code}: {finding.message}{path}")
+    return 1 if errors else 0
+
+
+def execution_cli(argv: list[str]) -> int:
+    usage = "Usage: platform-eap execution <assignment validate|completion validate|completion render> <repository-json-path>"
+    if len(argv) != 3:
+        print(usage)
+        return 2
+    resource, command, path_value = argv
+    try:
+        path = _execution_input_path(path_value)
+        text = path.read_text(encoding="utf-8")
+        if resource == "assignment" and command == "validate":
+            assignment = assignment_from_json(text)
+            return _print_execution_findings(
+                "Governed Assignment Validation",
+                validate_assignment(assignment, repository_root=ROOT),
+            )
+        if resource == "completion" and command in {"validate", "render"}:
+            package = completion_from_json(text)
+            findings = validate_completion_package(package, repository_root=ROOT)
+            if command == "validate":
+                return _print_execution_findings("Governed Completion Validation", findings)
+            if any(finding.severity == FindingSeverity.ERROR for finding in findings):
+                return _print_execution_findings("Governed Completion Validation", findings)
+            print(render_completion_markdown(package), end="")
+            return 0
+    except (ExecutionDataError, OSError, UnicodeError) as exc:
+        print("# Governed Execution Capability")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 1
+    print(usage)
+    return 2
 
 
 def now() -> str:
@@ -851,5 +917,7 @@ def main(argv: list[str] | None = None) -> int:
         return capabilities()
     if argv and argv[0] == "registry":
         return registry_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry>")
+    if argv and argv[0] == "execution":
+        return execution_cli(argv[1:])
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution>")
     return 2
