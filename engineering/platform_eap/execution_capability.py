@@ -196,14 +196,14 @@ def _blank(value: object) -> bool:
     return not isinstance(value, str) or not value.strip()
 
 
-def _safe_repository_path(value: str) -> bool:
+def is_safe_repository_path(value: str) -> bool:
     if not value or "\\" in value:
         return False
     path = PurePosixPath(value)
     return not path.is_absolute() and ".." not in path.parts and "." not in path.parts
 
 
-def _valid_timestamp(value: str) -> bool:
+def is_valid_timestamp(value: str) -> bool:
     if _blank(value):
         return False
     try:
@@ -211,6 +211,10 @@ def _valid_timestamp(value: str) -> bool:
     except ValueError:
         return False
     return parsed.tzinfo is not None
+
+
+def contains_secret_like_content(value: str) -> bool:
+    return any(pattern.search(value) for pattern in _SECRET_PATTERNS)
 
 
 def _duplicates(values: Sequence[str]) -> set[str]:
@@ -324,7 +328,7 @@ def validate_assignment(
         if not values:
             findings.append(_finding(FindingSeverity.ERROR, f"assignment.{field_name}.required", f"Assignment {field_name.replace('_', ' ')} must not be empty.", field_name))
     for scope in assignment.authorized_scope:
-        if not _safe_repository_path(scope):
+        if not is_safe_repository_path(scope):
             findings.append(_finding(FindingSeverity.ERROR, "assignment.scope.unsafe", "Authorized scope must be a safe repository-relative path.", scope))
     permitted = {action.strip().casefold() for action in assignment.permitted_actions if action.strip()}
     prohibited = {action.strip().casefold() for action in assignment.prohibited_actions if action.strip()}
@@ -364,7 +368,7 @@ def validate_assignment(
         if not any(requirement.required and _approval_applies(requirement, action) for requirement in assignment.human_approval_requirements):
             findings.append(_finding(FindingSeverity.ERROR, "assignment.live_action.approval_required", f"Live-impacting action lacks an explicit human approval requirement: {action}.", "human_approval_requirements"))
     for reference in assignment.source_references:
-        if not _safe_repository_path(reference):
+        if not is_safe_repository_path(reference):
             findings.append(_finding(FindingSeverity.ERROR, "assignment.source_reference.unsafe", "Source reference must be a safe repository-relative path.", reference))
         elif repository_root is not None and not (repository_root / reference).is_file():
             findings.append(_finding(FindingSeverity.ERROR, "assignment.source_reference.missing", "Source reference does not identify a repository file.", reference))
@@ -399,7 +403,7 @@ def validate_execution_context(
             findings.append(_finding(FindingSeverity.ERROR, f"context.{field_name}.required", f"Execution context {field_name.replace('_', ' ')} is required.", f"execution_context.{field_name}"))
     if not _HEX_HEAD.fullmatch(context.starting_head):
         findings.append(_finding(FindingSeverity.ERROR, "context.starting_head.invalid", "Execution context starting HEAD must be a full hexadecimal commit identifier.", "execution_context.starting_head"))
-    if not _valid_timestamp(context.execution_started_at):
+    if not is_valid_timestamp(context.execution_started_at):
         findings.append(_finding(FindingSeverity.ERROR, "context.started_at.invalid", "Execution start timestamp must be timezone-aware ISO 8601.", "execution_context.execution_started_at"))
     expected_approvals = {requirement.approval_id for requirement in assignment.human_approval_requirements}
     seen_approvals: set[str] = set()
@@ -409,7 +413,7 @@ def validate_execution_context(
         if record.approval_id in seen_approvals:
             findings.append(_finding(FindingSeverity.ERROR, "context.approval.duplicate", f"Execution context contains a duplicate approval: {record.approval_id}.", "execution_context.approval_state"))
         seen_approvals.add(record.approval_id)
-        if record.status == ApprovalStatus.APPROVED and (_blank(record.approved_by) or not record.approved_at or not _valid_timestamp(record.approved_at)):
+        if record.status == ApprovalStatus.APPROVED and (_blank(record.approved_by) or not record.approved_at or not is_valid_timestamp(record.approved_at)):
             findings.append(_finding(FindingSeverity.ERROR, "context.approval.approved_incomplete", f"Approved state requires human authority and timestamp: {record.approval_id}.", "execution_context.approval_state"))
     if assignment.repository_baseline and context.starting_head != assignment.repository_baseline:
         findings.append(_finding(FindingSeverity.WARNING, "context.baseline.mismatch", "Starting repository HEAD does not match the assignment baseline and requires escalation.", "execution_context.starting_head"))
@@ -440,11 +444,11 @@ def validate_evidence_record(
         findings.append(_finding(FindingSeverity.ERROR, "evidence.assignment.mismatch", "Evidence is not associated with the governed assignment.", evidence.evidence_id))
     if evidence.validation_requirement not in assignment.required_validations:
         findings.append(_finding(FindingSeverity.ERROR, "evidence.validation.unknown", "Evidence is not associated with a required validation.", evidence.evidence_id))
-    if not _valid_timestamp(evidence.timestamp):
+    if not is_valid_timestamp(evidence.timestamp):
         findings.append(_finding(FindingSeverity.ERROR, "evidence.timestamp.invalid", "Evidence timestamp must be timezone-aware ISO 8601.", evidence.evidence_id))
-    if any(pattern.search(value) for pattern in _SECRET_PATTERNS for value in (evidence.source_activity, evidence.result)):
+    if any(contains_secret_like_content(value) for value in (evidence.source_activity, evidence.result)):
         findings.append(_finding(FindingSeverity.ERROR, "evidence.content.secret_like", "Evidence contains secret-like material and must not be stored.", evidence.evidence_id))
-    if evidence.artifact_path is not None and not _safe_repository_path(evidence.artifact_path):
+    if evidence.artifact_path is not None and not is_safe_repository_path(evidence.artifact_path):
         findings.append(_finding(FindingSeverity.ERROR, "evidence.artifact_path.unsafe", "Evidence artifact path must be repository-relative and traversal-free.", evidence.evidence_id))
     if not findings:
         findings.append(_finding(FindingSeverity.INFO, "evidence.valid", "Evidence record is valid.", evidence.evidence_id))
@@ -473,7 +477,7 @@ def validate_execution_result(
         findings.append(_finding(FindingSeverity.ERROR, "result.outcome.unsupported", "Execution result outcome is unsupported.", "execution_result.outcome_status"))
     if _blank(result.summary):
         findings.append(_finding(FindingSeverity.ERROR, "result.summary.required", "Execution result summary is required.", "execution_result.summary"))
-    if not _valid_timestamp(result.completed_at):
+    if not is_valid_timestamp(result.completed_at):
         findings.append(_finding(FindingSeverity.ERROR, "result.completed_at.invalid", "Completion timestamp must be timezone-aware ISO 8601.", "execution_result.completed_at"))
     prohibited = {action.casefold() for action in assignment.prohibited_actions}
     for action in result.actions_performed:
@@ -482,7 +486,7 @@ def validate_execution_result(
         if _contains_live_impact(action, active_policy) and not _approved_for(context, assignment, action):
             findings.append(_finding(FindingSeverity.ERROR, "result.action.live_unauthorized", f"Live-impacting action lacks approved human authorization: {action}.", "execution_result.actions_performed"))
     for path in result.files_changed:
-        if not _safe_repository_path(path):
+        if not is_safe_repository_path(path):
             findings.append(_finding(FindingSeverity.ERROR, "result.file.unsafe", "Changed file path must be repository-relative and traversal-free.", path))
         elif not _file_in_scope(path, assignment.authorized_scope):
             findings.append(_finding(FindingSeverity.ERROR, "result.file.out_of_scope", "Changed file falls outside authorized scope.", path))

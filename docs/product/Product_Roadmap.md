@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 2.9
+**Document Version:** 3.1
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ Focus: operationalize the AI Engineering Organization through the governed Conta
 Planned outcomes:
 
 - Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
-- Preserve the published Architecture Gatekeeper-approved EO-14.1A repository implementation; review EO-14.4A as orchestration that consumes it; and keep EO-14.4A implementation, Bravo, and Charlie behind separate authorization gates.
+- Preserve the published Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations and keep activation, Bravo, and Charlie behind separate authorization gates.
 - Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
 - Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
@@ -60,7 +60,7 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 - EO-14.3 Engineering Metrics v2.
 - EO-14.3A Engineering Metrics v2 Refinement based on verified vertical-slice evidence.
 - EO-14.4 Governed Automation Framework.
-- EO-14.4A Governed Automation Framework orchestration clarification is prepared for Architecture Gatekeeper review; implementation remains unstarted and separately authorized.
+- EO-14.4A Governed Automation Framework Option B repository implementation is published; automation remains unactivated.
 - EO-14.8 AI Collaboration Governance is complete and published as the Engineering Organization baseline.
 - EO-14.8A Capability Charter is complete.
 - EO-14.8B Repository Specification Package is complete.
@@ -68,7 +68,7 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 - EO-14.8D AI Session Readiness Validator is complete.
 - EO-14.8E Engineering Metrics Integration is complete.
 - EO-14.8 parent capability is complete and Architecture Gatekeeper approved.
-- Alpha EO-14.1A repository implementation is published; EO-14.4A is clarified as orchestration over that Execution Capability and is prepared for Architecture Gatekeeper review.
+- Alpha EO-14.1A and EO-14.4A repository implementations are published.
 - Bravo and Charlie remain unstarted; no Execution Agent activation or live work is authorized.
 
 ### PLAT - Shared Platform
@@ -140,6 +140,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 3.1 | Recorded publication of the Architecture Gatekeeper-approved EO-14.4A repository implementation while preserving activation and live-work gates. |
+| 3.0 | Recorded EO-14.4A Option B repository implementation complete pending Architecture Gatekeeper review while preserving activation and live-work gates. |
 | 2.9 | Recorded EO-14.4A orchestration alignment with the published EO-14.1A Execution Capability while preserving separate implementation and activation gates. |
 | 2.8 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation while preserving separate activation and later work packages. |
 | 2.7 | Recorded EO-14.1A repository implementation pending Architecture Gatekeeper review, with EO-14.4A, Bravo, Charlie, activation, and live work unchanged. |

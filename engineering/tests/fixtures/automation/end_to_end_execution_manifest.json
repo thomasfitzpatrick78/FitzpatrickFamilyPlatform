@@ -1,0 +1,6 @@
+{
+  "automation_definition": "engineering/tests/fixtures/automation/valid_definition.json",
+  "execution_assignment": "engineering/tests/fixtures/execution/valid_assignment.json",
+  "execution_completion": "engineering/tests/fixtures/execution/valid_completion.json",
+  "transition_request": "engineering/tests/fixtures/automation/valid_transition.json"
+}

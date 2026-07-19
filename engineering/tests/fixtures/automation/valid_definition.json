@@ -1,0 +1,95 @@
+{
+  "model_version": "eo-14.4a-v1",
+  "automation_id": "EO-14.4A-FIXTURE",
+  "name": "Governed execution review flow",
+  "purpose": "Coordinate human approval, governed execution review, and handoff without executing work.",
+  "governing_artifact_references": [
+    "docs/engineering-organization/Governed_Automation_Framework.md",
+    "docs/engineering-organization/Execution_Agent_Specification.md"
+  ],
+  "steps": [
+    {
+      "step_id": "approval",
+      "title": "Confirm human approval",
+      "step_type": "approval_gate",
+      "prerequisite_step_ids": [],
+      "required_approval_ids": ["ARCH-APPROVAL"],
+      "required_evidence_types": [],
+      "required_validation_outcomes": [],
+      "allowed_next_step_ids": ["assignment"],
+      "stop_on_failure": true,
+      "live_impact": "none",
+      "human_review_required": true
+    },
+    {
+      "step_id": "assignment",
+      "title": "Review governed assignment",
+      "step_type": "execution_assignment",
+      "prerequisite_step_ids": ["approval"],
+      "required_approval_ids": ["ARCH-APPROVAL"],
+      "execution_assignment_reference": "EO-14.1A-FIXTURE",
+      "required_evidence_types": [],
+      "required_validation_outcomes": [],
+      "allowed_next_step_ids": ["completion-review"],
+      "stop_on_failure": true,
+      "live_impact": "repository_only",
+      "human_review_required": false
+    },
+    {
+      "step_id": "completion-review",
+      "title": "Review governed completion and evidence",
+      "step_type": "execution_completion_review",
+      "prerequisite_step_ids": ["assignment"],
+      "required_approval_ids": [],
+      "execution_completion_reference": "EO-14.1A-FIXTURE",
+      "required_evidence_types": ["test_result"],
+      "required_validation_outcomes": ["completion.valid"],
+      "allowed_next_step_ids": ["handoff"],
+      "stop_on_failure": true,
+      "live_impact": "repository_only",
+      "human_review_required": true
+    },
+    {
+      "step_id": "handoff",
+      "title": "Prepare human-review handoff",
+      "step_type": "human_handoff",
+      "prerequisite_step_ids": ["completion-review"],
+      "required_approval_ids": [],
+      "required_evidence_types": [],
+      "required_validation_outcomes": [],
+      "allowed_next_step_ids": ["complete"],
+      "stop_on_failure": true,
+      "live_impact": "none",
+      "human_review_required": true
+    },
+    {
+      "step_id": "complete",
+      "title": "Record terminal completion proposal",
+      "step_type": "terminal_completion",
+      "prerequisite_step_ids": ["handoff"],
+      "required_approval_ids": [],
+      "required_evidence_types": [],
+      "required_validation_outcomes": [],
+      "allowed_next_step_ids": [],
+      "stop_on_failure": true,
+      "live_impact": "none",
+      "human_review_required": true
+    }
+  ],
+  "initial_lifecycle_state": "drafted",
+  "allowed_terminal_states": ["completed", "failed", "cancelled"],
+  "human_approval_requirements": [
+    {
+      "approval_id": "ARCH-APPROVAL",
+      "human_authority": "Architecture Gatekeeper",
+      "applies_to": ["approval", "assignment"],
+      "required": true
+    }
+  ],
+  "failure_policy": "block_pending_human_review",
+  "execution_assignment_references": ["EO-14.1A-FIXTURE"],
+  "required_completion_references": ["EO-14.1A-FIXTURE"],
+  "required_evidence_references": ["EVIDENCE-1"],
+  "live_impact": "repository_only",
+  "authorized_repository_scope": ["engineering/platform_eap", "engineering/tests"]
+}

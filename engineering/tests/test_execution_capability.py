@@ -23,6 +23,9 @@ from engineering.platform_eap.execution_capability import (
     OutcomeStatus,
     Participant,
     ValidationFinding,
+    contains_secret_like_content,
+    is_safe_repository_path,
+    is_valid_timestamp,
     validate_assignment,
     validate_completion_package,
     validate_evidence_record,
@@ -135,6 +138,47 @@ def valid_completion() -> CompletionPackage:
 
 def error_codes(findings):
     return {finding.code for finding in findings if finding.severity == FindingSeverity.ERROR}
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        ("engineering/platform_eap/execution_capability.py", True),
+        ("../outside", False),
+        ("/absolute/path", False),
+        (r"engineering\unsafe", False),
+        ("", False),
+    ],
+)
+def test_public_repository_path_safety_interface(value, expected):
+    assert is_safe_repository_path(value) is expected
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        ("2026-07-19T18:30:00Z", True),
+        ("2026-07-19T18:30:00+00:00", True),
+        ("2026-07-19T18:30:00", False),
+        ("not-a-timestamp", False),
+        ("", False),
+    ],
+)
+def test_public_timestamp_validation_interface(value, expected):
+    assert is_valid_timestamp(value) is expected
+
+
+@pytest.mark.parametrize(
+    ("value", "expected"),
+    [
+        ("validation completed without sensitive content", False),
+        ("password=do-not-store", True),
+        ("-----BEGIN PRIVATE KEY-----", True),
+        ("ghp-abcdefgh12345678", True),
+    ],
+)
+def test_public_secret_like_content_interface(value, expected):
+    assert contains_secret_like_content(value) is expected
 
 
 def test_participant_and_governed_role_are_separate_and_valid():

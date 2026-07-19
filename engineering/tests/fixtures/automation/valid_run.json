@@ -1,0 +1,292 @@
+{
+  "model_version": "eo-14.4a-v1",
+  "definition": {
+    "model_version": "eo-14.4a-v1",
+    "automation_id": "AUTOMATION-1",
+    "name": "Governed execution review",
+    "purpose": "Coordinate approved execution review without executing work.",
+    "governing_artifact_references": [
+      "docs/engineering-organization/Governed_Automation_Framework.md"
+    ],
+    "steps": [
+      {
+        "step_id": "approval",
+        "title": "Approval",
+        "step_type": "approval_gate",
+        "prerequisite_step_ids": [],
+        "required_approval_ids": [
+          "APP-1"
+        ],
+        "required_evidence_types": [],
+        "required_validation_outcomes": [],
+        "allowed_next_step_ids": [
+          "assignment"
+        ],
+        "stop_on_failure": true,
+        "live_impact": "none",
+        "human_review_required": true
+      },
+      {
+        "step_id": "assignment",
+        "title": "Assignment",
+        "step_type": "execution_assignment",
+        "prerequisite_step_ids": [
+          "approval"
+        ],
+        "required_approval_ids": [
+          "APP-1"
+        ],
+        "required_evidence_types": [],
+        "required_validation_outcomes": [],
+        "allowed_next_step_ids": [
+          "completion"
+        ],
+        "stop_on_failure": true,
+        "live_impact": "none",
+        "human_review_required": false,
+        "execution_assignment_reference": "ASSIGNMENT-1"
+      },
+      {
+        "step_id": "completion",
+        "title": "Completion",
+        "step_type": "execution_completion_review",
+        "prerequisite_step_ids": [
+          "assignment"
+        ],
+        "required_approval_ids": [],
+        "required_evidence_types": [
+          "test_result"
+        ],
+        "required_validation_outcomes": [
+          "completion.valid"
+        ],
+        "allowed_next_step_ids": [
+          "handoff"
+        ],
+        "stop_on_failure": true,
+        "live_impact": "none",
+        "human_review_required": true,
+        "execution_completion_reference": "ASSIGNMENT-1"
+      },
+      {
+        "step_id": "handoff",
+        "title": "Handoff",
+        "step_type": "human_handoff",
+        "prerequisite_step_ids": [
+          "completion"
+        ],
+        "required_approval_ids": [],
+        "required_evidence_types": [],
+        "required_validation_outcomes": [],
+        "allowed_next_step_ids": [
+          "terminal"
+        ],
+        "stop_on_failure": true,
+        "live_impact": "none",
+        "human_review_required": true
+      },
+      {
+        "step_id": "terminal",
+        "title": "Terminal",
+        "step_type": "terminal_completion",
+        "prerequisite_step_ids": [
+          "handoff"
+        ],
+        "required_approval_ids": [],
+        "required_evidence_types": [],
+        "required_validation_outcomes": [],
+        "allowed_next_step_ids": [],
+        "stop_on_failure": true,
+        "live_impact": "none",
+        "human_review_required": true
+      }
+    ],
+    "initial_lifecycle_state": "drafted",
+    "allowed_terminal_states": [
+      "completed",
+      "failed",
+      "cancelled"
+    ],
+    "human_approval_requirements": [
+      {
+        "approval_id": "APP-1",
+        "human_authority": "Architecture Gatekeeper",
+        "applies_to": [
+          "approval",
+          "assignment"
+        ],
+        "required": true
+      }
+    ],
+    "failure_policy": "block_pending_human_review",
+    "execution_assignment_references": [
+      "ASSIGNMENT-1"
+    ],
+    "required_completion_references": [
+      "ASSIGNMENT-1"
+    ],
+    "required_evidence_references": [
+      "EVIDENCE-1"
+    ],
+    "live_impact": "repository_only",
+    "authorized_repository_scope": [
+      "engineering/platform_eap",
+      "engineering/tests"
+    ]
+  },
+  "run_id": "RUN-1",
+  "repository_identity": "FitzpatrickFamilyPlatform",
+  "branch": "main",
+  "starting_head": "caa089d3afa5e714d4b85d9968c42cd09ab55e1e",
+  "working_tree_state": "authorized active changes",
+  "run_started_at": "2026-07-19T20:00:00+00:00",
+  "current_lifecycle_state": "in_progress",
+  "current_step_id": "completion",
+  "completed_step_ids": [
+    "approval",
+    "assignment"
+  ],
+  "approval_state": [
+    {
+      "approval_id": "APP-1",
+      "status": "approved",
+      "approved_by": "Architecture Gatekeeper",
+      "approved_at": "2026-07-19T20:00:00+00:00"
+    }
+  ],
+  "assignments": [
+    {
+      "model_version": "eo-14.1a-v1",
+      "assignment_id": "ASSIGNMENT-1",
+      "title": "Validate governed orchestration",
+      "governed_role": "execution_agent",
+      "authorized_scope": [
+        "engineering/platform_eap",
+        "engineering/tests"
+      ],
+      "permitted_actions": [
+        "validate governed orchestration"
+      ],
+      "prohibited_actions": [
+        "push repository changes"
+      ],
+      "required_validations": [
+        "automation-tests"
+      ],
+      "required_evidence": [
+        {
+          "requirement_id": "EV-REQ",
+          "evidence_type": "test_result",
+          "validation_requirement": "automation-tests"
+        }
+      ],
+      "human_approval_requirements": [],
+      "source_references": [
+        "docs/engineering-organization/Governed_Automation_Framework.md"
+      ],
+      "repository_baseline": "caa089d3afa5e714d4b85d9968c42cd09ab55e1e"
+    }
+  ],
+  "completions": [
+    {
+      "model_version": "eo-14.1a-v1",
+      "assignment": {
+        "model_version": "eo-14.1a-v1",
+        "assignment_id": "ASSIGNMENT-1",
+        "title": "Validate governed orchestration",
+        "governed_role": "execution_agent",
+        "authorized_scope": [
+          "engineering/platform_eap",
+          "engineering/tests"
+        ],
+        "permitted_actions": [
+          "validate governed orchestration"
+        ],
+        "prohibited_actions": [
+          "push repository changes"
+        ],
+        "required_validations": [
+          "automation-tests"
+        ],
+        "required_evidence": [
+          {
+            "requirement_id": "EV-REQ",
+            "evidence_type": "test_result",
+            "validation_requirement": "automation-tests"
+          }
+        ],
+        "human_approval_requirements": [],
+        "source_references": [
+          "docs/engineering-organization/Governed_Automation_Framework.md"
+        ],
+        "repository_baseline": "caa089d3afa5e714d4b85d9968c42cd09ab55e1e"
+      },
+      "participant": {
+        "participant_id": "participant-1"
+      },
+      "execution_context": {
+        "model_version": "eo-14.1a-v1",
+        "participant": {
+          "participant_id": "participant-1"
+        },
+        "governed_role": "execution_agent",
+        "assignment_id": "ASSIGNMENT-1",
+        "repository_identity": "FitzpatrickFamilyPlatform",
+        "branch": "main",
+        "starting_head": "caa089d3afa5e714d4b85d9968c42cd09ab55e1e",
+        "working_tree_state": "authorized active changes",
+        "execution_started_at": "2026-07-19T20:00:00+00:00",
+        "approval_state": []
+      },
+      "execution_result": {
+        "model_version": "eo-14.1a-v1",
+        "assignment_id": "ASSIGNMENT-1",
+        "outcome_status": "completed",
+        "summary": "Validated governed orchestration.",
+        "actions_performed": [
+          "validate governed orchestration"
+        ],
+        "files_changed": [],
+        "validations_executed": [
+          "automation-tests"
+        ],
+        "evidence_ids": [
+          "EVIDENCE-1"
+        ],
+        "unresolved_issues": [],
+        "deviations_or_escalations": [],
+        "completed_at": "2026-07-19T20:15:00+00:00"
+      },
+      "validation_findings": [
+        {
+          "severity": "INFO",
+          "code": "automation-tests.pass",
+          "message": "Automation tests passed."
+        }
+      ],
+      "evidence_inventory": [
+        {
+          "model_version": "eo-14.1a-v1",
+          "evidence_id": "EVIDENCE-1",
+          "evidence_type": "test_result",
+          "source_activity": "python3 -m pytest -p no:cacheprovider engineering/tests",
+          "result": "Automation tests passed.",
+          "timestamp": "2026-07-19T20:15:00+00:00",
+          "assignment_id": "ASSIGNMENT-1",
+          "validation_requirement": "automation-tests",
+          "artifact_path": "engineering/tests/test_automation_capability.py"
+        }
+      ],
+      "unresolved_decisions": [],
+      "recommended_next_approval_gate": "Architecture Gatekeeper review",
+      "commit_occurred": false,
+      "push_occurred": false,
+      "activation_occurred": false,
+      "live_changes_occurred": false
+    }
+  ],
+  "unresolved_issues": [],
+  "escalation_state": "none",
+  "activation_occurred": false,
+  "live_changes_occurred": false
+}

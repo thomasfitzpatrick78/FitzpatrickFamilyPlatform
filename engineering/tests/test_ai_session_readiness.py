@@ -117,13 +117,18 @@ def test_ai_session_readiness_warns_for_active_source_changes(tmp_path):
     assert any("active source changes" in warning.message for warning in result.warnings)
 
 
-def test_ai_session_readiness_tracks_alpha_implementation_and_eo_14_4a_unstarted(tmp_path):
+def test_ai_session_readiness_tracks_eo_14_4a_published_state(tmp_path):
     root = _ready_fixture(tmp_path)
     kanban = DEFAULT_CONFIGURATION.planning_artifacts["kanban"]
-    _replace(root, kanban, "Repository implementation complete", "Implementation not started")
+    _replace(
+        root,
+        kanban,
+        "Repository implementation complete and published; Architecture Gatekeeper approved",
+        "Implementation not started",
+    )
     result = _validate(root)
     assert result.readiness == READY_WITH_WARNINGS
-    assert any("EO-14.1A as repository implemented" in warning.message for warning in result.warnings)
+    assert any("EO-14.1A and EO-14.4A as published" in warning.message for warning in result.warnings)
 
 
 def test_ai_session_readiness_detects_missing_permanent_governance(tmp_path):

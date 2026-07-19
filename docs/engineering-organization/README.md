@@ -1,6 +1,6 @@
 # Engineering Organization Foundation
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 
 **Status:** Active
 
@@ -46,6 +46,9 @@ The Engineering Organization operates across three layers:
 - [Engineering Memory Concept](Engineering_Memory_Concept.md)
 - [Customer Environment Cutover Checklist](Customer_Environment_Cutover_Checklist.md)
 - [Engineering Metrics v2](Engineering_Metrics_v2.md)
+- [Execution Capability Usage](Execution_Capability_Usage.md)
+- [Governed Automation Framework](Governed_Automation_Framework.md)
+- [Governed Automation Framework Usage](Governed_Automation_Framework_Usage.md)
 - [AI Collaboration Governance](ai-collaboration/README.md)
 
 ---
@@ -64,6 +67,7 @@ The Engineering Organization operates across three layers:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Linked the EO-14.1A Execution Capability and EO-14.4A governed orchestration implementation and usage artifacts. |
 | 1.5 | Recorded EO-14.8E readiness observability integration and linked Engineering Metrics v2. |
 | 1.4 | Recorded EO-14.8D AI Session Readiness Validator implementation in the AI Collaboration Governance area. |
 | 1.3 | Added AI Collaboration Governance specification package and framework index. |

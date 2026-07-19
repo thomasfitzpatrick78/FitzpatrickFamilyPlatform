@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 2.0
+**Document Version:** 2.2
 
 **Status:** Active
 
@@ -22,7 +22,7 @@ Milestone 14 records these governance enhancements:
 - EO-14.1A repository-side Execution Capability implementation with immutable governed models, strict untrusted-input parsing, deterministic validation, stable JSON and Markdown output, a bounded validation/render CLI, and explicit no-activation and no-command-execution boundaries.
 - Operations Analyst specification before operational recommendations are treated as governed role outputs.
 - Engineering Metrics v2 with evidence-based and no-false-precision rules.
-- Governed Automation Framework for orchestration flow, proposal, approval, operation, review, and retirement, explicitly consuming EO-14.1A execution semantics rather than redefining assignment, context, validation, evidence, or completion packages.
+- Governed Automation Framework for orchestration flow, proposal, approval, operation, review, and retirement, explicitly consuming EO-14.1A execution semantics rather than redefining assignment, context, validation, evidence, or completion packages; Option B repository implementation adds immutable orchestration models, strict IO, deterministic lifecycle evaluation, human-review handoff, bounded CLI, fixtures, and tests without activation.
 - AI Collaboration Governance for AI session initialization, continuity, completion, stewardship, EO-14.8D repository readiness validation, and EO-14.8E read-only Engineering Metrics and Platform Health evidence integration.
 - Engineering Portfolio Kanban as a repository-native portfolio tracking artifact.
 - Explicit separation of Grafana operational views from repository-generated governance and integrity reports.
@@ -36,7 +36,7 @@ Milestone 14 records these governance enhancements:
   cross-repository improvement after FFFA CUTOVER-001 detected persistent test
   artifacts before customer workbook generation.
 - EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 parent capability are complete, Architecture Gatekeeper approved, repository validated, and published as the Engineering Organization baseline.
-- Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation is published. EO-14.4A architecture alignment is prepared for Architecture Gatekeeper review; EO-14.4A implementation, Bravo, and Charlie remain unstarted, and publication does not authorize role activation or live work.
+- Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations are published. Bravo and Charlie remain unstarted, and no automation, role activation, or live work is authorized.
 - EO-14.8 does not activate ongoing AI Collaboration Steward automation. Future Platform Health dashboard runtime deployment remains PLAT work.
 
 ---
@@ -45,6 +45,8 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 2.2 | Recorded publication of the Architecture Gatekeeper-approved EO-14.4A repository implementation while preserving separate activation and live-work gates. |
+| 2.1 | Recorded EO-14.4A Option B repository implementation and direct EO-14.1A reuse without automation activation, runtime operation, or live work. |
 | 2.0 | Clarified EO-14.4A as orchestration over the published EO-14.1A Execution Capability without implementing automation or changing activation and live-work gates. |
 | 1.9 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation with activation and later work gates unchanged. |
 | 1.8 | Recorded EO-14.1A repository-side Execution Capability implementation and preserved separate Architecture Gatekeeper review, role activation, EO-14.4A, and live-work gates. |

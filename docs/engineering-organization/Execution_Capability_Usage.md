@@ -1,6 +1,6 @@
 # Execution Capability Usage
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Repository Implementation Published; Execution Agent Not Activated
 
@@ -107,6 +107,12 @@ The recommended next approval gate is advisory. Neither validation nor rendering
 - Rendering writes only to standard output.
 - The capability has no registry, scheduler, router, work queue, persistent participant state, model integration, background process, remote executor, or infrastructure integration.
 
+## EO-14.4A Integration
+
+The Governed Automation Framework consumes `GovernedAssignment`, `ApprovalRequirement`, `ApprovalRecord`, `CompletionPackage`, `EvidenceType`, and `ValidationFinding` directly. It uses the published assignment and completion parsers and validators rather than recreating execution models, JSON parsing, evidence validation, secret detection, path safety, or completion semantics.
+
+Orchestration may reference assignment, completion, and evidence identifiers. It cannot create assignments, expand authority, execute work, or authorize its own next lifecycle state.
+
 ---
 
 ## Related Documents
@@ -122,5 +128,6 @@ The recommended next approval gate is advisory. Neither validation nor rendering
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Documented direct EO-14.4A reuse of published execution models, parsers, validators, findings, and evidence references. |
 | 1.1 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation without activating the Execution Agent. |
 | 1.0 | Documented the EO-14.1A repository-side Execution Capability model, CLI, validation, rendering, and safety boundaries. |

@@ -683,11 +683,12 @@ class AISessionReadinessValidator:
                         len(eo_14_1a) == 1
                         and "repository implementation complete" in eo_14_1a[0]
                         and len(eo_14_4a) == 1
-                        and "implementation not started" in eo_14_4a[0]
+                        and "repository implementation complete and published" in eo_14_4a[0]
+                        and "architecture gatekeeper approved" in eo_14_4a[0]
                     )
                     warning_message = (
-                        "Kanban does not preserve EO-14.1A as repository implemented pending review "
-                        "and EO-14.4A as unstarted."
+                        "Kanban does not preserve EO-14.1A and EO-14.4A as published repository "
+                        "implementations with automation unactivated."
                     )
                 else:
                     planning_state_ok = bool(workstream_rows) and all(

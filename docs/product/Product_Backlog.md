@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 2.9
+**Document Version:** 3.1
 
 **Status:** Active
 
@@ -41,7 +41,7 @@ This document defines the initial repository-managed Product Backlog for the Fit
 | EO-PB-014 | High | Engineering Organization | Governed live execution | Execution Agent Specification and repository-side Execution Capability | Milestone 14 | Planned | EO-14.1A repository implementation published; live role activation remains planned; AI Role Catalog; privileged infrastructure integration standard |
 | EO-PB-015 | High | Engineering Organization | Operations intelligence | Operations Analyst Specification | Milestone 14 | Planned | PLAT observability evidence |
 | EO-PB-016 | Medium | Engineering Organization | Engineering metrics | Engineering Metrics v2 | Milestone 14 | Planned | EAP reports; maturity model |
-| EO-PB-017 | High | Engineering Organization | Governed automation | Governed Automation Framework orchestration over the published Execution Capability | Milestone 14 | Planned | Engineering Lifecycle; published EO-14.1A; EO-14.4A architecture clarification review |
+| EO-PB-017 | High | Engineering Organization | Governed automation | Governed Automation Framework orchestration over the published Execution Capability | Milestone 14 | Planned | EO-14.4A repository implementation published; automation activation remains separate |
 | EO-PB-018 | Medium | Engineering Organization | Portfolio coordination | Engineering Portfolio Kanban | Milestone 14 | Planned | Milestone 14 portfolio plan |
 | EO-PB-019 | Medium | Engineering Organization | Capability maturity | Capability Maturity Assessment | Milestone 14 | Planned | EO-13.1 maturity model |
 | EO-PB-020 | Medium | Engineering Organization | Approval model | AI Collaboration and Approval Model | Milestone 14 | Superseded | Superseded by EO-14.8 AI Collaboration Governance |
@@ -78,7 +78,7 @@ Milestone 14 backlog candidates are planned, not approved for implementation. Th
 
 The first vertical slice coordinates the published EO-14.1A Execution Capability with EO-14.4A orchestration, PLAT-14.1A Container Metrics Repository Implementation Package, EO-14.2A Operations Analyst Operationalization, PLAT-14.3A Platform Health Dashboard Completion, EO-14.3A Engineering Metrics v2 Refinement, and later PLAT-14.2 Operational Excellence through separate approval gates. EO-14.4A consumes EO-14.1A execution validation, evidence, and completion packages rather than redefining them.
 
-EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved Alpha EO-14.1A repository implementation are published. The EO-14.4A architecture clarification is prepared for Gatekeeper review; EO-14.4A implementation, Bravo, and Charlie remain unstarted, and no role activation or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
+EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations are published. Bravo and Charlie remain unstarted, and no automation, role activation, or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
 
 FFFA detail is owned by the FamilyFinanceAssistant repository; this repository records portfolio traceability to FFFA-14.1 and FFFA-14.2 using Existing FFFA backlog and roadmap governance. FFFA implementation is paused while Chris completes customer acceptance, and the Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
 
@@ -101,6 +101,8 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 
 | Version | Description |
 |---------|-------------|
+| 3.1 | Recorded publication of the Architecture Gatekeeper-approved EO-14.4A repository implementation while retaining planned activation and later gates. |
+| 3.0 | Recorded EO-14.4A Option B repository implementation complete pending Architecture Gatekeeper review while retaining planned activation and later gates. |
 | 2.9 | Recorded EO-14.4A orchestration alignment with the published EO-14.1A Execution Capability while retaining planned status and separate implementation and activation gates. |
 | 2.8 | Recorded publication of the Architecture Gatekeeper-approved EO-14.1A repository implementation while retaining the planned live-role state and later gates. |
 | 2.7 | Recorded EO-14.1A repository implementation pending Architecture Gatekeeper review while retaining the planned live-role state and unchanged EO-14.4A, Bravo, Charlie, and live-work gates. |

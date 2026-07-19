@@ -1,8 +1,8 @@
 # Governed Automation Framework
 
-**Document Version:** 1.1
+**Document Version:** 1.3
 
-**Status:** Draft for Architecture Gatekeeper Review
+**Status:** Repository Implementation Published; Automation Not Activated
 
 **Milestone:** EO-14.4
 
@@ -31,7 +31,13 @@ Automation coordinates execution but does not redefine it:
 - Execution validation, execution evidence, and completion packages originate from EO-14.1A and are consumed by EO-14.4A as governed orchestration inputs and outcomes.
 - EO-14.4A does not create parallel assignment models, execution contexts, evidence records, completion packages, or execution-validation logic.
 
-Any future implementation of EO-14.4A requires a separate approved work package and must reuse the EO-14.1A contracts rather than recreate them.
+EO-14.4A implementation is governed by separately approved work packages and must reuse the EO-14.1A contracts rather than recreate them.
+
+## Repository Implementation Status
+
+EO-14.4A now provides a repository-side Option B orchestration capability with immutable automation definitions and run contexts, bounded step and lifecycle enums, strict JSON parsing, deterministic eligibility and transition decisions, EO-14.1A assignment and completion validation, stable JSON output, and human-review handoff rendering.
+
+The implementation is passive and side-effect free. It validates and proposes lifecycle progression but does not execute assignments, persist run state, invoke models, schedule work, activate automation, or alter repositories or infrastructure.
 
 ---
 
@@ -115,5 +121,7 @@ EO-14.4 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Recorded publication of the Architecture Gatekeeper-approved Option B repository implementation without automation activation. |
+| 1.2 | Recorded the Option B repository implementation of governed orchestration models, EO-14.1A integration, deterministic lifecycle evaluation, handoff rendering, CLI validation, fixtures, and tests without activation. |
 | 1.1 | Clarified EO-14.4A as an orchestration capability that consumes the published EO-14.1A Execution Capability without redefining execution semantics or authorizing implementation. |
 | 1.0 | Initial Governed Automation Framework. |

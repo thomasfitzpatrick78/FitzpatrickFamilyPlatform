@@ -23,6 +23,20 @@ from engineering.platform_eap.execution_capability import (
 )
 from engineering.platform_eap.execution_io import assignment_from_json, completion_from_json
 from engineering.platform_eap.execution_rendering import render_completion_markdown
+from engineering.platform_eap.automation_capability import (
+    build_automation_handoff,
+    evaluate_transition,
+    validate_automation_definition,
+    validate_automation_run,
+)
+from engineering.platform_eap.automation_io import (
+    AutomationDataError,
+    definition_from_json,
+    run_from_json,
+    transition_decision_to_json,
+    transition_from_json,
+)
+from engineering.platform_eap.automation_rendering import render_automation_handoff_markdown
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -793,6 +807,7 @@ def capabilities() -> int:
     print("PLAT-EAP-8\tRegistry CLI\tImplemented")
     print("PLAT-EAP-9\tAI Session Readiness Validation\tImplemented")
     print("PLAT-EAP-10\tGoverned Execution Capability\tImplemented")
+    print("PLAT-EAP-11\tGoverned Automation Orchestration Capability\tImplemented")
     return 0
 
 
@@ -846,6 +861,53 @@ def execution_cli(argv: list[str]) -> int:
             return 0
     except (ExecutionDataError, OSError, UnicodeError) as exc:
         print("# Governed Execution Capability")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 1
+    print(usage)
+    return 2
+
+
+def automation_cli(argv: list[str]) -> int:
+    usage = (
+        "Usage: platform-eap automation "
+        "<definition validate <repository-json-path>|run validate <repository-json-path>|"
+        "transition evaluate <run-json-path> <transition-json-path>|handoff render <run-json-path>>"
+    )
+    try:
+        if len(argv) == 3:
+            resource, command, path_value = argv
+            path = _execution_input_path(path_value)
+            text = path.read_text(encoding="utf-8")
+            if resource == "definition" and command == "validate":
+                definition = definition_from_json(text)
+                return _print_execution_findings(
+                    "Governed Automation Definition Validation",
+                    validate_automation_definition(definition, repository_root=ROOT),
+                )
+            if resource == "run" and command == "validate":
+                run = run_from_json(text)
+                return _print_execution_findings(
+                    "Governed Automation Run Validation",
+                    validate_automation_run(run, repository_root=ROOT),
+                )
+            if resource == "handoff" and command == "render":
+                run = run_from_json(text)
+                findings = validate_automation_run(run, repository_root=ROOT)
+                if any(finding.severity == FindingSeverity.ERROR for finding in findings):
+                    return _print_execution_findings("Governed Automation Run Validation", findings)
+                print(render_automation_handoff_markdown(build_automation_handoff(run, ROOT)), end="")
+                return 0
+        if len(argv) == 4 and argv[:2] == ["transition", "evaluate"]:
+            run_path = _execution_input_path(argv[2])
+            transition_path = _execution_input_path(argv[3])
+            run = run_from_json(run_path.read_text(encoding="utf-8"))
+            request = transition_from_json(transition_path.read_text(encoding="utf-8"))
+            decision = evaluate_transition(run, request, ROOT)
+            print(transition_decision_to_json(decision), end="")
+            return 0 if decision.allowed else 1
+    except (AutomationDataError, ExecutionDataError, OSError, UnicodeError) as exc:
+        print("# Governed Automation Capability")
         print("Status: FAIL")
         print(f"ERROR: {exc}")
         return 1
@@ -919,5 +981,7 @@ def main(argv: list[str] | None = None) -> int:
         return registry_cli(argv[1:])
     if argv and argv[0] == "execution":
         return execution_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution>")
+    if argv and argv[0] == "automation":
+        return automation_cli(argv[1:])
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation>")
     return 2
