@@ -2,7 +2,7 @@
 
 **Status:** PASS WITH WARNINGS
 
-**Timestamp:** 2026-07-18T00:32:48.840404+00:00
+**Timestamp:** 2026-07-19T17:39:37.184996+00:00
 
 **Summary:** Repository validation completed with status PASS WITH WARNINGS.
 
@@ -44,7 +44,7 @@
 - INFO: Required file exists (`registry/schema/infrastructure_registry_schema.yaml`)
 - INFO: Required file exists (`docs/standards/Documentation_Standards.md`)
 - INFO: Required file exists (`docs/standards/Development_Workflow.md`)
-- INFO: No governed-path cache or system artifacts detected
+- INFO: No prohibited tracked repository artifacts detected
 - INFO: Registry schema exists (`registry/schema/infrastructure_registry_schema.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/devices/beelink-mini-pc.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, model (`registry/records/devices/family-nas.yaml`)

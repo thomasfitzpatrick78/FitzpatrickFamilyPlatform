@@ -28,6 +28,39 @@ def test_repository_validation_passes_with_required_structure():
     assert not [r for r in report.results if r.severity == "ERROR"]
 
 
+def test_tracked_repository_artifact_validation_ignores_untracked_content(monkeypatch):
+    monkeypatch.setattr(cli, "git_output", lambda args: "")
+
+    results = cli.validate_tracked_repository_artifacts()
+
+    assert [(result.severity, result.message) for result in results] == [
+        ("INFO", "No prohibited tracked repository artifacts detected")
+    ]
+
+
+def test_tracked_repository_artifact_validation_reports_prohibited_paths(monkeypatch):
+    tracked = "docs/.DS_Store\0engineering/__pycache__/cli.pyc\0.pytest_cache/state\0README.md"
+    monkeypatch.setattr(cli, "git_output", lambda args: tracked)
+
+    results = cli.validate_tracked_repository_artifacts()
+
+    assert [(result.severity, result.path) for result in results] == [
+        ("ERROR", ".pytest_cache/state"),
+        ("ERROR", "docs/.DS_Store"),
+        ("ERROR", "engineering/__pycache__/cli.pyc"),
+    ]
+
+
+def test_tracked_repository_artifact_validation_fails_closed_when_git_is_unavailable(monkeypatch):
+    monkeypatch.setattr(cli, "git_output", lambda args: "git unavailable: command failed")
+
+    results = cli.validate_tracked_repository_artifacts()
+
+    assert [(result.severity, result.message) for result in results] == [
+        ("ERROR", "Unable to inspect tracked repository content")
+    ]
+
+
 def test_governance_validation_passes_with_initial_adrs():
     report = cli.governance_validate()
     assert report.status == "PASS"

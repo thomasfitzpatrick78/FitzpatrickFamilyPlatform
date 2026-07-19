@@ -126,6 +126,25 @@ def status_from(results: list[CheckResult]) -> str:
     return "PASS"
 
 
+def validate_tracked_repository_artifacts() -> list[CheckResult]:
+    tracked_output = git_output(["ls-files", "-z"])
+    if tracked_output.startswith("git unavailable:"):
+        return [CheckResult("ERROR", "Unable to inspect tracked repository content")]
+
+    prohibited_names = {".DS_Store", "__pycache__", ".pytest_cache"}
+    prohibited_paths = sorted(
+        path
+        for path in tracked_output.split("\0")
+        if path and prohibited_names.intersection(Path(path).parts)
+    )
+    if prohibited_paths:
+        return [
+            CheckResult("ERROR", "Prohibited tracked repository artifact found", path)
+            for path in prohibited_paths
+        ]
+    return [CheckResult("INFO", "No prohibited tracked repository artifacts detected")]
+
+
 
 REGISTRY_ROOT = ROOT / "registry"
 REGISTRY_SCHEMA = REGISTRY_ROOT / "schema" / "infrastructure_registry_schema.yaml"
@@ -529,15 +548,7 @@ def repository_validate() -> Report:
         results.append(CheckResult("INFO" if (ROOT / item).is_dir() else "ERROR", "Required directory exists" if (ROOT / item).is_dir() else "Required directory missing", item))
     for item in required_files:
         results.append(CheckResult("INFO" if (ROOT / item).is_file() else "ERROR", "Required file exists" if (ROOT / item).is_file() else "Required file missing", item))
-    contaminants = []
-    for base in ["docs", "reports", "engineering"]:
-        for pattern in [".DS_Store", "__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache"]:
-            contaminants.extend((ROOT / base).rglob(pattern))
-    if contaminants:
-        for path in contaminants:
-            results.append(CheckResult("ERROR", "Generated cache or system artifact found", str(path.relative_to(ROOT))))
-    else:
-        results.append(CheckResult("INFO", "No governed-path cache or system artifacts detected"))
+    results.extend(validate_tracked_repository_artifacts())
     results.extend(validate_registry())
     branch = git_output(["branch", "--show-current"])
     results.append(CheckResult("INFO", f"Current branch: {branch}"))

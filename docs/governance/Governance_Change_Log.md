@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 
 **Status:** Active
 
@@ -18,6 +18,7 @@ Milestone 14 records these governance enhancements:
 
 - Option C governed vertical-slice planning across EO, PLAT, and FFFA workstreams, with Container Operational Health as the first governed vertical slice.
 - Execution Agent specification before any governed live-execution activation.
+- EO-14.1A Option B+ layered, Participant-aware Execution Capability clarification, separating Participant from Governed Role and defining Policy, Assignment, Execution, Validation, Evidence, and Handoff boundaries without implementing a generalized agent framework or runtime capability.
 - Operations Analyst specification before operational recommendations are treated as governed role outputs.
 - Engineering Metrics v2 with evidence-based and no-false-precision rules.
 - Governed Automation Framework for proposal, approval, operation, review, and retirement.
@@ -43,6 +44,7 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Recorded the Architecture Gatekeeper-approved EO-14.1A Option B+ specification clarification and unchanged no-runtime-activation boundary. |
 | 1.6 | Recorded EO-14.8 capability completion, validation, Architecture Gatekeeper approval, baseline publication, and next Alpha responsibility. |
 | 1.5 | Recorded EO-14.8E observability integration, parent implementation completion, and unchanged live-work boundary. |
 | 1.4 | Recorded EO-14.8D validator implementation, review gate, and unchanged no-live-work boundary. |
