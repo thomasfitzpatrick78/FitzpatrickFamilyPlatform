@@ -2,12 +2,12 @@
   "capability": "AI Session Readiness Validation",
   "command": "./platform-eap ai-session readiness",
   "readiness": "READY WITH WARNINGS",
-  "generated_at": "2026-07-20T19:10:09.988020+00:00",
+  "generated_at": "2026-07-20T19:53:51.835254+00:00",
   "repository": {
     "name": "FitzpatrickFamilyPlatform",
     "path": "/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform",
     "branch": "main",
-    "head": "4ac61c698d0a795c1bb4f39de6d3d833ead5e7b2",
+    "head": "04f279d7de465e059d799714104c54e439577bc3",
     "working_tree": "active source changes"
   },
   "domains": [
@@ -32,7 +32,7 @@
         {
           "check_id": "repository.head",
           "severity": "PASS",
-          "message": "Current HEAD: 4ac61c698d0a795c1bb4f39de6d3d833ead5e7b2",
+          "message": "Current HEAD: 04f279d7de465e059d799714104c54e439577bc3",
           "evidence": []
         },
         {
@@ -48,17 +48,12 @@
           "evidence": [
             "M docs/architecture/Architecture_Backlog.md",
             " M docs/architecture/Current_Architecture_State.md",
-            " M docs/architecture/Registry_Container_Identity_Foundation_Architecture.md",
             " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md",
             " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md",
             " M docs/governance/Governance_Change_Log.md",
             " M docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md",
             " M docs/milestones/Milestone_14/Registry_Container_Identity_Foundation_Implementation_Package.md",
             " M docs/portfolio/Engineering_Portfolio_Kanban.md",
-            " M docs/specifications/Infrastructure_Registry_v1.0_Specification.md",
-            " M docs/specifications/Registry_Container_Identity_Foundation_Specification.md",
-            " M engineering/platform_eap/cli.py",
-            " M engineering/platform_eap/registry_identity.py",
             " M engineering/tests/test_registry_identity.py",
             " M registry/migrations/container_identity/README.md",
             " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
@@ -70,7 +65,10 @@
             " M reports/engineering/release/release_report.json",
             " M reports/engineering/release/release_report.md",
             " M reports/engineering/repository/repository_report.json",
-            " M reports/engineering/repository/repository_report.md"
+            " M reports/engineering/repository/repository_report.md",
+            "?? docs/milestones/Milestone_14/Registry_Container_Identity_Migration_Approval_Review.md",
+            "?? registry/migrations/container_identity/approvals/",
+            "?? registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json"
           ]
         }
       ]
@@ -1079,17 +1077,12 @@
       "evidence": [
         "M docs/architecture/Architecture_Backlog.md",
         " M docs/architecture/Current_Architecture_State.md",
-        " M docs/architecture/Registry_Container_Identity_Foundation_Architecture.md",
         " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md",
         " M docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md",
         " M docs/governance/Governance_Change_Log.md",
         " M docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md",
         " M docs/milestones/Milestone_14/Registry_Container_Identity_Foundation_Implementation_Package.md",
         " M docs/portfolio/Engineering_Portfolio_Kanban.md",
-        " M docs/specifications/Infrastructure_Registry_v1.0_Specification.md",
-        " M docs/specifications/Registry_Container_Identity_Foundation_Specification.md",
-        " M engineering/platform_eap/cli.py",
-        " M engineering/platform_eap/registry_identity.py",
         " M engineering/tests/test_registry_identity.py",
         " M registry/migrations/container_identity/README.md",
         " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
@@ -1101,7 +1094,10 @@
         " M reports/engineering/release/release_report.json",
         " M reports/engineering/release/release_report.md",
         " M reports/engineering/repository/repository_report.json",
-        " M reports/engineering/repository/repository_report.md"
+        " M reports/engineering/repository/repository_report.md",
+        "?? docs/milestones/Milestone_14/Registry_Container_Identity_Migration_Approval_Review.md",
+        "?? registry/migrations/container_identity/approvals/",
+        "?? registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json"
       ]
     }
   ]

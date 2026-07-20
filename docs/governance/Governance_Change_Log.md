@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 3.1
+**Document Version:** 3.3
 
 **Status:** Active
 
@@ -41,8 +41,8 @@ Milestone 14 records these governance enhancements:
 - PLAT-14.0A Platform Operations Domain Architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` with separate Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence subdomains; ADR-009 through ADR-011 record the approved direction, and implementation remains unstarted.
 - PLAT-14.1A Container Operational Health specification is published at `89deeed2480679c9717cb151c3a14fe9414d8b97`. Existing Docker API proxy, OpenTelemetry, Prometheus, Docker daemon, cAdvisor, and Grafana planning remains subordinate provider, transport, security, live-proof, or presentation scope rather than canonical health authority.
 - Registry Container Identity Foundation schema `1.1`, strict validation, evidence-gated migration planning/execution/rollback, compatible CLI commands, evidence catalog, and tests are complete, Architecture Gatekeeper accepted, and published. A standalone work-item identifier remains intentionally deferred; no current record is migrated.
-- Registry mutation authorization requires a strict separate artifact binding the exact plan ID, schema/migration versions, affirmative Registry-migration scope, timestamp, Architecture Gatekeeper authority, governed review reference, and artifact content hash. No such approval artifact is present; record migration remains unauthorized.
-- The complete unpublished Registry migration model-v2 idempotency correction separates mutable candidate source state from immutable supporting evidence, binds exact expected post-state hashes into the plan ID, rejects the superseded model-v1 plan, and preserves approval-first authorization, drift rejection, exact rollback, and all no-migration boundaries.
+- Registry mutation authorization requires a strict separate artifact binding the exact plan ID, schema/migration versions, affirmative Registry-migration scope, timestamp, Architecture Gatekeeper authority, governed review reference, and artifact content hash. Exact plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` is approved and its strict artifact is deterministically bound to a persisted derived plan. The binding package remains unpublished and no Registry record is migrated; confirmed execution requires a separate explicit work package after publication.
+- Published Registry migration model v2 separates mutable candidate source state from immutable supporting evidence, binds exact expected post-state hashes into the plan ID, rejects the superseded model-v1 plan, and preserves approval-first authorization, drift rejection, exact rollback, and all no-migration boundaries.
 - PLAT-14.1A now has published immutable contracts, strict parsing, active fixture-evaluation policies, canonical evidence, synthetic Registry identity reconciliation, confidence and freshness evaluation, deterministic health, stable output, fixture-only normalization, bounded read-only CLI integration, EO fixture integration, and tests. Registry migration, provider access, consumer integration, activation, and live work remain separate gates.
 - Registry migration, provider adapters, dashboards, EO activation, and live infrastructure work remain blocked pending separate authorization.
 - Capability-First Operationalization remains an unpromoted candidate pattern. Published PLAT-14.1A supplies first-consumer repository implementation evidence for EO-14.1A and EO-14.4A contract reuse, but no activation, live operational evidence, or repeated implementation exists to support permanent Engineering Lifecycle promotion.
@@ -53,6 +53,8 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 3.3 | Recorded deterministic binding of the strict approval artifact to the exact reviewed plan without Registry mutation, rollback, provider access, activation, or live work. |
+| 3.2 | Recorded exact-plan approval-in-principle and creation of the governed review document and strict approval artifact without binding, Registry mutation, provider access, activation, or live work. |
 | 3.1 | Recorded the complete unpublished Registry migration model-v2 idempotency correction and regenerated pending plan without creating approval evidence or changing Registry, provider, activation, or live state. |
 | 3.0 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A fixture-only repository implementation while preserving Registry migration, provider, consumer, activation, and live-work gates and leaving Capability-First unpromoted. |
 | 2.9 | Recorded the complete unpublished PLAT-14.1A fixture-only repository implementation while preserving publication, Registry migration, provider, dashboard, activation, and live-work gates and leaving Capability-First unpromoted. |

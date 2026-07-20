@@ -1,6 +1,6 @@
 # Registry Container Identity Foundation Implementation Package
 
-**Status:** Published Baseline; Idempotency Correction Complete and Unpublished
+**Status:** Published Baseline and Model-v2 Correction; Exact-Plan Approval Binding Complete and Unpublished
 
 **Milestone:** Milestone 14
 
@@ -35,13 +35,13 @@ The corrected migration model v2:
 - rejects partial patches, unrelated target drift, source drift, external evidence drift, approval drift, malformed or duplicate-key JSON, and obsolete model-v1 plans;
 - preserves atomic application, complete Registry and Digital Twin validation, exact rollback, and idempotent rollback.
 
-The old pending plan `sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94` is superseded and ineligible for approval. The regenerated model-v2 plan is pending and unapproved. All five classifications and all 39 Registry records remain unchanged.
+The old pending plan `sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94` is superseded and ineligible for approval. Exact model-v2 plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` retains a pending, unbound read-only generated presentation. Architecture Gatekeeper approved all five exact patches in principle; the governed review and strict approval artifact are bound into persisted derived plan `registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json`. The binding package is validated but unpublished. All five target records and all 39 Registry records remain unchanged.
 
 ## Current Migration Status
 
 No Registry record is migrated.
 
-- Five confirmed non-container or logical subjects have evidence-backed `not_applicable` proposals pending plan approval.
+- Five confirmed non-container or logical subjects have exact `not_applicable` patches approved and bound in the persisted derived plan; none is applied.
 - Sixteen subjects require further review.
 - Pi-hole remains unresolved for exact Compose project, Compose service, health-check requirement, and compatible policy reference.
 - No subject is newly eligible for PLAT-14.1A health assessment.
@@ -67,4 +67,4 @@ The implementation performs no runtime discovery, provider access, monitoring, r
 
 ## Next Gate
 
-Architecture Gatekeeper review of the unpublished idempotency correction and regenerated pending plan is the next gate. Publication, any later approval artifact, and any Registry record migration remain separate decisions.
+Architecture Gatekeeper review and publication of the exact-plan approval-binding package is the next gate. Any Registry record migration remains a later, separately authorized decision.

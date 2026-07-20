@@ -1,0 +1,869 @@
+{
+  "approval_reference": "registry/migrations/container_identity/approvals/registry-container-identity-plan-5addac8821f1-approval.json",
+  "approval_sha256": "13f7fdaa41f29d4624f58d361ac7a50ef142ba156f1a1b20113e787a17871bf3",
+  "approval_status": "approved",
+  "candidates": [
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/devices/beelink-mini-pc.yaml",
+          "source_sha256": "5ff63d001399f74b4aba76d006cdf2edc2e56602bfb93cf6f46698abf45828a9"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/devices/beelink-mini-pc.yaml",
+      "source_sha256": "5ff63d001399f74b4aba76d006cdf2edc2e56602bfb93cf6f46698abf45828a9",
+      "subject_id": "dev-beelink-mini-pc",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/devices/family-nas.yaml",
+          "source_sha256": "0ba5cb8540f53f77d7d01239025b4512faa7131728733486d0ad54664232269d"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/devices/family-nas.yaml",
+      "source_sha256": "0ba5cb8540f53f77d7d01239025b4512faa7131728733486d0ad54664232269d",
+      "subject_id": "dev-family-nas",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/devices/raspberry-pi-pihole.yaml",
+          "source_sha256": "1128ad5439952a49c00b3da279affc9154dae949a4eae10f681f089c677c86a3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/devices/raspberry-pi-pihole.yaml",
+      "source_sha256": "1128ad5439952a49c00b3da279affc9154dae949a4eae10f681f089c677c86a3",
+      "subject_id": "dev-raspberry-pi-pihole",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/devices/tapo-hubs.yaml",
+          "source_sha256": "52c9031dbf08aa7eb31174b74c99122914a491a3b9b085be56ef03a0f6b270c4"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/devices/tapo-hubs.yaml",
+      "source_sha256": "52c9031dbf08aa7eb31174b74c99122914a491a3b9b085be56ef03a0f6b270c4",
+      "subject_id": "dev-tapo-hubs",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/devices/toms-macbook-admin.yaml",
+          "source_sha256": "8a0131d2a69adba54441c05404e95049dd970ecb1951ea09f0fe80d105198092"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/devices/toms-macbook-admin.yaml",
+      "source_sha256": "8a0131d2a69adba54441c05404e95049dd970ecb1951ea09f0fe80d105198092",
+      "subject_id": "dev-toms-macbook-admin",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/devices/ups-battery-backup.yaml",
+          "source_sha256": "877576ae4ee370f3f3a8f867e76c9e4a4ee5f217f7282edee7dc50c5432ee6c3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/devices/ups-battery-backup.yaml",
+      "source_sha256": "877576ae4ee370f3f3a8f867e76c9e4a4ee5f217f7282edee7dc50c5432ee6c3",
+      "subject_id": "dev-ups-battery-backup",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/hosts/beelink-mini-pc.yaml",
+          "source_sha256": "5fa5a21f1d1bd174b6d064dca4523f4c5e97e54aa9b14960143f9ad892f356c2"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/hosts/beelink-mini-pc.yaml",
+      "source_sha256": "5fa5a21f1d1bd174b6d064dca4523f4c5e97e54aa9b14960143f9ad892f356c2",
+      "subject_id": "host-beelink-mini-pc",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/hosts/home-server.yaml",
+          "source_sha256": "3f28d7bfcf3a01720ed58a9c8aa71393078e3cb77e3cb03e9bd8dbd623b4c1fb"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/hosts/home-server.yaml",
+      "source_sha256": "3f28d7bfcf3a01720ed58a9c8aa71393078e3cb77e3cb03e9bd8dbd623b4c1fb",
+      "subject_id": "host-home-server",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/hosts/raspberry-pi-pihole.yaml",
+          "source_sha256": "a3bb0eec786c58d891f7c6cb7c45e348ba36c823dfac53778c83d5a0968fc431"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/hosts/raspberry-pi-pihole.yaml",
+      "source_sha256": "a3bb0eec786c58d891f7c6cb7c45e348ba36c823dfac53778c83d5a0968fc431",
+      "subject_id": "host-raspberry-pi-pihole",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/hosts/toms-macbook-admin.yaml",
+          "source_sha256": "5c32f5457d256a581fce9637c562d8e58004342c54733ae47fe7cf2a6555f76c"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/hosts/toms-macbook-admin.yaml",
+      "source_sha256": "5c32f5457d256a581fce9637c562d8e58004342c54733ae47fe7cf2a6555f76c",
+      "subject_id": "host-toms-macbook-admin",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/locations/home.yaml",
+          "source_sha256": "188a6c5c2d9669fdc489713a7f97f92f43a9f11e601ec1939215f4e059a8508f"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/locations/home.yaml",
+      "source_sha256": "188a6c5c2d9669fdc489713a7f97f92f43a9f11e601ec1939215f4e059a8508f",
+      "subject_id": "loc-home",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/network_devices/asus-mesh-node.yaml",
+          "source_sha256": "63b45e5561e7f6201f76849d2e7eb19f9a89c5a53daf76961b9fcde01cbaf6bc"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/network_devices/asus-mesh-node.yaml",
+      "source_sha256": "63b45e5561e7f6201f76849d2e7eb19f9a89c5a53daf76961b9fcde01cbaf6bc",
+      "subject_id": "net-asus-mesh-node",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/network_devices/asus-mesh-router-primary.yaml",
+          "source_sha256": "c4270f7e2c5720175c374d4a890bfeede1dfce199bd3b03c80dec32f2852a39f"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/network_devices/asus-mesh-router-primary.yaml",
+      "source_sha256": "c4270f7e2c5720175c374d4a890bfeede1dfce199bd3b03c80dec32f2852a39f",
+      "subject_id": "net-asus-mesh-router-primary",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/network_devices/frontier-fiber-ont.yaml",
+          "source_sha256": "edb8cd276a2abff130b0d0301bf03d3fd8ef70a7280dc354d37343281d1e07e3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/network_devices/frontier-fiber-ont.yaml",
+      "source_sha256": "edb8cd276a2abff130b0d0301bf03d3fd8ef70a7280dc354d37343281d1e07e3",
+      "subject_id": "net-frontier-fiber-ont",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/network_devices/home-router.yaml",
+          "source_sha256": "10b9b4cdafcd684db9f3a4e133c8a861d1c0fff58590fe4441b50ed135c38792"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/network_devices/home-router.yaml",
+      "source_sha256": "10b9b4cdafcd684db9f3a4e133c8a861d1c0fff58590fe4441b50ed135c38792",
+      "subject_id": "net-home-router",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/network_devices/network-switch-2-5gbe-1.yaml",
+          "source_sha256": "a2f73a94ec677261860a0b7c90ebcd7f28c3b537fa5b47d8d8847a23f2135111"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/network_devices/network-switch-2-5gbe-1.yaml",
+      "source_sha256": "a2f73a94ec677261860a0b7c90ebcd7f28c3b537fa5b47d8d8847a23f2135111",
+      "subject_id": "net-switch-2-5gbe-1",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/network_devices/network-switch-2-5gbe-2.yaml",
+          "source_sha256": "61c735ae8bc73f118a9e804e01b3952841a08b6141bebf305a003a6d708011ae"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/network_devices/network-switch-2-5gbe-2.yaml",
+      "source_sha256": "61c735ae8bc73f118a9e804e01b3952841a08b6141bebf305a003a6d708011ae",
+      "subject_id": "net-switch-2-5gbe-2",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "no_change",
+      "classification": "not_applicable",
+      "evidence": [
+        {
+          "assertion": "Record type is outside the service-record container identity extension.",
+          "reference": "registry/records/owners/family-platform.yaml",
+          "source_sha256": "027ae59acc8c0ffa198421272d5ee095491593fb44dce90bb84f382ac99209dc"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/owners/family-platform.yaml",
+      "source_sha256": "027ae59acc8c0ffa198421272d5ee095491593fb44dce90bb84f382ac99209dc",
+      "subject_id": "owner-family-platform",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "review_required",
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {
+          "assertion": "The Registry establishes the active cAdvisor service and governed host relationship.",
+          "reference": "registry/records/services/cadvisor.yaml",
+          "source_sha256": "f0079407d4aabc12925d034b2b1bbce64b91dd35fd7bb208e8ae34d945d217b4"
+        },
+        {
+          "assertion": "Repository Compose configuration establishes project and service identity evidence.",
+          "reference": "platform/compose/monitoring/compose.yaml",
+          "source_sha256": "dc1fa1b23d5c1b2471e7f023f5ae192a9dd35997eb99920eb1f37086a9660dd3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/services/cadvisor.yaml",
+      "source_sha256": "f0079407d4aabc12925d034b2b1bbce64b91dd35fd7bb208e8ae34d945d217b4",
+      "subject_id": "svc-cadvisor",
+      "unresolved_fields": [
+        "container_health_policy_reference",
+        "health_check_requirement",
+        "reviewed_migration_approval"
+      ],
+      "warnings": [
+        "Existing degraded legacy health_status is not a Container Operational Health assessment."
+      ]
+    },
+    {
+      "action": "apply",
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {
+          "assertion": "The published architecture classifies this subject as a logical service.",
+          "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md",
+          "source_sha256": "9cf2d58759df009c90d2614aa0d9612050ce713eeab60aeae03bc7634dca9e28"
+        }
+      ],
+      "expected_post_sha256": "71aa7de6771d68ea6087c77f1983631876982cc3bc11f82f90231c8990cfb482",
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": [
+          "registry/records/planned_services/controlled-container-updates.yaml",
+          "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"
+        ],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "record_reference": "registry/records/planned_services/controlled-container-updates.yaml",
+      "source_sha256": "854ca198f805e6f3c8680dba384a400fceb0ad38975c15fbb6f79ecaeabf948d",
+      "subject_id": "svc-controlled-container-updates",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "review_required",
+      "classification": "planned_container_service",
+      "evidence": [
+        {
+          "assertion": "The Registry declares a planned restricted Docker API proxy.",
+          "reference": "registry/records/planned_services/docker-api-proxy.yaml",
+          "source_sha256": "3a9b2e2f695663dd5231c486b91d2f0bc089cadad7ca93c1ab9f3719cf60c838"
+        },
+        {
+          "assertion": "Repository Compose configuration provides future identity evidence but does not authorize activation.",
+          "reference": "platform/compose/monitoring/compose.yaml",
+          "source_sha256": "dc1fa1b23d5c1b2471e7f023f5ae192a9dd35997eb99920eb1f37086a9660dd3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/docker-api-proxy.yaml",
+      "source_sha256": "3a9b2e2f695663dd5231c486b91d2f0bc089cadad7ca93c1ab9f3719cf60c838",
+      "subject_id": "svc-docker-api-proxy",
+      "unresolved_fields": [
+        "health_check_requirement",
+        "reviewed_migration_approval"
+      ],
+      "warnings": [
+        "Planned service must remain intentionally inactive and unactivated."
+      ]
+    },
+    {
+      "action": "apply",
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {
+          "assertion": "The published architecture classifies this subject as a logical planning record.",
+          "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md",
+          "source_sha256": "9cf2d58759df009c90d2614aa0d9612050ce713eeab60aeae03bc7634dca9e28"
+        }
+      ],
+      "expected_post_sha256": "2b03245b28772fdf0e7a7bc44f48087e95341c0d86d3b7502452efe2ecc547de",
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": [
+          "registry/records/planned_services/docker-container-metrics-exporter.yaml",
+          "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"
+        ],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "record_reference": "registry/records/planned_services/docker-container-metrics-exporter.yaml",
+      "source_sha256": "6be96994ba561a00903fa399ac44b794d24cdbfa33c7623965552df5002b1c7d",
+      "subject_id": "svc-docker-container-metrics-exporter",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "apply",
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {
+          "assertion": "The published architecture classifies this subject as non-container.",
+          "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md",
+          "source_sha256": "9cf2d58759df009c90d2614aa0d9612050ce713eeab60aeae03bc7634dca9e28"
+        }
+      ],
+      "expected_post_sha256": "466e7829e951f6d65d42cd523c112b18095807ad696a22037ade94275592a69b",
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": [
+          "registry/records/services/docker-engine.yaml",
+          "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"
+        ],
+        "container_participation": "not_applicable",
+        "participation_reason": "runtime_engine_not_workload"
+      },
+      "record_reference": "registry/records/services/docker-engine.yaml",
+      "source_sha256": "392097f7de8947982fec921b553a86ea46dc71175d09764c37e9bff486dc9e78",
+      "subject_id": "svc-docker-engine",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "review_required",
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {
+          "assertion": "The Registry establishes the active Grafana service and governed host relationship.",
+          "reference": "registry/records/services/grafana.yaml",
+          "source_sha256": "c36fc472a4c3acb796bfbbf0c09667046858b65ebcc9ef51977c5f88f8f8802d"
+        },
+        {
+          "assertion": "Repository Compose configuration establishes project and service identity evidence.",
+          "reference": "platform/compose/monitoring/compose.yaml",
+          "source_sha256": "dc1fa1b23d5c1b2471e7f023f5ae192a9dd35997eb99920eb1f37086a9660dd3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/services/grafana.yaml",
+      "source_sha256": "c36fc472a4c3acb796bfbbf0c09667046858b65ebcc9ef51977c5f88f8f8802d",
+      "subject_id": "svc-grafana",
+      "unresolved_fields": [
+        "container_health_policy_reference",
+        "health_check_requirement",
+        "reviewed_migration_approval"
+      ],
+      "warnings": [
+        "Existing degraded legacy health_status is not a Container Operational Health assessment."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The planned workload form is not governed sufficiently for migration.",
+          "reference": "registry/records/planned_services/home-assistant.yaml",
+          "source_sha256": "184754b27bdee34f22debbe278ba13aa28cf3d55146a636deb4ebe3805f0d9ad"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/home-assistant.yaml",
+      "source_sha256": "184754b27bdee34f22debbe278ba13aa28cf3d55146a636deb4ebe3805f0d9ad",
+      "subject_id": "svc-home-assistant",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Do not infer a container workload from service naming or future intent."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The logical hub record does not establish a deployable container workload.",
+          "reference": "registry/records/planned_services/home-automation-hub.yaml",
+          "source_sha256": "e3a2dd960ec25f18a4fbf03e4a0c1ba518fac82007451902a367b2de6594b54f"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/home-automation-hub.yaml",
+      "source_sha256": "e3a2dd960ec25f18a4fbf03e4a0c1ba518fac82007451902a367b2de6594b54f",
+      "subject_id": "svc-home-automation-hub",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Do not convert a logical service subject into a container identity without review."
+      ]
+    },
+    {
+      "action": "apply",
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {
+          "assertion": "The published architecture classifies this subject as a logical service.",
+          "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md",
+          "source_sha256": "9cf2d58759df009c90d2614aa0d9612050ce713eeab60aeae03bc7634dca9e28"
+        }
+      ],
+      "expected_post_sha256": "b6a91e299f746fa94d1b5662f500967b4f597b45f92c709be02b3fb1f57a46e8",
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": [
+          "registry/records/services/infrastructure-registry-validation.yaml",
+          "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"
+        ],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "record_reference": "registry/records/services/infrastructure-registry-validation.yaml",
+      "source_sha256": "1b8437d25b38a482cd770c1b0f85c614df6837e60a077879457b491aa3acbab3",
+      "subject_id": "svc-infrastructure-registry-validation",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The planned broker record does not establish its future workload identity.",
+          "reference": "registry/records/planned_services/mqtt-broker.yaml",
+          "source_sha256": "5965f1838e83ed2ab945de276c0c913d3072e1fc90ef597870d96a52a2c93fdd"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/mqtt-broker.yaml",
+      "source_sha256": "5965f1838e83ed2ab945de276c0c913d3072e1fc90ef597870d96a52a2c93fdd",
+      "subject_id": "svc-mqtt-broker",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Do not infer Compose identity from a planned service name."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {
+          "assertion": "The Registry establishes the active Node Exporter service and governed host relationship.",
+          "reference": "registry/records/services/node-exporter.yaml",
+          "source_sha256": "6812747a01b22b6a342bc5291fc6cfa2f6444fd2b6eb57d79cbc602f2b5505a2"
+        },
+        {
+          "assertion": "Repository Compose configuration establishes project and service identity evidence.",
+          "reference": "platform/compose/monitoring/compose.yaml",
+          "source_sha256": "dc1fa1b23d5c1b2471e7f023f5ae192a9dd35997eb99920eb1f37086a9660dd3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/services/node-exporter.yaml",
+      "source_sha256": "6812747a01b22b6a342bc5291fc6cfa2f6444fd2b6eb57d79cbc602f2b5505a2",
+      "subject_id": "svc-node-exporter",
+      "unresolved_fields": [
+        "container_health_policy_reference",
+        "health_check_requirement",
+        "reviewed_migration_approval"
+      ],
+      "warnings": []
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The planned AI service record does not establish its future workload identity.",
+          "reference": "registry/records/planned_services/ollama-local-ai.yaml",
+          "source_sha256": "7b3c755d3b2b9edd361ac42f3e690cf93c5d6740c23fefb89bacf63311b6b871"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/ollama-local-ai.yaml",
+      "source_sha256": "7b3c755d3b2b9edd361ac42f3e690cf93c5d6740c23fefb89bacf63311b6b871",
+      "subject_id": "svc-ollama-local-ai",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Do not infer runtime or Compose identity from product naming."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "planned_container_service",
+      "evidence": [
+        {
+          "assertion": "The Registry declares a planned OpenTelemetry Docker Stats Collector.",
+          "reference": "registry/records/planned_services/otel-docker-stats.yaml",
+          "source_sha256": "fd6eab5a499680042d25dfc5231c2ac22e8f8b9867be3177ca2ee722b91f7546"
+        },
+        {
+          "assertion": "Repository Compose configuration provides future identity evidence but does not authorize activation.",
+          "reference": "platform/compose/monitoring/compose.yaml",
+          "source_sha256": "dc1fa1b23d5c1b2471e7f023f5ae192a9dd35997eb99920eb1f37086a9660dd3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/otel-docker-stats.yaml",
+      "source_sha256": "fd6eab5a499680042d25dfc5231c2ac22e8f8b9867be3177ca2ee722b91f7546",
+      "subject_id": "svc-otel-docker-stats",
+      "unresolved_fields": [
+        "health_check_requirement",
+        "reviewed_migration_approval"
+      ],
+      "warnings": [
+        "Planned service must remain intentionally inactive and unactivated."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {
+          "assertion": "The Registry establishes the active Pi-hole subject, Beelink host relationship, container role, and runtime-name candidate.",
+          "reference": "registry/records/services/pihole-dns.yaml",
+          "source_sha256": "9a0898089b843c637f1ad347958e6244da4ac384624aa05bfe0d2aff226907c1"
+        },
+        {
+          "assertion": "The published specification identifies the exact values that remain unresolved.",
+          "reference": "docs/specifications/Registry_Container_Identity_Foundation_Specification.md",
+          "source_sha256": "62c66fab2fd37bad1847ae8491089c57f02fd2b06a0090e857066b920e82b254"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/services/pihole-dns.yaml",
+      "source_sha256": "9a0898089b843c637f1ad347958e6244da4ac384624aa05bfe0d2aff226907c1",
+      "subject_id": "svc-pihole-dns",
+      "unresolved_fields": [
+        "compose_project",
+        "compose_service",
+        "container_health_policy_reference",
+        "health_check_requirement"
+      ],
+      "warnings": [
+        "Compose path and runtime-name candidate cannot establish the missing exact values."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The replacement rollback record does not establish its current workload identity sufficiently for migration.",
+          "reference": "registry/records/services/pihole-raspberry-pi-rollback.yaml",
+          "source_sha256": "965e130b2e42ba6306d09688c042942a8fd1d528787d12c995ba49c75b72e47d"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/services/pihole-raspberry-pi-rollback.yaml",
+      "source_sha256": "965e130b2e42ba6306d09688c042942a8fd1d528787d12c995ba49c75b72e47d",
+      "subject_id": "svc-pihole-raspberry-pi-rollback",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Replacement lifecycle does not imply intentional inactivity under the new contract."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The planned alerting record does not establish a deployable container workload.",
+          "reference": "registry/records/planned_services/platform-alerting.yaml",
+          "source_sha256": "61b9f6541f15ca3b1d86d2a36f043a9e8bb0d56c826bb9dac5fd714495aae2a4"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/platform-alerting.yaml",
+      "source_sha256": "61b9f6541f15ca3b1d86d2a36f043a9e8bb0d56c826bb9dac5fd714495aae2a4",
+      "subject_id": "svc-platform-alerting",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Alerting capability intent is not container identity evidence."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The planned backup capability does not establish a deployable container workload.",
+          "reference": "registry/records/planned_services/platform-backup-recovery.yaml",
+          "source_sha256": "7e734c0f5aa6cdab08540320e65cc471ad7957b55162bcf4981b64ceb0bb2cb5"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/platform-backup-recovery.yaml",
+      "source_sha256": "7e734c0f5aa6cdab08540320e65cc471ad7957b55162bcf4981b64ceb0bb2cb5",
+      "subject_id": "svc-platform-backup-recovery",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Backup capability intent is not container identity evidence."
+      ]
+    },
+    {
+      "action": "apply",
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {
+          "assertion": "The published architecture classifies this subject as a logical service.",
+          "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md",
+          "source_sha256": "9cf2d58759df009c90d2614aa0d9612050ce713eeab60aeae03bc7634dca9e28"
+        }
+      ],
+      "expected_post_sha256": "3c21ba7e92ae37ccc46e6cfb8c103c8bdc0f0b14280aa5019fc4abd3bd8ee188",
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": [
+          "registry/records/services/platform-eap.yaml",
+          "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"
+        ],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "record_reference": "registry/records/services/platform-eap.yaml",
+      "source_sha256": "d873403d24e221539aa294faec8bb3b1f7c3bfec5e7309e69a520c5468694857",
+      "subject_id": "svc-platform-eap",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The planned dashboard record does not establish one governed container identity.",
+          "reference": "registry/records/planned_services/platform-monitoring-dashboard.yaml",
+          "source_sha256": "dc79bd5846730391da1fc6ff6375104fff7b9fe3799b07afe9e4f76e2c9689c8"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/platform-monitoring-dashboard.yaml",
+      "source_sha256": "dc79bd5846730391da1fc6ff6375104fff7b9fe3799b07afe9e4f76e2c9689c8",
+      "subject_id": "svc-platform-monitoring-dashboard",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Presentation capability intent is not container identity evidence."
+      ]
+    },
+    {
+      "action": "review_required",
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {
+          "assertion": "The Registry establishes the active Prometheus service and governed host relationship.",
+          "reference": "registry/records/services/prometheus.yaml",
+          "source_sha256": "a03c05c29893032243714fb8aa0b484f5f6dcfe2f2d978325baef650a8ae79c4"
+        },
+        {
+          "assertion": "Repository Compose configuration establishes project and service identity evidence.",
+          "reference": "platform/compose/monitoring/compose.yaml",
+          "source_sha256": "dc1fa1b23d5c1b2471e7f023f5ae192a9dd35997eb99920eb1f37086a9660dd3"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/services/prometheus.yaml",
+      "source_sha256": "a03c05c29893032243714fb8aa0b484f5f6dcfe2f2d978325baef650a8ae79c4",
+      "subject_id": "svc-prometheus",
+      "unresolved_fields": [
+        "container_health_policy_reference",
+        "health_check_requirement",
+        "reviewed_migration_approval"
+      ],
+      "warnings": []
+    },
+    {
+      "action": "review_required",
+      "classification": "unresolved",
+      "evidence": [
+        {
+          "assertion": "The planned remote-management record does not establish a deployable container workload.",
+          "reference": "registry/records/planned_services/remote-management.yaml",
+          "source_sha256": "cf4d41299f1c92e4d327a052236f780539c67ebc55c1e54ba3a460d6fc238f6b"
+        }
+      ],
+      "expected_post_sha256": null,
+      "proposed_fields": {},
+      "record_reference": "registry/records/planned_services/remote-management.yaml",
+      "source_sha256": "cf4d41299f1c92e4d327a052236f780539c67ebc55c1e54ba3a460d6fc238f6b",
+      "subject_id": "svc-remote-management",
+      "unresolved_fields": [
+        "container_participation",
+        "governed_workload_identity"
+      ],
+      "warnings": [
+        "Management capability intent is not container identity evidence."
+      ]
+    }
+  ],
+  "model_version": "registry-container-identity-migration-v2",
+  "plan_id": "sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f",
+  "schema_version": "1.1"
+}

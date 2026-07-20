@@ -1,6 +1,6 @@
 # Architecture Backlog
 
-**Document Version:** 1.12
+**Document Version:** 1.14
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 | AB-008 | High | Platform runtime architecture options | Candidate | Deferred until Infrastructure operations readiness establishes options and gates. |
 | AB-009 | High | Platform Digital Twin lifecycle state model | Candidate | Future enhancement proposal for explicit states: Planned -> Delivered -> Powered -> BIOS Verified -> OS Installed -> Network Connected -> SSH Verified -> Docker Ready -> Platform Active. Do not implement lifecycle changes in PLAT-13.3. |
 | AB-010 | High | Governed operations and observability | Active | ADR-007 selects governed Prometheus, Node Exporter, cAdvisor, and Grafana target architecture for PLAT-13.6 planning. |
-| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1 and the PLAT-14.1A Option B fixture-only repository slice are published. The migration model-v2 idempotency correction is complete and unpublished; no Registry record is migrated, and all approval, provider, consumer-integration, activation, and live gates remain blocked. |
+| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1, the PLAT-14.1A Option B fixture-only repository slice, and migration model v2 are published. Exact plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` is approved and deterministically bound in a validated, unpublished package; no Registry record is migrated, and provider, consumer-integration, activation, and live gates remain blocked. |
 | AB-002 | High | Home Automation safety model | Candidate | Needed before device or automation workflows. |
 | AB-003 | Medium | AI Services privacy and safety model | Candidate | Required before AI service implementation. |
 | AB-004 | Medium | Energy data model | Candidate | Required before energy tracking implementation. |
@@ -45,6 +45,8 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 
 | Version | Description |
 |---------|-------------|
+| 1.14 | Recorded deterministic exact-plan approval binding as unpublished and unexecuted while preserving migration, provider, activation, and live gates. |
+| 1.13 | Recorded exact-plan approval-in-principle and creation of unpublished, unbound approval evidence while preserving migration, provider, activation, and live gates. |
 | 1.12 | Recorded the complete unpublished Registry migration idempotency correction and regenerated pending plan without opening approval, migration, provider, activation, or live gates. |
 | 1.11 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A fixture-only repository vertical slice while retaining Registry migration, provider, dashboard/API, activation, and live gates. |
 | 1.10 | Recorded the complete unpublished PLAT-14.1A repository vertical slice with Registry migration, provider, dashboard, activation, and live gates unchanged. |

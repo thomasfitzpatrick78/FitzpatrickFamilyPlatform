@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.15
+**Document Version:** 1.17
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation architecture/specification and repository implementation, and the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice. The Registry migration model-v2 idempotency correction is complete and unpublished pending Architecture Gatekeeper review. All 39 Registry records remain unchanged and unmigrated; approval, providers, runtime observation, dashboards/APIs, activation, and live work remain blocked.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation architecture/specification and repository implementation, the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice, and the Registry migration model-v2 idempotency correction. Exact plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` is approved; the governed artifact is deterministically bound to an exact persisted derived plan in a validated, unpublished package. All 39 Registry records remain unchanged and unmigrated; publication, execution, providers, runtime observation, dashboards/APIs, activation, and live work remain blocked.
 
 ---
 
@@ -28,7 +28,7 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - Validation-first design selected before monitoring, dashboards, or automation.
 - Governed operations and observability architecture selected in ADR-007.
 - Platform Operations bounded-context direction is published in ADR-009 through ADR-011, with declared state, normalized evidence, reconciliation, deterministic health, and advisory intelligence kept separate; implementation remains absent.
-- The Registry Container Identity Foundation published baseline and exact-plan approval-artifact hardening remain in force. The complete unpublished model-v2 correction separates candidate source state from immutable evidence and binds exact post-state idempotency; schema `1.1` validates all 39 unchanged records, and no record is migrated or container-health eligible.
+- The Registry Container Identity Foundation published baseline and model-v2 correction remain in force. Exact plan approval evidence now binds the five reviewed `not_applicable` patches into a persisted derived plan without executing them; schema `1.1` validates all 39 unchanged records, and no record is migrated or container-health eligible.
 - The published PLAT-14.1A repository capability implements immutable contracts, strict policy/evidence parsing, synthetic Registry identity, fixture-only normalization, reconciliation, health assessment, deterministic outputs, read-only CLI, and fixture-only EO contract reuse. It remains unactivated and incapable of evaluating an authoritative current Registry subject.
 - Record migration, production provider adapters, security review, live observation, dashboards, activation, and live infrastructure remain blocked.
 
@@ -77,6 +77,8 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.17 | Recorded deterministic exact-plan approval binding as unpublished and unexecuted with all Registry, provider, activation, and live state unchanged. |
+| 1.16 | Recorded exact-plan approval-in-principle and creation of unpublished, unbound approval evidence with all Registry, provider, activation, and live state unchanged. |
 | 1.15 | Recorded the complete unpublished Registry migration model-v2 idempotency correction while preserving all approval, record, provider, dashboard/API, activation, and live-work gates. |
 | 1.14 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A fixture-only repository slice while preserving Registry, provider, dashboard/API, activation, and live-work gates. |
 | 1.13 | Recorded the complete unpublished PLAT-14.1A fixture-only repository vertical slice while preserving Registry, provider, dashboard, activation, and live-work gates. |

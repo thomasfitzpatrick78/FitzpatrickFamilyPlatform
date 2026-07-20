@@ -11,6 +11,7 @@ from engineering.platform_eap.registry_identity import (
     APPROVAL_MODEL_VERSION,
     REGISTRY_MIGRATION_APPROVAL_AUTHORITY,
     REGISTRY_MIGRATION_APPROVAL_SCOPE,
+    SUPERSEDED_MIGRATION_PLAN_IDS,
     MigrationApprovalStatus,
     MigrationDataError,
     bind_migration_approval,
@@ -18,6 +19,7 @@ from engineering.platform_eap.registry_identity import (
     build_migration_report,
     execute_migration,
     migration_approval_from_json,
+    migration_approval_to_json,
     migration_evidence_catalog_from_json,
     migration_plan_from_json,
     migration_plan_to_dict,
@@ -26,6 +28,21 @@ from engineering.platform_eap.registry_identity import (
     rollback_metadata_to_json,
     rollback_migration,
     _plan_id,
+    _validate_approval_for_plan,
+)
+
+
+APPROVAL_REVIEW_REFERENCE = "docs/milestones/Milestone_14/Registry_Container_Identity_Migration_Approval_Review.md"
+APPROVAL_ARTIFACT_REFERENCE = (
+    "registry/migrations/container_identity/approvals/registry-container-identity-plan-5addac8821f1-approval.json"
+)
+BOUND_PLAN_REFERENCE = "registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json"
+APPROVED_SUBJECT_IDS = (
+    "svc-controlled-container-updates",
+    "svc-docker-container-metrics-exporter",
+    "svc-docker-engine",
+    "svc-infrastructure-registry-validation",
+    "svc-platform-eap",
 )
 
 
@@ -304,6 +321,102 @@ def test_repository_apply_candidate_hashes_match_independently_derived_content()
                 additions.extend([f"{key}:", *(f"  - {item}" for item in value)])
         expected = source.rstrip(b"\n") + b"\n" + "\n".join(additions).encode("utf-8") + b"\n"
         assert hashlib.sha256(expected).hexdigest() == candidate.expected_post_sha256
+
+
+def test_repository_exact_approval_artifact_and_review_document_are_consistent_and_unbound():
+    plan = current_plan()
+    artifact_path = cli.ROOT / APPROVAL_ARTIFACT_REFERENCE
+    review_path = cli.ROOT / APPROVAL_REVIEW_REFERENCE
+    artifact_text = artifact_path.read_text(encoding="utf-8")
+    approval = migration_approval_from_json(artifact_text)
+    _validate_approval_for_plan(approval, plan, cli.ROOT)
+
+    assert migration_approval_to_json(approval) == artifact_text
+    assert approval.plan_id == plan.plan_id == "sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f"
+    assert approval.plan_id not in SUPERSEDED_MIGRATION_PLAN_IDS
+    assert approval.model_version == APPROVAL_MODEL_VERSION
+    assert approval.schema_version == plan.schema_version == "1.1"
+    assert approval.migration_model_version == plan.model_version == "registry-container-identity-migration-v2"
+    assert approval.approval_status.value == "approved"
+    assert approval.approval_scope == REGISTRY_MIGRATION_APPROVAL_SCOPE
+    assert approval.approval_authority == REGISTRY_MIGRATION_APPROVAL_AUTHORITY
+    assert approval.approval_authority_reference == APPROVAL_REVIEW_REFERENCE
+    assert review_path.is_file()
+
+    review = review_path.read_text(encoding="utf-8")
+    assert approval.plan_id in review
+    assert approval.approval_timestamp in review
+    assert approval.approval_authority in review
+    assert approval.approval_scope in review
+    assert "Decision A — Approve all five exact patches." in review
+    assert approval.decision_notes is not None
+    for subject_id in APPROVED_SUBJECT_IDS:
+        assert subject_id in approval.decision_notes
+        assert subject_id in review
+
+    assert plan.approval_status == MigrationApprovalStatus.PENDING
+    assert plan.approval_reference is None
+    assert plan.approval_sha256 is None
+    for candidate in plan.candidates:
+        if candidate.subject_id not in APPROVED_SUBJECT_IDS:
+            continue
+        record = (cli.ROOT / candidate.record_reference).read_text(encoding="utf-8")
+        assert "container_identity_contract_version:" not in record
+        assert "container_participation:" not in record
+    assert not list((cli.ROOT / "registry/migrations/container_identity").glob("*rollback*.json"))
+    first_read = artifact_path.read_bytes()
+    second_read = artifact_path.read_bytes()
+    assert first_read == second_read
+    assert hashlib.sha256(first_read).hexdigest() == hashlib.sha256(second_read).hexdigest()
+
+
+def test_repository_bound_plan_is_exact_deterministic_and_non_executing():
+    pending = current_plan()
+    bound_path = cli.ROOT / BOUND_PLAN_REFERENCE
+    bound_text = bound_path.read_text(encoding="utf-8")
+    bound = migration_plan_from_json(bound_text)
+    artifact_path = cli.ROOT / APPROVAL_ARTIFACT_REFERENCE
+
+    assert migration_plan_to_json(bound) == bound_text
+    assert bound.plan_id == pending.plan_id == "sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f"
+    assert bound.model_version == pending.model_version == "registry-container-identity-migration-v2"
+    assert bound.schema_version == pending.schema_version == "1.1"
+    assert bound.candidates == pending.candidates
+    assert bound.approval_status == MigrationApprovalStatus.APPROVED
+    assert bound.approval_reference == APPROVAL_ARTIFACT_REFERENCE
+    assert bound.approval_sha256 == hashlib.sha256(artifact_path.read_bytes()).hexdigest()
+    assert pending.approval_status == MigrationApprovalStatus.PENDING
+    assert pending.approval_reference is None
+    assert pending.approval_sha256 is None
+    assert not list((cli.ROOT / "registry/migrations/container_identity").glob("*rollback*.json"))
+    for candidate in bound.candidates:
+        if candidate.subject_id not in APPROVED_SUBJECT_IDS:
+            continue
+        record = (cli.ROOT / candidate.record_reference).read_text(encoding="utf-8")
+        assert "container_identity_contract_version:" not in record
+        assert "container_participation:" not in record
+
+
+@pytest.mark.parametrize(
+    ("overrides", "expected"),
+    [
+        ({"approval_timestamp": "2026-07-20T15:37:03"}, "timestamp must be timezone-aware"),
+        ({"approval_timestamp": "not-a-timestamp"}, "timestamp must be timezone-aware"),
+        ({"approval_authority": "Migration Caller"}, "authority is not authorized"),
+        ({"approval_scope": "documentation_publication"}, "scope does not permit Registry record migration"),
+        ({"approval_authority_reference": "docs/governance/missing-review.md"}, "authority reference is unsafe or missing"),
+        ({"approval_authority_reference": "../approval-review.md"}, "authority reference is unsafe or missing"),
+        ({"plan_id": "sha256:" + "0" * 64}, "does not approve the submitted plan ID"),
+        ({"plan_id": "sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94"}, "does not approve the submitted plan ID"),
+    ],
+)
+def test_repository_approval_contract_variants_fail_closed(overrides, expected):
+    plan = current_plan()
+    payload = json.loads((cli.ROOT / APPROVAL_ARTIFACT_REFERENCE).read_text(encoding="utf-8"))
+    payload.update(overrides)
+    approval = migration_approval_from_json(json.dumps(payload))
+    with pytest.raises(MigrationDataError, match=expected):
+        _validate_approval_for_plan(approval, plan, cli.ROOT)
 
 
 def test_non_service_record_domains_are_explicit_deterministic_no_change_candidates():
