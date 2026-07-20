@@ -1,6 +1,6 @@
 # Milestone 14 - Operationalizing the AI Engineering Organization
 
-**Document Version:** 2.9
+**Document Version:** 3.0
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -60,6 +60,8 @@ EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved EO-14.
 
 PLAT-14.0A architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, the PLAT-14.1A Container Operational Health specification is published at `89deeed2480679c9717cb151c3a14fe9414d8b97`, and the Registry Container Identity Foundation and PLAT-14.1A fixture-only repository capability are published. The capability implements strict contracts and policies, synthetic Registry identity, canonical evidence, reconciliation, health assessment, deterministic outputs, bounded CLI, and EO fixture integration. All 39 records remain unchanged; record migration, providers, dashboards/APIs, activation, and live work remain separately blocked.
 
+The Registry migration framework idempotency correction is complete and unpublished. Migration model v2 separates target source state from immutable supporting evidence, binds exact expected post-state hashes, rejects the superseded model-v1 plan, and regenerates the pending 39-candidate plan without changing classifications or Registry records. Architecture Gatekeeper review is required before publication; approval and execution remain later gates.
+
 ---
 
 ## Work Package Plan
@@ -84,7 +86,7 @@ PLAT-14.0A architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f
 | EO-14.8E | Engineering Metrics Integration | FitzpatrickFamilyPlatform | Consume governed readiness evidence in Engineering Metrics and repository-side Platform Health visibility. | Complete. |
 | PLAT-14.0A | Platform Operations Domain Architecture | FitzpatrickFamilyPlatform | Establish Platform Operations as the bounded context for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. | Published architecture and contracts at `c8f9bc3`; Implemented: No. |
 | PLAT-14.1 | Container Metrics Modernization | FitzpatrickFamilyPlatform | Carry forward Milestone 13 container metrics architecture into approval-ready requirements. | Container metrics modernization specification. |
-| Registry Container Identity Foundation | PLAT-14.1A prerequisite | FitzpatrickFamilyPlatform | Implement the smallest authoritative service-record identity extension, evidence-gated migration, validation, and exact-plan mutation-approval contract. | Architecture Gatekeeper accepted and published; all 39 records unchanged; standalone identifier intentionally deferred; approval artifact and record migration remain separate gates. |
+| Registry Container Identity Foundation | PLAT-14.1A prerequisite | FitzpatrickFamilyPlatform | Implement the smallest authoritative service-record identity extension, evidence-gated migration, validation, and exact-plan mutation-approval contract. | Published baseline; model-v2 idempotency correction complete and unpublished pending Architecture Gatekeeper review; all 39 records unchanged; approval artifact and migration remain separate gates. |
 | PLAT-14.1A | Container Operational Health | FitzpatrickFamilyPlatform | Implement the provider-independent fixture-only evidence, reconciliation, health, output, CLI, and EO integration vertical slice. | Option B repository implementation Architecture Gatekeeper accepted and published, fixture-only and unactivated; no Registry record is eligible or migrated. |
 | PLAT-14.2 | Operational Excellence | FitzpatrickFamilyPlatform | Define backup, restore, recovery, alerting, runbook, and evidence scope. | Operational excellence specification. |
 | PLAT-14.3 | Platform Health Dashboard | FitzpatrickFamilyPlatform | Define executive operational health view and source-of-truth boundaries. | Platform health dashboard specification. |
@@ -295,6 +297,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 3.0 | Recorded the complete unpublished Registry migration model-v2 idempotency correction and regenerated pending plan while preserving separate approval, migration, provider, activation, and live-work gates. |
 | 2.9 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A Option B fixture-only repository vertical slice while retaining Registry migration, provider, dashboard/API, activation, and live-work gates. |
 | 2.8 | Recorded the complete unpublished PLAT-14.1A Option B repository vertical slice while retaining Registry migration, provider, dashboard, activation, and live-work gates. |
 | 2.7 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity implementation while preserving record-migration, PLAT, provider, dashboard, activation, and live-work gates. |

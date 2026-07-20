@@ -39,10 +39,12 @@ from engineering.platform_eap.automation_io import (
 from engineering.platform_eap.automation_rendering import render_automation_handoff_markdown
 from engineering.platform_eap.registry_identity import (
     MigrationDataError,
+    SUPERSEDED_MIGRATION_PLAN_IDS,
     bind_migration_approval,
     build_migration_plan,
     build_migration_report,
     execute_migration,
+    migration_evidence_catalog_from_json,
     migration_plan_from_json,
     migration_plan_to_json,
     render_migration_review,
@@ -442,11 +444,9 @@ def _current_registry_migration_plan(catalog_path: Path | None = None):
     schema = load_registry_schema()
     source = REGISTRY_MIGRATION_CATALOG if catalog_path is None else catalog_path
     try:
-        catalog = json.loads(source.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        catalog = migration_evidence_catalog_from_json(source.read_text(encoding="utf-8"))
+    except (OSError, MigrationDataError) as exc:
         raise MigrationDataError(f"Migration evidence catalog cannot be read: {exc}.") from exc
-    if not isinstance(catalog, dict):
-        raise MigrationDataError("Migration evidence catalog must contain a JSON object.")
     return build_migration_plan(records, path_by_id, schema, catalog, ROOT)
 
 
@@ -497,9 +497,12 @@ def _registry_migration_cli(argv: list[str]) -> int:
             print(render_migration_review(plan), end="")
             return 0
         if argv == ["status"]:
-            report = build_migration_report(_current_registry_migration_plan())
+            plan = _current_registry_migration_plan()
+            report = build_migration_report(plan)
             print("# Registry Container Identity Migration Status")
             print(f"Plan ID: {report.plan_id}")
+            print(f"Migration model: {plan.model_version}")
+            print(f"Superseded plan IDs: {', '.join(SUPERSEDED_MIGRATION_PLAN_IDS)}")
             print(f"Approval status: {report.approval_status.value}")
             print(f"Candidates: {report.candidate_count}")
             print(f"Apply: {report.apply_count}")

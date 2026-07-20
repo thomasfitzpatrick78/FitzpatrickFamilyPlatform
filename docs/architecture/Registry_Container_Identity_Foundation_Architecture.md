@@ -1,12 +1,12 @@
 # Registry Container Identity Foundation Architecture
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Published Architecture
 
 **Milestone:** Milestone 14 - PLAT-14.1A prerequisite
 
-**Implementation:** Complete; Published
+**Implementation:** Published Baseline; Idempotency Correction Complete and Unpublished
 
 ---
 
@@ -19,6 +19,8 @@ The capability extends the Infrastructure Registry declared-state contract so co
 The original architecture package did not implement the Registry schema, migrate records, change validation or CLI behavior, create health models, access providers, or connect to live infrastructure.
 
 The subsequent authorized implementation package advances the additive Registry schema to `1.1`, implements strict validation and evidence-gated migration tooling, and preserves all 39 current records unchanged. Pre-publication hardening separates the immutable proposal from authorization through a strict exact-plan Architecture Gatekeeper approval artifact and content-hash binding. PLAT-14.1A, providers, health evaluation, activation, and live work remain outside the implementation.
+
+The unpublished idempotency correction separates mutable candidate source state from immutable supporting evidence. Migration model v2 binds the original candidate hash, canonical patch, and expected post-migration hash into the plan ID. Exact post-state equality may return `no_change` only after approval, version, authority, scope, subject, path, and immutable-evidence checks pass. Partial application, unrelated target drift, external evidence drift, and obsolete model-v1 plans fail closed. The former plan `sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94` is superseded and ineligible for approval.
 
 ---
 
@@ -54,7 +56,7 @@ The foundation does not own runtime discovery, monitoring, evidence collection, 
 
 ### Current Contract
 
-The current Registry has schema ID `infrastructure_registry_v1`, schema version `1.0`, and 39 valid records. It uses flat repository-managed YAML and a deterministic bounded parser. Record IDs are globally unique. `service` and `planned_service` are already the authoritative active and intended service subject types.
+At the original architecture assessment, the Registry had schema ID `infrastructure_registry_v1`, schema version `1.0`, and 39 valid records. The implemented Registry now uses additive schema `1.1` while preserving all 39 records unchanged. It uses flat repository-managed YAML and a deterministic bounded parser. Record IDs are globally unique. `service` and `planned_service` remain the authoritative active and intended service subject types.
 
 Existing useful fields are:
 
@@ -91,6 +93,8 @@ Repository evidence supports this pre-migration classification without changing 
 | Not applicable record domains | Locations, owners, devices, network devices, and hosts | These remain relationship targets, not container service subjects. |
 
 This assessment is architecture evidence only. It is not a migration and does not establish live state.
+
+`svc-platform-eap` is specifically classified from its governed repository behavior: Platform EAP is a local command capability, its runtime is repository-managed, and its execution host varies by operator workstation. The Registry record's legacy `description: placeholder` is weak display text, but the service interface, runtime model, engineering implementation, and this architecture decision establish the logical repository capability without implying a container workload. This clarification does not alter the Registry record, lifecycle, or classification.
 
 ---
 
@@ -270,6 +274,7 @@ Repository evidence does not establish an approved standalone PLAT or Registry w
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Documented the complete unpublished migration-model-v2 idempotency correction, superseded model-v1 plan, exact expected-post-state contract, and unchanged Registry/approval/live boundaries. |
 | 1.2 | Recorded Architecture Gatekeeper acceptance and publication of the schema, validation, migration framework, approval binding, CLI, Digital Twin compatibility, and tests without migrating records or starting PLAT-14.1A. |
 | 1.1 | Added the required pre-publication exact-plan governed approval artifact boundary without changing schema, classifications, records, or PLAT scope. |
 | 1.0 | Published Option A architecture; later repository implementation completed unpublished without record migration, PLAT-14.1A, provider, or live work. |

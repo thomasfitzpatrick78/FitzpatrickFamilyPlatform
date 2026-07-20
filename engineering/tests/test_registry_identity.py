@@ -17,12 +17,15 @@ from engineering.platform_eap.registry_identity import (
     build_migration_plan,
     build_migration_report,
     execute_migration,
+    migration_approval_from_json,
+    migration_evidence_catalog_from_json,
     migration_plan_from_json,
     migration_plan_to_dict,
     migration_plan_to_json,
     rollback_metadata_from_json,
     rollback_metadata_to_json,
     rollback_migration,
+    _plan_id,
 )
 
 
@@ -248,7 +251,7 @@ def test_same_compose_service_on_different_host_is_allowed(tmp_path):
 def current_plan():
     records, paths, errors = cli.load_registry_records()
     assert not errors
-    catalog = json.loads(cli.REGISTRY_MIGRATION_CATALOG.read_text(encoding="utf-8"))
+    catalog = migration_evidence_catalog_from_json(cli.REGISTRY_MIGRATION_CATALOG.read_text(encoding="utf-8"))
     return build_migration_plan(records, paths, cli.load_registry_schema(), catalog, cli.ROOT)
 
 
@@ -265,6 +268,42 @@ def test_repository_migration_plan_is_deterministic_complete_and_non_mutating():
     assert report.review_required_count == 16
     assert report.no_change_count == 18
     assert before == after
+
+
+def test_repository_apply_candidates_separate_mutable_sources_from_supporting_evidence():
+    plan = current_plan()
+    apply_candidates = [candidate for candidate in plan.candidates if candidate.action.value == "apply"]
+    assert len(apply_candidates) == 5
+    for candidate in apply_candidates:
+        assert candidate.expected_post_sha256 is not None
+        assert candidate.expected_post_sha256 != candidate.source_sha256
+        assert all(item.reference != candidate.record_reference for item in candidate.evidence)
+        assert [item.reference for item in candidate.evidence] == [
+            "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"
+        ]
+
+
+def test_repository_apply_candidate_hashes_match_independently_derived_content():
+    plan = current_plan()
+    for candidate in plan.candidates:
+        source = (cli.ROOT / candidate.record_reference).read_bytes()
+        assert hashlib.sha256(source).hexdigest() == candidate.source_sha256
+        for evidence in candidate.evidence:
+            assert hashlib.sha256((cli.ROOT / evidence.reference).read_bytes()).hexdigest() == evidence.source_sha256
+        if candidate.action.value != "apply":
+            assert candidate.expected_post_sha256 is None
+            continue
+        additions = []
+        for key, value in candidate.proposed_fields:
+            if isinstance(value, str):
+                additions.append(f"{key}: {value}")
+            elif isinstance(value, bool):
+                additions.append(f"{key}: {'true' if value else 'false'}")
+            else:
+                assert isinstance(value, list) and value
+                additions.extend([f"{key}:", *(f"  - {item}" for item in value)])
+        expected = source.rstrip(b"\n") + b"\n" + "\n".join(additions).encode("utf-8") + b"\n"
+        assert hashlib.sha256(expected).hexdigest() == candidate.expected_post_sha256
 
 
 def test_non_service_record_domains_are_explicit_deterministic_no_change_candidates():
@@ -349,6 +388,59 @@ def approved_temp_plan(tmp_path: Path, records: Path, schema: Path):
     return bind_migration_approval(plan, reference, content)
 
 
+def current_plan_shaped_approved_plan(tmp_path: Path):
+    records, schema = create_registry(tmp_path)
+    subject_ids = (
+        "svc-example",
+        "svc-logical-two",
+        "svc-logical-three",
+        "svc-logical-four",
+        "svc-logical-five",
+    )
+    template = (records / "services" / "example.yaml").read_text(encoding="utf-8")
+    for subject_id in subject_ids[1:]:
+        write_record(
+            tmp_path,
+            f"services/{subject_id.removeprefix('svc-')}.yaml",
+            template.replace("svc-example", subject_id).replace("name: Example", f"name: {subject_id}"),
+        )
+    architecture_evidence = tmp_path / "docs" / "architecture" / "non-container-services.md"
+    architecture_evidence.parent.mkdir(parents=True)
+    architecture_evidence.write_text("# Reviewed Non-Container Services\n", encoding="utf-8")
+    entries = []
+    for subject_id in subject_ids:
+        record_reference = f"registry/records/services/{'example' if subject_id == 'svc-example' else subject_id.removeprefix('svc-')}.yaml"
+        entries.append(
+            {
+                "subject_id": subject_id,
+                "classification": "confirmed_non_container_service",
+                "proposed_fields": {
+                    "container_identity_contract_version": "1.0",
+                    "container_participation": "not_applicable",
+                    "container_identity_evidence": [record_reference, "docs/architecture/non-container-services.md"],
+                    "participation_reason": "logical_or_repository_capability",
+                },
+                "evidence": [
+                    {"reference": record_reference, "assertion": "The source Registry record establishes the logical capability."},
+                    {"reference": "docs/architecture/non-container-services.md", "assertion": "Architecture review confirms the non-container classification."},
+                ],
+                "unresolved_fields": [],
+                "warnings": [],
+            }
+        )
+    parsed, paths, errors = cli.load_registry_records(records)
+    assert not errors
+    plan = build_migration_plan(
+        parsed,
+        paths,
+        cli.load_registry_schema(schema),
+        {"model_version": "registry-container-identity-evidence-v1", "entries": entries},
+        tmp_path,
+    )
+    reference, content = write_approval(tmp_path, plan)
+    return records, schema, bind_migration_approval(plan, reference, content)
+
+
 def self_asserted_approval_plan(plan, reference: str, content: bytes):
     return replace(
         plan,
@@ -372,6 +464,53 @@ def test_migration_plan_json_is_strict_and_rejects_future_versions(tmp_path):
         migration_plan_from_json(json.dumps(payload))
 
 
+def test_authoritative_migration_json_rejects_duplicate_keys(tmp_path):
+    records, schema = create_registry(tmp_path)
+    plan = temp_plan(tmp_path, records, schema)
+    plan_json = migration_plan_to_json(plan).replace(
+        '"model_version": "registry-container-identity-migration-v2",',
+        '"model_version": "registry-container-identity-migration-v2",\n  "model_version": "registry-container-identity-migration-v2",',
+        1,
+    )
+    with pytest.raises(MigrationDataError, match="duplicate field: model_version"):
+        migration_plan_from_json(plan_json)
+    approval_json = json.dumps(approval_payload(plan)).replace(
+        '"approval_status": "approved"',
+        '"approval_status": "approved", "approval_status": "approved"',
+        1,
+    )
+    with pytest.raises(MigrationDataError, match="duplicate field: approval_status"):
+        migration_approval_from_json(approval_json)
+    catalog_json = cli.REGISTRY_MIGRATION_CATALOG.read_text(encoding="utf-8").replace(
+        '"model_version": "registry-container-identity-evidence-v1"',
+        '"model_version": "registry-container-identity-evidence-v1", "model_version": "registry-container-identity-evidence-v1"',
+        1,
+    )
+    with pytest.raises(MigrationDataError, match="duplicate field: model_version"):
+        migration_evidence_catalog_from_json(catalog_json)
+    rollback = execute_migration(approved_temp_plan(tmp_path, records, schema), tmp_path, dry_run=True).rollback_metadata
+    rollback_json = rollback_metadata_to_json(rollback).replace(
+        '"model_version": "registry-container-identity-rollback-v1",',
+        '"model_version": "registry-container-identity-rollback-v1",\n  "model_version": "registry-container-identity-rollback-v1",',
+        1,
+    )
+    with pytest.raises(MigrationDataError, match="duplicate field: model_version"):
+        rollback_metadata_from_json(rollback_json)
+
+
+def test_plan_rejects_obsolete_model_and_invalid_expected_post_hash(tmp_path):
+    records, schema = create_registry(tmp_path)
+    plan = temp_plan(tmp_path, records, schema)
+    payload = migration_plan_to_dict(plan)
+    payload["model_version"] = "registry-container-identity-migration-v1"
+    with pytest.raises(MigrationDataError, match="model version is unsupported"):
+        migration_plan_from_json(json.dumps(payload))
+    payload = migration_plan_to_dict(plan)
+    payload["candidates"][0]["expected_post_sha256"] = "not-a-digest"
+    with pytest.raises(MigrationDataError, match="expected_post_sha256"):
+        migration_plan_from_json(json.dumps(payload))
+
+
 def test_plan_rejects_action_and_classification_contradictions(tmp_path):
     records, schema = create_registry(tmp_path)
     plan = temp_plan(tmp_path, records, schema)
@@ -379,6 +518,35 @@ def test_plan_rejects_action_and_classification_contradictions(tmp_path):
     payload["candidates"][0]["action"] = "review_required"
     with pytest.raises(MigrationDataError, match="action does not match"):
         migration_plan_from_json(json.dumps(payload))
+
+
+def test_planner_rejects_target_record_symlink_as_immutable_supporting_evidence(tmp_path):
+    records, schema = create_registry(tmp_path)
+    target = records / "services" / "example.yaml"
+    alias = tmp_path / "docs" / "target-alias.yaml"
+    alias.symlink_to(target)
+    catalog = one_subject_catalog()
+    catalog["entries"][0]["evidence"] = [
+        {"reference": "docs/target-alias.yaml", "assertion": "Alias must not convert mutable source into immutable evidence."}
+    ]
+    parsed, paths, errors = cli.load_registry_records(records)
+    assert not errors
+    with pytest.raises(MigrationDataError, match="immutable supporting evidence distinct"):
+        build_migration_plan(parsed, paths, cli.load_registry_schema(schema), catalog, tmp_path)
+
+
+def test_planner_rejects_removed_or_changed_supporting_evidence(tmp_path):
+    records, schema = create_registry(tmp_path)
+    parsed, paths, errors = cli.load_registry_records(records)
+    assert not errors
+    catalog = one_subject_catalog()
+    catalog["entries"][0]["evidence"] = []
+    with pytest.raises(MigrationDataError, match="requires evidence"):
+        build_migration_plan(parsed, paths, cli.load_registry_schema(schema), catalog, tmp_path)
+    catalog = one_subject_catalog()
+    catalog["entries"][0]["evidence"][0]["reference"] = "docs/missing-evidence.md"
+    with pytest.raises(MigrationDataError, match="unsafe or missing"):
+        build_migration_plan(parsed, paths, cli.load_registry_schema(schema), catalog, tmp_path)
 
 
 def test_executor_requires_approved_plan_and_explicit_confirmation(tmp_path):
@@ -526,10 +694,126 @@ def test_executor_apply_is_deterministic_and_rollback_restores_exact_file(tmp_pa
     assert "container_participation: not_applicable" in target.read_text(encoding="utf-8")
     second = execute_migration(plan, tmp_path, dry_run=False, confirm=True, rollback_output=tmp_path / "registry" / "migrations" / "rollback-second.json", validate=validate)
     assert second.status == "no_change"
+    assert not (tmp_path / "registry" / "migrations" / "rollback-second.json").exists()
     rolled_back = rollback_migration(result.rollback_metadata, tmp_path, confirm=True, validate=validate)
     assert rolled_back.status == "rolled_back"
     assert target.read_bytes() == before
     assert rollback_migration(result.rollback_metadata, tmp_path, confirm=True, validate=validate).status == "no_change"
+
+
+def test_current_plan_shaped_self_evidence_second_execution_is_no_change(tmp_path):
+    records, schema, plan = current_plan_shaped_approved_plan(tmp_path)
+    validate = lambda: validate_temp_registry(tmp_path, records, schema)
+    before = {path: path.read_bytes() for path in sorted(records.rglob("*.yaml"))}
+    assert all(
+        item.reference != candidate.record_reference
+        for candidate in plan.candidates
+        if candidate.action.value == "apply"
+        for item in candidate.evidence
+    )
+    first = execute_migration(
+        plan,
+        tmp_path,
+        dry_run=False,
+        confirm=True,
+        rollback_output=tmp_path / "registry" / "migrations" / "rollback.json",
+        validate=validate,
+    )
+    after_first = {path: path.read_bytes() for path in sorted(records.rglob("*.yaml"))}
+    second = execute_migration(
+        plan,
+        tmp_path,
+        dry_run=False,
+        confirm=True,
+        rollback_output=tmp_path / "registry" / "migrations" / "rollback-second.json",
+        validate=validate,
+    )
+    after_second = {path: path.read_bytes() for path in sorted(records.rglob("*.yaml"))}
+    assert first.status == "applied"
+    assert second.status == "no_change"
+    assert after_second == after_first
+    assert not (tmp_path / "registry" / "migrations" / "rollback-second.json").exists()
+    rolled_back = rollback_migration(first.rollback_metadata, tmp_path, confirm=True, validate=validate)
+    assert rolled_back.status == "rolled_back"
+    assert {path: path.read_bytes() for path in sorted(records.rglob("*.yaml"))} == before
+    assert rollback_migration(first.rollback_metadata, tmp_path, confirm=True, validate=validate).status == "no_change"
+
+
+def test_current_plan_shaped_partial_and_unrelated_target_drift_fail_closed(tmp_path):
+    records, _schema, plan = current_plan_shaped_approved_plan(tmp_path)
+    candidate = next(item for item in plan.candidates if item.action.value == "apply")
+    target = tmp_path / candidate.record_reference
+    target.write_text(
+        target.read_text(encoding="utf-8") + "container_identity_contract_version: 1.0\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(MigrationDataError, match="partially applied or contains unrelated drift"):
+        execute_migration(plan, tmp_path, dry_run=True)
+
+    other_root = tmp_path / "unrelated"
+    _other_records, _other_schema, other_plan = current_plan_shaped_approved_plan(other_root)
+    other_candidate = next(item for item in other_plan.candidates if item.action.value == "apply")
+    other_target = other_root / other_candidate.record_reference
+    other_target.write_text(other_target.read_text(encoding="utf-8") + "runtime_status: changed\n", encoding="utf-8")
+    with pytest.raises(MigrationDataError, match="candidate source is stale"):
+        execute_migration(other_plan, other_root, dry_run=True)
+
+
+def test_current_plan_shaped_external_evidence_and_subject_drift_fail_closed(tmp_path):
+    _records, _schema, plan = current_plan_shaped_approved_plan(tmp_path)
+    evidence = tmp_path / "docs" / "architecture" / "non-container-services.md"
+    evidence.write_text("# Changed Architecture Evidence\n", encoding="utf-8")
+    with pytest.raises(MigrationDataError, match="evidence has drifted"):
+        execute_migration(plan, tmp_path, dry_run=True)
+
+    other_root = tmp_path / "subject"
+    _other_records, _other_schema, other_plan = current_plan_shaped_approved_plan(other_root)
+    candidate = next(item for item in other_plan.candidates if item.action.value == "apply")
+    target = other_root / candidate.record_reference
+    target.write_text(target.read_text(encoding="utf-8").replace(candidate.subject_id, "svc-replaced", 1), encoding="utf-8")
+    with pytest.raises(MigrationDataError, match="does not contain subject"):
+        execute_migration(other_plan, other_root, dry_run=True)
+
+
+def test_current_plan_shaped_approval_and_source_drift_fail_closed(tmp_path):
+    _records, _schema, plan = current_plan_shaped_approved_plan(tmp_path)
+    assert plan.approval_reference is not None
+    approval = tmp_path / plan.approval_reference
+    approval.write_text(approval.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+    with pytest.raises(MigrationDataError, match="approval artifact has drifted"):
+        execute_migration(plan, tmp_path, dry_run=True)
+
+    other_root = tmp_path / "source"
+    _other_records, _other_schema, other_plan = current_plan_shaped_approved_plan(other_root)
+    candidate = next(item for item in other_plan.candidates if item.action.value == "apply")
+    target = other_root / candidate.record_reference
+    target.write_text(target.read_text(encoding="utf-8") + "# source drift before application\n", encoding="utf-8")
+    with pytest.raises(MigrationDataError, match="candidate source is stale"):
+        execute_migration(other_plan, other_root, dry_run=True)
+
+
+def test_executor_rejects_plan_bound_incorrect_expected_post_state(tmp_path):
+    records, schema = create_registry(tmp_path)
+    plan = temp_plan(tmp_path, records, schema)
+    apply_index = next(index for index, item in enumerate(plan.candidates) if item.action.value == "apply")
+    candidate = replace(plan.candidates[apply_index], expected_post_sha256="0" * 64)
+    candidates = tuple(candidate if index == apply_index else item for index, item in enumerate(plan.candidates))
+    incorrect = replace(plan, candidates=candidates, plan_id=_plan_id(plan.schema_version, candidates))
+    reference, content = write_approval(tmp_path, incorrect)
+    approved = bind_migration_approval(incorrect, reference, content)
+    with pytest.raises(MigrationDataError, match="expected post-state hash is invalid"):
+        execute_migration(approved, tmp_path, dry_run=True)
+
+
+def test_migration_plan_is_independent_of_catalog_entry_order():
+    records, paths, errors = cli.load_registry_records()
+    assert not errors
+    catalog = dict(migration_evidence_catalog_from_json(cli.REGISTRY_MIGRATION_CATALOG.read_text(encoding="utf-8")))
+    catalog["entries"] = list(reversed(catalog["entries"]))
+    reordered = build_migration_plan(records, paths, cli.load_registry_schema(), catalog, cli.ROOT)
+    canonical = current_plan()
+    assert migration_plan_to_json(reordered) == migration_plan_to_json(canonical)
+    assert reordered.plan_id == canonical.plan_id
 
 
 def test_rollback_metadata_round_trip_is_strict(tmp_path):

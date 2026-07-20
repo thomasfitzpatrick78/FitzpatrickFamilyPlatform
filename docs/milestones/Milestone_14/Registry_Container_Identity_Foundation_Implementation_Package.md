@@ -1,6 +1,6 @@
 # Registry Container Identity Foundation Implementation Package
 
-**Status:** Architecture Gatekeeper Accepted; Published
+**Status:** Published Baseline; Idempotency Correction Complete and Unpublished
 
 **Milestone:** Milestone 14
 
@@ -20,6 +20,22 @@
 - Approved-plan dry-run and atomic repository update with full-registry validation.
 - Exact-content rollback metadata, drift rejection, and idempotent rollback.
 - Compatible Registry CLI commands, read-only approval binding, and comprehensive engineering tests.
+
+## Idempotency Correction
+
+Architecture review confirmed that the original model-v1 plan treated each of the five mutable target records as hashed supporting evidence. First execution changed those evidence files, causing second execution to fail evidence-drift validation before reaching the intended no-change path.
+
+The corrected migration model v2:
+
+- uses the candidate source hash as authority for exact original target bytes;
+- excludes an apply target from immutable supporting-evidence hashes;
+- binds the canonical patch and deterministically derived expected post-migration hash into the plan ID;
+- recognizes only the exact plan-bound post-state as already applied;
+- returns write-free `no_change` after all approval, version, subject, path, and immutable-evidence checks pass;
+- rejects partial patches, unrelated target drift, source drift, external evidence drift, approval drift, malformed or duplicate-key JSON, and obsolete model-v1 plans;
+- preserves atomic application, complete Registry and Digital Twin validation, exact rollback, and idempotent rollback.
+
+The old pending plan `sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94` is superseded and ineligible for approval. The regenerated model-v2 plan is pending and unapproved. All five classifications and all 39 Registry records remain unchanged.
 
 ## Current Migration Status
 
@@ -51,4 +67,4 @@ The implementation performs no runtime discovery, provider access, monitoring, r
 
 ## Next Gate
 
-The Architecture Gatekeeper accepted the completed approval-binding correction and authorized publication of this bounded repository implementation. Any later approval artifact, record migration, and PLAT-14.1A implementation remain separate decisions.
+Architecture Gatekeeper review of the unpublished idempotency correction and regenerated pending plan is the next gate. Publication, any later approval artifact, and any Registry record migration remain separate decisions.

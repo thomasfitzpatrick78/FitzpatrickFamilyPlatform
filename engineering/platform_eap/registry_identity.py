@@ -14,12 +14,15 @@ from typing import Callable, Mapping, Sequence
 
 SCHEMA_VERSION = "1.1"
 CONTRACT_VERSION = "1.0"
-MIGRATION_MODEL_VERSION = "registry-container-identity-migration-v1"
+MIGRATION_MODEL_VERSION = "registry-container-identity-migration-v2"
 EVIDENCE_CATALOG_VERSION = "registry-container-identity-evidence-v1"
 ROLLBACK_MODEL_VERSION = "registry-container-identity-rollback-v1"
 APPROVAL_MODEL_VERSION = "registry-container-identity-approval-v1"
 REGISTRY_MIGRATION_APPROVAL_SCOPE = "registry_record_migration"
 REGISTRY_MIGRATION_APPROVAL_AUTHORITY = "Architecture Gatekeeper"
+SUPERSEDED_MIGRATION_PLAN_IDS = (
+    "sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94",
+)
 
 CONTAINER_IDENTITY_FIELDS = {
     "container_identity_contract_version",
@@ -116,6 +119,7 @@ class MigrationCandidate:
     subject_id: str
     record_reference: str
     source_sha256: str
+    expected_post_sha256: str | None
     classification: MigrationClassification
     action: MigrationAction
     proposed_fields: tuple[tuple[str, object], ...]
@@ -202,6 +206,28 @@ def _sha256_bytes(value: bytes) -> str:
 
 def _canonical_json(value: object) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+
+
+def _strict_json_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
+    result: dict[str, object] = {}
+    for key, value in pairs:
+        if key in result:
+            raise MigrationDataError(f"Authoritative migration JSON contains duplicate field: {key}.")
+        result[key] = value
+    return result
+
+
+def _strict_json_loads(text: str, context: str) -> object:
+    try:
+        return json.loads(text, object_pairs_hook=_strict_json_object)
+    except MigrationDataError:
+        raise
+    except json.JSONDecodeError as exc:
+        raise MigrationDataError(f"{context} is not valid JSON: {exc}.") from exc
+
+
+def migration_evidence_catalog_from_json(text: str) -> Mapping[str, object]:
+    return _expect_mapping(_strict_json_loads(text, "Migration evidence catalog"), "migration evidence catalog")
 
 
 def _safe_reference(value: object, repository_root: Path, require_exists: bool = True) -> bool:
@@ -488,6 +514,7 @@ def _candidate_payload(candidate: MigrationCandidate) -> dict[str, object]:
         "subject_id": candidate.subject_id,
         "record_reference": candidate.record_reference,
         "source_sha256": candidate.source_sha256,
+        "expected_post_sha256": candidate.expected_post_sha256,
         "classification": candidate.classification.value,
         "action": candidate.action.value,
         "proposed_fields": {key: value for key, value in candidate.proposed_fields},
@@ -542,18 +569,6 @@ def build_migration_plan(
         unknown_proposals = sorted(set(proposed) - CONTAINER_IDENTITY_FIELDS)
         if unknown_proposals:
             raise MigrationDataError(f"Migration proposal for {subject_id} contains unsupported fields: {', '.join(unknown_proposals)}.")
-        evidence_value = entry.get("evidence")
-        if not isinstance(evidence_value, list) or not evidence_value:
-            raise MigrationDataError(f"Migration candidate {subject_id} requires evidence.")
-        evidence: list[MigrationEvidence] = []
-        for evidence_index, raw_evidence in enumerate(evidence_value):
-            item = _expect_mapping(raw_evidence, f"catalog entry {index}.evidence[{evidence_index}]")
-            _expect_keys(item, {"reference", "assertion"}, set(), f"catalog entry {index}.evidence[{evidence_index}]")
-            reference = _expect_string(item.get("reference"), "evidence.reference")
-            assertion = _expect_string(item.get("assertion"), "evidence.assertion")
-            if not _safe_reference(reference, repository_root):
-                raise MigrationDataError(f"Migration evidence reference is unsafe or missing: {reference}.")
-            evidence.append(MigrationEvidence(reference, assertion, _sha256_bytes((repository_root / reference).read_bytes())))
         unresolved = _expect_string_tuple(entry.get("unresolved_fields"), f"catalog entry {index}.unresolved_fields")
         warnings = _expect_string_tuple(entry.get("warnings"), f"catalog entry {index}.warnings")
         _validate_classification_proposal(classification, proposed, unresolved, f"catalog entry {index}")
@@ -565,14 +580,41 @@ def build_migration_plan(
             record_reference = str(path.relative_to(repository_root))
         except ValueError as exc:
             raise MigrationDataError(f"Migration record path is outside the repository for {subject_id}.") from exc
+        evidence_value = entry.get("evidence")
+        if not isinstance(evidence_value, list) or not evidence_value:
+            raise MigrationDataError(f"Migration candidate {subject_id} requires evidence.")
+        evidence: list[MigrationEvidence] = []
+        for evidence_index, raw_evidence in enumerate(evidence_value):
+            item = _expect_mapping(raw_evidence, f"catalog entry {index}.evidence[{evidence_index}]")
+            _expect_keys(item, {"reference", "assertion"}, set(), f"catalog entry {index}.evidence[{evidence_index}]")
+            reference = _expect_string(item.get("reference"), "evidence.reference")
+            assertion = _expect_string(item.get("assertion"), "evidence.assertion")
+            if not _safe_reference(reference, repository_root):
+                raise MigrationDataError(f"Migration evidence reference is unsafe or missing: {reference}.")
+            if action == MigrationAction.APPLY and (repository_root / reference).resolve() == path.resolve():
+                continue
+            evidence.append(MigrationEvidence(reference, assertion, _sha256_bytes((repository_root / reference).read_bytes())))
+        if action == MigrationAction.APPLY and not evidence:
+            raise MigrationDataError(
+                f"Migration candidate {subject_id} requires immutable supporting evidence distinct from its mutable target record."
+            )
+        source_bytes = path.read_bytes()
+        source_content = source_bytes.decode("utf-8")
+        proposed_fields = tuple(sorted(proposed.items()))
+        expected_post_sha256 = (
+            _sha256_bytes(_merged_record_text(source_content, proposed_fields).encode("utf-8"))
+            if action == MigrationAction.APPLY
+            else None
+        )
         candidates.append(
             MigrationCandidate(
                 subject_id=subject_id,
                 record_reference=record_reference,
-                source_sha256=_sha256_bytes(path.read_bytes()),
+                source_sha256=_sha256_bytes(source_bytes),
+                expected_post_sha256=expected_post_sha256,
                 classification=classification,
                 action=action,
-                proposed_fields=tuple(sorted(proposed.items())),
+                proposed_fields=proposed_fields,
                 evidence=tuple(evidence),
                 unresolved_fields=tuple(sorted(unresolved)),
                 warnings=tuple(sorted(warnings)),
@@ -599,6 +641,7 @@ def build_migration_plan(
                 subject_id=subject_id,
                 record_reference=record_reference,
                 source_sha256=source_sha256,
+                expected_post_sha256=None,
                 classification=MigrationClassification.NOT_APPLICABLE,
                 action=MigrationAction.NO_CHANGE,
                 proposed_fields=(),
@@ -649,10 +692,7 @@ def migration_approval_to_json(approval: MigrationApprovalArtifact) -> str:
 
 
 def migration_approval_from_json(text: str) -> MigrationApprovalArtifact:
-    try:
-        value = json.loads(text)
-    except json.JSONDecodeError as exc:
-        raise MigrationDataError(f"Migration approval artifact is not valid JSON: {exc}.") from exc
+    value = _strict_json_loads(text, "Migration approval artifact")
     payload = _expect_mapping(value, "migration approval artifact")
     _expect_keys(
         payload,
@@ -756,12 +796,14 @@ def migration_plan_to_json(plan: MigrationPlan) -> str:
 
 def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
     payload = _expect_mapping(value, context)
-    _expect_keys(payload, {"subject_id", "record_reference", "source_sha256", "classification", "action", "proposed_fields", "evidence", "unresolved_fields", "warnings"}, set(), context)
+    _expect_keys(payload, {"subject_id", "record_reference", "source_sha256", "expected_post_sha256", "classification", "action", "proposed_fields", "evidence", "unresolved_fields", "warnings"}, set(), context)
     try:
         classification = MigrationClassification(payload.get("classification"))
         action = MigrationAction(payload.get("action"))
     except ValueError as exc:
         raise MigrationDataError(f"{context} contains an unsupported classification or action.") from exc
+    subject_id = _expect_string(payload.get("subject_id"), f"{context}.subject_id")
+    record_reference = _expect_string(payload.get("record_reference"), f"{context}.record_reference")
     proposed = _expect_mapping(payload.get("proposed_fields"), f"{context}.proposed_fields")
     if set(proposed) - CONTAINER_IDENTITY_FIELDS:
         raise MigrationDataError(f"{context} contains unsupported proposed fields.")
@@ -791,10 +833,26 @@ def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
     expected_action = _expected_action(proposed_fields, unresolved_fields)
     if action != expected_action:
         raise MigrationDataError(f"{context} action does not match its proposal and unresolved findings.")
+    expected_post_sha256 = payload.get("expected_post_sha256")
+    if expected_post_sha256 is not None and (
+        not isinstance(expected_post_sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", expected_post_sha256)
+    ):
+        raise MigrationDataError(f"{context}.expected_post_sha256 must be a lowercase sha256 digest or null.")
+    if action == MigrationAction.APPLY and expected_post_sha256 is None:
+        raise MigrationDataError(f"{context} apply action requires an expected post-migration sha256 digest.")
+    if action != MigrationAction.APPLY and expected_post_sha256 is not None:
+        raise MigrationDataError(f"{context} non-apply action cannot contain an expected post-migration sha256 digest.")
+    if action == MigrationAction.APPLY and not evidence:
+        raise MigrationDataError(f"{context} apply action requires immutable supporting evidence.")
+    if action == MigrationAction.APPLY and any(item.reference == record_reference for item in evidence):
+        raise MigrationDataError(f"{context} mutable target record cannot be immutable supporting evidence.")
+    if action == MigrationAction.APPLY and expected_post_sha256 == source_sha256:
+        raise MigrationDataError(f"{context} apply action must change the exact candidate state.")
     return MigrationCandidate(
-        subject_id=_expect_string(payload.get("subject_id"), f"{context}.subject_id"),
-        record_reference=_expect_string(payload.get("record_reference"), f"{context}.record_reference"),
+        subject_id=subject_id,
+        record_reference=record_reference,
         source_sha256=source_sha256,
+        expected_post_sha256=expected_post_sha256,
         classification=classification,
         action=action,
         proposed_fields=tuple(sorted(proposed_fields.items())),
@@ -805,10 +863,7 @@ def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
 
 
 def migration_plan_from_json(text: str) -> MigrationPlan:
-    try:
-        value = json.loads(text)
-    except json.JSONDecodeError as exc:
-        raise MigrationDataError(f"Migration plan is not valid JSON: {exc}.") from exc
+    value = _strict_json_loads(text, "Migration plan")
     payload = _expect_mapping(value, "migration plan")
     _expect_keys(
         payload,
@@ -877,6 +932,10 @@ def render_migration_review(plan: MigrationPlan) -> str:
         "# Registry Container Identity Migration Review",
         "",
         f"Plan ID: `{plan.plan_id}`",
+        "",
+        f"Migration model: `{plan.model_version}`",
+        "",
+        f"Superseded plan IDs: {', '.join(f'`{item}`' for item in SUPERSEDED_MIGRATION_PLAN_IDS)}.",
         "",
         f"Approval status: `{plan.approval_status.value}`",
         "",
@@ -980,10 +1039,7 @@ def rollback_metadata_to_json(metadata: MigrationRollbackMetadata) -> str:
 
 
 def rollback_metadata_from_json(text: str) -> MigrationRollbackMetadata:
-    try:
-        value = json.loads(text)
-    except json.JSONDecodeError as exc:
-        raise MigrationDataError(f"Rollback metadata is not valid JSON: {exc}.") from exc
+    value = _strict_json_loads(text, "Rollback metadata")
     payload = _expect_mapping(value, "rollback metadata")
     _expect_keys(payload, {"model_version", "plan_id", "entries"}, set(), "rollback metadata")
     if payload.get("model_version") != ROLLBACK_MODEL_VERSION:
@@ -1064,9 +1120,20 @@ def execute_migration(
     evaluated: list[str] = []
     for candidate in plan.candidates:
         evaluated.append(candidate.subject_id)
+        if not _safe_registry_record_reference(candidate.record_reference, repository_root):
+            raise MigrationDataError(f"Migration record reference is unsafe or missing: {candidate.record_reference}.")
+        path = repository_root / candidate.record_reference
+        original = path.read_text(encoding="utf-8")
+        parsed_record = _parse_flat_yaml_text(original)
+        if parsed_record.get("id") != candidate.subject_id:
+            raise MigrationDataError(f"Migration record reference does not contain subject {candidate.subject_id}.")
         if not candidate.evidence or any(not _safe_reference(item.reference, repository_root) for item in candidate.evidence):
             raise MigrationDataError(f"Migration candidate {candidate.subject_id} lacks safe governed evidence.")
         for item in candidate.evidence:
+            if candidate.action == MigrationAction.APPLY and (repository_root / item.reference).resolve() == path.resolve():
+                raise MigrationDataError(
+                    f"Migration candidate {candidate.subject_id} cannot treat its mutable target as immutable supporting evidence."
+                )
             if _sha256_bytes((repository_root / item.reference).read_bytes()) != item.source_sha256:
                 raise MigrationDataError(f"Migration evidence has drifted for {candidate.subject_id}: {item.reference}.")
         if candidate.action != MigrationAction.APPLY:
@@ -1075,28 +1142,35 @@ def execute_migration(
             raise MigrationDataError(f"Migration candidate {candidate.subject_id} has no proposed fields.")
         if candidate.unresolved_fields:
             raise MigrationDataError(f"Migration candidate {candidate.subject_id} has unresolved fields.")
-        if not _safe_registry_record_reference(candidate.record_reference, repository_root):
-            raise MigrationDataError(f"Migration record reference is unsafe or missing: {candidate.record_reference}.")
-        path = repository_root / candidate.record_reference
-        original = path.read_text(encoding="utf-8")
-        if _parse_flat_yaml_text(original).get("id") != candidate.subject_id:
-            raise MigrationDataError(f"Migration record reference does not contain subject {candidate.subject_id}.")
-        migrated = _merged_record_text(original, candidate.proposed_fields)
+        if candidate.expected_post_sha256 is None:
+            raise MigrationDataError(f"Migration candidate {candidate.subject_id} lacks an expected post-migration hash.")
         current_sha = _sha256_bytes(original.encode("utf-8"))
-        if migrated == original:
+        if current_sha == candidate.expected_post_sha256:
             continue
         if current_sha != candidate.source_sha256:
-            raise MigrationDataError(f"Migration plan is stale for {candidate.subject_id}.")
+            proposed = dict(candidate.proposed_fields)
+            matching_patch_fields = sorted(key for key, value in proposed.items() if parsed_record.get(key) == value)
+            if matching_patch_fields:
+                raise MigrationDataError(
+                    f"Migration target is partially applied or contains unrelated drift for {candidate.subject_id}."
+                )
+            raise MigrationDataError(f"Migration candidate source is stale for {candidate.subject_id}.")
+        migrated = _merged_record_text(original, candidate.proposed_fields)
+        migrated_sha256 = _sha256_bytes(migrated.encode("utf-8"))
+        if migrated_sha256 != candidate.expected_post_sha256:
+            raise MigrationDataError(f"Migration expected post-state hash is invalid for {candidate.subject_id}.")
         prepared.append(
             (
                 path,
                 migrated,
-                MigrationRollbackEntry(candidate.subject_id, candidate.record_reference, current_sha, _sha256_bytes(migrated.encode("utf-8")), original),
+                MigrationRollbackEntry(candidate.subject_id, candidate.record_reference, current_sha, migrated_sha256, original),
             )
         )
     metadata = MigrationRollbackMetadata(ROLLBACK_MODEL_VERSION, plan.plan_id, tuple(item[2] for item in prepared))
     if dry_run:
         return MigrationResult(plan.plan_id, "dry_run_complete", True, tuple(evaluated), tuple(item[2].record_reference for item in prepared), (), metadata)
+    if not prepared:
+        return MigrationResult(plan.plan_id, "no_change", False, tuple(evaluated), (), (), metadata)
     assert rollback_output is not None
     if rollback_output.exists():
         raise MigrationDataError("Rollback metadata output already exists; refusing overwrite.")

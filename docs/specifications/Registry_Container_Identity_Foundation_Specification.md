@@ -1,8 +1,8 @@
 # Registry Container Identity Foundation Specification
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
-**Status:** Published Specification and Implementation
+**Status:** Published Specification and Implementation; Idempotency Correction Complete and Unpublished
 
 **Milestone:** Milestone 14 - PLAT-14.1A prerequisite
 
@@ -16,7 +16,7 @@ This specification defines the smallest authoritative Infrastructure Registry ex
 
 The implemented design adds bounded optional fields to existing `service` and `planned_service` records. It does not create a new container record type, linked runtime inventory, provider model, or health-assessment field.
 
-The repository implementation advances the schema to `1.1`, adds strict validation, deterministic migration planning/execution/rollback, an exact-plan governed approval artifact, and compatible CLI commands. It does not migrate any current Registry record or authorize PLAT-14.1A implementation.
+The repository implementation advances the schema to `1.1`, adds strict validation, deterministic migration planning/execution/rollback, an exact-plan governed approval artifact, and compatible CLI commands. The complete unpublished migration-model-v2 correction separates mutable source state from immutable supporting evidence and binds the exact expected post-migration state into the plan. It does not migrate any current Registry record or authorize provider, activation, or live work.
 
 ---
 
@@ -270,6 +270,16 @@ The migration framework is implemented as a repository-only capability. It produ
 
 Every migration batch validates before and after, preserves a reviewable diff, identifies its evidence, and proves the second application is a no-op. Mutation requires a canonical plan bound to a separate matching governed approval artifact, explicit confirmation, and rollback metadata.
 
+### Migration Model v2 Idempotency Contract
+
+For each apply candidate, `source_sha256` binds the exact original Registry-record bytes. The candidate target is source state, not immutable supporting evidence. Supporting-evidence hashes bind only governed files expected to remain unchanged by the mutation. The canonical patch and `expected_post_sha256`, deterministically derived from the exact source bytes plus that patch, are part of the plan identity and therefore part of any later exact-plan approval.
+
+After approval, the executor validates plan and approval versions, authority, scope, artifact hash, subject, safe record path, and immutable supporting evidence before evaluating target state. Exact source-state equality permits first application. Exact expected-post-state equality permits a write-free `no_change`. Any other target hash is stale, partially applied, or unrelated drift and fails closed. External evidence drift remains blocking for both first and repeated execution. Model-v1 pending plans are obsolete and rejected; they are never silently reinterpreted.
+
+The target Registry record may remain listed in the record's future `container_identity_evidence` declaration, but the plan does not duplicate that mutable target as immutable supporting evidence. Its integrity roles are the candidate source and expected post-state hashes.
+
+Future active-service proposals should bind each critical field to reviewed field-level evidence for participation, host, Compose project, Compose service, health-check requirement, and policy reference. Existence of a general evidence file is insufficient to prove an exact field value, and Pi-hole values remain unresolved.
+
 ### Governed Migration Approval Artifact
 
 The migration plan defines what is proposed. A separate repository-local JSON approval artifact defines whether that exact proposal is authorized. Plan approval fields are derived presentation metadata and cannot authorize execution by themselves.
@@ -427,6 +437,7 @@ This published specification preserves the approved baseline through these accep
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Defined the complete unpublished migration-model-v2 source/evidence/post-state separation, exact idempotency and drift behavior, superseded model-v1 plan, and future field-level evidence requirement without migrating records. |
 | 1.3 | Recorded Architecture Gatekeeper acceptance and publication of the completed implementation while retaining separate approval-artifact, record-migration, PLAT, provider, and live-work gates. |
 | 1.2 | Bound mutation authorization to a strict separate exact-plan Architecture Gatekeeper approval artifact and content hash before final publication review. |
 | 1.1 | Recorded complete unpublished schema 1.1, strict validation, evidence-gated migration, rollback, CLI, and test implementation without migrating records or starting PLAT-14.1A. |
