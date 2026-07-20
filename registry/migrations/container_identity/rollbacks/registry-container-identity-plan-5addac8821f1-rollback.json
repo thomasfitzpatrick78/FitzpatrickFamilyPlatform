@@ -1,0 +1,41 @@
+{
+  "entries": [
+    {
+      "migrated_sha256": "71aa7de6771d68ea6087c77f1983631876982cc3bc11f82f90231c8990cfb482",
+      "original_content": "id: svc-controlled-container-updates\nrecord_type: planned_service\nname: Controlled Container Updates\ndescription: Planned governed production container update process for version pinning, digest recording, backup, validation, observation, and rollback.\nowner: owner-family-platform\nlocation: loc-home\nlifecycle_status: planned\nhealth_status: planned\nmonitoring_ready: false\nservice_interface: update governance\nautomation_policy: no unattended production updates in this milestone\nunknowns: image inventory, digest source, and update evidence format TBD\ndependencies:\n  - host-beelink-mini-pc\n  - svc-docker-engine\n  - svc-platform-backup-recovery\nhost_dependencies:\n  - host-beelink-mini-pc\nservice_dependencies:\n  - svc-docker-engine\n  - svc-platform-backup-recovery\nnetwork_dependencies:\n  - net-switch-2-5gbe-1\npower_dependencies:\n  - dev-ups-battery-backup\nadministrative_dependencies:\n  - dev-toms-macbook-admin\n",
+      "original_sha256": "854ca198f805e6f3c8680dba384a400fceb0ad38975c15fbb6f79ecaeabf948d",
+      "record_reference": "registry/records/planned_services/controlled-container-updates.yaml",
+      "subject_id": "svc-controlled-container-updates"
+    },
+    {
+      "migrated_sha256": "2b03245b28772fdf0e7a7bc44f48087e95341c0d86d3b7502452efe2ecc547de",
+      "original_content": "id: svc-docker-container-metrics-exporter\nrecord_type: planned_service\nname: Docker Container Metrics Exporter\ndescription: Umbrella planning record for the Docker 29/containerd-compatible container metrics replacement now prepared as a restricted Docker API proxy plus OpenTelemetry Docker Stats Collector.\nowner: owner-family-platform\nlocation: loc-home\nlifecycle_status: planned\nhealth_status: planned\nmonitoring_ready: false\nservice_interface: Docker/container metrics exporter candidate\nplanned_host: beelink\nplanned_compose_path: /platform/compose/monitoring\nplanned_network: platform-monitoring\nplanned_datasource: Prometheus scrape target otel-docker-stats after Architecture Gatekeeper approval and live proof\naccess_boundary: internal Docker network only unless separately approved\nsocket_model: Docker socket is restricted to svc-docker-api-proxy; OpenTelemetry Collector has no direct socket mount\nimplementation_status: repository-prepared implementation package; not deployed; not active; exact metric names and digests pending live proof\nselected_components: svc-docker-api-proxy and svc-otel-docker-stats\ndocker_daemon_metrics_status: deferred follow-on gate; not enabled in this package\ncompatibility_target: Docker 29.6.1, containerd image store driver type io.containerd.snapshotter.v1, cgroup v2\nevidence_required: Docker container discovery, stable container labels, CPU, memory, network, filesystem, last-seen or state, Pi-hole non-regression\nunknowns: image digests, exact Prometheus metrics, live compatibility proof, proxy denial proof, Pi-hole identity proof\ndependencies:\n  - host-beelink-mini-pc\n  - svc-docker-engine\n  - svc-docker-api-proxy\n  - svc-otel-docker-stats\n  - svc-prometheus\nhost_dependencies:\n  - host-beelink-mini-pc\nservice_dependencies:\n  - svc-docker-engine\n  - svc-docker-api-proxy\n  - svc-otel-docker-stats\n  - svc-prometheus\nnetwork_dependencies:\n  - net-switch-2-5gbe-1\npower_dependencies:\n  - dev-ups-battery-backup\nadministrative_dependencies:\n  - dev-toms-macbook-admin\n",
+      "original_sha256": "6be96994ba561a00903fa399ac44b794d24cdbfa33c7623965552df5002b1c7d",
+      "record_reference": "registry/records/planned_services/docker-container-metrics-exporter.yaml",
+      "subject_id": "svc-docker-container-metrics-exporter"
+    },
+    {
+      "migrated_sha256": "466e7829e951f6d65d42cd523c112b18095807ad696a22037ade94275592a69b",
+      "original_content": "id: svc-docker-engine\nrecord_type: service\nname: Docker Engine\ndescription: Active Docker runtime on the Beelink Platform host.\nowner: owner-family-platform\nlocation: loc-home\nlifecycle_status: active\nhealth_status: healthy\nmonitoring_ready: true\nruntime_status: enabled and active after reboot\ncompose_plugin_status: installed\nproduction_host: beelink\nplatform_root: /platform\nunknowns: production image inventory and digest policy evidence TBD\ndependencies:\n  - host-beelink-mini-pc\nhost_dependencies:\n  - host-beelink-mini-pc\nnetwork_dependencies:\n  - net-switch-2-5gbe-1\npower_dependencies:\n  - dev-ups-battery-backup\nadministrative_dependencies:\n  - dev-toms-macbook-admin\n",
+      "original_sha256": "392097f7de8947982fec921b553a86ea46dc71175d09764c37e9bff486dc9e78",
+      "record_reference": "registry/records/services/docker-engine.yaml",
+      "subject_id": "svc-docker-engine"
+    },
+    {
+      "migrated_sha256": "b6a91e299f746fa94d1b5662f500967b4f597b45f92c709be02b3fb1f57a46e8",
+      "original_content": "id: svc-infrastructure-registry-validation\nrecord_type: service\nname: Infrastructure Registry Validation\ndescription: Platform EAP validation capability that validates Infrastructure Registry schema, records, references, and scope exclusions.\nowner: owner-family-platform\nlocation: loc-home\nlifecycle_status: active\nhealth_status: healthy\nmonitoring_ready: false\nservice_interface: platform-eap repository validate\nruntime_status: repository-managed\ndependencies:\n  - svc-platform-eap\nservice_dependencies:\n  - svc-platform-eap\nadministrative_dependencies:\n  - dev-toms-macbook-admin\n",
+      "original_sha256": "1b8437d25b38a482cd770c1b0f85c614df6837e60a077879457b491aa3acbab3",
+      "record_reference": "registry/records/services/infrastructure-registry-validation.yaml",
+      "subject_id": "svc-infrastructure-registry-validation"
+    },
+    {
+      "migrated_sha256": "3c21ba7e92ae37ccc46e6cfb8c103c8bdc0f0b14280aa5019fc4abd3bd8ee188",
+      "original_content": "id: svc-platform-eap\nrecord_type: service\nname: Platform Engineering Automation\ndescription: placeholder\nowner: owner-family-platform\nlocation: loc-home\nlifecycle_status: active\nhealth_status: healthy\nmonitoring_ready: false\nservice_interface: local command\nruntime_status: repository-managed\nunknowns: execution host varies by operator workstation\ndependencies:\n  - host-toms-macbook-admin\nhost_dependencies:\n  - host-toms-macbook-admin\nservice_dependencies: []\nadministrative_dependencies:\n  - dev-toms-macbook-admin\n",
+      "original_sha256": "d873403d24e221539aa294faec8bb3b1f7c3bfec5e7309e69a520c5468694857",
+      "record_reference": "registry/records/services/platform-eap.yaml",
+      "subject_id": "svc-platform-eap"
+    }
+  ],
+  "model_version": "registry-container-identity-rollback-v1",
+  "plan_id": "sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f"
+}

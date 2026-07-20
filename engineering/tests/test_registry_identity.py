@@ -27,6 +27,7 @@ from engineering.platform_eap.registry_identity import (
     rollback_metadata_from_json,
     rollback_metadata_to_json,
     rollback_migration,
+    validate_completed_migration,
     _plan_id,
     _validate_approval_for_plan,
 )
@@ -37,6 +38,9 @@ APPROVAL_ARTIFACT_REFERENCE = (
     "registry/migrations/container_identity/approvals/registry-container-identity-plan-5addac8821f1-approval.json"
 )
 BOUND_PLAN_REFERENCE = "registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json"
+ROLLBACK_REFERENCE = (
+    "registry/migrations/container_identity/rollbacks/registry-container-identity-plan-5addac8821f1-rollback.json"
+)
 APPROVED_SUBJECT_IDS = (
     "svc-controlled-container-updates",
     "svc-docker-container-metrics-exporter",
@@ -272,6 +276,14 @@ def current_plan():
     return build_migration_plan(records, paths, cli.load_registry_schema(), catalog, cli.ROOT)
 
 
+def historical_bound_plan():
+    return migration_plan_from_json((cli.ROOT / BOUND_PLAN_REFERENCE).read_text(encoding="utf-8"))
+
+
+def repository_rollback_metadata():
+    return rollback_metadata_from_json((cli.ROOT / ROLLBACK_REFERENCE).read_text(encoding="utf-8"))
+
+
 def test_repository_migration_plan_is_deterministic_complete_and_non_mutating():
     before = {path: path.read_bytes() for path in cli.registry_record_files()}
     first = current_plan()
@@ -279,52 +291,41 @@ def test_repository_migration_plan_is_deterministic_complete_and_non_mutating():
     after = {path: path.read_bytes() for path in cli.registry_record_files()}
     report = build_migration_report(first)
     assert migration_plan_to_json(first) == migration_plan_to_json(second)
-    assert first.plan_id == second.plan_id
+    assert first.plan_id == second.plan_id == "sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a"
     assert report.candidate_count == 39
-    assert report.apply_count == 5
+    assert report.apply_count == 0
     assert report.review_required_count == 16
-    assert report.no_change_count == 18
+    assert report.no_change_count == 23
     assert before == after
 
 
-def test_repository_apply_candidates_separate_mutable_sources_from_supporting_evidence():
+def test_repository_migrated_candidates_are_explicit_current_state_no_change():
     plan = current_plan()
-    apply_candidates = [candidate for candidate in plan.candidates if candidate.action.value == "apply"]
-    assert len(apply_candidates) == 5
-    for candidate in apply_candidates:
-        assert candidate.expected_post_sha256 is not None
-        assert candidate.expected_post_sha256 != candidate.source_sha256
-        assert all(item.reference != candidate.record_reference for item in candidate.evidence)
-        assert [item.reference for item in candidate.evidence] == [
-            "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"
-        ]
+    current_state = [candidate for candidate in plan.candidates if candidate.current_state_fields]
+    assert {candidate.subject_id for candidate in current_state} == set(APPROVED_SUBJECT_IDS)
+    for candidate in current_state:
+        assert candidate.action.value == "no_change"
+        assert candidate.expected_post_sha256 is None
+        assert candidate.proposed_fields == ()
+        assert dict(candidate.current_state_fields)["container_participation"] == "not_applicable"
 
 
-def test_repository_apply_candidate_hashes_match_independently_derived_content():
+def test_repository_current_plan_hashes_and_declared_state_match_repository_bytes():
     plan = current_plan()
+    records, _paths, errors = cli.load_registry_records()
+    assert not errors
     for candidate in plan.candidates:
         source = (cli.ROOT / candidate.record_reference).read_bytes()
         assert hashlib.sha256(source).hexdigest() == candidate.source_sha256
         for evidence in candidate.evidence:
             assert hashlib.sha256((cli.ROOT / evidence.reference).read_bytes()).hexdigest() == evidence.source_sha256
-        if candidate.action.value != "apply":
-            assert candidate.expected_post_sha256 is None
-            continue
-        additions = []
-        for key, value in candidate.proposed_fields:
-            if isinstance(value, str):
-                additions.append(f"{key}: {value}")
-            elif isinstance(value, bool):
-                additions.append(f"{key}: {'true' if value else 'false'}")
-            else:
-                assert isinstance(value, list) and value
-                additions.extend([f"{key}:", *(f"  - {item}" for item in value)])
-        expected = source.rstrip(b"\n") + b"\n" + "\n".join(additions).encode("utf-8") + b"\n"
-        assert hashlib.sha256(expected).hexdigest() == candidate.expected_post_sha256
+        assert candidate.expected_post_sha256 is None
+        for key, value in candidate.current_state_fields:
+            assert records[candidate.subject_id][key] == value
 
 
-def test_repository_exact_approval_artifact_and_review_document_are_consistent_and_unbound():
-    plan = current_plan()
+def test_repository_historical_approval_and_review_remain_exact_after_completion():
+    plan = historical_bound_plan()
     artifact_path = cli.ROOT / APPROVAL_ARTIFACT_REFERENCE
     review_path = cli.ROOT / APPROVAL_REVIEW_REFERENCE
     artifact_text = artifact_path.read_text(encoding="utf-8")
@@ -354,47 +355,62 @@ def test_repository_exact_approval_artifact_and_review_document_are_consistent_a
         assert subject_id in approval.decision_notes
         assert subject_id in review
 
-    assert plan.approval_status == MigrationApprovalStatus.PENDING
-    assert plan.approval_reference is None
-    assert plan.approval_sha256 is None
+    assert plan.approval_status == MigrationApprovalStatus.APPROVED
+    assert plan.approval_reference == APPROVAL_ARTIFACT_REFERENCE
+    assert plan.approval_sha256 == hashlib.sha256(artifact_path.read_bytes()).hexdigest()
     for candidate in plan.candidates:
         if candidate.subject_id not in APPROVED_SUBJECT_IDS:
             continue
         record = (cli.ROOT / candidate.record_reference).read_text(encoding="utf-8")
-        assert "container_identity_contract_version:" not in record
-        assert "container_participation:" not in record
-    assert not list((cli.ROOT / "registry/migrations/container_identity").glob("*rollback*.json"))
+        assert "container_identity_contract_version: 1.0" in record
+        assert "container_participation: not_applicable" in record
+        assert hashlib.sha256(record.encode("utf-8")).hexdigest() == candidate.expected_post_sha256
+    assert (cli.ROOT / ROLLBACK_REFERENCE).is_file()
     first_read = artifact_path.read_bytes()
     second_read = artifact_path.read_bytes()
     assert first_read == second_read
     assert hashlib.sha256(first_read).hexdigest() == hashlib.sha256(second_read).hexdigest()
 
 
-def test_repository_bound_plan_is_exact_deterministic_and_non_executing():
-    pending = current_plan()
+def test_repository_bound_plan_is_exact_historical_and_completed():
+    current = current_plan()
     bound_path = cli.ROOT / BOUND_PLAN_REFERENCE
     bound_text = bound_path.read_text(encoding="utf-8")
     bound = migration_plan_from_json(bound_text)
     artifact_path = cli.ROOT / APPROVAL_ARTIFACT_REFERENCE
 
     assert migration_plan_to_json(bound) == bound_text
-    assert bound.plan_id == pending.plan_id == "sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f"
-    assert bound.model_version == pending.model_version == "registry-container-identity-migration-v2"
-    assert bound.schema_version == pending.schema_version == "1.1"
-    assert bound.candidates == pending.candidates
+    assert bound.plan_id == "sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f"
+    assert current.plan_id != bound.plan_id
+    assert bound.model_version == current.model_version == "registry-container-identity-migration-v2"
+    assert bound.schema_version == current.schema_version == "1.1"
+    assert bound.candidates != current.candidates
     assert bound.approval_status == MigrationApprovalStatus.APPROVED
     assert bound.approval_reference == APPROVAL_ARTIFACT_REFERENCE
     assert bound.approval_sha256 == hashlib.sha256(artifact_path.read_bytes()).hexdigest()
-    assert pending.approval_status == MigrationApprovalStatus.PENDING
-    assert pending.approval_reference is None
-    assert pending.approval_sha256 is None
-    assert not list((cli.ROOT / "registry/migrations/container_identity").glob("*rollback*.json"))
+    assert current.approval_status == MigrationApprovalStatus.PENDING
+    assert current.approval_reference is None
+    assert current.approval_sha256 is None
+    completed = validate_completed_migration(bound, repository_rollback_metadata(), cli.ROOT)
+    assert completed.status == "completed"
+    assert completed.migrated_subject_ids == APPROVED_SUBJECT_IDS
+    assert len(completed.unchanged_subject_ids) == 34
     for candidate in bound.candidates:
         if candidate.subject_id not in APPROVED_SUBJECT_IDS:
             continue
         record = (cli.ROOT / candidate.record_reference).read_text(encoding="utf-8")
-        assert "container_identity_contract_version:" not in record
-        assert "container_participation:" not in record
+        assert "container_identity_contract_version: 1.0" in record
+        assert "container_participation: not_applicable" in record
+
+
+def test_repository_current_plan_cannot_reuse_historical_approval():
+    current = current_plan()
+    historical = historical_bound_plan()
+    artifact = (cli.ROOT / APPROVAL_ARTIFACT_REFERENCE).read_bytes()
+
+    assert current.plan_id != historical.plan_id
+    with pytest.raises(MigrationDataError, match="does not approve the submitted plan ID"):
+        bind_migration_approval(current, APPROVAL_ARTIFACT_REFERENCE, artifact)
 
 
 @pytest.mark.parametrize(
@@ -411,7 +427,7 @@ def test_repository_bound_plan_is_exact_deterministic_and_non_executing():
     ],
 )
 def test_repository_approval_contract_variants_fail_closed(overrides, expected):
-    plan = current_plan()
+    plan = historical_bound_plan()
     payload = json.loads((cli.ROOT / APPROVAL_ARTIFACT_REFERENCE).read_text(encoding="utf-8"))
     payload.update(overrides)
     approval = migration_approval_from_json(json.dumps(payload))
@@ -499,6 +515,21 @@ def approved_temp_plan(tmp_path: Path, records: Path, schema: Path):
     plan = temp_plan(tmp_path, records, schema)
     reference, content = write_approval(tmp_path, plan)
     return bind_migration_approval(plan, reference, content)
+
+
+def completed_temp_migration(tmp_path: Path):
+    records, schema = create_registry(tmp_path)
+    plan = approved_temp_plan(tmp_path, records, schema)
+    rollback_path = tmp_path / "registry" / "migrations" / "rollback.json"
+    result = execute_migration(
+        plan,
+        tmp_path,
+        dry_run=False,
+        confirm=True,
+        rollback_output=rollback_path,
+        validate=lambda: validate_temp_registry(tmp_path, records, schema),
+    )
+    return records, schema, plan, result.rollback_metadata, rollback_path
 
 
 def current_plan_shaped_approved_plan(tmp_path: Path):
@@ -783,6 +814,65 @@ def test_approval_artifact_drift_after_binding_fails_closed(tmp_path):
         execute_migration(plan, tmp_path, dry_run=True)
 
 
+def test_completed_migration_validation_and_current_planner_lifecycle(tmp_path):
+    records, schema, historical, rollback, _rollback_path = completed_temp_migration(tmp_path)
+    completed = validate_completed_migration(historical, rollback, tmp_path)
+    parsed, paths, errors = cli.load_registry_records(records)
+    assert not errors
+    current = build_migration_plan(parsed, paths, cli.load_registry_schema(schema), one_subject_catalog(), tmp_path)
+    current_again = build_migration_plan(parsed, paths, cli.load_registry_schema(schema), one_subject_catalog(), tmp_path)
+    report = build_migration_report(current)
+
+    assert completed.status == "completed"
+    assert completed.migrated_subject_ids == ("svc-example",)
+    assert len(completed.unchanged_subject_ids) == 3
+    assert historical.plan_id != current.plan_id
+    assert migration_plan_to_json(current) == migration_plan_to_json(current_again)
+    assert migration_plan_from_json(migration_plan_to_json(current)) == current
+    assert report.apply_count == 0
+    assert report.review_required_count == 0
+    assert report.no_change_count == 4
+    subject = next(candidate for candidate in current.candidates if candidate.subject_id == "svc-example")
+    assert subject.action.value == "no_change"
+    assert subject.proposed_fields == ()
+    assert dict(subject.current_state_fields)["container_participation"] == "not_applicable"
+    second = execute_migration(
+        historical,
+        tmp_path,
+        dry_run=False,
+        confirm=True,
+        rollback_output=tmp_path / "registry" / "migrations" / "rollback-second.json",
+    )
+    assert second.status == "no_change"
+    assert not (tmp_path / "registry" / "migrations" / "rollback-second.json").exists()
+
+
+def test_current_planner_rejects_partial_declared_state(tmp_path):
+    records, schema = create_registry(tmp_path)
+    target = records / "services" / "example.yaml"
+    target.write_text(target.read_text(encoding="utf-8") + "container_identity_contract_version: 1.0\n", encoding="utf-8")
+    parsed, paths, errors = cli.load_registry_records(records)
+    assert not errors
+    with pytest.raises(MigrationDataError, match="partially applied or contains conflicting declared state"):
+        build_migration_plan(parsed, paths, cli.load_registry_schema(schema), one_subject_catalog(), tmp_path)
+
+
+def test_completed_migration_validation_fails_for_target_or_rollback_drift(tmp_path):
+    records, _schema, historical, rollback, _rollback_path = completed_temp_migration(tmp_path)
+    target = records / "services" / "example.yaml"
+    target.write_text(target.read_text(encoding="utf-8") + "# unrelated post-migration drift\n", encoding="utf-8")
+    with pytest.raises(MigrationDataError, match="target is incomplete or has drifted"):
+        validate_completed_migration(historical, rollback, tmp_path)
+
+    other_root = tmp_path / "rollback-drift"
+    _records, _schema, other_plan, _metadata, other_rollback_path = completed_temp_migration(other_root)
+    payload = json.loads(other_rollback_path.read_text(encoding="utf-8"))
+    payload["entries"][0]["migrated_sha256"] = "0" * 64
+    drifted = rollback_metadata_from_json(json.dumps(payload))
+    with pytest.raises(MigrationDataError, match="migrated hash does not match"):
+        validate_completed_migration(other_plan, drifted, other_root)
+
+
 def test_executor_dry_run_is_read_only(tmp_path):
     records, schema = create_registry(tmp_path)
     plan = approved_temp_plan(tmp_path, records, schema)
@@ -993,7 +1083,48 @@ def test_registry_cli_reports_schema_plan_review_and_status(capsys):
     assert cli.main(["registry", "migration", "review"]) == 0
     assert "No Registry record is modified" in capsys.readouterr().out
     assert cli.main(["registry", "migration", "status"]) == 0
-    assert "Candidates: 39" in capsys.readouterr().out
+    status_output = capsys.readouterr().out
+    assert "Candidates: 39" in status_output
+    assert "Apply: 0" in status_output
+    assert "Review required: 16" in status_output
+    assert "No change: 23" in status_output
+
+
+def test_registry_cli_validates_completed_repository_migration(capsys):
+    assert cli.main(
+        [
+            "registry",
+            "migration",
+            "validate-completed",
+            "--plan",
+            BOUND_PLAN_REFERENCE,
+            "--rollback",
+            ROLLBACK_REFERENCE,
+        ]
+    ) == 0
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["status"] == "completed"
+    assert payload["migrated_subject_ids"] == list(APPROVED_SUBJECT_IDS)
+    assert len(payload["unchanged_subject_ids"]) == 34
+
+
+def test_registry_cli_completed_validation_requires_rollback_evidence(tmp_path, monkeypatch, capsys):
+    plan_path = tmp_path / "registry" / "migrations" / "plan.json"
+    plan_path.parent.mkdir(parents=True)
+    plan_path.write_text((cli.ROOT / BOUND_PLAN_REFERENCE).read_text(encoding="utf-8"), encoding="utf-8")
+    monkeypatch.setattr(cli, "ROOT", tmp_path)
+    assert cli.main(
+        [
+            "registry",
+            "migration",
+            "validate-completed",
+            "--plan",
+            "registry/migrations/plan.json",
+            "--rollback",
+            "registry/migrations/missing-rollback.json",
+        ]
+    ) == 1
+    assert "does not exist" in capsys.readouterr().out
 
 
 def test_registry_cli_binds_matching_governed_approval_artifact(tmp_path, monkeypatch, capsys):

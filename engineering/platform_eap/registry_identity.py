@@ -126,6 +126,7 @@ class MigrationCandidate:
     evidence: tuple[MigrationEvidence, ...]
     unresolved_fields: tuple[str, ...]
     warnings: tuple[str, ...]
+    current_state_fields: tuple[tuple[str, object], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -190,6 +191,15 @@ class MigrationResult:
     changed_record_references: tuple[str, ...]
     findings: tuple[str, ...]
     rollback_metadata: MigrationRollbackMetadata
+
+
+@dataclass(frozen=True)
+class CompletedMigrationResult:
+    plan_id: str
+    status: str
+    migrated_subject_ids: tuple[str, ...]
+    unchanged_subject_ids: tuple[str, ...]
+    rollback_model_version: str
 
 
 class MigrationDataError(ValueError):
@@ -478,7 +488,11 @@ def _expect_string_tuple(value: object, context: str) -> tuple[str, ...]:
     return tuple(value)
 
 
-def _expected_action(proposed: Mapping[str, object], unresolved: Sequence[str]) -> MigrationAction:
+def _expected_action(
+    proposed: Mapping[str, object],
+    unresolved: Sequence[str],
+    current_state: Mapping[str, object] | None = None,
+) -> MigrationAction:
     if unresolved:
         return MigrationAction.REVIEW_REQUIRED
     if proposed:
@@ -491,26 +505,33 @@ def _validate_classification_proposal(
     proposed: Mapping[str, object],
     unresolved: Sequence[str],
     context: str,
+    current_state: Mapping[str, object] | None = None,
 ) -> None:
-    participation = proposed.get("container_participation")
+    current_state = current_state or {}
+    if proposed and current_state:
+        raise MigrationDataError(f"{context} cannot contain both proposed and current-state fields.")
+    if current_state and unresolved:
+        raise MigrationDataError(f"{context} current-state fields cannot contain unresolved findings.")
+    declared = proposed or current_state
+    participation = declared.get("container_participation")
     expected_participation = {
         MigrationClassification.CONFIRMED_ACTIVE_CONTAINER_SERVICE: "active",
         MigrationClassification.CONFIRMED_INTENTIONALLY_INACTIVE_CONTAINER_SERVICE: "intentionally_inactive",
         MigrationClassification.CONFIRMED_NON_CONTAINER_SERVICE: "not_applicable",
         MigrationClassification.PLANNED_CONTAINER_SERVICE: "intentionally_inactive",
     }.get(classification)
-    if proposed and expected_participation is not None and participation != expected_participation:
-        raise MigrationDataError(f"{context} proposal contradicts classification {classification.value}.")
+    if declared and expected_participation is not None and participation != expected_participation:
+        raise MigrationDataError(f"{context} declared fields contradict classification {classification.value}.")
     if classification == MigrationClassification.UNRESOLVED and proposed and participation != "excluded":
         raise MigrationDataError(f"{context} unresolved proposal may only declare a reviewed exclusion.")
-    if classification == MigrationClassification.NOT_APPLICABLE and (proposed or unresolved):
+    if classification == MigrationClassification.NOT_APPLICABLE and (declared or unresolved):
         raise MigrationDataError(f"{context} not-applicable record-domain classification must be a resolved no-change candidate.")
-    if classification != MigrationClassification.NOT_APPLICABLE and not proposed and not unresolved:
-        raise MigrationDataError(f"{context} must contain either a proposal or unresolved findings.")
+    if classification != MigrationClassification.NOT_APPLICABLE and not declared and not unresolved:
+        raise MigrationDataError(f"{context} must contain proposed fields, current-state fields, or unresolved findings.")
 
 
 def _candidate_payload(candidate: MigrationCandidate) -> dict[str, object]:
-    return {
+    payload = {
         "subject_id": candidate.subject_id,
         "record_reference": candidate.record_reference,
         "source_sha256": candidate.source_sha256,
@@ -522,6 +543,9 @@ def _candidate_payload(candidate: MigrationCandidate) -> dict[str, object]:
         "unresolved_fields": list(candidate.unresolved_fields),
         "warnings": list(candidate.warnings),
     }
+    if candidate.current_state_fields:
+        payload["current_state_fields"] = {key: value for key, value in candidate.current_state_fields}
+    return payload
 
 
 def _plan_content(schema_version: str, candidates: Sequence[MigrationCandidate]) -> dict[str, object]:
@@ -572,7 +596,6 @@ def build_migration_plan(
         unresolved = _expect_string_tuple(entry.get("unresolved_fields"), f"catalog entry {index}.unresolved_fields")
         warnings = _expect_string_tuple(entry.get("warnings"), f"catalog entry {index}.warnings")
         _validate_classification_proposal(classification, proposed, unresolved, f"catalog entry {index}")
-        action = _expected_action(proposed, unresolved)
         path = path_by_id.get(subject_id)
         if path is None or not path.is_file():
             raise MigrationDataError(f"Migration record path is missing for {subject_id}.")
@@ -580,6 +603,15 @@ def build_migration_plan(
             record_reference = str(path.relative_to(repository_root))
         except ValueError as exc:
             raise MigrationDataError(f"Migration record path is outside the repository for {subject_id}.") from exc
+        proposed_fields = tuple(sorted(proposed.items()))
+        present_proposed_fields = tuple(key for key, _value in proposed_fields if key in record)
+        current_state_fields: tuple[tuple[str, object], ...] = ()
+        if present_proposed_fields:
+            if len(present_proposed_fields) != len(proposed_fields) or any(record.get(key) != value for key, value in proposed_fields):
+                raise MigrationDataError(f"Migration candidate {subject_id} is partially applied or contains conflicting declared state.")
+            current_state_fields = proposed_fields
+            proposed_fields = ()
+        action = _expected_action(dict(proposed_fields), unresolved, dict(current_state_fields))
         evidence_value = entry.get("evidence")
         if not isinstance(evidence_value, list) or not evidence_value:
             raise MigrationDataError(f"Migration candidate {subject_id} requires evidence.")
@@ -600,7 +632,6 @@ def build_migration_plan(
             )
         source_bytes = path.read_bytes()
         source_content = source_bytes.decode("utf-8")
-        proposed_fields = tuple(sorted(proposed.items()))
         expected_post_sha256 = (
             _sha256_bytes(_merged_record_text(source_content, proposed_fields).encode("utf-8"))
             if action == MigrationAction.APPLY
@@ -618,6 +649,7 @@ def build_migration_plan(
                 evidence=tuple(evidence),
                 unresolved_fields=tuple(sorted(unresolved)),
                 warnings=tuple(sorted(warnings)),
+                current_state_fields=current_state_fields,
             )
         )
     expected_subjects = {subject_id for subject_id, record in records.items() if record.get("record_type") in SERVICE_RECORD_TYPES}
@@ -796,7 +828,12 @@ def migration_plan_to_json(plan: MigrationPlan) -> str:
 
 def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
     payload = _expect_mapping(value, context)
-    _expect_keys(payload, {"subject_id", "record_reference", "source_sha256", "expected_post_sha256", "classification", "action", "proposed_fields", "evidence", "unresolved_fields", "warnings"}, set(), context)
+    _expect_keys(
+        payload,
+        {"subject_id", "record_reference", "source_sha256", "expected_post_sha256", "classification", "action", "proposed_fields", "evidence", "unresolved_fields", "warnings"},
+        {"current_state_fields"},
+        context,
+    )
     try:
         classification = MigrationClassification(payload.get("classification"))
         action = MigrationAction(payload.get("action"))
@@ -807,6 +844,9 @@ def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
     proposed = _expect_mapping(payload.get("proposed_fields"), f"{context}.proposed_fields")
     if set(proposed) - CONTAINER_IDENTITY_FIELDS:
         raise MigrationDataError(f"{context} contains unsupported proposed fields.")
+    current_state = _expect_mapping(payload.get("current_state_fields", {}), f"{context}.current_state_fields")
+    if set(current_state) - CONTAINER_IDENTITY_FIELDS:
+        raise MigrationDataError(f"{context} contains unsupported current-state fields.")
     evidence_value = payload.get("evidence")
     if not isinstance(evidence_value, list):
         raise MigrationDataError(f"{context}.evidence must be an array.")
@@ -829,8 +869,9 @@ def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
         raise MigrationDataError(f"{context}.source_sha256 must be a lowercase sha256 digest.")
     unresolved_fields = tuple(sorted(_expect_string_tuple(payload.get("unresolved_fields"), f"{context}.unresolved_fields")))
     proposed_fields = dict(proposed)
-    _validate_classification_proposal(classification, proposed_fields, unresolved_fields, context)
-    expected_action = _expected_action(proposed_fields, unresolved_fields)
+    current_state_fields = dict(current_state)
+    _validate_classification_proposal(classification, proposed_fields, unresolved_fields, context, current_state_fields)
+    expected_action = _expected_action(proposed_fields, unresolved_fields, current_state_fields)
     if action != expected_action:
         raise MigrationDataError(f"{context} action does not match its proposal and unresolved findings.")
     expected_post_sha256 = payload.get("expected_post_sha256")
@@ -848,6 +889,8 @@ def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
         raise MigrationDataError(f"{context} mutable target record cannot be immutable supporting evidence.")
     if action == MigrationAction.APPLY and expected_post_sha256 == source_sha256:
         raise MigrationDataError(f"{context} apply action must change the exact candidate state.")
+    if current_state_fields and action != MigrationAction.NO_CHANGE:
+        raise MigrationDataError(f"{context} current-state fields require a no-change action.")
     return MigrationCandidate(
         subject_id=subject_id,
         record_reference=record_reference,
@@ -859,6 +902,7 @@ def _candidate_from_payload(value: object, context: str) -> MigrationCandidate:
         evidence=tuple(evidence),
         unresolved_fields=unresolved_fields,
         warnings=tuple(sorted(_expect_string_tuple(payload.get("warnings"), f"{context}.warnings"))),
+        current_state_fields=tuple(sorted(current_state_fields.items())),
     )
 
 
@@ -1073,6 +1117,84 @@ def rollback_metadata_from_json(text: str) -> MigrationRollbackMetadata:
     if not re.fullmatch(r"sha256:[0-9a-f]{64}", plan_id):
         raise MigrationDataError("Rollback metadata plan ID must be a sha256 identifier.")
     return MigrationRollbackMetadata(ROLLBACK_MODEL_VERSION, plan_id, tuple(entries))
+
+
+def validate_completed_migration(
+    plan: MigrationPlan,
+    rollback_metadata: MigrationRollbackMetadata,
+    repository_root: Path,
+) -> CompletedMigrationResult:
+    if plan.model_version != MIGRATION_MODEL_VERSION or plan.schema_version != SCHEMA_VERSION:
+        raise MigrationDataError("Completed migration plan version is unsupported.")
+    if plan.plan_id != _plan_id(plan.schema_version, plan.candidates):
+        raise MigrationDataError("Completed migration plan canonical ID is invalid.")
+    if (
+        plan.approval_status != MigrationApprovalStatus.APPROVED
+        or not plan.approval_reference
+        or not plan.approval_sha256
+    ):
+        raise MigrationDataError("Completed migration validation requires an approval-bound historical plan.")
+    if not _safe_approval_reference(plan.approval_reference, repository_root):
+        raise MigrationDataError("Completed migration approval artifact reference is unsafe or missing.")
+    approval_content = (repository_root / plan.approval_reference).read_bytes()
+    if _sha256_bytes(approval_content) != plan.approval_sha256:
+        raise MigrationDataError("Completed migration approval artifact has drifted from the historical plan binding.")
+    try:
+        approval = migration_approval_from_json(approval_content.decode("utf-8"))
+    except UnicodeDecodeError as exc:
+        raise MigrationDataError("Completed migration approval artifact must be UTF-8 JSON.") from exc
+    _validate_approval_for_plan(approval, plan, repository_root)
+
+    if rollback_metadata.model_version != ROLLBACK_MODEL_VERSION:
+        raise MigrationDataError("Completed migration rollback metadata version is unsupported.")
+    if rollback_metadata.plan_id != plan.plan_id:
+        raise MigrationDataError("Completed migration rollback metadata does not reference the historical plan.")
+    apply_candidates = tuple(candidate for candidate in plan.candidates if candidate.action == MigrationAction.APPLY)
+    rollback_by_subject = {entry.subject_id: entry for entry in rollback_metadata.entries}
+    if tuple(rollback_by_subject) != tuple(candidate.subject_id for candidate in apply_candidates):
+        raise MigrationDataError("Completed migration rollback metadata does not cover the exact historical apply scope.")
+
+    migrated: list[str] = []
+    unchanged: list[str] = []
+    for candidate in plan.candidates:
+        if not _safe_registry_record_reference(candidate.record_reference, repository_root):
+            raise MigrationDataError(f"Completed migration record reference is unsafe or missing: {candidate.record_reference}.")
+        path = repository_root / candidate.record_reference
+        current = path.read_text(encoding="utf-8")
+        if _parse_flat_yaml_text(current).get("id") != candidate.subject_id:
+            raise MigrationDataError(f"Completed migration record reference does not contain subject {candidate.subject_id}.")
+        for item in candidate.evidence:
+            if candidate.action == MigrationAction.APPLY and (repository_root / item.reference).resolve() == path.resolve():
+                raise MigrationDataError(f"Completed migration candidate {candidate.subject_id} contains mutable self-evidence.")
+            if not _safe_reference(item.reference, repository_root):
+                raise MigrationDataError(f"Completed migration evidence reference is unsafe or missing: {item.reference}.")
+            if _sha256_bytes((repository_root / item.reference).read_bytes()) != item.source_sha256:
+                raise MigrationDataError(f"Completed migration evidence has drifted for {candidate.subject_id}: {item.reference}.")
+        current_sha256 = _sha256_bytes(current.encode("utf-8"))
+        if candidate.action == MigrationAction.APPLY:
+            entry = rollback_by_subject[candidate.subject_id]
+            if entry.record_reference != candidate.record_reference:
+                raise MigrationDataError(f"Completed migration rollback path does not match {candidate.subject_id}.")
+            if entry.original_sha256 != candidate.source_sha256:
+                raise MigrationDataError(f"Completed migration rollback original hash does not match {candidate.subject_id}.")
+            if entry.migrated_sha256 != candidate.expected_post_sha256:
+                raise MigrationDataError(f"Completed migration rollback migrated hash does not match {candidate.subject_id}.")
+            if _sha256_bytes(entry.original_content.encode("utf-8")) != entry.original_sha256:
+                raise MigrationDataError(f"Completed migration rollback original content has drifted for {candidate.subject_id}.")
+            if current_sha256 != candidate.expected_post_sha256:
+                raise MigrationDataError(f"Completed migration target is incomplete or has drifted for {candidate.subject_id}.")
+            migrated.append(candidate.subject_id)
+        else:
+            if current_sha256 != candidate.source_sha256:
+                raise MigrationDataError(f"Completed migration non-target record has drifted for {candidate.subject_id}.")
+            unchanged.append(candidate.subject_id)
+    return CompletedMigrationResult(
+        plan_id=plan.plan_id,
+        status="completed",
+        migrated_subject_ids=tuple(migrated),
+        unchanged_subject_ids=tuple(unchanged),
+        rollback_model_version=rollback_metadata.model_version,
+    )
 
 
 def _validation_errors(validate: Callable[[], Sequence[object]] | None) -> list[str]:

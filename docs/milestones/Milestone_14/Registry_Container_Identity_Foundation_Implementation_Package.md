@@ -1,6 +1,6 @@
 # Registry Container Identity Foundation Implementation Package
 
-**Status:** Published Baseline and Model-v2 Correction; Exact-Plan Approval Binding Complete and Unpublished
+**Status:** Published Baseline; Exact Five-Record Migration Completed and Validated
 
 **Milestone:** Milestone 14
 
@@ -14,7 +14,7 @@
 - Closed allowed-field contract preserving all 39 legacy records.
 - Conditional container identity validation for `service` and `planned_service`.
 - Exact host, Compose tuple, runtime-name, policy, evidence, image, bounded participation-reason, review, and contradiction validation.
-- Deterministic migration evidence, candidate, plan, report, result, and rollback models.
+- Deterministic migration evidence, candidate, current-state plan, historical-plan completion, result, and rollback models.
 - Strict separate migration approval artifact bound to the exact plan ID, schema and migration-model versions, Registry-migration scope, timestamp, Architecture Gatekeeper authority, review reference, and artifact content hash.
 - Complete 21-service evidence catalog, deterministic no-change classification for 18 non-service record domains, and read-only planning/review/status output covering all 39 records.
 - Approved-plan dry-run and atomic repository update with full-registry validation.
@@ -35,16 +35,18 @@ The corrected migration model v2:
 - rejects partial patches, unrelated target drift, source drift, external evidence drift, approval drift, malformed or duplicate-key JSON, and obsolete model-v1 plans;
 - preserves atomic application, complete Registry and Digital Twin validation, exact rollback, and idempotent rollback.
 
-The old pending plan `sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94` is superseded and ineligible for approval. Exact model-v2 plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` retains a pending, unbound read-only generated presentation. Architecture Gatekeeper approved all five exact patches in principle; the governed review and strict approval artifact are bound into persisted derived plan `registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json`. The binding package is validated but unpublished. All five target records and all 39 Registry records remain unchanged.
+The old pending plan `sha256:68703b2424c37c2332dfd405360a90f1d51994969c535288006faeb3f2cafc94` is superseded and ineligible for approval. Exact model-v2 historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` was approved, bound, and executed for five exact patches. Its approval and bound-plan evidence remains immutable. Rollback evidence captures exact original and migrated bytes. The post-migration planner now represents those five declarations as current-state `no_change` candidates rather than new apply proposals.
 
 ## Current Migration Status
 
-No Registry record is migrated.
+The exact approved migration is complete for five records.
 
-- Five confirmed non-container or logical subjects have exact `not_applicable` patches approved and bound in the persisted derived plan; none is applied.
+- Five confirmed non-container or logical subjects contain the approved `not_applicable` declarations and are not eligible for Container Operational Health.
 - Sixteen subjects require further review.
 - Pi-hole remains unresolved for exact Compose project, Compose service, health-check requirement, and compatible policy reference.
 - No subject is newly eligible for PLAT-14.1A health assessment.
+- Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` contains 0 apply, 16 review-required, and 23 no-change candidates.
+- Completed-migration validation ties the historical bound plan to all five expected-post hashes and rollback metadata; a second confirmed execution returned write-free `no_change`.
 
 ## Safety Boundary
 
@@ -62,9 +64,10 @@ The implementation performs no runtime discovery, provider access, monitoring, r
 ./platform-eap registry migration bind-approval --plan PATH --approval PATH
 ./platform-eap registry migration apply --plan PATH --rollback-output PATH --dry-run
 ./platform-eap registry migration apply --plan PATH --rollback-output PATH --confirm
+./platform-eap registry migration validate-completed --plan PATH --rollback PATH
 ./platform-eap registry migration rollback --metadata PATH --confirm
 ```
 
 ## Next Gate
 
-Architecture Gatekeeper review and publication of the exact-plan approval-binding package is the next gate. Any Registry record migration remains a later, separately authorized decision.
+Evidence completion and separately approved migration decisions for the sixteen review-required subjects are later gates. Pi-hole, providers, live observation, PLAT-14.1A real-service assessment, activation, and infrastructure work remain blocked.

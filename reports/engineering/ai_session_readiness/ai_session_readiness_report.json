@@ -2,12 +2,12 @@
   "capability": "AI Session Readiness Validation",
   "command": "./platform-eap ai-session readiness",
   "readiness": "READY WITH WARNINGS",
-  "generated_at": "2026-07-20T19:53:51.835254+00:00",
+  "generated_at": "2026-07-20T20:30:07.575279+00:00",
   "repository": {
     "name": "FitzpatrickFamilyPlatform",
     "path": "/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform",
     "branch": "main",
-    "head": "04f279d7de465e059d799714104c54e439577bc3",
+    "head": "a1b357ed754a427a31359274ffd2239565460991",
     "working_tree": "active source changes"
   },
   "domains": [
@@ -32,7 +32,7 @@
         {
           "check_id": "repository.head",
           "severity": "PASS",
-          "message": "Current HEAD: 04f279d7de465e059d799714104c54e439577bc3",
+          "message": "Current HEAD: a1b357ed754a427a31359274ffd2239565460991",
           "evidence": []
         },
         {
@@ -53,11 +53,20 @@
             " M docs/governance/Governance_Change_Log.md",
             " M docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md",
             " M docs/milestones/Milestone_14/Registry_Container_Identity_Foundation_Implementation_Package.md",
+            " M docs/milestones/Milestone_14/Registry_Container_Identity_Migration_Approval_Review.md",
             " M docs/portfolio/Engineering_Portfolio_Kanban.md",
+            " M docs/product/Capability_Model.md",
+            " M docs/product/Product_Backlog.md",
+            " M docs/product/Product_Roadmap.md",
+            " M engineering/platform_eap/cli.py",
+            " M engineering/platform_eap/registry_identity.py",
             " M engineering/tests/test_registry_identity.py",
             " M registry/migrations/container_identity/README.md",
-            " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
-            " M reports/engineering/engineering_metrics/engineering_metrics_report.md",
+            " M registry/records/planned_services/controlled-container-updates.yaml",
+            " M registry/records/planned_services/docker-container-metrics-exporter.yaml",
+            " M registry/records/services/docker-engine.yaml",
+            " M registry/records/services/infrastructure-registry-validation.yaml",
+            " M registry/records/services/platform-eap.yaml",
             " M reports/engineering/governance/governance_report.json",
             " M reports/engineering/governance/governance_report.md",
             " M reports/engineering/milestone_closeout/milestone_closeout_report.json",
@@ -66,9 +75,7 @@
             " M reports/engineering/release/release_report.md",
             " M reports/engineering/repository/repository_report.json",
             " M reports/engineering/repository/repository_report.md",
-            "?? docs/milestones/Milestone_14/Registry_Container_Identity_Migration_Approval_Review.md",
-            "?? registry/migrations/container_identity/approvals/",
-            "?? registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json"
+            "?? registry/migrations/container_identity/rollbacks/"
           ]
         }
       ]
@@ -1082,11 +1089,20 @@
         " M docs/governance/Governance_Change_Log.md",
         " M docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md",
         " M docs/milestones/Milestone_14/Registry_Container_Identity_Foundation_Implementation_Package.md",
+        " M docs/milestones/Milestone_14/Registry_Container_Identity_Migration_Approval_Review.md",
         " M docs/portfolio/Engineering_Portfolio_Kanban.md",
+        " M docs/product/Capability_Model.md",
+        " M docs/product/Product_Backlog.md",
+        " M docs/product/Product_Roadmap.md",
+        " M engineering/platform_eap/cli.py",
+        " M engineering/platform_eap/registry_identity.py",
         " M engineering/tests/test_registry_identity.py",
         " M registry/migrations/container_identity/README.md",
-        " M reports/engineering/engineering_metrics/engineering_metrics_report.json",
-        " M reports/engineering/engineering_metrics/engineering_metrics_report.md",
+        " M registry/records/planned_services/controlled-container-updates.yaml",
+        " M registry/records/planned_services/docker-container-metrics-exporter.yaml",
+        " M registry/records/services/docker-engine.yaml",
+        " M registry/records/services/infrastructure-registry-validation.yaml",
+        " M registry/records/services/platform-eap.yaml",
         " M reports/engineering/governance/governance_report.json",
         " M reports/engineering/governance/governance_report.md",
         " M reports/engineering/milestone_closeout/milestone_closeout_report.json",
@@ -1095,9 +1111,7 @@
         " M reports/engineering/release/release_report.md",
         " M reports/engineering/repository/repository_report.json",
         " M reports/engineering/repository/repository_report.md",
-        "?? docs/milestones/Milestone_14/Registry_Container_Identity_Migration_Approval_Review.md",
-        "?? registry/migrations/container_identity/approvals/",
-        "?? registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json"
+        "?? registry/migrations/container_identity/rollbacks/"
       ]
     }
   ]

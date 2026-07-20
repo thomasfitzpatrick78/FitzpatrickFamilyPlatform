@@ -2,7 +2,7 @@
 
 ## Status
 
-Exact plan approved and bound — migration remains unexecuted.
+Exact plan approved, bound, executed, and validated — rollback remains unexecuted.
 
 ---
 
@@ -16,13 +16,16 @@ Exact plan approved and bound — migration remains unexecuted.
 | Migration model | `registry-container-identity-migration-v2` |
 | Registry schema | `1.1` |
 | Exact plan ID | `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` |
-| Canonical generated-plan status | `pending`; read-only current-plan presentation remains unbound |
+| Historical approved-plan status | `completed`; immutable approval and binding evidence retained |
 | Persisted bound-plan status | `approved`; exact approval artifact bound |
 | Bound plan | `registry/migrations/container_identity/registry-container-identity-plan-5addac8821f1-bound.json` |
 | Bound-plan SHA-256 | `c50f417dd23ae181022f994bdbd628ddabe86257d1e6d30cd7b70ceab2dfd9fc` |
 | Approval-artifact SHA-256 | `13f7fdaa41f29d4624f58d361ac7a50ef142ba156f1a1b20113e787a17871bf3` |
 | Binding verification | `2026-07-20T15:49:18-04:00`; two independent binding outputs were byte-identical |
 | Candidate counts | 39 total; 5 apply; 16 review-required; 18 no-change |
+| Current-state plan | `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a`; 0 apply; 16 review-required; 23 no-change |
+| Rollback artifact | `registry/migrations/container_identity/rollbacks/registry-container-identity-plan-5addac8821f1-rollback.json` |
+| Rollback SHA-256 | `5bf638d614c92657e7989cf67a31b5e7e3cf2ef8d480df15c00b7d6ee507bdaa` |
 | Clean-tree verification | `2026-07-20T15:37:03-04:00`; local, fetched, and live `main` equal; ahead/behind `0/0` |
 
 All 39 Registry records validated under schema `1.1` before approval-artifact creation. None of the five target records contained the proposed container identity fields, no prior approval artifact existed, and no Registry migration had executed.
@@ -35,7 +38,7 @@ All 39 Registry records validated under schema `1.1` before approval-artifact cr
 
 This approval covers only exact plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` and all five patches as one atomic approval scope. It does not authorize a different, narrowed, future regenerated, or modified plan; a different schema or migration-model version; a subset of the five patches; or any additional candidate.
 
-The decision and approval artifact do not execute migration. The separately authorized binding gate has completed. Confirmed execution remains a later explicit gate requiring separate authorization.
+The decision and approval artifact did not themselves execute migration. Separate Architecture Gatekeeper work packages authorized binding and then exact execution. Execution completed without expanding the approved scope.
 
 ---
 
@@ -138,6 +141,20 @@ It does not mean the subject is inactive, unimportant, deleted, excluded from al
 
 ---
 
+## Execution and Completion Evidence
+
+- The governed dry run evaluated all 39 historical candidates and proposed exactly the five approved paths without writing Registry or rollback files.
+- The confirmed execution applied exactly the five reviewed four-field patches atomically and generated one strict rollback artifact.
+- Each migrated record matches its historical expected-post SHA-256; the other 34 records remain byte-identical to the published pre-migration baseline.
+- Schema `1.1`, all 39 Registry records, and Platform Digital Twin integrity validate after migration.
+- A second confirmed execution of the immutable bound plan returned deterministic `no_change`; Registry aggregate and rollback-artifact hashes were identical before and after.
+- Completed-migration validation ties the historical plan, exact approval binding, five expected-post hashes, 34 unchanged records, and rollback metadata together without requiring the current plan ID to equal the historical plan ID.
+- The post-migration planner/test lifecycle disconnect was corrected without changing the historical plan, approval artifact, approval review decision, bound plan, rollback artifact, or approved Registry values.
+- Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` represents the five migrated declarations as current-state `no_change`, retains 16 review-required subjects, and makes no new approval claim.
+- Rollback readiness validates, but rollback was not executed.
+
+---
+
 ## Remaining Review-Required Subjects
 
 The following subjects remain unchanged and outside this approval scope:
@@ -165,10 +182,11 @@ Pi-hole remains unresolved, unapproved, unmigrated, and unassessed for migration
 
 ## Execution Boundary
 
-- Approval binding is complete and does not execute migration or rollback.
-- A separate explicit authorization is required before confirmed execution.
-- Immediately before any future execution, the repository must reverify the exact plan ID, schema and migration-model versions, candidate/source hashes, immutable supporting-evidence hashes, expected-post hashes, approval-artifact content hash, bound-plan content, and clean repository state.
-- Any plan, evidence, artifact, schema, model, or repository drift invalidates this approval path and requires review before mutation.
+- Exact execution for the five approved subjects is complete.
+- Historical approval cannot authorize the distinct current-state plan or any future plan.
+- Rollback requires a future explicit work package and was not executed.
+- The remaining 16 subjects require their own evidence, review, plan, approval, binding, and execution gates.
+- Any historical plan, approval, bound-plan, rollback, expected-post, or unchanged-record drift invalidates completed-migration evidence and requires review.
 
 ---
 
@@ -189,5 +207,6 @@ No personal signature, employee identity, cryptographic signature, credential, o
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Recorded exact five-record execution, rollback readiness, deterministic second-run no-change, completed-migration validation, and corrected historical/current plan lifecycle separation. |
 | 1.1 | Bound the governed approval artifact to the exact reviewed plan as deterministic repository evidence without Registry mutation, rollback, provider access, activation, or live work. |
 | 1.0 | Materialized the exact-plan Architecture Gatekeeper approval-in-principle decision and preserved separate binding and execution gates. |

@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.15
+**Document Version:** 1.16
 
 **Status:** Active
 
@@ -52,9 +52,9 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Platform Operations Bounded Context:** PLAT-14.0A defines Platform Operations as the Shared Platform domain for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. The Infrastructure Registry remains authoritative for declared state; replaceable providers produce observations; provider adapters normalize one-signal evidence; reconciliation preserves source facts; deterministic health policies require positive proof; intelligence remains advisory. The bounded context and contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, remain architecture-only with `Implemented: No`, and do not authorize live work.
 
-**Registry Container Identity Foundation:** Published repository implementation of additive schema `1.1`, strict declared-identity validation, deterministic evidence-gated migration planning/execution/rollback, exact-plan Architecture Gatekeeper approval-artifact binding, and compatible CLI behavior. Registry `id` remains canonical; all 39 records remain unchanged; no subject is newly health eligible.
+**Registry Container Identity Foundation:** Published repository implementation of additive schema `1.1`, strict declared-identity validation, deterministic evidence-gated planning/execution/rollback/completion, exact-plan approval binding, and historical/current plan separation. Registry `id` remains canonical; exactly five records declare governed `not_applicable` participation, the other 34 remain unchanged, and no subject is newly health eligible.
 
-**Container Operational Health Capability:** The published PLAT-14.1A Option B repository implementation provides deterministic synthetic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. It remains fixture-only and unactivated. Authoritative current-subject evaluation remains unavailable until a separately approved Registry migration; production adapters, privileged access, live observation, dashboard/API integration, and activation remain later gates.
+**Container Operational Health Capability:** The published PLAT-14.1A Option B repository implementation provides deterministic synthetic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. It remains fixture-only and unactivated. The five migrated subjects are explicitly `not_applicable`; authoritative evaluation remains unavailable until an eligible subject has separately approved identity evidence and provider/live gates pass.
 
 ### Home Automation
 
@@ -130,6 +130,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.16 | Recorded exact five-record Registry migration, completed-migration evidence, current planner lifecycle semantics, and unchanged fixture-only/no-live-health boundary. |
 | 1.15 | Recorded Architecture Gatekeeper acceptance and publication of the fixture-only Container Operational Health repository capability without Registry migration, provider access, activation, or live work. |
 | 1.14 | Recorded the complete unpublished fixture-only Container Operational Health repository capability without Registry migration, provider access, activation, or live work. |
 | 1.13 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity capability without approval artifact, record migration, or PLAT-14.1A authorization. |

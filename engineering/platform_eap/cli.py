@@ -51,6 +51,7 @@ from engineering.platform_eap.registry_identity import (
     rollback_metadata_from_json,
     rollback_migration,
     schema_version_from,
+    validate_completed_migration,
     validate_container_identity_contract,
 )
 from engineering.platform_eap.container_health import (
@@ -509,7 +510,7 @@ def _registry_migration_cli(argv: list[str]) -> int:
             print(f"Review required: {report.review_required_count}")
             print(f"No change: {report.no_change_count}")
             print(f"Unresolved subjects: {len(report.unresolved_subject_ids)}")
-            print("Mode: read-only repository planning")
+            print("Mode: read-only current repository planning")
             return 0
         if len(argv) == 5 and argv[0] == "bind-approval" and argv[1] == "--plan" and argv[3] == "--approval":
             plan_path = _registry_cli_path(argv[2], must_exist=True)
@@ -535,6 +536,14 @@ def _registry_migration_cli(argv: list[str]) -> int:
             )
             print(json.dumps(asdict(result), indent=2, sort_keys=True))
             return 0
+        if len(argv) == 5 and argv[0] == "validate-completed" and argv[1] == "--plan" and argv[3] == "--rollback":
+            plan_path = _registry_cli_path(argv[2], must_exist=True)
+            rollback_path = _registry_cli_path(argv[4], must_exist=True)
+            plan = migration_plan_from_json(plan_path.read_text(encoding="utf-8"))
+            metadata = rollback_metadata_from_json(rollback_path.read_text(encoding="utf-8"))
+            result = validate_completed_migration(plan, metadata, ROOT)
+            print(json.dumps(asdict(result), indent=2, sort_keys=True))
+            return 0
         if len(argv) == 4 and argv[:2] == ["rollback", "--metadata"] and argv[3] == "--confirm":
             metadata_path = _registry_cli_path(argv[2], must_exist=True)
             metadata = rollback_metadata_from_json(metadata_path.read_text(encoding="utf-8"))
@@ -544,7 +553,7 @@ def _registry_migration_cli(argv: list[str]) -> int:
     except (MigrationDataError, OSError) as exc:
         print(f"Registry migration error: {exc}")
         return 1
-    print("Usage: platform-eap registry migration <plan [--catalog PATH]|review [--plan PATH]|status|bind-approval --plan PATH --approval PATH|apply --plan PATH --rollback-output PATH (--dry-run|--confirm)|rollback --metadata PATH --confirm>")
+    print("Usage: platform-eap registry migration <plan [--catalog PATH]|review [--plan PATH]|status|bind-approval --plan PATH --approval PATH|apply --plan PATH --rollback-output PATH (--dry-run|--confirm)|validate-completed --plan PATH --rollback PATH|rollback --metadata PATH --confirm>")
     return 2
 
 

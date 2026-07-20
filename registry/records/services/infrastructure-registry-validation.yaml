@@ -15,3 +15,9 @@ service_dependencies:
   - svc-platform-eap
 administrative_dependencies:
   - dev-toms-macbook-admin
+container_identity_contract_version: 1.0
+container_identity_evidence:
+  - registry/records/services/infrastructure-registry-validation.yaml
+  - docs/architecture/Registry_Container_Identity_Foundation_Architecture.md
+container_participation: not_applicable
+participation_reason: logical_or_repository_capability
