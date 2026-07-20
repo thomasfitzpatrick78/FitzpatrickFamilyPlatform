@@ -1,6 +1,6 @@
 # Container Operational Health Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.3
 
 **Status:** Published Specification; Implementation Blocked
 
@@ -99,7 +99,7 @@ Production provider adapters are outside the first PLAT-14.1A implementation. Th
 
 The Infrastructure Registry record ID is the Platform-owned stable `subject_id`. PLAT-14.1A must not create a parallel container inventory or derive a stable subject ID from runtime data.
 
-The existing `service` and `planned_service` record types remain authoritative. The published, unimplemented Registry Container Identity Foundation selects a bounded optional `container_*` field set on those records; no independent container record or parallel inventory is permitted. A later separately authorized schema and migration package must implement and validate the contract before PLAT-14.1A can evaluate any subject.
+The existing `service` and `planned_service` record types remain authoritative. The published Registry Container Identity Foundation implementation provides the bounded optional `container_*` field set, schema `1.1`, strict validation, and evidence-gated migration framework; no independent container record or parallel inventory is permitted. No current record is migrated into eligibility, and PLAT-14.1A implementation remains separately unauthorized.
 
 ### Proposed Registry-Owned Attributes
 
@@ -727,5 +727,7 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Recorded publication of the Registry identity schema/validation/migration framework with no migrated subject and PLAT-14.1A still blocked. |
+| 1.2 | Recorded complete unpublished Registry identity schema/validation/migration framework with no migrated subject and PLAT-14.1A still blocked. |
 | 1.1 | Recorded publication and aligned the unimplemented Registry Container Identity Foundation dependency, selected service-record field model, and evidence-gated Pi-hole migration boundary. |
 | 1.0 | Initial PLAT-14.1A Container Operational Health specification alignment baseline. |

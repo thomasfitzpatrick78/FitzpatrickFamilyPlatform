@@ -24,25 +24,25 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Published PLAT-14.1A specification HEAD `89deeed2480679c9717cb151c3a14fe9414d8b97` on `main`. |
+| Baseline | Published Registry Container Identity Foundation HEAD `99c744db3ca05d7779bf79ba9d3cf9990fb97af2` on `main`. |
 | Current milestone | Milestone 14 - Engineering Organization Expansion and Platform Operationalization. |
 | Workstream ID and title | Bravo - Platform Observability. |
-| Assigned role | Codex Implementation Engineer acting in the work-package posture of Codex Architecture Analyst. |
-| Objective | Preserve the published Registry Container Identity Foundation architecture/specification prerequisite while keeping PLAT-14.1A implementation and all later gates blocked. |
-| Current Engineering Lifecycle stage | Specification; Registry Container Identity Foundation architecture/specification is published and all implementation is blocked and unstarted. |
+| Assigned role | Codex Implementation Engineer. |
+| Objective | Implement the published Registry Container Identity Foundation prerequisite while keeping all record migration, PLAT-14.1A, provider, activation, and live-work gates blocked. |
+| Current Engineering Lifecycle stage | Repository Implementation; Foundation implementation is published; PLAT-14.1A implementation remains unstarted. |
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; EO-14.8 framework; Milestone Plan; Engineering Portfolio Kanban; Infrastructure Registry; Platform Digital Twin; PLAT-14.0A work package; PLAT-14.1 and PLAT-13.6.3B architecture. |
-| Completed work and evidence | PLAT-14.0A and the PLAT-14.1A specification are published; EO and Alpha controls are published and unactivated; Bravo implementation has not started. |
-| Current work | Publication is complete; preserve the selected future contract, evidence-gated migration, validation requirements, and acceptance criteria without implementation. |
-| Active repository changes | Authorized Registry Container Identity Foundation publication, lifecycle synchronization, and governed reports only. |
-| Parallel workstreams | Architecture Integration active; Alpha controls published and unactivated; Bravo implementation blocked; Charlie implementation unstarted. |
+| Completed work and evidence | Foundation schema `1.1`, strict validation, deterministic migration planning/execution/rollback, exact-plan Architecture Gatekeeper approval-artifact binding, compatible Registry CLI and Digital Twin behavior, evidence catalog, documentation, and tests are published; all 39 records remain unchanged. |
+| Current work | Preserve the published Foundation baseline; do not create approval evidence or migrate records without a separate authorized package. |
+| Active repository changes | Authorized Foundation schema, validation, migration tooling, approval model/binding, CLI, tests, documentation, lifecycle synchronization, and governed reports only. |
+| Parallel workstreams | Architecture Integration is in Architecture Review; Alpha controls are published and unactivated; PLAT-14.1A and Charlie remain unstarted. |
 | Dependencies | Architecture Integration; completed EO-14.8 baseline; published Alpha controls; Infrastructure Registry; Platform Digital Twin; PLAT-14.1; PLAT-13.6.3B. |
-| Integration gates | Published Foundation before separately authorized Registry schema/migration and before PLAT-14.1A Option B repository implementation; implementation evidence before Charlie or dashboard completion. |
-| Unresolved decisions | Standalone work-item identifier intentionally deferred; later schema/migration and PLAT implementation authorization remain separate. |
+| Integration gates | Published Foundation baseline before any approved record migration; migrated eligible identity and separate authorization before PLAT-14.1A Option B repository implementation; PLAT evidence before Charlie or dashboard completion. |
+| Unresolved decisions | Record migration and PLAT implementation authorization remain separate; standalone work-item identifier remains intentionally deferred. |
 | Risks | Repository telemetry preparation could be mistaken for authorization to connect to live infrastructure. |
 | Stop conditions | Missing Bravo authorization; unavailable Alpha controls when required; scope expansion; live connection or deployment request; EO-14.8 functionality or validator-logic changes; FFFA changes; unapproved merge, tag, or release. |
-| Permitted actions | Publish and validate the authorized repository-only Registry Container Identity Foundation architecture/specification package. |
+| Permitted actions | Implement and validate the authorized repository-only Registry Container Identity Foundation package without modifying current records. |
 | Prohibited actions | Begin PLAT-14.1A implementation; connect to or change live infrastructure; use Docker or SSH; modify FFFA; commit, push, create a tag, or release. |
-| Next gate | Separate Architecture Gatekeeper decision for Registry Container Identity Foundation schema and evidence-gated migration implementation; PLAT implementation remains blocked. |
+| Next gate | Separate Architecture Gatekeeper approval of an exact-plan Registry migration artifact; PLAT implementation remains blocked behind completed migration and its own authorization. |
 | Last verification date | 2026-07-20. |
 | Superseded brief reference | None. |
 
@@ -50,4 +50,4 @@
 
 ## Continuity Notes
 
-EO-14.8, Alpha controls, PLAT-14.0A, the PLAT-14.1A specification, and Registry Container Identity Foundation architecture/specification are published. Schema, records, migration, PLAT implementation, providers, security, live observation, dashboards, and activation remain unstarted and unauthorized.
+EO-14.8, Alpha controls, PLAT-14.0A, the PLAT-14.1A specification, and Registry Container Identity Foundation architecture/specification and repository implementation are published. All records remain unchanged. Record migration, PLAT implementation, providers, security, live observation, dashboards, and activation remain unstarted and unauthorized.

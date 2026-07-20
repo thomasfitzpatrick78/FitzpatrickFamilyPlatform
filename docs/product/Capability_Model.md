@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.10
+**Document Version:** 1.13
 
 **Status:** Active
 
@@ -52,9 +52,9 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Platform Operations Bounded Context:** PLAT-14.0A defines Platform Operations as the Shared Platform domain for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. The Infrastructure Registry remains authoritative for declared state; replaceable providers produce observations; provider adapters normalize one-signal evidence; reconciliation preserves source facts; deterministic health policies require positive proof; intelligence remains advisory. The bounded context and contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, remain architecture-only with `Implemented: No`, and do not authorize live work.
 
-**Registry Container Identity Foundation:** The published architecture/specification prerequisite extends existing service records with a future bounded declared container identity contract. It preserves Registry `id` as canonical subject, rejects parallel container records, and remains unimplemented pending separate schema/migration authorization.
+**Registry Container Identity Foundation:** Published repository implementation of additive schema `1.1`, strict declared-identity validation, deterministic evidence-gated migration planning/execution/rollback, exact-plan Architecture Gatekeeper approval-artifact binding, and compatible CLI behavior. Registry `id` remains canonical; all 39 records remain unchanged; no subject is newly health eligible.
 
-**Container Operational Health Capability:** PLAT-14.1A publishes deterministic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. Repository implementation remains blocked by separate authorization and the unimplemented Registry identity prerequisite; provider adapters, privileged access, live observation, dashboard integration, and activation remain later gates.
+**Container Operational Health Capability:** PLAT-14.1A publishes deterministic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. Repository implementation remains blocked by separate authorization and an approved record migration; provider adapters, privileged access, live observation, dashboard integration, and activation remain later gates.
 
 ### Home Automation
 
@@ -130,6 +130,9 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.13 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity capability without approval artifact, record migration, or PLAT-14.1A authorization. |
+| 1.12 | Added the completed exact-plan governed migration-approval boundary without record migration or PLAT-14.1A authorization. |
+| 1.11 | Recorded complete unpublished Registry identity schema/validation/migration capability without record migration or PLAT-14.1A. |
 | 1.10 | Recorded PLAT-14.1A and Registry Container Identity Foundation publication while retaining the unimplemented schema/migration prerequisite. |
 | 1.9 | Recorded published PLAT-14.0A architecture and added the blocked PLAT-14.1A Container Operational Health capability boundary. |
 | 1.8 | Added the PLAT-14.0A Platform Operations bounded context and five-subdomain capability boundary. |

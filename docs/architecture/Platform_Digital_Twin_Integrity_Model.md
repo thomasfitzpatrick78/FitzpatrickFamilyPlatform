@@ -1,6 +1,6 @@
 # Platform Digital Twin Integrity Model
 
-**Document Version:** 1.3
+**Document Version:** 1.5
 
 **Status:** Active
 
@@ -69,7 +69,7 @@ Platform EAP reports these markers as information so architecture review can dis
 
 ## Future Container Identity Integrity
 
-The published but unimplemented Registry Container Identity Foundation preserves the service record as the Digital Twin subject and selects an optional conditional field set rather than a container-instance record type. Future validation must keep all 39 legacy records valid, require exact host and Compose identity before active eligibility, enforce host-scoped uniqueness, and fail closed on unknown or contradictory container states.
+The published Registry Container Identity Foundation implementation preserves the service record as the Digital Twin subject and uses an optional conditional field set rather than a container-instance record type. Schema-driven validation keeps all 39 legacy records valid, requires exact host and Compose identity before active eligibility, enforces host-scoped uniqueness, and fails closed on unknown or contradictory container states.
 
 Container participation is separate from existing lifecycle and `health_status`. Runtime IDs, provider labels, evidence, reconciliation, and Operational Health Assessments remain outside the Digital Twin declaration and cannot mutate it automatically. The active schema and records are unchanged by the architecture package.
 
@@ -93,6 +93,8 @@ Container participation is separate from existing lifecycle and `health_status`.
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded publication of the Architecture Gatekeeper-accepted Registry identity implementation with all 39 records unchanged and no runtime authority. |
+| 1.4 | Recorded implemented schema 1.1 and Digital Twin-compatible validation with all 39 records unchanged and no runtime authority. |
 | 1.3 | Added the future container identity integrity, legacy compatibility, uniqueness, and no-runtime-mutation boundaries. |
 | 1.2 | Added the PLAT-14.0A declared-state boundary and separation from evidence, reconciliation, and health. |
 | 1.1 | Added static unknown and TBD field reporting for PLAT-13.1 readiness. |

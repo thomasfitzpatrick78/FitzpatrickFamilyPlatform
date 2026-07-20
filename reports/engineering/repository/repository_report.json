@@ -1,7 +1,7 @@
 {
   "capability": "Repository Validation",
   "status": "PASS WITH WARNINGS",
-  "timestamp": "2026-07-20T14:14:09.540787+00:00",
+  "timestamp": "2026-07-20T15:26:49.221927+00:00",
   "summary": "Repository validation completed with status PASS WITH WARNINGS.",
   "results": [
     {
@@ -308,6 +308,11 @@
       "severity": "INFO",
       "message": "Registry record explicitly tracks unknown or TBD fields: unknowns",
       "path": "registry/records/services/prometheus.yaml"
+    },
+    {
+      "severity": "INFO",
+      "message": "Registry schema version 1.1 validated",
+      "path": null
     },
     {
       "severity": "INFO",

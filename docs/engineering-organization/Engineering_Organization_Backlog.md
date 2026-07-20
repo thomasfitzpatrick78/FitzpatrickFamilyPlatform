@@ -1,6 +1,6 @@
 # Engineering Organization Backlog
 
-**Document Version:** 2.0
+**Document Version:** 2.2
 
 **Status:** Active
 
@@ -31,7 +31,7 @@ This document defines the governed backlog for the Engineering Organization capa
 | EO-14.5 | Capability Maturity Assessment. | Applies the maturity model at a governed review cadence. | Deferred candidate; partially informed by Engineering Metrics v2. |
 | EO-14.6 | AI Collaboration and Approval Model. | Defines collaboration boundaries and approval flow before expanded autonomy. | Superseded by EO-14.8 AI Collaboration Governance. |
 | EO-14.7 | AI Role Catalog Operationalization. | Converts role definitions into repeatable workstream practice. | Absorbed into EO-14.1 and EO-14.2 for Milestone 14 planning. |
-| EO-14.8 | AI Collaboration Governance. | Governs AI participant initialization, continuity, completion, stewardship, readiness validation, and collaboration metrics. | Complete and published; EO-14.1A and EO-14.4A repository implementations are published; Bravo and Charlie remain unstarted and no live work is authorized. |
+| EO-14.8 | AI Collaboration Governance. | Governs AI participant initialization, continuity, completion, stewardship, readiness validation, and collaboration metrics. | Complete and published; EO-14.1A, EO-14.4A, and the bounded Bravo Foundation implementation are published; PLAT-14.1A and Charlie remain unstarted; no live work is authorized. |
 | EO-BL-008 | Promote customer data/test environment isolation pattern. | Converts the FFFA CUTOVER-001 guard and checklist into reusable customer-application governance. | Proposed; requires Architecture Gatekeeper review. |
 
 ---
@@ -63,6 +63,8 @@ Backlog items that create new governance shall be promoted only when the practic
 
 | Version | Description |
 |---------|-------------|
+| 2.2 | Recorded Architecture Gatekeeper acceptance and publication of the bounded Bravo Foundation implementation while preserving migration, PLAT-14.1A, Charlie, activation, and live-work gates. |
+| 2.1 | Recorded bounded Bravo Foundation implementation complete unpublished while preserving PLAT-14.1A, Charlie, activation, and live-work gates. |
 | 2.0 | Recorded publication of the approved EO-14.4A Option B repository implementation while preserving separate automation activation and later work packages. |
 | 1.9 | Recorded EO-14.4A Option B repository implementation complete pending Architecture Gatekeeper review without activation. |
 | 1.8 | Recorded publication of the approved EO-14.1A repository implementation while preserving separate role activation and later work packages. |

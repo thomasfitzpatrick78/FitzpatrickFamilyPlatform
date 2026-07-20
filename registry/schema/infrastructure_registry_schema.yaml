@@ -1,5 +1,7 @@
 schema_id: infrastructure_registry_v1
-schema_version: 1.0
+schema_version: 1.1
+supported_previous_schema_versions:
+  - 1.0
 record_extension: .yaml
 required_fields:
   - id
@@ -44,6 +46,179 @@ finance_scope_exclusions:
   - budgeting
   - transaction
   - investment
+
+allowed_fields:
+  - access_boundary
+  - admin_port
+  - admin_user_status
+  - administrative_dependencies
+  - api_policy
+  - approved_operating_system
+  - architecture
+  - arrival_status
+  - automation_policy
+  - availability_role
+  - bios_boot_option_filter
+  - bios_build_date
+  - bios_csm_support
+  - bios_decision
+  - bios_fast_boot
+  - bios_secure_boot
+  - bios_vendor
+  - bios_version
+  - bios_windows_boot_manager_present
+  - capacity
+  - collection_interval
+  - compatibility_finding
+  - compatibility_target
+  - compose_path
+  - compose_plugin_status
+  - container_health_policy_reference
+  - container_host_reference
+  - container_identity_contract_version
+  - container_identity_evidence
+  - container_name
+  - container_participation
+  - cpu
+  - cpu_topology
+  - customer_users
+  - dashboard_inventory
+  - datasource
+  - denied_capabilities
+  - dependencies
+  - description
+  - dns_ports
+  - docker_container_discovery
+  - docker_daemon_metrics_status
+  - docker_network
+  - docker_readiness
+  - endpoint
+  - evidence
+  - evidence_required
+  - evidence_template
+  - expected_image_digest
+  - expected_image_reference
+  - exporter
+  - exposure
+  - factory_windows_disposition
+  - governance_contract
+  - governed_runtime_name
+  - hardware_device
+  - health_check_requirement
+  - health_port
+  - health_status
+  - host_dependencies
+  - host_path_configuration
+  - host_published_port
+  - hostname
+  - hostname_standard
+  - id
+  - image
+  - image_digest
+  - image_id
+  - implementation_status
+  - internal_port
+  - ip_address
+  - lifecycle_status
+  - location
+  - mac_address
+  - management_capability
+  - management_interface
+  - memory
+  - memory_frequency
+  - memory_reported_mb
+  - metadata_allowlist
+  - metadata_denied
+  - model
+  - monitoring_ready
+  - mount_summary
+  - name
+  - network_dependencies
+  - network_exposure
+  - network_identity
+  - network_speed
+  - onboarding_status
+  - operating_system
+  - owner
+  - participation_reason
+  - participation_review_expires_at
+  - participation_review_reference
+  - persistence_validation
+  - persistent_configuration
+  - planned_compose_path
+  - planned_datasource
+  - planned_host
+  - planned_network
+  - planned_paths
+  - planned_role
+  - platform_directories
+  - platform_root
+  - port
+  - port_count
+  - power_dependencies
+  - power_input
+  - privilege_summary
+  - production_host
+  - production_role
+  - protected_loads
+  - quantity
+  - reboot_validation
+  - receiver
+  - record_type
+  - repository_compose_path
+  - repository_config_path
+  - repository_documentation
+  - residual_risk
+  - resource_limits
+  - retention
+  - rollback_for
+  - rollback_role
+  - rollback_service
+  - runbook
+  - runtime_status
+  - runtime_uid_gid
+  - runtime_user
+  - scrape_targets
+  - scraped_by
+  - secret_model
+  - security_classification
+  - selected_components
+  - serial_number
+  - service_dependencies
+  - service_interface
+  - socket_model
+  - ssh_access
+  - ssh_status
+  - static_dhcp_reservation
+  - storage
+  - storage_mode
+  - storage_path
+  - unknowns
+  - validation_status
+  - version_source
+  - compose_project
+  - compose_service
+
+container_identity_contract_versions:
+  - 1.0
+container_participation_values:
+  - active
+  - intentionally_inactive
+  - excluded
+  - not_applicable
+health_check_requirement_values:
+  - required
+  - optional
+  - not_applicable
+participation_reason_values:
+  - planned_not_deployed
+  - approved_maintenance_or_shutdown
+  - unsupported_identity_model
+  - identity_unresolved
+  - out_of_scope
+  - logical_or_repository_capability
+  - runtime_engine_not_workload
+  - retired_or_replacement_only
 
 classified_dependency_fields:
   network_dependencies: any

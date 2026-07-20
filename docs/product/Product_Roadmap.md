@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 3.4
+**Document Version:** 3.6
 
 **Status:** Active
 
@@ -24,7 +24,7 @@ Planned outcomes:
 
 - Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
 - Preserve the published Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations and keep activation, Bravo, and Charlie behind separate authorization gates.
-- Preserve the published PLAT-14.0A architecture, PLAT-14.1A specification, and Registry Container Identity Foundation architecture/specification before any repository implementation.
+- Preserve the published PLAT contracts and published Registry identity prerequisite while keeping record migration and PLAT-14.1A behind separate gates.
 - Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
 - Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
@@ -70,13 +70,13 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 - EO-14.8E Engineering Metrics Integration is complete.
 - EO-14.8 parent capability is complete and Architecture Gatekeeper approved.
 - Alpha EO-14.1A and EO-14.4A repository implementations are published.
-- Bravo and Charlie remain unstarted; no Execution Agent activation or live work is authorized.
+- The bounded Bravo Foundation implementation is published; PLAT-14.1A and Charlie remain unstarted. No Execution Agent activation or live work is authorized.
 
 ### PLAT - Shared Platform
 
 - PLAT-14.0A Platform Operations Domain Architecture and canonical contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; implementation remains absent.
 - PLAT-14.1 Container Metrics Modernization.
-- PLAT-14.1A Container Operational Health specification and its Registry Container Identity Foundation architecture/specification prerequisite are published. Schema, records, migration, and PLAT repository implementation remain unauthorized. The future Option B repository vertical slice and telemetry work remain separate later gates.
+- Foundation schema `1.1`, strict validation, migration planning/execution/rollback, CLI, and tests are complete and published. All records remain unchanged and PLAT-14.1A repository implementation remains unauthorized. The future Option B repository vertical slice and telemetry work remain separate later gates.
 - PLAT-14.2 Operational Excellence for backup, restore, recovery validation, alerting, runbooks, and evidence retention.
 - PLAT-14.3 Platform Health Dashboard.
 - PLAT-14.3A Platform Health Dashboard Completion after the verified PLAT-14.1A telemetry contract.
@@ -144,6 +144,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 3.6 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity prerequisite while keeping migration, PLAT, provider, and live gates separate. |
+| 3.5 | Recorded complete unpublished Registry identity prerequisite implementation while keeping migration, PLAT, provider, and live gates separate. |
 | 3.4 | Recorded PLAT-14.1A and Registry Container Identity Foundation architecture/specification publication with implementation blocked. |
 | 3.3 | Recorded PLAT-14.0A publication and PLAT-14.1A Container Operational Health specification alignment with implementation and later gates blocked. |
 | 3.2 | Added PLAT-14.0A Platform Operations domain architecture and blocked PLAT-14.1A pending publication and alignment. |

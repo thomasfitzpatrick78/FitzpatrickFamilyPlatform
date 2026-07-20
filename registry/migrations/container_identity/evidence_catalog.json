@@ -1,0 +1,234 @@
+{
+  "entries": [
+    {
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {"assertion": "The Registry record defines a governed update process rather than a container workload.", "reference": "registry/records/planned_services/controlled-container-updates.yaml"},
+        {"assertion": "The published architecture classifies this subject as a logical service.", "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"}
+      ],
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": ["registry/records/planned_services/controlled-container-updates.yaml", "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "subject_id": "svc-controlled-container-updates",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "classification": "planned_container_service",
+      "evidence": [
+        {"assertion": "The Registry declares a planned restricted Docker API proxy.", "reference": "registry/records/planned_services/docker-api-proxy.yaml"},
+        {"assertion": "Repository Compose configuration provides future identity evidence but does not authorize activation.", "reference": "platform/compose/monitoring/compose.yaml"}
+      ],
+      "proposed_fields": {},
+      "subject_id": "svc-docker-api-proxy",
+      "unresolved_fields": ["health_check_requirement", "reviewed_migration_approval"],
+      "warnings": ["Planned service must remain intentionally inactive and unactivated."]
+    },
+    {
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {"assertion": "The Registry record is an umbrella replacement-planning subject, not a deployable container identity.", "reference": "registry/records/planned_services/docker-container-metrics-exporter.yaml"},
+        {"assertion": "The published architecture classifies this subject as a logical planning record.", "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"}
+      ],
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": ["registry/records/planned_services/docker-container-metrics-exporter.yaml", "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "subject_id": "svc-docker-container-metrics-exporter",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The planned workload form is not governed sufficiently for migration.", "reference": "registry/records/planned_services/home-assistant.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-home-assistant",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Do not infer a container workload from service naming or future intent."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The logical hub record does not establish a deployable container workload.", "reference": "registry/records/planned_services/home-automation-hub.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-home-automation-hub",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Do not convert a logical service subject into a container identity without review."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The planned broker record does not establish its future workload identity.", "reference": "registry/records/planned_services/mqtt-broker.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-mqtt-broker",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Do not infer Compose identity from a planned service name."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The planned AI service record does not establish its future workload identity.", "reference": "registry/records/planned_services/ollama-local-ai.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-ollama-local-ai",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Do not infer runtime or Compose identity from product naming."]
+    },
+    {
+      "classification": "planned_container_service",
+      "evidence": [
+        {"assertion": "The Registry declares a planned OpenTelemetry Docker Stats Collector.", "reference": "registry/records/planned_services/otel-docker-stats.yaml"},
+        {"assertion": "Repository Compose configuration provides future identity evidence but does not authorize activation.", "reference": "platform/compose/monitoring/compose.yaml"}
+      ],
+      "proposed_fields": {},
+      "subject_id": "svc-otel-docker-stats",
+      "unresolved_fields": ["health_check_requirement", "reviewed_migration_approval"],
+      "warnings": ["Planned service must remain intentionally inactive and unactivated."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The planned alerting record does not establish a deployable container workload.", "reference": "registry/records/planned_services/platform-alerting.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-platform-alerting",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Alerting capability intent is not container identity evidence."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The planned backup capability does not establish a deployable container workload.", "reference": "registry/records/planned_services/platform-backup-recovery.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-platform-backup-recovery",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Backup capability intent is not container identity evidence."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The planned dashboard record does not establish one governed container identity.", "reference": "registry/records/planned_services/platform-monitoring-dashboard.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-platform-monitoring-dashboard",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Presentation capability intent is not container identity evidence."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The planned remote-management record does not establish a deployable container workload.", "reference": "registry/records/planned_services/remote-management.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-remote-management",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Management capability intent is not container identity evidence."]
+    },
+    {
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {"assertion": "The Registry establishes the active cAdvisor service and governed host relationship.", "reference": "registry/records/services/cadvisor.yaml"},
+        {"assertion": "Repository Compose configuration establishes project and service identity evidence.", "reference": "platform/compose/monitoring/compose.yaml"}
+      ],
+      "proposed_fields": {},
+      "subject_id": "svc-cadvisor",
+      "unresolved_fields": ["container_health_policy_reference", "health_check_requirement", "reviewed_migration_approval"],
+      "warnings": ["Existing degraded legacy health_status is not a Container Operational Health assessment."]
+    },
+    {
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {"assertion": "The Registry record represents the runtime engine rather than a container workload.", "reference": "registry/records/services/docker-engine.yaml"},
+        {"assertion": "The published architecture classifies this subject as non-container.", "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"}
+      ],
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": ["registry/records/services/docker-engine.yaml", "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"],
+        "container_participation": "not_applicable",
+        "participation_reason": "runtime_engine_not_workload"
+      },
+      "subject_id": "svc-docker-engine",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {"assertion": "The Registry establishes the active Grafana service and governed host relationship.", "reference": "registry/records/services/grafana.yaml"},
+        {"assertion": "Repository Compose configuration establishes project and service identity evidence.", "reference": "platform/compose/monitoring/compose.yaml"}
+      ],
+      "proposed_fields": {},
+      "subject_id": "svc-grafana",
+      "unresolved_fields": ["container_health_policy_reference", "health_check_requirement", "reviewed_migration_approval"],
+      "warnings": ["Existing degraded legacy health_status is not a Container Operational Health assessment."]
+    },
+    {
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {"assertion": "The Registry record represents a repository validation capability rather than a container workload.", "reference": "registry/records/services/infrastructure-registry-validation.yaml"},
+        {"assertion": "The published architecture classifies this subject as a logical service.", "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"}
+      ],
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": ["registry/records/services/infrastructure-registry-validation.yaml", "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "subject_id": "svc-infrastructure-registry-validation",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {"assertion": "The Registry establishes the active Node Exporter service and governed host relationship.", "reference": "registry/records/services/node-exporter.yaml"},
+        {"assertion": "Repository Compose configuration establishes project and service identity evidence.", "reference": "platform/compose/monitoring/compose.yaml"}
+      ],
+      "proposed_fields": {},
+      "subject_id": "svc-node-exporter",
+      "unresolved_fields": ["container_health_policy_reference", "health_check_requirement", "reviewed_migration_approval"],
+      "warnings": []
+    },
+    {
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {"assertion": "The Registry establishes the active Pi-hole subject, Beelink host relationship, container role, and runtime-name candidate.", "reference": "registry/records/services/pihole-dns.yaml"},
+        {"assertion": "The published specification identifies the exact values that remain unresolved.", "reference": "docs/specifications/Registry_Container_Identity_Foundation_Specification.md"}
+      ],
+      "proposed_fields": {},
+      "subject_id": "svc-pihole-dns",
+      "unresolved_fields": ["compose_project", "compose_service", "container_health_policy_reference", "health_check_requirement"],
+      "warnings": ["Compose path and runtime-name candidate cannot establish the missing exact values."]
+    },
+    {
+      "classification": "unresolved",
+      "evidence": [{"assertion": "The replacement rollback record does not establish its current workload identity sufficiently for migration.", "reference": "registry/records/services/pihole-raspberry-pi-rollback.yaml"}],
+      "proposed_fields": {},
+      "subject_id": "svc-pihole-raspberry-pi-rollback",
+      "unresolved_fields": ["container_participation", "governed_workload_identity"],
+      "warnings": ["Replacement lifecycle does not imply intentional inactivity under the new contract."]
+    },
+    {
+      "classification": "confirmed_non_container_service",
+      "evidence": [
+        {"assertion": "The Registry record represents repository automation capability rather than a container workload.", "reference": "registry/records/services/platform-eap.yaml"},
+        {"assertion": "The published architecture classifies this subject as a logical service.", "reference": "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"}
+      ],
+      "proposed_fields": {
+        "container_identity_contract_version": "1.0",
+        "container_identity_evidence": ["registry/records/services/platform-eap.yaml", "docs/architecture/Registry_Container_Identity_Foundation_Architecture.md"],
+        "container_participation": "not_applicable",
+        "participation_reason": "logical_or_repository_capability"
+      },
+      "subject_id": "svc-platform-eap",
+      "unresolved_fields": [],
+      "warnings": []
+    },
+    {
+      "classification": "confirmed_active_container_service",
+      "evidence": [
+        {"assertion": "The Registry establishes the active Prometheus service and governed host relationship.", "reference": "registry/records/services/prometheus.yaml"},
+        {"assertion": "Repository Compose configuration establishes project and service identity evidence.", "reference": "platform/compose/monitoring/compose.yaml"}
+      ],
+      "proposed_fields": {},
+      "subject_id": "svc-prometheus",
+      "unresolved_fields": ["container_health_policy_reference", "health_check_requirement", "reviewed_migration_approval"],
+      "warnings": []
+    }
+  ],
+  "model_version": "registry-container-identity-evidence-v1"
+}

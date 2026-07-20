@@ -2,7 +2,7 @@
 
 **Status:** PASS WITH WARNINGS
 
-**Timestamp:** 2026-07-20T14:14:09.540787+00:00
+**Timestamp:** 2026-07-20T15:26:49.221927+00:00
 
 **Summary:** Repository validation completed with status PASS WITH WARNINGS.
 
@@ -10,7 +10,7 @@
 
 - Errors: 0
 - Warnings: 1
-- Information: 64
+- Information: 65
 
 ## Results
 
@@ -75,6 +75,7 @@
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/pihole-dns.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: health_status, unknowns (`registry/records/services/pihole-raspberry-pi-rollback.yaml`)
 - INFO: Registry record explicitly tracks unknown or TBD fields: unknowns (`registry/records/services/prometheus.yaml`)
+- INFO: Registry schema version 1.1 validated
 - INFO: Registry validation passed for 39 records
 - INFO: Platform Digital Twin integrity validation passed
 - INFO: Current branch: main

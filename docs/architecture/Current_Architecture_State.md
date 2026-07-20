@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.9
+**Document Version:** 1.12
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, the PLAT-14.1A Container Operational Health specification at `89deeed2480679c9717cb151c3a14fe9414d8b97`, and the Registry Container Identity Foundation architecture/specification. Registry schema implementation, record migration, and PLAT-14.1A implementation remain blocked.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, and the Registry Container Identity Foundation architecture/specification and repository implementation. Foundation schema `1.1`, strict validation, evidence-gated migration, exact-plan governed approval binding, rollback, CLI, and tests are complete and published. Record migration and PLAT-14.1A implementation remain blocked.
 
 ---
 
@@ -28,7 +28,7 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - Validation-first design selected before monitoring, dashboards, or automation.
 - Governed operations and observability architecture selected in ADR-007.
 - Platform Operations bounded-context direction is published in ADR-009 through ADR-011, with declared state, normalized evidence, reconciliation, deterministic health, and advisory intelligence kept separate; implementation remains absent.
-- PLAT-14.1A and the Registry Container Identity Foundation architecture/specification are published. The Foundation selects a future optional service-record identity extension, but the active schema and all 39 records remain unchanged. PLAT implementation, migration, providers, security, live observation, dashboards, and activation remain blocked.
+- The Registry Container Identity Foundation repository implementation and required exact-plan approval-artifact hardening are complete and published. Schema `1.1` validates all 39 unchanged records; no record is migrated or container-health eligible. Record migration, PLAT implementation, providers, security, live observation, dashboards, and activation remain blocked.
 
 ---
 
@@ -75,6 +75,9 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.12 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity implementation with all records and later gates unchanged. |
+| 1.11 | Recorded completed pre-publication exact-plan approval-artifact hardening with all records and later gates unchanged. |
+| 1.10 | Recorded complete unpublished Registry identity schema/validation/migration framework with all 39 records unchanged and PLAT blocked. |
 | 1.9 | Recorded PLAT-14.1A and Registry Container Identity Foundation architecture/specification publication without implementation. |
 | 1.8 | Recorded PLAT-14.0A publication and PLAT-14.1A Container Operational Health specification alignment with implementation blocked. |
 | 1.7 | Added PLAT-14.0A Platform Operations domain architecture and the blocked PLAT-14.1A dependency state. |

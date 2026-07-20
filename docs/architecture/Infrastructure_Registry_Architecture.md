@@ -1,6 +1,6 @@
 # Infrastructure Registry Architecture
 
-**Document Version:** 1.4
+**Document Version:** 1.7
 
 **Status:** Active
 
@@ -121,7 +121,7 @@ Future evolution requires governed requirements, ADRs when applicable, specifica
 
 The published Registry Container Identity Foundation selects a bounded optional extension on existing `service` and `planned_service` records as the architecture direction for declared container identity. The service record ID remains the canonical Platform subject. A separate container record type is rejected because it would create parallel identity and blur declared service state with runtime instances.
 
-The extension remains unimplemented. Existing records and schema version `1.0` remain authoritative. A future separately approved additive schema version `1.1` may introduce the closed conditional field set and evidence-gated migration defined by the Registry Container Identity Foundation specification.
+The additive schema `1.1`, closed conditional field set, strict validation, and evidence-gated migration framework are implemented and published. Mutation authorization requires a separate exact-plan Architecture Gatekeeper approval artifact whose content hash is bound and reverified by the executor. All 39 existing records remain unchanged and valid; no subject is silently eligible. Record migration and PLAT-14.1A remain separate gates.
 
 Milestone 13 introduces the registry-driven Platform lifecycle pattern:
 
@@ -148,6 +148,9 @@ The registry and validation stages must remain authoritative before future autom
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Recorded Architecture Gatekeeper acceptance and publication of the bounded implementation while retaining separate record-migration and PLAT gates. |
+| 1.6 | Added strict exact-plan governed approval evidence as a prerequisite for Registry migration mutation. |
+| 1.5 | Recorded complete unpublished schema 1.1, validation, migration, rollback, and CLI implementation without record migration or PLAT-14.1A. |
 | 1.4 | Published the unimplemented Option A Registry Container Identity Foundation direction for existing service records. |
 | 1.3 | Added Milestone 13 registry-driven Platform lifecycle pattern. |
 | 1.2 | Added WS-12.4 topology relationship model with classified dependency validation. |

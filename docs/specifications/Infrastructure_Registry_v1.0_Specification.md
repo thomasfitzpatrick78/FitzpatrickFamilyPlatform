@@ -1,6 +1,6 @@
 # Infrastructure Registry v1.0 Specification
 
-**Document Version:** 1.10
+**Document Version:** 1.13
 
 **Status:** Active
 
@@ -129,9 +129,9 @@ Future Platform Operational Evidence uses a Platform-owned subject identifier li
 
 ## Registry Container Identity Foundation
 
-The published PLAT-14.1A specification depends on the published, unimplemented Registry Container Identity Foundation. The approved architecture direction is a bounded optional `container_*` field set on existing `service` and `planned_service` records. A new independent container record type and parallel inventory are rejected.
+The published PLAT-14.1A specification depends on the published Registry Container Identity Foundation repository implementation. The approved architecture direction is a bounded optional `container_*` field set on existing `service` and `planned_service` records. A new independent container record type and parallel inventory are rejected.
 
-The existing Registry record `id` remains the canonical Platform `subject_id`. The future additive schema target is `infrastructure_registry_v1` version `1.1`; the active schema remains unchanged at version `1.0` until a separate implementation package is approved.
+The existing Registry record `id` remains the canonical Platform `subject_id`. The additive schema is now `infrastructure_registry_v1` version `1.1`. Existing required fields and all 39 current records remain unchanged and valid.
 
 The proposed extension uses a bounded participation value instead of an ambiguous `container_backed` boolean. `active`, `intentionally_inactive`, `excluded`, and `not_applicable` distinguish current assessment participation, reviewed nonparticipation, and confirmed non-container services. Absence of the extension means legacy or unresolved and never implies eligibility.
 
@@ -139,7 +139,7 @@ Active v1 eligibility requires an exact governed host and Compose project/servic
 
 Existing records remain valid and ineligible until evidence-gated migration. `svc-pihole-dns` remains the canonical Pi-hole subject, but the repository does not yet establish its exact Compose project, Compose service, health-check requirement, or implemented policy reference sufficiently for migration. No value may be inferred from its path or runtime name.
 
-This architecture/specification package does not modify the active Registry schema, records, validator, tests, or CLI. PLAT-14.1A cannot infer missing identity or mutate Registry lifecycle, participation, or health fields.
+The complete published implementation adds strict schema-driven validation, migration models, a deterministic evidence catalog and planner, exact-plan Architecture Gatekeeper approval artifacts, content-hash-bound execution authorization, exact rollback, and compatible CLI commands. No current Registry record is migrated. PLAT-14.1A cannot infer missing identity or mutate Registry lifecycle, participation, or health fields.
 
 
 ## Platform Operating Environment
@@ -153,7 +153,7 @@ The operating environment documentation covers administration, host placement as
 
 WS-12.7 introduces read-only Infrastructure Registry CLI commands through `./platform-eap registry`.
 
-The CLI supports listing registry records, showing one record by ID, listing services, hosts, and devices, running registry validation, and summarizing topology relationships. All commands are deterministic, local-file based, and read-only.
+The CLI preserves listing, show, service, host, device, validation, and topology behavior. It adds schema-version, migration-plan, migration-review, migration-status, and read-only exact-approval binding commands. Apply requires a plan bound to a strict matching approval artifact, explicit confirmation, and rollback evidence; rollback also requires explicit confirmation. No mutation is the default.
 
 ---
 
@@ -190,6 +190,9 @@ Milestone 12 planning does not authorize:
 
 | Version | Description |
 |---------|-------------|
+| 1.13 | Recorded Architecture Gatekeeper acceptance and publication of the schema 1.1 identity foundation implementation without record migration or PLAT-14.1A. |
+| 1.12 | Bound Registry migration authorization to a strict separate exact-plan Architecture Gatekeeper approval artifact and content hash. |
+| 1.11 | Implemented additive schema 1.1, strict container identity validation, evidence-gated migration planning/execution/rollback, and compatible CLI commands without migrating current records. |
 | 1.10 | Published the bounded optional service-record container identity architecture, additive future schema version, evidence-gated migration, and unresolved Pi-hole fields without implementing schema or records. |
 | 1.9 | Added the PLAT-14.1A Registry-owned container identity schema design, migration boundary, and authoritative matching precedence without implementing schema or record changes. |
 | 1.8 | Added the PLAT-14.0A declared-state, subject-linkage, and no-implicit-mutation boundary. |

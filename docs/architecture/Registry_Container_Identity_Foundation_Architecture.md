@@ -1,12 +1,12 @@
 # Registry Container Identity Foundation Architecture
 
-**Document Version:** 1.0
+**Document Version:** 1.2
 
-**Status:** Published Architecture; Implemented: No
+**Status:** Published Architecture
 
 **Milestone:** Milestone 14 - PLAT-14.1A prerequisite
 
-**Implementation:** Not Authorized
+**Implementation:** Complete; Published
 
 ---
 
@@ -16,7 +16,9 @@ This document defines the architecture options and selected direction for the Re
 
 The capability extends the Infrastructure Registry declared-state contract so container-backed Platform services can be identified, reconciled, and assessed consistently without coupling canonical identity to a runtime engine or telemetry provider.
 
-This package does not implement the Registry schema, migrate records, change validation or CLI behavior, create health models, access providers, or connect to live infrastructure.
+The original architecture package did not implement the Registry schema, migrate records, change validation or CLI behavior, create health models, access providers, or connect to live infrastructure.
+
+The subsequent authorized implementation package advances the additive Registry schema to `1.1`, implements strict validation and evidence-gated migration tooling, and preserves all 39 current records unchanged. Pre-publication hardening separates the immutable proposal from authorization through a strict exact-plan Architecture Gatekeeper approval artifact and content-hash binding. PLAT-14.1A, providers, health evaluation, activation, and live work remain outside the implementation.
 
 ---
 
@@ -238,6 +240,7 @@ Kubernetes, cluster, scheduler, replica-set, and distributed workload identity a
 - Repository references must be relative, normalized, and constrained to approved repository locations.
 - Weak provider identifiers cannot be promoted into canonical state automatically.
 - Unresolved identity and exclusions require human-reviewed repository evidence.
+- Registry mutation requires a repository-local approval artifact that identifies the exact canonical plan, approved Registry-migration scope, decision timestamp, Architecture Gatekeeper authority, and governed review reference; executor verification binds its exact content hash.
 - No discovery, mutation, remediation, deployment, or health-state write is permitted.
 
 ---
@@ -267,4 +270,6 @@ Repository evidence does not establish an approved standalone PLAT or Registry w
 
 | Version | Description |
 |---------|-------------|
-| 1.0 | Published Registry Container Identity Foundation architecture assessment and approved Option A direction without implementation authorization. |
+| 1.2 | Recorded Architecture Gatekeeper acceptance and publication of the schema, validation, migration framework, approval binding, CLI, Digital Twin compatibility, and tests without migrating records or starting PLAT-14.1A. |
+| 1.1 | Added the required pre-publication exact-plan governed approval artifact boundary without changing schema, classifications, records, or PLAT scope. |
+| 1.0 | Published Option A architecture; later repository implementation completed unpublished without record migration, PLAT-14.1A, provider, or live work. |

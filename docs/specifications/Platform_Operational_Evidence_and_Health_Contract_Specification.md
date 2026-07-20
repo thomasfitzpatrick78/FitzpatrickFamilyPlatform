@@ -1,6 +1,6 @@
 # Platform Operational Evidence and Health Contract Specification
 
-**Document Version:** 1.2
+**Document Version:** 1.4
 
 **Status:** Published Architecture Contract; Implemented: No
 
@@ -74,7 +74,7 @@ An evidence record identifies both `contract_version` and the independently gove
 
 `subject_id` is not a Docker container ID, provider label, cAdvisor name, OpenTelemetry resource identifier, Prometheus series identity, or other runtime reference.
 
-For container evidence, the published but unimplemented Registry Container Identity Foundation contract supplies the declared host and governed Compose identity only after separate schema implementation and migration. Missing or invalid declared identity fails closed; an adapter cannot synthesize it from provider observations.
+For container evidence, the published Registry Container Identity Foundation implementation supplies validated declared host and governed Compose identity only after an approved record migration. No current service is migrated into eligibility. Missing or invalid declared identity fails closed; an adapter cannot synthesize it from provider observations.
 
 ### Evidence Classification
 
@@ -631,6 +631,8 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Recorded publication of the Registry identity prerequisite implementation while retaining migration, PLAT, provider, and health gates. |
+| 1.3 | Recorded the complete unpublished Registry identity prerequisite implementation while retaining migration, PLAT, provider, and health gates. |
 | 1.2 | Added the Registry Container Identity Foundation declared-host/Compose dependency and fail-closed provider boundary without changing contract version 1.0. |
 | 1.1 | Clarified Registry-derived lifecycle expectation and linked the PLAT-14.1A specification-alignment baseline without changing contract version 1.0. |
 | 1.0 | Initial PLAT-14.0A generic evidence, container profile, reconciliation, health, confidence, provider, consumer, and compatibility contracts. |

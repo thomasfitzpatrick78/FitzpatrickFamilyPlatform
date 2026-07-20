@@ -1,12 +1,12 @@
 # Registry Container Identity Foundation Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.3
 
-**Status:** Published Specification; Implementation Not Authorized
+**Status:** Published Specification and Implementation
 
 **Milestone:** Milestone 14 - PLAT-14.1A prerequisite
 
-**Implementation:** Not Authorized
+**Implementation:** Complete; Published
 
 ---
 
@@ -14,9 +14,9 @@
 
 This specification defines the smallest authoritative Infrastructure Registry extension required to provide stable declared identity for container-backed Platform services consumed by PLAT-14.1A Container Operational Health.
 
-The selected future design adds bounded optional fields to existing `service` and `planned_service` records. It does not create a new container record type, linked runtime inventory, provider model, or health-assessment field.
+The implemented design adds bounded optional fields to existing `service` and `planned_service` records. It does not create a new container record type, linked runtime inventory, provider model, or health-assessment field.
 
-This document defines a future contract only. It does not modify the Registry schema or records, implement migration or validation, change Registry CLI behavior, or authorize PLAT-14.1A implementation.
+The repository implementation advances the schema to `1.1`, adds strict validation, deterministic migration planning/execution/rollback, an exact-plan governed approval artifact, and compatible CLI commands. It does not migrate any current Registry record or authorize PLAT-14.1A implementation.
 
 ---
 
@@ -53,9 +53,9 @@ The future extension applies only to existing `service` and `planned_service` re
 
 Absence of container identity fields preserves legacy validity and means the record is not yet classified for container-health eligibility. It must not be interpreted as confirmed `not_applicable`.
 
-### Future Schema Version
+### Implemented Schema Version
 
-The separately authorized implementation should advance `infrastructure_registry_v1` from schema version `1.0` to additive minor version `1.1`.
+The authorized implementation advances `infrastructure_registry_v1` from schema version `1.0` to additive minor version `1.1`.
 
 Existing required common fields and allowed record types remain unchanged. New fields are optional at the general schema level and become conditionally required only when `container_identity_contract_version` is present.
 
@@ -63,7 +63,7 @@ No per-record schema version is required. `container_identity_contract_version` 
 
 ---
 
-## Future Field Contract v1.0
+## Implemented Field Contract v1.0
 
 | Field | Type | Requirement | Contract |
 |-------|------|-------------|----------|
@@ -121,7 +121,7 @@ New outcome-changing reasons require a compatible contract revision and review.
 - Repository references are relative, cannot contain traversal, cannot be absolute or symlink-escaped, and must resolve inside an approved repository path.
 - Timestamps are timezone-aware ISO 8601 values.
 
-The future validator must publish the exact accepted regular expressions and length limits. The implementation package may tighten syntax without changing identity meaning, but it must not guess or rewrite existing values.
+The implemented validator publishes bounded accepted regular expressions and length limits in repository code. It tightens syntax without changing identity meaning and does not guess or rewrite existing values.
 
 ---
 
@@ -159,7 +159,7 @@ A `not_applicable` record confirms the service is not a container-backed assesse
 
 ## Cross-Record Validation
 
-Future validation must enforce:
+Implemented validation enforces:
 
 - Global uniqueness of existing Registry IDs.
 - Container host reference resolves to one host.
@@ -176,7 +176,7 @@ The same Compose service name on different governed hosts is permitted because h
 
 ## Contradiction Rules
 
-Future validation rejects:
+Implemented validation rejects:
 
 - Container fields on a record type other than `service` or `planned_service`.
 - Active participation without a host, Compose project, Compose service, health-check requirement, compatible policy reference, or evidence.
@@ -220,7 +220,7 @@ Matching order is fixed:
 
 ## PLAT-14.1A Consumer Contract
 
-After future schema implementation and evidence-gated migration, PLAT-14.1A may consume:
+After Architecture Gatekeeper publication, a separately approved evidence-gated record migration, and separate PLAT authorization, PLAT-14.1A may consume:
 
 - Canonical subject ID.
 - Registry record reference.
@@ -241,7 +241,7 @@ Missing, invalid, contradictory, unsupported, or unresolved required identity fa
 
 ## Versioning and Compatibility
 
-- Schema version `1.1` is the proposed additive implementation target.
+- Schema version `1.1` is the implemented additive Registry contract.
 - Container identity contract version starts at `1.0`.
 - Legacy records without container fields remain valid and ineligible.
 - Confirmed non-container records become explicit only through reviewed `not_applicable` migration.
@@ -257,7 +257,7 @@ No migration may infer critical values from container names, directory names, im
 
 ## Migration Design
 
-Migration is a later separately authorized repository package. It produces reviewed record patches; it does not connect to live infrastructure.
+The migration framework is implemented as a repository-only capability. It produces reviewed record patches only from an explicitly approved plan; it does not connect to live infrastructure. No current record is migrated by this package.
 
 | Category | Eligible Action | Required Evidence | Default / Review | Rollback |
 |----------|-----------------|-------------------|------------------|----------|
@@ -268,7 +268,28 @@ Migration is a later separately authorized repository package. It produces revie
 | Unresolved service | Do not add active identity; optionally add reviewed `excluded` only when exclusion is approved. | Human review and explicit unresolved facts. | Remains legacy/ineligible or excluded; never guess. | Remove reviewed extension by inverse patch. |
 | Not applicable record domain | No change. | Record type. | Devices, hosts, locations, owners, and network devices remain relationship records. | Not applicable. |
 
-Every migration batch must validate before and after, preserve a reviewable diff, identify its evidence, and prove the second application is a no-op. No migration script is authorized by this package.
+Every migration batch validates before and after, preserves a reviewable diff, identifies its evidence, and proves the second application is a no-op. Mutation requires a canonical plan bound to a separate matching governed approval artifact, explicit confirmation, and rollback metadata.
+
+### Governed Migration Approval Artifact
+
+The migration plan defines what is proposed. A separate repository-local JSON approval artifact defines whether that exact proposal is authorized. Plan approval fields are derived presentation metadata and cannot authorize execution by themselves.
+
+The strict approval artifact contains:
+
+| Field | Requirement |
+|-------|-------------|
+| `model_version` | Exact supported approval model `registry-container-identity-approval-v1`. |
+| `plan_id` | Exact canonical migration plan ID, binding all candidates, actions, proposed fields, record hashes, and evidence hashes. |
+| `schema_version` | Exact Registry schema version used by the plan. |
+| `migration_model_version` | Exact migration model version used by the plan. |
+| `approval_status` | One of `pending`, `approved`, or `rejected`; execution requires `approved`. |
+| `approval_scope` | Execution requires exact scope `registry_record_migration`. |
+| `approval_timestamp` | Timezone-aware ISO 8601 decision timestamp. |
+| `approval_authority` | Exact governed authority `Architecture Gatekeeper`. |
+| `approval_authority_reference` | Safe existing repository reference under governed architecture, engineering-organization, governance, or milestone documentation. |
+| `decision_notes` | Optional nonblank decision notes. |
+
+The read-only `bind-approval` command verifies the artifact against the canonical plan and binds the artifact path and SHA-256 content hash into a derived plan presentation. Execution reloads the artifact, rejects drift, parses it strictly, rejects unknown fields and unsupported versions, and revalidates plan ID, versions, affirmative scope, timestamp, authority, and review reference. Editing only serialized plan approval fields or referencing an arbitrary existing document cannot authorize mutation.
 
 ### Pi-hole Migration Assessment
 
@@ -301,7 +322,7 @@ The Compose directory name and runtime name cannot be promoted into missing Comp
 
 ---
 
-## Future Validation Test Matrix
+## Implemented Validation Test Matrix
 
 ### Schema and Conditional Fields
 
@@ -367,6 +388,7 @@ These tests prove structural integrity, deterministic declared identity, compati
 - No health-assessment write into Registry records.
 - Deterministic, bounded validation messages without sensitive values.
 - Human review for unresolved identities, exclusions, and host/Compose changes.
+- Separate exact-plan approval evidence for mutation; plan status is never authorization authority by itself.
 
 ---
 
@@ -375,16 +397,17 @@ These tests prove structural integrity, deterministic declared identity, compati
 This published specification preserves the approved baseline through these acceptance conditions:
 
 - One existing service record remains the only canonical subject.
-- Option A is selected with explicit tradeoffs and no schema implementation.
-- The future schema version and extension contract are explicit.
+- Option A is implemented without parallel identity or record migration.
+- Schema version `1.1` and extension contract `1.0` are explicit.
 - Participation, host, Compose, runtime-name, health-check, policy, image, evidence, and exclusion semantics are bounded.
 - Matching precedence is exact and provider-independent.
 - Legacy compatibility and fail-closed eligibility are explicit.
 - Migration is evidence-gated, idempotent, reversible, and non-live.
+- Migration mutation requires a strict content-hash-bound Architecture Gatekeeper approval artifact for the exact canonical plan.
 - Pi-hole known and unresolved values are distinguished without inference.
-- Validation and future test requirements are complete.
+- Validation and engineering test requirements are implemented.
 - PLAT-14.1A consumer and non-mutation boundaries are explicit.
-- No Registry schema, record, validator, CLI, test, provider, runtime, or health implementation is introduced.
+- No Registry record, provider, runtime, PLAT-14.1A, or health implementation is introduced.
 
 ---
 
@@ -404,4 +427,7 @@ This published specification preserves the approved baseline through these accep
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Recorded Architecture Gatekeeper acceptance and publication of the completed implementation while retaining separate approval-artifact, record-migration, PLAT, provider, and live-work gates. |
+| 1.2 | Bound mutation authorization to a strict separate exact-plan Architecture Gatekeeper approval artifact and content hash before final publication review. |
+| 1.1 | Recorded complete unpublished schema 1.1, strict validation, evidence-gated migration, rollback, CLI, and test implementation without migrating records or starting PLAT-14.1A. |
 | 1.0 | Published Registry Container Identity Foundation contract, migration design, validation requirements, and future acceptance matrix without implementation authorization. |

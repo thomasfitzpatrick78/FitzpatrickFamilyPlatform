@@ -37,6 +37,20 @@ from engineering.platform_eap.automation_io import (
     transition_from_json,
 )
 from engineering.platform_eap.automation_rendering import render_automation_handoff_markdown
+from engineering.platform_eap.registry_identity import (
+    MigrationDataError,
+    bind_migration_approval,
+    build_migration_plan,
+    build_migration_report,
+    execute_migration,
+    migration_plan_from_json,
+    migration_plan_to_json,
+    render_migration_review,
+    rollback_metadata_from_json,
+    rollback_migration,
+    schema_version_from,
+    validate_container_identity_contract,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -171,6 +185,7 @@ def validate_tracked_repository_artifacts() -> list[CheckResult]:
 REGISTRY_ROOT = ROOT / "registry"
 REGISTRY_SCHEMA = REGISTRY_ROOT / "schema" / "infrastructure_registry_schema.yaml"
 REGISTRY_RECORDS = REGISTRY_ROOT / "records"
+REGISTRY_MIGRATION_CATALOG = REGISTRY_ROOT / "migrations" / "container_identity" / "evidence_catalog.json"
 REGISTRY_REQUIRED_FIELDS = {
     "id",
     "record_type",
@@ -239,6 +254,8 @@ def parse_registry_yaml(path: Path) -> dict[str, object]:
         current_list_key = None
         if not key:
             raise ValueError(f"Missing key on line {line_number}")
+        if key in data:
+            raise ValueError(f"Duplicate key {key} on line {line_number}")
         if value == "[]":
             data[key] = []
         elif value == "":
@@ -251,6 +268,11 @@ def parse_registry_yaml(path: Path) -> dict[str, object]:
         else:
             data[key] = value
     return data
+
+
+def load_registry_schema(schema_path: Path | None = None) -> dict[str, object]:
+    path = REGISTRY_SCHEMA if schema_path is None else schema_path
+    return parse_registry_yaml(path)
 
 
 def registry_record_files(records_root: Path | None = None) -> list[Path]:
@@ -379,10 +401,145 @@ def print_registry_records(records: list[dict[str, object]]) -> None:
         )
 
 
+def _registry_cli_path(value: str, *, must_exist: bool) -> Path:
+    if not value or "\\" in value:
+        raise MigrationDataError("Registry migration path must be a repository-relative path.")
+    candidate = Path(value)
+    if candidate.is_absolute() or ".." in candidate.parts or "." in candidate.parts:
+        raise MigrationDataError("Registry migration path must be a safe repository-relative path.")
+    resolved_root = ROOT.resolve()
+    resolved = (ROOT / candidate).resolve()
+    if resolved != resolved_root and resolved_root not in resolved.parents:
+        raise MigrationDataError("Registry migration path escapes the repository.")
+    if must_exist and not resolved.is_file():
+        raise MigrationDataError(f"Registry migration file does not exist: {value}.")
+    return resolved
+
+
+def _current_registry_migration_plan(catalog_path: Path | None = None):
+    records, path_by_id, errors = load_registry_records()
+    if errors:
+        raise MigrationDataError("Registry records must load successfully before migration planning.")
+    schema = load_registry_schema()
+    source = REGISTRY_MIGRATION_CATALOG if catalog_path is None else catalog_path
+    try:
+        catalog = json.loads(source.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise MigrationDataError(f"Migration evidence catalog cannot be read: {exc}.") from exc
+    if not isinstance(catalog, dict):
+        raise MigrationDataError("Migration evidence catalog must contain a JSON object.")
+    return build_migration_plan(records, path_by_id, schema, catalog, ROOT)
+
+
+def _parse_migration_apply_arguments(argv: list[str]) -> tuple[Path, Path, bool, bool]:
+    values: dict[str, str] = {}
+    modes: set[str] = set()
+    index = 1
+    while index < len(argv):
+        argument = argv[index]
+        if argument in {"--plan", "--rollback-output"}:
+            if argument in values or index + 1 >= len(argv) or argv[index + 1].startswith("--"):
+                raise MigrationDataError(f"Migration apply requires one value for {argument}.")
+            values[argument] = argv[index + 1]
+            index += 2
+            continue
+        if argument in {"--dry-run", "--confirm"}:
+            if argument in modes:
+                raise MigrationDataError(f"Migration apply argument is duplicated: {argument}.")
+            modes.add(argument)
+            index += 1
+            continue
+        raise MigrationDataError(f"Migration apply contains unsupported argument: {argument}.")
+    if set(values) != {"--plan", "--rollback-output"}:
+        raise MigrationDataError("Migration apply requires --plan and --rollback-output.")
+    if len(modes) != 1:
+        raise MigrationDataError("Migration apply requires exactly one of --dry-run or --confirm.")
+    return (
+        _registry_cli_path(values["--plan"], must_exist=True),
+        _registry_cli_path(values["--rollback-output"], must_exist=False),
+        "--dry-run" in modes,
+        "--confirm" in modes,
+    )
+
+
+def _registry_migration_cli(argv: list[str]) -> int:
+    try:
+        if argv == ["plan"]:
+            print(migration_plan_to_json(_current_registry_migration_plan()), end="")
+            return 0
+        if len(argv) == 3 and argv[:2] == ["plan", "--catalog"]:
+            print(migration_plan_to_json(_current_registry_migration_plan(_registry_cli_path(argv[2], must_exist=True))), end="")
+            return 0
+        if argv == ["review"]:
+            print(render_migration_review(_current_registry_migration_plan()), end="")
+            return 0
+        if len(argv) == 3 and argv[:2] == ["review", "--plan"]:
+            plan = migration_plan_from_json(_registry_cli_path(argv[2], must_exist=True).read_text(encoding="utf-8"))
+            print(render_migration_review(plan), end="")
+            return 0
+        if argv == ["status"]:
+            report = build_migration_report(_current_registry_migration_plan())
+            print("# Registry Container Identity Migration Status")
+            print(f"Plan ID: {report.plan_id}")
+            print(f"Approval status: {report.approval_status.value}")
+            print(f"Candidates: {report.candidate_count}")
+            print(f"Apply: {report.apply_count}")
+            print(f"Review required: {report.review_required_count}")
+            print(f"No change: {report.no_change_count}")
+            print(f"Unresolved subjects: {len(report.unresolved_subject_ids)}")
+            print("Mode: read-only repository planning")
+            return 0
+        if len(argv) == 5 and argv[0] == "bind-approval" and argv[1] == "--plan" and argv[3] == "--approval":
+            plan_path = _registry_cli_path(argv[2], must_exist=True)
+            approval_path = _registry_cli_path(argv[4], must_exist=True)
+            approval_reference = str(approval_path.relative_to(ROOT))
+            approval_parts = Path(approval_reference).parts
+            if len(approval_parts) < 4 or approval_parts[:2] != ("registry", "migrations") or approval_path.suffix != ".json":
+                raise MigrationDataError("Migration approval artifact must be a JSON file under registry/migrations.")
+            plan = migration_plan_from_json(plan_path.read_text(encoding="utf-8"))
+            bound_plan = bind_migration_approval(plan, approval_reference, approval_path.read_bytes())
+            print(migration_plan_to_json(bound_plan), end="")
+            return 0
+        if argv and argv[0] == "apply":
+            plan_path, rollback_path, dry_run, confirm = _parse_migration_apply_arguments(argv)
+            plan = migration_plan_from_json(plan_path.read_text(encoding="utf-8"))
+            result = execute_migration(
+                plan,
+                ROOT,
+                dry_run=dry_run,
+                confirm=confirm,
+                rollback_output=None if dry_run else rollback_path,
+                validate=validate_registry,
+            )
+            print(json.dumps(asdict(result), indent=2, sort_keys=True))
+            return 0
+        if len(argv) == 4 and argv[:2] == ["rollback", "--metadata"] and argv[3] == "--confirm":
+            metadata_path = _registry_cli_path(argv[2], must_exist=True)
+            metadata = rollback_metadata_from_json(metadata_path.read_text(encoding="utf-8"))
+            result = rollback_migration(metadata, ROOT, confirm=True, validate=validate_registry)
+            print(json.dumps(asdict(result), indent=2, sort_keys=True))
+            return 0
+    except (MigrationDataError, OSError) as exc:
+        print(f"Registry migration error: {exc}")
+        return 1
+    print("Usage: platform-eap registry migration <plan [--catalog PATH]|review [--plan PATH]|status|bind-approval --plan PATH --approval PATH|apply --plan PATH --rollback-output PATH (--dry-run|--confirm)|rollback --metadata PATH --confirm>")
+    return 2
+
+
 def registry_cli(argv: list[str]) -> int:
     if not argv:
-        print("Usage: platform-eap registry <list|show|services|hosts|devices|validate|topology>")
+        print("Usage: platform-eap registry <list|show|services|hosts|devices|validate|topology|schema-version|migration>")
         return 2
+    if argv == ["schema-version"]:
+        try:
+            schema = load_registry_schema()
+        except (OSError, ValueError) as exc:
+            print(f"Registry schema could not be read: {exc}")
+            return 1
+        print(f"Infrastructure Registry schema version: {schema_version_from(schema)}")
+        return 0
+    if argv[0] == "migration":
+        return _registry_migration_cli(argv[1:])
     if argv == ["validate"]:
         results = validate_registry()
         status = status_from(results)
@@ -453,21 +610,31 @@ def registry_cli(argv: list[str]) -> int:
             if relationship_lines:
                 print(f"{record.get('id')} ({record.get('record_type')}): {'; '.join(relationship_lines)}")
         return 0
-    print("Usage: platform-eap registry <list|show <record-id>|services|hosts|devices|validate|topology>")
+    print("Usage: platform-eap registry <list|show <record-id>|services|hosts|devices|validate|topology|schema-version|migration>")
     return 2
 
 
-def validate_registry(records_root: Path | None = None, schema_path: Path | None = None) -> list[CheckResult]:
+def validate_registry(
+    records_root: Path | None = None,
+    schema_path: Path | None = None,
+    repository_root: Path | None = None,
+) -> list[CheckResult]:
     records_base = REGISTRY_RECORDS if records_root is None else records_root
     schema = REGISTRY_SCHEMA if schema_path is None else schema_path
+    identity_root = ROOT if repository_root is None else repository_root
     results: list[CheckResult] = []
     if not REGISTRY_ROOT.exists() and records_root is None:
         results.append(CheckResult("ERROR", "Registry root missing", "registry"))
         return results
+    schema_data: dict[str, object] = {}
     if not schema.exists():
         results.append(CheckResult("ERROR", "Registry schema missing", str(schema.relative_to(ROOT) if schema.is_relative_to(ROOT) else schema)))
     else:
         results.append(CheckResult("INFO", "Registry schema exists", str(schema.relative_to(ROOT) if schema.is_relative_to(ROOT) else schema)))
+        try:
+            schema_data = load_registry_schema(schema)
+        except (OSError, ValueError) as exc:
+            results.append(CheckResult("ERROR", f"Registry schema parse failed: {exc}", str(schema.relative_to(ROOT) if schema.is_relative_to(ROOT) else schema)))
     files = registry_record_files(records_base)
     if not files:
         results.append(CheckResult("ERROR", "No registry records found", str(records_base.relative_to(ROOT) if records_base.is_relative_to(ROOT) else records_base)))
@@ -475,6 +642,9 @@ def validate_registry(records_root: Path | None = None, schema_path: Path | None
 
     parsed_records, path_by_id, load_errors = load_registry_records(records_base)
     results.extend(load_errors)
+    if schema_data:
+        for finding in validate_container_identity_contract(parsed_records, path_by_id, schema_data, identity_root):
+            results.append(CheckResult(finding.severity, finding.message, finding.path))
 
     owner_ids = {rid for rid, record in parsed_records.items() if record.get("record_type") == "owner"}
     location_ids = {rid for rid, record in parsed_records.items() if record.get("record_type") == "location"}
@@ -543,6 +713,7 @@ def validate_registry(records_root: Path | None = None, schema_path: Path | None
     for cycle in dependency_cycle_messages(parsed_records):
         results.append(CheckResult("ERROR", f"Circular registry dependency detected: {cycle}"))
     if not any(result.severity == "ERROR" for result in results):
+        results.append(CheckResult("INFO", f"Registry schema version {schema_version_from(schema_data)} validated"))
         results.append(CheckResult("INFO", f"Registry validation passed for {len(parsed_records)} records"))
         results.append(CheckResult("INFO", "Platform Digital Twin integrity validation passed"))
     return results
