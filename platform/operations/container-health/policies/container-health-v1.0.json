@@ -1,0 +1,17 @@
+{
+  "approval_authority": ["Architecture Gatekeeper", "Platform Administrator"],
+  "compatible_contract_versions": ["1.0"],
+  "compatible_profile_versions": ["1.0"],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "policy_id": "container-health",
+  "policy_version": "1.0",
+  "purpose": "Derive deterministic provider-independent container health from qualifying reconciled evidence.",
+  "rules": {
+    "evaluation_order": ["not_evaluated", "insufficient_evidence", "unhealthy", "degraded", "healthy"],
+    "healthy_criteria": ["active_subject", "exact_identity", "current_running_lifecycle", "complete_mandatory_coverage", "mandatory_confidence_at_least_medium", "required_healthcheck_passing", "no_critical_conflict", "no_material_provider_limitation"],
+    "healthy_default": false,
+    "reason_codes": ["ADVISORY_TELEMETRY_PARTIAL", "ALL_MANDATORY_CRITERIA_PASSED", "ASSESSMENT_EXPIRED", "DECLARED_SUBJECT_ABSENT", "HEALTHCHECK_FAILED", "HEALTHCHECK_NOT_REQUIRED", "IDENTITY_UNRESOLVED", "LIFECYCLE_CONFLICT", "LIFECYCLE_EVIDENCE_MISSING", "MANDATORY_EVIDENCE_UNUSABLE", "MANDATORY_TELEMETRY_PARTIAL", "MEMORY_PRESSURE_CRITICAL", "NO_EVALUATION", "PROVIDER_LIMITATION_APPLIES", "REQUIRED_HEALTHCHECK_NOT_CONFIGURED", "RESOURCE_EVIDENCE_STALE", "RESOURCE_PRESSURE_ELEVATED", "SUBJECT_NOT_ACTIVE", "TELEMETRY_UNAVAILABLE", "UNEXPECTED_EXIT"]
+  },
+  "status": "active",
+  "supersedes": null
+}

@@ -1,0 +1,10 @@
+id: loc-fixture
+record_type: location
+name: Synthetic Fixture Location
+description: Test-only location for PLAT-14.1A Registry contract validation.
+owner: owner-fixture
+location: loc-fixture
+lifecycle_status: active
+health_status: unmonitored
+monitoring_ready: false
+dependencies: []

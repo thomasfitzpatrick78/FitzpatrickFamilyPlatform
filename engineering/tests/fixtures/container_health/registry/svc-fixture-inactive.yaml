@@ -1,0 +1,24 @@
+id: svc-fixture-inactive
+record_type: planned_service
+name: Synthetic Intentionally Inactive Service
+description: Test-only declared container subject that is intentionally inactive.
+owner: owner-fixture
+location: loc-fixture
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+dependencies:
+  - host-fixture
+host_dependencies:
+  - host-fixture
+container_identity_contract_version: 1.0
+container_participation: intentionally_inactive
+container_host_reference: host-fixture
+compose_project: fixture-platform
+compose_service: fixture-inactive
+governed_runtime_name: fixture-inactive-1
+health_check_requirement: optional
+container_health_policy_reference: platform/operations/container-health/policies/container-policy-set-v1.0.json
+container_identity_evidence:
+  - docs/specifications/Container_Operational_Health_Specification.md
+participation_reason: planned_not_deployed

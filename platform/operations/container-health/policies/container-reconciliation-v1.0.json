@@ -1,0 +1,19 @@
+{
+  "approval_authority": ["Architecture Gatekeeper", "Platform Administrator"],
+  "compatible_contract_versions": ["1.0"],
+  "compatible_profile_versions": ["1.0"],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "policy_id": "container-reconciliation",
+  "policy_version": "1.0",
+  "purpose": "Resolve Registry-linked fixture evidence without mutating declared or observed facts.",
+  "rules": {
+    "allowed_outcomes": ["matched", "missing", "unexpected", "ambiguous", "conflicting", "stale", "not_applicable"],
+    "conclusive_absence_requires": ["current", "complete", "exact_identity", "population_inventory"],
+    "fuzzy_matching_allowed": false,
+    "match_hierarchy": ["subject_and_registry_reference", "host_compose_project_service", "host_unique_runtime_name", "image_corroboration_only", "runtime_id_provenance_only", "provider_attributes_input_only", "fuzzy_matching_prohibited"],
+    "retain_considered_evidence": true,
+    "silent_conflict_selection": false
+  },
+  "status": "active",
+  "supersedes": null
+}

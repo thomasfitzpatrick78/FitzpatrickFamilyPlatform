@@ -1,6 +1,6 @@
 # Platform Operations Domain Architecture
 
-**Document Version:** 1.4
+**Document Version:** 1.6
 
 **Status:** Published Architecture; Implemented: No
 
@@ -215,10 +215,10 @@ Missing dashboard data must never be rendered as Healthy.
 | Work Package or Capability | Lifecycle Position |
 |----------------------------|--------------------|
 | PLAT-14.0A | Domain architecture and contracts published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; not implemented or operational. |
-| PLAT-14.1A | Specification published; Foundation schema/validation/migration framework implementation published; PLAT implementation remains blocked pending separate migration and repository implementation decisions. |
+| PLAT-14.1A | Specification, Foundation, and Architecture Gatekeeper-accepted Option B fixture-only repository implementation published; authoritative Registry evaluation remains unavailable because no record is migrated. |
 | EO-14.1A | Repository implementation published; Execution Agent unactivated. |
 | EO-14.4A | Repository implementation published; automation unactivated. |
-| Bravo and Charlie | Implementation unstarted. |
+| Bravo and Charlie | Bravo PLAT-14.1A fixture-only repository implementation published and unactivated; Charlie implementation unstarted. |
 | Live infrastructure | Unauthorized. |
 
 Repository publication of this architecture does not authorize implementation. Repository implementation, Architecture Review, controlled live deployment, evidence, reconciliation, operational validation, and release remain separate Engineering Lifecycle stages.
@@ -242,7 +242,7 @@ Privileged telemetry integrations remain governed by the Privileged Infrastructu
 
 ## Repository-First Implementation Strategy
 
-A future PLAT-14.1A repository implementation should begin with immutable contract models, strict parsing, deterministic validation, provider-neutral fixtures, decision-table tests, stable serialization, and read-only rendering. It must not require live Docker, SSH, Prometheus, Grafana, OpenTelemetry, cAdvisor, service activation, or infrastructure mutation to prove the domain architecture.
+The PLAT-14.1A Option B repository implementation uses immutable contract models, strict parsing, deterministic validation, provider-neutral fixtures, decision-table tests, stable serialization, and read-only rendering. It requires no live Docker, SSH, Prometheus, Grafana, OpenTelemetry, cAdvisor, service activation, or infrastructure mutation to prove the domain architecture.
 
 Repository fixtures are sufficient to prove:
 
@@ -268,7 +268,7 @@ Existing PLAT-14.1A telemetry scope is preserved and reframed as future provider
 - cAdvisor: limited provider subject to known compatibility findings.
 - Grafana provisioning: presentation implementation that consumes governed outputs and must not define authoritative health.
 
-PLAT-14.1A must implement against the published PLAT-14.0A contracts rather than embed provider-specific identity, metric names, confidence, or health semantics. The PLAT-14.1A Container Operational Health specification defines the aligned policy, identity, output, fixture, and lifecycle baseline; it does not authorize implementation.
+PLAT-14.1A implements against the published PLAT-14.0A contracts without embedding provider-specific identity, metric names, confidence, or health semantics. The Container Operational Health specification remains the aligned policy, identity, output, fixture, and lifecycle authority.
 
 ---
 
@@ -284,7 +284,7 @@ PLAT-14.1A must implement against the published PLAT-14.0A contracts rather than
 - Dashboard implementation or presentation redesign.
 - Universal evidence plugins or speculative host, network, backup, certificate, or scheduled-task profiles.
 - FFFA changes.
-- PLAT-14.1A implementation or Milestone 14 closeout.
+- PLAT-14.1A provider implementation, consumer integration, activation, or Milestone 14 closeout.
 
 ---
 
@@ -300,7 +300,7 @@ PLAT-14.0A is ready for Architecture Gatekeeper review when:
 - Healthy requires current, complete, sufficient positive proof.
 - Provider adapters and consumers cannot recalculate or assert authoritative health.
 - Repository-first fixtures and future live-proof limits are explicit.
-- PLAT-14.1A implementation remains blocked pending publication of its aligned specification and later separate repository implementation authorization.
+- PLAT-14.1A repository implementation is Architecture Gatekeeper accepted and published, fixture-only, provider-free, and unactivated.
 - No implementation, activation, or live infrastructure work is introduced.
 
 ---
@@ -326,6 +326,8 @@ PLAT-14.0A is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A fixture-only repository implementation while retaining PLAT-14.0A as architecture-only and all live gates. |
+| 1.5 | Recorded the complete unpublished PLAT-14.1A fixture-only repository implementation while retaining PLAT-14.0A as architecture-only and all live gates. |
 | 1.4 | Recorded publication of the Registry identity schema/validation/migration framework with no eligible migrated subject and PLAT-14.1A still blocked. |
 | 1.3 | Recorded complete unpublished Registry identity schema/validation/migration framework with no eligible migrated subject and PLAT-14.1A still blocked. |
 | 1.2 | Published the unimplemented Registry Container Identity Foundation prerequisite and no-provider-inference boundary. |

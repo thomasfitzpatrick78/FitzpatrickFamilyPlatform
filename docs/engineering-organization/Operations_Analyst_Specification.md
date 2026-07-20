@@ -1,6 +1,6 @@
 # Operations Analyst Specification
 
-**Document Version:** 1.3
+**Document Version:** 1.5
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -41,7 +41,7 @@ This role recommends action. It does not execute production changes, approve arc
 
 ## Platform Operations Consumer Boundary
 
-For Container Operational Health, the Operations Analyst consumes published PLAT-14.0A Operational Evidence, reconciliation, and Operational Health Assessment contracts after a later implementation produces validated artifacts.
+For Container Operational Health, the Operations Analyst consumes the published PLAT-14.0A contracts and Architecture Gatekeeper-accepted PLAT-14.1A fixture evidence only after a separately authorized Charlie implementation defines the mapping. Publication does not itself authorize analyst execution or live interpretation.
 
 The Operations Analyst may:
 
@@ -61,7 +61,7 @@ Operational Intelligence is the interpreted stage after deterministic evaluation
 
 For PLAT-14.1A, the Operations Analyst preserves Registry identity, contract/profile/policy versions, health, confidence, reason codes, evidence references, freshness, `valid_until`, and provider findings. An expired assessment is noncurrent even when its stored health status was `healthy`. Provider loss, missing required evidence, and dashboard presentation failure remain distinct conditions.
 
-The aligned specification is not an implemented evidence source. Final EO-14.2A mappings remain blocked until a separately authorized PLAT-14.1A repository implementation produces validated assessment fixtures.
+The published PLAT-14.1A repository slice produces validated synthetic assessment fixtures. Final EO-14.2A mappings remain blocked pending a separate Charlie implementation authorization; no authoritative service or live evidence is available.
 
 ---
 
@@ -136,6 +136,8 @@ EO-14.2 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded publication of the PLAT-14.1A synthetic assessment fixtures while preserving the separate Charlie implementation and live-evidence gates. |
+| 1.4 | Recorded the complete unpublished PLAT-14.1A assessment fixtures while preserving the separate publication and Charlie implementation gates. |
 | 1.3 | Added the PLAT-14.1A policy/version, expiration, provider-loss, and downstream-evidence alignment boundary. |
 | 1.2 | Added the PLAT-14.0A Operational Intelligence consumer boundary without changing recommendation-only authority. |
 | 1.1 | Added governed AI Session Readiness interpretation and preserved recommendation-only authority. |

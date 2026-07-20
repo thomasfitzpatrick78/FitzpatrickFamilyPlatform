@@ -1,0 +1,12 @@
+id: svc-fixture-not-applicable
+record_type: planned_service
+name: Synthetic Non-Container Capability
+description: Test-only service record to prove the not-applicable participation path.
+owner: owner-fixture
+location: loc-fixture
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+dependencies: []
+container_identity_contract_version: 1.0
+container_participation: not_applicable

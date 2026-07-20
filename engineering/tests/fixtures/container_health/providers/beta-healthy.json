@@ -1,0 +1,36 @@
+{
+  "fixture_only": true,
+  "measurements": [
+    {
+      "canonical_unit": null,
+      "kind": "lifecycle",
+      "reading": "running"
+    },
+    {
+      "canonical_unit": null,
+      "kind": "healthcheck",
+      "reading": "passing"
+    }
+  ],
+  "provider": {
+    "id": "fixture-beta",
+    "method": "direct",
+    "version": "2.0"
+  },
+  "provider_shape": "beta-v1",
+  "resource": {
+    "engine": "synthetic-engine-2.0",
+    "host": "host-fixture",
+    "image_reference": "fixture.invalid/platform/api:1.0",
+    "id": "beta-runtime-recreated-999",
+    "name": "fixture-api-1",
+    "orchestrator": "compose",
+    "project": "fixture-platform",
+    "service": "fixture-api"
+  },
+  "source_reference": "engineering/tests/fixtures/container_health/providers/beta-healthy.json",
+  "timestamps": {
+    "collected": "2026-07-20T11:59:52Z",
+    "observed": "2026-07-20T11:59:50Z"
+  }
+}

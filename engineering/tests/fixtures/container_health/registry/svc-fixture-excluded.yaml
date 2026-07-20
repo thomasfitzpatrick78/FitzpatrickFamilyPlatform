@@ -1,0 +1,16 @@
+id: svc-fixture-excluded
+record_type: planned_service
+name: Synthetic Excluded Service
+description: Test-only subject excluded because its identity model is unresolved.
+owner: owner-fixture
+location: loc-fixture
+lifecycle_status: planned
+health_status: planned
+monitoring_ready: false
+dependencies: []
+container_identity_contract_version: 1.0
+container_participation: excluded
+container_identity_evidence:
+  - docs/specifications/Container_Operational_Health_Specification.md
+participation_reason: identity_unresolved
+participation_review_reference: docs/specifications/Container_Operational_Health_Specification.md

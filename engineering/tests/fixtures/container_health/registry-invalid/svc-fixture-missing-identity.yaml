@@ -1,0 +1,12 @@
+id: svc-fixture-missing-identity
+record_type: service
+name: Invalid Synthetic Missing Identity
+description: Negative fixture with active participation but missing governed identity fields.
+owner: owner-fixture
+location: loc-fixture
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: false
+dependencies: []
+container_identity_contract_version: 1.0
+container_participation: active

@@ -1,0 +1,61 @@
+{
+  "activation_status": "not_activated",
+  "assessment_confidence": "high",
+  "assessment_confidence_policy_version": "1.0",
+  "assessment_id": "assessment-10c7ca6d115f932fa900",
+  "contract_version": "1.0",
+  "critical_findings": [],
+  "evaluated_at": "2026-07-20T12:00:00Z",
+  "evidence_ids": [
+    "evidence-fixture-healthcheck",
+    "evidence-fixture-lifecycle"
+  ],
+  "evidence_profile_type": "container",
+  "evidence_profile_version": "1.0",
+  "evidence_summary": [
+    {
+      "evidence_confidence": "high",
+      "evidence_id": "evidence-fixture-healthcheck",
+      "expires_at": "2026-07-20T12:00:50Z",
+      "finding_codes": [],
+      "freshness_status": "current",
+      "observed_at": "2026-07-20T11:59:50Z",
+      "role": "mandatory",
+      "signal_name": "container.healthcheck.state"
+    },
+    {
+      "evidence_confidence": "high",
+      "evidence_id": "evidence-fixture-lifecycle",
+      "expires_at": "2026-07-20T12:00:50Z",
+      "finding_codes": [],
+      "freshness_status": "current",
+      "observed_at": "2026-07-20T11:59:50Z",
+      "role": "mandatory",
+      "signal_name": "container.lifecycle.observed_state"
+    }
+  ],
+  "fixture_only": true,
+  "health_policy_version": "1.0",
+  "health_status": "healthy",
+  "noncritical_findings": [],
+  "policy_manifest_id": "container-policy-set",
+  "policy_manifest_version": "1.0",
+  "policy_versions": [
+    "container-assessment-confidence:1.0",
+    "container-health:1.0",
+    "container-healthcheck-freshness:1.0",
+    "container-lifecycle-freshness:1.0",
+    "container-reconciliation:1.0",
+    "container-resource-pressure:1.0",
+    "container-restart-window:1.0",
+    "container-telemetry-availability:1.0"
+  ],
+  "reason_codes": [
+    "ALL_MANDATORY_CRITERIA_PASSED"
+  ],
+  "reconciliation_id": "reconciliation-bda7207e1d351686e28b",
+  "reconciliation_result": "matched",
+  "registry_reference": "engineering/tests/fixtures/container_health/registry/svc-fixture-api.yaml",
+  "subject_id": "svc-fixture-api",
+  "valid_until": "2026-07-20T12:00:50Z"
+}

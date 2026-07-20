@@ -1,0 +1,18 @@
+{
+  "approval_authority": ["Architecture Gatekeeper", "Platform Administrator"],
+  "compatible_contract_versions": ["1.0"],
+  "compatible_profile_versions": ["1.0"],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "policy_id": "container-restart-window",
+  "policy_version": "1.0",
+  "purpose": "Retain validated restart evidence as advisory evidence without health thresholds.",
+  "rules": {
+    "accepted_signals": ["container.restart.count", "container.restart.occurred"],
+    "health_thresholds": [],
+    "mode": "advisory",
+    "occurred_requires_bounded_window": true,
+    "reserved_reason_code": "RESTART_THRESHOLD_EXCEEDED"
+  },
+  "status": "active",
+  "supersedes": null
+}

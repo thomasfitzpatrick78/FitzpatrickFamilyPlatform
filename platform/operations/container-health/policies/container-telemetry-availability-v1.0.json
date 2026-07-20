@@ -1,0 +1,18 @@
+{
+  "approval_authority": ["Architecture Gatekeeper", "Platform Administrator"],
+  "compatible_contract_versions": ["1.0"],
+  "compatible_profile_versions": ["1.0"],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "policy_id": "container-telemetry-availability",
+  "policy_version": "1.0",
+  "purpose": "Require exact identity and complete mandatory coverage without treating provider loss as service failure.",
+  "rules": {
+    "identity_requirement": "exact",
+    "mandatory_coverage": "complete",
+    "mandatory_signals": ["container.lifecycle.observed_state", "container.healthcheck.state_when_required"],
+    "material_provider_limitation_disqualifies_evidence": true,
+    "provider_loss_proves_unhealthy": false
+  },
+  "status": "active",
+  "supersedes": null
+}

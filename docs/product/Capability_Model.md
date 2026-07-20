@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.13
+**Document Version:** 1.15
 
 **Status:** Active
 
@@ -54,7 +54,7 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Registry Container Identity Foundation:** Published repository implementation of additive schema `1.1`, strict declared-identity validation, deterministic evidence-gated migration planning/execution/rollback, exact-plan Architecture Gatekeeper approval-artifact binding, and compatible CLI behavior. Registry `id` remains canonical; all 39 records remain unchanged; no subject is newly health eligible.
 
-**Container Operational Health Capability:** PLAT-14.1A publishes deterministic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. Repository implementation remains blocked by separate authorization and an approved record migration; provider adapters, privileged access, live observation, dashboard integration, and activation remain later gates.
+**Container Operational Health Capability:** The published PLAT-14.1A Option B repository implementation provides deterministic synthetic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. It remains fixture-only and unactivated. Authoritative current-subject evaluation remains unavailable until a separately approved Registry migration; production adapters, privileged access, live observation, dashboard/API integration, and activation remain later gates.
 
 ### Home Automation
 
@@ -130,6 +130,8 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.15 | Recorded Architecture Gatekeeper acceptance and publication of the fixture-only Container Operational Health repository capability without Registry migration, provider access, activation, or live work. |
+| 1.14 | Recorded the complete unpublished fixture-only Container Operational Health repository capability without Registry migration, provider access, activation, or live work. |
 | 1.13 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity capability without approval artifact, record migration, or PLAT-14.1A authorization. |
 | 1.12 | Added the completed exact-plan governed migration-approval boundary without record migration or PLAT-14.1A authorization. |
 | 1.11 | Recorded complete unpublished Registry identity schema/validation/migration capability without record migration or PLAT-14.1A. |

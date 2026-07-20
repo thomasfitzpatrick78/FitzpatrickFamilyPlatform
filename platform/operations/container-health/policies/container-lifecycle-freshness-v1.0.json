@@ -1,0 +1,18 @@
+{
+  "approval_authority": ["Architecture Gatekeeper", "Platform Administrator"],
+  "compatible_contract_versions": ["1.0"],
+  "compatible_profile_versions": ["1.0"],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "policy_id": "container-lifecycle-freshness",
+  "policy_version": "1.0",
+  "purpose": "Classify fixture lifecycle evidence freshness for current-health evaluation.",
+  "rules": {
+    "aging_after_seconds": 30,
+    "future_timestamp_behavior": "invalid",
+    "healthy_requires": "current",
+    "maximum_age_seconds": 60,
+    "timestamp_required": true
+  },
+  "status": "active",
+  "supersedes": null
+}

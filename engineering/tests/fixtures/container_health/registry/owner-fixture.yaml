@@ -1,0 +1,10 @@
+id: owner-fixture
+record_type: owner
+name: Synthetic Fixture Owner
+description: Test-only owner for PLAT-14.1A Registry contract validation.
+owner: owner-fixture
+location: loc-fixture
+lifecycle_status: active
+health_status: unmonitored
+monitoring_ready: false
+dependencies: []

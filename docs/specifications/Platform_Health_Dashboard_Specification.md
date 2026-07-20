@@ -1,6 +1,6 @@
 # Platform Health Dashboard Specification
 
-**Document Version:** 1.3
+**Document Version:** 1.5
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -84,7 +84,7 @@ The PLAT-14.1A consumer mapping must distinguish:
 | Query or rendering failure | Render presentation failure without changing the assessment. |
 | Conclusive unhealthy assessment | Render governed `unhealthy` status and reasons. |
 
-PLAT-14.3A remains downstream of the published PLAT-14.1A specification, separately authorized core implementation, and verified assessment outputs. Dashboard integration, Grafana changes, and live deployment remain separate gates.
+PLAT-14.3A remains downstream of the published PLAT-14.1A specification and fixture-only assessment outputs. The core repository implementation is published and unactivated; dashboard/API integration, Grafana changes, and live deployment remain separate gates.
 
 ---
 
@@ -134,6 +134,8 @@ PLAT-14.3 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded publication of the PLAT-14.1A assessment-output proof while preserving every dashboard/API and live-deployment gate. |
+| 1.4 | Recorded the complete unpublished PLAT-14.1A assessment-output proof while preserving every dashboard and live-deployment gate. |
 | 1.3 | Added the aligned PLAT-14.1A assessment-expiration, provider-unavailability, and presentation-failure distinctions and preserved the downstream dashboard gate. |
 | 1.2 | Added the PLAT-14.0A Platform Operations read-only consumer boundary and authoritative no-data treatment. |
 | 1.1 | Added the EO-14.8E repository-side AI Session Readiness health-source contract without live dashboard changes. |

@@ -131,6 +131,20 @@ def test_ai_session_readiness_tracks_eo_14_4a_published_state(tmp_path):
     assert any("EO-14.1A and EO-14.4A as published" in warning.message for warning in result.warnings)
 
 
+def test_ai_session_readiness_tracks_plat_14_1a_published_fixture_only_state(tmp_path):
+    root = _ready_fixture(tmp_path)
+    kanban = DEFAULT_CONFIGURATION.planning_artifacts["kanban"]
+    _replace(
+        root,
+        kanban,
+        "Done; Architecture Gatekeeper Accepted / Published / Fixture Only / Unactivated",
+        "Implementation not started",
+    )
+    result = _validate(root)
+    assert result.readiness == READY_WITH_WARNINGS
+    assert any("PLAT-14.1A as an Architecture Gatekeeper-accepted" in warning.message for warning in result.warnings)
+
+
 def test_ai_session_readiness_detects_missing_permanent_governance(tmp_path):
     root = _ready_fixture(tmp_path)
     (root / DEFAULT_CONFIGURATION.permanent_governance[0]).unlink()
@@ -236,7 +250,7 @@ def test_ai_session_readiness_detects_broken_architecture_traceability(tmp_path)
 def test_ai_session_readiness_detects_charlie_missing_bravo_dependency(tmp_path):
     root = _ready_fixture(tmp_path)
     relative = f"{DEFAULT_CONFIGURATION.continuity_root}/Charlie_Continuity_Brief.md"
-    _replace(root, relative, "| Dependencies | Bravo telemetry contract;", "| Dependencies |")
+    _replace(root, relative, "| Dependencies | Bravo published PLAT-14.1A fixture evidence;", "| Dependencies |")
     result = _validate(root)
     assert any("Charlie is missing required dependency: Bravo" in message for message in _messages(result))
 

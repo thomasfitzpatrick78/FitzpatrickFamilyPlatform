@@ -1,0 +1,28 @@
+{
+  "approval_authority": [
+    "Architecture Gatekeeper",
+    "Platform Administrator"
+  ],
+  "compatible_contract_versions": [
+    "1.0"
+  ],
+  "compatible_profile_versions": [
+    "1.0"
+  ],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "manifest_id": "container-policy-set",
+  "manifest_version": "1.0",
+  "policy_references": [
+    "platform/operations/container-health/policies/container-reconciliation-v1.0.json",
+    "platform/operations/container-health/policies/container-lifecycle-freshness-v1.0.json",
+    "platform/operations/container-health/policies/container-healthcheck-freshness-v1.0.json",
+    "platform/operations/container-health/policies/container-restart-window-v1.0.json",
+    "platform/operations/container-health/policies/container-resource-pressure-v1.0.json",
+    "platform/operations/container-health/policies/container-telemetry-availability-v1.0.json",
+    "platform/operations/container-health/policies/container-health-v1.0.json",
+    "platform/operations/container-health/policies/container-assessment-confidence-v1.0.json"
+  ],
+  "purpose": "Bind the complete compatible policy set for fixture-only Container Operational Health evaluation.",
+  "status": "active",
+  "supersedes": null
+}

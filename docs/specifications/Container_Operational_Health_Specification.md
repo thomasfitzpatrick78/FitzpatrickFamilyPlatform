@@ -1,22 +1,22 @@
 # Container Operational Health Specification
 
-**Document Version:** 1.3
+**Document Version:** 1.5
 
-**Status:** Published Specification; Implementation Blocked
+**Status:** Published Specification and Repository Implementation; Fixture Only; Unactivated
 
 **Milestone:** PLAT-14.1A
 
-**Lifecycle Stage:** Published; Repository Implementation Not Authorized
+**Lifecycle Stage:** Published; Fixture Only; Unactivated
 
 ---
 
 ## Purpose
 
-This specification defines the complete governed repository baseline required before PLAT-14.1A Container Operational Health implementation may be authorized.
+This specification defines the governed contract implemented by the published PLAT-14.1A Container Operational Health repository vertical slice.
 
 Container Operational Health provides deterministic, explainable, repository-owned health assessments for declared container-backed Platform services by reconciling Infrastructure Registry state with canonical Platform Operational Evidence under versioned policies.
 
-This document specifies product behavior, identity, policy, reconciliation, health, output, fixture, consumer, and future-gate contracts. It does not implement models, policy files, parsers, validators, CLI commands, adapters, dashboards, automation, or runtime behavior.
+This document specifies product behavior, identity, policy, reconciliation, health, output, fixture, consumer, and future-gate contracts. The authorized Option B package now implements the deterministic repository capability through models, policy files, strict parsers and validators, bounded fixture normalizers, read-only CLI commands, tests, and documentation. It does not implement production adapters, dashboards, automation activation, or runtime behavior.
 
 ---
 
@@ -99,7 +99,7 @@ Production provider adapters are outside the first PLAT-14.1A implementation. Th
 
 The Infrastructure Registry record ID is the Platform-owned stable `subject_id`. PLAT-14.1A must not create a parallel container inventory or derive a stable subject ID from runtime data.
 
-The existing `service` and `planned_service` record types remain authoritative. The published Registry Container Identity Foundation implementation provides the bounded optional `container_*` field set, schema `1.1`, strict validation, and evidence-gated migration framework; no independent container record or parallel inventory is permitted. No current record is migrated into eligibility, and PLAT-14.1A implementation remains separately unauthorized.
+The existing `service` and `planned_service` record types remain authoritative. The published Registry Container Identity Foundation implementation provides the bounded optional `container_*` field set, schema `1.1`, strict validation, and evidence-gated migration framework; no independent container record or parallel inventory is permitted. No current record is migrated into eligibility. The repository vertical slice therefore uses synthetic Registry identity fixtures only and cannot assess an authoritative current service.
 
 ### Proposed Registry-Owned Attributes
 
@@ -216,13 +216,13 @@ Provider metric names, label keys, resource attributes, and dashboard expression
 
 ### Conceptual Location
 
-Future machine-readable policies belong under:
+Machine-readable policies are implemented under:
 
 ```text
 platform/operations/container-health/policies/
 ```
 
-This package defines their schemas and initial governed values in documentation only. It does not create runtime policy files.
+The repository slice implements their schemas and initial governed values as strictly validated JSON artifacts. Policy status permits deterministic fixture evaluation; `activation_status: not_activated` and fixture-only input enforcement prevent runtime operation.
 
 ### Common Policy Header
 
@@ -464,9 +464,9 @@ Persistent report publication is deferred. Any later approved file writer must v
 
 ---
 
-## Future Read-Only CLI Contract
+## Read-Only Repository CLI Contract
 
-The bounded future command surface is:
+The bounded implemented command surface is:
 
 ```text
 ./platform-eap container-health evidence validate <path>
@@ -485,13 +485,13 @@ The CLI is repository-local, deterministic, network-free, provider-free, side-ef
 | `3` | Unsupported or denied contract/profile major version. |
 | `4` | Missing, malformed, contradictory, inactive, or incompatible policy set. |
 
-No input field is executed. Rendering writes only to standard output. This package does not implement these commands.
+No input field is executed. Rendering writes only to standard output. The commands reject traversal, repository escape, symlink input, malformed data, unsupported versions, and invalid policy sets.
 
 ---
 
 ## Fixture Adapter Boundary
 
-The future implementation includes one generic governed fixture-observation format and two test-scoped provider fixture shapes that represent the same observations differently.
+The implementation includes one generic governed fixture-observation format and two test-scoped provider fixture shapes that represent the same observations differently.
 
 ### Responsibilities
 
@@ -514,7 +514,7 @@ Fixture proof does not establish live compatibility, cardinality, provider secur
 
 ## EO-14.1A and EO-14.4A Fixture Integration
 
-One future end-to-end fixture scenario must demonstrate:
+The end-to-end fixture scenario demonstrates:
 
 1. An EO-14.1A assignment identifies a repository-fixture PLAT-14.1A evaluation.
 2. PLAT-14.1A produces valid evidence, reconciliation, and assessment artifacts.
@@ -533,7 +533,7 @@ The integration proves contract reuse, reference validation, fail-closed handlin
 
 ## Repository-First Acceptance Matrix
 
-The future implementation must cover:
+The repository acceptance suite covers:
 
 ### Contracts and Versions
 
@@ -621,7 +621,7 @@ Fixture tests prove repository contract, normalization, reconciliation, policy, 
 
 | Gate | Authorized Scope | Required Evidence |
 |------|------------------|-------------------|
-| Core Repository Implementation | Contract models, policy loading, fixture translators, reconciliation, health evaluation, outputs, CLI, and tests. | Full repository acceptance matrix and Architecture Gatekeeper review. |
+| Core Repository Implementation | Architecture Gatekeeper accepted and published: contract models, policy loading, fixture translators, reconciliation, health evaluation, outputs, CLI, and tests. | Full repository acceptance matrix is implemented; publication does not authorize any later gate. |
 | Provider-Adapter Implementation | Bounded provider-specific mappings using fixtures only. | Supported versions, normalization equivalence, limitation handling, and no health calculation. |
 | Security Review | Restricted Docker API, socket, or other privileged access. | Least privilege, allowlist, denial proof plan, secrets, escape risk, exposure, logging, retention, rollback. |
 | Live Observation | Read-only named-target observation. | Approved targets/endpoints, duration, stop conditions, evidence handling, rollback, Pi-hole and household-service non-regression, human approval. |
@@ -652,9 +652,9 @@ Dashboard absence, query failure, or no-data behavior never changes the authorit
 
 ---
 
-## Implementation Direction and Lifecycle
+## Implementation and Lifecycle
 
-The approved future direction is a repository vertical slice with bounded fixture adapters:
+The implemented repository vertical slice contains bounded fixture adapters:
 
 - Contract and policy validation.
 - Registry-linked identity.
@@ -664,19 +664,16 @@ The approved future direction is a repository vertical slice with bounded fixtur
 - EO fixture integration.
 - No live provider access.
 
-This direction is not implementation authorization. PLAT-14.1A remains blocked until this specification is Architecture Gatekeeper reviewed, published, and followed by a separately authorized repository implementation package.
+The separately authorized Option B repository package is Architecture Gatekeeper accepted and published. It does not authorize Registry migration, provider access, dashboard/API work, activation, or live observation.
 
-PLAT-14.0A remains published architecture with `Implemented: No`. EO-14.1A and EO-14.4A remain published and unactivated. Bravo is in Specification Alignment. Charlie remains unstarted and dependent on governed assessments. Provider, security, live-observation, dashboard, activation, and FFFA work remain separate.
+PLAT-14.0A remains published architecture with `Implemented: No`. EO-14.1A and EO-14.4A remain published and unactivated. PLAT-14.1A is published, fixture-only, provider-free, and unactivated. Charlie remains unstarted and dependent on separately authorized consumer integration. Provider, security, live-observation, dashboard/API, activation, Registry migration, and FFFA work remain separate.
 
 ---
 
-## Explicit Non-Goals
+## Remaining Explicit Non-Goals
 
-- Python models, policy loaders, parsers, validators, serializers, or CLI implementation.
-- Machine-readable policy artifacts.
-- Registry schema or record migration.
-- Fixture files used by tests.
-- Provider adapters or provider deployment.
+- Registry schema changes, approval artifacts, or record migration.
+- Production provider adapters or provider deployment.
 - Docker, Prometheus, OpenTelemetry, cAdvisor, Grafana, SSH, network, host, container, or service access.
 - APIs, databases, background workers, schedulers, or persistent state.
 - Execution Agent or Governed Automation activation.
@@ -685,9 +682,9 @@ PLAT-14.0A remains published architecture with `Implemented: No`. EO-14.1A and E
 
 ---
 
-## Specification Acceptance Criteria
+## Repository Implementation Acceptance Criteria
 
-This specification is ready for Architecture Gatekeeper review when:
+The published implementation remains conformant when:
 
 - Product promise, customer, measurable outcomes, and non-ownership are explicit.
 - Registry-owned identity design and matching precedence are deterministic.
@@ -699,8 +696,8 @@ This specification is ready for Architecture Gatekeeper review when:
 - Fixture adapters prove provider replacement without becoming production adapters.
 - EO integration reuses published contracts without activation.
 - Future provider, security, observation, dashboard, and activation gates remain separate.
-- Portfolio and lifecycle metadata record PLAT-14.0A publication and PLAT-14.1A implementation blocking accurately.
-- No implementation or live work is introduced.
+- Portfolio and lifecycle metadata record PLAT-14.0A as architecture-only and PLAT-14.1A as published, fixture-only, provider-free, and unactivated.
+- No provider, Registry-record, activation, or live work is introduced.
 
 ---
 
@@ -720,6 +717,8 @@ This specification is ready for Architecture Gatekeeper review when:
 - [ADR-009 - Evidence Before Operational Health](../architecture/decisions/ADR-009-Evidence-Before-Operational-Health.md)
 - [ADR-010 - Declared Observed and Reconciled State](../architecture/decisions/ADR-010-Declared-Observed-and-Reconciled-State.md)
 - [ADR-011 - Generic Operational Evidence Envelope and Versioned Profiles](../architecture/decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md)
+- [Container Operational Health Repository Usage](../architecture/Container_Operational_Health_Repository_Usage.md)
+- [PLAT-14.1A Implementation Package](../milestones/Milestone_14/PLAT_14_1A_Container_Operational_Health_Implementation_Package.md)
 
 ---
 
@@ -727,6 +726,8 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded Architecture Gatekeeper acceptance and publication of the Option B fixture-only repository vertical slice without Registry migration, providers, runtime observation, dashboards/APIs, activation, or live work. |
+| 1.4 | Recorded completion of the authorized Option B fixture-only repository vertical slice for Architecture Gatekeeper review without Registry migration, providers, runtime observation, dashboards, activation, or live work. |
 | 1.3 | Recorded publication of the Registry identity schema/validation/migration framework with no migrated subject and PLAT-14.1A still blocked. |
 | 1.2 | Recorded complete unpublished Registry identity schema/validation/migration framework with no migrated subject and PLAT-14.1A still blocked. |
 | 1.1 | Recorded publication and aligned the unimplemented Registry Container Identity Foundation dependency, selected service-record field model, and evidence-gated Pi-hole migration boundary. |

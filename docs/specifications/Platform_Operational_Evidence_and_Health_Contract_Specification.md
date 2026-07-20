@@ -1,8 +1,8 @@
 # Platform Operational Evidence and Health Contract Specification
 
-**Document Version:** 1.4
+**Document Version:** 1.6
 
-**Status:** Published Architecture Contract; Implemented: No
+**Status:** Published Architecture Contract and Fixture-Only Repository Vertical Slice; Unactivated
 
 **Milestone:** PLAT-14.0A
 
@@ -21,7 +21,7 @@ It governs:
 - Freshness, completeness, evidence-confidence, assessment-confidence, and initial container-health decision models.
 - Provider-adapter, consumer, compatibility, versioning, security, and repository-first acceptance boundaries.
 
-This specification does not implement runtime schemas, models, parsers, validators, adapters, policies, thresholds, providers, dashboards, APIs, or live infrastructure behavior.
+The PLAT-14.1A Option B package implements these contracts as repository-owned immutable models, strict parsers, versioned policies, fixture-only normalizers, deterministic evaluation, and read-only rendering. It does not implement production adapters, providers, dashboards, APIs, activation, or live infrastructure behavior.
 
 ---
 
@@ -545,7 +545,7 @@ Every reconciliation and assessment remains traceable to contract versions, prof
 
 ## Repository-First Acceptance Fixtures
 
-A future implementation must include deterministic fixtures for:
+The PLAT-14.1A repository implementation includes deterministic fixtures for:
 
 - Exact registry match.
 - Declared subject missing.
@@ -631,6 +631,8 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded Architecture Gatekeeper acceptance and publication of the fixture-only PLAT-14.1A repository implementation without Registry migration, provider access, activation, or live work. |
+| 1.5 | Recorded the complete unpublished fixture-only PLAT-14.1A repository implementation of the contracts without Registry migration, provider access, activation, or live work. |
 | 1.4 | Recorded publication of the Registry identity prerequisite implementation while retaining migration, PLAT, provider, and health gates. |
 | 1.3 | Recorded the complete unpublished Registry identity prerequisite implementation while retaining migration, PLAT, provider, and health gates. |
 | 1.2 | Added the Registry Container Identity Foundation declared-host/Compose dependency and fail-closed provider boundary without changing contract version 1.0. |

@@ -690,6 +690,17 @@ class AISessionReadinessValidator:
                         "Kanban does not preserve EO-14.1A and EO-14.4A as published repository "
                         "implementations with automation unactivated."
                     )
+                elif name == "Bravo":
+                    plat_14_1a = [line.lower() for line in workstream_rows if "| plat-14.1a |" in line.lower()]
+                    planning_state_ok = (
+                        len(plat_14_1a) == 1
+                        and "done; architecture gatekeeper accepted / published / fixture only / unactivated" in plat_14_1a[0]
+                        and "implementation accepted and published" in plat_14_1a[0]
+                    )
+                    warning_message = (
+                        "Kanban does not preserve PLAT-14.1A as an Architecture Gatekeeper-accepted, "
+                        "published, fixture-only, and unactivated repository implementation."
+                    )
                 else:
                     planning_state_ok = bool(workstream_rows) and all(
                         "implementation not started" in line.lower() for line in workstream_rows

@@ -1,0 +1,24 @@
+id: svc-fixture-api
+record_type: service
+name: Synthetic Required-Check API
+description: Test-only active container subject requiring a runtime health check.
+owner: owner-fixture
+location: loc-fixture
+lifecycle_status: active
+health_status: unknown
+monitoring_ready: false
+dependencies:
+  - host-fixture
+host_dependencies:
+  - host-fixture
+container_identity_contract_version: 1.0
+container_participation: active
+container_host_reference: host-fixture
+compose_project: fixture-platform
+compose_service: fixture-api
+governed_runtime_name: fixture-api-1
+health_check_requirement: required
+container_health_policy_reference: platform/operations/container-health/policies/container-policy-set-v1.0.json
+expected_image_reference: fixture.invalid/platform/api:1.0
+container_identity_evidence:
+  - engineering/tests/fixtures/container_health/providers/alpha-healthy.json

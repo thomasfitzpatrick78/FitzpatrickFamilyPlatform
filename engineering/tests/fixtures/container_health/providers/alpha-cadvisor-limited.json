@@ -1,0 +1,24 @@
+{
+  "collected_at": "2026-07-20T11:59:52Z",
+  "collection_method": "exported",
+  "compose_project": null,
+  "compose_service": null,
+  "fixture_only": true,
+  "host_reference": "host-fixture",
+  "known_limitation": "docker29-containerd-identity",
+  "observed_at": "2026-07-20T11:59:50Z",
+  "provider_id": "fixture-cadvisor",
+  "provider_shape": "alpha-v1",
+  "provider_version": "0.49.2",
+  "runtime_container_id": "cadvisor-runtime-ambiguous",
+  "runtime_engine": "synthetic-engine-1.0",
+  "runtime_name": "similar-fixture-api",
+  "signals": [
+    {
+      "signal": "container.lifecycle.observed_state",
+      "unit": null,
+      "value": "running"
+    }
+  ],
+  "source_reference": "engineering/tests/fixtures/container_health/providers/alpha-cadvisor-limited.json"
+}

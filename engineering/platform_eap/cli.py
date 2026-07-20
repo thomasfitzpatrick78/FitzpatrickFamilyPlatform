@@ -51,6 +51,25 @@ from engineering.platform_eap.registry_identity import (
     schema_version_from,
     validate_container_identity_contract,
 )
+from engineering.platform_eap.container_health import (
+    ContainerHealthDataError,
+    FindingSeverity as ContainerFindingSeverity,
+    PolicyDataError,
+    UnsupportedContractVersion,
+    declared_subject_from_registry_contract,
+    evaluate_bundle,
+    load_policy_set,
+    validate_assessment,
+    validate_evidence,
+)
+from engineering.platform_eap.container_health_io import (
+    assessment_from_json,
+    assessment_to_json,
+    bundle_from_json,
+    evidence_from_json,
+    reconciliation_to_json,
+)
+from engineering.platform_eap.container_health_rendering import render_assessment_markdown
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -979,6 +998,7 @@ def capabilities() -> int:
     print("PLAT-EAP-9\tAI Session Readiness Validation\tImplemented")
     print("PLAT-EAP-10\tGoverned Execution Capability\tImplemented")
     print("PLAT-EAP-11\tGoverned Automation Orchestration Capability\tImplemented")
+    print("PLAT-EAP-12\tContainer Operational Health Repository Capability\tImplemented; Fixture Only; Not Activated")
     return 0
 
 
@@ -1086,6 +1106,139 @@ def automation_cli(argv: list[str]) -> int:
     return 2
 
 
+def _container_health_input_path(path_value: str) -> Path:
+    root = ROOT.resolve()
+    supplied = Path(path_value)
+    unresolved = supplied if supplied.is_absolute() else root / supplied
+    if unresolved.is_symlink():
+        raise ContainerHealthDataError("Container-health input path must not be a symbolic link.")
+    candidate = unresolved.resolve()
+    if not candidate.is_relative_to(root):
+        raise ContainerHealthDataError("Container-health input path must remain inside the repository.")
+    if not candidate.is_file():
+        raise ContainerHealthDataError(f"Container-health input file not found: {path_value}.")
+    return candidate
+
+
+def _container_health_directory_path(path_value: str) -> Path:
+    root = ROOT.resolve()
+    supplied = Path(path_value)
+    unresolved = supplied if supplied.is_absolute() else root / supplied
+    if unresolved.is_symlink():
+        raise ContainerHealthDataError("Container-health directory path must not be a symbolic link.")
+    candidate = unresolved.resolve()
+    if not candidate.is_relative_to(root):
+        raise ContainerHealthDataError("Container-health directory path must remain inside the repository.")
+    if not candidate.is_dir():
+        raise ContainerHealthDataError(f"Container-health directory not found: {path_value}.")
+    return candidate
+
+
+def _print_container_findings(title: str, findings: tuple[object, ...]) -> int:
+    errors = [finding for finding in findings if getattr(finding, "severity", None) == ContainerFindingSeverity.ERROR]
+    warnings = [finding for finding in findings if getattr(finding, "severity", None) == ContainerFindingSeverity.WARNING]
+    print(f"# {title}")
+    print(f"Status: {'FAIL' if errors else 'PASS WITH WARNINGS' if warnings else 'PASS'}")
+    print(f"Errors: {len(errors)}")
+    print(f"Warnings: {len(warnings)}")
+    for finding in findings:
+        reference = f" ({finding.reference})" if getattr(finding, "reference", None) else ""
+        print(f"{finding.severity.value}: {finding.code}: {finding.message}{reference}")
+    return 2 if errors else 0
+
+
+def _validate_container_health_registry_bundle(bundle):
+    records_root = _container_health_directory_path(bundle.registry_records_root)
+    if records_root != (ROOT / "engineering/tests/fixtures/container_health/registry").resolve():
+        raise ContainerHealthDataError("Container-health evaluation accepts only the governed synthetic Registry fixture root.")
+    registry_results = validate_registry(records_root=records_root, schema_path=REGISTRY_SCHEMA, repository_root=ROOT)
+    errors = [result for result in registry_results if result.severity == "ERROR"]
+    if errors:
+        raise ContainerHealthDataError("Registry fixture validation failed: " + "; ".join(result.message for result in errors))
+    records, path_by_id, load_errors = load_registry_records(records_root)
+    if load_errors:
+        raise ContainerHealthDataError("Registry fixture records could not be loaded.")
+    schema = load_registry_schema()
+    expected = declared_subject_from_registry_contract(
+        records,
+        path_by_id,
+        schema,
+        ROOT,
+        bundle.declared_subject.subject_id,
+        bundle.declared_subject.registry_reference,
+        bundle.declared_subject.environment,
+    )
+    if expected != bundle.declared_subject:
+        raise ContainerHealthDataError("Evaluation bundle declared subject does not match the validated Registry fixture.")
+    for evidence in bundle.evidence:
+        if (
+            evidence.subject_id != expected.subject_id
+            or evidence.registry_reference != expected.registry_reference
+            or evidence.container_service_reference != expected.registry_reference
+            or evidence.environment != expected.environment
+            or evidence.host_reference != expected.host_reference
+        ):
+            raise ContainerHealthDataError("Evaluation bundle evidence does not match the validated Registry fixture subject.")
+        _container_health_input_path(evidence.source_reference)
+        _container_health_input_path(evidence.container_service_reference)
+        if evidence.coverage_reference is not None:
+            _container_health_input_path(evidence.coverage_reference)
+
+
+def container_health_cli(argv: list[str]) -> int:
+    usage = (
+        "Usage: platform-eap container-health "
+        "<evidence validate <path>|reconcile <input-path>|assess <input-path>|"
+        "assessment validate <path>|assessment render <path>>"
+    )
+    try:
+        if len(argv) == 3 and argv[:2] == ["evidence", "validate"]:
+            path = _container_health_input_path(argv[2])
+            evidence = evidence_from_json(path.read_text(encoding="utf-8"))
+            return _print_container_findings("Container Operational Evidence Validation", validate_evidence(evidence))
+        if len(argv) == 2 and argv[0] in {"reconcile", "assess"}:
+            path = _container_health_input_path(argv[1])
+            bundle = bundle_from_json(path.read_text(encoding="utf-8"))
+            _validate_container_health_registry_bundle(bundle)
+            policy_set = load_policy_set(ROOT, bundle.declared_subject.policy_reference)
+            result = evaluate_bundle(bundle, policy_set)
+            if argv[0] == "reconcile":
+                print(reconciliation_to_json(result.reconciliation), end="")
+            else:
+                findings = validate_assessment(result.assessment)
+                if any(finding.severity == ContainerFindingSeverity.ERROR for finding in findings):
+                    return _print_container_findings("Container Operational Health Assessment Validation", findings)
+                print(assessment_to_json(result.assessment), end="")
+            return 0
+        if len(argv) == 3 and argv[0] == "assessment" and argv[1] in {"validate", "render"}:
+            path = _container_health_input_path(argv[2])
+            assessment = assessment_from_json(path.read_text(encoding="utf-8"))
+            findings = validate_assessment(assessment)
+            if argv[1] == "validate":
+                return _print_container_findings("Container Operational Health Assessment Validation", findings)
+            if any(finding.severity == ContainerFindingSeverity.ERROR for finding in findings):
+                return _print_container_findings("Container Operational Health Assessment Validation", findings)
+            print(render_assessment_markdown(assessment), end="")
+            return 0
+    except UnsupportedContractVersion as exc:
+        print("# Container Operational Health Repository Capability")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 3
+    except PolicyDataError as exc:
+        print("# Container Operational Health Repository Capability")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 4
+    except (ContainerHealthDataError, OSError, UnicodeError) as exc:
+        print("# Container Operational Health Repository Capability")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 2
+    print(usage)
+    return 2
+
+
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -1154,5 +1307,7 @@ def main(argv: list[str] | None = None) -> int:
         return execution_cli(argv[1:])
     if argv and argv[0] == "automation":
         return automation_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation>")
+    if argv and argv[0] == "container-health":
+        return container_health_cli(argv[1:])
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health>")
     return 2

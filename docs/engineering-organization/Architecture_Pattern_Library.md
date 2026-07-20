@@ -1,6 +1,6 @@
 # Architecture Pattern Library
 
-**Document Version:** 1.1
+**Document Version:** 1.3
 
 **Status:** Active
 
@@ -41,7 +41,7 @@ A pattern may be added or promoted when:
 
 | Candidate | Current Evidence | Promotion Boundary |
 |-----------|------------------|--------------------|
-| Capability-First Operationalization | EO-14.8 governance and published, unactivated EO-14.1A execution and EO-14.4A orchestration controls precede PLAT-14.0A Platform Operations product architecture. | Not promoted. PLAT-14.1A remains unimplemented, no complete downstream consumer journey or live evidence exists, and repeatability has not been demonstrated. Architecture Gatekeeper review and future governed workstream evidence are required. |
+| Capability-First Operationalization | EO-14.8 governance and published, unactivated EO-14.1A execution and EO-14.4A orchestration controls precede PLAT-14.0A Platform Operations product architecture. The published PLAT-14.1A slice supplies first-consumer repository evidence using fixture-only EO contracts. | Not promoted. One fixture-only repository consumer does not prove repeatability, activation safety, or live operational value. A separate Architecture Gatekeeper evidence review and future governed workstream evidence are required before permanent lifecycle governance is considered. |
 
 PLAT-14.0A strengthens the candidate by requiring product-domain architecture before provider implementation. It does not establish sufficient evidence for permanent Engineering Lifecycle governance.
 
@@ -61,5 +61,7 @@ PLAT-14.0A strengthens the candidate by requiring product-domain architecture be
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Recorded publication of the first-consumer PLAT-14.1A repository evidence while leaving Capability-First Operationalization unpromoted pending repetition and live evidence. |
+| 1.2 | Recorded first-consumer PLAT-14.1A repository evidence while leaving Capability-First Operationalization unpromoted pending review, repetition, and live evidence. |
 | 1.1 | Recorded Capability-First Operationalization as an unpromoted candidate informed by PLAT-14.0A. |
 | 1.0 | Initial Architecture Pattern Library starter. |

@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 2.8
+**Document Version:** 3.0
 
 **Status:** Active
 
@@ -36,14 +36,15 @@ Milestone 14 records these governance enhancements:
   cross-repository improvement after FFFA CUTOVER-001 detected persistent test
   artifacts before customer workbook generation.
 - EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 parent capability are complete, Architecture Gatekeeper approved, repository validated, and published as the Engineering Organization baseline.
-- Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations and the bounded Bravo Foundation implementation are published; PLAT-14.1A and Charlie remain unstarted. No automation, role activation, or live work is authorized.
+- Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the PLAT-14.1A Option B fixture-only repository vertical slice are published. Charlie remains unstarted. No automation, role activation, provider access, or live work is authorized.
 - EO-14.8 does not activate ongoing AI Collaboration Steward automation. Future Platform Health dashboard runtime deployment remains PLAT work.
 - PLAT-14.0A Platform Operations Domain Architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` with separate Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence subdomains; ADR-009 through ADR-011 record the approved direction, and implementation remains unstarted.
 - PLAT-14.1A Container Operational Health specification is published at `89deeed2480679c9717cb151c3a14fe9414d8b97`. Existing Docker API proxy, OpenTelemetry, Prometheus, Docker daemon, cAdvisor, and Grafana planning remains subordinate provider, transport, security, live-proof, or presentation scope rather than canonical health authority.
 - Registry Container Identity Foundation schema `1.1`, strict validation, evidence-gated migration planning/execution/rollback, compatible CLI commands, evidence catalog, and tests are complete, Architecture Gatekeeper accepted, and published. A standalone work-item identifier remains intentionally deferred; no current record is migrated.
 - Registry mutation authorization requires a strict separate artifact binding the exact plan ID, schema/migration versions, affirmative Registry-migration scope, timestamp, Architecture Gatekeeper authority, governed review reference, and artifact content hash. No such approval artifact is present; record migration remains unauthorized.
-- PLAT-14.1A implementation, machine-readable policies, Registry migration, provider adapters, dashboards, activation, and live infrastructure work remain blocked pending separate authorization.
-- Capability-First Operationalization remains an unpromoted candidate pattern. PLAT-14.1A supplies specification evidence for a first downstream consumer of EO-14.1A and EO-14.4A semantics, but it does not yet supply implementation, activation, or live operational evidence sufficient for permanent Engineering Lifecycle governance.
+- PLAT-14.1A now has published immutable contracts, strict parsing, active fixture-evaluation policies, canonical evidence, synthetic Registry identity reconciliation, confidence and freshness evaluation, deterministic health, stable output, fixture-only normalization, bounded read-only CLI integration, EO fixture integration, and tests. Registry migration, provider access, consumer integration, activation, and live work remain separate gates.
+- Registry migration, provider adapters, dashboards, EO activation, and live infrastructure work remain blocked pending separate authorization.
+- Capability-First Operationalization remains an unpromoted candidate pattern. Published PLAT-14.1A supplies first-consumer repository implementation evidence for EO-14.1A and EO-14.4A contract reuse, but no activation, live operational evidence, or repeated implementation exists to support permanent Engineering Lifecycle promotion.
 
 ---
 
@@ -51,6 +52,8 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 3.0 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A fixture-only repository implementation while preserving Registry migration, provider, consumer, activation, and live-work gates and leaving Capability-First unpromoted. |
+| 2.9 | Recorded the complete unpublished PLAT-14.1A fixture-only repository implementation while preserving publication, Registry migration, provider, dashboard, activation, and live-work gates and leaving Capability-First unpromoted. |
 | 2.8 | Recorded Architecture Gatekeeper acceptance and publication of the bounded Registry identity implementation without approval artifact, record migration, or PLAT-14.1A authorization. |
 | 2.7 | Recorded completion of the exact-plan governed migration-approval correction pending final Architecture Gatekeeper acceptance. |
 | 2.6 | Recorded complete unpublished Registry identity prerequisite implementation without record migration, PLAT-14.1A, provider, activation, or live work. |

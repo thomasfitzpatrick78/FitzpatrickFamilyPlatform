@@ -1,0 +1,18 @@
+{
+  "approval_authority": ["Architecture Gatekeeper", "Platform Administrator"],
+  "compatible_contract_versions": ["1.0"],
+  "compatible_profile_versions": ["1.0"],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "policy_id": "container-resource-pressure",
+  "policy_version": "1.0",
+  "purpose": "Keep numeric resource evidence advisory while allowing qualified critical memory pressure to degrade health.",
+  "rules": {
+    "critical_memory_pressure_result": "degraded",
+    "minimum_qualifying_confidence": "medium",
+    "mode": "advisory_with_degradation",
+    "numeric_health_thresholds": [],
+    "unhealthy_rules": []
+  },
+  "status": "active",
+  "supersedes": null
+}

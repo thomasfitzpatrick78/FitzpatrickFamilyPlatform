@@ -1,0 +1,32 @@
+{
+  "collected_at": "2026-07-20T11:59:52Z",
+  "collection_method": "direct",
+  "compose_project": "fixture-platform",
+  "compose_service": "fixture-api",
+  "fixture_only": true,
+  "host_reference": "host-fixture",
+  "image_reference": "fixture.invalid/platform/api:1.0",
+  "orchestrator": "compose",
+  "observed_at": "2026-07-20T11:59:50Z",
+  "provider_id": "fixture-alpha",
+  "provider_shape": "alpha-v1",
+  "provider_version": "1.0",
+  "runtime_container_id": "alpha-runtime-001",
+  "runtime_engine": "synthetic-engine-1.0",
+  "runtime_name": "fixture-api-1",
+  "registry_reference": "engineering/tests/fixtures/container_health/registry/svc-fixture-api.yaml",
+  "signals": [
+    {
+      "signal": "container.lifecycle.observed_state",
+      "unit": null,
+      "value": "running"
+    },
+    {
+      "signal": "container.healthcheck.state",
+      "unit": null,
+      "value": "passing"
+    }
+  ],
+  "source_reference": "engineering/tests/fixtures/container_health/providers/alpha-healthy.json",
+  "subject_id": "svc-fixture-api"
+}

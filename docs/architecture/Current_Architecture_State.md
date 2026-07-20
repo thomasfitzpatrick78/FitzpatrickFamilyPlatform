@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.12
+**Document Version:** 1.14
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, and the Registry Container Identity Foundation architecture/specification and repository implementation. Foundation schema `1.1`, strict validation, evidence-gated migration, exact-plan governed approval binding, rollback, CLI, and tests are complete and published. Record migration and PLAT-14.1A implementation remain blocked.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation architecture/specification and repository implementation, and the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice. All 39 Registry records remain unchanged and unmigrated; providers, runtime observation, dashboards/APIs, activation, and live work remain blocked.
 
 ---
 
@@ -28,7 +28,9 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - Validation-first design selected before monitoring, dashboards, or automation.
 - Governed operations and observability architecture selected in ADR-007.
 - Platform Operations bounded-context direction is published in ADR-009 through ADR-011, with declared state, normalized evidence, reconciliation, deterministic health, and advisory intelligence kept separate; implementation remains absent.
-- The Registry Container Identity Foundation repository implementation and required exact-plan approval-artifact hardening are complete and published. Schema `1.1` validates all 39 unchanged records; no record is migrated or container-health eligible. Record migration, PLAT implementation, providers, security, live observation, dashboards, and activation remain blocked.
+- The Registry Container Identity Foundation repository implementation and required exact-plan approval-artifact hardening are complete and published. Schema `1.1` validates all 39 unchanged records; no record is migrated or container-health eligible.
+- The published PLAT-14.1A repository capability implements immutable contracts, strict policy/evidence parsing, synthetic Registry identity, fixture-only normalization, reconciliation, health assessment, deterministic outputs, read-only CLI, and fixture-only EO contract reuse. It remains unactivated and incapable of evaluating an authoritative current Registry subject.
+- Record migration, production provider adapters, security review, live observation, dashboards, activation, and live infrastructure remain blocked.
 
 ---
 
@@ -75,6 +77,8 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.14 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A fixture-only repository slice while preserving Registry, provider, dashboard/API, activation, and live-work gates. |
+| 1.13 | Recorded the complete unpublished PLAT-14.1A fixture-only repository vertical slice while preserving Registry, provider, dashboard, activation, and live-work gates. |
 | 1.12 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity implementation with all records and later gates unchanged. |
 | 1.11 | Recorded completed pre-publication exact-plan approval-artifact hardening with all records and later gates unchanged. |
 | 1.10 | Recorded complete unpublished Registry identity schema/validation/migration framework with all 39 records unchanged and PLAT blocked. |

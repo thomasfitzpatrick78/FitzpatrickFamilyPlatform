@@ -1,0 +1,25 @@
+{
+  "contract_version": "1.0",
+  "evidence_ids": [
+    "evidence-fixture-healthcheck",
+    "evidence-fixture-lifecycle"
+  ],
+  "match_method": "subject_and_registry_reference",
+  "policy_manifest_id": "container-policy-set",
+  "policy_manifest_version": "1.0",
+  "policy_version": "1.0",
+  "reason_codes": [
+    "EXACT_IDENTITY_MATCH"
+  ],
+  "reconciled_at": "2026-07-20T12:00:00Z",
+  "reconciliation_id": "reconciliation-bda7207e1d351686e28b",
+  "registry_reference": "engineering/tests/fixtures/container_health/registry/svc-fixture-api.yaml",
+  "rejected_evidence": [],
+  "result": "matched",
+  "selected_evidence_ids": [
+    "evidence-fixture-healthcheck",
+    "evidence-fixture-lifecycle"
+  ],
+  "subject_id": "svc-fixture-api",
+  "unresolved_conflicts": []
+}

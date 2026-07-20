@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 3.6
+**Document Version:** 3.8
 
 **Status:** Active
 
@@ -47,7 +47,7 @@ This document defines the initial repository-managed Product Backlog for the Fit
 | EO-PB-020 | Medium | Engineering Organization | Approval model | AI Collaboration and Approval Model | Milestone 14 | Superseded | Superseded by EO-14.8 AI Collaboration Governance |
 | EO-PB-021 | High | Engineering Organization | AI collaboration governance | AI Collaboration Governance | Milestone 14 | Completed | EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, and EO-14.8E complete; Architecture Gatekeeper approved; baseline published |
 | PLAT-PB-017 | High | Infrastructure | Platform Operations | Platform Operations Domain Architecture | Milestone 14 | Completed | Published PLAT-14.0A baseline `c8f9bc3`; ADR-009 through ADR-011 |
-| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 | Blocked | Foundation schema/validation/migration implementation published; no migrated eligible subject; separate record migration and PLAT implementation decisions; PLAT-13.6.3B retained provider work |
+| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 | Published; Fixture Only; Unactivated | Option B fixture-only repository implementation Architecture Gatekeeper accepted and published; no migrated eligible subject; separate record migration, provider, dashboard/API, activation, and live decisions; PLAT-13.6.3B retained provider work |
 | PLAT-PB-014 | High | Infrastructure | Operational excellence | Backup, restore, recovery validation, alerting, and runbooks | Milestone 14 | Planned | PLAT-13.6.2; PLAT-13.6.4 requirements |
 | PLAT-PB-015 | Medium | Infrastructure | Platform health | Platform Health Dashboard | Milestone 14 | Planned | PLAT-PB-013; repository-generated reports |
 | PLAT-PB-016 | High | Shared Services | Authentication boundary | Platform Authentication Boundary for FFFA web access | Milestone 14 | Deferred | FFFA-14.2B; local reverse proxy; human production approval; future FFFA web implementation approval |
@@ -79,9 +79,9 @@ Milestone 14 backlog candidates are planned, not approved for implementation. Th
 
 The first vertical slice coordinates the published EO-14.1A Execution Capability with EO-14.4A orchestration, PLAT-14.0A Platform Operations Domain Architecture, the later architecture-aligned PLAT-14.1A Container Metrics Repository Implementation Package, EO-14.2A Operations Analyst Operationalization, PLAT-14.3A Platform Health Dashboard Completion, EO-14.3A Engineering Metrics v2 Refinement, and later PLAT-14.2 Operational Excellence through separate approval gates. EO-14.4A consumes EO-14.1A execution validation, evidence, and completion packages rather than redefining them.
 
-PLAT-14.0A, the PLAT-14.1A specification, and the Foundation architecture/specification and repository implementation are published. No record is migrated. PLAT-14.1A remains blocked pending separate migration and implementation gates.
+PLAT-14.0A, the PLAT-14.1A specification, the Foundation architecture/specification and repository implementation, and the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice are published. No record is migrated; authoritative Registry evaluation, providers, dashboards/APIs, activation, and live work remain separately blocked.
 
-EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations, and the bounded Bravo Foundation implementation are published; PLAT-14.1A and Charlie remain unstarted. No automation, role activation, or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
+EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the Bravo PLAT-14.1A fixture-only repository implementation are published. Charlie remains unstarted. No automation, role activation, provider, dashboard/API, or live work is authorized.
 
 FFFA detail is owned by the FamilyFinanceAssistant repository; this repository records portfolio traceability to FFFA-14.1 and FFFA-14.2 using Existing FFFA backlog and roadmap governance. FFFA implementation is paused while Chris completes customer acceptance, and the Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
 
@@ -105,6 +105,8 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 
 | Version | Description |
 |---------|-------------|
+| 3.8 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A Option B fixture-only repository vertical slice while retaining Registry migration, provider, dashboard/API, activation, and live gates. |
+| 3.7 | Recorded the complete unpublished PLAT-14.1A Option B repository vertical slice while retaining Registry migration, publication, provider, dashboard, activation, and live gates. |
 | 3.6 | Recorded Architecture Gatekeeper acceptance and publication of the Registry identity prerequisite without record migration, standalone identifier, or PLAT-14.1A authorization. |
 | 3.5 | Recorded complete unpublished Registry identity prerequisite implementation without record migration, standalone identifier, or PLAT-14.1A authorization. |
 | 3.4 | Recorded PLAT-14.1A and unimplemented Registry Container Identity Foundation publication without adding a standalone work-item identifier. |

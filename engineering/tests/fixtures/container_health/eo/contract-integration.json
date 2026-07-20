@@ -1,0 +1,22 @@
+{
+  "activation_status": "not_activated",
+  "artifact_references": [
+    "engineering/tests/fixtures/container_health/bundles/healthy.json",
+    "engineering/tests/fixtures/container_health/reconciliations/healthy.json",
+    "engineering/tests/fixtures/container_health/assessments/healthy.json",
+    "engineering/tests/fixtures/container_health/expected/healthy.md"
+  ],
+  "assignment_id": "PLAT-14.1A-FIXTURE-EVALUATION",
+  "automation_id": "PLAT-14.1A-FIXTURE-HANDOFF",
+  "completion_evidence_ids": [
+    "PLAT-14.1A-EVIDENCE",
+    "PLAT-14.1A-RECONCILIATION",
+    "PLAT-14.1A-ASSESSMENT",
+    "PLAT-14.1A-MARKDOWN"
+  ],
+  "fixture_only": true,
+  "live_changes_occurred": false,
+  "model_execution_occurred": false,
+  "provider_access_occurred": false,
+  "runtime_activation_occurred": false
+}

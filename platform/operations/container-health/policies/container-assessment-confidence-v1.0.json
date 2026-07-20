@@ -1,0 +1,18 @@
+{
+  "approval_authority": ["Architecture Gatekeeper", "Platform Administrator"],
+  "compatible_contract_versions": ["1.0"],
+  "compatible_profile_versions": ["1.0"],
+  "effective_at": "2026-07-20T00:00:00Z",
+  "policy_id": "container-assessment-confidence",
+  "policy_version": "1.0",
+  "purpose": "Derive categorical assessment confidence from mandatory evidence without scores or averaging.",
+  "rules": {
+    "allowed_values": ["high", "medium", "low", "none"],
+    "arithmetic_scoring": false,
+    "assessment_cannot_exceed_lowest_mandatory_evidence": true,
+    "healthy_minimum": "medium",
+    "unresolved_critical_conflict_result": "none"
+  },
+  "status": "active",
+  "supersedes": null
+}
