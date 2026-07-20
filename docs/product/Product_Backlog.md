@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 3.3
+**Document Version:** 3.4
 
 **Status:** Active
 
@@ -47,7 +47,7 @@ This document defines the initial repository-managed Product Backlog for the Fit
 | EO-PB-020 | Medium | Engineering Organization | Approval model | AI Collaboration and Approval Model | Milestone 14 | Superseded | Superseded by EO-14.8 AI Collaboration Governance |
 | EO-PB-021 | High | Engineering Organization | AI collaboration governance | AI Collaboration Governance | Milestone 14 | Completed | EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, and EO-14.8E complete; Architecture Gatekeeper approved; baseline published |
 | PLAT-PB-017 | High | Infrastructure | Platform Operations | Platform Operations Domain Architecture | Milestone 14 | Completed | Published PLAT-14.0A baseline `c8f9bc3`; ADR-009 through ADR-011 |
-| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 | Blocked | PLAT-PB-017; PLAT-14.1A specification publication; separate repository implementation authorization; PLAT-13.6.3B retained provider work |
+| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 | Blocked | Published PLAT-14.1A and Registry Container Identity Foundation architecture/specification; future schema and evidence-gated migration; separate repository implementation authorization; PLAT-13.6.3B retained provider work |
 | PLAT-PB-014 | High | Infrastructure | Operational excellence | Backup, restore, recovery validation, alerting, and runbooks | Milestone 14 | Planned | PLAT-13.6.2; PLAT-13.6.4 requirements |
 | PLAT-PB-015 | Medium | Infrastructure | Platform health | Platform Health Dashboard | Milestone 14 | Planned | PLAT-PB-013; repository-generated reports |
 | PLAT-PB-016 | High | Shared Services | Authentication boundary | Platform Authentication Boundary for FFFA web access | Milestone 14 | Deferred | FFFA-14.2B; local reverse proxy; human production approval; future FFFA web implementation approval |
@@ -79,7 +79,7 @@ Milestone 14 backlog candidates are planned, not approved for implementation. Th
 
 The first vertical slice coordinates the published EO-14.1A Execution Capability with EO-14.4A orchestration, PLAT-14.0A Platform Operations Domain Architecture, the later architecture-aligned PLAT-14.1A Container Metrics Repository Implementation Package, EO-14.2A Operations Analyst Operationalization, PLAT-14.3A Platform Health Dashboard Completion, EO-14.3A Engineering Metrics v2 Refinement, and later PLAT-14.2 Operational Excellence through separate approval gates. EO-14.4A consumes EO-14.1A execution validation, evidence, and completion packages rather than redefining them.
 
-PLAT-14.0A is published and separates Infrastructure Registry declared state, provider observations, normalized one-signal evidence, reconciliation, deterministic health, and advisory intelligence. PLAT-14.1A is in Specification Alignment and remains implementation-blocked until the aligned product, Registry identity, policy, health, output, fixture, and future-gate contracts are published and a separate implementation package is authorized. Approved telemetry work remains subordinate future provider scope.
+PLAT-14.0A, the PLAT-14.1A Container Operational Health specification, and the Registry Container Identity Foundation architecture/specification are published. PLAT-14.1A implementation remains blocked until separate schema, migration, and repository implementation packages are approved. Approved telemetry work remains subordinate future provider scope.
 
 EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations are published. Bravo and Charlie remain unstarted, and no automation, role activation, or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
 
@@ -105,6 +105,7 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 
 | Version | Description |
 |---------|-------------|
+| 3.4 | Recorded PLAT-14.1A and unimplemented Registry Container Identity Foundation publication without adding a standalone work-item identifier. |
 | 3.3 | Marked PLAT-14.0A published and reframed PLAT-PB-013 as implementation-blocked Container Operational Health specification alignment. |
 | 3.2 | Added PLAT-14.0A Platform Operations domain architecture and blocked PLAT-14.1A pending publication and alignment. |
 | 3.1 | Recorded publication of the Architecture Gatekeeper-approved EO-14.4A repository implementation while retaining planned activation and later gates. |

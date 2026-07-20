@@ -1,6 +1,6 @@
 # Milestone 14 - Operationalizing the AI Engineering Organization
 
-**Document Version:** 2.3
+**Document Version:** 2.4
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -58,7 +58,7 @@ This repository preserves FFFA as the Milestone 14 customer-value pillar through
 
 EO-14.8 AI Collaboration Governance and the Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations are published. Bravo and Charlie remain unstarted, and no automation, Execution Agent activation, or live work is authorized. Future Platform Health dashboard runtime deployment remains PLAT work.
 
-PLAT-14.0A Platform Operations architecture and contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remain architecture-only. PLAT-14.1A Container Operational Health is in Specification Alignment; implementation remains blocked pending specification publication and a later separately authorized repository package.
+PLAT-14.0A architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, the PLAT-14.1A Container Operational Health specification is published at `89deeed2480679c9717cb151c3a14fe9414d8b97`, and the Registry Container Identity Foundation architecture/specification is published. Schema, record migration, PLAT implementation, providers, dashboards, and activation remain separately blocked.
 
 ---
 
@@ -84,7 +84,8 @@ PLAT-14.0A Platform Operations architecture and contracts are published at `c8f9
 | EO-14.8E | Engineering Metrics Integration | FitzpatrickFamilyPlatform | Consume governed readiness evidence in Engineering Metrics and repository-side Platform Health visibility. | Complete. |
 | PLAT-14.0A | Platform Operations Domain Architecture | FitzpatrickFamilyPlatform | Establish Platform Operations as the bounded context for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. | Published architecture and contracts at `c8f9bc3`; Implemented: No. |
 | PLAT-14.1 | Container Metrics Modernization | FitzpatrickFamilyPlatform | Carry forward Milestone 13 container metrics architecture into approval-ready requirements. | Container metrics modernization specification. |
-| PLAT-14.1A | Container Operational Health | FitzpatrickFamilyPlatform | Align Registry identity, policies, evidence, reconciliation, health, outputs, fixtures, EO integration, and later gates before implementation. | Specification Alignment; Option B repository vertical slice is the future direction but is not authorized; implementation blocked. |
+| Registry Container Identity Foundation | PLAT-14.1A prerequisite | FitzpatrickFamilyPlatform | Define the smallest authoritative service-record identity extension, evidence-gated migration, and validation contract. | Architecture/specification published; standalone identifier intentionally deferred; schema implementation and migration are not authorized. |
+| PLAT-14.1A | Container Operational Health | FitzpatrickFamilyPlatform | Consume validated Registry identity before future evidence, reconciliation, health, output, fixture, and EO integration implementation. | Specification published at `89deeed`; Option B repository vertical slice remains unauthorized and blocked. |
 | PLAT-14.2 | Operational Excellence | FitzpatrickFamilyPlatform | Define backup, restore, recovery, alerting, runbook, and evidence scope. | Operational excellence specification. |
 | PLAT-14.3 | Platform Health Dashboard | FitzpatrickFamilyPlatform | Define executive operational health view and source-of-truth boundaries. | Platform health dashboard specification. |
 | PLAT-14.3A | Platform Health Dashboard Completion | FitzpatrickFamilyPlatform | Complete dashboard source contracts after PLAT-14.1 telemetry contract verification. | Dashboard contract, source mapping, and validation evidence. |
@@ -102,7 +103,7 @@ PLAT-14.0A Platform Operations architecture and contracts are published at `c8f9
 | 1 | EO-14.1A Execution Agent Operationalization | Repository implementation published; activation remains separate and unauthorized. |
 | 2 | EO-14.4A Governed Automation Framework Operationalization | Repository implementation is published; it consumes EO-14.1A execution validation, evidence, and completion packages and does not authorize automation use. |
 | 3 | PLAT-14.0A Platform Operations Domain Architecture | Complete; bounded context, contracts, ADRs, and provider/consumer boundaries published at `c8f9bc3`. |
-| 4 | PLAT-14.1A Container Operational Health | Specification Alignment first; after publication and separate authorization, implement the provider-independent Option B repository vertical slice. Provider, security, observation, dashboard, and activation remain later gates. |
+| 4 | PLAT-14.1A Container Operational Health | Specification and Registry Container Identity Foundation published; complete later separately authorized schema/migration before any Option B repository implementation. Provider, security, observation, dashboard, and activation remain later gates. |
 | 5 | EO-14.2A Operations Analyst Operationalization | Analysis procedures consume governed health assessments and distinguish evidence, health, confidence, and interpretation without recalculation. |
 | 6 | PLAT-14.3A Platform Health Dashboard Completion | Dashboard completion follows the verified PLAT-14.0A consumer contract and PLAT-14.1A implementation evidence. |
 | 7 | EO-14.3A Engineering Metrics v2 Refinement | Metrics are refined from vertical-slice evidence without unsupported precision. |
@@ -130,17 +131,18 @@ EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A rep
 
 ### Bravo - Platform Observability
 
-**Scope:** Published PLAT-14.0A architecture followed by PLAT-14.1A Container Operational Health specification alignment. Repository implementation follows only after specification publication and separate authorization.
+**Scope:** Published PLAT-14.0A architecture, PLAT-14.1A specification, and Registry Container Identity Foundation architecture/specification. Repository implementation follows only after separate schema/migration and PLAT authorization.
 
 **Responsibilities:**
 
 - Published PLAT-14.0A Platform Operations bounded context and canonical evidence, reconciliation, health, confidence, provider, and consumer contracts.
-- PLAT-14.1A Registry identity, versioned policy, first-slice evidence, health, output, fixture, EO integration, and future-gate specification baseline.
+- Registry Container Identity Foundation option assessment, selected declared-state contract, migration design, validation requirements, and acceptance matrix.
+- Published PLAT-14.1A Registry identity, versioned policy, first-slice evidence, health, output, fixture, EO integration, and future-gate specification baseline.
 - Preserve Infrastructure Registry declared-state authority and Platform-owned subject identity.
 - Reframe approved Docker API proxy, OpenTelemetry, Prometheus, Docker daemon, cAdvisor, and Grafana work as future provider or presentation scope.
 - Preserve future static validation, runbooks, rollback instructions, and evidence templates without starting PLAT-14.1A.
 
-**Boundary:** PLAT-14.1A implementation and Bravo implementation remain unstarted until the aligned specification is published and a later work package authorizes the Option B repository vertical slice. Provider, security, live-observation, dashboard, and activation gates remain separate. Bravo must not deploy or connect to live infrastructure.
+**Boundary:** PLAT-14.1A specification is published, but Registry schema/record implementation, migration, and the Option B repository vertical slice remain unstarted and separately unauthorized. Provider, security, live-observation, dashboard, and activation gates remain separate. Bravo must not deploy or connect to live infrastructure.
 
 ### Charlie - Operations Intelligence
 
@@ -164,7 +166,7 @@ EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A rep
 |------|-------------|
 | AI collaboration controls before Alpha, Bravo, and Charlie | Satisfied by the completed, Architecture Gatekeeper-approved EO-14.8 capability baseline; each later workstream still requires its separately authorized work package. |
 | Alpha controls before live request | EO-14.1A defines execution semantics; EO-14.4A defines orchestration flow and lifecycle progression that consume those semantics. Both controls must precede any future live deployment request. |
-| Platform Operations architecture before PLAT-14.1A | Satisfied by published PLAT-14.0A; the aligned PLAT-14.1A specification must now be reviewed and published before implementation or provider-adapter work starts. |
+| Registry identity before PLAT-14.1A implementation | PLAT-14.1A and Registry Container Identity Foundation are published; future schema implementation and evidence-gated migration remain required before an active subject can be assessed. |
 | Bravo evidence contracts before final Charlie mappings | Bravo must implement and validate the published Platform Operations contracts before final Charlie mappings. |
 | Charlie evidence-state discipline | Charlie must distinguish provider observation, normalized evidence, reconciliation, health, confidence, and interpretation and must not recalculate authoritative health. |
 | Dashboard follows governed outputs | PLAT-14.3A follows the published Platform Operations consumer contract and later verified PLAT-14.1A evidence; no-data must not become Healthy. |
@@ -211,7 +213,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 - Option C - Governed Vertical Slice is recorded as the approved execution strategy.
 - Container Operational Health is defined as the first governed vertical slice.
 - PLAT-14.0A separates declared state, provider observations, normalized evidence, reconciliation, operational health, and advisory intelligence and is published at `c8f9bc3` with Implemented: No.
-- PLAT-14.1A is in Specification Alignment; implementation remains blocked pending publication of the aligned specification and separate authorization.
+- PLAT-14.1A specification is published; implementation remains blocked pending the Registry identity prerequisite and separate authorization.
 - Alpha, Bravo, and Charlie workstreams are defined with boundaries, dependencies, non-goals, and evidence expectations.
 - EO-14.8A through EO-14.8E, the EO-14.8 parent capability, and EO-14.1A and EO-14.4A repository implementations are recorded published while activation, Bravo, and Charlie remain unstarted.
 - FFFA implementation pause and Financial Domain Foundation freeze are explicit.
@@ -292,6 +294,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 2.4 | Recorded PLAT-14.1A and Registry Container Identity Foundation architecture/specification publication with all implementation gates blocked. |
 | 2.3 | Recorded PLAT-14.0A publication and PLAT-14.1A Container Operational Health specification alignment with Option B implementation direction and later gates blocked. |
 | 2.2 | Added PLAT-14.0A Platform Operations domain architecture, blocked PLAT-14.1A pending publication and alignment, and synchronized downstream gates. |
 | 2.1 | Recorded publication of the Architecture Gatekeeper-approved EO-14.4A repository implementation while preserving separate activation, Bravo, Charlie, and live-work gates. |

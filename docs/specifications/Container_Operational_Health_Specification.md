@@ -1,12 +1,12 @@
 # Container Operational Health Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Draft for Architecture Gatekeeper Review
+**Status:** Published Specification; Implementation Blocked
 
 **Milestone:** PLAT-14.1A
 
-**Lifecycle Stage:** Specification Alignment; Implementation Blocked
+**Lifecycle Stage:** Published; Repository Implementation Not Authorized
 
 ---
 
@@ -99,30 +99,31 @@ Production provider adapters are outside the first PLAT-14.1A implementation. Th
 
 The Infrastructure Registry record ID is the Platform-owned stable `subject_id`. PLAT-14.1A must not create a parallel container inventory or derive a stable subject ID from runtime data.
 
-The existing `service` and `planned_service` record types remain authoritative. A later separately authorized Registry schema implementation should add a bounded `container_identity` design for records participating in Container Operational Health.
+The existing `service` and `planned_service` record types remain authoritative. The published, unimplemented Registry Container Identity Foundation selects a bounded optional `container_*` field set on those records; no independent container record or parallel inventory is permitted. A later separately authorized schema and migration package must implement and validate the contract before PLAT-14.1A can evaluate any subject.
 
 ### Proposed Registry-Owned Attributes
 
 | Attribute | Requirement | Contract |
 |-----------|-------------|----------|
-| `container_backed` | Required for a participating service; boolean | Explicitly identifies a container-backed declared subject. |
+| `container_identity_contract_version` | Required when the extension is present | Versions the bounded Registry extension. |
 | Record `id` | Existing required field | Becomes canonical Platform `subject_id`; no duplicate subject identifier is introduced. |
-| `host_reference` | Required for active evaluation | Must resolve to the governed host and agree with Registry host dependencies. |
+| `container_participation` | Required | One of `active`, `intentionally_inactive`, `excluded`, or `not_applicable`; replaces an ambiguous boolean. |
+| `container_host_reference` | Required for active evaluation | Must resolve to the governed host and agree with Registry host dependencies. |
 | `compose_project` | Required when Compose manages the subject | Exact governed Compose project value. |
 | `compose_service` | Required when Compose manages the subject | Exact governed Compose service value. |
 | `governed_runtime_name` | Optional fallback | Exact runtime name allowed only with host-scoped uniqueness proof. |
-| `expected_participation` | Required | One of `active`, `intentionally_inactive`, or `excluded`. |
 | `health_check_requirement` | Required | One of `required`, `optional`, or `not_applicable`. |
-| `health_policy_reference` | Required | Repository-relative reference to the approved container-health policy set. |
+| `container_health_policy_reference` | Required for active evaluation | Repository-relative reference to the approved container-health policy set. |
 | `expected_image_reference` | Optional | Expected image repository and tag or equivalent identity. |
 | `expected_image_digest` | Optional | Immutable expected image identity; corroboration only for runtime matching. |
-| `exclusion_reason` | Required when participation is `excluded` | Bounded reviewed reason; absence is invalid. |
+| `container_identity_evidence` | Required for migrated container-backed subjects | Governed repository evidence supporting the declaration. |
+| `participation_reason` and review reference | Required where specified for inactivity or exclusion | Bounded reviewed reason without duplicating personal approval identity. |
 
 These are schema-design requirements only. This package does not modify the active Registry schema or records.
 
 ### Pi-hole Migration Expectation
 
-The existing `svc-pihole-dns` record remains the canonical subject. A later Registry implementation should identify it as container-backed, retain its Beelink host relationship, add the governed Compose project and service, classify its health-check requirement, and reference the active container-health policy set. Its runtime container ID must never become the subject ID.
+The existing `svc-pihole-dns` record remains the canonical subject. Repository evidence confirms its container-backed role, Beelink host, runtime-name candidate, and Compose path, but does not yet establish its exact Compose project/service keys, approved health-check requirement, or implemented policy reference. Those values require later reviewed evidence and cannot be inferred. Its runtime container ID must never become the subject ID.
 
 Existing records without the new attributes remain valid Infrastructure Registry v1.0 records. They are not eligible for authoritative PLAT-14.1A evaluation until migrated and validated. The migration must be additive, reviewable, and backward compatible with existing Registry consumers.
 
@@ -708,6 +709,8 @@ This specification is ready for Architecture Gatekeeper review when:
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Infrastructure Registry v1.0 Specification](Infrastructure_Registry_v1.0_Specification.md)
+- [Registry Container Identity Foundation Architecture](../architecture/Registry_Container_Identity_Foundation_Architecture.md)
+- [Registry Container Identity Foundation Specification](Registry_Container_Identity_Foundation_Specification.md)
 - [Container Metrics Modernization Specification](Container_Metrics_Modernization_Specification.md)
 - [Platform Operations and Observability Specification](Platform_Operations_Observability_Specification.md)
 - [Platform Health Dashboard Specification](Platform_Health_Dashboard_Specification.md)
@@ -724,4 +727,5 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Recorded publication and aligned the unimplemented Registry Container Identity Foundation dependency, selected service-record field model, and evidence-gated Pi-hole migration boundary. |
 | 1.0 | Initial PLAT-14.1A Container Operational Health specification alignment baseline. |

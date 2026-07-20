@@ -1,6 +1,6 @@
 # Architecture Backlog
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 | AB-008 | High | Platform runtime architecture options | Candidate | Deferred until Infrastructure operations readiness establishes options and gates. |
 | AB-009 | High | Platform Digital Twin lifecycle state model | Candidate | Future enhancement proposal for explicit states: Planned -> Delivered -> Powered -> BIOS Verified -> OS Installed -> Network Connected -> SSH Verified -> Docker Ready -> Platform Active. Do not implement lifecycle changes in PLAT-13.3. |
 | AB-010 | High | Governed operations and observability | Active | ADR-007 selects governed Prometheus, Node Exporter, cAdvisor, and Grafana target architecture for PLAT-13.6 planning. |
-| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | PLAT-14.0A and ADR-009 through ADR-011 are published at `c8f9bc3`; PLAT-14.1A is in Specification Alignment and implementation remains blocked pending policy, Registry identity, and specification publication. |
+| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | PLAT-14.0A, PLAT-14.1A, and the Registry Container Identity Foundation architecture/specification are published. Schema, records, migration, and PLAT implementation remain blocked. |
 | AB-002 | High | Home Automation safety model | Candidate | Needed before device or automation workflows. |
 | AB-003 | Medium | AI Services privacy and safety model | Candidate | Required before AI service implementation. |
 | AB-004 | Medium | Energy data model | Candidate | Required before energy tracking implementation. |
@@ -45,6 +45,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Recorded PLAT-14.1A and Registry Container Identity Foundation publication while retaining schema, migration, and implementation gates. |
 | 1.6 | Recorded PLAT-14.0A publication and PLAT-14.1A specification-alignment decisions while retaining implementation blocking. |
 | 1.5 | Added PLAT-14.0A Platform Operations domain architecture and PLAT-14.1A blocking dependency. |
 | 1.4 | Added governed operations and observability architecture topic for PLAT-13.6. |

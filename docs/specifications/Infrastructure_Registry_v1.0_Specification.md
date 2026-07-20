@@ -1,6 +1,6 @@
 # Infrastructure Registry v1.0 Specification
 
-**Document Version:** 1.9
+**Document Version:** 1.10
 
 **Status:** Active
 
@@ -127,31 +127,19 @@ The Infrastructure Registry remains the authoritative source for Platform declar
 Future Platform Operational Evidence uses a Platform-owned subject identifier linked to a valid registry record. Provider runtime identifiers remain provenance. A PLAT-14.0A Operational Health Assessment is a separate versioned artifact and is not silently written into the registry `health_status` field or treated as lifecycle promotion. Any future mapping or registry update requires separate governed review and evidence.
 
 
-## PLAT-14.1A Container Identity Schema Design
+## Registry Container Identity Foundation
 
-PLAT-14.1A uses the existing Registry record `id` as the Platform-owned `subject_id`. It must not create a parallel container inventory or derive stable identity from a runtime container ID, provider label, or dashboard query.
+The published PLAT-14.1A specification depends on the published, unimplemented Registry Container Identity Foundation. The approved architecture direction is a bounded optional `container_*` field set on existing `service` and `planned_service` records. A new independent container record type and parallel inventory are rejected.
 
-A later separately authorized Registry schema implementation should extend participating `service` and `planned_service` records with a bounded container identity structure:
+The existing Registry record `id` remains the canonical Platform `subject_id`. The future additive schema target is `infrastructure_registry_v1` version `1.1`; the active schema remains unchanged at version `1.0` until a separate implementation package is approved.
 
-| Attribute | Requirement | Purpose |
-|-----------|-------------|---------|
-| `container_backed` | Required boolean for participating services | Declares that the service is container-backed and eligible for migration into Container Operational Health. |
-| `host_reference` | Required for active evaluation | Resolves to the governed host and agrees with existing host dependencies. |
-| `compose_project` | Required when Compose manages the service | Stable exact project identity for authoritative tuple matching. |
-| `compose_service` | Required when Compose manages the service | Stable exact service identity for authoritative tuple matching. |
-| `governed_runtime_name` | Optional | Host-scoped exact-name fallback only when uniqueness is proven. |
-| `expected_participation` | Required: `active`, `intentionally_inactive`, or `excluded` | Separates expected operation from reviewed nonparticipation. |
-| `health_check_requirement` | Required: `required`, `optional`, or `not_applicable` | Determines whether runtime health-check evidence is mandatory. |
-| `health_policy_reference` | Required | Resolves to the approved PLAT-14.1A policy set. |
-| `expected_image_reference` | Optional | Supports reviewed expected-image comparison. |
-| `expected_image_digest` | Optional | Corroborates immutable image identity; never establishes subject identity alone. |
-| `exclusion_reason` | Required when excluded | Records the reviewed reason for exclusion. |
+The proposed extension uses a bounded participation value instead of an ambiguous `container_backed` boolean. `active`, `intentionally_inactive`, `excluded`, and `not_applicable` distinguish current assessment participation, reviewed nonparticipation, and confirmed non-container services. Absence of the extension means legacy or unresolved and never implies eligibility.
 
-Existing records remain valid Infrastructure Registry v1.0 records but are ineligible for authoritative PLAT-14.1A assessment until required container identity attributes are implemented, migrated, and validated. The active `svc-pihole-dns` record remains the future canonical subject and must retain its existing host and service relationships.
+Active v1 eligibility requires an exact governed host and Compose project/service tuple, a health-check requirement, a compatible Container Operational Health policy reference, and reviewed identity evidence. A governed runtime name and expected image identity are optional corroboration. Runtime IDs and provider labels remain evidence provenance or adapter input only.
 
-The approved identity matching order is exact Registry subject and reference; exact subject/host/Compose project/Compose service tuple; exact governed runtime name plus host only with uniqueness proof; image identity as corroboration; runtime container ID as provenance; provider labels as adapter input. Fuzzy, suffix, substring, and partial matching are prohibited for authoritative identity, and name-only matching cannot produce high confidence.
+Existing records remain valid and ineligible until evidence-gated migration. `svc-pihole-dns` remains the canonical Pi-hole subject, but the repository does not yet establish its exact Compose project, Compose service, health-check requirement, or implemented policy reference sufficiently for migration. No value may be inferred from its path or runtime name.
 
-This specification update records schema design only. It does not modify the active Registry schema or records. PLAT-14.1A evaluation cannot silently change Registry lifecycle or health fields. A future Registry reference to a reviewed assessment remains a reference, not health-evaluation ownership.
+This architecture/specification package does not modify the active Registry schema, records, validator, tests, or CLI. PLAT-14.1A cannot infer missing identity or mutate Registry lifecycle, participation, or health fields.
 
 
 ## Platform Operating Environment
@@ -189,6 +177,8 @@ Milestone 12 planning does not authorize:
 - [Infrastructure Registry Architecture](../architecture/Infrastructure_Registry_Architecture.md)
 - [Platform Operating Environment](../architecture/Platform_Operating_Environment.md)
 - [Infrastructure Registry CLI](../architecture/Infrastructure_Registry_CLI.md)
+- [Registry Container Identity Foundation Architecture](../architecture/Registry_Container_Identity_Foundation_Architecture.md)
+- [Registry Container Identity Foundation Specification](Registry_Container_Identity_Foundation_Specification.md)
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Container Operational Health Specification](Container_Operational_Health_Specification.md)
@@ -200,6 +190,7 @@ Milestone 12 planning does not authorize:
 
 | Version | Description |
 |---------|-------------|
+| 1.10 | Published the bounded optional service-record container identity architecture, additive future schema version, evidence-gated migration, and unresolved Pi-hole fields without implementing schema or records. |
 | 1.9 | Added the PLAT-14.1A Registry-owned container identity schema design, migration boundary, and authoritative matching precedence without implementing schema or record changes. |
 | 1.8 | Added the PLAT-14.0A declared-state, subject-linkage, and no-implicit-mutation boundary. |
 | 1.7 | Added WS-12.7 read-only Registry CLI requirements. |

@@ -1,6 +1,6 @@
 # Platform Digital Twin Integrity Model
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Active
 
@@ -67,6 +67,12 @@ Registry records may intentionally use `TBD` or `unknowns` fields for details th
 
 Platform EAP reports these markers as information so architecture review can distinguish known gaps from missing records. These markers do not imply runtime health status and do not trigger discovery, polling, or automation.
 
+## Future Container Identity Integrity
+
+The published but unimplemented Registry Container Identity Foundation preserves the service record as the Digital Twin subject and selects an optional conditional field set rather than a container-instance record type. Future validation must keep all 39 legacy records valid, require exact host and Compose identity before active eligibility, enforce host-scoped uniqueness, and fail closed on unknown or contradictory container states.
+
+Container participation is separate from existing lifecycle and `health_status`. Runtime IDs, provider labels, evidence, reconciliation, and Operational Health Assessments remain outside the Digital Twin declaration and cannot mutate it automatically. The active schema and records are unchanged by the architecture package.
+
 ---
 
 ## Related Documents
@@ -75,6 +81,8 @@ Platform EAP reports these markers as information so architecture review can dis
 - [Infrastructure Registry Architecture](Infrastructure_Registry_Architecture.md)
 - [Network Topology Model](Network_Topology_Model.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
+- [Registry Container Identity Foundation Architecture](Registry_Container_Identity_Foundation_Architecture.md)
+- [Registry Container Identity Foundation Specification](../specifications/Registry_Container_Identity_Foundation_Specification.md)
 - [Infrastructure Operations Readiness](Infrastructure_Operations_Readiness.md)
 - [Platform Operations Domain Architecture](Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
@@ -85,6 +93,7 @@ Platform EAP reports these markers as information so architecture review can dis
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added the future container identity integrity, legacy compatibility, uniqueness, and no-runtime-mutation boundaries. |
 | 1.2 | Added the PLAT-14.0A declared-state boundary and separation from evidence, reconciliation, and health. |
 | 1.1 | Added static unknown and TBD field reporting for PLAT-13.1 readiness. |
 | 1.0 | Initial WS-12.5 Platform Digital Twin integrity validation model. |

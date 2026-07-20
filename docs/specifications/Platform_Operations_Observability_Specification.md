@@ -1,6 +1,6 @@
 # Platform Operations and Observability Specification
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 
 **Status:** Planned
 
@@ -118,7 +118,7 @@ Infrastructure Registry declared state
 
 ADR-007 remains authoritative for the Prometheus observability stack and the approved restricted proxy plus OpenTelemetry replacement pattern. PLAT-14.0A does not remove or redesign those components. It establishes that Docker, cAdvisor, OpenTelemetry, Prometheus, and Grafana are provider, transport, or presentation concerns and do not own Platform subject identity, normalized evidence semantics, confidence, reconciliation, or authoritative health.
 
-PLAT-14.0A is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remains architecture-only. PLAT-14.1A is in Specification Alignment and its implementation remains blocked pending publication of the aligned specification and separate authorization. No provider adapter, configuration, dashboard, or live behavior is implemented by either specification package.
+PLAT-14.0A is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remains architecture-only. The PLAT-14.1A specification and Registry Container Identity Foundation architecture/specification are published; PLAT implementation remains blocked pending separate Registry schema/migration and implementation authorization. No Registry schema, record migration, provider adapter, configuration, dashboard, or live behavior is implemented by either specification package.
 
 The approved future PLAT-14.1A direction is a repository-only core vertical slice with fixture adapters. The prepared restricted proxy, OpenTelemetry Collector, Prometheus, Docker daemon, cAdvisor, and Grafana artifacts remain subordinate provider, security, transport, live-validation, or presentation work and do not enter the core health contract.
 
@@ -509,6 +509,7 @@ PLAT-13.6.2 operational closeout is complete when:
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Recorded PLAT-14.1A and Registry Container Identity Foundation publication while retaining all implementation gates. |
 | 1.8 | Recorded PLAT-14.0A publication and PLAT-14.1A specification alignment while retaining provider topology as subordinate future scope. |
 | 1.7 | Added the PLAT-14.0A Platform Operations domain boundary above the existing provider and observability topology. |
 | 1.6 | Added EO-13.1 technology-neutral Container Metrics capability abstraction. |

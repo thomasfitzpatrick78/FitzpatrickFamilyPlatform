@@ -1,6 +1,6 @@
 # Container Metrics Modernization Specification
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -72,7 +72,7 @@ Before implementation, evidence must confirm:
 ## Architecture Boundaries
 
 - PLAT-14.0A Platform Operations Domain Architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remains architecture-only with `Implemented: No`.
-- PLAT-14.1A is in Specification Alignment; repository implementation remains blocked.
+- The PLAT-14.1A specification and Registry Container Identity Foundation architecture/specification are published; repository implementation remains blocked pending separate Registry schema/migration and PLAT authorization.
 - Infrastructure Registry remains authoritative for declared state and canonical Platform subject linkage.
 - Docker API, Docker daemon metrics, cAdvisor, OpenTelemetry, Prometheus, and future telemetry sources are provider or transport implementations, not owners of canonical evidence or health semantics.
 - Provider observations must be normalized into the approved Generic Operational Evidence Envelope and Container Evidence Profile before authoritative reconciliation or health evaluation.
@@ -173,6 +173,7 @@ PLAT-14.1 is ready for implementation review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Recorded PLAT-14.1A and Registry Container Identity Foundation publication without authorizing provider or runtime work. |
 | 1.2 | Reclassified existing telemetry work as subordinate future provider, security, transport, live-validation, and presentation scope beneath PLAT-14.1A Container Operational Health. |
 | 1.1 | Added PLAT-14.0A dependency and separated canonical Platform Operations contracts from provider and presentation implementation. |
 | 1.0 | Initial PLAT-14.1 container metrics modernization specification. |

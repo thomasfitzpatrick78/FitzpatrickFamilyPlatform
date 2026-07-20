@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A Platform Operations Domain Architecture at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and now aligns the PLAT-14.1A Container Operational Health specification before any implementation.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, the PLAT-14.1A Container Operational Health specification at `89deeed2480679c9717cb151c3a14fe9414d8b97`, and the Registry Container Identity Foundation architecture/specification. Registry schema implementation, record migration, and PLAT-14.1A implementation remain blocked.
 
 ---
 
@@ -28,7 +28,7 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - Validation-first design selected before monitoring, dashboards, or automation.
 - Governed operations and observability architecture selected in ADR-007.
 - Platform Operations bounded-context direction is published in ADR-009 through ADR-011, with declared state, normalized evidence, reconciliation, deterministic health, and advisory intelligence kept separate; implementation remains absent.
-- PLAT-14.1A is in Specification Alignment. Future implementation direction is a provider-independent repository vertical slice with fixture adapters, but implementation, providers, security, live observation, dashboards, and activation remain blocked.
+- PLAT-14.1A and the Registry Container Identity Foundation architecture/specification are published. The Foundation selects a future optional service-record identity extension, but the active schema and all 39 records remain unchanged. PLAT implementation, migration, providers, security, live observation, dashboards, and activation remain blocked.
 
 ---
 
@@ -60,6 +60,8 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 - [Platform Operations Domain Architecture](Platform_Operations_Domain_Architecture.md)
 - [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
+- [Registry Container Identity Foundation Architecture](Registry_Container_Identity_Foundation_Architecture.md)
+- [Registry Container Identity Foundation Specification](../specifications/Registry_Container_Identity_Foundation_Specification.md)
 - [ADR-009 - Evidence Before Operational Health](decisions/ADR-009-Evidence-Before-Operational-Health.md)
 - [ADR-010 - Declared Observed and Reconciled State](decisions/ADR-010-Declared-Observed-and-Reconciled-State.md)
 - [ADR-011 - Generic Operational Evidence Envelope and Versioned Profiles](decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md)
@@ -73,6 +75,7 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Recorded PLAT-14.1A and Registry Container Identity Foundation architecture/specification publication without implementation. |
 | 1.8 | Recorded PLAT-14.0A publication and PLAT-14.1A Container Operational Health specification alignment with implementation blocked. |
 | 1.7 | Added PLAT-14.0A Platform Operations domain architecture and the blocked PLAT-14.1A dependency state. |
 | 1.6 | Recorded PLAT-13.6.3B repository-prepared Docker API proxy and OpenTelemetry Docker Stats replacement architecture. |

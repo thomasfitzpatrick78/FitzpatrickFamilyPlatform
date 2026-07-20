@@ -1,6 +1,6 @@
 # Platform Operations Domain Architecture
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Published Architecture; Implemented: No
 
@@ -142,6 +142,8 @@ Observation and Operational Evidence are deliberately distinct. An observation b
 
 Every canonical evidence record uses a Platform-owned `subject_id` linked by `registry_reference` to the authoritative Infrastructure Registry record.
 
+For container-backed services, the published but unimplemented Registry Container Identity Foundation defines the future exact declared host and Compose identity consumed by reconciliation. PLAT-14.1A cannot infer or repair missing Registry identity from providers, and no runtime observation may create or mutate the declared subject.
+
 Provider identities are provenance only. Docker container IDs, runtime names, Prometheus labels, cAdvisor names, OpenTelemetry resource identifiers, and future provider identifiers must not become canonical Platform subject identifiers.
 
 Identity ambiguity is explicit evidence. A provider adapter must return a structured finding when it cannot map an observation to one Platform subject. It must not guess, create a parallel inventory, or silently select one of several plausible registry records.
@@ -213,7 +215,7 @@ Missing dashboard data must never be rendered as Healthy.
 | Work Package or Capability | Lifecycle Position |
 |----------------------------|--------------------|
 | PLAT-14.0A | Domain architecture and contracts published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; not implemented or operational. |
-| PLAT-14.1A | Specification Alignment; implementation blocked pending publication of the aligned specification and separate repository implementation authorization. |
+| PLAT-14.1A | Specification and Registry Container Identity Foundation architecture/specification published; implementation blocked pending separate Registry schema/migration and repository implementation authorization. |
 | EO-14.1A | Repository implementation published; Execution Agent unactivated. |
 | EO-14.4A | Repository implementation published; automation unactivated. |
 | Bravo and Charlie | Implementation unstarted. |
@@ -308,6 +310,8 @@ PLAT-14.0A is ready for Architecture Gatekeeper review when:
 - [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 - [Infrastructure Registry v1.0 Specification](../specifications/Infrastructure_Registry_v1.0_Specification.md)
+- [Registry Container Identity Foundation Architecture](Registry_Container_Identity_Foundation_Architecture.md)
+- [Registry Container Identity Foundation Specification](../specifications/Registry_Container_Identity_Foundation_Specification.md)
 - [Platform Digital Twin Integrity Model](Platform_Digital_Twin_Integrity_Model.md)
 - [Container Metrics Modernization Specification](../specifications/Container_Metrics_Modernization_Specification.md)
 - [Platform Health Dashboard Specification](../specifications/Platform_Health_Dashboard_Specification.md)
@@ -322,5 +326,6 @@ PLAT-14.0A is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Published the unimplemented Registry Container Identity Foundation prerequisite and no-provider-inference boundary. |
 | 1.1 | Recorded PLAT-14.0A publication and the blocked PLAT-14.1A specification-alignment lifecycle. |
 | 1.0 | Initial PLAT-14.0A Platform Operations bounded-context and domain architecture. |
