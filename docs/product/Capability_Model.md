@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.16
+**Document Version:** 1.17
 
 **Status:** Active
 
@@ -55,6 +55,8 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 **Registry Container Identity Foundation:** Published repository implementation of additive schema `1.1`, strict declared-identity validation, deterministic evidence-gated planning/execution/rollback/completion, exact-plan approval binding, and historical/current plan separation. Registry `id` remains canonical; exactly five records declare governed `not_applicable` participation, the other 34 remain unchanged, and no subject is newly health eligible.
 
 **Container Operational Health Capability:** The published PLAT-14.1A Option B repository implementation provides deterministic synthetic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. It remains fixture-only and unactivated. The five migrated subjects are explicitly `not_applicable`; authoritative evaluation remains unavailable until an eligible subject has separately approved identity evidence and provider/live gates pass.
+
+**Production Provider Adapter Architecture:** Accepted and published under the existing PLAT-14.1A capability. A constrained Docker API proxy is the approved primary architectural direction for mandatory named-target evidence; a bounded OTel/Prometheus path is an optional supplemental direction for advisory resource evidence. Provider Adapter Contract v1.0, privileged-access controls, threat model, named-target gate, and later activation gates are defined. No provider implementation version or configuration is selected or implemented, no target is eligible or chosen, and privileged/live access remains unauthorized.
 
 ### Home Automation
 
@@ -130,6 +132,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.17 | Recorded publication of the accepted Production Provider Adapter Architecture and Privileged-Access Security Design without creating a new capability or authorizing implementation. |
 | 1.16 | Recorded exact five-record Registry migration, completed-migration evidence, current planner lifecycle semantics, and unchanged fixture-only/no-live-health boundary. |
 | 1.15 | Recorded Architecture Gatekeeper acceptance and publication of the fixture-only Container Operational Health repository capability without Registry migration, provider access, activation, or live work. |
 | 1.14 | Recorded the complete unpublished fixture-only Container Operational Health repository capability without Registry migration, provider access, activation, or live work. |

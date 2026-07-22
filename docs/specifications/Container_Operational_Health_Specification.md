@@ -1,6 +1,6 @@
 # Container Operational Health Specification
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 
 **Status:** Published Specification and Repository Implementation; Fixture Only; Unactivated
 
@@ -99,7 +99,7 @@ Production provider adapters are outside the first PLAT-14.1A implementation. Th
 
 The Infrastructure Registry record ID is the Platform-owned stable `subject_id`. PLAT-14.1A must not create a parallel container inventory or derive a stable subject ID from runtime data.
 
-The existing `service` and `planned_service` record types remain authoritative. The published Registry Container Identity Foundation implementation provides the bounded optional `container_*` field set, schema `1.1`, strict validation, and evidence-gated migration framework; no independent container record or parallel inventory is permitted. No current record is migrated into eligibility. The repository vertical slice therefore uses synthetic Registry identity fixtures only and cannot assess an authoritative current service.
+The existing `service` and `planned_service` record types remain authoritative. The published Registry Container Identity Foundation implementation provides the bounded optional `container_*` field set, schema `1.1`, strict validation, and evidence-gated migration framework; no independent container record or parallel inventory is permitted. Five records are migrated as `not_applicable`, 16 subjects remain review-required, and no current record is eligible. The repository vertical slice therefore uses synthetic Registry identity fixtures only and cannot assess an authoritative current service.
 
 ### Proposed Registry-Owned Attributes
 
@@ -622,6 +622,7 @@ Fixture tests prove repository contract, normalization, reconciliation, policy, 
 | Gate | Authorized Scope | Required Evidence |
 |------|------------------|-------------------|
 | Core Repository Implementation | Architecture Gatekeeper accepted and published: contract models, policy loading, fixture translators, reconciliation, health evaluation, outputs, CLI, and tests. | Full repository acceptance matrix is implemented; publication does not authorize any later gate. |
+| Provider Architecture and Security Design | Accepted and published: provider options, approved proxy primary and optional OTel/Prometheus supplemental directions, trust boundaries, contract v1, threat model, and later gates. | Publication complete; no provider implementation is selected or authorized by this package. |
 | Provider-Adapter Implementation | Bounded provider-specific mappings using fixtures only. | Supported versions, normalization equivalence, limitation handling, and no health calculation. |
 | Security Review | Restricted Docker API, socket, or other privileged access. | Least privilege, allowlist, denial proof plan, secrets, escape risk, exposure, logging, retention, rollback. |
 | Live Observation | Read-only named-target observation. | Approved targets/endpoints, duration, stop conditions, evidence handling, rollback, Pi-hole and household-service non-regression, human approval. |
@@ -664,9 +665,9 @@ The implemented repository vertical slice contains bounded fixture adapters:
 - EO fixture integration.
 - No live provider access.
 
-The separately authorized Option B repository package is Architecture Gatekeeper accepted and published. It does not authorize Registry migration, provider access, dashboard/API work, activation, or live observation.
+The separately authorized Option B repository package, exact five-record `not_applicable` Registry migration, and Production Provider Adapter Architecture and Privileged-Access Security Design are published. None of the five subjects is health eligible. Provider implementation, privileged access, dashboard/API work, activation, and live observation remain unauthorized.
 
-PLAT-14.0A remains published architecture with `Implemented: No`. EO-14.1A and EO-14.4A remain published and unactivated. PLAT-14.1A is published, fixture-only, provider-free, and unactivated. Charlie remains unstarted and dependent on separately authorized consumer integration. Provider, security, live-observation, dashboard/API, activation, Registry migration, and FFFA work remain separate.
+PLAT-14.0A remains published architecture with `Implemented: No`. EO-14.1A and EO-14.4A remain published and unactivated. PLAT-14.1A is published, fixture-only, provider-free, and unactivated. Charlie remains unstarted and dependent on separately authorized consumer integration. Migration of the 16 review-required subjects, provider implementation, privileged access, live observation, dashboard/API integration, activation, and FFFA work remain separate.
 
 ---
 
@@ -719,6 +720,9 @@ The published implementation remains conformant when:
 - [ADR-011 - Generic Operational Evidence Envelope and Versioned Profiles](../architecture/decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md)
 - [Container Operational Health Repository Usage](../architecture/Container_Operational_Health_Repository_Usage.md)
 - [PLAT-14.1A Implementation Package](../milestones/Milestone_14/PLAT_14_1A_Container_Operational_Health_Implementation_Package.md)
+- [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
+- [Production Provider Adapter Contract Specification](Production_Provider_Adapter_Contract_Specification.md)
+- [Privileged-Access Security Design and Threat Model](../architecture/Production_Provider_Privileged_Access_Security_Design.md)
 
 ---
 
@@ -726,6 +730,7 @@ The published implementation remains conformant when:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded publication of the accepted provider architecture/security boundary, primary/supplemental direction, contract v1 reference, and current five-record migration state without changing policies or authorizing implementation. |
 | 1.5 | Recorded Architecture Gatekeeper acceptance and publication of the Option B fixture-only repository vertical slice without Registry migration, providers, runtime observation, dashboards/APIs, activation, or live work. |
 | 1.4 | Recorded completion of the authorized Option B fixture-only repository vertical slice for Architecture Gatekeeper review without Registry migration, providers, runtime observation, dashboards, activation, or live work. |
 | 1.3 | Recorded publication of the Registry identity schema/validation/migration framework with no migrated subject and PLAT-14.1A still blocked. |

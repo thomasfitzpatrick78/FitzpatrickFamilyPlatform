@@ -1,6 +1,6 @@
 # Platform Operational Evidence and Health Contract Specification
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 
 **Status:** Published Architecture Contract and Fixture-Only Repository Vertical Slice; Unactivated
 
@@ -74,7 +74,7 @@ An evidence record identifies both `contract_version` and the independently gove
 
 `subject_id` is not a Docker container ID, provider label, cAdvisor name, OpenTelemetry resource identifier, Prometheus series identity, or other runtime reference.
 
-For container evidence, the published Registry Container Identity Foundation implementation supplies validated declared host and governed Compose identity only after an approved record migration. No current service is migrated into eligibility. Missing or invalid declared identity fails closed; an adapter cannot synthesize it from provider observations.
+For container evidence, the published Registry Container Identity Foundation implementation supplies validated declared host and governed Compose identity only after an approved record migration. Five records are migrated as `not_applicable`, 16 subjects remain review-required, and no current service is eligible for authoritative evaluation. Missing or invalid declared identity fails closed; an adapter cannot synthesize it from provider observations.
 
 ### Evidence Classification
 
@@ -452,6 +452,10 @@ Representative normalization findings are:
 
 Adapters must be independently testable through repository fixtures. They must not return authoritative health assessments, mutate declared state, grant approval, or hide unsupported input.
 
+Production adapters additionally conform to Production Provider Adapter Contract v1.0. That contract binds adapter/provider identity and versions, one named Registry target, an authorization reference and digest, exact requested signals, collection timing, observed identity, coverage, limitations, safe raw-response digest/reference, canonical evidence, and deterministic failure output. Provider failure remains observation-capability evidence and cannot become a false service-health result.
+
+The contract intentionally defers exact provider endpoint paths and field names until a future implementation/security gate validates current official provider contracts. The accepted architecture establishes a constrained Docker API proxy as the primary direction for mandatory evidence and permits a fixed OpenTelemetry/Prometheus supplemental path for advisory resource signals; it does not select or authorize implementation.
+
 ---
 
 ## Consumer Contract
@@ -624,6 +628,9 @@ This specification is ready for Architecture Gatekeeper review when:
 - [Platform Health Dashboard Specification](Platform_Health_Dashboard_Specification.md)
 - [Operations Analyst Specification](../engineering-organization/Operations_Analyst_Specification.md)
 - [Docker 29 Container Metrics Compatibility Assessment](../architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md)
+- [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
+- [Production Provider Adapter Contract Specification](Production_Provider_Adapter_Contract_Specification.md)
+- [Privileged-Access Security Design and Threat Model](../architecture/Production_Provider_Privileged_Access_Security_Design.md)
 
 ---
 
@@ -631,6 +638,7 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Recorded publication of the accepted Production Provider Adapter Contract v1 boundary, provider direction, deterministic failure requirements, and current migration lifecycle. |
 | 1.6 | Recorded Architecture Gatekeeper acceptance and publication of the fixture-only PLAT-14.1A repository implementation without Registry migration, provider access, activation, or live work. |
 | 1.5 | Recorded the complete unpublished fixture-only PLAT-14.1A repository implementation of the contracts without Registry migration, provider access, activation, or live work. |
 | 1.4 | Recorded publication of the Registry identity prerequisite implementation while retaining migration, PLAT, provider, and health gates. |

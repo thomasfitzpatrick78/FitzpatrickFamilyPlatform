@@ -1,6 +1,6 @@
 # Container Metrics Modernization Specification
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -53,6 +53,15 @@ The retained provider work is classified as follows:
 
 No provider owns canonical subject identity, policy, reconciliation, confidence, or health. No retained provider artifact is deleted or treated as implementation authorization.
 
+The accepted and published Production Provider Adapter Architecture establishes:
+
+- A constrained Docker Engine API proxy as the approved primary boundary direction for mandatory named-target identity, lifecycle, and runtime health-check observations.
+- A hardened OpenTelemetry/Prometheus path as an optional supplemental source for advisory resource evidence.
+- No direct socket access by the adapter or collector.
+- No cAdvisor-only, daemon-metrics-only, or multi-mandatory-provider first slice.
+
+The existing repository-prepared proxy and OTel configuration is evidence for a later implementation/security review. It is not approved production configuration, does not yet prove mandatory signal coverage, and is not selected for implementation by this published architecture package.
+
 ---
 
 ## Current-State Evidence Requirements
@@ -72,7 +81,7 @@ Before implementation, evidence must confirm:
 ## Architecture Boundaries
 
 - PLAT-14.0A Platform Operations Domain Architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remains architecture-only with `Implemented: No`.
-- The Registry Container Identity Foundation schema/validation/migration framework and PLAT-14.1A fixture-only repository implementation are published with no migrated eligible subject; production telemetry-provider work remains a separate gate.
+- The Registry Container Identity Foundation schema/validation/migration framework and PLAT-14.1A fixture-only repository implementation are published. Five records are migrated as `not_applicable`, 16 remain review-required, and no migrated eligible subject exists; production telemetry-provider work remains a separate gate.
 - Infrastructure Registry remains authoritative for declared state and canonical Platform subject linkage.
 - Docker API, Docker daemon metrics, cAdvisor, OpenTelemetry, Prometheus, and future telemetry sources are provider or transport implementations, not owners of canonical evidence or health semantics.
 - Provider observations must be normalized into the approved Generic Operational Evidence Envelope and Container Evidence Profile before authoritative reconciliation or health evaluation.
@@ -166,6 +175,9 @@ PLAT-14.1 is ready for implementation review when:
 - [Docker 29 Container Metrics Compatibility Assessment](../architecture/Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Platform Health Dashboard Specification](Platform_Health_Dashboard_Specification.md)
+- [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
+- [Production Provider Adapter Contract Specification](Production_Provider_Adapter_Contract_Specification.md)
+- [Privileged-Access Security Design and Threat Model](../architecture/Production_Provider_Privileged_Access_Security_Design.md)
 
 ---
 
@@ -173,6 +185,7 @@ PLAT-14.1 is ready for implementation review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.8 | Recorded publication of the accepted constrained proxy primary and optional OTel/Prometheus supplemental directions while retaining implementation, access, observation, and live gates. |
 | 1.7 | Recorded publication of the provider-independent PLAT-14.1A fixture slice while preserving all telemetry-provider, security, and live gates. |
 | 1.6 | Recorded the complete unpublished provider-independent PLAT-14.1A fixture slice while preserving all telemetry-provider and live gates. |
 | 1.5 | Recorded publication of the Registry identity prerequisite implementation while preserving provider, runtime, migration, and PLAT gates. |

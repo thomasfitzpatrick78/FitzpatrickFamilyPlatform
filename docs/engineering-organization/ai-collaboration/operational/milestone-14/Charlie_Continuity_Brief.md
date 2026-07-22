@@ -24,7 +24,7 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Published Registry Container Identity Foundation - Schema and Migration Framework HEAD `c7269fde070a6a2cbce5b33fccb89e8e60950cc7` on `main`. |
+| Baseline | Published Registry Container Identity Migration HEAD `1dfd7520f10b18588b28743107a60b038acc7485` on `main`. |
 | Current milestone | Milestone 14 - Engineering Organization Expansion and Platform Operationalization. |
 | Workstream ID and title | Charlie - Operations Intelligence. |
 | Assigned role | Codex Implementation Engineer. |
@@ -32,10 +32,10 @@
 | Current Engineering Lifecycle stage | Specification; Charlie implementation remains unstarted while published PLAT-14.1A fixture evidence awaits a separate consumer-integration authorization. |
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; EO-14.8A Capability Charter; EO-14.8B specifications; EO-14.8C.1 framework; Milestone Plan; Engineering Portfolio Kanban; EO-14.2 and EO-14.3 specifications. |
 | Completed work and evidence | EO-14.8 is complete, repository validated, Architecture Gatekeeper approved, and published; the approved framework is instantiated for Charlie, and Charlie implementation work has not started. |
-| Current work | Review the implemented PLAT-14.1A consumer, reason-code, confidence, freshness, and expiration boundaries while preserving Charlie as unstarted. |
-| Active repository changes | Authorized PLAT-14.1A repository vertical slice only; no Charlie procedures or runtime behavior are implemented. |
+| Current work | Review the PLAT-14.1A consumer, reason-code, confidence, freshness, expiration, provider-failure, limitation, and provenance boundaries while preserving Charlie as unstarted. |
+| Active repository changes | Bravo provider architecture/security publication artifacts only; no Charlie procedure, consumer, dashboard, API, or runtime behavior is implemented. |
 | Parallel workstreams | PLAT-14.1A is published, fixture-only, and unactivated; Alpha is published and unactivated; Charlie remains unstarted. |
-| Dependencies | Bravo published PLAT-14.1A fixture evidence; Architecture Integration; published PLAT-14.0A contracts; EO-14.2; EO-14.3. |
+| Dependencies | Bravo published PLAT-14.1A fixture evidence; accepted and published provider architecture/security direction; later validated named-target evidence; Architecture Integration; published PLAT-14.0A contracts; EO-14.2; EO-14.3. |
 | Integration gates | Architecture Gatekeeper-approved and published PLAT-14.1A assessment evidence before final Charlie mappings; interpretation must not recalculate authoritative health. |
 | Unresolved decisions | Separately governed Charlie implementation authorization after published contracts and required Bravo evidence exist. |
 | Risks | Telemetry names, labels, thresholds, availability, or metric precision could be invented before verified Bravo evidence. |
@@ -43,11 +43,11 @@
 | Permitted actions | Preserve readiness and review the authorized PLAT-14.0A Operational Intelligence consumer boundary without starting Charlie implementation. |
 | Prohibited actions | Begin EO-14.2A or EO-14.3A; invent telemetry or unsupported precision; perform live work; modify FFFA; create a tag or release. |
 | Next gate | Separate Architecture Gatekeeper authorization for Operations Analyst and Platform Health Dashboard consumer-integration specification alignment. |
-| Last verification date | 2026-07-20. |
+| Last verification date | 2026-07-22. |
 | Superseded brief reference | None. |
 
 ---
 
 ## Continuity Notes
 
-EO-14.8 and Alpha controls are published. Charlie remains unstarted; final mappings depend on published PLAT-14.0A contracts and Architecture Gatekeeper-accepted PLAT-14.1A evidence.
+EO-14.8 and Alpha controls are published. Charlie remains unstarted; final mappings depend on published PLAT-14.0A contracts, Architecture Gatekeeper-accepted provider architecture, later validated named-target evidence, and a separate consumer-integration authorization.

@@ -2,7 +2,7 @@
 
 **Status:** PASS WITH WARNINGS
 
-**Timestamp:** 2026-07-20T20:30:10.461652+00:00
+**Timestamp:** 2026-07-22T23:18:33.377197+00:00
 
 **Summary:** Engineering metrics generated with status PASS WITH WARNINGS; AI Session Readiness is READY WITH WARNINGS.
 
@@ -18,7 +18,7 @@
 - Errors: 0
 - Warnings: 1
 - Validation domains: 9
-- Evidence timestamp: 2026-07-20T20:30:07.575279+00:00
+- Evidence timestamp: 2026-07-22T23:18:33.257065+00:00
 - Evidence condition: current
 - Evidence path: `reports/engineering/ai_session_readiness/ai_session_readiness_report.json`
 - Evidence usable: yes
@@ -29,7 +29,7 @@
 
 ## Results
 
-- INFO: Markdown documents: 132
+- INFO: Markdown documents: 135
 - INFO: Engineering test files: 7
 - INFO: Architecture decisions: 11
 - INFO: Engineering health baseline established

@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.18
+**Document Version:** 1.19
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation, the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice, and migration model v2. Exact historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` executed for five approved `not_applicable` subjects with validated rollback and completion evidence. Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` contains 0 apply, 16 review-required, and 23 no-change candidates. Providers, runtime observation, dashboards/APIs, activation, and live work remain blocked.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation, the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice, and migration model v2. Exact historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` executed for five approved `not_applicable` subjects with validated rollback and completion evidence. Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` contains 0 apply, 16 review-required, and 23 no-change candidates. Production Provider Adapter Architecture and Privileged-Access Security Design are accepted and published; provider implementation, privileged access, named-target observation, dashboards/APIs, activation, and live work remain blocked.
 
 ---
 
@@ -31,6 +31,7 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - The Registry Container Identity Foundation published baseline and model v2 remain in force. Five exact `not_applicable` patches are executed and completion-validated; schema `1.1` validates all 39 records, the other 34 are unchanged, and none of the five is container-health eligible.
 - The published PLAT-14.1A repository capability implements immutable contracts, strict policy/evidence parsing, synthetic Registry identity, fixture-only normalization, reconciliation, health assessment, deterministic outputs, read-only CLI, and fixture-only EO contract reuse. It remains unactivated and incapable of evaluating an authoritative current Registry subject.
 - Migration of the 16 review-required subjects, production provider adapters, security review, live observation, dashboards, activation, and live infrastructure remain blocked.
+- The accepted architecture establishes a constrained Docker API proxy as the approved primary direction for mandatory named-target evidence and OTel/Prometheus as an optional supplemental resource direction. It does not select an implementation version or configuration, eligible target, endpoint policy, deployment, or access.
 
 ---
 
@@ -70,6 +71,9 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 - [Docker 29 Container Metrics Compatibility Assessment](Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Docker Container Metrics Replacement Runbook](../operations/Docker_Container_Metrics_Replacement_Runbook.md)
+- [Production Provider Adapter Architecture](Production_Provider_Adapter_Architecture.md)
+- [Production Provider Adapter Contract Specification](../specifications/Production_Provider_Adapter_Contract_Specification.md)
+- [Privileged-Access Security Design and Threat Model](Production_Provider_Privileged_Access_Security_Design.md)
 
 ---
 
@@ -77,6 +81,7 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.19 | Recorded publication of the accepted production provider architecture/security direction while preserving provider implementation, privileged access, observation, consumer, activation, and live gates. |
 | 1.18 | Recorded exact five-record migration, rollback/completion evidence, post-migration current-plan semantics, and unchanged provider, activation, and live state. |
 | 1.17 | Recorded deterministic exact-plan approval binding as unpublished and unexecuted with all Registry, provider, activation, and live state unchanged. |
 | 1.16 | Recorded exact-plan approval-in-principle and creation of unpublished, unbound approval evidence with all Registry, provider, activation, and live state unchanged. |

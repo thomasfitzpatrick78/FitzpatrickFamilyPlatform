@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 3.4
+**Document Version:** 3.5
 
 **Status:** Active
 
@@ -45,7 +45,10 @@ Milestone 14 records these governance enhancements:
 - Published Registry migration model v2 separates historical approved proposals from current-state planning, represents the five completed declarations as `no_change`, binds expected post-state hashes, rejects superseded or drifted evidence, and preserves approval-first authorization, exact rollback readiness, and deterministic execution idempotency.
 - PLAT-14.1A now has published immutable contracts, strict parsing, active fixture-evaluation policies, canonical evidence, synthetic Registry identity reconciliation, confidence and freshness evaluation, deterministic health, stable output, fixture-only normalization, bounded read-only CLI integration, EO fixture integration, and tests. Registry migration, provider access, consumer integration, activation, and live work remain separate gates.
 - Migration of review-required subjects, provider adapters, dashboards, EO activation, and live infrastructure work remain blocked pending separate authorization.
+- Production Provider Adapter Architecture, Provider Adapter Contract v1.0, and Privileged-Access Security Design are accepted and published as a named PLAT-14.1A prerequisite. The constrained Docker API proxy is the approved primary architectural direction and OTel/Prometheus is an optional supplemental direction; no provider implementation version or configuration, target, endpoint policy, privileged access, consumer, activation, or live work is approved.
+- Direct socket access, cAdvisor-only mandatory evidence, provider-owned health, dynamic provider orchestration, and multiple mandatory-provider composition are rejected for the first production slice. A later eligible-subject, security, implementation, named-target observation, policy-validation, consumer, and activation sequence remains mandatory.
 - Capability-First Operationalization remains an unpromoted candidate pattern. Published PLAT-14.1A supplies first-consumer repository implementation evidence for EO-14.1A and EO-14.4A contract reuse, but no activation, live operational evidence, or repeated implementation exists to support permanent Engineering Lifecycle promotion.
+- The repeated secure-provider pattern is recorded only as Architecture Backlog candidate AB-012 for a future `Secure External and Privileged Provider Integration Standard` evaluation. Existing privileged-integration governance covers substantial safety requirements, but the broader adapter, fixture-first, named-target, provenance, and recurring-activation lifecycle is not promoted by this publication.
 
 ---
 
@@ -53,6 +56,7 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 3.5 | Recorded publication of the accepted Production Provider Adapter Architecture and Privileged-Access Security Design without provider implementation, access, activation, or live work. |
 | 3.4 | Recorded exact five-record Registry migration, rollback/completion validation, and historical/current plan lifecycle correction without provider access, activation, rollback execution, or live work. |
 | 3.3 | Recorded deterministic binding of the strict approval artifact to the exact reviewed plan without Registry mutation, rollback, provider access, activation, or live work. |
 | 3.2 | Recorded exact-plan approval-in-principle and creation of the governed review document and strict approval artifact without binding, Registry mutation, provider access, activation, or live work. |

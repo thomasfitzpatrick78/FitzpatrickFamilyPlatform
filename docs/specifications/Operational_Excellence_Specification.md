@@ -1,6 +1,6 @@
 # Operational Excellence Specification
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -45,6 +45,8 @@ Initial alerting requirements should cover:
 Alert delivery mechanisms require human approval before activation.
 
 Container-health alerts and recovery recommendations must consume validated PLAT-14.1A assessments only after separate dashboard/API and live-evidence gates. Alerting must preserve assessment confidence, reason codes, freshness, and expiration; it must not independently reinterpret provider availability or dashboard no-data as subject failure. The published fixture-only slice does not authorize alert activation.
+
+Under the accepted and published Production Provider Adapter Architecture, provider failures, timeouts, authorization denials, limitations, and coverage loss remain evidence-quality conditions. Operational Excellence may later recommend investigation or disablement from them but cannot treat them as service failure, trigger remediation, or bypass the separately governed provider, consumer, alert, and EO activation gates.
 
 ---
 
@@ -93,6 +95,7 @@ PLAT-14.2 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Added provider-failure and limitation handling while preserving alert, remediation, activation, and live-operation gates. |
 | 1.4 | Recorded publication of the PLAT-14.1A fixture assessment proof while preserving alerting, dashboard/API, and live-operation gates. |
 | 1.3 | Recorded the complete unpublished PLAT-14.1A fixture assessment proof while preserving alerting, dashboard, and live-operation gates. |
 | 1.2 | Added the PLAT-14.1A governed-assessment dependency and preserved separate alert and live-operation approval. |

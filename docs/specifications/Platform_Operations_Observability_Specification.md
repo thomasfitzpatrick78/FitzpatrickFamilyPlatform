@@ -1,6 +1,6 @@
 # Platform Operations and Observability Specification
 
-**Document Version:** 1.13
+**Document Version:** 1.14
 
 **Status:** Planned
 
@@ -118,7 +118,7 @@ Infrastructure Registry declared state
 
 ADR-007 remains authoritative for the Prometheus observability stack and the approved restricted proxy plus OpenTelemetry replacement pattern. PLAT-14.0A does not remove or redesign those components. It establishes that Docker, cAdvisor, OpenTelemetry, Prometheus, and Grafana are provider, transport, or presentation concerns and do not own Platform subject identity, normalized evidence semantics, confidence, reconciliation, or authoritative health.
 
-PLAT-14.0A is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remains architecture-only. The Registry Container Identity Foundation schema/validation/migration framework and PLAT-14.1A fixture-only repository slice are published, and no record is migrated. No production provider adapter, configuration, dashboard/API, activation, or live behavior is implemented.
+PLAT-14.0A is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8` and remains architecture-only. The Registry Container Identity Foundation schema/validation/migration framework and PLAT-14.1A fixture-only repository slice are published. Five records are migrated as `not_applicable`, 16 remain review-required, and no current subject is eligible for health evaluation. No production provider adapter, configuration, dashboard/API, activation, or live behavior is implemented.
 
 The implemented PLAT-14.1A direction is a repository-only core vertical slice with bounded fixture normalizers. The prepared restricted proxy, OpenTelemetry Collector, Prometheus, Docker daemon, cAdvisor, and Grafana artifacts remain subordinate provider, security, transport, live-validation, or presentation work and do not enter the core health contract.
 
@@ -280,6 +280,8 @@ PLAT-13.6.3B prepares the approved A3 replacement architecture without live depl
 - Docker daemon Prometheus metrics remain deferred and disabled.
 
 Required live proof includes proxy denial behavior, emitted metric names, metadata inventory, Pi-hole identity, CPU, memory, network, block I/O, uptime/state where available, sensitive-data exclusion, persistence, reboot behavior, and Pi-hole non-regression.
+
+The accepted and published Production Provider Adapter Architecture places this prepared topology behind separate implementation and security gates. It establishes the constrained proxy as the approved primary provider boundary direction for mandatory named-target evidence and treats the OTel/Prometheus path as optional supplemental resource evidence until exact signal coverage is proven. The prepared configuration is not selected or approved for implementation by the architecture package, and Pi-hole is not selected as a target.
 
 ---
 
@@ -502,6 +504,9 @@ PLAT-13.6.2 operational closeout is complete when:
 - [Metrics Foundation Runbook](../operations/Metrics_Foundation_Runbook.md)
 - [Metrics Foundation Evidence Template](../operations/Metrics_Foundation_Evidence_Template.md)
 - [Metrics Foundation Implementation Evidence](../operations/Metrics_Foundation_Implementation_Evidence.md)
+- [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
+- [Production Provider Adapter Contract Specification](Production_Provider_Adapter_Contract_Specification.md)
+- [Privileged-Access Security Design and Threat Model](../architecture/Production_Provider_Privileged_Access_Security_Design.md)
 
 ---
 
@@ -509,6 +514,7 @@ PLAT-13.6.2 operational closeout is complete when:
 
 | Version | Description |
 |---------|-------------|
+| 1.14 | Aligned the repository-prepared proxy and OTel topology to the accepted and published Production Provider Adapter Architecture without selecting an implementation configuration, deploying, or accessing it. |
 | 1.13 | Recorded publication of the PLAT-14.1A fixture-only repository slice while retaining all provider, dashboard/API, activation, and live gates. |
 | 1.12 | Recorded the complete unpublished PLAT-14.1A fixture-only repository slice while retaining all provider, dashboard, and live gates. |
 | 1.11 | Recorded publication of the Architecture Gatekeeper-accepted Registry identity prerequisite while retaining record migration, PLAT, provider, and live gates. |

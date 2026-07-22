@@ -1,6 +1,6 @@
 # Container Operational Health Repository Usage
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Architecture Gatekeeper Accepted and Published; Fixture Only; Not Activated
 
@@ -52,6 +52,10 @@ Case-folded, substring, suffix, partial, and fuzzy fallback matching are prohibi
 
 These are test translators, not production provider adapters. Fixture success does not prove Docker, Compose, Prometheus, OpenTelemetry, cAdvisor, Grafana, security, timing, cardinality, Pi-hole non-regression, or live readiness.
 
+## Production Provider Boundary
+
+The accepted and published Production Provider Adapter Architecture and Contract define a future interface outside this repository-only command surface. Any implementation must first remain fixture/mock-server only, use explicit named-target authorization input, return canonical evidence or deterministic provider failure, and preserve the existing PLAT-14.1A reconciliation/health authority. This usage document does not add a provider command, network path, credential, target, or activation mode.
+
 ## Authoritative Results
 
 Operational Evidence, Reconciliation, and Operational Health Assessment JSON are the three authoritative serialized records. The in-memory evaluation result groups those records with deterministic rendering metadata; it is not a fourth consumer-summary contract. Markdown is generated from the assessment and does not recalculate health.
@@ -67,10 +71,14 @@ The end-to-end test uses the published EO-14.1A assignment, evidence, completion
 - [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 - [Platform Operational Evidence and Health Contract Specification](../specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [PLAT-14.1A Implementation Package](../milestones/Milestone_14/PLAT_14_1A_Container_Operational_Health_Implementation_Package.md)
+- [Production Provider Adapter Architecture](Production_Provider_Adapter_Architecture.md)
+- [Production Provider Adapter Contract Specification](../specifications/Production_Provider_Adapter_Contract_Specification.md)
+- [Privileged-Access Security Design and Threat Model](Production_Provider_Privileged_Access_Security_Design.md)
 
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Linked the future production provider contract and preserved the existing fixture-only, network-free command boundary. |
 | 1.1 | Recorded publication of the Architecture Gatekeeper-accepted fixture-only repository capability without provider access, Registry migration, activation, or live work. |
 | 1.0 | Documented the fixture-only policy, evidence, reconciliation, assessment, output, CLI, and EO-integration boundaries. |

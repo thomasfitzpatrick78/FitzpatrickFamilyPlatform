@@ -24,16 +24,16 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Published Registry Container Identity Foundation - Schema and Migration Framework HEAD `c7269fde070a6a2cbce5b33fccb89e8e60950cc7` on `main`. |
+| Baseline | Published Registry Container Identity Migration HEAD `1dfd7520f10b18588b28743107a60b038acc7485` on `main`. |
 | Current milestone | Milestone 14 - Engineering Organization Expansion and Platform Operationalization. |
 | Workstream ID and title | Alpha - Engineering Organization Controls. |
 | Assigned role | Codex Implementation Engineer. |
 | Objective | Publish the approved EO-14.4A Option B repository-side orchestration capability while preserving EO-14.1A authority and all activation and live-work gates. |
-| Current Engineering Lifecycle stage | Repository Implementation; EO-14.1A, EO-14.4A, and the Registry Container Identity Foundation implementation are published and remain unactivated or unmigrated as applicable. |
+| Current Engineering Lifecycle stage | Repository Implementation; EO-14.1A and EO-14.4A are published and remain unactivated. Five Registry `not_applicable` migrations and the provider architecture/security package are published. |
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; EO-14.8A Capability Charter; EO-14.8B specifications; EO-14.8C.1 framework; Milestone Plan; Engineering Portfolio Kanban; EO-14.1 and EO-14.4 specifications. |
 | Completed work and evidence | EO-14.8 and the Architecture Gatekeeper-approved EO-14.1A repository implementation are published. EO-14.1A includes immutable models, strict JSON parsing, deterministic validation, stable JSON and Markdown output, bounded Platform EAP commands, governed fixtures, and tests. |
 | Current work | EO-14.4A publication is complete; its published contracts are consumed fixture-only by the published PLAT-14.1A slice, and no additional Alpha implementation is authorized. |
-| Active repository changes | Authorized PLAT-14.1A fixture-only contract integration only; no Alpha implementation or activation change is authorized. |
+| Active repository changes | Bravo provider architecture/security publication artifacts only; no Alpha implementation, contract, assignment, execution, automation, or activation change is authorized. |
 | Parallel workstreams | PLAT-14.1A is published, fixture-only, and unactivated; Alpha repository implementations remain published and unactivated; Charlie remains unstarted. |
 | Dependencies | Architecture Integration; completed EO-14.8 capability baseline; published EO-14.1A Execution Capability; EO-14.4 specification. |
 | Integration gates | EO-14.1A remains authoritative for execution semantics; EO-14.4A Architecture Gatekeeper review and publication are satisfied; activation remains separate. |
@@ -42,8 +42,8 @@
 | Stop conditions | Missing or conflicting EO-14.1A authority; material architecture change; scope expansion; command-running or live-execution request; EO-14.8 functionality change; FFFA change; unapproved commit, push, merge, tag, or release. |
 | Permitted actions | Preserve and reference published Alpha contracts and the published Registry Container Identity Foundation boundaries. |
 | Prohibited actions | Activate the Execution Agent or automation; execute assignment data; persist or operate orchestration; change Alpha semantics, EO-14.8 validator behavior, Charlie, or FFFA; perform live work; commit, push, tag, or release. |
-| Next gate | A separate Architecture Gatekeeper decision for Registry migration, provider/security architecture, consumer alignment, or Capability-First evidence review; any future Alpha activation remains separately authorized. |
-| Last verification date | 2026-07-20. |
+| Next gate | Repository-Only Production Provider Adapter Foundation; any named-target execution assignment or Alpha activation remains separately authorized. |
+| Last verification date | 2026-07-22. |
 | Superseded brief reference | None. |
 
 ---

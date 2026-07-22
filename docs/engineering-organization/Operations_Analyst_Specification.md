@@ -1,6 +1,6 @@
 # Operations Analyst Specification
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -62,6 +62,8 @@ Operational Intelligence is the interpreted stage after deterministic evaluation
 For PLAT-14.1A, the Operations Analyst preserves Registry identity, contract/profile/policy versions, health, confidence, reason codes, evidence references, freshness, `valid_until`, and provider findings. An expired assessment is noncurrent even when its stored health status was `healthy`. Provider loss, missing required evidence, and dashboard presentation failure remain distinct conditions.
 
 The published PLAT-14.1A repository slice produces validated synthetic assessment fixtures. Final EO-14.2A mappings remain blocked pending a separate Charlie implementation authorization; no authoritative service or live evidence is available.
+
+The accepted and published Production Provider Adapter Architecture and Contract add future provenance, provider-failure, limitation, coverage, and named-target authorization evidence. The Operations Analyst may interpret those fields only after consumer integration is separately authorized and must continue to distinguish observation capability from subject health.
 
 ---
 
@@ -129,6 +131,7 @@ EO-14.2 is ready for review when:
 - [Platform Health Dashboard Specification](../specifications/Platform_Health_Dashboard_Specification.md)
 - [Execution Capability Usage](Execution_Capability_Usage.md)
 - [Governed Automation Framework](Governed_Automation_Framework.md)
+- [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
 
 ---
 
@@ -136,6 +139,7 @@ EO-14.2 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Added the future production-provider provenance and failure interpretation boundary while retaining separate Charlie, consumer, and live-evidence gates. |
 | 1.5 | Recorded publication of the PLAT-14.1A synthetic assessment fixtures while preserving the separate Charlie implementation and live-evidence gates. |
 | 1.4 | Recorded the complete unpublished PLAT-14.1A assessment fixtures while preserving the separate publication and Charlie implementation gates. |
 | 1.3 | Added the PLAT-14.1A policy/version, expiration, provider-loss, and downstream-evidence alignment boundary. |

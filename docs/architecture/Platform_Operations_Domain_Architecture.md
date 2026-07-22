@@ -1,6 +1,6 @@
 # Platform Operations Domain Architecture
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 
 **Status:** Published Architecture; Implemented: No
 
@@ -142,7 +142,7 @@ Observation and Operational Evidence are deliberately distinct. An observation b
 
 Every canonical evidence record uses a Platform-owned `subject_id` linked by `registry_reference` to the authoritative Infrastructure Registry record.
 
-For container-backed services, the published Registry Container Identity Foundation implementation defines and validates the exact declared host and Compose identity later consumed by reconciliation. No current record has migrated into eligibility. PLAT-14.1A cannot infer or repair missing Registry identity from providers, and no runtime observation may create or mutate the declared subject.
+For container-backed services, the published Registry Container Identity Foundation implementation defines and validates the exact declared host and Compose identity later consumed by reconciliation. Five records are migrated as `not_applicable`, 16 subjects remain review-required, and no current record is eligible for authoritative Container Operational Health evaluation. PLAT-14.1A cannot infer or repair missing Registry identity from providers, and no runtime observation may create or mutate the declared subject.
 
 Provider identities are provenance only. Docker container IDs, runtime names, Prometheus labels, cAdvisor names, OpenTelemetry resource identifiers, and future provider identifiers must not become canonical Platform subject identifiers.
 
@@ -195,6 +195,8 @@ A provider adapter may not:
 
 Prometheus remains the approved metrics transport and dashboard data source under ADR-007. It is not the authority for Platform Operational Evidence semantics or health rules.
 
+The accepted and published Production Provider Adapter Architecture establishes a constrained Docker Engine API proxy as the approved primary boundary direction for mandatory named-target lifecycle, identity, and runtime health-check observations. A bounded OpenTelemetry/Prometheus path may supplement advisory resource evidence. Direct socket access, cAdvisor-only evidence, provider-owned health, and multiple mandatory providers are rejected for the first slice. Publication does not select an implementation version or configuration or authorize access.
+
 ---
 
 ## Consumer Boundary
@@ -215,7 +217,8 @@ Missing dashboard data must never be rendered as Healthy.
 | Work Package or Capability | Lifecycle Position |
 |----------------------------|--------------------|
 | PLAT-14.0A | Domain architecture and contracts published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; not implemented or operational. |
-| PLAT-14.1A | Specification, Foundation, and Architecture Gatekeeper-accepted Option B fixture-only repository implementation published; authoritative Registry evaluation remains unavailable because no record is migrated. |
+| PLAT-14.1A | Specification, Foundation, Architecture Gatekeeper-accepted Option B fixture-only repository implementation, and exact five-record `not_applicable` migration published; no eligible authoritative subject exists. |
+| Production Provider Adapter Architecture and Privileged-Access Security Design | Accepted and published; constrained proxy primary and optional OTel/Prometheus supplemental directions approved, with implementation, privileged access, named-target observation, consumers, activation, and live work unauthorized. |
 | EO-14.1A | Repository implementation published; Execution Agent unactivated. |
 | EO-14.4A | Repository implementation published; automation unactivated. |
 | Bravo and Charlie | Bravo PLAT-14.1A fixture-only repository implementation published and unactivated; Charlie implementation unstarted. |
@@ -285,6 +288,7 @@ PLAT-14.1A implements against the published PLAT-14.0A contracts without embeddi
 - Universal evidence plugins or speculative host, network, backup, certificate, or scheduled-task profiles.
 - FFFA changes.
 - PLAT-14.1A provider implementation, consumer integration, activation, or Milestone 14 closeout.
+- Production provider implementation, proxy/collector configuration changes, privileged access, named-target observation, or recurring collection.
 
 ---
 
@@ -319,6 +323,9 @@ PLAT-14.0A is ready for Architecture Gatekeeper review when:
 - [ADR-009 - Evidence Before Operational Health](decisions/ADR-009-Evidence-Before-Operational-Health.md)
 - [ADR-010 - Declared Observed and Reconciled State](decisions/ADR-010-Declared-Observed-and-Reconciled-State.md)
 - [ADR-011 - Generic Operational Evidence Envelope and Versioned Profiles](decisions/ADR-011-Generic-Operational-Evidence-Envelope-and-Versioned-Profiles.md)
+- [Production Provider Adapter Architecture](Production_Provider_Adapter_Architecture.md)
+- [Production Provider Adapter Contract Specification](../specifications/Production_Provider_Adapter_Contract_Specification.md)
+- [Privileged-Access Security Design and Threat Model](Production_Provider_Privileged_Access_Security_Design.md)
 
 ---
 
@@ -326,6 +333,7 @@ PLAT-14.0A is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Recorded publication of the accepted production provider direction, trust/security contract references, current five-record migration state, and blocked implementation/live gates. |
 | 1.6 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A fixture-only repository implementation while retaining PLAT-14.0A as architecture-only and all live gates. |
 | 1.5 | Recorded the complete unpublished PLAT-14.1A fixture-only repository implementation while retaining PLAT-14.0A as architecture-only and all live gates. |
 | 1.4 | Recorded publication of the Registry identity schema/validation/migration framework with no eligible migrated subject and PLAT-14.1A still blocked. |

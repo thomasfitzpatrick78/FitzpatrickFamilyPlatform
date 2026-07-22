@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 3.9
+**Document Version:** 3.10
 
 **Status:** Active
 
@@ -47,7 +47,7 @@ This document defines the initial repository-managed Product Backlog for the Fit
 | EO-PB-020 | Medium | Engineering Organization | Approval model | AI Collaboration and Approval Model | Milestone 14 | Superseded | Superseded by EO-14.8 AI Collaboration Governance |
 | EO-PB-021 | High | Engineering Organization | AI collaboration governance | AI Collaboration Governance | Milestone 14 | Completed | EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, and EO-14.8E complete; Architecture Gatekeeper approved; baseline published |
 | PLAT-PB-017 | High | Infrastructure | Platform Operations | Platform Operations Domain Architecture | Milestone 14 | Completed | Published PLAT-14.0A baseline `c8f9bc3`; ADR-009 through ADR-011 |
-| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 | Published; Fixture Only; Unactivated | Option B fixture-only implementation published; exact five-record migration completed as `not_applicable`, leaving no eligible subject; remaining migration, provider, dashboard/API, activation, and live decisions stay separate |
+| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 | Published Fixture Capability and Provider Architecture | Option B fixture-only implementation, exact five-record `not_applicable` migration, and Production Provider Adapter Architecture and Privileged-Access Security Design published; no eligible target, provider implementation selection, access, consumer, activation, or live authorization |
 | PLAT-PB-014 | High | Infrastructure | Operational excellence | Backup, restore, recovery validation, alerting, and runbooks | Milestone 14 | Planned | PLAT-13.6.2; PLAT-13.6.4 requirements |
 | PLAT-PB-015 | Medium | Infrastructure | Platform health | Platform Health Dashboard | Milestone 14 | Planned | PLAT-PB-013; repository-generated reports |
 | PLAT-PB-016 | High | Shared Services | Authentication boundary | Platform Authentication Boundary for FFFA web access | Milestone 14 | Deferred | FFFA-14.2B; local reverse proxy; human production approval; future FFFA web implementation approval |
@@ -81,6 +81,8 @@ The first vertical slice coordinates the published EO-14.1A Execution Capability
 
 PLAT-14.0A, the PLAT-14.1A specification, the Foundation, and the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice are published. Exactly five records are migrated as `not_applicable`; authoritative eligible-subject evaluation, remaining migrations, providers, dashboards/APIs, activation, and live work remain separately blocked.
 
+The accepted and published Production Provider Adapter Architecture, Provider Adapter Contract v1.0, and Privileged-Access Security Design are a named prerequisite package under PLAT-PB-013. No standalone identifier is assigned because repository evidence does not establish numbering authority.
+
 EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the Bravo PLAT-14.1A fixture-only repository implementation are published. Charlie remains unstarted. No automation, role activation, provider, dashboard/API, or live work is authorized.
 
 FFFA detail is owned by the FamilyFinanceAssistant repository; this repository records portfolio traceability to FFFA-14.1 and FFFA-14.2 using Existing FFFA backlog and roadmap governance. FFFA implementation is paused while Chris completes customer acceptance, and the Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
@@ -105,6 +107,7 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 
 | Version | Description |
 |---------|-------------|
+| 3.10 | Recorded publication of the accepted Production Provider Adapter Architecture and security prerequisite under PLAT-PB-013 without inventing a work-item identifier or authorizing implementation. |
 | 3.9 | Recorded exact five-record Registry migration and current-plan lifecycle correction while retaining eligible-subject, provider, dashboard/API, activation, and live gates. |
 | 3.8 | Recorded Architecture Gatekeeper acceptance and publication of the PLAT-14.1A Option B fixture-only repository vertical slice while retaining Registry migration, provider, dashboard/API, activation, and live gates. |
 | 3.7 | Recorded the complete unpublished PLAT-14.1A Option B repository vertical slice while retaining Registry migration, publication, provider, dashboard, activation, and live gates. |

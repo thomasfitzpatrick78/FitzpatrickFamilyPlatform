@@ -1,6 +1,6 @@
 # Platform Health Dashboard Specification
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -86,6 +86,8 @@ The PLAT-14.1A consumer mapping must distinguish:
 
 PLAT-14.3A remains downstream of the published PLAT-14.1A specification and fixture-only assessment outputs. The core repository implementation is published and unactivated; dashboard/API integration, Grafana changes, and live deployment remain separate gates.
 
+The accepted and published Production Provider Adapter Architecture preserves this consumer boundary: provider identity, proxy state, scrape success, and adapter failure are never dashboard health semantics. A future dashboard integration may consume canonical provider-availability and limitation evidence only after the named-target, provider-validation, and consumer-integration gates complete.
+
 ---
 
 ## AI Session Readiness Repository Source Contract
@@ -127,6 +129,7 @@ PLAT-14.3 is ready for review when:
 - [Container Metrics Modernization Specification](Container_Metrics_Modernization_Specification.md)
 - [Container Operational Health Specification](Container_Operational_Health_Specification.md)
 - [Operations Analyst Specification](../engineering-organization/Operations_Analyst_Specification.md)
+- [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
 
 ---
 
@@ -134,6 +137,7 @@ PLAT-14.3 is ready for review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Added the provider-adapter consumer boundary while preserving blocked dashboard/API integration and live deployment. |
 | 1.5 | Recorded publication of the PLAT-14.1A assessment-output proof while preserving every dashboard/API and live-deployment gate. |
 | 1.4 | Recorded the complete unpublished PLAT-14.1A assessment-output proof while preserving every dashboard and live-deployment gate. |
 | 1.3 | Added the aligned PLAT-14.1A assessment-expiration, provider-unavailability, and presentation-failure distinctions and preserved the downstream dashboard gate. |
