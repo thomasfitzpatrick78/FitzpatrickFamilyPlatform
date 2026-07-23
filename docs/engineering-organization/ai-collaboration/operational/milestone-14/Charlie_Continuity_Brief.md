@@ -24,7 +24,7 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Published Repository-Only Constrained Docker API Proxy Foundation HEAD `8cafb6540cced8e0194680d79d5105f476f1d47a` on `main`. |
+| Baseline | Published PLAT-14.1A Privileged Proxy Implementation Architecture package on `main`; predecessor Repository-Only Privileged Deployment Configuration Foundation HEAD `1fdabb7665beeb0a2db9d9cf6dce5554b80a0ae9`. |
 | Current milestone | Milestone 14 - Engineering Organization Expansion and Platform Operationalization. |
 | Workstream ID and title | Charlie - Operations Intelligence. |
 | Assigned role | Codex Implementation Engineer. |
@@ -33,7 +33,7 @@
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; EO-14.8A Capability Charter; EO-14.8B specifications; EO-14.8C.1 framework; Milestone Plan; Engineering Portfolio Kanban; EO-14.2 and EO-14.3 specifications. |
 | Completed work and evidence | EO-14.8 is complete, repository validated, Architecture Gatekeeper approved, and published; the approved framework is instantiated for Charlie, and Charlie implementation work has not started. |
 | Current work | Review the PLAT-14.1A consumer, reason-code, confidence, freshness, expiration, provider-failure, limitation, and provenance boundaries while preserving Charlie as unstarted. |
-| Active repository changes | Published Bravo repository-only deployment configuration/compatibility/digest/fixture evidence only; no Charlie procedure, consumer, dashboard, API, or runtime behavior is implemented. |
+| Active repository changes | Published Bravo documentation-only implementation architecture/security acceptance evidence; no Charlie procedure, consumer, dashboard, API, or runtime behavior is implemented. |
 | Parallel workstreams | PLAT-14.1A is published, fixture-only, and unactivated; Alpha is published and unactivated; Charlie remains unstarted. |
 | Dependencies | Bravo published PLAT-14.1A fixture evidence; published provider, proxy, and deployment configuration repository foundations; formal proxy review; later separately authorized named-target evidence; Architecture Integration; PLAT-14.0A; EO-14.2; EO-14.3. |
 | Integration gates | Architecture Gatekeeper-approved and published PLAT-14.1A assessment evidence before final Charlie mappings; interpretation must not recalculate authoritative health. |
@@ -43,11 +43,11 @@
 | Permitted actions | Preserve readiness and review the authorized PLAT-14.0A Operational Intelligence consumer boundary without starting Charlie implementation. |
 | Prohibited actions | Begin EO-14.2A or EO-14.3A; invent telemetry or unsupported precision; perform live work; modify FFFA; create a tag or release. |
 | Next gate | Separate Architecture Gatekeeper authorization for Operations Analyst and Platform Health Dashboard consumer-integration specification alignment. |
-| Last verification date | 2026-07-22. |
+| Last verification date | 2026-07-23. |
 | Superseded brief reference | None. |
 
 ---
 
 ## Continuity Notes
 
-Charlie remains unstarted. The published repository deployment configuration foundation authorizes no consumer integration; final mappings still require separately approved named-target evidence and a distinct consumer-integration gate.
+Charlie remains unstarted. The published privileged-proxy architecture authorizes no consumer integration; final mappings still require separately approved named-target evidence and a distinct consumer-integration gate.

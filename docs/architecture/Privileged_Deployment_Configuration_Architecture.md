@@ -1,6 +1,6 @@
 # Privileged Deployment Configuration Repository Architecture
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Repository Foundation Implemented; Configuration Only; No Deployment Authority
 
@@ -82,12 +82,19 @@ The Platform EAP surface exposes only repository fixture inspection and validati
 
 ## Later Gates
 
-This foundation does not approve a socket-capable implementation. A later Architecture Gatekeeper decision must separately authorize and evaluate implementation technology, enforced authentication, credentials and certificate handling, supply-chain identity, operating-system controls, exact eligible Registry subject, exact named target, deployment, live observation, consumer integration, recurring execution, and activation.
+This foundation does not approve a socket-capable implementation. The Architecture Gatekeeper-approved and published purpose-built proxy architecture maps these descriptive values to future enforcement and acceptance evidence but contains no runtime capability. Socket-capable implementation, artifact acceptance, enforced authentication, credentials/certificates, exact eligible Registry subject, deployment, observation, consumer integration, recurrence, and activation remain separate gates.
 
 AB-012 remains a candidate and is not promoted by this repository-only evidence.
+
+## Related Architecture Package
+
+- [Privileged Proxy Implementation Architecture](Privileged_Proxy_Implementation_Architecture.md)
+- [Runtime Security Control Specification](../specifications/Privileged_Proxy_Runtime_Security_Control_Specification.md)
+- [Privileged Deployment Acceptance Checklist](../milestones/Milestone_14/Privileged_Deployment_Acceptance_Checklist.md)
 
 ## Change History
 
 | Version | Change |
 |---------|--------|
+| 1.1 | Linked the approved and published enforcement and acceptance architecture without changing the repository-only boundary or opening implementation. |
 | 1.0 | Established immutable repository-only deployment configuration, identity, runtime security, resource, audit, policy, compatibility, digest, fixture, and CLI boundaries without deployment capability. |

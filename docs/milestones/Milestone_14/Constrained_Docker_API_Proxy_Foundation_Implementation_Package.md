@@ -36,3 +36,5 @@ Any socket-capable component requires a new privileged implementation and deploy
 - [Repository Usage](../../architecture/Constrained_Docker_API_Proxy_Repository_Usage.md)
 - [Security Review](../../architecture/Privileged_Access_Security_Review_and_Constrained_Docker_API_Proxy_Architecture_Validation.md)
 - [Provider Adapter Foundation Package](Production_Provider_Adapter_Foundation_Implementation_Package.md)
+- [Privileged Proxy Implementation Architecture](../../architecture/Privileged_Proxy_Implementation_Architecture.md)
+- [Architecture Review Package](Privileged_Proxy_Implementation_Architecture_Review_Package.md)

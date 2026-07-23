@@ -1,6 +1,6 @@
 # Constrained Docker API Proxy Repository Architecture
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Repository and Deployment Configuration Foundations Implemented; Fixture Only; No Privileged or Live Authority
 
@@ -75,7 +75,7 @@ The repository proxy returns constrained synthetic provider-shaped records. It d
 
 ## Remaining Gates
 
-Success at these repository gates does not authorize a socket-capable implementation. The configuration foundation makes a future proposal reviewable but does not enforce runtime controls. Socket-capable implementation, enforced privileged deployment controls, supply-chain evidence, credentials/certificates, exact eligible-subject Registry approval, named-target observation, live provider compatibility, non-regression, consumer integration, recurring operation, and EO activation remain separate Architecture Gatekeeper decisions.
+Success at these repository gates does not authorize a socket-capable implementation. The Architecture Gatekeeper-approved and published purpose-built implementation architecture and acceptance package defines the future design, runtime-control, supply-chain, threat, test, and acceptance evidence. It contains no executable capability. Socket-capable implementation, artifact acceptance, enforced privileged deployment, credentials/certificates, exact eligible-subject Registry approval, named-target observation, live provider compatibility, non-regression, consumer integration, recurring operation, and EO activation remain separate Architecture Gatekeeper decisions.
 
 ## Related Documents
 
@@ -86,10 +86,13 @@ Success at these repository gates does not authorize a socket-capable implementa
 - [Implementation Package](../milestones/Milestone_14/Constrained_Docker_API_Proxy_Foundation_Implementation_Package.md)
 - [Privileged Deployment Configuration Architecture](Privileged_Deployment_Configuration_Architecture.md)
 - [Deployment Configuration Implementation Package](../milestones/Milestone_14/Privileged_Deployment_Configuration_Foundation_Implementation_Package.md)
+- [Privileged Proxy Implementation Architecture](Privileged_Proxy_Implementation_Architecture.md)
+- [Architecture Review Package](../milestones/Milestone_14/Privileged_Proxy_Implementation_Architecture_Review_Package.md)
 
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Linked the approved and published purpose-built implementation architecture and acceptance package while preserving implementation, deployment, target, and live gates. |
 | 1.1 | Recorded the repository-only deployment configuration layer and exact policy/version binding without socket, network, credential, deployment, target, observation, or activation authority. |
 | 1.0 | Recorded the repository-only immutable contracts, category policy, synthetic authentication/authorization, deterministic validation and decisions, fixture mock, static safety boundary, and later blocked gates. |

@@ -1,6 +1,6 @@
 # Architecture Decision Log
 
-**Document Version:** 1.5
+**Document Version:** 1.6
 
 **Status:** Active
 
@@ -45,6 +45,7 @@ Baselined
 | ADR-009 | Evidence Before Operational Health | Product Architecture | Approved | No | Published `c8f9bc3` | PLAT-14.0A |
 | ADR-010 | Declared Observed and Reconciled State | Product Architecture | Approved | No | Published `c8f9bc3` | PLAT-14.0A |
 | ADR-011 | Generic Operational Evidence Envelope and Versioned Profiles | Product Architecture | Approved | No | Published `c8f9bc3` | PLAT-14.0A |
+| ADR-012 | Purpose-Built Constrained Privileged Proxy | Infrastructure Architecture | Approved | No | Published PLAT-14.1A privileged-proxy architecture package | PLAT-14.1A prerequisite |
 
 ---
 
@@ -78,6 +79,7 @@ Baselined
 
 - ADR-006 - Registry Driven Infrastructure Foundation
 - ADR-007 - Governed Operations and Observability
+- ADR-012 - Purpose-Built Constrained Privileged Proxy
 
 ---
 
@@ -91,6 +93,7 @@ Each new ADR shall receive the next sequential repository-local ADR number, be r
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded approval and publication of ADR-012 as an architecture decision only; implementation remains separately gated and `Implemented` remains `No`. |
 | 1.5 | Recorded publication baseline `c8f9bc3` for ADR-009 through ADR-011 while retaining Implemented: No. |
 | 1.4 | Added ADR-009 through ADR-011 for the PLAT-14.0A Platform Operations domain architecture. |
 | 1.3 | Added ADR-008 for the AI-operated Engineering Organization portfolio model. |

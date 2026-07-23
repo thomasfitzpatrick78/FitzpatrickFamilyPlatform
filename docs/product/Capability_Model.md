@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.20
+**Document Version:** 1.21
 
 **Status:** Active
 
@@ -57,6 +57,8 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 **Container Operational Health Capability:** The published PLAT-14.1A Option B repository implementation provides deterministic synthetic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. It remains fixture-only and unactivated. The five migrated subjects are explicitly `not_applicable`; authoritative evaluation remains unavailable until an eligible subject has separately approved identity evidence and provider/live gates pass.
 
 **Production Provider, Constrained Proxy, and Deployment Configuration Foundations:** Accepted architecture and Contract v1.0 have a published repository-only provider reference with immutable contracts, strict validation, abstract lifecycle, synthetic fixtures, deterministic normalization/failures, and bounded CLI. The accepted proxy direction has a separate repository-only implementation of immutable security contracts, category-based default-deny policy, conceptual identity/authorization, strict request/response validation, deterministic fixture mock, and audit/failure evidence. A repository configuration layer now binds descriptive profiles, synthetic identity, runtime-security/resource/audit prerequisites, exact compatibility, endpoint policy, and canonical digests. These remain one PLAT-14.1A capability path, not new product capabilities. No transport, live provider, socket-capable implementation, enforced deployment, credential/certificate, eligible target, named-target observation, or activation is implemented.
+
+**Privileged Proxy Implementation Architecture and Acceptance:** The Architecture Gatekeeper-approved and published package selects a purpose-built minimal Go proxy, non-Docker authenticated Unix-socket interface, fixed operation dispatcher, complete authorization/digest binding, durable replay denial, runtime enforcement mapping, supply-chain requirements, threat model, security tests, and separate implementation/deployment acceptance gates. It refines the existing PLAT-14.1A capability path rather than creating a new product capability and adds no executable, dependency, build, socket, Docker, network, credential, deployment, target, consumer, or activation capability.
 
 ### Home Automation
 
@@ -132,6 +134,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.21 | Recorded publication of the approved privileged-proxy implementation architecture and acceptance package inside PLAT-14.1A without creating a new capability or authorizing implementation. |
 | 1.20 | Recorded the repository-only deployment configuration foundation inside PLAT-14.1A without creating a new capability or authorizing implementation, enforcement, credentials, targets, or live work. |
 | 1.19 | Recorded the repository-only constrained proxy foundation inside PLAT-14.1A without creating a new capability or authorizing privileged or live work. |
 | 1.18 | Recorded the repository-only Production Provider Adapter Foundation within PLAT-14.1A without creating a new capability or authorizing live-provider work. |

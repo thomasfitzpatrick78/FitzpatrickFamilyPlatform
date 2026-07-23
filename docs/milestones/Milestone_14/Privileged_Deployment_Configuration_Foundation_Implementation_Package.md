@@ -34,6 +34,12 @@ A socket-capable implementation, exact deployment technology, enforced identity/
 
 AB-012 remains unpromoted. Repository-only configuration evidence is insufficient to establish a permanent privileged-integration lifecycle pattern.
 
+## Related Published Architecture Package
+
+- [Privileged Proxy Implementation Architecture](../../architecture/Privileged_Proxy_Implementation_Architecture.md)
+- [Runtime Security Control Specification](../../specifications/Privileged_Proxy_Runtime_Security_Control_Specification.md)
+- [Privileged Deployment Acceptance Checklist](Privileged_Deployment_Acceptance_Checklist.md)
+
 ## Change History
 
 | Version | Change |
