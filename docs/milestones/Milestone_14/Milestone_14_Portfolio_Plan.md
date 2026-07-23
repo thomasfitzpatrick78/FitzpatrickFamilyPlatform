@@ -1,6 +1,6 @@
 # Milestone 14 - Operationalizing the AI Engineering Organization
 
-**Document Version:** 3.5
+**Document Version:** 3.6
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -56,9 +56,9 @@ The Fitzpatrick Family Financial Assistant remains the flagship customer-facing 
 
 This repository preserves FFFA as the Milestone 14 customer-value pillar through published FFFA specifications, ADR-087, personas, reporting contracts, and customer acceptance evidence. It does not authorize new FFFA implementation.
 
-EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations, the Bravo Registry Container Identity Foundation repository implementation, the PLAT-14.1A Option B fixture-only repository vertical slice, and the Production Provider Adapter Architecture and Privileged-Access Security Design are published. Charlie remains unstarted. No automation, Execution Agent activation, provider implementation selection or access, dashboard/API work, or live work is authorized.
+EO-14.8 AI Collaboration Governance, Alpha controls, Registry Foundation, PLAT-14.1A fixture-only health/provider foundations, Production Provider Adapter Architecture/security design, and the Architecture Gatekeeper-accepted constrained-proxy security review are published. Repository-only proxy foundation is the next recommended gate. Charlie remains unstarted. No proxy, Docker access, privileged deployment, credentials, observation, dashboard/API work, activation, or live work is authorized.
 
-PLAT-14.0A architecture is published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`, the PLAT-14.1A Container Operational Health specification is published at `89deeed2480679c9717cb151c3a14fe9414d8b97`, and the Registry Container Identity Foundation and PLAT-14.1A fixture-only repository capability are published. The accepted and published provider package establishes a constrained proxy primary direction and optional OTel/Prometheus supplemental direction, defines Provider Adapter Contract v1.0 and privileged-access security gates, and authorizes no implementation. Five Registry records declare governed `not_applicable` participation; 16 remain review-required and every provider/live gate remains blocked.
+PLAT-14.0A, the PLAT-14.1A specification, Registry Foundation, fixture-only health capability, and repository provider foundation are published. Formal review validates a same-host dedicated constrained proxy as the future implementation target under default-deny, enforceable service identity, non-streaming, supply-chain, and distinct lifecycle gates. Five Registry records declare `not_applicable`; 16 remain review-required and every proxy/deployment/provider/live gate remains blocked.
 
 The Registry migration framework and model v2 are published. Historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` was approved, bound, and executed for exactly five `not_applicable` subjects; rollback evidence validates and a second execution returned write-free `no_change`. Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` represents the migrated state with 0 apply, 16 review-required, and 23 no-change candidates.
 
@@ -87,7 +87,7 @@ The Registry migration framework and model v2 are published. Historical plan `sh
 | PLAT-14.0A | Platform Operations Domain Architecture | FitzpatrickFamilyPlatform | Establish Platform Operations as the bounded context for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. | Published architecture and contracts at `c8f9bc3`; Implemented: No. |
 | PLAT-14.1 | Container Metrics Modernization | FitzpatrickFamilyPlatform | Carry forward Milestone 13 container metrics architecture into approval-ready requirements. | Container metrics modernization specification. |
 | Registry Container Identity Foundation | PLAT-14.1A prerequisite | FitzpatrickFamilyPlatform | Implement the smallest authoritative service-record identity extension, evidence-gated migration, validation, and exact-plan mutation-approval contract. | Historical plan executed for exactly five `not_applicable` subjects; rollback and completion evidence valid; current planner shows 0 apply, 16 review-required, and 23 no-change. |
-| PLAT-14.1A | Container Operational Health | FitzpatrickFamilyPlatform | Preserve the published fixture-only health core, provider architecture/security design, and repository-only Production Provider Adapter Foundation. | Health capability and provider foundation published, fixture-only, and unactivated; five migrated subjects are not eligible and 16 remain review-required. |
+| PLAT-14.1A | Container Operational Health | FitzpatrickFamilyPlatform | Preserve the published fixture-only health/provider foundations and accepted constrained-proxy security review. | Security review accepted and published; repository-only proxy foundation is the next possible gate; no target, privileged deployment, observation, or activation is authorized. |
 | PLAT-14.2 | Operational Excellence | FitzpatrickFamilyPlatform | Define backup, restore, recovery, alerting, runbook, and evidence scope. | Operational excellence specification. |
 | PLAT-14.3 | Platform Health Dashboard | FitzpatrickFamilyPlatform | Define executive operational health view and source-of-truth boundaries. | Platform health dashboard specification. |
 | PLAT-14.3A | Platform Health Dashboard Completion | FitzpatrickFamilyPlatform | Complete dashboard source contracts after PLAT-14.1 telemetry contract verification. | Dashboard contract, source mapping, and validation evidence. |
@@ -105,7 +105,7 @@ The Registry migration framework and model v2 are published. Historical plan `sh
 | 1 | EO-14.1A Execution Agent Operationalization | Repository implementation published; activation remains separate and unauthorized. |
 | 2 | EO-14.4A Governed Automation Framework Operationalization | Repository implementation is published; it consumes EO-14.1A execution validation, evidence, and completion packages and does not authorize automation use. |
 | 3 | PLAT-14.0A Platform Operations Domain Architecture | Complete; bounded context, contracts, ADRs, and provider/consumer boundaries published at `c8f9bc3`. |
-| 4 | Registry Container Identity Foundation then PLAT-14.1A Container Operational Health | Foundation, fixture implementation, and provider architecture/security direction are published; exact migration completed for five `not_applicable` subjects. Eligible-subject identity, provider implementation, privileged access, observation, dashboard/API, and activation remain later gates. |
+| 4 | Registry Container Identity Foundation then PLAT-14.1A Container Operational Health | Foundation, fixture implementations, provider architecture/security, and formal proxy review are complete or published; exact migration completed for five `not_applicable` subjects. Repository-only proxy foundation is next; eligible-subject, privileged deployment, observation, dashboard/API, and activation remain later gates. |
 | 5 | EO-14.2A Operations Analyst Operationalization | Analysis procedures consume governed health assessments and distinguish evidence, health, confidence, and interpretation without recalculation. |
 | 6 | PLAT-14.3A Platform Health Dashboard Completion | Dashboard completion follows the verified PLAT-14.0A consumer contract and PLAT-14.1A implementation evidence. |
 | 7 | EO-14.3A Engineering Metrics v2 Refinement | Metrics are refined from vertical-slice evidence without unsupported precision. |
@@ -298,6 +298,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 3.6 | Recorded the formal constrained-proxy security review, binding hardening decisions, and repository-only proxy foundation as the next possible gate without implementation or live authorization. |
 | 3.5 | Recorded publication of the repository-only Production Provider Adapter Foundation while retaining all eligible-target, privileged, live-provider, consumer, recurring, and activation gates. |
 | 3.4 | Recorded publication of the accepted Production Provider Adapter Architecture, contract, and privileged-access security design while preserving every implementation, access, consumer, activation, and live-work gate. |
 | 3.3 | Recorded exact five-record Registry migration, rollback and completion evidence, post-migration planner lifecycle correction, and unchanged provider, activation, and live-work gates. |

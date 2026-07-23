@@ -1,8 +1,8 @@
 # Production Provider Privileged-Access Security Design and Threat Model
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
-**Status:** Accepted and Published; Repository Security Validation Implemented; Privileged and Live Access Unauthorized
+**Status:** Accepted Design; Formal Proxy Security Review Complete; Privileged and Live Access Unauthorized
 
 **Milestone:** PLAT-14.1A named prerequisite
 
@@ -13,6 +13,8 @@
 This document defines the minimum security architecture, threat model, measurable acceptance criteria, incident response, and future review evidence required before any Production Provider Adapter may access a Docker or other privileged runtime boundary.
 
 The repository foundation implements only strict offline validation, safe fixture paths, bounded payloads, version checks, secret-like-content rejection, deterministic failures, and import-level denial of network/socket/process behavior. It creates no credential, endpoint, proxy, collector, live adapter, deployment, or access authorization.
+
+The formal constrained-proxy review approves this design for publication with binding clarification that authority/request flow and evidence flow are separate, network location alone is not authentication, streaming/upgrade/gRPC-or-equivalent bypass surfaces are denied in the first slice, and repository implementation, privileged deployment, and named-target observation retain distinct gates.
 
 ---
 
@@ -64,6 +66,10 @@ The later security gate must provide the exact current provider-contract mapping
 - Log safe timestamp, correlation ID, authenticated client, category/method result, target scope, response classification, and denial—never credentials or full payloads.
 - Pin image/version and configuration digest; prohibit floating tags and silent configuration drift.
 - Fail closed on unknown categories, malformed requests, unsupported versions, auth failure, policy-load failure, or audit failure where loss of audit would make operation unsafe.
+- Expose a distinct adapter-facing protocol boundary; never forward or share the Docker socket and never relay arbitrary Docker requests.
+- Deny streaming, connection upgrade, hijack, attach, logs, events, gRPC or equivalent authorization bypass, and any response that cannot be completely bounded and field-filtered in the first slice.
+- Canonically parse methods, paths, query parameters, encodings, targets, and duplicates before authorization; reject alternate-encoding or request-smuggling ambiguity.
+- Treat non-root membership in the Docker-socket group as privileged daemon authority rather than a least-privilege substitute.
 
 ---
 
@@ -115,6 +121,8 @@ Credentials may be unnecessary when proxy and adapter share a strongly isolated 
 - Fail closed when missing, expired, revoked, unreadable, or inconsistent.
 
 No placeholder secret, example token, private key, or production credential is created by this architecture package.
+
+Same-host or isolated-network location alone is not authentication. The preferred same-host model is a second non-Docker Unix-domain socket with restrictive ownership/mode and verified peer/service identity. Any IP transport requires mutually authenticated TLS with a dedicated, revocable client identity. A bearer token may supplement but must not replace enforceable channel and service identity.
 
 ---
 
@@ -193,6 +201,9 @@ Before provider implementation can be considered security-ready:
 16. Fixture and mock-provider security tests pass without network or live provider access.
 17. Exact configuration, image, adapter, authorization, and Registry digests are bound before any named-target gate.
 18. Architecture Gatekeeper and human Platform Administrator approve the privileged boundary before connection.
+19. Streaming, upgrade, hijack, attach, logs, events, gRPC or equivalent bypass, duplicated/ambiguous query parameters, and alternate target encodings are denied by negative tests.
+20. Image digest, source, SBOM, provenance/signature evidence, vulnerability disposition, supported Docker API range, and configuration digest are verified before privileged deployment.
+21. Repository implementation approval, privileged deployment authorization, and named-target observation authorization are recorded as separate non-transitive decisions.
 
 Security acceptance proves the reviewed configuration and repository behavior meet the bounded design. It does not prove absence of all upstream vulnerabilities, live provider compatibility, target eligibility, customer-service non-regression, recurring safety, or operational readiness.
 
@@ -240,6 +251,7 @@ The repository implementation accepts only synthetic fixture data from a fixed g
 - [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 - [Docker 29 Container Metrics Compatibility Assessment](Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Provider Adapter Repository Usage](Production_Provider_Adapter_Repository_Usage.md)
+- [Formal Privileged Access Security Review](Privileged_Access_Security_Review_and_Constrained_Docker_API_Proxy_Architecture_Validation.md)
 
 ---
 
@@ -247,5 +259,6 @@ The repository implementation accepts only synthetic fixture data from a fixed g
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Incorporated the formal proxy security review: distinct authority/evidence flows, enforceable service identity, first-slice stream/upgrade/bypass denial, supply-chain proof, and separate implementation/deployment/observation gates. |
 | 1.1 | Recorded bounded repository security validation and deterministic fixture/mock isolation without credentials, endpoints, proxy configuration, privileged access, or live observation. |
 | 1.0 | Accepted and published privileged-access security design, trust zones, proxy/collector/adapter/secret controls, threat model, acceptance criteria, and incident response; privileged and live access remain unauthorized. |

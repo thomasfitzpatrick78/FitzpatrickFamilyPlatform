@@ -1,8 +1,8 @@
 # Production Provider Adapter Architecture
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
-**Status:** Accepted and Published; Repository Foundation Implemented; Live Access Unauthorized
+**Status:** Accepted; Repository Foundation Published; Proxy Security Review Complete; Live Access Unauthorized
 
 **Milestone:** PLAT-14.1A named prerequisite; no standalone work-item identifier assigned
 
@@ -116,7 +116,9 @@ Docker Engine -> constrained proxy -> hardened OTel collector
 
 The primary path must supply every mandatory signal needed by the approved target. Supplemental resource signals must not become mandatory for Healthy in v1. If the primary provider cannot supply lifecycle, required health-check state, exact identity inputs, and coverage evidence, the observation fails as insufficient provider evidence; a second mandatory provider is not silently added.
 
-This is an accepted architectural direction, not a provider implementation selection or authorization.
+This was initially accepted as an architectural direction without implementation selection. The formal review now selects the constrained proxy as the future repository implementation target, but selects no product, version, configuration, deployment, target, credential, or live authorization.
+
+The formal privileged-access review approves the constrained proxy as the future implementation target only under its binding default-deny category matrix, enforceable service identity, same-host dedicated deployment, non-streaming first slice, supply-chain controls, and separate repository implementation, privileged deployment, and named-target observation gates.
 
 ---
 
@@ -333,6 +335,7 @@ The published repository foundation implements the v1 contracts and abstract lif
 - [Docker 29 Container Metrics Compatibility Assessment](Docker_29_Container_Metrics_Compatibility_Assessment.md)
 - [Provider Adapter Repository Usage](Production_Provider_Adapter_Repository_Usage.md)
 - [Provider Adapter Foundation Implementation Package](../milestones/Milestone_14/Production_Provider_Adapter_Foundation_Implementation_Package.md)
+- [Formal Privileged Access Security Review](Privileged_Access_Security_Review_and_Constrained_Docker_API_Proxy_Architecture_Validation.md)
 
 ---
 
@@ -340,5 +343,6 @@ The published repository foundation implements the v1 contracts and abstract lif
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Recorded formal security validation of the constrained proxy as a future implementation target with binding endpoint, authentication, deployment, supply-chain, and lifecycle gates; no implementation or live authority granted. |
 | 1.1 | Recorded the provider-independent repository foundation, strict synthetic fixtures, mock-only normalization, and deterministic failure evidence while retaining all live-provider and privileged gates. |
 | 1.0 | Accepted and published production provider option assessment, preferred primary/supplemental direction, trust boundaries, coverage, deployment, privacy, named-target gate, and future lifecycle gates; implementation and live access remain unauthorized. |

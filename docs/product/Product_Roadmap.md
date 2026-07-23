@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 3.11
+**Document Version:** 3.12
 
 **Status:** Active
 
@@ -25,7 +25,7 @@ Planned outcomes:
 - Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
 - Preserve the published Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations and keep activation, Bravo, and Charlie behind separate authorization gates.
 - Preserve the published fixture-only PLAT-14.1A repository slice and completed five-record `not_applicable` migration while keeping remaining migration, providers, dashboards/APIs, activation, and live work behind separate gates.
-- Preserve the published Production Provider Adapter Architecture, Provider Adapter Contract v1.0, Privileged-Access Security Design, and repository-only provider foundation while keeping live-provider implementation, target selection, privileged access, and live observation behind separate gates.
+- Preserve the published provider architecture, Contract v1.0, security design, repository foundation, and Architecture Gatekeeper-accepted proxy security review while keeping repository proxy implementation, privileged deployment, target selection, live observation, and activation behind separate gates.
 - Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
 - Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
@@ -78,7 +78,7 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 - PLAT-14.0A Platform Operations Domain Architecture and canonical contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; implementation remains absent.
 - PLAT-14.1 Container Metrics Modernization.
 - Foundation schema `1.1`, strict validation, migration planning/execution/rollback/completion, CLI, and tests are published. Exactly five records are migrated as `not_applicable`; 16 remain review-required. The PLAT-14.1A Option B fixture-only repository vertical slice is Architecture Gatekeeper accepted and published; telemetry-provider, security, observation, dashboard/API, activation, and live work remain later gates.
-- Production Provider Adapter Architecture, Privileged-Access Security Design, and the provider-independent repository foundation are published as a named PLAT-14.1A prerequisite. The constrained proxy is the approved primary architectural direction and OTel/Prometheus is an optional supplemental direction; live-provider implementation remains unauthorized.
+- Production Provider Adapter Architecture, security design, repository foundation, and the formal proxy security review are accepted and published as named PLAT-14.1A prerequisites. The constrained proxy is approved only as the future implementation target under binding authentication, endpoint, deployment, supply-chain, and lifecycle gates. The next recommended gate is repository-only proxy foundation; privileged/live implementation remains unauthorized.
 - PLAT-14.2 Operational Excellence for backup, restore, recovery validation, alerting, runbooks, and evidence retention.
 - PLAT-14.3 Platform Health Dashboard.
 - PLAT-14.3A Platform Health Dashboard Completion after the verified PLAT-14.1A telemetry contract.
@@ -146,6 +146,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 3.12 | Recorded the constrained-proxy security review and repository-only proxy foundation as the next recommended gate without authorizing implementation, deployment, credentials, observation, or live work. |
 | 3.11 | Recorded publication of the repository-only Production Provider Adapter Foundation while retaining all target, privileged, live, consumer, recurring, and activation gates. |
 | 3.10 | Recorded publication of the accepted production provider architecture/security package while preserving implementation, access, consumer, activation, and live-work boundaries. |
 | 3.9 | Recorded exact five-record Registry migration and post-migration planner lifecycle correction while preserving provider, consumer, activation, and live-work gates. |

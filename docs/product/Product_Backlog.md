@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 3.11
+**Document Version:** 3.12
 
 **Status:** Active
 
@@ -81,7 +81,7 @@ The first vertical slice coordinates the published EO-14.1A Execution Capability
 
 PLAT-14.0A, the PLAT-14.1A specification, the Foundation, and the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice are published. Exactly five records are migrated as `not_applicable`; authoritative eligible-subject evaluation, remaining migrations, providers, dashboards/APIs, activation, and live work remain separately blocked.
 
-The accepted Production Provider Adapter Architecture, Provider Adapter Contract v1.0, Privileged-Access Security Design, and repository-only provider foundation are published as a named prerequisite package under PLAT-PB-013. No standalone identifier is assigned because repository evidence does not establish numbering authority.
+The provider architecture, Contract v1.0, security design, repository-only provider foundation, and formal proxy security review are accepted and published under PLAT-PB-013. The constrained proxy is approved only as the future implementation target. Only a repository-only proxy foundation may be considered next; privileged implementation, deployment, credentials, named-target observation, consumers, activation, and live work remain blocked. No standalone identifier is assigned because repository evidence does not establish numbering authority.
 
 EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the Bravo PLAT-14.1A fixture-only repository implementation are published. Charlie remains unstarted. No automation, role activation, provider, dashboard/API, or live work is authorized.
 
@@ -107,6 +107,7 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 
 | Version | Description |
 |---------|-------------|
+| 3.12 | Recorded formal proxy security review and the repository-only constrained-proxy foundation as the next possible gate without authorizing privileged or live work. |
 | 3.11 | Recorded publication of the repository-only provider foundation under PLAT-PB-013 without inventing a work-item identifier or authorizing a live provider. |
 | 3.10 | Recorded publication of the accepted Production Provider Adapter Architecture and security prerequisite under PLAT-PB-013 without inventing a work-item identifier or authorizing implementation. |
 | 3.9 | Recorded exact five-record Registry migration and current-plan lifecycle correction while retaining eligible-subject, provider, dashboard/API, activation, and live gates. |
