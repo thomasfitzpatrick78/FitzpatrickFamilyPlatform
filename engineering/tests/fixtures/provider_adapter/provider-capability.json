@@ -1,0 +1,51 @@
+{
+  "capability_version": "1.0",
+  "contract_version": "1.0",
+  "fixture_only": true,
+  "known_limitations": [
+    "no_live_provider_access",
+    "no_named_target_authorization",
+    "repository_fixtures_only"
+  ],
+  "live_access_supported": false,
+  "provider_type": "repository_mock",
+  "supported_adapter_versions": [
+    "repository-provider-adapter-foundation-v1.0"
+  ],
+  "supported_evidence_contract_versions": [
+    "1.0"
+  ],
+  "supported_identity_fields": [
+    "compose_project",
+    "compose_service",
+    "host_reference",
+    "image_digest",
+    "image_reference",
+    "runtime_container_id",
+    "runtime_name"
+  ],
+  "supported_observation_modes": [
+    "repository_fixture_one_shot"
+  ],
+  "supported_profile_versions": [
+    "1.0"
+  ],
+  "supported_provider_versions": [
+    "repository-fixture-v1"
+  ],
+  "supported_signals": [
+    "container.cpu.utilization",
+    "container.healthcheck.state",
+    "container.lifecycle.observed_state",
+    "container.memory.limit",
+    "container.memory.pressure",
+    "container.memory.utilization",
+    "container.restart.count",
+    "container.restart.occurred",
+    "container.telemetry.collection_coverage",
+    "container.telemetry.expected_signal_availability",
+    "container.telemetry.identity_resolution",
+    "container.telemetry.provider_availability",
+    "container.telemetry.provider_limitation"
+  ]
+}

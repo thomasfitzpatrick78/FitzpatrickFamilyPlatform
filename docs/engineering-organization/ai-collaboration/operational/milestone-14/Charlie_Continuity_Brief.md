@@ -33,9 +33,9 @@
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; EO-14.8A Capability Charter; EO-14.8B specifications; EO-14.8C.1 framework; Milestone Plan; Engineering Portfolio Kanban; EO-14.2 and EO-14.3 specifications. |
 | Completed work and evidence | EO-14.8 is complete, repository validated, Architecture Gatekeeper approved, and published; the approved framework is instantiated for Charlie, and Charlie implementation work has not started. |
 | Current work | Review the PLAT-14.1A consumer, reason-code, confidence, freshness, expiration, provider-failure, limitation, and provenance boundaries while preserving Charlie as unstarted. |
-| Active repository changes | Bravo provider architecture/security publication artifacts only; no Charlie procedure, consumer, dashboard, API, or runtime behavior is implemented. |
+| Active repository changes | Published Bravo repository-only provider foundation artifacts only; no Charlie procedure, consumer, dashboard, API, or runtime behavior is implemented. |
 | Parallel workstreams | PLAT-14.1A is published, fixture-only, and unactivated; Alpha is published and unactivated; Charlie remains unstarted. |
-| Dependencies | Bravo published PLAT-14.1A fixture evidence; accepted and published provider architecture/security direction; later validated named-target evidence; Architecture Integration; published PLAT-14.0A contracts; EO-14.2; EO-14.3. |
+| Dependencies | Bravo published PLAT-14.1A fixture evidence; published repository-only provider foundation; later validated named-target evidence; Architecture Integration; published PLAT-14.0A contracts; EO-14.2; EO-14.3. |
 | Integration gates | Architecture Gatekeeper-approved and published PLAT-14.1A assessment evidence before final Charlie mappings; interpretation must not recalculate authoritative health. |
 | Unresolved decisions | Separately governed Charlie implementation authorization after published contracts and required Bravo evidence exist. |
 | Risks | Telemetry names, labels, thresholds, availability, or metric precision could be invented before verified Bravo evidence. |
@@ -50,4 +50,4 @@
 
 ## Continuity Notes
 
-EO-14.8 and Alpha controls are published. Charlie remains unstarted; final mappings depend on published PLAT-14.0A contracts, Architecture Gatekeeper-accepted provider architecture, later validated named-target evidence, and a separate consumer-integration authorization.
+EO-14.8, Alpha controls, and the Bravo repository-only provider foundation are published. Charlie remains unstarted; final mappings depend on published PLAT-14.0A contracts, later validated named-target evidence, and a separate consumer-integration authorization.

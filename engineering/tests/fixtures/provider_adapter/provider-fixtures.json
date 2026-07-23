@@ -1,0 +1,274 @@
+{
+  "activation_status": "not_activated",
+  "catalog_version": "1.0",
+  "content_type": "application/json",
+  "defaults": {
+    "collection_ended_at": "2026-07-22T12:00:00Z",
+    "collection_started_at": "2026-07-22T11:59:58Z",
+    "identity": {
+      "compose_project": "fixture-platform",
+      "compose_service": "fixture-api",
+      "host_reference": "host-fixture",
+      "image_digest": null,
+      "image_reference": "fixture.invalid/platform/api:1.0",
+      "orchestrator": "compose",
+      "runtime_container_id": "fixture-runtime-001",
+      "runtime_engine": "synthetic-engine-1.0",
+      "runtime_name": "fixture-api-1"
+    },
+    "observed_at": "2026-07-22T11:59:59Z"
+  },
+  "fixture_only": true,
+  "fixtures": [
+    {
+      "coverage_status": "complete",
+      "fixture_id": "healthy_lifecycle",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "passing", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "running", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.25, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": []
+    },
+    {
+      "coverage_status": "complete",
+      "fixture_id": "restarting",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "starting", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "restarting", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.4, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 2, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["RESTARTING_OBSERVED"]
+    },
+    {
+      "coverage_status": "complete",
+      "fixture_id": "stopped",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "unavailable", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "stopped", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.0, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "unknown", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["STOPPED_OBSERVED"]
+    },
+    {
+      "coverage_status": "complete",
+      "fixture_id": "healthcheck_failed",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "failing", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "running", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.3, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["HEALTHCHECK_FAILURE_OBSERVED"]
+    },
+    {
+      "coverage_status": "partial",
+      "fixture_id": "healthcheck_missing",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "running", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.2, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["HEALTHCHECK_SIGNAL_MISSING"]
+    },
+    {
+      "coverage_status": "complete",
+      "fixture_id": "cpu_pressure",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "passing", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "running", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.95, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["CPU_PRESSURE_OBSERVED"]
+    },
+    {
+      "coverage_status": "complete",
+      "fixture_id": "memory_pressure",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "passing", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "running", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.25, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "critical", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["MEMORY_PRESSURE_OBSERVED"]
+    },
+    {
+      "coverage_status": "partial",
+      "fixture_id": "missing_lifecycle",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "passing", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.25, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["LIFECYCLE_SIGNAL_MISSING"]
+    },
+    {
+      "coverage_status": "none",
+      "fixture_id": "missing_identity",
+      "identity": {"compose_project": null, "compose_service": null, "host_reference": null, "runtime_container_id": null, "runtime_name": null},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [],
+      "target_resolution_result": "unresolved",
+      "unknown_signals": [],
+      "warnings": ["IDENTITY_MISSING"]
+    },
+    {
+      "coverage_status": "none",
+      "fixture_id": "provider_unavailable",
+      "identity": {},
+      "limitations": [{"affected_signals": ["container.healthcheck.state", "container.lifecycle.observed_state"], "limitation_code": "provider_unavailable", "material": true, "safe_reference": "engineering/tests/fixtures/provider_adapter/provider-capability.json"}],
+      "provider_version": "repository-fixture-v1",
+      "signals": [],
+      "target_resolution_result": "unresolved",
+      "unknown_signals": [],
+      "warnings": ["PROVIDER_UNAVAILABLE"]
+    },
+    {
+      "coverage_status": "complete",
+      "fixture_id": "unsupported_provider_version",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v9",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "passing", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "running", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.25, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["PROVIDER_VERSION_UNSUPPORTED"]
+    },
+    {
+      "coverage_status": "none",
+      "fixture_id": "conflicting_compose_labels",
+      "identity": {"compose_project": "other-project", "compose_service": "other-service"},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [],
+      "target_resolution_result": "conflicting",
+      "unknown_signals": [],
+      "warnings": ["COMPOSE_IDENTITY_CONFLICT"]
+    },
+    {
+      "coverage_status": "none",
+      "fixture_id": "duplicate_runtime_names",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [],
+      "target_resolution_result": "duplicate",
+      "unknown_signals": [],
+      "warnings": ["DUPLICATE_RUNTIME_NAME"]
+    },
+    {
+      "coverage_status": "none",
+      "fixture_id": "unknown_registry_target",
+      "identity": {"compose_project": "unknown-project", "compose_service": "unknown-service", "runtime_container_id": "fixture-runtime-unknown", "runtime_name": "unknown-1"},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [],
+      "target_resolution_result": "absent",
+      "unknown_signals": [],
+      "warnings": ["TARGET_UNKNOWN"]
+    },
+    {
+      "coverage_status": "none",
+      "fixture_id": "unexpected_container",
+      "identity": {"compose_project": "unexpected-project", "compose_service": "unexpected-service", "runtime_container_id": "fixture-runtime-unexpected", "runtime_name": "unexpected-1"},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [],
+      "target_resolution_result": "absent",
+      "unknown_signals": ["provider.unexpected.container"],
+      "warnings": ["UNEXPECTED_CONTAINER"]
+    },
+    {
+      "coverage_status": "none",
+      "fixture_id": "no_provider_data",
+      "identity": {},
+      "limitations": [],
+      "provider_version": "repository-fixture-v1",
+      "signals": [],
+      "target_resolution_result": "unresolved",
+      "unknown_signals": [],
+      "warnings": ["NO_PROVIDER_DATA"]
+    },
+    {
+      "coverage_status": "complete",
+      "fixture_id": "provider_limitation",
+      "identity": {},
+      "limitations": [{"affected_signals": ["container.lifecycle.observed_state"], "limitation_code": "mandatory_identity_limited", "material": true, "safe_reference": "engineering/tests/fixtures/provider_adapter/provider-capability.json"}],
+      "provider_version": "repository-fixture-v1",
+      "signals": [
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.healthcheck.state", "unit": null, "value": "passing", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.lifecycle.observed_state", "unit": null, "value": "running", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.cpu.utilization", "unit": "ratio", "value": 0.25, "value_type": "decimal"},
+        {"collection_method": "synthetic", "observation_window_end": "2026-07-22T12:00:00Z", "observation_window_start": "2026-07-22T11:59:00Z", "signal_name": "container.memory.pressure", "unit": null, "value": "normal", "value_type": "state"},
+        {"collection_method": "synthetic", "observation_window_end": null, "observation_window_start": null, "signal_name": "container.restart.count", "unit": "count", "value": 0, "value_type": "integer"}
+      ],
+      "target_resolution_result": "exact",
+      "unknown_signals": [],
+      "warnings": ["PROVIDER_LIMITATION_APPLIES"]
+    }
+  ],
+  "provider": {
+    "provider_id": "repository-mock-provider",
+    "provider_type": "repository_mock",
+    "provider_version": "repository-fixture-v1"
+  }
+}

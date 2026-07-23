@@ -1,6 +1,6 @@
 # Container Operational Health Repository Usage
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Architecture Gatekeeper Accepted and Published; Fixture Only; Not Activated
 
@@ -54,7 +54,7 @@ These are test translators, not production provider adapters. Fixture success do
 
 ## Production Provider Boundary
 
-The accepted and published Production Provider Adapter Architecture and Contract define a future interface outside this repository-only command surface. Any implementation must first remain fixture/mock-server only, use explicit named-target authorization input, return canonical evidence or deterministic provider failure, and preserve the existing PLAT-14.1A reconciliation/health authority. This usage document does not add a provider command, network path, credential, target, or activation mode.
+The accepted Production Provider Adapter Architecture and Contract are implemented by a separate repository-only fixture/mock command surface. It accepts strict synthetic authorization context, returns canonical evidence or deterministic provider failure, and preserves existing PLAT-14.1A reconciliation/health authority. It adds no network path, credential, provider endpoint, live target, or activation mode. See [Provider Adapter Repository Usage](Production_Provider_Adapter_Repository_Usage.md).
 
 ## Authoritative Results
 
@@ -74,11 +74,13 @@ The end-to-end test uses the published EO-14.1A assignment, evidence, completion
 - [Production Provider Adapter Architecture](Production_Provider_Adapter_Architecture.md)
 - [Production Provider Adapter Contract Specification](../specifications/Production_Provider_Adapter_Contract_Specification.md)
 - [Privileged-Access Security Design and Threat Model](Production_Provider_Privileged_Access_Security_Design.md)
+- [Provider Adapter Foundation Implementation Package](../milestones/Milestone_14/Production_Provider_Adapter_Foundation_Implementation_Package.md)
 
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Linked the implemented repository-only provider fixture/mock command surface and retained the network-free, unactivated health boundary. |
 | 1.2 | Linked the future production provider contract and preserved the existing fixture-only, network-free command boundary. |
 | 1.1 | Recorded publication of the Architecture Gatekeeper-accepted fixture-only repository capability without provider access, Registry migration, activation, or live work. |
 | 1.0 | Documented the fixture-only policy, evidence, reconciliation, assessment, output, CLI, and EO-integration boundaries. |

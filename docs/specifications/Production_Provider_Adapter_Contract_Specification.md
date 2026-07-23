@@ -1,8 +1,8 @@
 # Production Provider Adapter Contract Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Accepted and Published; Contract Only; Implementation and Live Access Unauthorized
+**Status:** Accepted and Published; Repository Contract Implemented; Live Access Unauthorized
 
 **Contract:** Production Provider Adapter Contract v1.0
 
@@ -14,7 +14,7 @@
 
 This specification defines a strict, provider-independent boundary for a future production provider adapter. It governs adapter identity, named-target authorization input, provider observation results, normalization results, deterministic provider failures, provenance, limitations, compatibility, and security behavior.
 
-It does not define provider endpoint paths, credentials, deployment configuration, a selected target, a production implementation, health evaluation, or live access.
+The contract is implemented by a repository-only abstraction, strict parser, deterministic mocks, synthetic fixtures, canonical normalization, and failure framework. It does not define provider endpoint paths, credentials, deployment configuration, a selected target, a live-provider implementation, health evaluation, or live access.
 
 ---
 
@@ -268,6 +268,10 @@ Fixture and bounded mock-provider tests must prove:
 
 Acceptance proves strict repository behavior, deterministic failure semantics, bounded authority, provider-independent normalization, provenance, and safe fixture/mock behavior. It does not prove privileged deployment safety, current provider compatibility, target eligibility, production freshness, Docker-host isolation, Pi-hole non-regression, recurring operation, consumer correctness, or live readiness.
 
+## Repository Implementation
+
+Contract v1.0 is now represented by immutable public models, deterministic serialization, strict unknown/duplicate-field and version rejection, bounded resource validation, a provider capability declaration, an abstract adapter lifecycle, a default unavailable adapter, and a repository fixture/mock implementation. The implementation preserves the contract version and does not create a production provider or live mode.
+
 ---
 
 ## Related Documents
@@ -277,6 +281,8 @@ Acceptance proves strict repository behavior, deterministic failure semantics, b
 - [Platform Operational Evidence and Health Contract Specification](Platform_Operational_Evidence_and_Health_Contract_Specification.md)
 - [Container Operational Health Specification](Container_Operational_Health_Specification.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
+- [Provider Adapter Repository Usage](../architecture/Production_Provider_Adapter_Repository_Usage.md)
+- [Provider Adapter Foundation Implementation Package](../milestones/Milestone_14/Production_Provider_Adapter_Foundation_Implementation_Package.md)
 
 ---
 
@@ -284,4 +290,5 @@ Acceptance proves strict repository behavior, deterministic failure semantics, b
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Recorded repository implementation of contract v1.0 through strict immutable models, mock fixtures, deterministic normalization and failures, and a bounded CLI without live-provider access. |
 | 1.0 | Accepted and published Production Provider Adapter Contract covering adapter identity, named-target input, observation output, deterministic failures, provenance, limitations, compatibility, security, and acceptance fixtures; implementation and live access remain unauthorized. |

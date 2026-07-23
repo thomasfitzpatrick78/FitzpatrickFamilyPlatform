@@ -1,6 +1,6 @@
 # Milestone 14 - Operationalizing the AI Engineering Organization
 
-**Document Version:** 3.4
+**Document Version:** 3.5
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -87,7 +87,7 @@ The Registry migration framework and model v2 are published. Historical plan `sh
 | PLAT-14.0A | Platform Operations Domain Architecture | FitzpatrickFamilyPlatform | Establish Platform Operations as the bounded context for Declared State, Operational Evidence, Reconciliation, Operational Health, and Operational Intelligence. | Published architecture and contracts at `c8f9bc3`; Implemented: No. |
 | PLAT-14.1 | Container Metrics Modernization | FitzpatrickFamilyPlatform | Carry forward Milestone 13 container metrics architecture into approval-ready requirements. | Container metrics modernization specification. |
 | Registry Container Identity Foundation | PLAT-14.1A prerequisite | FitzpatrickFamilyPlatform | Implement the smallest authoritative service-record identity extension, evidence-gated migration, validation, and exact-plan mutation-approval contract. | Historical plan executed for exactly five `not_applicable` subjects; rollback and completion evidence valid; current planner shows 0 apply, 16 review-required, and 23 no-change. |
-| PLAT-14.1A | Container Operational Health | FitzpatrickFamilyPlatform | Preserve the published fixture-only core and accepted Production Provider Adapter Architecture and Privileged-Access Security Design prerequisite. | Fixture capability and provider architecture/security direction published and unactivated; five migrated subjects are not eligible and 16 remain review-required. |
+| PLAT-14.1A | Container Operational Health | FitzpatrickFamilyPlatform | Preserve the published fixture-only health core, provider architecture/security design, and repository-only Production Provider Adapter Foundation. | Health capability and provider foundation published, fixture-only, and unactivated; five migrated subjects are not eligible and 16 remain review-required. |
 | PLAT-14.2 | Operational Excellence | FitzpatrickFamilyPlatform | Define backup, restore, recovery, alerting, runbook, and evidence scope. | Operational excellence specification. |
 | PLAT-14.3 | Platform Health Dashboard | FitzpatrickFamilyPlatform | Define executive operational health view and source-of-truth boundaries. | Platform health dashboard specification. |
 | PLAT-14.3A | Platform Health Dashboard Completion | FitzpatrickFamilyPlatform | Complete dashboard source contracts after PLAT-14.1 telemetry contract verification. | Dashboard contract, source mapping, and validation evidence. |
@@ -298,6 +298,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 3.5 | Recorded publication of the repository-only Production Provider Adapter Foundation while retaining all eligible-target, privileged, live-provider, consumer, recurring, and activation gates. |
 | 3.4 | Recorded publication of the accepted Production Provider Adapter Architecture, contract, and privileged-access security design while preserving every implementation, access, consumer, activation, and live-work gate. |
 | 3.3 | Recorded exact five-record Registry migration, rollback and completion evidence, post-migration planner lifecycle correction, and unchanged provider, activation, and live-work gates. |
 | 3.2 | Recorded deterministic exact-plan approval binding as an unpublished repository package while retaining separate publication, execution, provider, activation, and live-work gates. |

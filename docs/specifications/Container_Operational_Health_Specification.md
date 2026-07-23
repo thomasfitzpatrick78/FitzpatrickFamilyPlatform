@@ -1,8 +1,8 @@
 # Container Operational Health Specification
 
-**Document Version:** 1.6
+**Document Version:** 1.7
 
-**Status:** Published Specification and Repository Implementation; Fixture Only; Unactivated
+**Status:** Published Specification, Health Implementation, and Provider Foundation; Fixture Only; Unactivated
 
 **Milestone:** PLAT-14.1A
 
@@ -723,6 +723,8 @@ The published implementation remains conformant when:
 - [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
 - [Production Provider Adapter Contract Specification](Production_Provider_Adapter_Contract_Specification.md)
 - [Privileged-Access Security Design and Threat Model](../architecture/Production_Provider_Privileged_Access_Security_Design.md)
+- [Provider Adapter Repository Usage](../architecture/Production_Provider_Adapter_Repository_Usage.md)
+- [Provider Adapter Foundation Implementation Package](../milestones/Milestone_14/Production_Provider_Adapter_Foundation_Implementation_Package.md)
 
 ---
 
@@ -730,6 +732,7 @@ The published implementation remains conformant when:
 
 | Version | Description |
 |---------|-------------|
+| 1.7 | Recorded the repository-only provider adapter contracts, mocks, fixtures, normalization, failures, validation, and CLI while retaining all live-provider and health-activation gates. |
 | 1.6 | Recorded publication of the accepted provider architecture/security boundary, primary/supplemental direction, contract v1 reference, and current five-record migration state without changing policies or authorizing implementation. |
 | 1.5 | Recorded Architecture Gatekeeper acceptance and publication of the Option B fixture-only repository vertical slice without Registry migration, providers, runtime observation, dashboards/APIs, activation, or live work. |
 | 1.4 | Recorded completion of the authorized Option B fixture-only repository vertical slice for Architecture Gatekeeper review without Registry migration, providers, runtime observation, dashboards, activation, or live work. |

@@ -73,6 +73,32 @@ from engineering.platform_eap.container_health_io import (
     reconciliation_to_json,
 )
 from engineering.platform_eap.container_health_rendering import render_assessment_markdown
+from engineering.platform_eap.provider_adapter import (
+    FindingSeverity as ProviderFindingSeverity,
+    MockScenario,
+    ProviderAdapterDataError,
+    UnsupportedProviderContractVersion,
+    repository_adapter_identity,
+    repository_capability,
+    validate_capability,
+    validate_failure,
+    validate_request,
+    validate_response,
+    validate_result,
+)
+from engineering.platform_eap.provider_adapter_io import (
+    capability_from_json,
+    capability_to_json,
+    contract_summary_to_json,
+    provider_failure_from_json,
+    provider_normalization_result_from_json,
+    provider_normalization_result_to_json,
+    provider_request_from_json,
+    provider_response_from_json,
+    provider_result_from_json,
+    provider_result_to_json,
+)
+from engineering.platform_eap.provider_adapter_mock import MockProviderAdapter, RepositoryFixtureClient
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -1011,6 +1037,7 @@ def capabilities() -> int:
     print("PLAT-EAP-10\tGoverned Execution Capability\tImplemented")
     print("PLAT-EAP-11\tGoverned Automation Orchestration Capability\tImplemented")
     print("PLAT-EAP-12\tContainer Operational Health Repository Capability\tImplemented; Fixture Only; Not Activated")
+    print("PLAT-EAP-13\tProduction Provider Adapter Foundation\tImplemented; Repository Fixtures Only; No Live Provider")
     return 0
 
 
@@ -1251,6 +1278,118 @@ def container_health_cli(argv: list[str]) -> int:
     return 2
 
 
+def _provider_fixture_path(path_value: str) -> Path:
+    root = ROOT.resolve()
+    fixture_root = (root / "engineering/tests/fixtures/provider_adapter").resolve()
+    supplied = Path(path_value)
+    unresolved = supplied if supplied.is_absolute() else root / supplied
+    if unresolved.is_symlink():
+        raise ProviderAdapterDataError("Provider input path must not be a symbolic link.")
+    candidate = unresolved.resolve()
+    if not candidate.is_relative_to(fixture_root):
+        raise ProviderAdapterDataError("Provider commands accept only governed provider-adapter fixtures.")
+    if not candidate.is_file():
+        raise ProviderAdapterDataError(f"Provider fixture file not found: {path_value}.")
+    return candidate
+
+
+def _print_provider_findings(title: str, findings: tuple[object, ...]) -> int:
+    errors = [finding for finding in findings if getattr(finding, "severity", None) == ProviderFindingSeverity.ERROR]
+    warnings = [finding for finding in findings if getattr(finding, "severity", None) == ProviderFindingSeverity.WARNING]
+    print(f"# {title}")
+    print(f"Status: {'FAIL' if errors else 'PASS WITH WARNINGS' if warnings else 'PASS'}")
+    print(f"Errors: {len(errors)}")
+    print(f"Warnings: {len(warnings)}")
+    for finding in findings:
+        reference = f" ({finding.reference})" if getattr(finding, "reference", None) else ""
+        print(f"{finding.severity.value}: {finding.code}: {finding.message}{reference}")
+    return 2 if errors else 0
+
+
+def provider_cli(argv: list[str]) -> int:
+    usage = (
+        "Usage: platform-eap provider "
+        "<contract|capabilities|fixtures|validate request <path>|validate capability <path>|"
+        "validate response <request-path> <response-path>|validate failure <path>|validate result <path>|"
+        "validate normalization <path>|normalize <request-path> <fixture-id>|mock <scenario> <request-path>>"
+    )
+    try:
+        if argv == ["contract"]:
+            print(contract_summary_to_json(repository_adapter_identity(), repository_capability()), end="")
+            return 0
+        if argv == ["capabilities"]:
+            print(capability_to_json(repository_capability()), end="")
+            return 0
+        if argv == ["fixtures"]:
+            client = RepositoryFixtureClient(ROOT)
+            print("# Repository Provider Fixtures")
+            print("Scope: synthetic; repository-only; no live provider")
+            for name in client.fixture_names():
+                print(name)
+            return 0
+        if len(argv) == 3 and argv[:2] == ["validate", "request"]:
+            path = _provider_fixture_path(argv[2])
+            request = provider_request_from_json(path.read_text(encoding="utf-8"))
+            return _print_provider_findings("Provider Request Validation", validate_request(request))
+        if len(argv) == 3 and argv[:2] == ["validate", "capability"]:
+            path = _provider_fixture_path(argv[2])
+            capability = capability_from_json(path.read_text(encoding="utf-8"))
+            return _print_provider_findings("Provider Capability Validation", validate_capability(capability))
+        if len(argv) == 4 and argv[:2] == ["validate", "response"]:
+            request_path = _provider_fixture_path(argv[2])
+            response_path = _provider_fixture_path(argv[3])
+            request = provider_request_from_json(request_path.read_text(encoding="utf-8"))
+            response = provider_response_from_json(response_path.read_text(encoding="utf-8"))
+            return _print_provider_findings("Provider Response Validation", validate_response(response, request))
+        if len(argv) == 3 and argv[:2] == ["validate", "failure"]:
+            path = _provider_fixture_path(argv[2])
+            failure = provider_failure_from_json(path.read_text(encoding="utf-8"))
+            return _print_provider_findings("Provider Failure Validation", validate_failure(failure))
+        if len(argv) == 3 and argv[:2] == ["validate", "result"]:
+            path = _provider_fixture_path(argv[2])
+            result = provider_result_from_json(path.read_text(encoding="utf-8"))
+            return _print_provider_findings("Provider Result Validation", validate_result(result))
+        if len(argv) == 3 and argv[:2] == ["validate", "normalization"]:
+            path = _provider_fixture_path(argv[2])
+            result = provider_normalization_result_from_json(path.read_text(encoding="utf-8"))
+            findings = tuple((*validate_failure(result.failure_result),)) if result.failure_result is not None else ()
+            return _print_provider_findings("Provider Normalization Result Validation", findings)
+        if len(argv) == 3 and argv[0] == "normalize":
+            request_path = _provider_fixture_path(argv[1])
+            request = provider_request_from_json(request_path.read_text(encoding="utf-8"))
+            adapter = MockProviderAdapter(ROOT)
+            provider_result = adapter.collect_fixture(request, argv[2])
+            if provider_result.failure_result is not None:
+                print(provider_result_to_json(provider_result), end="")
+                return 1
+            assert provider_result.observation_result is not None
+            normalized = adapter.normalize(request, provider_result.observation_result)
+            print(provider_normalization_result_to_json(normalized), end="")
+            return 1 if normalized.failure_result is not None else 0
+        if len(argv) == 3 and argv[0] == "mock":
+            scenario = MockScenario(argv[1])
+            request_path = _provider_fixture_path(argv[2])
+            request = provider_request_from_json(request_path.read_text(encoding="utf-8"))
+            adapter = MockProviderAdapter(ROOT, scenario)
+            adapter.initialize()
+            result = adapter.collect_observation(request)
+            adapter.shutdown()
+            print(provider_result_to_json(result), end="")
+            return 1 if result.failure_result is not None else 0
+    except UnsupportedProviderContractVersion as exc:
+        print("# Production Provider Adapter Foundation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 3
+    except (ProviderAdapterDataError, OSError, UnicodeError, ValueError) as exc:
+        print("# Production Provider Adapter Foundation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 2
+    print(usage)
+    return 2
+
+
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -1321,5 +1460,7 @@ def main(argv: list[str] | None = None) -> int:
         return automation_cli(argv[1:])
     if argv and argv[0] == "container-health":
         return container_health_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health>")
+    if argv and argv[0] == "provider":
+        return provider_cli(argv[1:])
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider>")
     return 2

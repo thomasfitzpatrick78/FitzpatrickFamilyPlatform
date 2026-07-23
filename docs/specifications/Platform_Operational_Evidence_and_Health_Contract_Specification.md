@@ -1,8 +1,8 @@
 # Platform Operational Evidence and Health Contract Specification
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 
-**Status:** Published Architecture Contract and Fixture-Only Repository Vertical Slice; Unactivated
+**Status:** Published Contract, Fixture-Only Health Slice, and Repository Provider Foundation; Unactivated
 
 **Milestone:** PLAT-14.0A
 
@@ -631,6 +631,8 @@ This specification is ready for Architecture Gatekeeper review when:
 - [Production Provider Adapter Architecture](../architecture/Production_Provider_Adapter_Architecture.md)
 - [Production Provider Adapter Contract Specification](Production_Provider_Adapter_Contract_Specification.md)
 - [Privileged-Access Security Design and Threat Model](../architecture/Production_Provider_Privileged_Access_Security_Design.md)
+- [Provider Adapter Repository Usage](../architecture/Production_Provider_Adapter_Repository_Usage.md)
+- [Provider Adapter Foundation Implementation Package](../milestones/Milestone_14/Production_Provider_Adapter_Foundation_Implementation_Package.md)
 
 ---
 
@@ -638,6 +640,7 @@ This specification is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 1.8 | Recorded provider-independent repository normalization into Operational Evidence with provenance, coverage, limitations, availability, unknown-signal and version context preserved, without reconciliation or health calculation. |
 | 1.7 | Recorded publication of the accepted Production Provider Adapter Contract v1 boundary, provider direction, deterministic failure requirements, and current migration lifecycle. |
 | 1.6 | Recorded Architecture Gatekeeper acceptance and publication of the fixture-only PLAT-14.1A repository implementation without Registry migration, provider access, activation, or live work. |
 | 1.5 | Recorded the complete unpublished fixture-only PLAT-14.1A repository implementation of the contracts without Registry migration, provider access, activation, or live work. |

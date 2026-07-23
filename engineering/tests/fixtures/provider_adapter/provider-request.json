@@ -1,0 +1,44 @@
+{
+  "adapter_id": "repository-provider-adapter-foundation",
+  "authorization_context": {
+    "activation_status": "not_activated",
+    "authorization_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000001",
+    "authorization_reference": "engineering/tests/fixtures/provider_adapter/provider-request.json",
+    "authorization_valid_from": "2026-07-22T11:00:00Z",
+    "authorization_valid_until": "2026-07-22T13:00:00Z",
+    "compose_project": "fixture-platform",
+    "compose_service": "fixture-api",
+    "contract_version": "1.0",
+    "expected_image_digest": null,
+    "expected_image_reference": "fixture.invalid/platform/api:1.0",
+    "fixture_only": true,
+    "governed_runtime_name": "fixture-api-1",
+    "health_check_requirement": "required",
+    "host_reference": "host-fixture",
+    "observation_mode": "repository_fixture_one_shot",
+    "output_reference": "engineering/tests/fixtures/provider_adapter/provider-fixtures.json",
+    "provider_boundary_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000002",
+    "provider_boundary_reference": "engineering/tests/fixtures/provider_adapter/provider-capability.json",
+    "registry_record_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000003",
+    "registry_reference": "engineering/tests/fixtures/container_health/registry/svc-fixture-api.yaml",
+    "subject_id": "svc-fixture-api"
+  },
+  "contract_version": "1.0",
+  "mandatory_signal_set": {
+    "contract_version": "1.0",
+    "signals": [
+      "container.healthcheck.state",
+      "container.lifecycle.observed_state"
+    ]
+  },
+  "optional_signal_set": {
+    "contract_version": "1.0",
+    "signals": [
+      "container.cpu.utilization",
+      "container.memory.pressure",
+      "container.restart.count"
+    ]
+  },
+  "request_id": "provider-request-fixture-001",
+  "requested_at": "2026-07-22T12:00:00Z"
+}

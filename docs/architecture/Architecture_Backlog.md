@@ -1,6 +1,6 @@
 # Architecture Backlog
 
-**Document Version:** 1.16
+**Document Version:** 1.17
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 | AB-008 | High | Platform runtime architecture options | Candidate | Deferred until Infrastructure operations readiness establishes options and gates. |
 | AB-009 | High | Platform Digital Twin lifecycle state model | Candidate | Future enhancement proposal for explicit states: Planned -> Delivered -> Powered -> BIOS Verified -> OS Installed -> Network Connected -> SSH Verified -> Docker Ready -> Platform Active. Do not implement lifecycle changes in PLAT-13.3. |
 | AB-010 | High | Governed operations and observability | Active | ADR-007 selects governed Prometheus, Node Exporter, cAdvisor, and Grafana target architecture for PLAT-13.6 planning. |
-| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1, the PLAT-14.1A fixture-only slice, migration model v2, and Production Provider Adapter Architecture and Privileged-Access Security Design are published. The constrained proxy is the approved primary direction and OTel/Prometheus is optional supplemental direction. Five `not_applicable` subjects are completed, 16 remain review-required, and provider implementation, privileged access, named-target observation, consumers, activation, and live gates remain blocked. |
+| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1, the PLAT-14.1A fixture-only slice, migration model v2, Production Provider Adapter Architecture, security design, and repository-only adapter foundation are published. The constrained proxy is the approved primary direction and OTel/Prometheus is optional supplemental direction. Five `not_applicable` subjects are completed, 16 remain review-required, and live-provider implementation, privileged access, named-target observation, consumers, activation, and live gates remain blocked. |
 | AB-012 | Medium | Secure External and Privileged Provider Integration Standard | Candidate | Evaluate consolidation of provider-independent adapter contracts, fixture-first delivery, privileged-boundary threat modeling, secrets/provenance controls, fail-closed parsing, named-target authorization, and separate recurring-activation gates without duplicating existing privileged-integration, execution, automation, AI-collaboration, or repository governance. No permanent standard is authorized by this candidate. |
 | AB-002 | High | Home Automation safety model | Candidate | Needed before device or automation workflows. |
 | AB-003 | Medium | AI Services privacy and safety model | Candidate | Required before AI service implementation. |
@@ -46,6 +46,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 
 | Version | Description |
 |---------|-------------|
+| 1.17 | Recorded publication of the provider-independent repository foundation as AB-011 evidence while retaining AB-012 as an unpromoted candidate and every live-provider gate. |
 | 1.16 | Recorded publication of the accepted Production Provider Adapter Architecture and Privileged-Access Security Design and added a bounded future secure-provider standard candidate while retaining all implementation and live gates. |
 | 1.15 | Recorded exact five-record migration and corrected historical/current plan lifecycle while retaining review-required migration, provider, activation, and live gates. |
 | 1.14 | Recorded deterministic exact-plan approval binding as unpublished and unexecuted while preserving migration, provider, activation, and live gates. |

@@ -1,8 +1,8 @@
 # Production Provider Adapter Architecture
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Accepted and Published; Architecture Only; Implementation and Live Access Unauthorized
+**Status:** Accepted and Published; Repository Foundation Implemented; Live Access Unauthorized
 
 **Milestone:** PLAT-14.1A named prerequisite; no standalone work-item identifier assigned
 
@@ -12,7 +12,7 @@
 
 This architecture defines how a future production provider adapter may collect bounded container-runtime observations and normalize them into the published Platform Operational Evidence contracts without making Docker, OpenTelemetry, Prometheus, cAdvisor, or any other provider authoritative for Platform identity or health.
 
-This package is architecture and specification evidence only. It does not select a provider for implementation, create a production adapter, authorize privileged access, identify an eligible live target, activate recurring collection, or change infrastructure.
+The repository-only adapter foundation now implements these provider-independent boundaries with strict fixtures, mock clients, deterministic normalization, and failure behavior. It does not select or implement a live provider, authorize privileged access, identify an eligible live target, activate recurring collection, or change infrastructure.
 
 ---
 
@@ -315,6 +315,10 @@ The repeated combination of provider-independent contracts, fixture-first delive
 
 The published architecture remains conformant when provider options, mandatory coverage, trust boundaries, identity authority, fixed v1 composition, freshness validation, raw-data handling, deployment direction, named-target authorization, later gates, security criteria, risks, and open decisions remain explicit while implementation and live access remain unauthorized.
 
+## Repository Foundation Evidence
+
+The published repository foundation implements the v1 contracts and abstract lifecycle without adding a provider connection. Its default adapter fails deterministically as unavailable, while its only working client reads governed synthetic fixtures. Normalization produces published Operational Evidence but does not reconcile identity, assign a subject, calculate health, or repair Registry state. This satisfies the repository implementation gate only; every provider-specific, privileged, named-target, live, consumer, recurring, and activation gate remains pending.
+
 ---
 
 ## Related Documents
@@ -327,6 +331,8 @@ The published architecture remains conformant when provider options, mandatory c
 - [Container Metrics Modernization Specification](../specifications/Container_Metrics_Modernization_Specification.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Docker 29 Container Metrics Compatibility Assessment](Docker_29_Container_Metrics_Compatibility_Assessment.md)
+- [Provider Adapter Repository Usage](Production_Provider_Adapter_Repository_Usage.md)
+- [Provider Adapter Foundation Implementation Package](../milestones/Milestone_14/Production_Provider_Adapter_Foundation_Implementation_Package.md)
 
 ---
 
@@ -334,4 +340,5 @@ The published architecture remains conformant when provider options, mandatory c
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Recorded the provider-independent repository foundation, strict synthetic fixtures, mock-only normalization, and deterministic failure evidence while retaining all live-provider and privileged gates. |
 | 1.0 | Accepted and published production provider option assessment, preferred primary/supplemental direction, trust boundaries, coverage, deployment, privacy, named-target gate, and future lifecycle gates; implementation and live access remain unauthorized. |
