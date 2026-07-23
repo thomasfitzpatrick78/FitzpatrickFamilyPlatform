@@ -1,8 +1,8 @@
 # Privileged Access Security Review and Constrained Docker API Proxy Architecture Validation
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
-**Status:** Architecture Gatekeeper Accepted and Published; Repository Foundation Published; No Privileged or Live Authority
+**Status:** Architecture Gatekeeper Accepted and Published; Proxy and Deployment Configuration Repository Foundations Published; No Privileged or Live Authority
 
 **Milestone:** PLAT-14.1A named prerequisite; Bravo workstream
 
@@ -16,7 +16,7 @@ The constrained Docker API proxy is a sound future implementation target only wh
 
 The Architecture Gatekeeper accepted this review and approved it for publication with the binding clarifications in this document. Publication does not authorize proxy implementation, Docker access, deployment, credentials, an eligible target, named-target observation, recurring operation, or activation.
 
-The **Repository-Only Constrained Docker API Proxy Foundation** gate is now implemented and published. It provides interfaces, configuration and endpoint-policy models, authentication abstractions, fixture-backed proxy behavior, negative-test models, and security validation without Docker, sockets, networking, credentials, deployment, or infrastructure change. Publication satisfies only the repository implementation gate.
+The **Repository-Only Constrained Docker API Proxy Foundation** gate is implemented and published. The **Repository-Only Privileged Deployment Configuration Foundation** now adds immutable descriptive profiles, exact synthetic service identity, runtime-security and resource prerequisites, audit requirements, proxy/provider/policy compatibility, canonical digests, strict fixtures, and fail-closed validation. These are configuration contracts only: they do not enforce controls, load credentials or certificates, create transport, deploy, select a target, or observe infrastructure. Publication satisfies only repository configuration readiness.
 
 ## Repository Evidence
 
@@ -317,6 +317,9 @@ The constrained proxy remains approved as the future privileged implementation t
 - [Constrained Proxy Repository Architecture](Constrained_Docker_API_Proxy_Architecture.md)
 - [Constrained Proxy Repository Usage](Constrained_Docker_API_Proxy_Repository_Usage.md)
 - [Constrained Proxy Foundation Implementation Package](../milestones/Milestone_14/Constrained_Docker_API_Proxy_Foundation_Implementation_Package.md)
+- [Privileged Deployment Configuration Architecture](Privileged_Deployment_Configuration_Architecture.md)
+- [Deployment Configuration Repository Usage](Deployment_Configuration_Repository_Usage.md)
+- [Deployment Configuration Implementation Package](../milestones/Milestone_14/Privileged_Deployment_Configuration_Foundation_Implementation_Package.md)
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 
@@ -324,5 +327,6 @@ The constrained proxy remains approved as the future privileged implementation t
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Recorded the repository-only deployment configuration foundation as reviewable, content-bound prerequisite evidence without runtime enforcement, credentials, deployment, target, observation, or live authority. |
 | 1.1 | Recorded publication of the repository-only proxy foundation as deterministic fixture/security evidence while retaining separate socket-capable implementation, privileged deployment, named-target observation, consumer, and activation gates. |
 | 1.0 | Completed the formal constrained Docker API proxy architecture/security review, endpoint-category decisions, authentication/deployment recommendations, expanded threat model, pass/fail gates, AB-012 recommendation, and revised lifecycle without implementation or live authority. |

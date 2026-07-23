@@ -1,14 +1,14 @@
 # Constrained Docker API Proxy Repository Architecture
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Repository Foundation Implemented; Fixture Only; No Privileged or Live Authority
+**Status:** Repository and Deployment Configuration Foundations Implemented; Fixture Only; No Privileged or Live Authority
 
 **Milestone:** PLAT-14.1A; Bravo workstream
 
 ## Purpose and Boundary
 
-This document records the implemented repository-only foundation for the future constrained provider boundary accepted by the Privileged Access Security Review. The foundation models security decisions and proves deterministic denial behavior. It does not implement a deployed proxy, transport, listener, runtime client, credential, named-target authorization, or infrastructure configuration.
+This document records the implemented repository-only foundation for the future constrained provider boundary accepted by the Privileged Access Security Review. The foundation models security decisions and proves deterministic denial behavior. A separate repository-only deployment configuration foundation now describes profiles, identity, runtime security, resources, audit, compatibility, and exact policy binding. Neither foundation implements a deployed proxy, transport, listener, runtime client, credential, named-target authorization, or infrastructure configuration.
 
 The repository implementation owns immutable contracts, endpoint-category policy, conceptual authentication and authorization contexts, exact synthetic-target validation, bounded request and response validation, deterministic decisions, fixture responses, audit records, and Platform EAP commands. It does not own Registry state, provider normalization, canonical health, deployment, orchestration, governance approval, dashboard rendering, or infrastructure control.
 
@@ -75,7 +75,7 @@ The repository proxy returns constrained synthetic provider-shaped records. It d
 
 ## Remaining Gates
 
-Success at this repository gate does not authorize a socket-capable implementation. Privileged deployment design/review, supply-chain evidence, enforceable service identity, exact eligible-subject Registry approval, named-target observation, provider compatibility, non-regression, consumer integration, recurring operation, and EO activation remain separate Architecture Gatekeeper decisions.
+Success at these repository gates does not authorize a socket-capable implementation. The configuration foundation makes a future proposal reviewable but does not enforce runtime controls. Socket-capable implementation, enforced privileged deployment controls, supply-chain evidence, credentials/certificates, exact eligible-subject Registry approval, named-target observation, live provider compatibility, non-regression, consumer integration, recurring operation, and EO activation remain separate Architecture Gatekeeper decisions.
 
 ## Related Documents
 
@@ -84,9 +84,12 @@ Success at this repository gate does not authorize a socket-capable implementati
 - [Production Provider Adapter Contract](../specifications/Production_Provider_Adapter_Contract_Specification.md)
 - [Repository Usage](Constrained_Docker_API_Proxy_Repository_Usage.md)
 - [Implementation Package](../milestones/Milestone_14/Constrained_Docker_API_Proxy_Foundation_Implementation_Package.md)
+- [Privileged Deployment Configuration Architecture](Privileged_Deployment_Configuration_Architecture.md)
+- [Deployment Configuration Implementation Package](../milestones/Milestone_14/Privileged_Deployment_Configuration_Foundation_Implementation_Package.md)
 
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Recorded the repository-only deployment configuration layer and exact policy/version binding without socket, network, credential, deployment, target, observation, or activation authority. |
 | 1.0 | Recorded the repository-only immutable contracts, category policy, synthetic authentication/authorization, deterministic validation and decisions, fixture mock, static safety boundary, and later blocked gates. |

@@ -1,0 +1,23 @@
+{
+  "catalog_version": "1.0",
+  "contract_version": "1.0",
+  "deployment_enabled": false,
+  "fixture_only": true,
+  "scenarios": [
+    {"expected_valid": true, "mutation": "none", "profile": "RepositoryOnly", "scenario_id": "valid_repository_profile"},
+    {"expected_valid": true, "mutation": "none", "profile": "FutureDevelopment", "scenario_id": "valid_future_development_profile"},
+    {"expected_valid": true, "mutation": "none", "profile": "FutureValidation", "scenario_id": "valid_future_validation_profile"},
+    {"expected_valid": true, "mutation": "none", "profile": "FutureProduction", "scenario_id": "valid_future_production_profile"},
+    {"expected_valid": false, "mutation": "incompatible_versions", "profile": "RepositoryOnly", "scenario_id": "incompatible_versions"},
+    {"expected_valid": false, "mutation": "invalid_identity", "profile": "RepositoryOnly", "scenario_id": "invalid_identity"},
+    {"expected_valid": false, "mutation": "missing_policy", "profile": "RepositoryOnly", "scenario_id": "missing_policy"},
+    {"expected_valid": false, "mutation": "missing_audit", "profile": "RepositoryOnly", "scenario_id": "missing_audit"},
+    {"expected_valid": false, "mutation": "missing_limits", "profile": "RepositoryOnly", "scenario_id": "missing_limits"},
+    {"expected_valid": false, "mutation": "wildcard_identity", "profile": "RepositoryOnly", "scenario_id": "wildcard_identity"},
+    {"expected_valid": false, "mutation": "invalid_resource_limits", "profile": "RepositoryOnly", "scenario_id": "invalid_resource_limits"},
+    {"expected_valid": false, "mutation": "unsupported_versions", "profile": "RepositoryOnly", "scenario_id": "unsupported_versions"},
+    {"expected_valid": false, "mutation": "digest_mismatch", "profile": "RepositoryOnly", "scenario_id": "digest_mismatch"},
+    {"expected_valid": false, "mutation": "runtime_enabled", "profile": "RepositoryOnly", "scenario_id": "runtime_enabled"},
+    {"expected_valid": false, "mutation": "socket_enabled", "profile": "RepositoryOnly", "scenario_id": "socket_enabled"}
+  ]
+}

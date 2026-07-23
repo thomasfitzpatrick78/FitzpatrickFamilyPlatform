@@ -1,8 +1,8 @@
 # Production Provider Adapter Architecture
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
-**Status:** Accepted; Provider and Proxy Repository Foundations Published; Live Access Unauthorized
+**Status:** Accepted; Provider, Proxy, and Deployment Configuration Repository Foundations Published; Live Access Unauthorized
 
 **Milestone:** PLAT-14.1A named prerequisite; no standalone work-item identifier assigned
 
@@ -12,7 +12,7 @@
 
 This architecture defines how a future production provider adapter may collect bounded container-runtime observations and normalize them into the published Platform Operational Evidence contracts without making Docker, OpenTelemetry, Prometheus, cAdvisor, or any other provider authoritative for Platform identity or health.
 
-The repository-only adapter foundation implements these provider-independent boundaries with strict fixtures, mock clients, deterministic normalization, and failure behavior. The repository-only constrained proxy foundation now adds category policy, conceptual identity/authorization, exact synthetic-target validation, bounded responses, and deterministic denial evidence without a transport. Neither foundation selects or implements a live provider, authorizes privileged access, identifies an eligible live target, activates recurring collection, or changes infrastructure.
+The repository-only adapter foundation implements these provider-independent boundaries with strict fixtures, mock clients, deterministic normalization, and failure behavior. The repository-only constrained proxy foundation adds category policy, conceptual identity/authorization, exact synthetic-target validation, bounded responses, and deterministic denial evidence without a transport. The deployment configuration foundation now binds descriptive profiles, identity, runtime security, resources, audit, endpoint policy, compatibility, and canonical digests without deployment capability. None selects or implements a live provider, authorizes privileged access, identifies an eligible live target, activates recurring collection, or changes infrastructure.
 
 ---
 
@@ -340,6 +340,8 @@ The published proxy repository foundation models the accepted primary boundary w
 - [Formal Privileged Access Security Review](Privileged_Access_Security_Review_and_Constrained_Docker_API_Proxy_Architecture_Validation.md)
 - [Constrained Proxy Repository Architecture](Constrained_Docker_API_Proxy_Architecture.md)
 - [Constrained Proxy Repository Usage](Constrained_Docker_API_Proxy_Repository_Usage.md)
+- [Privileged Deployment Configuration Architecture](Privileged_Deployment_Configuration_Architecture.md)
+- [Deployment Configuration Repository Usage](Deployment_Configuration_Repository_Usage.md)
 
 ---
 
@@ -347,6 +349,7 @@ The published proxy repository foundation models the accepted primary boundary w
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Recorded repository-only deployment configuration contracts, exact compatibility and policy binding, and deterministic digests while preserving every deployment, target, observation, consumer, and activation gate. |
 | 1.3 | Recorded publication of the repository-only constrained proxy contracts, policy, fixture mock, and deterministic denial evidence while preserving all privileged, named-target, live, consumer, and activation gates. |
 | 1.2 | Recorded formal security validation of the constrained proxy as a future implementation target with binding endpoint, authentication, deployment, supply-chain, and lifecycle gates; no implementation or live authority granted. |
 | 1.1 | Recorded the provider-independent repository foundation, strict synthetic fixtures, mock-only normalization, and deterministic failure evidence while retaining all live-provider and privileged gates. |

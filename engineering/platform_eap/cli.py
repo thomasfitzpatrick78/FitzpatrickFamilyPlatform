@@ -130,6 +130,18 @@ from engineering.platform_eap.proxy_foundation_io import (
     result_to_json as proxy_result_to_json,
 )
 from engineering.platform_eap.proxy_foundation_mock import RepositoryMockProxy, RepositoryProxyFixtureLibrary
+from engineering.platform_eap.deployment_configuration import (
+    DeploymentConfigurationDataError,
+    DeploymentProfileName,
+    FindingSeverity as DeploymentFindingSeverity,
+    UnsupportedDeploymentConfigurationVersion,
+    contract_summary as deployment_contract_summary,
+    deterministic_json as deployment_json,
+    negotiate_versions as negotiate_deployment_versions,
+    validate_bundle as validate_deployment_bundle,
+)
+from engineering.platform_eap.deployment_configuration_io import contract_summary_to_json as deployment_contract_summary_to_json
+from engineering.platform_eap.deployment_configuration_fixtures import RepositoryDeploymentFixtureLibrary
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -1070,6 +1082,7 @@ def capabilities() -> int:
     print("PLAT-EAP-12\tContainer Operational Health Repository Capability\tImplemented; Fixture Only; Not Activated")
     print("PLAT-EAP-13\tProduction Provider Adapter Foundation\tImplemented; Repository Fixtures Only; No Live Provider")
     print("PLAT-EAP-14\tConstrained Proxy Foundation\tImplemented; Repository Fixtures Only; No Socket or Network Access")
+    print("PLAT-EAP-15\tPrivileged Deployment Configuration Foundation\tImplemented; Repository Configuration Only; No Deployment")
     return 0
 
 
@@ -1527,6 +1540,74 @@ def proxy_cli(argv: list[str]) -> int:
     return 2
 
 
+def _print_deployment_findings(title: str, findings: tuple[object, ...]) -> int:
+    errors = [finding for finding in findings if getattr(finding, "severity", None) == DeploymentFindingSeverity.ERROR]
+    warnings = [finding for finding in findings if getattr(finding, "severity", None) == DeploymentFindingSeverity.WARNING]
+    print(f"# {title}")
+    print(f"Status: {'FAIL' if errors else 'PASS WITH WARNINGS' if warnings else 'PASS'}")
+    print(f"Errors: {len(errors)}")
+    print(f"Warnings: {len(warnings)}")
+    for finding in findings:
+        reference = f" ({finding.reference})" if getattr(finding, "reference", None) else ""
+        print(f"{finding.severity.value}: {finding.code}: {finding.message}{reference}")
+    return 2 if errors else 0
+
+
+def deployment_cli(argv: list[str]) -> int:
+    usage = (
+        "Usage: platform-eap deployment "
+        "<contract|validate [scenario]|digest <profile>|profile <profile>|compatibility <profile>|fixtures|"
+        "identity <profile>|runtime <profile>|security <profile>|bundle <profile>>"
+    )
+    try:
+        library = RepositoryDeploymentFixtureLibrary(ROOT)
+        if argv == ["contract"]:
+            print(deployment_contract_summary_to_json(deployment_contract_summary()), end="")
+            return 0
+        if argv == ["validate"]:
+            bundle = library.bundle_for_profile(DeploymentProfileName.REPOSITORY_ONLY)
+            return _print_deployment_findings("Deployment Configuration Validation", validate_deployment_bundle(bundle))
+        if len(argv) == 2 and argv[0] == "validate":
+            return _print_deployment_findings("Deployment Configuration Scenario Validation", library.validate_scenario(argv[1]))
+        if argv == ["fixtures"]:
+            print("# Repository Deployment Configuration Fixtures")
+            print("Scope: descriptive; repository-only; no deployment; no execution; no network")
+            for name in library.scenario_ids():
+                print(name)
+            return 0
+        if len(argv) == 2 and argv[0] in {"digest", "profile", "compatibility", "identity", "runtime", "security", "bundle"}:
+            profile = DeploymentProfileName(argv[1])
+            bundle = library.bundle_for_profile(profile)
+            configuration = bundle.configuration
+            if argv[0] == "digest":
+                print(deployment_json(bundle.digest), end="")
+            elif argv[0] == "profile":
+                print(deployment_json(configuration.profile), end="")
+            elif argv[0] == "compatibility":
+                print(deployment_json(negotiate_deployment_versions(configuration)), end="")
+            elif argv[0] == "identity":
+                print(deployment_json(configuration.identity), end="")
+            elif argv[0] == "runtime":
+                print(deployment_json(configuration.runtime), end="")
+            elif argv[0] == "security":
+                print(deployment_json(configuration.runtime.security), end="")
+            else:
+                print(deployment_json(bundle), end="")
+            return 0
+    except UnsupportedDeploymentConfigurationVersion as exc:
+        print("# Privileged Deployment Configuration Foundation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 3
+    except (DeploymentConfigurationDataError, OSError, UnicodeError, ValueError) as exc:
+        print("# Privileged Deployment Configuration Foundation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 2
+    print(usage)
+    return 2
+
+
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -1601,5 +1682,7 @@ def main(argv: list[str] | None = None) -> int:
         return provider_cli(argv[1:])
     if argv and argv[0] == "proxy":
         return proxy_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy>")
+    if argv and argv[0] == "deployment":
+        return deployment_cli(argv[1:])
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy|deployment>")
     return 2

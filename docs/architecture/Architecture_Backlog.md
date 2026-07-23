@@ -1,6 +1,6 @@
 # Architecture Backlog
 
-**Document Version:** 1.19
+**Document Version:** 1.20
 
 **Status:** Active
 
@@ -23,8 +23,8 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 | AB-008 | High | Platform runtime architecture options | Candidate | Deferred until Infrastructure operations readiness establishes options and gates. |
 | AB-009 | High | Platform Digital Twin lifecycle state model | Candidate | Future enhancement proposal for explicit states: Planned -> Delivered -> Powered -> BIOS Verified -> OS Installed -> Network Connected -> SSH Verified -> Docker Ready -> Platform Active. Do not implement lifecycle changes in PLAT-13.3. |
 | AB-010 | High | Governed operations and observability | Active | ADR-007 selects governed Prometheus, Node Exporter, cAdvisor, and Grafana target architecture for PLAT-13.6 planning. |
-| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1, the PLAT-14.1A fixture-only slice, migration model v2, provider architecture/security design, repository adapter foundation, formal security review, and constrained-proxy repository foundation are published. The proxy remains the validated future primary target and OTel/Prometheus optional supplemental direction. Five `not_applicable` subjects are completed, 16 remain review-required, and socket-capable implementation, privileged deployment, named-target observation, consumers, activation, and live gates remain blocked. |
-| AB-012 | Medium | Secure External and Privileged Provider Integration Standard | Candidate - Remain Backlog | The repository proxy foundation adds one reusable contract/default-deny implementation, but no independent privileged deployment, named-target evidence, recurring operation, provider replacement, or retirement evidence exists. Reevaluate in Milestone 15 after at least one approved privileged evidence cycle, preferably a second provider; no promotion is authorized. |
+| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1, the PLAT-14.1A fixture-only slice, migration model v2, provider architecture/security design, repository adapter and proxy foundations, formal security review, and repository deployment configuration foundation are published. The proxy remains the validated future primary target and OTel/Prometheus optional supplemental direction. Five `not_applicable` subjects are completed, 16 remain review-required, and socket-capable implementation, enforced privileged deployment, credentials, named-target observation, consumers, activation, and live gates remain blocked. |
+| AB-012 | Medium | Secure External and Privileged Provider Integration Standard | Candidate - Remain Backlog | Proxy and deployment configuration foundations add one repository contract/default-deny/configuration path, but no independent enforced privileged deployment, named-target evidence, recurring operation, provider replacement, or retirement evidence exists. Reevaluate in Milestone 15 after at least one approved privileged evidence cycle, preferably a second provider; no promotion is authorized. |
 | AB-002 | High | Home Automation safety model | Candidate | Needed before device or automation workflows. |
 | AB-003 | Medium | AI Services privacy and safety model | Candidate | Required before AI service implementation. |
 | AB-004 | Medium | Energy data model | Candidate | Required before energy tracking implementation. |
@@ -46,6 +46,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 
 | Version | Description |
 |---------|-------------|
+| 1.20 | Recorded repository deployment configuration evidence under AB-011 while retaining AB-012 as an unpromoted candidate pending enforced privileged and operational evidence. |
 | 1.19 | Recorded the repository-only proxy foundation as AB-011 evidence while retaining AB-012 as an unpromoted candidate pending independent privileged and operational evidence. |
 | 1.18 | Recorded formal constrained-proxy security review and retained AB-012 in backlog pending repeated independent implementation and operational evidence. |
 | 1.17 | Recorded publication of the provider-independent repository foundation as AB-011 evidence while retaining AB-012 as an unpromoted candidate and every live-provider gate. |

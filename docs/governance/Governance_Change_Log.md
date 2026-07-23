@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 3.8
+**Document Version:** 3.9
 
 **Status:** Active
 
@@ -49,9 +49,11 @@ Milestone 14 records these governance enhancements:
 - The repository-only Production Provider Adapter Foundation implements immutable v1 contracts, strict parsers and validation, an abstract provider lifecycle, synthetic fixtures, deterministic mock clients, canonical Operational Evidence normalization, deterministic failures, a capability declaration, bounded Platform EAP commands, and tests. It creates no live provider, Docker/socket/network path, credential, proxy configuration, Registry mutation, named-target authority, consumer, recurring execution, activation, or infrastructure change.
 - Architecture Gatekeeper-accepted and published privileged-access review validates the constrained Docker API proxy as the future implementation target only with separate authority/evidence flows, enforced adapter service identity, same-host dedicated deployment, default-deny endpoint categories, first-slice stream/upgrade/bypass denial, response filtering, supply-chain evidence, and separate repository implementation, privileged deployment, named-target observation, consumer, and recurring-activation gates. No implementation or live authority is granted.
 - The repository-only constrained proxy foundation is published with immutable versioned contracts, a machine-readable default-deny category policy, conceptual authentication and exact synthetic authorization, bounded request/response validation, deterministic decision/failure/audit evidence, fixture-only mock behavior, Platform EAP commands, and static capability-prohibition tests. It introduces no Docker, socket, network, credential, deployment, Registry mutation, named-target authority, observation, EO activation, infrastructure mutation, or FFFA change.
+- The repository-only privileged deployment configuration foundation is published with immutable descriptive profiles, exact synthetic service identity, runtime-security/resource/audit prerequisites, proxy/adapter/endpoint-policy configuration, exact version compatibility, canonical SHA-256 bundle digests, strict fixtures, deterministic validation, read-only Platform EAP commands, and static no-deployment proof. Every profile disables deployment and execution. It creates no Docker/API/socket/network/listener/runtime capability, credential/certificate, mTLS implementation, Registry mutation, named-target authority, live observation, consumer, EO activation, infrastructure mutation, or FFFA change.
+- Repository configuration evidence does not prove runtime enforcement or authorize the future privileged component. Socket-capable implementation, credentials/certificates, supply-chain evidence, exact eligible subject, enforced deployment controls, named-target observation, and live lifecycle gates remain separate.
 - Direct socket access, cAdvisor-only mandatory evidence, provider-owned health, dynamic provider orchestration, and multiple mandatory-provider composition are rejected for the first production slice. A later eligible-subject, security, implementation, named-target observation, policy-validation, consumer, and activation sequence remains mandatory.
 - Capability-First Operationalization remains an unpromoted candidate pattern. Published PLAT-14.1A supplies first-consumer repository implementation evidence for EO-14.1A and EO-14.4A contract reuse, but no activation, live operational evidence, or repeated implementation exists to support permanent Engineering Lifecycle promotion.
-- The repeated secure-provider pattern remains Architecture Backlog candidate AB-012. The repository proxy foundation adds one implementation example but does not establish repeated successful independent implementations, privileged deployment, named-target operation, recurrence, provider replacement, or retirement. Milestone 15 may reevaluate after approved operational evidence; no promotion is authorized.
+- The repeated secure-provider pattern remains Architecture Backlog candidate AB-012. The proxy and deployment configuration foundations add repository evidence but do not establish repeated successful independent implementations, enforced privileged deployment, named-target operation, recurrence, provider replacement, or retirement. Milestone 15 may reevaluate after approved operational evidence; no promotion is authorized.
 
 ---
 
@@ -59,6 +61,7 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 3.9 | Recorded publication of the repository-only privileged deployment configuration foundation without enforcement, credentials, targets, observation, activation, or live authority and retained AB-012 in backlog. |
 | 3.8 | Recorded publication of the repository-only constrained proxy foundation and its deterministic security evidence while retaining every privileged, named-target, consumer, activation, live, and governance-promotion gate. |
 | 3.7 | Recorded formal constrained-proxy security review, binding implementation/deployment/observation gates, and the decision to retain AB-012 in backlog without implementation or live authority. |
 | 3.6 | Recorded publication of the repository-only Production Provider Adapter Foundation while preserving all live-provider, privileged-access, Registry, consumer, activation, and infrastructure gates. |

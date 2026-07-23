@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.22
+**Document Version:** 1.23
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation, the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice, and migration model v2. Exact historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` executed for five approved `not_applicable` subjects with validated rollback and completion evidence. Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` contains 0 apply, 16 review-required, and 23 no-change candidates. Production Provider Adapter Architecture, security design, repository provider foundation, formal security review, and the transport-incapable constrained-proxy repository foundation are published. Socket-capable implementation, privileged deployment, named-target observation, consumers, activation, and live work remain separately blocked.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation, the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice, and migration model v2. Exact historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` executed for five approved `not_applicable` subjects with validated rollback and completion evidence. Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` contains 0 apply, 16 review-required, and 23 no-change candidates. Production Provider Adapter Architecture, security design, repository provider foundation, formal security review, transport-incapable proxy foundation, and repository-only deployment configuration foundation are published. Socket-capable implementation, enforced privileged deployment, credentials/certificates, named-target observation, consumers, activation, and live work remain separately blocked.
 
 ---
 
@@ -34,6 +34,7 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - Formal security review validates a same-host dedicated constrained Docker API proxy as the future primary implementation target, subject to enforceable service identity, default-deny endpoint policy, non-streaming first-slice behavior, supply-chain proof, and separate implementation/deployment/observation gates. No version, configuration, target, deployment, credential, or access is approved.
 - The provider adapter repository foundation implements immutable v1 contracts, strict validation, an abstract lifecycle, synthetic fixtures, deterministic mock clients, canonical normalization, failures, and bounded CLI commands. It has no network, socket, Docker, credential, live-provider, reconciliation, health, or activation path.
 - The constrained proxy repository foundation implements immutable request/response/decision/security contracts, a versioned default-deny category policy, conceptual identity and authorization, exact synthetic-target binding, bounded responses, deterministic failures/audit, governed fixtures, and Platform EAP commands. It has no endpoint URL, socket, network, Docker client, credential, deployment, named-target, live observation, or activation path.
+- The deployment configuration repository foundation implements immutable descriptive profiles, exact synthetic identity, runtime-security/resource/audit prerequisites, proxy/provider/policy compatibility, canonical bundle digests, strict fixtures, and read-only Platform EAP commands. It does not enforce controls or contain Docker/API/socket/network/listener, credential/certificate, deployment, named-target, observation, or activation capability.
 
 ---
 
@@ -88,6 +89,7 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.23 | Recorded publication of the repository-only privileged deployment configuration foundation while preserving all socket-capable implementation, enforcement, credential, target, observation, consumer, activation, and live gates. |
 | 1.22 | Recorded publication of the repository-only constrained proxy contracts, policy, fixtures, deterministic mock, safety validation, and CLI while retaining all privileged, target, observation, consumer, activation, and live gates. |
 | 1.21 | Recorded formal security validation of the constrained proxy as a future implementation target while preserving separate repository implementation, privileged deployment, named-target, consumer, activation, and live gates. |
 | 1.20 | Recorded publication of the repository-only provider adapter foundation while preserving live-provider, privileged-access, named-target, consumer, activation, and infrastructure gates. |

@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 3.13
+**Document Version:** 3.14
 
 **Status:** Active
 
@@ -25,7 +25,7 @@ Planned outcomes:
 - Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
 - Preserve the published Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations and keep activation, Bravo, and Charlie behind separate authorization gates.
 - Preserve the published fixture-only PLAT-14.1A repository slice and completed five-record `not_applicable` migration while keeping remaining migration, providers, dashboards/APIs, activation, and live work behind separate gates.
-- Preserve the published provider architecture, Contract v1.0, security design, provider foundation, proxy security review, and transport-incapable proxy repository foundation while keeping socket-capable implementation, privileged deployment, target selection, live observation, and activation behind separate gates.
+- Preserve the published provider architecture, Contract v1.0, security design, provider foundation, proxy security review, transport-incapable proxy foundation, and repository-only deployment configuration foundation while keeping socket-capable implementation, enforced privileged deployment, credentials, target selection, live observation, and activation behind separate gates.
 - Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
 - Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
@@ -78,7 +78,7 @@ The approved Milestone 14 execution strategy is Option C - Governed Vertical Sli
 - PLAT-14.0A Platform Operations Domain Architecture and canonical contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; implementation remains absent.
 - PLAT-14.1 Container Metrics Modernization.
 - Foundation schema `1.1`, strict validation, migration planning/execution/rollback/completion, CLI, and tests are published. Exactly five records are migrated as `not_applicable`; 16 remain review-required. The PLAT-14.1A Option B fixture-only repository vertical slice is Architecture Gatekeeper accepted and published; telemetry-provider, security, observation, dashboard/API, activation, and live work remain later gates.
-- Production Provider Adapter Architecture, security design, repository foundation, formal proxy security review, and the transport-incapable repository proxy foundation are accepted and published as named PLAT-14.1A prerequisites. The future privileged proxy remains behind binding authentication, endpoint, deployment, supply-chain, eligible-target, observation, and lifecycle gates; no live implementation is authorized.
+- Production Provider Adapter Architecture, security design, repository foundation, formal proxy security review, transport-incapable proxy foundation, and repository-only deployment configuration foundation are accepted and published as named PLAT-14.1A prerequisites. The configuration layer makes future profiles, security requirements, policy binding, compatibility, and digests reviewable but provides no enforcement. The future privileged proxy remains behind binding authentication, credentials/certificates, endpoint, implementation, deployment, supply-chain, eligible-target, observation, and lifecycle gates; no live implementation is authorized.
 - PLAT-14.2 Operational Excellence for backup, restore, recovery validation, alerting, runbooks, and evidence retention.
 - PLAT-14.3 Platform Health Dashboard.
 - PLAT-14.3A Platform Health Dashboard Completion after the verified PLAT-14.1A telemetry contract.
@@ -146,6 +146,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 3.14 | Recorded publication of the repository-only privileged deployment configuration foundation while preserving socket-capable implementation, credential, target, observation, consumer, activation, and live gates. |
 | 3.13 | Recorded publication of the repository-only constrained proxy foundation while preserving privileged deployment, eligible-target, named-target observation, consumer, activation, and live gates. |
 | 3.12 | Recorded the constrained-proxy security review and repository-only proxy foundation as the next recommended gate without authorizing implementation, deployment, credentials, observation, or live work. |
 | 3.11 | Recorded publication of the repository-only Production Provider Adapter Foundation while retaining all target, privileged, live, consumer, recurring, and activation gates. |

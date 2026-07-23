@@ -1,17 +1,17 @@
 {
   "capability": "Engineering Metrics",
   "status": "PASS WITH WARNINGS",
-  "timestamp": "2026-07-23T01:32:41.914196+00:00",
+  "timestamp": "2026-07-23T02:00:23.794143+00:00",
   "summary": "Engineering metrics generated with status PASS WITH WARNINGS; AI Session Readiness is READY WITH WARNINGS.",
   "results": [
     {
       "severity": "INFO",
-      "message": "Markdown documents: 141",
+      "message": "Markdown documents: 144",
       "path": null
     },
     {
       "severity": "INFO",
-      "message": "Engineering test files: 9",
+      "message": "Engineering test files: 10",
       "path": null
     },
     {
@@ -35,7 +35,7 @@
     "error_count": 0,
     "warning_count": 1,
     "domain_count": 9,
-    "generated_at": "2026-07-23T01:32:41.730020+00:00",
+    "generated_at": "2026-07-23T02:00:23.629269+00:00",
     "evidence_status": "current",
     "report_path": "reports/engineering/ai_session_readiness/ai_session_readiness_report.json",
     "evidence_usable": true,
@@ -50,7 +50,7 @@
       "error_count": 0,
       "warning_count": 1,
       "evidence_status": "current",
-      "last_generated_at": "2026-07-23T01:32:41.730020+00:00",
+      "last_generated_at": "2026-07-23T02:00:23.629269+00:00",
       "source_available": true,
       "source_usable": true,
       "source_report_path": "reports/engineering/ai_session_readiness/ai_session_readiness_report.json"
