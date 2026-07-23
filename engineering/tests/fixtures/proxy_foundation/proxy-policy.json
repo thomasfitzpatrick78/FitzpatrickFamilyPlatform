@@ -1,0 +1,27 @@
+{
+  "contract_version": "1.0",
+  "default_state": "Denied",
+  "entries": [
+    {"allowed_methods": ["ReadOnly"], "contract_version": "1.0", "endpoint_category": "IdentityDiscovery", "state": "ConditionallyAllowed"},
+    {"allowed_methods": ["ReadOnly"], "contract_version": "1.0", "endpoint_category": "LifecycleObservation", "state": "Allowed"},
+    {"allowed_methods": ["ReadOnly"], "contract_version": "1.0", "endpoint_category": "HealthObservation", "state": "Allowed"},
+    {"allowed_methods": ["ReadOnly"], "contract_version": "1.0", "endpoint_category": "RestartInformation", "state": "Allowed"},
+    {"allowed_methods": ["ReadOnly"], "contract_version": "1.0", "endpoint_category": "Statistics", "state": "ConditionallyAllowed"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Events", "state": "Future"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Images", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Volumes", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Networks", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Build", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Exec", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Archive", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Filesystem", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Secrets", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Plugins", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Swarm", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "System", "state": "Denied"},
+    {"allowed_methods": [], "contract_version": "1.0", "endpoint_category": "Configuration", "state": "Denied"}
+  ],
+  "fixture_only": true,
+  "policy_digest": "sha256:6ab10c3af01355f421d1f7908bf866321d8d47da4d32ae42d45a41f0704d46e4",
+  "policy_version": "constrained-proxy-policy-v1.0"
+}

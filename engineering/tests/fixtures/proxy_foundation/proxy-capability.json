@@ -1,0 +1,38 @@
+{
+  "adapter_version": "repository-provider-adapter-foundation-v1.0",
+  "capability_version": "constrained-proxy-capability-v1.0",
+  "configuration_version": "constrained-proxy-configuration-v1.0",
+  "contract_version": "1.0",
+  "fixture_only": true,
+  "live_access_supported": false,
+  "networking_supported": false,
+  "policy_version": "constrained-proxy-policy-v1.0",
+  "proxy_version": "repository-constrained-proxy-v1.0",
+  "socket_access_supported": false,
+  "supported_authentication_modes": [
+    "ServiceIdentity"
+  ],
+  "supported_endpoint_categories": [
+    "IdentityDiscovery",
+    "LifecycleObservation",
+    "HealthObservation",
+    "RestartInformation",
+    "Statistics",
+    "Events",
+    "Images",
+    "Volumes",
+    "Networks",
+    "Build",
+    "Exec",
+    "Archive",
+    "Filesystem",
+    "Secrets",
+    "Plugins",
+    "Swarm",
+    "System",
+    "Configuration"
+  ],
+  "supported_method_categories": [
+    "ReadOnly"
+  ]
+}

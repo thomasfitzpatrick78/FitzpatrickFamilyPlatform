@@ -1,8 +1,8 @@
 # Production Provider Adapter Contract Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
-**Status:** Accepted and Published; Repository Contract Implemented; Live Access Unauthorized
+**Status:** Accepted and Published; Provider and Proxy Repository Contracts Implemented; Live Access Unauthorized
 
 **Contract:** Production Provider Adapter Contract v1.0
 
@@ -272,6 +272,8 @@ Acceptance proves strict repository behavior, deterministic failure semantics, b
 
 Contract v1.0 is now represented by immutable public models, deterministic serialization, strict unknown/duplicate-field and version rejection, bounded resource validation, a provider capability declaration, an abstract adapter lifecycle, a default unavailable adapter, and a repository fixture/mock implementation. The implementation preserves the contract version and does not create a production provider or live mode.
 
+The constrained proxy repository contract is also implemented as a separate upstream boundary. It classifies categories and methods, binds exact synthetic target and authorization context, validates bounded fixture responses, and returns deterministic decisions/failures/audit events. It supplies no transport and does not normalize evidence or calculate health. Provider and proxy contracts therefore remain independently versioned and independently testable.
+
 ---
 
 ## Related Documents
@@ -283,6 +285,8 @@ Contract v1.0 is now represented by immutable public models, deterministic seria
 - [Privileged Infrastructure Integration Standard](../governance/Privileged_Infrastructure_Integration_Standard.md)
 - [Provider Adapter Repository Usage](../architecture/Production_Provider_Adapter_Repository_Usage.md)
 - [Provider Adapter Foundation Implementation Package](../milestones/Milestone_14/Production_Provider_Adapter_Foundation_Implementation_Package.md)
+- [Constrained Proxy Repository Architecture](../architecture/Constrained_Docker_API_Proxy_Architecture.md)
+- [Constrained Proxy Foundation Implementation Package](../milestones/Milestone_14/Constrained_Docker_API_Proxy_Foundation_Implementation_Package.md)
 
 ---
 
@@ -290,5 +294,6 @@ Contract v1.0 is now represented by immutable public models, deterministic seria
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Recorded the separate repository-only proxy request/decision/response boundary and its fixture-only integration with the provider contract without transport or live authority. |
 | 1.1 | Recorded repository implementation of contract v1.0 through strict immutable models, mock fixtures, deterministic normalization and failures, and a bounded CLI without live-provider access. |
 | 1.0 | Accepted and published Production Provider Adapter Contract covering adapter identity, named-target input, observation output, deterministic failures, provenance, limitations, compatibility, security, and acceptance fixtures; implementation and live access remain unauthorized. |

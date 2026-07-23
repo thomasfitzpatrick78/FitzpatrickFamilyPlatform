@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.18
+**Document Version:** 1.19
 
 **Status:** Active
 
@@ -56,7 +56,7 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 
 **Container Operational Health Capability:** The published PLAT-14.1A Option B repository implementation provides deterministic synthetic Registry-linked container evidence qualification, identity resolution, reconciliation, health policy, confidence, authoritative JSON, deterministic Markdown, fixture-only provider replacement proof, and EO contract integration. It remains fixture-only and unactivated. The five migrated subjects are explicitly `not_applicable`; authoritative evaluation remains unavailable until an eligible subject has separately approved identity evidence and provider/live gates pass.
 
-**Production Provider Adapter Foundation:** Accepted architecture and Contract v1.0 now have a published repository-only reference foundation under PLAT-14.1A: immutable contracts, strict validation, abstract provider lifecycle, synthetic fixtures, deterministic mock clients, canonical normalization, failures, and a bounded CLI. A constrained Docker API proxy remains the approved future primary direction and OTel/Prometheus remains optional supplemental direction. No live provider version or configuration is selected or implemented, no target is eligible or chosen, and privileged/live access remains unauthorized.
+**Production Provider and Constrained Proxy Foundations:** Accepted architecture and Contract v1.0 have a published repository-only provider reference with immutable contracts, strict validation, abstract lifecycle, synthetic fixtures, deterministic normalization/failures, and bounded CLI. The accepted proxy direction now also has a separate repository-only implementation of immutable security contracts, category-based default-deny policy, conceptual identity/authorization, strict request/response validation, deterministic fixture mock, and audit/failure evidence. These remain one PLAT-14.1A capability path, not new product capabilities. No transport, live provider version/configuration, eligible target, privileged deployment, named-target observation, or activation is implemented.
 
 ### Home Automation
 
@@ -132,6 +132,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.19 | Recorded the repository-only constrained proxy foundation inside PLAT-14.1A without creating a new capability or authorizing privileged or live work. |
 | 1.18 | Recorded the repository-only Production Provider Adapter Foundation within PLAT-14.1A without creating a new capability or authorizing live-provider work. |
 | 1.17 | Recorded publication of the accepted Production Provider Adapter Architecture and Privileged-Access Security Design without creating a new capability or authorizing implementation. |
 | 1.16 | Recorded exact five-record Registry migration, completed-migration evidence, current planner lifecycle semantics, and unchanged fixture-only/no-live-health boundary. |

@@ -1,0 +1,15 @@
+{
+  "activation_status": "not_activated",
+  "allow_networking": false,
+  "allow_runtime_access": false,
+  "allow_streaming": false,
+  "configuration_digest": "sha256:42114d72f31ee9e81865b3c211659fe6f95fb90dce53dd8123d0e1ac56962421",
+  "configuration_version": "constrained-proxy-configuration-v1.0",
+  "contract_version": "1.0",
+  "fixture_only": true,
+  "maximum_request_payload_bytes": 16384,
+  "maximum_response_payload_bytes": 65536,
+  "maximum_response_records": 64,
+  "require_authentication": true,
+  "require_exact_target": true
+}

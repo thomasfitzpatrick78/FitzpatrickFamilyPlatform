@@ -1,0 +1,48 @@
+{
+  "contract_version": "1.0",
+  "metadata": {
+    "adapter_version": "repository-provider-adapter-foundation-v1.0",
+    "completed_at": "2026-07-22T12:00:02Z",
+    "configuration_version": "constrained-proxy-configuration-v1.0",
+    "contract_version": "1.0",
+    "fixture_only": true,
+    "limitation_codes": [
+      "repository_fixture_only"
+    ],
+    "observed_at": "2026-07-22T12:00:01Z",
+    "policy_version": "constrained-proxy-policy-v1.0",
+    "provenance_reference": "engineering/tests/fixtures/proxy_foundation/proxy-response.json",
+    "proxy_version": "repository-constrained-proxy-v1.0",
+    "registry_subject_reference": "engineering/tests/fixtures/container_health/registry/svc-fixture-api.yaml",
+    "request_id": "proxy-request-fixture-001",
+    "response_id": "proxy-response-fixture-001",
+    "target_subject_id": "svc-fixture-api"
+  },
+  "payload_size_bytes": 1024,
+  "records": [
+    {
+      "contract_version": "1.0",
+      "observed_at": "2026-07-22T12:00:01Z",
+      "signal_name": "container.cpu.utilization",
+      "value": 12.5
+    },
+    {
+      "contract_version": "1.0",
+      "observed_at": "2026-07-22T12:00:01Z",
+      "signal_name": "container.healthcheck.state",
+      "value": "healthy"
+    },
+    {
+      "contract_version": "1.0",
+      "observed_at": "2026-07-22T12:00:01Z",
+      "signal_name": "container.lifecycle.observed_state",
+      "value": "running"
+    },
+    {
+      "contract_version": "1.0",
+      "observed_at": "2026-07-22T12:00:01Z",
+      "signal_name": "container.restart.count",
+      "value": 0
+    }
+  ]
+}

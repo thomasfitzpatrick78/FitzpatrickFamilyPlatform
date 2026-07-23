@@ -99,6 +99,37 @@ from engineering.platform_eap.provider_adapter_io import (
     provider_result_to_json,
 )
 from engineering.platform_eap.provider_adapter_mock import MockProviderAdapter, RepositoryFixtureClient
+from engineering.platform_eap.proxy_foundation import (
+    FindingSeverity as ProxyFindingSeverity,
+    ProxyDataError,
+    ProxyDecisionStatus,
+    UnsupportedProxyContractVersion,
+    contract_summary as proxy_contract_summary,
+    repository_capability as repository_proxy_capability,
+    repository_configuration as repository_proxy_configuration,
+    repository_policy as repository_proxy_policy,
+    validate_capability as validate_proxy_capability,
+    validate_configuration as validate_proxy_configuration,
+    validate_policy as validate_proxy_policy,
+    validate_request as validate_proxy_request,
+    validate_response as validate_proxy_response,
+)
+from engineering.platform_eap.proxy_foundation_io import (
+    capability_from_json as proxy_capability_from_json,
+    capability_to_json as proxy_capability_to_json,
+    configuration_from_json as proxy_configuration_from_json,
+    configuration_to_json as proxy_configuration_to_json,
+    contract_summary_to_json as proxy_contract_summary_to_json,
+    decision_to_json as proxy_decision_to_json,
+    policy_from_json as proxy_policy_from_json,
+    policy_to_json as proxy_policy_to_json,
+    request_from_json as proxy_request_from_json,
+    request_to_json as proxy_request_to_json,
+    response_from_json as proxy_response_from_json,
+    response_to_json as proxy_response_to_json,
+    result_to_json as proxy_result_to_json,
+)
+from engineering.platform_eap.proxy_foundation_mock import RepositoryMockProxy, RepositoryProxyFixtureLibrary
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -1038,6 +1069,7 @@ def capabilities() -> int:
     print("PLAT-EAP-11\tGoverned Automation Orchestration Capability\tImplemented")
     print("PLAT-EAP-12\tContainer Operational Health Repository Capability\tImplemented; Fixture Only; Not Activated")
     print("PLAT-EAP-13\tProduction Provider Adapter Foundation\tImplemented; Repository Fixtures Only; No Live Provider")
+    print("PLAT-EAP-14\tConstrained Proxy Foundation\tImplemented; Repository Fixtures Only; No Socket or Network Access")
     return 0
 
 
@@ -1390,6 +1422,111 @@ def provider_cli(argv: list[str]) -> int:
     return 2
 
 
+def _proxy_fixture_path(path_value: str) -> Path:
+    root = ROOT.resolve()
+    fixture_root = (root / "engineering/tests/fixtures/proxy_foundation").resolve()
+    supplied = Path(path_value)
+    unresolved = supplied if supplied.is_absolute() else root / supplied
+    if unresolved.is_symlink():
+        raise ProxyDataError("Proxy input path must not be a symbolic link.")
+    candidate = unresolved.resolve()
+    if not candidate.is_relative_to(fixture_root):
+        raise ProxyDataError("Proxy commands accept only governed proxy-foundation fixtures.")
+    if not candidate.is_file():
+        raise ProxyDataError(f"Proxy fixture file not found: {path_value}.")
+    return candidate
+
+
+def _print_proxy_findings(title: str, findings: tuple[object, ...]) -> int:
+    errors = [finding for finding in findings if getattr(finding, "severity", None) == ProxyFindingSeverity.ERROR]
+    warnings = [finding for finding in findings if getattr(finding, "severity", None) == ProxyFindingSeverity.WARNING]
+    print(f"# {title}")
+    print(f"Status: {'FAIL' if errors else 'PASS WITH WARNINGS' if warnings else 'PASS'}")
+    print(f"Errors: {len(errors)}")
+    print(f"Warnings: {len(warnings)}")
+    for finding in findings:
+        reference = f" ({finding.reference})" if getattr(finding, "reference", None) else ""
+        print(f"{finding.severity.value}: {finding.code}: {finding.message}{reference}")
+    return 2 if errors else 0
+
+
+def proxy_cli(argv: list[str]) -> int:
+    usage = (
+        "Usage: platform-eap proxy "
+        "<contract|validate|validate request <path>|validate response <request-path> <response-path>|"
+        "validate policy <path>|validate configuration <path>|validate capability <path>|policy|"
+        "decision <scenario>|fixtures|request <scenario>|response <scenario>|mock <scenario>>"
+    )
+    try:
+        library = RepositoryProxyFixtureLibrary(ROOT)
+        if argv == ["contract"]:
+            print(proxy_contract_summary_to_json(proxy_contract_summary()), end="")
+            return 0
+        if argv == ["policy"]:
+            print(proxy_policy_to_json(repository_proxy_policy()), end="")
+            return 0
+        if argv == ["validate"]:
+            request = library.base_request()
+            response = library.base_response()
+            findings = tuple(
+                (*validate_proxy_policy(repository_proxy_policy()), *validate_proxy_configuration(repository_proxy_configuration()),
+                 *validate_proxy_capability(repository_proxy_capability()), *validate_proxy_request(request),
+                 *validate_proxy_response(response, request))
+            )
+            return _print_proxy_findings("Repository Proxy Foundation Validation", findings)
+        if len(argv) == 3 and argv[:2] == ["validate", "request"]:
+            path = _proxy_fixture_path(argv[2])
+            return _print_proxy_findings("Proxy Request Validation", validate_proxy_request(proxy_request_from_json(path.read_text(encoding="utf-8"))))
+        if len(argv) == 4 and argv[:2] == ["validate", "response"]:
+            request_path = _proxy_fixture_path(argv[2])
+            response_path = _proxy_fixture_path(argv[3])
+            request = proxy_request_from_json(request_path.read_text(encoding="utf-8"))
+            response = proxy_response_from_json(response_path.read_text(encoding="utf-8"))
+            return _print_proxy_findings("Proxy Response Validation", validate_proxy_response(response, request))
+        if len(argv) == 3 and argv[:2] == ["validate", "policy"]:
+            path = _proxy_fixture_path(argv[2])
+            return _print_proxy_findings("Proxy Policy Validation", validate_proxy_policy(proxy_policy_from_json(path.read_text(encoding="utf-8"))))
+        if len(argv) == 3 and argv[:2] == ["validate", "configuration"]:
+            path = _proxy_fixture_path(argv[2])
+            return _print_proxy_findings("Proxy Configuration Validation", validate_proxy_configuration(proxy_configuration_from_json(path.read_text(encoding="utf-8"))))
+        if len(argv) == 3 and argv[:2] == ["validate", "capability"]:
+            path = _proxy_fixture_path(argv[2])
+            return _print_proxy_findings("Proxy Capability Validation", validate_proxy_capability(proxy_capability_from_json(path.read_text(encoding="utf-8"))))
+        if argv == ["fixtures"]:
+            print("# Repository Proxy Fixtures")
+            print("Scope: synthetic; repository-only; no socket; no network; no runtime")
+            for name in library.scenario_ids():
+                print(name)
+            return 0
+        if len(argv) == 2 and argv[0] == "request":
+            print(proxy_request_to_json(library.request_for(argv[1])), end="")
+            return 0
+        if len(argv) == 2 and argv[0] == "response":
+            request = library.request_for(argv[1])
+            print(proxy_response_to_json(library.response_for(argv[1], request)), end="")
+            return 0
+        if len(argv) == 2 and argv[0] == "decision":
+            decision = RepositoryMockProxy(ROOT).evaluate(argv[1]).decision
+            print(proxy_decision_to_json(decision), end="")
+            return 0 if decision.decision == ProxyDecisionStatus.ALLOWED else 1
+        if len(argv) == 2 and argv[0] == "mock":
+            result = RepositoryMockProxy(ROOT).evaluate(argv[1])
+            print(proxy_result_to_json(result), end="")
+            return 0 if result.decision.decision == ProxyDecisionStatus.ALLOWED else 1
+    except UnsupportedProxyContractVersion as exc:
+        print("# Repository-Only Constrained Proxy Foundation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 3
+    except (ProxyDataError, OSError, UnicodeError, ValueError) as exc:
+        print("# Repository-Only Constrained Proxy Foundation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 2
+    print(usage)
+    return 2
+
+
 def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -1462,5 +1599,7 @@ def main(argv: list[str] | None = None) -> int:
         return container_health_cli(argv[1:])
     if argv and argv[0] == "provider":
         return provider_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider>")
+    if argv and argv[0] == "proxy":
+        return proxy_cli(argv[1:])
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy>")
     return 2
