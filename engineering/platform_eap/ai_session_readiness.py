@@ -692,14 +692,29 @@ class AISessionReadinessValidator:
                     )
                 elif name == "Bravo":
                     plat_14_1a = [line.lower() for line in workstream_rows if "| plat-14.1a |" in line.lower()]
-                    planning_state_ok = (
+                    published_state = (
                         len(plat_14_1a) == 1
                         and "done; architecture gatekeeper accepted / published / fixture only / unactivated" in plat_14_1a[0]
                         and "implementation accepted and published" in plat_14_1a[0]
                     )
+                    source_review_state = (
+                        len(plat_14_1a) == 1
+                        and "architecture review; source foundation complete / unpublished" in plat_14_1a[0]
+                        and "published fixture-only/unactivated foundations and architecture remain accepted" in plat_14_1a[0]
+                        and "pending architecture gatekeeper publication decision" in plat_14_1a[0]
+                    )
+                    source_published_state = (
+                        len(plat_14_1a) == 1
+                        and "architecture review; transport-free source published" in plat_14_1a[0]
+                        and "architecture gatekeeper approved, accepted, and published" in plat_14_1a[0]
+                        and "socket-capable privileged proxy implementation review" in plat_14_1a[0]
+                    )
+                    planning_state_ok = (
+                        published_state or source_review_state or source_published_state
+                    )
                     warning_message = (
-                        "Kanban does not preserve PLAT-14.1A as an Architecture Gatekeeper-accepted, "
-                        "published, fixture-only, and unactivated repository implementation."
+                        "Kanban does not preserve the PLAT-14.1A published fixture-only/unactivated "
+                        "baseline and current Architecture Gatekeeper source-publication state."
                     )
                 else:
                     planning_state_ok = bool(workstream_rows) and all(

@@ -74,7 +74,7 @@ The Go project supports each major release until two newer major releases and is
 
 ## Implementation and Activation Boundary
 
-This ADR records approval of the architecture decision only. Implementation has not begun; no artifact has been accepted; and no code, dependency retrieval, build, image creation, Docker or socket access, credential, deployment, target approval, observation, consumer, recurring execution, or activation is authorized. Reserved compatibility operations remain denied under the current policy.
+This ADR records approval of the architecture decision. The Architecture Gatekeeper approved, accepted, and published a separately authorized transport-free Go source foundation, but the ADR uses a Boolean implementation field and therefore remains `Implemented: No` until the complete socket-capable architecture is implemented and accepted. The published source has no listener, socket, networking, Docker interaction, production credential, executable publication, image, deployment, target approval, observation, consumer, recurrence, or activation. Reserved compatibility operations remain denied under the current policy.
 
 ## Related Documents
 
@@ -82,9 +82,13 @@ This ADR records approval of the architecture decision only. Implementation has 
 - [Privileged Proxy Implementation Architecture](../Privileged_Proxy_Implementation_Architecture.md)
 - [Privileged Proxy Runtime Security Control Specification](../../specifications/Privileged_Proxy_Runtime_Security_Control_Specification.md)
 - [Privileged Proxy Supply-Chain Security Requirements](../../specifications/Privileged_Proxy_Supply_Chain_Security_Requirements.md)
+- [Source Implementation Architecture Conformance](../Privileged_Proxy_Source_Implementation_Architecture_Conformance.md)
+- [Source Implementation Package](../../milestones/Milestone_14/Privileged_Proxy_Source_Implementation_Package.md)
 
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source while retaining Boolean `Implemented: No` and every later gate. |
+| 1.1 | Recorded the completed transport-free source review tree while retaining Boolean `Implemented: No` and every socket, Docker, artifact, deployment, and observation gate. |
 | 1.0 | Recorded Architecture Gatekeeper approval of the separate purpose-built minimal Go proxy and authenticated non-Docker Unix-socket boundary, with binding clarification that approval is architecture-only. |

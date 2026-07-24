@@ -137,12 +137,12 @@ def test_ai_session_readiness_tracks_plat_14_1a_published_fixture_only_state(tmp
     _replace(
         root,
         kanban,
-        "Done; Architecture Gatekeeper Accepted / Published / Fixture Only / Unactivated",
+        "Architecture Review; Transport-Free Source Published",
         "Implementation not started",
     )
     result = _validate(root)
     assert result.readiness == READY_WITH_WARNINGS
-    assert any("PLAT-14.1A as an Architecture Gatekeeper-accepted" in warning.message for warning in result.warnings)
+    assert any("PLAT-14.1A published fixture-only/unactivated" in warning.message for warning in result.warnings)
 
 
 def test_ai_session_readiness_detects_missing_permanent_governance(tmp_path):

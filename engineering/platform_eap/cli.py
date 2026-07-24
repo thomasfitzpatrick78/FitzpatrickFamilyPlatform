@@ -142,6 +142,14 @@ from engineering.platform_eap.deployment_configuration import (
 )
 from engineering.platform_eap.deployment_configuration_io import contract_summary_to_json as deployment_contract_summary_to_json
 from engineering.platform_eap.deployment_configuration_fixtures import RepositoryDeploymentFixtureLibrary
+from engineering.platform_eap.privileged_proxy_source import (
+    acceptance_summary as privileged_proxy_source_acceptance,
+    contract_summary as privileged_proxy_source_contract,
+    fixture_summary as privileged_proxy_source_fixtures,
+    policy_summary as privileged_proxy_source_policy,
+    supply_chain_summary as privileged_proxy_source_supply_chain,
+    validate_source as validate_privileged_proxy_source,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -1540,6 +1548,50 @@ def proxy_cli(argv: list[str]) -> int:
     return 2
 
 
+def privileged_proxy_cli(argv: list[str]) -> int:
+    usage = (
+        "Usage: platform-eap privileged-proxy source "
+        "<validate|contract|policy|fixtures|supply-chain|static-safety|acceptance>"
+    )
+    if not argv or argv[0] != "source":
+        print(usage)
+        return 2
+    action = argv[1:]
+    try:
+        if action == ["validate"] or action == ["static-safety"]:
+            findings = validate_privileged_proxy_source(ROOT)
+            errors = [finding for finding in findings if finding.severity == ProxyFindingSeverity.ERROR]
+            print("# Privileged Proxy Source Validation")
+            print(f"Status: {'FAIL' if errors else 'PASS'}")
+            print(f"Errors: {len(errors)}")
+            print("Scope: repository-only; transport-free; no socket; no network; no Docker; no deployment")
+            for finding in findings:
+                reference = f" ({finding.reference})" if finding.reference else ""
+                print(f"{finding.severity.value}: {finding.code}: {finding.message}{reference}")
+            return 2 if errors else 0
+        payload: object | None = None
+        if action == ["contract"]:
+            payload = privileged_proxy_source_contract(ROOT)
+        elif action == ["policy"]:
+            payload = privileged_proxy_source_policy()
+        elif action == ["fixtures"]:
+            payload = privileged_proxy_source_fixtures(ROOT)
+        elif action == ["supply-chain"]:
+            payload = privileged_proxy_source_supply_chain(ROOT)
+        elif action == ["acceptance"]:
+            payload = privileged_proxy_source_acceptance(ROOT)
+        if payload is not None:
+            print(json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False))
+            return 0
+    except (OSError, UnicodeError, ValueError, json.JSONDecodeError) as exc:
+        print("# Privileged Proxy Source Validation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 2
+    print(usage)
+    return 2
+
+
 def _print_deployment_findings(title: str, findings: tuple[object, ...]) -> int:
     errors = [finding for finding in findings if getattr(finding, "severity", None) == DeploymentFindingSeverity.ERROR]
     warnings = [finding for finding in findings if getattr(finding, "severity", None) == DeploymentFindingSeverity.WARNING]
@@ -1682,7 +1734,9 @@ def main(argv: list[str] | None = None) -> int:
         return provider_cli(argv[1:])
     if argv and argv[0] == "proxy":
         return proxy_cli(argv[1:])
+    if argv and argv[0] == "privileged-proxy":
+        return privileged_proxy_cli(argv[1:])
     if argv and argv[0] == "deployment":
         return deployment_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy|deployment>")
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy|privileged-proxy|deployment>")
     return 2

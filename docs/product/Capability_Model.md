@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.21
+**Document Version:** 1.23
 
 **Status:** Active
 
@@ -59,6 +59,8 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 **Production Provider, Constrained Proxy, and Deployment Configuration Foundations:** Accepted architecture and Contract v1.0 have a published repository-only provider reference with immutable contracts, strict validation, abstract lifecycle, synthetic fixtures, deterministic normalization/failures, and bounded CLI. The accepted proxy direction has a separate repository-only implementation of immutable security contracts, category-based default-deny policy, conceptual identity/authorization, strict request/response validation, deterministic fixture mock, and audit/failure evidence. A repository configuration layer now binds descriptive profiles, synthetic identity, runtime-security/resource/audit prerequisites, exact compatibility, endpoint policy, and canonical digests. These remain one PLAT-14.1A capability path, not new product capabilities. No transport, live provider, socket-capable implementation, enforced deployment, credential/certificate, eligible target, named-target observation, or activation is implemented.
 
 **Privileged Proxy Implementation Architecture and Acceptance:** The Architecture Gatekeeper-approved and published package selects a purpose-built minimal Go proxy, non-Docker authenticated Unix-socket interface, fixed operation dispatcher, complete authorization/digest binding, durable replay denial, runtime enforcement mapping, supply-chain requirements, threat model, security tests, and separate implementation/deployment acceptance gates. It refines the existing PLAT-14.1A capability path rather than creating a new product capability and adds no executable, dependency, build, socket, Docker, network, credential, deployment, target, consumer, or activation capability.
+
+**Privileged Proxy Transport-Free Source Foundation:** Architecture Gatekeeper-approved, accepted, and published standard-library-only Go source implements strict canonical protocol objects, abstract peer context, signed one-shot authorization, exact selector and digest binding, replay denial, the published category policy, five typed synthetic operations, projection, logical limits, audit, fail-closed orchestration, tests, and static no-network/no-Docker proof. This is implementation evidence within the existing PLAT-14.1A path, not a new product capability. Publication adds no socket, Docker access, executable artifact, deployment, target, observation, consumer, or activation.
 
 ### Home Automation
 
@@ -134,6 +136,8 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.23 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source inside PLAT-14.1A without creating a new capability or opening later gates. |
+| 1.22 | Added the completed transport-free privileged-proxy source review tree inside PLAT-14.1A without creating a capability or authorizing publication, sockets, artifacts, deployment, or observation. |
 | 1.21 | Recorded publication of the approved privileged-proxy implementation architecture and acceptance package inside PLAT-14.1A without creating a new capability or authorizing implementation. |
 | 1.20 | Recorded the repository-only deployment configuration foundation inside PLAT-14.1A without creating a new capability or authorizing implementation, enforcement, credentials, targets, or live work. |
 | 1.19 | Recorded the repository-only constrained proxy foundation inside PLAT-14.1A without creating a new capability or authorizing privileged or live work. |

@@ -1,0 +1,49 @@
+{
+  "build": {
+    "command": "go build -trimpath -buildvcs=false ./...",
+    "committed_binary": false,
+    "deterministic_flags": [
+      "-trimpath",
+      "-buildvcs=false"
+    ],
+    "oci_artifact": false
+  },
+  "dependencies": {
+    "external_modules": [],
+    "go_sum_entries": 0,
+    "strategy": "Go standard library only"
+  },
+  "evidence_version": "1.0",
+  "go_toolchain": {
+    "archive": "go1.26.5.darwin-arm64.tar.gz",
+    "archive_sha256": "efb87ff28af9a188d0536ef5d42e63dd52ba8263cd7344a993cc48dd11dedb6a",
+    "architecture": "darwin/arm64",
+    "download_source": "https://go.dev/dl/",
+    "version": "go1.26.5"
+  },
+  "licenses": {
+    "external_dependency_licenses": [],
+    "go_standard_library": {
+      "license": "BSD-3-Clause",
+      "source": "https://go.dev/LICENSE"
+    }
+  },
+  "provenance": {
+    "artifact_signing": "Future separately gated OCI acceptance work; no signing performed.",
+    "binary_publication": false,
+    "plan": "Bind a Gatekeeper-accepted source commit, isolated builder identity, workflow digest, SBOM, provenance attestation, and signature before artifact acceptance.",
+    "slsa_claim": "none"
+  },
+  "scope": "Transport-free repository source; no sockets, networking, Docker, deployment, credentials, or live observation.",
+  "source_revision": {
+    "baseline_commit": "9b1eb3c7b60937b5ff14abc03023326ba65dd6cf",
+    "publication_commit": null,
+    "state": "Architecture Gatekeeper approved and accepted; containing Git commit is the canonical one-commit source publication revision"
+  },
+  "vulnerability_review": {
+    "blocking_findings": [],
+    "govulncheck": "not available in the repository environment; unresolved evidence gap before artifact acceptance",
+    "scope_note": "The module has no external dependencies. Standard-library and toolchain vulnerability evidence remains required at the later artifact gate.",
+    "status": "documented_gap"
+  }
+}
