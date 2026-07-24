@@ -1,8 +1,8 @@
 # Platform EAP Report - AI Session Readiness
 
-**Readiness:** READY
+**Readiness:** READY WITH WARNINGS
 
-**Timestamp:** 2026-07-24T20:54:50.143363+00:00
+**Timestamp:** 2026-07-24T22:02:03.532145+00:00
 
 **Command:** `./platform-eap ai-session readiness`
 
@@ -11,23 +11,23 @@
 - Repository: `FitzpatrickFamilyPlatform`
 - Path: `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`
 - Branch: `main`
-- HEAD: `aea88805a4cd89735f58a68d436045c569443a6c`
-- Working tree: clean outside generated readiness reports
+- HEAD: `5247983474246f44487a3d69430dfde37f12e112`
+- Working tree: active source changes
 
 ## Counts
 
 - Errors: 0
-- Warnings: 0
+- Warnings: 1
 
 ## Repository Identity
 
-**Status:** PASS
+**Status:** PASS WITH WARNINGS
 
 - PASS: Repository identity matches expected FitzpatrickFamilyPlatform. Evidence: `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`.
 - PASS: Current branch: main
-- PASS: Current HEAD: aea88805a4cd89735f58a68d436045c569443a6c
+- PASS: Current HEAD: 5247983474246f44487a3d69430dfde37f12e112
 - PASS: No unresolved merge conflicts detected.
-- PASS: Working tree is clean outside generated readiness reports.
+- WARNING: Working tree has active source changes; preserve and reconcile them before editing. Evidence: `M docs/architecture/Architecture_Backlog.md`, ` M docs/architecture/Current_Architecture_State.md`, ` M docs/architecture/Privileged_Proxy_Implementation_Architecture.md`, ` M docs/architecture/Privileged_Proxy_Threat_Model.md`, ` M docs/engineering-organization/Engineering_Capability_Model.md`, ` M docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`, ` M docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`, ` M docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`, ` M docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`, ` M docs/governance/Governance_Change_Log.md`, ` M docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md`, ` M docs/milestones/Milestone_14/Privileged_Deployment_Acceptance_Checklist.md`, ` M docs/milestones/Milestone_14/Privileged_Proxy_Implementation_Acceptance_Checklist.md`, ` M docs/portfolio/Engineering_Portfolio_Kanban.md`, ` M docs/product/Capability_Model.md`, ` M docs/product/Product_Backlog.md`, ` M docs/product/Product_Roadmap.md`, ` M docs/specifications/Privileged_Proxy_Non_Docker_Adapter_Interface_Specification.md`, ` M docs/specifications/Privileged_Proxy_Runtime_Security_Control_Specification.md`, ` M docs/specifications/Privileged_Proxy_Security_Test_Specification.md`, ` M docs/specifications/Privileged_Proxy_Supply_Chain_Security_Requirements.md`, ` M reports/engineering/engineering_metrics/engineering_metrics_report.json`, ` M reports/engineering/engineering_metrics/engineering_metrics_report.md`, ` M reports/engineering/governance/governance_report.json`, ` M reports/engineering/governance/governance_report.md`, ` M reports/engineering/milestone_closeout/milestone_closeout_report.json`, ` M reports/engineering/milestone_closeout/milestone_closeout_report.md`, ` M reports/engineering/release/release_report.json`, ` M reports/engineering/release/release_report.md`, ` M reports/engineering/repository/repository_report.json`, ` M reports/engineering/repository/repository_report.md`, `?? docs/milestones/Milestone_14/Socket_Capable_Privileged_Proxy_Implementation_Review_Package.md`.
 
 ## Permanent Governance
 
@@ -165,24 +165,24 @@
 - PASS: Architecture Integration assigned role is governed: Chief Architect / Architecture Gatekeeper, Codex Implementation Engineer. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`, `docs/engineering-organization/AI_Role_Catalog.md`.
 - PASS: Architecture Integration Engineering Lifecycle stage is valid: Architecture Review. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`.
 - PASS: Architecture Integration next gate is present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`.
-- PASS: Architecture Integration freshness evidence is present: 2026-07-23. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`.
+- PASS: Architecture Integration freshness evidence is present: 2026-07-24. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`.
 - PASS: Architecture Integration repository identity and baseline evidence are present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`.
 - PASS: Architecture Integration supersession fields are consistent with Active. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Architecture_Integration_Continuity_Brief.md`.
 - PASS: Alpha assigned role is governed: Codex Implementation Engineer. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`, `docs/engineering-organization/AI_Role_Catalog.md`.
 - PASS: Alpha Engineering Lifecycle stage is valid: Repository Implementation. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`.
 - PASS: Alpha next gate is present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`.
-- PASS: Alpha freshness evidence is present: 2026-07-23. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`.
+- PASS: Alpha freshness evidence is present: 2026-07-24. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`.
 - PASS: Alpha repository identity and baseline evidence are present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`.
 - PASS: Alpha supersession fields are consistent with Active. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Alpha_Continuity_Brief.md`.
 - PASS: Bravo assigned role is governed: Codex Implementation Engineer. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`, `docs/engineering-organization/AI_Role_Catalog.md`.
 - PASS: Bravo Engineering Lifecycle stage is valid: Architecture Review. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`.
 - PASS: Bravo next gate is present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`.
-- PASS: Bravo freshness evidence is present: 2026-07-23. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`.
+- PASS: Bravo freshness evidence is present: 2026-07-24. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`.
 - PASS: Bravo repository identity and baseline evidence are present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`.
 - PASS: Bravo supersession fields are consistent with Active. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Bravo_Continuity_Brief.md`.
 - PASS: Charlie assigned role is governed: Codex Implementation Engineer. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`, `docs/engineering-organization/AI_Role_Catalog.md`.
 - PASS: Charlie Engineering Lifecycle stage is valid: Specification. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`.
 - PASS: Charlie next gate is present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`.
-- PASS: Charlie freshness evidence is present: 2026-07-23. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`.
+- PASS: Charlie freshness evidence is present: 2026-07-24. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`.
 - PASS: Charlie repository identity and baseline evidence are present. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`.
 - PASS: Charlie supersession fields are consistent with Active. Evidence: `docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md`.

@@ -1,6 +1,6 @@
 # Capability Model
 
-**Document Version:** 1.23
+**Document Version:** 1.24
 
 **Status:** Active
 
@@ -61,6 +61,8 @@ Capabilities represent stable product domains. Epics evolve beneath capabilities
 **Privileged Proxy Implementation Architecture and Acceptance:** The Architecture Gatekeeper-approved and published package selects a purpose-built minimal Go proxy, non-Docker authenticated Unix-socket interface, fixed operation dispatcher, complete authorization/digest binding, durable replay denial, runtime enforcement mapping, supply-chain requirements, threat model, security tests, and separate implementation/deployment acceptance gates. It refines the existing PLAT-14.1A capability path rather than creating a new product capability and adds no executable, dependency, build, socket, Docker, network, credential, deployment, target, consumer, or activation capability.
 
 **Privileged Proxy Transport-Free Source Foundation:** Architecture Gatekeeper-approved, accepted, and published standard-library-only Go source implements strict canonical protocol objects, abstract peer context, signed one-shot authorization, exact selector and digest binding, replay denial, the published category policy, five typed synthetic operations, projection, logical limits, audit, fail-closed orchestration, tests, and static no-network/no-Docker proof. This is implementation evidence within the existing PLAT-14.1A path, not a new product capability. Publication adds no socket, Docker access, executable artifact, deployment, target, observation, consumer, or activation.
+
+**Socket-Capable Privileged Proxy Implementation Review:** Architecture Gatekeeper-approved and published review closes the future single-purpose transport architecture, assigns Docker API evolution to proxy compatibility, binds future privileged artifacts to one immutable engineering identity, and defines exact source, artifact, deployment, testing, and first-interaction gates. This is architecture evidence inside PLAT-14.1A, not a new product capability, implementation, artifact, deployment, or operational authority.
 
 ### Home Automation
 
@@ -136,6 +138,7 @@ Finance, banking, budgeting, transactions, and investments are excluded from thi
 
 | Version | Description |
 |---------|-------------|
+| 1.24 | Recorded publication of the closed socket-capable transport review inside PLAT-14.1A without creating a capability or authorizing implementation or operation. |
 | 1.23 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source inside PLAT-14.1A without creating a new capability or opening later gates. |
 | 1.22 | Added the completed transport-free privileged-proxy source review tree inside PLAT-14.1A without creating a capability or authorizing publication, sockets, artifacts, deployment, or observation. |
 | 1.21 | Recorded publication of the approved privileged-proxy implementation architecture and acceptance package inside PLAT-14.1A without creating a new capability or authorizing implementation. |

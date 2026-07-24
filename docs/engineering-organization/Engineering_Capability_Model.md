@@ -1,6 +1,6 @@
 # Engineering Capability Model
 
-**Document Version:** 1.7
+**Document Version:** 1.8
 
 **Status:** Active
 
@@ -32,7 +32,7 @@ This document defines the capability model for the AI-operated Engineering Organ
 | Practice Promotion | Evaluate repeated practices for promotion into governed artifacts. | Architecture review and documentation updates after evidence exists. |
 | Provider Contract Validation | Prove provider-independent evidence boundaries before privileged or live integration. | PLAT-14.1A repository-only adapter contracts, synthetic fixtures, deterministic mocks, normalization, failures, and CLI. |
 | Privileged Configuration Validation | Make a future privileged deployment proposal versioned, content-bound, reviewable, and fail-closed before any runtime or infrastructure authority exists. | PLAT-14.1A repository-only deployment profiles, identity/security/resource/audit/policy compatibility, digests, fixtures, and CLI. |
-| Privileged Implementation Acceptance Design | Define exact architecture, threats, security tests, supply-chain proof, and separate implementation/deployment gates before a socket-capable build is authorized. | Architecture Gatekeeper-approved and published PLAT-14.1A purpose-built proxy architecture plus an approved, accepted, and published transport-free source foundation with deterministic validation; no socket-capable artifact, deployment, target, observation, or activation authorized. |
+| Privileged Implementation Acceptance Design | Define exact architecture, threats, security tests, supply-chain proof, and separate implementation/deployment gates before a socket-capable build is authorized. | Architecture Gatekeeper-approved and published purpose-built proxy architecture, accepted transport-free source, and closed socket-capable transport review with single-purpose, compatibility-ownership, immutable-artifact-identity, and acceptance boundaries; no socket-capable implementation, artifact, deployment, target, observation, or activation authorized. |
 
 ---
 
@@ -63,6 +63,7 @@ This document defines the capability model for the AI-operated Engineering Organ
 
 | Version | Description |
 |---------|-------------|
+| 1.8 | Recorded publication of the closed socket-capable transport review without promoting AB-012 or authorizing source, artifact, deployment, target, or operation. |
 | 1.7 | Recorded publication of the Architecture Gatekeeper-approved and accepted transport-free source without promoting AB-012 or authorizing sockets, artifacts, deployment, targets, or operation. |
 | 1.6 | Added transport-free privileged source-conformance evidence to the existing acceptance-design capability without promoting AB-012 or authorizing publication, sockets, artifacts, deployment, or operation. |
 | 1.5 | Recorded publication of the approved privileged implementation acceptance design evidence without authorizing a build, deployment, target, or governance promotion. |

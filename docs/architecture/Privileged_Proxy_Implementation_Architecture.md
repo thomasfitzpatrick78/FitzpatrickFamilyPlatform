@@ -1,8 +1,8 @@
 # Privileged Proxy Implementation Architecture
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Architecture Gatekeeper Approved and Published; No Implementation or Live Authority
+**Status:** Architecture Gatekeeper Approved and Published v1.1; Transport Architecture Closed; No Implementation or Live Authority
 
 **Milestone:** PLAT-14.1A named prerequisite; Bravo workstream
 
@@ -30,6 +30,9 @@ The Architecture Gatekeeper approved this architecture with binding clarificatio
 8. Authorization never implies evidence quality.
 9. Evidence never implies health.
 10. Health never implies remediation authority.
+11. The proxy remains single-purpose and may not become generic IPC, generic RPC, a generic Unix transport, or a generic HTTP framework.
+12. Proxy compatibility alone owns Docker API evolution; the adapter, PLAT-14.1A, and consumers remain provider-independent.
+13. Published transport choices are closed. Any transport-architecture change requires explicit Architecture Gatekeeper approval before implementation.
 
 ## Selected Technology
 
@@ -45,6 +48,8 @@ The Architecture Gatekeeper approved this architecture with binding clarificatio
 | Adapter transport | Separate filesystem Unix-domain `SOCK_STREAM` socket | No TCP, host port, loopback, HTTP server, gRPC, or network client. |
 | Public protocol | Length-prefixed canonical JSON protocol v1 | One request and one response per connection; no streaming or upgrade. |
 | Cryptography | Go standard `crypto/ed25519` and `crypto/sha256` | Authorization public key only in proxy configuration; no private key in proxy or repository. |
+
+The future source must organize these decisions as internal single-purpose proxy components. It may not export, advertise, or evolve the adapter listener/framer, Unix connector, or Docker HTTP encoder/parser as a generalized IPC, RPC, transport, routing, or HTTP library.
 
 Go `1.26.5` is the reviewed architecture snapshot, not implementation authorization. At implementation acceptance the exact Go toolchain, `x/sys` and all transitive sources, Docker Engine/API compatibility, container base and image digests, maintenance, security advisories, vulnerabilities, licenses, provenance, signatures, SBOM, and end-of-life status must be revalidated and explicitly bound. The Go vulnerability database and `govulncheck` are required evidence, not substitutes for broader image and dependency scanning.
 
@@ -127,8 +132,9 @@ The full request/response contract is defined in the [Non-Docker Adapter Interfa
 ### Channel Identity
 
 - The proxy creates a second Unix socket in a dedicated runtime directory shared only with the adapter.
-- The socket is owned by the proxy UID and a dedicated adapter-client GID with mode `0660`; parent directories are `0750` or stricter.
-- On every accepted connection, the proxy obtains `SO_PEERCRED` and requires exact configured UID and primary GID. PID is recorded but is not stable identity by itself.
+- The socket is owned by the proxy UID and a dedicated adapter-client GID with mode `0660`. Its dedicated leaf directory is owned by that UID/GID with mode `02750`; parent directories are root-owned and `0750` or stricter. The adapter group may connect but cannot replace or unlink the socket.
+- The filesystem socket path must be absent at startup. An existing object fails closed and is never automatically removed unless the current proxy process created it. Abstract-namespace sockets are prohibited.
+- On every accepted connection, the proxy obtains `SO_PEERCRED` and requires the exact configured kernel-returned numeric UID and GID. PID is recorded but is not stable identity by itself. Deployment must prove the adapter's real, effective, and saved UID/GID values are each identical to the approved numeric identities.
 - Proxy startup and every request revalidate socket type, owner, group, mode, device/inode expectations, and absence of symlink or world access.
 - Linux peer credentials establish only the local peer-process context at connection time. They neither prove source-code integrity nor independently authorize a request; restrictive socket metadata, governed service identity, signed one-shot authorization, exact target/time/operation/signal scope, and every required digest must also validate.
 
@@ -156,6 +162,7 @@ For any future IP transport, mutual TLS with a dedicated short-lived workload ce
 - A read-only Docker socket mount is not a sufficient security boundary. Docker operations can mutate the daemon through a read-only-mounted socket.
 - Non-root execution is required where compatible with the exact approved host socket-ownership model. No Docker-group membership, supplemental root-equivalent group, root fallback, broader socket permission, host-user mutation, daemon reconfiguration, privileged mode, or capability expansion is preauthorized. If the approved identity cannot reach the socket without broader authority, implementation or deployment stops for architecture review.
 - Startup fails if the socket is absent, is not a Unix socket, is a symlink, has unexpected owner/group, or is broader than the approved mode. Metadata is rechecked before each upstream connection and after any connection failure.
+- Each connection repeats metadata verification after connect and obtains the Docker peer's kernel-returned UID/GID/PID. Exact expected UID/GID and socket device/inode are deployment-bound; PID is audit-only. Drift or socket recreation invalidates readiness with no retry.
 - The proxy cannot copy, bind, forward, or expose the Docker socket. It has no child-process, file-copy, general network, plugin, or mount API.
 - Socket recreation invalidates readiness until ownership and inode metadata are reverified.
 - Disablement stops the adapter, removes the adapter-facing socket, waits up to 15 seconds for in-flight work, then stops the proxy. Rollback selects a previously approved image and configuration digest; it never restarts or mutates observed workloads.
@@ -190,6 +197,8 @@ The following is privileged implementation design, not the public adapter contra
 No other Docker method, route, query, header, or response projector may exist in the first implementation. Inspection is invoked separately for each authorized public operation so the public result remains operation-specific even where the same private Docker route is used.
 
 No redirects, automatic API negotiation, retries, chunked response, informational response, compression, streaming content type, upgrade, hijack, or connection reuse is accepted. Upstream headers are not forwarded. Only status, exact content type, declared length, and approved Docker API/version headers are examined.
+
+The implementation uses one new Unix connection and one fixed HTTP/1.1 request per operation. It must not use `http.Client`, `http.Transport`, environment proxy behavior, connection pooling, DNS, TCP, caller-provided URL values, or a generic router. A minimal encoder writes the exact request bytes and a narrowly wrapped standard-library response parser rejects ambiguous length or transfer semantics, folded or duplicate critical headers, trailing bytes, and any non-table protocol behavior.
 
 Docker documents that daemon control should be restricted to trusted users, that crafted API parameters can become host-level authority, and that TLS keys able to reach the daemon must be guarded like root credentials. The design therefore treats proxy compromise as residual Critical impact even after narrowing.
 
@@ -280,6 +289,14 @@ Future implementation must bind:
 
 Floating tags, unknown source, unpinned modules, absent SBOM, absent or unverifiable provenance/signature, unsupported Go/Docker versions, unresolved applicable Critical vulnerability, or unauthorized builder blocks privileged deployment.
 
+One immutable privileged-artifact engineering identity binds the exact implementation revision, source revision, SBOM subject digest, provenance subject digest, signature subject and verifier policy, and approved configuration digest. Each constituent is mandatory; changing or mismatching one produces a different unapproved identity.
+
+## Closed Transport and Compatibility Ownership
+
+This v1.1 publication closes the transport architecture. Future implementation must conform exactly to the filesystem Unix-socket lifecycle, half-close/EOF framing, kernel-returned peer credentials, Docker socket mediation, fixed HTTP construction/parsing, resource bounds, and runtime-isolation boundary. Reopening any transport decision requires explicit Architecture Gatekeeper approval before source changes.
+
+Docker API version evolution, compatibility validation, fixed constructor changes, and response-schema changes belong exclusively to the proxy compatibility boundary. The Provider Adapter exposes only the non-Docker interface; PLAT-14.1A owns reconciliation and health; consumers use canonical provider-independent evidence. None may acquire Docker-version logic.
+
 ## Disablement and Rollback
 
 Disablement is independent from Docker and the observed workload:
@@ -304,7 +321,8 @@ No step restarts, stops, modifies, or redeploys the observed service. A disablem
 | Security Review | Published |
 | Proxy Foundation | Published; repository-only |
 | Deployment Configuration Foundation | Published; repository-only |
-| Privileged Proxy Implementation Architecture | Proposed for publication |
+| Privileged Proxy Implementation Architecture | Published |
+| Socket-Capable Privileged Proxy Implementation Review | Architecture Gatekeeper approved and published; transport architecture closed |
 | Socket-capable implementation | Not authorized |
 | Privileged deployment | Not authorized |
 | Eligible Registry subject | Not approved |
@@ -347,4 +365,5 @@ This architecture enables a future Platform Administrator to approve and disable
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Published the Architecture Gatekeeper-approved socket lifecycle, kernel-returned peer credential, outbound Docker peer, single-use fixed HTTP, single-purpose, compatibility-ownership, immutable-artifact-identity, and closed-transport clarifications without authorizing implementation. |
 | 1.0 | Published the Architecture Gatekeeper-approved purpose-built minimal proxy architecture with binding version, identity, replay, socket-authority, compatibility, ADR, and backlog clarifications and no implementation or live authority. |

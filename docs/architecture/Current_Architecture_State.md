@@ -1,6 +1,6 @@
 # Current Architecture State
 
-**Document Version:** 1.26
+**Document Version:** 1.27
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 The Platform repository contains governance, product, architecture, standards, validation automation, reports, milestone planning, and registry records for the active Beelink-hosted Pi-hole production service, the active PLAT-13.6.2 Metrics Foundation, and the PLAT-13.6.3A Operations Dashboard correction package.
 
-Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation, the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice, and migration model v2. Exact historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` executed for five approved `not_applicable` subjects with validated rollback and completion evidence. Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` contains 0 apply, 16 review-required, and 23 no-change candidates. Production Provider Adapter Architecture, security design, repository provider foundation, formal security review, transport-incapable proxy foundation, repository-only deployment configuration foundation, the purpose-built privileged-proxy implementation architecture/security acceptance package, and the Architecture Gatekeeper-approved and accepted transport-free standard-library Go source foundation are published. Socket-capable implementation, enforced privileged deployment, credentials/certificates, named-target observation, consumers, activation, and live work remain separately blocked.
+Milestone 12 selected the Registry Driven Infrastructure Foundation architecture. Milestone 13 extends that foundation toward governed operations and observability. Milestone 14 published PLAT-14.0A, the PLAT-14.1A specification, the Registry Container Identity Foundation, the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice, and migration model v2. Exact historical plan `sha256:5addac8821f1a177792240b04c4727e1cc21144c75ab140a1fc8beb93490549f` executed for five approved `not_applicable` subjects with validated rollback and completion evidence. Current plan `sha256:78b3ddcab944e35a5c70bbe991971ab0c939c7c17f7860651a010cecfc24598a` contains 0 apply, 16 review-required, and 23 no-change candidates. Production Provider Adapter Architecture, security design, repository provider foundation, formal security review, transport-incapable proxy foundation, repository-only deployment configuration foundation, the purpose-built privileged-proxy implementation architecture/security acceptance package, the Architecture Gatekeeper-approved and accepted transport-free standard-library Go source foundation, and the Architecture Gatekeeper-approved Socket-Capable Privileged Proxy Implementation Review are published. The transport architecture is closed, but socket-capable implementation, enforced privileged deployment, credentials/certificates, named-target observation, consumers, activation, and live work remain separately blocked.
 
 ---
 
@@ -37,6 +37,7 @@ Milestone 12 selected the Registry Driven Infrastructure Foundation architecture
 - The deployment configuration repository foundation implements immutable descriptive profiles, exact synthetic identity, runtime-security/resource/audit prerequisites, proxy/provider/policy compatibility, canonical bundle digests, strict fixtures, and read-only Platform EAP commands. It does not enforce controls or contain Docker/API/socket/network/listener, credential/certificate, deployment, named-target, observation, or activation capability.
 - The approved and published privileged-proxy implementation architecture selects a separate purpose-built minimal Go service, a non-Docker authenticated Unix-socket protocol, a closed fixed Docker-request dispatcher without a Docker SDK, exact digest-bound authorization, durable fail-closed replay state, runtime-control proof, supply-chain gates, a formal threat model, and separate implementation/deployment acceptance checklists. ADR-012 is approved as architecture only and `Implemented: No`; the package contains no executable or privileged capability.
 - The published transport-free source implements strict canonical protocol objects, abstract peer context, synthetic-key Ed25519 authorization with exact selector and digest bindings, memory and ordinary-file test replay journals, the published policy adapter, five typed synthetic operations, projection, logical limits, canonical audit, fail-closed core orchestration, Go AST safety, tests, and Platform EAP inspection. It contains no `main` package, listener, socket, networking, Docker/API/SDK/CLI, shell, environment-derived configuration, production credential, binary, image, deployment, Registry mutation, observation, consumer, or activation path. ADR-012 remains `Implemented: No` because repository ADR state is Boolean and the socket-capable architecture is incomplete.
+- The published Socket-Capable Privileged Proxy Implementation Review closes the future transport architecture around a single-purpose service, proxy-owned Docker API compatibility, exact filesystem Unix-socket lifecycle/framing/peer verification, fixed Docker mediation, one immutable artifact engineering identity, runtime controls, transport tests, and distinct artifact/deployment/first-interaction gates. It authorizes no source implementation, Docker access, OCI artifact, deployment, credential, Registry mutation, target, observation, consumer, or activation.
 - Pi-hole remains unresolved for privileged eligibility and named-target observation and remains unmigrated in the current Registry migration state; architecture publication changes neither condition.
 
 ---
@@ -90,6 +91,7 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 - [ADR-012 - Purpose-Built Constrained Privileged Proxy](decisions/ADR-012-Purpose-Built-Constrained-Privileged-Proxy.md)
 - [Privileged Proxy Source Architecture Conformance](Privileged_Proxy_Source_Implementation_Architecture_Conformance.md)
 - [Privileged Proxy Source Implementation Package](../milestones/Milestone_14/Privileged_Proxy_Source_Implementation_Package.md)
+- [Socket-Capable Privileged Proxy Implementation Review Package](../milestones/Milestone_14/Socket_Capable_Privileged_Proxy_Implementation_Review_Package.md)
 
 ---
 
@@ -97,6 +99,7 @@ Alerts, backup automation, restore validation, and controlled updates remain pla
 
 | Version | Description |
 |---------|-------------|
+| 1.27 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable transport review while preserving ADR-012 `Implemented: No` and every implementation, artifact, deployment, and operational gate. |
 | 1.26 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source while preserving all socket, artifact, deployment, and operational gates. |
 | 1.25 | Recorded the completed uncommitted transport-free privileged-proxy source review tree and retained the Architecture Gatekeeper publication hold plus every socket, artifact, deployment, and operational gate. |
 | 1.24 | Recorded Architecture Gatekeeper approval and publication of the privileged-proxy implementation architecture/security acceptance package, with no implementation or live gate opened. |

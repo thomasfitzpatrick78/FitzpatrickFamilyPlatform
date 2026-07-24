@@ -1,8 +1,8 @@
 # Privileged Proxy Supply-Chain Security Requirements
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Published Future Requirements; No Build Authorized
+**Status:** Architecture Gatekeeper Approved and Published v1.1 Requirements; No Build Authorized
 
 **Milestone:** PLAT-14.1A named prerequisite
 
@@ -31,9 +31,9 @@ This specification defines evidence required before a future proxy artifact may 
 | Source review | All privileged boundary, parser, authorization, Docker dispatcher, audit, and error paths independently reviewed. |
 | Reproducible build | Hermetic documented inputs; two isolated builds produce matching binary and OCI manifest digests, or every variance is explained and removed before acceptance. |
 | Immutable artifact | Exact per-platform image digest and multi-platform manifest digest; no tag is an approval identity. |
-| SBOM | SPDX 3.0 or CycloneDX inventory covers source, Go toolchain, modules, binary, image, licenses, and checksums. |
-| Provenance | SLSA v1.2 provenance with artifact subject digest, source revision, builder ID, build type, workflow, and external parameters. Minimum Build L2; target Build L3. |
-| Signature | Cosign-compatible image signature and offline-verifiable bundle bound to the manifest digest and approved issuer/identity. |
+| SBOM | Primary SPDX 3.0.1 JSON-LD inventory covers source, Go toolchain, modules, builder inputs, binary, per-platform image, multi-platform index, licenses, relationships, and checksums; CycloneDX may be supplementary only. |
+| Provenance | In-toto Statement using SLSA provenance predicate `https://slsa.dev/provenance/v1`, subject-bound to each binary, platform manifest, and index, with source revision, builder ID, build type, workflow, resolved dependencies, and external parameters. Minimum Build L2; Build L3 before recurrence. |
+| Signature | Cosign-compatible keyless OIDC signature from the approved hosted builder with offline-verifiable Sigstore bundle, exact certificate issuer/workflow identity, claims, digest, and transparency inclusion material. No silent local-key fallback. |
 | Signature verification | Independent verification checks certificate/identity, issuer, transparency/inclusion material where used, claims, artifact digest, and policy. |
 | Base image | `scratch`; builder image/toolchain inputs remain pinned and inventoried. Any nonempty final base requires separate approval, provenance, SBOM, signature, and digest. |
 | Vulnerability review | `govulncheck`, Go vulnerability database, OSV/CVE/SCA, binary, image, and secret scans; findings mapped to reachable code and privileged threat model. |
@@ -45,9 +45,22 @@ This specification defines evidence required before a future proxy artifact may 
 
 Every toolchain, dependency, source, Docker API, container-base, image, maintenance, advisory, vulnerability, license, provenance, signature, SBOM, and end-of-life input must be revalidated at implementation acceptance. Architecture publication grants no permission to retrieve dependencies or produce an artifact.
 
+## Immutable Engineering Identity
+
+Each future privileged artifact possesses one immutable engineering identity derived from all of:
+
+- exact privileged-proxy implementation revision;
+- exact repository source revision;
+- exact per-platform and index SBOM subject digests;
+- exact per-platform and index provenance subject digests;
+- exact signature subjects, certificate issuer/workflow identity, verifier policy, and offline bundle;
+- exact approved configuration digest.
+
+The acceptance record serializes these constituents in one canonical identity manifest and binds its SHA-256 digest into artifact, deployment, authorization, audit, and rollback evidence. No field is optional. A changed, absent, ambiguously resolved, or mismatched constituent is a different unapproved engineering identity and blocks artifact acceptance.
+
 ## Trusted Build and Verification
 
-The trusted build control plane, workflow revision, builder identity, signing identity, and source branch are approval inputs. User-defined build steps must not obtain signing keys. Provenance is verified, not merely present: the artifact subject digest, builder, build type, source, workflow, and external parameters must match approved expectations.
+The trusted build control plane, workflow revision, builder identity, signing identity, and source branch are approval inputs. User-defined build steps must not obtain signing keys. Provenance is verified, not merely present: the artifact subject digest, builder, build type, source, workflow, resolved dependencies, and external parameters must match approved expectations. Two isolated builds must reproduce the binary, platform-manifest, and index digests.
 
 SLSA v1.2 distinguishes provenance existence, hosted signed provenance, and hardened builds. The first privileged deployment requires at least Build L2 and records any gap from Build L3 as a binding risk. Recurring activation requires Build L3 or explicit Architecture Gatekeeper and Platform Administrator exception.
 
@@ -90,4 +103,5 @@ The following block artifact acceptance or privileged deployment:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Published primary SPDX 3.0.1 JSON-LD, subject-bound SLSA v1 provenance, keyless OIDC signing, per-platform/index reproducibility, and one immutable privileged-artifact engineering identity. |
 | 1.0 | Published exact future source, artifact, SBOM, provenance, signature, vulnerability, license, support, revalidation, update, and rollback evidence without authorizing a build. |

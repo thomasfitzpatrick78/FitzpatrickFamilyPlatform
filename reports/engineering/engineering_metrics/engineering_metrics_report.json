@@ -1,12 +1,12 @@
 {
   "capability": "Engineering Metrics",
-  "status": "PASS",
-  "timestamp": "2026-07-24T20:55:25.564459+00:00",
-  "summary": "Engineering metrics generated with status PASS; AI Session Readiness is READY.",
+  "status": "PASS WITH WARNINGS",
+  "timestamp": "2026-07-24T22:02:03.700070+00:00",
+  "summary": "Engineering metrics generated with status PASS WITH WARNINGS; AI Session Readiness is READY WITH WARNINGS.",
   "results": [
     {
       "severity": "INFO",
-      "message": "Markdown documents: 161",
+      "message": "Markdown documents: 162",
       "path": null
     },
     {
@@ -25,32 +25,32 @@
       "path": null
     },
     {
-      "severity": "INFO",
-      "message": "AI Session Readiness: READY; evidence current; onboarding effect NONBLOCKING",
+      "severity": "WARNING",
+      "message": "AI Session Readiness: READY WITH WARNINGS; evidence current; onboarding effect NONBLOCKING WITH CONDITIONS",
       "path": "reports/engineering/ai_session_readiness/ai_session_readiness_report.json"
     }
   ],
   "ai_session_readiness": {
-    "status": "READY",
+    "status": "READY WITH WARNINGS",
     "error_count": 0,
-    "warning_count": 0,
+    "warning_count": 1,
     "domain_count": 9,
-    "generated_at": "2026-07-24T20:54:50.143363+00:00",
+    "generated_at": "2026-07-24T22:02:03.532145+00:00",
     "evidence_status": "current",
     "report_path": "reports/engineering/ai_session_readiness/ai_session_readiness_report.json",
     "evidence_usable": true,
-    "blocking_status": "NONBLOCKING",
-    "interpretation": "The repository can onboard a new AI participant without known readiness warnings.",
-    "caveat": "Readiness describes repository onboarding evidence; it does not authorize implementation, remediation, release, or live activity.",
+    "blocking_status": "NONBLOCKING WITH CONDITIONS",
+    "interpretation": "Orientation may proceed only with the reported conditions disclosed and reconciled.",
+    "caveat": "Warnings remain authoritative in the source readiness report and are not remediated by Engineering Metrics.",
     "source_of_truth": "./platform-eap ai-session readiness"
   },
   "platform_health": {
     "ai_session_readiness": {
-      "state": "READY",
+      "state": "READY WITH WARNINGS",
       "error_count": 0,
-      "warning_count": 0,
+      "warning_count": 1,
       "evidence_status": "current",
-      "last_generated_at": "2026-07-24T20:54:50.143363+00:00",
+      "last_generated_at": "2026-07-24T22:02:03.532145+00:00",
       "source_available": true,
       "source_usable": true,
       "source_report_path": "reports/engineering/ai_session_readiness/ai_session_readiness_report.json"

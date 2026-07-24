@@ -1,16 +1,16 @@
 # Platform EAP Report - Repository Validation
 
-**Status:** PASS
+**Status:** PASS WITH WARNINGS
 
-**Timestamp:** 2026-07-24T20:55:24.637137+00:00
+**Timestamp:** 2026-07-24T22:02:02.581517+00:00
 
-**Summary:** Repository validation completed with status PASS.
+**Summary:** Repository validation completed with status PASS WITH WARNINGS.
 
 ## Counts
 
 - Errors: 0
-- Warnings: 0
-- Information: 66
+- Warnings: 1
+- Information: 65
 
 ## Results
 
@@ -79,4 +79,4 @@
 - INFO: Registry validation passed for 39 records
 - INFO: Platform Digital Twin integrity validation passed
 - INFO: Current branch: main
-- INFO: Working tree clean outside generated engineering reports
+- WARNING: Working tree has active source changes

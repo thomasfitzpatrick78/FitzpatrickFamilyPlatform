@@ -1,19 +1,19 @@
 # Platform EAP Report - Release Readiness
 
-**Status:** PASS
+**Status:** PASS WITH WARNINGS
 
-**Timestamp:** 2026-07-24T20:55:25.113679+00:00
+**Timestamp:** 2026-07-24T22:02:03.011713+00:00
 
-**Summary:** Release readiness completed with status PASS.
+**Summary:** Release readiness completed with status PASS WITH WARNINGS.
 
 ## Counts
 
 - Errors: 0
-- Warnings: 0
-- Information: 3
+- Warnings: 1
+- Information: 2
 
 ## Results
 
-- INFO: Repository validation: PASS
+- INFO: Repository validation: PASS WITH WARNINGS
 - INFO: Governance validation: PASS
-- INFO: Release readiness criteria satisfied
+- WARNING: Release readiness has validation warnings

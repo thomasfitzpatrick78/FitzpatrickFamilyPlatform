@@ -1,8 +1,8 @@
 # Privileged Proxy Security Test Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Published Future Test Gate; Tests Not Executed
+**Status:** Architecture Gatekeeper Approved and Published v1.1 Test Gate; Tests Not Executed
 
 **Milestone:** PLAT-14.1A named prerequisite
 
@@ -127,12 +127,33 @@ Unless a row states otherwise, the precondition is an approved synthetic target,
 Future source review and automated checks must prove:
 
 - no Docker SDK, reverse-proxy package, generic router, dynamic plugin, shell, subprocess, DNS, TCP, UDP, raw socket, environment override, credential loader, certificate loader, Registry mutation, health calculation, consumer, scheduler, or remediation import/path;
+- no exported or reusable generic IPC, RPC, Unix-transport, HTTP-client, HTTP-server, routing, or framing framework;
+- Docker API/version compatibility logic exists only inside the proxy and cannot enter the Provider Adapter, PLAT-14.1A, or consumer packages;
 - the Docker dispatcher contains only the reviewed fixed request constructors;
 - every public enum and JSON field is closed;
 - all parser entry points use bounded readers and reject duplicates;
 - every allowed field has an explicit projection and every omitted field is denied by default;
 - every security decision emits one reason-coded audit path;
 - fuzzing covers public framing/JSON, authorization canonicalization, upstream HTTP parsing, Docker JSON parsing, and response projection.
+
+## Socket-Capable Repository Integration Tests
+
+These tests use temporary filesystem Unix sockets and synthetic peers only. They must fail fast if configured with `/var/run/docker.sock`, `/run/docker.sock`, a rootless Docker socket, or any non-temporary path. They create no OCI artifact and perform no Docker, IP network, credential, deployment, Registry, infrastructure, consumer, EO, or FFFA work.
+
+| ID | Fixture and condition | Required result |
+|----|-----------------------|-----------------|
+| T-01 | Adapter writes one exact frame, invokes `shutdown(SHUT_WR)`, and has matching kernel-returned UID/GID. | Request enters the existing core only after EOF and complete authorization; exact response frame and EOF return. |
+| T-02 | Adapter omits half-close, delays a byte, sends an extra byte/second frame, or closes partially. | `request_malformed` or timeout before authorization, replay consumption, or fake-provider call; FD released. |
+| T-03 | Adapter path is stale socket, regular file, directory, symlink, too long, abstract, replaced, or has wrong owner/group/mode. | Startup/readiness fails; unknown object is never removed. |
+| T-04 | Current process creates the listener and performs graceful shutdown. | Admission stops, current-process socket is unlinked, unrelated path remains untouched. |
+| T-05 | Real local `SO_PEERCRED` matches or mismatches immutable expectations. | Exact UID/GID success or deterministic identity denial; PID differences never change authorization. |
+| T-06 | Fake Docker UDS path metadata or peer UID/GID changes before/after connect. | Not ready / `provider_unavailable`; no request byte and no retry. |
+| T-07 | Fake Docker server records resolve, inspect, and stats requests. | Byte-exact fixed method/path/query/headers, no body, one connection, and `Connection: close`; no other route constructible. |
+| T-08 | Target literals include regex, JSON, URI, slash, control, or Unicode metacharacters; Docker ID is malformed. | Canonical literal quoting or denial; no filter/path broadening. |
+| T-09 | Fake server sends ambiguous length/transfer, redirect, informational, chunked, compressed, upgrade, folded header, trailing byte, malformed/duplicate/deep/large JSON, or slow response. | Whole response rejected with bounded reason, time, memory, and no connection reuse. |
+| T-10 | Response includes every prohibited field carrying canary values. | Canary absent from response, audit, errors, and retained buffers outside the fixture. |
+| T-11 | Static capability scan and syscall-observing test harness. | No Docker SDK/CLI, `http.Client`/`http.Transport`, proxy environment, DNS, TCP/UDP/raw socket, subprocess, FD passing, Registry mutation, or deployment path. |
+| T-12 | Fuzz/race/saturation corpus covers frames, filters, raw HTTP, Docker JSON, projection, replacement, concurrency, and timeouts. | No panic/race/leak; deterministic fail-closed result and recovery within bounds. |
 
 ## Evidence Package
 
@@ -148,4 +169,5 @@ Test evidence records exact source revision, binary/image digest, toolchain and 
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Published mandatory fixture-only socket lifecycle, half-close/EOF, real peer-credential, fake-Docker, fixed-request, parser, leakage, single-purpose, compatibility-ownership, prohibited-capability, fuzz, race, and saturation evidence. |
 | 1.0 | Published positive, negative, static, resource, audit, replay, authority-expansion, disablement, rollback, and supply-chain tests with exact reason and audit expectations. |

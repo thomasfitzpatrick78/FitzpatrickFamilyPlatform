@@ -1,8 +1,8 @@
 # Privileged Proxy Runtime Security Control Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Published Future Controls; Controls Not Enforced
+**Status:** Architecture Gatekeeper Approved and Published v1.1 Controls; Controls Not Enforced
 
 **Milestone:** PLAT-14.1A named prerequisite
 
@@ -24,8 +24,8 @@ This specification maps the published Deployment Configuration Foundation into f
 | AppArmor | Approved profile digest | Host LSM/runtime profile | Loaded/enforced profile and denial audit | Missing/unconfined profile blocks deployment. |
 | Read-only root | Security config | Runtime root filesystem | Write-denial tests outside approved paths | Any unexpected writable path blocks deployment. |
 | Writable paths | Exact mount list | Runtime mount namespace | Mount table, flags, size, ownership | Unknown or broader mount blocks startup/deployment. |
-| Adapter Unix socket | Identity config | Dedicated runtime directory | Mode/owner/group, `SO_PEERCRED`, signed authorization, exact target/time/scope, and all digest checks | Peer credentials establish local process context only; any identity, authorization, binding, or metadata drift denies requests. |
-| Docker socket | Host deployment config | Proxy-only read-only private bind | Mount visibility across all workloads; mode/inode tests | Adapter/sibling visibility or metadata drift blocks. |
+| Adapter Unix socket | Identity config | Proxy-owned socket `0660` in dedicated UID/GID `02750` leaf | Absent-path creation, directory chain, mode/owner/group/device/inode, kernel-returned `SO_PEERCRED`, half-close/EOF, signed authorization, exact target/time/scope, and all digest checks | Existing/stale path, credential, framing, authorization, binding, or metadata drift denies requests; only the creating process may unlink its socket. |
+| Docker socket | Host deployment config | Proxy-only read-only private bind | Pre/post-connect owner/group/mode/device/inode, outbound kernel-returned UID/GID, recreation, and mount visibility across all workloads | Adapter/sibling visibility, daemon-peer mismatch, or metadata drift invalidates readiness with no retry. |
 | Temporary storage | Resource config | 16 MiB `tmpfs`, `nodev,nosuid,noexec` | Mount flags and exhaustion test | Exhaustion fails request closed. |
 | Audit/replay storage | Audit config | Dedicated bounded persistent mount | Durable pre-access nonce verification/commit, restart replay, ambiguity/staleness/corruption/full tests | Any unavailable, ambiguous, corrupt, stale, or unsuccessful replay-state check or append makes the proxy not ready and denies privileged calls. |
 | PID limit | Resource config | Runtime `pids_limit: 64` | Runtime inspect and exhaustion test | New work denied; workload unaffected. |
@@ -74,7 +74,7 @@ AppArmor must restrict filesystem access to the exact paths above, deny executio
 3. recompute all digests;
 4. open and recover audit/replay state;
 5. validate Docker-socket metadata without contacting Docker;
-6. create and validate the adapter-facing Unix socket;
+6. require an absent adapter path, create and validate the adapter-facing filesystem Unix socket;
 7. emit durable startup/readiness events;
 8. accept bounded adapter requests.
 
@@ -94,4 +94,5 @@ Repository tests can prove parsers, configuration invariants, fixture decisions,
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Bound exact adapter directory/lifecycle/framing and pre/post-connect Docker metadata and peer-credential controls while preserving the no-contact readiness boundary. |
 | 1.0 | Published future enforcement mappings with binding non-root/socket-authority, peer-context, and durable replay-state failure rules without creating runtime configuration. |

@@ -1,8 +1,8 @@
 # Privileged Proxy Implementation Acceptance Checklist
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
-**Status:** Published Future Gate; No Implementation Accepted
+**Status:** Architecture Gatekeeper Approved and Published v1.3 Gate; No Socket-Capable Implementation Accepted
 
 **Milestone:** PLAT-14.1A named prerequisite
 
@@ -20,10 +20,15 @@ The transport-free source review tree supplies partial evidence. A checked item 
 - [ ] Proxy and adapter are separate processes, artifacts, identities, and lifecycle units.
 - [ ] Adapter has no Docker socket, Docker API, Docker SDK, or arbitrary provider path.
 - [ ] Public protocol conforms byte-for-byte to Privileged Proxy Adapter Protocol v1.0.
+- [ ] Filesystem Unix-socket lifecycle, absent-path rule, `02750` leaf, `0660` socket, current-process-only unlink, path limit, and abstract-namespace denial pass.
+- [ ] Mandatory request half-close and EOF-before-processing plus response EOF semantics pass under partial, delayed, extra-byte, and second-frame tests.
 - [x] Public request contains no Docker URL, path, method, query, header, body, ID, or socket.
 - [x] Static route/operation graph proves no arbitrary Docker relay or generic reverse-proxy behavior.
 - [x] `System` compatibility operation remains denied unless a separately approved policy revision exists.
 - [x] Registry, adapter, PLAT-14.1A, and consumer authority boundaries remain unchanged.
+- [ ] Source remains single-purpose and contains no generic IPC, RPC, Unix-transport, framing, routing, or HTTP framework.
+- [ ] Docker API/version compatibility logic is confined to the proxy; adapter, PLAT-14.1A, and consumer source remain provider-independent.
+- [ ] Source conforms to the closed published transport architecture, or a separate Architecture Gatekeeper decision explicitly approves reopening it.
 
 ## Policy and Data Enforcement
 
@@ -32,13 +37,16 @@ The transport-free source review tree supplies partial evidence. A checked item 
 - [ ] Exact target, wildcard denial, canonical normalization, duplicate rejection, and query derivation pass.
 - [ ] Only fixed read methods and request constructors are reachable.
 - [ ] Streaming, upgrade, hijack, tunneling, redirects, retries, and connection reuse are absent or denied.
+- [ ] Source has no `http.Client`, `http.Transport`, proxy environment, generic router, DNS, TCP, or caller-controlled URL and emits byte-exact single-use Docker HTTP requests.
 - [ ] Operation-specific response allowlists are complete for every supported Docker API version.
 - [ ] Response size, depth, count, content type, version, and target revalidation pass.
 - [ ] Canary secrets, health output, environment, commands, mounts, networks, and raw labels never pass.
 
 ## Identity and Authorization
 
-- [ ] Exact Unix socket owner/group/mode and `SO_PEERCRED` verification pass, with evidence that peer credentials establish context but never complete authorization alone.
+- [ ] Exact Unix socket owner/group/mode and real `SO_PEERCRED` verification pass using kernel-returned numeric UID/GID, with evidence that peer credentials establish context but never complete authorization alone and PID is audit-only.
+- [ ] Adapter real/effective/saved UID values and real/effective/saved GID values are identical to their approved numeric identities; any user-namespace translation is explicit.
+- [ ] Docker-socket metadata is verified before and after connect, outbound peer UID/GID is exact, recreation fails readiness, and no retry/alternate path exists.
 - [ ] Dedicated numeric service identity and exact socket-access model are documented; no Docker-group, supplemental root-equivalent group, root fallback, broader socket permission, host-user/daemon mutation, privileged mode, or capability expansion is implicit.
 - [ ] Authorization signature, approval reference, trust anchor, time window, nonce, one-shot attempt, operation, signal, subject, target, and every policy/configuration/deployment/Registry/adapter/proxy/trust-binding digest pass.
 - [ ] Expiry, future time, replay across restart, revocation, wrong client, wrong target, and signer rotation pass.
@@ -67,12 +75,15 @@ The transport-free source review tree supplies partial evidence. A checked item 
 
 - [ ] Every positive test passes.
 - [ ] Every negative test passes with exact reason code and audit evidence.
+- [ ] Every T-01 through T-12 socket-capable repository integration test passes using temporary fake Unix sockets only.
+- [ ] Test guards prove no conventional/rootless Docker socket path, Docker daemon/CLI/SDK, or IP network was accessed.
 - [ ] Fuzz corpus covers both protocol boundaries and all parsers/projectors.
 - [x] Static prohibited-capability and dependency checks pass.
 - [ ] Exact source revision, Go toolchain, `go.mod`, `go.sum`, and build workflow are approved.
 - [ ] Review-time Go, `x/sys`, Docker API, container-base, and supply-chain selections are revalidated and rebound to exact supported versions, revisions, digests, maintenance, advisories, vulnerabilities, licenses, provenance, signatures, SBOM, and end-of-life status; all drift has explicit approval.
 - [ ] Two isolated builds reproduce the accepted binary and image digests.
 - [ ] Immutable image/manifest digest, complete SBOM, SLSA provenance, and signature verify independently.
+- [ ] One canonical engineering-identity manifest binds implementation revision, source revision, SBOM, provenance, signature/verifier policy, and approved configuration; its digest matches artifact, deployment, authorization, audit, and rollback evidence.
 - [ ] Vulnerability, secret, license, source, binary, and image reviews have no blocking finding.
 - [ ] Exact Docker API support matrix and deprecation review are complete.
 
@@ -121,6 +132,7 @@ The checklist remains incomplete and the exact implementation artifact has not b
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Published the socket lifecycle, half-close/EOF, kernel peer identity, outbound Docker peer, fixed HTTP, single-purpose, compatibility-ownership, closed-transport, immutable-engineering-identity, and T-01 through T-12 evidence gates; all socket-capable items remain open. |
 | 1.2 | Recorded publication of the Architecture Gatekeeper-approved and accepted transport-free source while retaining 12 satisfied and 39 open or partial implementation-acceptance items. |
 | 1.1 | Added checked transport-free source evidence and an explicit partial-evidence matrix without accepting a socket-capable artifact or privileged deployment. |
 | 1.0 | Published the future implementation acceptance gate with binding identity, replay, authority, version-revalidation, and reserved-operation requirements, without authorizing implementation or deployment. |

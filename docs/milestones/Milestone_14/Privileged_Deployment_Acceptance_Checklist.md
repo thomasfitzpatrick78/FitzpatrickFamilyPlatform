@@ -1,8 +1,8 @@
 # Privileged Deployment Acceptance Checklist
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Published Future Gate; Deployment Unauthorized
+**Status:** Architecture Gatekeeper Approved and Published v1.1 Gate; Deployment Unauthorized
 
 **Milestone:** PLAT-14.1A named prerequisite
 
@@ -21,6 +21,7 @@ This separate checklist governs a future exact-host privileged deployment decisi
 - [ ] Exact proxy configuration and deployment bundle digests.
 - [ ] Exact authorization trust-anchor digest and revocation state.
 - [ ] Verified SBOM, SLSA provenance, signature, builder identity, source revision, module lock, licenses, and vulnerability disposition.
+- [ ] Canonical immutable engineering-identity manifest binds the exact implementation/source revisions, SBOM, provenance, signature/verifier policy, and approved configuration and matches every artifact, authorization, audit, deployment, and rollback reference.
 - [ ] Known-good signed rollback artifact/configuration set.
 
 ## Host and Runtime
@@ -28,9 +29,10 @@ This separate checklist governs a future exact-host privileged deployment decisi
 - [ ] Exact host Registry reference; this is deployment scope, not named-target approval.
 - [ ] Exact host OS, kernel, CPU architecture, container runtime, Docker Engine `Version`, API version/range, and socket path.
 - [ ] Exact proxy and adapter numeric UID/GID and exact non-root socket-access model.
+- [ ] Adapter real/effective/saved UID values and real/effective/saved GID values are identical to the approved numeric identities; user-namespace translation is proven on this host.
 - [ ] Negative proof that no Docker-group, supplemental root-equivalent group, root fallback, broader socket permission, host-user/daemon mutation, privileged mode, or capability expansion was used.
-- [ ] Docker socket owner, group, mode, inode type, recreation behavior, and proxy-only visibility.
-- [ ] Exact adapter Unix socket directory owner/group/mode and peer-credential behavior.
+- [ ] Docker socket owner, group, mode, device/inode, path-chain, daemon peer UID/GID, recreation behavior, pre/post-connect verification, and proxy-only visibility.
+- [ ] Exact adapter `02750` leaf and `0660` filesystem socket owner/group/mode, path-length, absent/stale lifecycle, current-process cleanup, half-close/EOF, and peer-credential behavior.
 - [ ] Non-root, capability, no-new-privileges, seccomp, AppArmor, read-only root, mount, tmpfs, process, CPU, memory, FD, concurrency, rate, and timeout evidence.
 - [ ] No host port, host network, TCP/UDP, DNS, egress, sibling socket access, or socket propagation.
 - [ ] Restart disabled; local health check cannot contact Docker.
@@ -46,6 +48,8 @@ This separate checklist governs a future exact-host privileged deployment decisi
 - [ ] Repository validation, governance validation, hygiene, link checks, secret scan, and prohibited-artifact scan pass.
 - [ ] Architecture Gatekeeper approves the exact deployment package.
 - [ ] Human Platform Administrator affirmatively approves the exact host, artifact, configuration, and time-bounded deployment action.
+- [ ] A separately approved first-daemon-interaction package binds one eligible Registry subject, one named target, one read-only operation, one fresh one-shot authorization, and all exact artifact/configuration/policy/deployment/Registry/trust digests.
+- [ ] Startup/readiness/health performs no Docker contact; the first allowed daemon request is the fixed resolve step for that approved named-target attempt, never ping/version/negotiation/general discovery.
 
 ## Explicit Exclusions
 
@@ -84,4 +88,5 @@ All pending values must be replaced with exact reviewed evidence. Blank, wildcar
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Published exact identity equality, immutable artifact engineering identity, adapter/Docker socket lifecycle and peer proof, and conjunctive first-daemon-interaction requirements; deployment and observation remain unauthorized. |
 | 1.0 | Published the future exact-host privileged deployment gate with binding non-root/socket-authority and durable replay requirements while preserving separate target and observation authorization. |

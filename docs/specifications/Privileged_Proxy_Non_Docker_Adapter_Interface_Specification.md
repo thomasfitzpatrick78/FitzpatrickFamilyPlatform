@@ -1,8 +1,8 @@
 # Privileged Proxy Non-Docker Adapter Interface Specification
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
-**Status:** Published Architecture Contract; No Runtime Authority
+**Status:** Architecture Gatekeeper Approved and Published v1.1 Contract; Transport Closed; No Runtime Authority
 
 **Contract:** Privileged Proxy Adapter Protocol v1.0
 
@@ -23,6 +23,9 @@ This specification defines the future adapter-to-proxy protocol. It is intention
 - No compression, streaming, multiplexing, chunking, continuation, upgrade, trailers, file descriptors, or ancillary caller data.
 - Adapter read/write deadline and total proxy deadline are bounded by 10 seconds.
 - Missing, extra, partial, duplicate, noncanonical, or trailing content fails closed.
+- After writing the exact request frame, the adapter must invoke `shutdown(SHUT_WR)`. The proxy must read EOF before parsing or performing any authorization, replay, or provider work. A byte, second frame, timeout, or non-EOF condition is `request_malformed`.
+- After writing the exact response frame, the proxy half-closes its write side and closes. The adapter must observe EOF after the frame; any partial, extra, or late byte invalidates the response.
+- The path is an absolute ASCII filesystem path within the Linux `sun_path` limit. Abstract-namespace sockets are prohibited.
 
 Canonical JSON uses UTF-8, lexicographically sorted object keys, compact separators, NFC-normalized strings, integer numbers only, lowercase enum/value forms where this contract specifies them, and no insignificant whitespace. Duplicate keys, floats, exponents, negative zero, byte-order marks, and alternate Unicode forms are rejected before signature or digest verification. The repository-standard SHA-256 content-binding rule is reused; this contract does not create a second digest authority.
 
@@ -190,4 +193,5 @@ The contract passes only when canonical test vectors prove byte-stable serializa
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Made half-close and EOF proof mandatory for one-frame stream semantics and bound the adapter to a length-checked filesystem socket path. |
 | 1.0 | Published the non-Docker length-prefixed JSON adapter protocol with complete authorization/digest binding and durable fail-closed replay requirements, without transport implementation. |

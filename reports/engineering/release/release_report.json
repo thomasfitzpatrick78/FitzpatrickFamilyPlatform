@@ -1,12 +1,12 @@
 {
   "capability": "Release Readiness",
-  "status": "PASS",
-  "timestamp": "2026-07-24T20:55:25.113679+00:00",
-  "summary": "Release readiness completed with status PASS.",
+  "status": "PASS WITH WARNINGS",
+  "timestamp": "2026-07-24T22:02:03.011713+00:00",
+  "summary": "Release readiness completed with status PASS WITH WARNINGS.",
   "results": [
     {
       "severity": "INFO",
-      "message": "Repository validation: PASS",
+      "message": "Repository validation: PASS WITH WARNINGS",
       "path": null
     },
     {
@@ -15,8 +15,8 @@
       "path": null
     },
     {
-      "severity": "INFO",
-      "message": "Release readiness criteria satisfied",
+      "severity": "WARNING",
+      "message": "Release readiness has validation warnings",
       "path": null
     }
   ]
