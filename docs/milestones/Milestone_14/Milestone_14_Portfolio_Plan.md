@@ -1,8 +1,8 @@
 # Milestone 14 - Operationalizing the AI Engineering Organization
 
-**Document Version:** 3.12
+**Document Version:** 4.0
 
-**Status:** Draft for Architecture Gatekeeper Review
+**Status:** Complete
 
 **Milestone:** Milestone 14
 
@@ -10,9 +10,11 @@
 
 ## Purpose
 
-This document defines the governed Milestone 14 portfolio plan for the Fitzpatrick Family engineering organization.
+This document records the completed governed Milestone 14 portfolio plan for the Fitzpatrick Family engineering organization.
 
-Milestone 14 remains governed repository planning and repository implementation until separate approval gates are complete. This plan does not authorize live infrastructure changes, production credentials, deployment, customer application implementation, release tagging, commits, or pushes.
+Milestone 14 is formally closed by the [Milestone 14 Closeout Package](Milestone_14_Closeout_Package.md). The approved [Milestone 14 Transition Review](Milestone_14_Transition_Review.md) records accomplishments, deferrals, learning, decision-register outcomes, portfolio health, and the Milestone 15 summary.
+
+This closed plan no longer authorizes Milestone 14 work. Carry-forward work requires Milestone 15 or separately governed work-package authority.
 
 ---
 
@@ -300,6 +302,7 @@ Milestone 14 Option C planning is ready for Architecture Gatekeeper review when:
 
 | Version | Description |
 |---------|-------------|
+| 4.0 | Marked Milestone 14 complete and linked the approved Transition Review, Closeout Package, and Milestone 15 authority. |
 | 3.12 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable transport review while preserving every source, artifact, deployment, target, observation, consumer, and live gate. |
 | 3.11 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source while preserving all socket, artifact, deployment, target, observation, consumer, and live gates. |
 | 3.10 | Recorded the completed transport-free privileged-proxy source review tree and retained the Architecture Gatekeeper publication hold plus all socket, artifact, deployment, target, observation, consumer, and live gates. |

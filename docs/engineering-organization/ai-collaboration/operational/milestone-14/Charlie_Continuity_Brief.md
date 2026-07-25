@@ -4,7 +4,7 @@
 
 **Framework Version:** 1.0
 
-**Status:** Active
+**Status:** Closed
 
 ---
 
@@ -51,3 +51,5 @@
 ## Continuity Notes
 
 Charlie remains unstarted. The published transport-free privileged-proxy source authorizes no consumer integration; final mappings still require separately approved named-target evidence and a distinct consumer-integration gate.
+
+Milestone 14 Charlie continuity closed on 2026-07-24 without implementation. No Milestone 15 consumer or Operations Intelligence work is active unless separately authorized.

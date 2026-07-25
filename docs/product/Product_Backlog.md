@@ -1,10 +1,10 @@
 # Product Backlog
 
-**Document Version:** 3.18
+**Document Version:** 4.0
 
 **Status:** Active
 
-**Milestone:** Milestone 14
+**Milestone:** Milestone 15
 
 ---
 
@@ -46,13 +46,15 @@ This document defines the initial repository-managed Product Backlog for the Fit
 | EO-PB-019 | Medium | Engineering Organization | Capability maturity | Capability Maturity Assessment | Milestone 14 | Planned | EO-13.1 maturity model |
 | EO-PB-020 | Medium | Engineering Organization | Approval model | AI Collaboration and Approval Model | Milestone 14 | Superseded | Superseded by EO-14.8 AI Collaboration Governance |
 | EO-PB-021 | High | Engineering Organization | AI collaboration governance | AI Collaboration Governance | Milestone 14 | Completed | EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, and EO-14.8E complete; Architecture Gatekeeper approved; baseline published |
+| EO-PB-022 | High | Engineering Organization | Delivery leverage | EO-15.1 Engineering Lifecycle Transition Review Operationalization | Milestone 15 | Planned | Authorized future-implementation work package; approved Milestone 14 Transition Review; existing Engineering Lifecycle, Definition of Done, AI Collaboration Governance, and validation mechanisms; implementation not started |
 | PLAT-PB-017 | High | Infrastructure | Platform Operations | Platform Operations Domain Architecture | Milestone 14 | Completed | Published PLAT-14.0A baseline `c8f9bc3`; ADR-009 through ADR-011 |
-| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 | Socket-Capable Privileged Proxy Implementation Review Published; Source Separately Gated | Published fixture-only health/foundation/architecture prerequisites, accepted transport-free Go source, and closed Architecture Gatekeeper-approved transport review; no eligible target, socket-capable source, OCI artifact, enforced privileged deployment, credential, live-provider access, consumer, activation, or live authorization |
+| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 closeout / Milestone 15 carry-forward candidate | Socket-Capable Privileged Proxy Implementation Review Published; Source Separately Gated | Published fixture-only health/foundation/architecture prerequisites, accepted transport-free Go source, and closed Architecture Gatekeeper-approved transport review; any additional Platform implementation requires a separate work package; no eligible target, socket-capable source, OCI artifact, enforced privileged deployment, credential, live-provider access, consumer, activation, or live authorization |
 | PLAT-PB-014 | High | Infrastructure | Operational excellence | Backup, restore, recovery validation, alerting, and runbooks | Milestone 14 | Planned | PLAT-13.6.2; PLAT-13.6.4 requirements |
 | PLAT-PB-015 | Medium | Infrastructure | Platform health | Platform Health Dashboard | Milestone 14 | Planned | PLAT-PB-013; repository-generated reports |
 | PLAT-PB-016 | High | Shared Services | Authentication boundary | Platform Authentication Boundary for FFFA web access | Milestone 14 | Deferred | FFFA-14.2B; local reverse proxy; human production approval; future FFFA web implementation approval |
 | FFFA-PB-001 | High | Customer-Facing Applications | Categorization intelligence | Transaction Categorization Intelligence | Milestone 14 | Paused | Chris customer acceptance; Financial Domain Foundation freeze; existing FFFA categorization behavior and FFFA repository specification |
 | FFFA-PB-002 | High | Customer-Facing Applications | Financial reporting | Multi-Channel Financial Presentation | Milestone 14 | Paused | Chris customer acceptance; Financial Domain Foundation freeze; FFFA ADR-087; reporting contract; persona governance |
+| FFFA-PB-003 | High | Customer-Facing Applications | Customer acceptance | Complete governed FFFA customer acceptance | Milestone 15 | Planned | FFFA-owned customer acceptance evidence and customer review; no finance implementation or customer data in this repository; later product and architecture decision required before implementation resumes |
 | PLAT-PB-010 | Medium | Infrastructure | Runtime planning | Define first Platform runtime architecture options | Future | Deferred | PLAT-PB-009 |
 | PLAT-PB-005 | Medium | Home Automation | Capability readiness | Assess first home automation vertical slice | Milestone 12 | Candidate | Requirements discovery |
 | PLAT-PB-006 | Medium | Energy Management | Capability readiness | Assess first energy management vertical slice | Future | Candidate | Requirements discovery |
@@ -87,6 +89,10 @@ EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved Alpha 
 
 FFFA detail is owned by the FamilyFinanceAssistant repository; this repository records portfolio traceability to FFFA-14.1 and FFFA-14.2 using Existing FFFA backlog and roadmap governance. FFFA implementation is paused while Chris completes customer acceptance, and the Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
 
+Milestone 15 adds portfolio traceability for completing FFFA customer acceptance, EO-15.1 future implementation, and separately gated additional Platform implementation. It does not move detailed FFFA authority into this repository or authorize any of those implementations by itself.
+
+Milestone 15 backlog directions are planned, not approved for implementation by this backlog. EO-15.1 implementation authority comes only from its separate governed work package.
+
 ---
 
 ## Related Documents
@@ -97,6 +103,8 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 - [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
 - [Engineering Organization Manifesto](../engineering-organization/Engineering_Organization_Manifesto.md)
 - [Milestone 14 Portfolio Plan](../milestones/Milestone_14/Milestone_14_Portfolio_Plan.md)
+- [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
+- [EO-15.1 Work Package](../milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md)
 - [Engineering Portfolio Kanban](../portfolio/Engineering_Portfolio_Kanban.md)
 - [AI Collaboration Governance Specification](../engineering-organization/ai-collaboration/AI_Collaboration_Governance_Specification.md)
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
@@ -107,6 +115,7 @@ FFFA detail is owned by the FamilyFinanceAssistant repository; this repository r
 
 | Version | Description |
 |---------|-------------|
+| 4.0 | Added Milestone 15 delivery-leverage, EO-15.1, FFFA customer acceptance, and separately gated Platform carry-forward planning. |
 | 3.18 | Recorded publication of the closed socket-capable implementation review under PLAT-PB-013 while retaining every source, artifact, deployment, and operational gate. |
 | 3.17 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source under PLAT-PB-013 while retaining every later gate. |
 | 3.16 | Recorded the completed transport-free privileged-proxy source review tree under PLAT-PB-013 without publication, a new work identifier, sockets, artifacts, deployment, observation, or live authority. |

@@ -1326,3 +1326,72 @@ def test_milestone_13_transition_package_sets_milestone_14_eo_plat_fffa_plan():
     assert "FFFA candidate absence blocks full Milestone 14 Engineering Investment Rule traceability" in transition
     assert "Milestone 13 tag creation" in transition
     assert "Any live infrastructure action" in transition
+
+
+def test_milestone_14_transition_review_publishes_all_approved_sections():
+    review = read_repo_text("docs/milestones/Milestone_14/Milestone_14_Transition_Review.md")
+    assert "**Status:** Approved Outcome - Published" in review
+    required = [
+        "Milestone Accomplishment Review",
+        "Deferred Work & Waiting on External Events",
+        "Engineering Learning Review",
+        "Engineering Decision Register Updates",
+        "Portfolio Health Review",
+        "Milestone 15 Portfolio Summary",
+    ]
+    for heading in required:
+        assert f"## {heading}" in review
+    assert "No Engineering Lifecycle change" in review
+    assert "No EO-15.1 implementation is performed" in review
+
+
+def test_milestone_14_closeout_marks_complete_and_references_transition():
+    closeout = read_repo_text("docs/milestones/Milestone_14/Milestone_14_Closeout_Package.md")
+    plan = read_repo_text("docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md")
+    assert "**Status:** Complete" in closeout
+    assert "**Status:** Complete" in plan
+    assert "Milestone_14_Transition_Review.md" in closeout
+    assert "Milestone_15_Portfolio_Plan.md" in closeout
+    assert "Authorized for future repository implementation; implementation not started" in closeout
+    assert "No live infrastructure" in closeout
+
+
+def test_milestone_15_plan_records_approved_delivery_leverage_direction():
+    plan = read_repo_text("docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md")
+    assert "**Status:** Active" in plan
+    assert "**Milestone:** Milestone 15" in plan
+    assert "Increase Engineering Organization Throughput through Delivery Leverage" in plan
+    assert "Complete FFFA customer acceptance" in plan
+    assert "Deliver additional Platform implementation" in plan
+    assert "Operationalize the approved Transition Review through EO-15.1" in plan
+    assert "reuse existing governance" in plan.lower()
+
+
+def test_eo_15_1_is_authorized_without_implementation():
+    work_package = read_repo_text(
+        "docs/milestones/Milestone_15/"
+        "EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md"
+    )
+    assert "**Status:** Authorized for Future Repository Implementation" in work_package
+    assert "**Implementation State:** Not Started" in work_package
+    assert "This package authorizes future implementation only" in work_package
+    assert "Modify the Engineering Lifecycle" in work_package
+    assert "Create a new Transition Review template" in work_package
+    assert "Implement Platform or FFFA functionality" in work_package
+
+
+def test_milestone_continuity_advances_from_14_to_15():
+    milestone_14_root = cli.ROOT / "docs/engineering-organization/ai-collaboration/operational/milestone-14"
+    for filename in (
+        "Architecture_Integration_Continuity_Brief.md",
+        "Alpha_Continuity_Brief.md",
+        "Bravo_Continuity_Brief.md",
+        "Charlie_Continuity_Brief.md",
+    ):
+        assert "**Status:** Closed" in (milestone_14_root / filename).read_text(encoding="utf-8")
+    milestone_15_root = cli.ROOT / "docs/engineering-organization/ai-collaboration/operational/milestone-15"
+    architecture = (milestone_15_root / "Architecture_Integration_Continuity_Brief.md").read_text(encoding="utf-8")
+    eo_15_1 = (milestone_15_root / "EO_15_1_Continuity_Brief.md").read_text(encoding="utf-8")
+    assert "**Status:** Active" in architecture
+    assert "**Status:** Active" in eo_15_1
+    assert "implementation has not started" in eo_15_1

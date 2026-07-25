@@ -1,6 +1,6 @@
 # AI Collaboration Governance
 
-**Document Version:** 1.3
+**Document Version:** 2.0
 
 **Status:** EO-14.8 Complete; Architecture Gatekeeper Approved; Baseline Published
 
@@ -52,8 +52,9 @@ The framework is repository-agnostic. EO-14.8D adds repository-evidence readines
 - The AI Session Readiness Validator is complete and available through `./platform-eap ai-session readiness`.
 - EO-14.8E Engineering Metrics integration is complete; the validator and its governed reports remain the readiness source of truth.
 - EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 parent capability are complete and published as the Architecture Gatekeeper-approved Engineering Organization baseline.
-- Alpha through EO-14.1A and EO-14.4A is the next Engineering Organization work package.
-- Alpha, Bravo, and Charlie remain unstarted; readiness does not authorize implementation or live work.
+- Milestone 14 Alpha, Bravo, Charlie, and Architecture Integration continuity is closed and retained under `operational/milestone-14/`.
+- Milestone 15 Architecture Integration and EO-15.1 continuity is Active under `operational/milestone-15/`; EO-15.1 implementation has not started.
+- Readiness does not authorize implementation, activation, deployment, release, or live work.
 - Runtime Platform Health dashboard deployment remains future PLAT work and is not implemented by EO-14.8E.
 - Repository evidence remains authoritative over conversation context.
 
@@ -67,6 +68,7 @@ The framework is repository-agnostic. EO-14.8D adds repository-evidence readines
 - [Engineering Workspace Model](../Engineering_Workspace_Model.md)
 - [Engineering Lifecycle](../../governance/Engineering_Lifecycle.md)
 - [Definition of Done](../../governance/Definition_of_Done.md)
+- [Milestone 15 Portfolio Plan](../../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
 
 ---
 
@@ -74,6 +76,7 @@ The framework is repository-agnostic. EO-14.8D adds repository-evidence readines
 
 | Version | Description |
 |---------|-------------|
+| 2.0 | Advanced operational continuity from closed Milestone 14 briefs to active Milestone 15 Architecture Integration and EO-15.1 briefs without activating implementation. |
 | 1.3 | Recorded EO-14.8 capability completion, Architecture Gatekeeper approval, baseline publication, and next Alpha responsibility. |
 | 1.2 | Recorded EO-14.8E Engineering Metrics and repository-side Platform Health integration and parent implementation completion. |
 | 1.1 | Recorded EO-14.8D readiness validator implementation for Architecture Gatekeeper review. |

@@ -1,10 +1,10 @@
 # Product Roadmap
 
-**Document Version:** 3.18
+**Document Version:** 4.0
 
 **Status:** Active
 
-**Milestone:** Milestone 14
+**Milestone:** Milestone 15
 
 ---
 
@@ -16,20 +16,18 @@ This roadmap organizes portfolio direction by milestone horizon without prescrib
 
 ## Current Milestone
 
-### Milestone 14
+### Milestone 15
 
-Focus: operationalize the AI Engineering Organization through the governed Container Operational Health vertical slice while preserving separate architecture and live-execution gates.
+Focus: increase Engineering Organization throughput through delivery leverage.
 
 Planned outcomes:
 
-- Preserve the completed, Architecture Gatekeeper-approved EO-14.8 AI Collaboration Governance capability as the published Engineering Organization baseline.
-- Preserve the published Architecture Gatekeeper-approved EO-14.1A and EO-14.4A repository implementations and keep activation, Bravo, and Charlie behind separate authorization gates.
-- Preserve the published fixture-only PLAT-14.1A repository slice and completed five-record `not_applicable` migration while keeping remaining migration, providers, dashboards/APIs, activation, and live work behind separate gates.
-- Preserve the published provider architecture, Contract v1.0, security design, provider foundation, proxy security review, transport-incapable proxy foundation, and repository-only deployment configuration foundation while keeping socket-capable implementation, enforced privileged deployment, credentials, target selection, live observation, and activation behind separate gates.
-- Preserve the published transport-free privileged-proxy source and closed Socket-Capable Privileged Proxy Implementation Review while retaining ADR-012 `Implemented: No`, single-purpose and compatibility-ownership boundaries, immutable artifact identity, and every source, artifact, deployment, observation, consumer, and activation gate.
-- Prepare Engineering Organization controls, Platform observability, and Operations Intelligence through governed repository work packages.
-- Retain FFFA customer-value traceability while FFFA implementation remains paused for customer acceptance.
-- Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate PLAT and human approval gates.
+- Complete FFFA customer acceptance through FFFA-owned evidence and decision authority.
+- Deliver additional Platform implementation only through separately authorized work packages.
+- Operationalize the approved Transition Review through EO-15.1 in a future implementation session.
+- Reuse AI Collaboration, Execution Capability, automation, Platform Operations, Registry, evidence, and validation governance before expanding it.
+- Preserve architecture, implementation, artifact, deployment, observation, consumer, activation, release, and live-work gates.
+- Retain ADR-012 `Implemented: No`, Capability-First as unpromoted, and AB-012 in backlog until later evidence justifies change.
 
 ---
 
@@ -48,51 +46,38 @@ Near-term candidates should build from Infrastructure Registry v1.0:
 
 ---
 
-## Milestone 14 Planning Streams
+## Milestone 15 Planning Streams
 
-Milestone 14 planning is coordinated across EO, PLAT, and FFFA streams. These candidates are planned, not approved for implementation by this roadmap.
-
-The approved Milestone 14 execution strategy is Option C - Governed Vertical Slice. The first governed vertical slice is Container Operational Health.
+Milestone 15 planning is coordinated across EO, PLAT, and FFFA streams. These streams are planned, not approved for implementation by this roadmap; only EO-15.1 has a published future-implementation work package.
 
 ### EO - Engineering Organization
 
-- EO-14.1 Execution Agent Specification.
-- EO-14.1A Execution Agent Operationalization repository implementation is published; role activation remains separate.
-- EO-14.2 Operations Analyst Specification.
-- EO-14.2A Operations Analyst Operationalization for Container Operational Health evidence interpretation.
-- EO-14.3 Engineering Metrics v2.
-- EO-14.3A Engineering Metrics v2 Refinement based on verified vertical-slice evidence.
-- EO-14.4 Governed Automation Framework.
-- EO-14.4A Governed Automation Framework Option B repository implementation is published; automation remains unactivated.
-- EO-14.8 AI Collaboration Governance is complete and published as the Engineering Organization baseline.
-- EO-14.8A Capability Charter is complete.
-- EO-14.8B Repository Specification Package is complete.
-- EO-14.8C Repository Implementation is complete through EO-14.8C.1 and EO-14.8C.2.
-- EO-14.8D AI Session Readiness Validator is complete.
-- EO-14.8E Engineering Metrics Integration is complete.
-- EO-14.8 parent capability is complete and Architecture Gatekeeper approved.
-- Alpha EO-14.1A and EO-14.4A repository implementations are published.
-- The bounded Bravo Foundation and PLAT-14.1A Option B fixture-only repository implementation are published; Charlie remains unstarted. No Execution Agent activation, provider access, dashboard/API work, or live work is authorized.
+- EO-15.1 Engineering Lifecycle Transition Review Operationalization is authorized for future repository implementation.
+- EO-15.1 implementation has not started.
+- AI Collaboration Governance, EO-14.1A, and EO-14.4A remain published reusable foundations; activation remains separate.
+- Delivery-leverage observations must avoid unsupported precision.
+- Existing governance is reused before any expansion proposal.
 
 ### PLAT - Shared Platform
 
-- PLAT-14.0A Platform Operations Domain Architecture and canonical contracts are published at `c8f9bc3446cb1d5c23bf32232203109a7ff067f8`; implementation remains absent.
-- PLAT-14.1 Container Metrics Modernization.
-- Foundation schema `1.1`, strict validation, migration planning/execution/rollback/completion, CLI, and tests are published. Exactly five records are migrated as `not_applicable`; 16 remain review-required. The PLAT-14.1A Option B fixture-only repository vertical slice is Architecture Gatekeeper accepted and published; telemetry-provider, security, observation, dashboard/API, activation, and live work remain later gates.
-- Production Provider Adapter Architecture, security design, repository foundation, formal proxy security review, transport-incapable proxy foundation, repository-only deployment configuration foundation, purpose-built implementation architecture/acceptance package, Architecture Gatekeeper-approved and accepted transport-free standard-library Go source foundation, and closed socket-capable implementation review are published as named PLAT-14.1A prerequisites. Repository-only socket-capable source, artifact acceptance, deployment, eligible-target, observation, consumer, and activation gates remain separate; no source implementation is authorized.
-- PLAT-14.2 Operational Excellence for backup, restore, recovery validation, alerting, runbooks, and evidence retention.
-- PLAT-14.3 Platform Health Dashboard.
-- PLAT-14.3A Platform Health Dashboard Completion after the verified PLAT-14.1A telemetry contract.
-- PLAT-14.4 Platform Authentication Boundary for local reverse proxy authentication, identity-header trust, LAN-only HTTPS, certificate lifecycle, monitoring, backup, recovery, and access revocation; deferred unless future FFFA web implementation approval activates it.
+- Deliver additional Platform implementation from an existing approved direction.
+- Require a separate governed work package before implementation.
+- Preserve the PLAT-14.1A source, artifact, deployment, target, observation, consumer, recurrence, and activation gates.
+- Keep ADR-012 `Implemented: No` until the applicable implementation and acceptance gates are satisfied.
+- Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate architecture and human approval.
 
 ### FFFA - Customer-Facing Application
 
-- FFFA-14.1 Transaction Categorization Intelligence.
-- FFFA-14.2 Family Financial Reporting and Presentation.
-- FFFA implementation is paused while Chris completes customer acceptance.
-- The Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
-- Preserve repository independence and avoid inventing detailed FFFA implementation scope in this repository.
-- Use FFFA-owned personas, reporting contracts, channel specifications, and customer acceptance evidence to satisfy Milestone 14 Engineering Investment Rule traceability.
+- Complete governed customer acceptance in the FamilyFinanceAssistant repository.
+- Preserve repository independence and keep customer data and detailed acceptance evidence outside this repository.
+- Require the FFFA-owned product and architecture decision before implementation resumes.
+- Do not convert technical correctness or Platform portfolio traceability into a customer-readiness claim.
+
+---
+
+## Milestone 14 Closeout Baseline
+
+Milestone 14 completed the governed Container Operational Health vertical slice at its approved repository and architecture boundaries. EO-14.8, EO-14.1A, EO-14.4A, PLAT-14.0A, Registry identity and migration controls, fixture-only PLAT-14.1A, provider/proxy foundations, the transport-free source, and the closed socket-capable implementation review are published. Charlie closed unstarted, FFFA customer acceptance remained incomplete, and every live gate remained separate.
 
 ---
 
@@ -138,6 +123,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - [Milestone 12 Plan](../milestones/Milestone_12/Milestone_12_Infrastructure_Registry_v1.0.md)
 - [Engineering Organization Roadmap](../engineering-organization/Engineering_Organization_Roadmap.md)
 - [Milestone 14 Portfolio Plan](../milestones/Milestone_14/Milestone_14_Portfolio_Plan.md)
+- [Milestone 14 Transition Review](../milestones/Milestone_14/Milestone_14_Transition_Review.md)
+- [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 
@@ -147,6 +134,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 4.0 | Activated Milestone 15 delivery-leverage direction, EO-15.1 future authority, FFFA customer acceptance, and separately gated Platform implementation while preserving the Milestone 14 closeout baseline. |
 | 3.18 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable transport review while preserving every source and operational gate. |
 | 3.17 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source while preserving every later implementation and operational gate. |
 | 3.16 | Recorded the completed transport-free privileged-proxy source review tree and retained the Architecture Gatekeeper publication hold plus every socket, artifact, deployment, and operational gate. |

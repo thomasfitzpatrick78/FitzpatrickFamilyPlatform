@@ -59,7 +59,7 @@ def _ready_fixture(tmp_path: Path) -> Path:
     ):
         path = root / relative
         path.write_text(
-            path.read_text(encoding="utf-8").replace("**Milestone:** Milestone 12", "**Milestone:** Milestone 14", 1),
+            path.read_text(encoding="utf-8").replace("**Milestone:** Milestone 12", "**Milestone:** Milestone 15", 1),
             encoding="utf-8",
         )
     return root
@@ -117,32 +117,26 @@ def test_ai_session_readiness_warns_for_active_source_changes(tmp_path):
     assert any("active source changes" in warning.message for warning in result.warnings)
 
 
-def test_ai_session_readiness_tracks_eo_14_4a_published_state(tmp_path):
+def test_ai_session_readiness_tracks_eo_15_1_authorized_unstarted_state(tmp_path):
     root = _ready_fixture(tmp_path)
     kanban = DEFAULT_CONFIGURATION.planning_artifacts["kanban"]
     _replace(
         root,
         kanban,
-        "Repository implementation complete and published; Architecture Gatekeeper approved",
-        "Implementation not started",
+        "Authorized for future repository implementation; implementation not started",
+        "Implementation complete",
     )
     result = _validate(root)
-    assert result.readiness == READY_WITH_WARNINGS
-    assert any("EO-14.1A and EO-14.4A as published" in warning.message for warning in result.warnings)
+    assert result.readiness == NOT_READY
+    assert any("Kanban must preserve EO-15.1 as authorized for future implementation and not started" in message for message in _messages(result))
 
 
-def test_ai_session_readiness_tracks_plat_14_1a_published_fixture_only_state(tmp_path):
+def test_ai_session_readiness_requires_milestone_15_plan(tmp_path):
     root = _ready_fixture(tmp_path)
-    kanban = DEFAULT_CONFIGURATION.planning_artifacts["kanban"]
-    _replace(
-        root,
-        kanban,
-        "Architecture Review; Transport-Free Source Published",
-        "Implementation not started",
-    )
+    (root / DEFAULT_CONFIGURATION.planning_artifacts["milestone"]).unlink()
     result = _validate(root)
-    assert result.readiness == READY_WITH_WARNINGS
-    assert any("PLAT-14.1A published fixture-only/unactivated" in warning.message for warning in result.warnings)
+    assert result.readiness == NOT_READY
+    assert any("Milestone_15_Portfolio_Plan.md" in message and "missing" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_missing_permanent_governance(tmp_path):
@@ -172,24 +166,24 @@ def test_ai_session_readiness_detects_missing_required_template(tmp_path):
 
 def test_ai_session_readiness_detects_missing_active_continuity_brief(tmp_path):
     root = _ready_fixture(tmp_path)
-    (root / DEFAULT_CONFIGURATION.continuity_root / "Bravo_Continuity_Brief.md").unlink()
+    (root / DEFAULT_CONFIGURATION.continuity_root / "EO_15_1_Continuity_Brief.md").unlink()
     result = _validate(root)
     assert result.readiness == NOT_READY
-    assert any("Bravo continuity brief is missing" in message for message in _messages(result))
+    assert any("EO-15.1 continuity brief is missing" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_duplicate_active_brief(tmp_path):
     root = _ready_fixture(tmp_path)
-    source = root / DEFAULT_CONFIGURATION.continuity_root / "Alpha_Continuity_Brief.md"
-    shutil.copy2(source, source.with_name("Alpha_Duplicate_Continuity_Brief.md"))
+    source = root / DEFAULT_CONFIGURATION.continuity_root / "EO_15_1_Continuity_Brief.md"
+    shutil.copy2(source, source.with_name("EO_15_1_Duplicate_Continuity_Brief.md"))
     result = _validate(root)
     assert result.readiness == NOT_READY
-    assert any("Alpha must have exactly one Active continuity brief; found 2" in message for message in _messages(result))
+    assert any("EO-15.1 must have exactly one Active continuity brief; found 2" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_invalid_lifecycle_state(tmp_path):
     root = _ready_fixture(tmp_path)
-    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/Alpha_Continuity_Brief.md"
+    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/EO_15_1_Continuity_Brief.md"
     _replace(root, relative, "**Status:** Active", "**Status:** Improvised")
     result = _validate(root)
     assert result.readiness == NOT_READY
@@ -198,42 +192,42 @@ def test_ai_session_readiness_detects_invalid_lifecycle_state(tmp_path):
 
 def test_ai_session_readiness_detects_missing_assigned_role(tmp_path):
     root = _ready_fixture(tmp_path)
-    _remove_field(root, "Alpha_Continuity_Brief.md", "Assigned role")
+    _remove_field(root, "EO_15_1_Continuity_Brief.md", "Assigned role")
     result = _validate(root)
     assert any("missing required field: Assigned role" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_missing_next_gate(tmp_path):
     root = _ready_fixture(tmp_path)
-    _remove_field(root, "Alpha_Continuity_Brief.md", "Next gate")
+    _remove_field(root, "EO_15_1_Continuity_Brief.md", "Next gate")
     result = _validate(root)
     assert any("missing required field: Next gate" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_missing_permitted_actions(tmp_path):
     root = _ready_fixture(tmp_path)
-    _remove_field(root, "Alpha_Continuity_Brief.md", "Permitted actions")
+    _remove_field(root, "EO_15_1_Continuity_Brief.md", "Permitted actions")
     result = _validate(root)
     assert any("missing required field: Permitted actions" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_missing_prohibited_actions(tmp_path):
     root = _ready_fixture(tmp_path)
-    _remove_field(root, "Alpha_Continuity_Brief.md", "Prohibited actions")
+    _remove_field(root, "EO_15_1_Continuity_Brief.md", "Prohibited actions")
     result = _validate(root)
     assert any("missing required field: Prohibited actions" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_missing_stop_conditions(tmp_path):
     root = _ready_fixture(tmp_path)
-    _remove_field(root, "Alpha_Continuity_Brief.md", "Stop conditions")
+    _remove_field(root, "EO_15_1_Continuity_Brief.md", "Stop conditions")
     result = _validate(root)
     assert any("missing required field: Stop conditions" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_invalid_role_reference(tmp_path):
     root = _ready_fixture(tmp_path)
-    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/Alpha_Continuity_Brief.md"
+    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/EO_15_1_Continuity_Brief.md"
     _replace(root, relative, "| Assigned role | Codex Implementation Engineer. |", "| Assigned role | Imaginary Executor. |")
     result = _validate(root)
     assert any("invalid assigned role reference: Imaginary Executor" in message for message in _messages(result))
@@ -241,24 +235,24 @@ def test_ai_session_readiness_detects_invalid_role_reference(tmp_path):
 
 def test_ai_session_readiness_detects_broken_architecture_traceability(tmp_path):
     root = _ready_fixture(tmp_path)
-    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/Alpha_Continuity_Brief.md"
-    _replace(root, relative, "EO-14.1 and EO-14.4 specifications", "unidentified specifications")
+    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/EO_15_1_Continuity_Brief.md"
+    _replace(root, relative, "Milestone 14 Transition Review", "unidentified transition evidence")
     result = _validate(root)
-    assert any("Alpha does not trace to authoritative evidence: EO-14.1" in message for message in _messages(result))
+    assert any("EO-15.1 does not trace to authoritative evidence: Milestone 14 Transition Review" in message for message in _messages(result))
 
 
-def test_ai_session_readiness_detects_charlie_missing_bravo_dependency(tmp_path):
+def test_ai_session_readiness_detects_eo_15_1_missing_architecture_integration_dependency(tmp_path):
     root = _ready_fixture(tmp_path)
-    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/Charlie_Continuity_Brief.md"
-    _replace(root, relative, "| Dependencies | Bravo published PLAT-14.1A fixture evidence;", "| Dependencies |")
+    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/EO_15_1_Continuity_Brief.md"
+    _replace(root, relative, "| Dependencies | Architecture Integration;", "| Dependencies |")
     result = _validate(root)
-    assert any("Charlie is missing required dependency: Bravo" in message for message in _messages(result))
+    assert any("EO-15.1 is missing required dependency: Architecture Integration" in message for message in _messages(result))
 
 
 def test_ai_session_readiness_detects_circular_workstream_dependency(tmp_path):
     root = _ready_fixture(tmp_path)
-    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/Alpha_Continuity_Brief.md"
-    _replace(root, relative, "| Dependencies | Architecture Integration;", "| Dependencies | Charlie;")
+    relative = f"{DEFAULT_CONFIGURATION.continuity_root}/Architecture_Integration_Continuity_Brief.md"
+    _replace(root, relative, "| Dependencies | None beyond", "| Dependencies | EO-15.1;")
     result = _validate(root)
     assert any("Circular active-workstream dependency detected" in message for message in _messages(result))
 

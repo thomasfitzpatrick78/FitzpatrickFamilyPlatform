@@ -1,36 +1,36 @@
 # Platform EAP Report - Engineering Metrics
 
-**Status:** PASS WITH WARNINGS
+**Status:** PASS
 
-**Timestamp:** 2026-07-24T22:02:03.700070+00:00
+**Timestamp:** 2026-07-25T01:44:19.739587+00:00
 
-**Summary:** Engineering metrics generated with status PASS WITH WARNINGS; AI Session Readiness is READY WITH WARNINGS.
+**Summary:** Engineering metrics generated with status PASS; AI Session Readiness is READY.
 
 ## Counts
 
 - Errors: 0
-- Warnings: 1
-- Information: 4
+- Warnings: 0
+- Information: 5
 
 ## AI Session Readiness
 
-- Overall readiness: READY WITH WARNINGS
+- Overall readiness: READY
 - Errors: 0
-- Warnings: 1
+- Warnings: 0
 - Validation domains: 9
-- Evidence timestamp: 2026-07-24T22:02:03.532145+00:00
+- Evidence timestamp: 2026-07-25T01:03:42.469675+00:00
 - Evidence condition: current
 - Evidence path: `reports/engineering/ai_session_readiness/ai_session_readiness_report.json`
 - Evidence usable: yes
-- Onboarding effect: NONBLOCKING WITH CONDITIONS
-- Interpretation: Orientation may proceed only with the reported conditions disclosed and reconciled.
-- Caveat: Warnings remain authoritative in the source readiness report and are not remediated by Engineering Metrics.
+- Onboarding effect: NONBLOCKING
+- Interpretation: The repository can onboard a new AI participant without known readiness warnings.
+- Caveat: Readiness describes repository onboarding evidence; it does not authorize implementation, remediation, release, or live activity.
 - Source of truth: `./platform-eap ai-session readiness` and its governed Markdown and JSON reports.
 
 ## Results
 
-- INFO: Markdown documents: 162
+- INFO: Markdown documents: 169
 - INFO: Engineering test files: 11
 - INFO: Architecture decisions: 12
 - INFO: Engineering health baseline established
-- WARNING: AI Session Readiness: READY WITH WARNINGS; evidence current; onboarding effect NONBLOCKING WITH CONDITIONS (`reports/engineering/ai_session_readiness/ai_session_readiness_report.json`)
+- INFO: AI Session Readiness: READY; evidence current; onboarding effect NONBLOCKING (`reports/engineering/ai_session_readiness/ai_session_readiness_report.json`)

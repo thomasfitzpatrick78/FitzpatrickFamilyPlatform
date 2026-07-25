@@ -4,7 +4,7 @@
 
 **Framework Version:** 1.0
 
-**Status:** Active
+**Status:** Closed
 
 ---
 
@@ -51,3 +51,5 @@
 ## Continuity Notes
 
 The Architecture Gatekeeper-approved Socket-Capable Privileged Proxy Implementation Review is published and closes the transport architecture. The next possible gate is a separately authorized repository-only source implementation; no source, socket, networking, Docker access, executable artifact, deployment, target, credential/certificate, observation, consumer, activation, or live authority is included.
+
+Milestone 14 continuity closed on 2026-07-24 through the published Milestone 14 Transition Review and Closeout Package. Milestone 15 Architecture Integration continuity is active under `operational/milestone-15/Architecture_Integration_Continuity_Brief.md`.

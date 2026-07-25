@@ -87,7 +87,7 @@ AI_COLLABORATION_ROOT = "docs/engineering-organization/ai-collaboration"
 
 DEFAULT_CONFIGURATION = ReadinessConfiguration(
     expected_repository="FitzpatrickFamilyPlatform",
-    active_milestone="Milestone 14",
+    active_milestone="Milestone 15",
     permanent_governance=(
         "docs/governance/Permanent_Project_Operating_Model.md",
         "docs/governance/Engineering_Lifecycle.md",
@@ -122,59 +122,35 @@ DEFAULT_CONFIGURATION = ReadinessConfiguration(
         "AI Collaboration Steward",
     ),
     planning_artifacts={
-        "milestone": "docs/milestones/Milestone_14/Milestone_14_Portfolio_Plan.md",
+        "milestone": "docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md",
         "kanban": "docs/portfolio/Engineering_Portfolio_Kanban.md",
         "roadmap": "docs/product/Product_Roadmap.md",
         "backlog": "docs/product/Product_Backlog.md",
     },
-    continuity_root=f"{AI_COLLABORATION_ROOT}/operational/milestone-14",
+    continuity_root=f"{AI_COLLABORATION_ROOT}/operational/milestone-15",
     workstreams=(
         WorkstreamRequirement(
             "Architecture Integration",
             "Architecture_Integration_Continuity_Brief.md",
-            ("Milestone Plan", "Engineering Portfolio Kanban", "EO-14.8A", "EO-14.8B"),
+            ("Milestone 14 Transition Review", "Milestone 15 Portfolio Plan", "EO-15.1", "Engineering Lifecycle"),
             (),
             {
-                "milestone": ("EO-14.8",),
-                "kanban": ("Architecture Gatekeeper", "EO-14.8"),
-                "roadmap": ("EO-14.8",),
-                "backlog": ("EO-14.8",),
+                "milestone": ("Architecture Integration", "EO-15.1"),
+                "kanban": ("Architecture Integration", "EO-15.1"),
+                "roadmap": ("Milestone 15", "EO-15.1"),
+                "backlog": ("Milestone 15", "EO-15.1"),
             },
         ),
         WorkstreamRequirement(
-            "Alpha",
-            "Alpha_Continuity_Brief.md",
-            ("Milestone Plan", "Engineering Portfolio Kanban", "EO-14.1", "EO-14.4"),
+            "EO-15.1",
+            "EO_15_1_Continuity_Brief.md",
+            ("Milestone 14 Transition Review", "EO-15.1", "Engineering Lifecycle", "Definition of Done"),
             ("Architecture Integration",),
             {
-                "milestone": ("Alpha", "EO-14.1A", "EO-14.4A"),
-                "kanban": ("Alpha", "EO-14.1A", "EO-14.4A"),
-                "roadmap": ("EO-14.1A", "EO-14.4A"),
-                "backlog": ("Execution Agent Specification", "Governed Automation Framework"),
-            },
-        ),
-        WorkstreamRequirement(
-            "Bravo",
-            "Bravo_Continuity_Brief.md",
-            ("Milestone Plan", "Engineering Portfolio Kanban", "PLAT-14.1", "PLAT-13.6.3B"),
-            ("Architecture Integration", "Alpha"),
-            {
-                "milestone": ("Bravo", "PLAT-14.1A"),
-                "kanban": ("Bravo", "PLAT-14.1A"),
-                "roadmap": ("PLAT-14.1A",),
-                "backlog": ("Container Metrics Modernization",),
-            },
-        ),
-        WorkstreamRequirement(
-            "Charlie",
-            "Charlie_Continuity_Brief.md",
-            ("Milestone Plan", "Engineering Portfolio Kanban", "EO-14.2", "EO-14.3"),
-            ("Architecture Integration", "Bravo"),
-            {
-                "milestone": ("Charlie", "EO-14.2A", "EO-14.3A"),
-                "kanban": ("Charlie", "EO-14.2A", "EO-14.3A"),
-                "roadmap": ("EO-14.2A", "EO-14.3A"),
-                "backlog": ("Operations Analyst Specification", "Engineering Metrics v2"),
+                "milestone": ("EO-15.1", "implementation not started"),
+                "kanban": ("EO-15.1", "implementation not started"),
+                "roadmap": ("EO-15.1", "Transition Review"),
+                "backlog": ("EO-15.1", "implementation not started"),
             },
         ),
     ),
@@ -639,22 +615,26 @@ class AISessionReadinessValidator:
                         [relative],
                     )
                 )
-            if requirement.name in {"Alpha", "Bravo", "Charlie"}:
+            if requirement.name in {"Alpha", "Bravo", "Charlie", "EO-15.1"}:
                 combined = " ".join(
                     [
                         fields.get("Completed work and evidence", ""),
                         fields.get("Current work", ""),
                         fields.get("Objective", ""),
+                        fields.get("Current Engineering Lifecycle stage", ""),
                     ]
                 ).lower()
                 false_start = bool(re.search(r"\bimplementation (?:work )?has started\b", combined))
+                expected_unstarted = requirement.name != "EO-15.1" or (
+                    "implementation has not started" in combined or "implementation not started" in combined
+                )
                 checks.append(
                     ReadinessCheck(
                         f"parallel.{requirement.name.lower()}.implementation-state",
-                        ERROR if false_start else PASS,
-                        f"{requirement.name} does not falsely claim implementation has begun."
-                        if not false_start
-                        else f"{requirement.name} claims implementation has begun while planning records it as unstarted.",
+                        ERROR if false_start or not expected_unstarted else PASS,
+                        f"{requirement.name} preserves its unstarted implementation state."
+                        if not false_start and expected_unstarted
+                        else f"{requirement.name} does not preserve its required unstarted implementation state.",
                         [relative],
                     )
                 )
@@ -672,7 +652,10 @@ class AISessionReadinessValidator:
         kanban_path = self.root / self.configuration.planning_artifacts["kanban"]
         if kanban_path.is_file():
             kanban = kanban_path.read_text(encoding="utf-8")
+            configured_names = {requirement.name for requirement in self.configuration.workstreams}
             for name in ("Alpha", "Bravo", "Charlie"):
+                if name not in configured_names:
+                    continue
                 workstream_rows = [
                     line for line in kanban.splitlines() if line.startswith("|") and f"{name} -" in line
                 ]
@@ -730,6 +713,27 @@ class AISessionReadinessValidator:
                             [self.configuration.planning_artifacts["kanban"]],
                         )
                     )
+            if "EO-15.1" in configured_names:
+                eo_15_1_rows = [
+                    line.lower()
+                    for line in kanban.splitlines()
+                    if line.startswith("|") and "| eo-15.1 |" in line.lower()
+                ]
+                planning_state_ok = (
+                    len(eo_15_1_rows) == 1
+                    and "| authorized |" in eo_15_1_rows[0]
+                    and "implementation not started" in eo_15_1_rows[0]
+                )
+                checks.append(
+                    ReadinessCheck(
+                        "parallel.eo-15.1.planning-state",
+                        PASS if planning_state_ok else ERROR,
+                        "Kanban preserves EO-15.1 as authorized for future implementation and not started."
+                        if planning_state_ok
+                        else "Kanban must preserve EO-15.1 as authorized for future implementation and not started.",
+                        [self.configuration.planning_artifacts["kanban"]],
+                    )
+                )
         return _domain("Parallel Workstream Consistency", checks)
 
     def _readiness_freshness(self, briefs: dict[str, list[tuple[str, dict[str, str], str]]]) -> ValidationDomain:

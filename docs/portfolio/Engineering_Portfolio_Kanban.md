@@ -1,18 +1,18 @@
 # Engineering Portfolio Kanban
 
-**Document Version:** 1.34
+**Document Version:** 2.0
 
-**Status:** Draft for Architecture Gatekeeper Review
+**Status:** Active
 
-**Milestone:** Milestone 14
+**Milestone:** Milestone 15
 
 ---
 
 ## Purpose
 
-This repository-native Kanban tracks governed Milestone 14 portfolio work across Engineering Organization, Shared Platform, and the Fitzpatrick Family Financial Assistant.
+This repository-native Kanban tracks governed Milestone 15 portfolio work across Engineering Organization, Shared Platform, and the Fitzpatrick Family Financial Assistant.
 
-It is a planning artifact. It does not authorize implementation, live deployment, or production operations.
+It records EO-15.1 future-implementation authority and portfolio direction. It does not authorize EO-15.1 implementation, Platform implementation, FFFA implementation, live deployment, or production operations by implication.
 
 ---
 
@@ -29,32 +29,43 @@ It is a planning artifact. It does not authorize implementation, live deployment
 - Deferred
 - Blocked
 - Architecture Approved
+- Authorized
 
 ---
 
-## Approved Strategy
+## Approved Direction
 
-Selected execution strategy: Option C - Governed Vertical Slice.
+Theme: Increase Engineering Organization Throughput through Delivery Leverage.
+
+Milestone 15 will:
+
+- complete FFFA customer acceptance;
+- deliver additional Platform implementation through separately authorized work packages;
+- operationalize the approved Transition Review through EO-15.1;
+- reuse existing governance before expanding it.
+
+Milestone 14 is complete. Its final detailed Kanban state is retained below as the closeout baseline. No incomplete or deferred Milestone 14 item is implicitly reactivated.
+
+---
+
+## Milestone 15 Active Kanban
+
+| Work Package | Workstream | Repository | Status | Priority | Dependencies | Approval State | Assigned AI Role | Customer Persona | Customer Impact | Platform Impact | EO Impact | Evidence Required | Deferred Items |
+|--------------|------------|------------|--------|----------|--------------|----------------|------------------|------------------|-----------------|-----------------|-----------|-------------------|----------------|
+| Architecture Integration | Milestone 15 Portfolio and Transition Coordination | FitzpatrickFamilyPlatform | Active | High | Milestone 14 Transition Review and Closeout Package | Active continuity; Architecture Gatekeeper retains architecture authority | Chief Architect / Architecture Gatekeeper; Codex Implementation Engineer | Platform Administrator | Keeps delivery claims and gates trustworthy | Preserves architecture and implementation boundaries | Coordinates delivery leverage without governance expansion | Milestone 15 plan, Kanban, active continuity, Architecture Gatekeeper findings | Product, architecture, implementation, release, or live decisions not separately authorized |
+| EO-15.1 | Engineering Lifecycle Transition Review Operationalization | FitzpatrickFamilyPlatform | Authorized | High | Approved Milestone 14 Transition Review; existing Engineering Lifecycle, Definition of Done, AI Collaboration Governance, and validation mechanisms | Authorized for future repository implementation; implementation not started | Codex Implementation Engineer | Platform Administrator | Faster, more consistent milestone transitions | Reuses repository evidence and validation infrastructure | Operationalizes Transition Review practice without redesign | Work package, active continuity, future focused tests and validation evidence | Lifecycle modification, new template, governance expansion, Platform/FFFA implementation, live work |
+| FFFA Customer Acceptance | Customer-Facing Application | FamilyFinanceAssistant | Planned | High | FFFA-owned acceptance evidence and customer review | Completion remains FFFA-owned; implementation resumption requires later product and architecture decision | Codex Implementation Engineer only under FFFA repository authority | Household Accountant | Completes the primary customer-value gate | No direct Platform implementation | Supplies customer evidence for portfolio decisions | Sanitized acceptance outcome and FFFA repository authority | Platform-side finance implementation or customer data |
+| Additional Platform Implementation | Shared Platform Delivery | FitzpatrickFamilyPlatform | Planned | High | Existing approved architecture and a separate governed work package | No implementation is authorized by the Milestone 15 plan alone | Codex Implementation Engineer after separate authorization | Platform Administrator | Advances reliable household Platform capability | Converts an approved carry-forward direction into bounded implementation | Demonstrates reuse and delivery leverage | Work package, tests, validation, architecture evidence | Artifact, deployment, target, observation, consumer, activation, and live work without separate gates |
+
+---
+
+## Milestone 14 Closeout Baseline
+
+Selected Milestone 14 execution strategy: Option C - Governed Vertical Slice.
 
 First governed vertical slice: Container Operational Health.
 
-Option C introduces three bounded repository workstreams:
-
-- Alpha - Engineering Organization Controls.
-- Bravo - Platform Observability.
-- Charlie - Operations Intelligence.
-
-Live infrastructure execution remains unauthorized until separate Architecture Gatekeeper review and explicit human approval.
-
-EO-14.8 and the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations are published; automation remains unactivated.
-
-EO-14.8A through EO-14.8E, the EO-14.8 parent capability, Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the PLAT-14.1A Option B fixture-only repository implementation are published. Charlie remains unstarted. No automation, role activation, provider access, dashboard/API work, or live work is authorized.
-
-PLAT-14.0A architecture remains published with Implemented: No. The PLAT-14.1A specification, Registry Container Identity Foundation, fixture-only repository slice, provider architecture/security design, repository provider foundation, formal proxy security review, transport-incapable proxy foundation, repository-only deployment configuration foundation, purpose-built privileged-proxy architecture/acceptance package, Architecture Gatekeeper-approved and accepted transport-free Go source foundation, and closed socket-capable implementation review are published. Exactly five Registry records declare `not_applicable`; Pi-hole remains unresolved and unmigrated; and no socket-capable source implementation, OCI artifact, enforced privileged deployment, target, credential, live access, observation, or activation is authorized.
-
----
-
-## Kanban
+EO-14.8, EO-14.1A, EO-14.4A, PLAT-14.0A, the Registry identity and migration foundation, fixture-only PLAT-14.1A, provider/proxy foundations, transport-free source, and the closed socket-capable implementation review are published. Alpha is complete and unactivated; Bravo closes at Architecture Review; Charlie closes unstarted. FFFA acceptance, remaining Platform implementation, and every live gate carry forward only through Milestone 15 or separate work-package authority.
 
 | Work Package | Workstream | Repository | Status | Priority | Dependencies | Approval State | Assigned AI Role | Customer Persona | Customer Impact | Platform Impact | EO Impact | Evidence Required | Deferred Items |
 |--------------|------------|------------|--------|----------|--------------|----------------|------------------|------------------|-----------------|-----------------|-----------|-------------------|----------------|
@@ -115,6 +126,7 @@ Kanban updates must remain repository-native Markdown unless a future approved t
 
 | Version | Description |
 |---------|-------------|
+| 2.0 | Closed the Milestone 14 Kanban baseline, activated Milestone 15 delivery-leverage planning, and recorded EO-15.1 as authorized but unimplemented. |
 | 1.34 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable implementation review while retaining Architecture Review ownership and every later gate. |
 | 1.33 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source while retaining Architecture Review ownership and every later gate. |
 | 1.32 | Moved PLAT-14.1A to Architecture Review for the completed transport-free source foundation while retaining the publication hold and all socket, artifact, deployment, target, consumer, and live gates. |

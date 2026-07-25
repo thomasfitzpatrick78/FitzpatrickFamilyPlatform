@@ -1,6 +1,6 @@
 # AI Collaboration Governance Framework
 
-**Document Version:** 1.3
+**Document Version:** 1.4
 
 **Status:** EO-14.8 Complete; Architecture Gatekeeper Approved; Baseline Published
 
@@ -93,7 +93,7 @@ The validator reads repository and Git evidence, returns domain-structured resul
 
 Engineering Metrics consumes the governed JSON report without calling validator internals or changing readiness evidence. The structured metrics report also exposes the same four-state evidence through a repository-side Platform Health source object. Missing or malformed evidence remains `UNKNOWN`.
 
-EO-14.8E and the integrated EO-14.8 parent capability are complete, repository validated, Architecture Gatekeeper approved, and published as the Engineering Organization baseline. The next responsibility is to support Alpha initialization for EO-14.1A and EO-14.4A without activating Steward automation. Alpha, Bravo, and Charlie remain unstarted, no live work is authorized, and future Platform Health dashboard runtime deployment remains PLAT scope.
+EO-14.8E and the integrated EO-14.8 parent capability remain the published Engineering Organization baseline. Milestone 14 operational continuity is closed. Milestone 15 activates only Architecture Integration and EO-15.1 continuity; EO-15.1 implementation has not started. Steward automation, role activation, Platform implementation, FFFA implementation, and live work remain unauthorized by continuity or readiness.
 
 ---
 
@@ -111,6 +111,7 @@ EO-14.8E and the integrated EO-14.8 parent capability are complete, repository v
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Advanced operational continuity to Milestone 15 while preserving the published EO-14.8 framework and no-activation boundary. |
 | 1.3 | Closed and published the Architecture Gatekeeper-approved EO-14.8 capability baseline and recorded next Alpha initialization support. |
 | 1.2 | Integrated EO-14.8E read-only Engineering Metrics and repository-side Platform Health visibility. |
 | 1.1 | Integrated the EO-14.8D reusable readiness engine, Platform EAP entry point, structured reports, and validation boundary. |

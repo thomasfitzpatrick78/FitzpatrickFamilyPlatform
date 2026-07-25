@@ -4,7 +4,7 @@
 
 **Framework Version:** 1.0
 
-**Status:** Active
+**Status:** Closed
 
 ---
 
@@ -51,3 +51,5 @@
 ## Continuity Notes
 
 The Socket-Capable Privileged Proxy Implementation Review is Architecture Gatekeeper approved and published. Transport architecture is closed and the future proxy is bound to single-purpose implementation, proxy-owned Docker compatibility, provider-independent downstreams, and one immutable privileged-artifact engineering identity. No source implementation, socket, networking, Docker access, OCI artifact, credential, deployment, target, observation, consumer, activation, or live authority is included.
+
+Milestone 14 Bravo continuity closed on 2026-07-24. Additional Platform implementation remains a Milestone 15 portfolio outcome that requires a separate governed work package.

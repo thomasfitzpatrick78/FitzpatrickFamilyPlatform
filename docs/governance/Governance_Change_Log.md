@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 3.13
+**Document Version:** 4.0
 
 **Status:** Active
 
@@ -9,6 +9,16 @@
 ## Purpose
 
 This log records repository-managed governance changes for the Fitzpatrick Family Platform.
+
+---
+
+## Milestone 15 Initialization
+
+Milestone 15 is initialized around delivery leverage, completed FFFA customer acceptance, separately gated additional Platform implementation, EO-15.1 Transition Review operationalization, and reuse before expansion.
+
+EO-15.1 is authorized for future repository implementation. This authorization does not modify the Engineering Lifecycle, create a Transition Review template, introduce a lifecycle stage, expand permanent governance, implement Platform or FFFA functionality, activate an AI role or automation, or authorize live work.
+
+The Milestone 14 Transition Review evaluated Capability-First Operationalization and AB-012 and retained both as unpromoted candidates pending repeated approved evidence. No practice is promoted into governance by milestone transition publication.
 
 ---
 
@@ -66,6 +76,7 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 4.0 | Recorded Milestone 14 closeout and Milestone 15 initialization without modifying the Engineering Lifecycle or promoting candidate governance. |
 | 3.13 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable transport review with four binding clarifications while preserving every implementation and operational gate. |
 | 3.12 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free privileged-proxy source while preserving ADR-012, AB-012, and every later authority gate. |
 | 3.11 | Recorded the completed transport-free privileged-proxy source review tree, exact Architecture Gatekeeper publication hold, ADR-012 Boolean state, and unchanged AB-012 and operational gates. |

@@ -4,7 +4,7 @@
 
 **Framework Version:** 1.0
 
-**Status:** Active
+**Status:** Closed
 
 ---
 
@@ -51,3 +51,5 @@
 ## Continuity Notes
 
 EO-14.8, EO-14.1A, and EO-14.4A remain published and unactivated. The published Bravo transport review changes no Alpha contract or authority and cannot activate execution, automation, provider access, deployment, or live work.
+
+Milestone 14 Alpha continuity closed on 2026-07-24. Published controls remain reusable Milestone 15 authority, but Alpha is not implicitly reactivated.

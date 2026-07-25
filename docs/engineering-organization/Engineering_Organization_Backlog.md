@@ -1,10 +1,10 @@
 # Engineering Organization Backlog
 
-**Document Version:** 2.4
+**Document Version:** 3.0
 
 **Status:** Active
 
-**Milestone:** EO-14
+**Milestone:** EO-15
 
 ---
 
@@ -32,6 +32,7 @@ This document defines the governed backlog for the Engineering Organization capa
 | EO-14.6 | AI Collaboration and Approval Model. | Defines collaboration boundaries and approval flow before expanded autonomy. | Superseded by EO-14.8 AI Collaboration Governance. |
 | EO-14.7 | AI Role Catalog Operationalization. | Converts role definitions into repeatable workstream practice. | Absorbed into EO-14.1 and EO-14.2 for Milestone 14 planning. |
 | EO-14.8 | AI Collaboration Governance. | Governs AI participant initialization, continuity, completion, stewardship, readiness validation, and collaboration metrics. | Complete and published; EO-14.1A, EO-14.4A, the bounded Bravo Foundation, and the fixture-only PLAT-14.1A repository slice are published; Charlie remains unstarted; no activation or live work is authorized. |
+| EO-15.1 | Engineering Lifecycle Transition Review Operationalization. | Increases delivery leverage by making the approved six-section Transition Review repeatable through existing repository mechanisms. | Authorized for future repository implementation; implementation not started; lifecycle modification, new templates, governance expansion, Platform/FFFA implementation, and live work excluded. |
 | EO-BL-008 | Promote customer data/test environment isolation pattern. | Converts the FFFA CUTOVER-001 guard and checklist into reusable customer-application governance. | Proposed; requires Architecture Gatekeeper review. |
 
 ---
@@ -56,6 +57,8 @@ Backlog items that create new governance shall be promoted only when the practic
 - [Engineering Organization Capability Maturity Model](Engineering_Organization_Capability_Maturity_Model.md)
 - [Customer Environment Cutover Checklist](Customer_Environment_Cutover_Checklist.md)
 - [AI Collaboration Governance Specification](ai-collaboration/AI_Collaboration_Governance_Specification.md)
+- [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
+- [EO-15.1 Work Package](../milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md)
 
 ---
 
@@ -63,6 +66,7 @@ Backlog items that create new governance shall be promoted only when the practic
 
 | Version | Description |
 |---------|-------------|
+| 3.0 | Added authorized, unimplemented EO-15.1 Transition Review operationalization for Milestone 15 delivery leverage. |
 | 2.4 | Recorded publication of the Architecture Gatekeeper-accepted PLAT-14.1A fixture-only repository slice while preserving Charlie, activation, provider, and live-work gates. |
 | 2.3 | Recorded the complete unpublished PLAT-14.1A fixture-only repository slice while preserving Charlie, activation, provider, and live-work gates. |
 | 2.2 | Recorded Architecture Gatekeeper acceptance and publication of the bounded Bravo Foundation implementation while preserving migration, PLAT-14.1A, Charlie, activation, and live-work gates. |

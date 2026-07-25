@@ -1,10 +1,10 @@
 # Engineering Organization Roadmap
 
-**Document Version:** 2.4
+**Document Version:** 3.0
 
 **Status:** Active
 
-**Milestone:** EO-14
+**Milestone:** EO-15
 
 ---
 
@@ -21,6 +21,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 | EO-13.0 | Organization foundation | Vision, roles, capability model, delivery model, workspace model, backlog, roadmap, memory concept, and pattern library starter. |
 | EO-13.1 | Governance evolution | Manifesto, AI role catalog, Engineering Investment Rule, closeout evolution, maturity model, principles, and milestone transition templates. |
 | EO-14 | Governed operationalization | Published AI Collaboration Governance, EO-14.1A, EO-14.4A, bounded Bravo Foundation, and fixture-only PLAT-14.1A repository baselines; Charlie remains unstarted. |
+| EO-15 | Delivery leverage | Operationalize the approved Transition Review through EO-15.1, reuse existing governance and contracts, and reduce repeated milestone-transition friction without unsupported throughput precision. |
 | Near Term | Evidence and review hardening | Architecture review checklist, workstream closeout evidence, and impact assessment usage in milestone planning. |
 | Mid Term | Practice promotion | Promote proven repeated workstream practices into governed standards, templates, or validators. |
 | Later | Cross-repository operating model | Evaluate which Engineering Organization practices should become portfolio-level or reusable across repositories. |
@@ -36,6 +37,8 @@ This document defines the roadmap for the Engineering Organization governed capa
 - The Engineering Investment Rule is evaluated at milestone planning, review, and closeout.
 - Execution Agent and Operations Analyst remain planned roles until future governance activates them.
 - The AI Collaboration Steward remains limited to its approved review boundary and ongoing automation is not activated. EO-14.8A through EO-14.8E, the parent capability, Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the fixture-only PLAT-14.1A repository slice are published. Charlie remains unstarted. No automation, role activation, provider access, or live work is authorized.
+- EO-15.1 is authorized for future repository implementation; its implementation has not started.
+- Reuse existing lifecycle, governance, contracts, validators, and evidence mechanisms before proposing expansion.
 
 ---
 
@@ -52,6 +55,8 @@ This document defines the roadmap for the Engineering Organization governed capa
 - [AI Collaboration Governance Specification](ai-collaboration/AI_Collaboration_Governance_Specification.md)
 - [Architecture Pattern Library](Architecture_Pattern_Library.md)
 - [Engineering Lifecycle](../governance/Engineering_Lifecycle.md)
+- [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
+- [EO-15.1 Work Package](../milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md)
 
 ---
 
@@ -59,6 +64,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 
 | Version | Description |
 |---------|-------------|
+| 3.0 | Added EO-15 delivery leverage and EO-15.1 future implementation authority while preserving the existing governance boundary. |
 | 2.4 | Recorded publication of the Architecture Gatekeeper-accepted PLAT-14.1A repository slice while preserving Charlie, provider, activation, and live-work gates. |
 | 2.3 | Recorded the complete unpublished PLAT-14.1A repository slice while preserving Charlie, provider, activation, and live-work gates. |
 | 2.2 | Recorded Architecture Gatekeeper acceptance and publication of the bounded Bravo Foundation implementation while preserving later migration, repository, activation, and live-work gates. |
