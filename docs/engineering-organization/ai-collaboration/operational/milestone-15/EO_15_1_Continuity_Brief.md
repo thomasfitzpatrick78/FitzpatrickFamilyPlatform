@@ -24,7 +24,7 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Published HEAD `f76f3115e0ceb09c07a89e8d1f39f56f4dcb67a4`; the published Architecture Gatekeeper decision preserves the exact pre-publication reports and authorizes one fail-closed readiness regeneration at this exact HEAD for the first EO-15.1 implementation session. |
+| Baseline | Publication-bound bootstrap HEAD: `663f3e251ef253da84e7741fbc8461cb04a54ebd` is the required first parent of the fetched `origin/main` publication head; local `main` must equal that publication head and its tree must contain version 1.2 of the published Architecture Gatekeeper decision. That decision preserves the exact pre-publication reports and authorizes one fail-closed readiness regeneration for the first EO-15.1 implementation session. |
 | Current milestone | Milestone 15 - Delivery Leverage. |
 | Workstream ID and title | EO-15.1 - Engineering Lifecycle Transition Review Operationalization. |
 | Assigned role | Codex Implementation Engineer. |
@@ -36,10 +36,10 @@
 | Active repository changes | None after publication. The publication package contained the two exactly approved generated readiness reports plus the decision, work-package amendment, and required Milestone 15 continuity/portfolio traceability only; no EO-15.1 implementation. |
 | Parallel workstreams | Architecture Integration is active. FFFA customer acceptance and additional Platform implementation remain separate planned outcomes. |
 | Dependencies | Architecture Integration; EO-15.1 Architecture Gatekeeper Baseline Decision; approved Milestone 14 Transition Review; Milestone 15 Portfolio Plan; existing Engineering Lifecycle, Definition of Done, AI Collaboration Governance, and validation mechanisms. |
-| Integration gates | The first implementation session must satisfy every exact-HEAD bootstrap condition; future implementation must then make standing baseline classification fail closed, reuse existing mechanisms, pass focused tests and governed validators, and stop if core lifecycle, template-family, broader governance, or architecture expansion is required. |
+| Integration gates | The first implementation session must satisfy every publication-bound bootstrap condition; future implementation must then make standing baseline classification fail closed, reuse existing mechanisms, pass focused tests and governed validators, and stop if core lifecycle, template-family, broader governance, or architecture expansion is required. |
 | Unresolved decisions | Exact repository implementation design for attributable generated evidence and Transition Review capture within the amended bounded scope; any broader change must return to the Architecture Gatekeeper. |
 | Risks | Path-only allowlisting could misclassify user edits as generated evidence; authorization could be mistaken for completed implementation; or operationalization could drift into lifecycle redesign or a parallel governance system. |
-| Stop conditions | Missing or superseded decision/work-package authority; any failed or ambiguous bootstrap condition; bootstrap attempted from a different HEAD; baseline outside the exact one-time approval before policy implementation and publication; any baseline classified `Dirty` afterward; scope expansion; core lifecycle modification; new Transition Review template family; broader governance expansion; Platform or FFFA implementation; live work. |
+| Stop conditions | Missing or superseded decision/work-package authority; any failed or ambiguous bootstrap condition; publication head does not have the required parent-and-tree anchor; baseline outside the exact one-time approval before policy implementation and publication; any baseline classified `Dirty` afterward; scope expansion; core lifecycle modification; new Transition Review template family; broader governance expansion; Platform or FFFA implementation; live work. |
 | Permitted actions | In a separately initialized future session, implement only the bounded baseline-classification and Transition Review scope, add focused tests, run validation, and update continuity evidence. |
 | Prohibited actions | Implement EO-15.1 before amendment publication; modify the core Engineering Lifecycle stages or ordering; create a Transition Review template family; expand governance beyond the bounded generated-evidence classification; approve product or architecture decisions; perform Platform, FFFA, or live work. |
 | Next gate | Complete AI Session Initialization for a separate Codex Implementation Engineer session under the published EO-15.1 version 1.1 authority. |
@@ -67,5 +67,5 @@ EO-15.1 is repository-authorized and unimplemented. The exact two-report baselin
 
 | Version | Description |
 |---------|-------------|
-| 1.1 | Published the exact one-time generated-evidence baseline approval, exact-HEAD bootstrap authorization, and bounded baseline-classification authority as the first EO-15.1 implementation deliverable. |
+| 1.1 | Published the exact one-time generated-evidence baseline approval, publication-bound bootstrap authorization, and bounded baseline-classification authority as the first EO-15.1 implementation deliverable. |
 | 1.0 | Activated continuity for the authorized but unimplemented EO-15.1 work package. |

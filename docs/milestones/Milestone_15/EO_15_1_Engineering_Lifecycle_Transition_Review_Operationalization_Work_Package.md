@@ -44,7 +44,7 @@ The repository policy, once implemented, validated, approved, and published, sup
 
 This amendment is intentionally bounded. It does not change Git semantics, label arbitrary modified paths clean, authorize implementation through readiness alone, or automate architecture, product, release, deployment, activation, production, or live-work approval.
 
-Before that first deliverable exists, the published Architecture Gatekeeper decision provides one exact-HEAD, fail-closed bootstrap authorization for the initial EO-15.1 implementation session. It is not reusable and does not generalize the future policy by implication.
+Before that first deliverable exists, the published Architecture Gatekeeper decision provides one publication-bound, fail-closed bootstrap authorization for the initial EO-15.1 implementation session. It is not reusable and does not generalize the future policy by implication.
 
 ---
 
@@ -148,7 +148,7 @@ If future implementation evidence shows that a lifecycle, template, or governanc
 Before implementation begins, the future session must:
 
 1. run complete AI Session Initialization;
-2. verify a clean baseline, the exact baseline or exact-HEAD bootstrap regeneration approved by the published Architecture Gatekeeper decision, or an `Expected Generated Evidence` baseline under the implemented and published policy;
+2. verify a clean baseline, the exact baseline or publication-bound bootstrap regeneration approved by the published Architecture Gatekeeper decision, or an `Expected Generated Evidence` baseline under the implemented and published policy;
 3. read this work package and active EO-15.1 continuity brief;
 4. confirm no repository authority has superseded this package;
 5. state the exact implementation boundary and non-goals;
@@ -166,5 +166,5 @@ Publication of version 1.0 made EO-15.1 repository-authorized for future impleme
 
 | Version | Description |
 |---------|-------------|
-| 1.1 | Published the Architecture Gatekeeper-approved authority amendment and exact-HEAD bootstrap gate that make fail-closed generated-evidence baseline classification the first EO-15.1 implementation deliverable while preserving all product, architecture, release, activation, deployment, and live-work gates. |
+| 1.1 | Published the Architecture Gatekeeper-approved authority amendment and publication-bound bootstrap gate that make fail-closed generated-evidence baseline classification the first EO-15.1 implementation deliverable while preserving all product, architecture, release, activation, deployment, and live-work gates. |
 | 1.0 | Authorized future EO-15.1 repository implementation while explicitly excluding implementation from Milestone 14 closeout and Milestone 15 initialization. |

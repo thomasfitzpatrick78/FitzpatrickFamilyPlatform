@@ -1,6 +1,6 @@
 # EO-15.1 Architecture Gatekeeper Baseline Decision
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Architecture Gatekeeper Approved; Published
 
@@ -69,14 +69,14 @@ Any drift from the exact approved baseline requires either a clean tree, classif
 
 ---
 
-## One-Time Bootstrap Authorization
+## One-Time Publication-Bound Bootstrap Authorization
 
-Publication of version 1.0 moved the repository from the reviewed pre-publication HEAD to published HEAD `f76f3115e0ceb09c07a89e8d1f39f56f4dcb67a4`. The standing generated-evidence classifier remains the first unimplemented EO-15.1 deliverable, so the Architecture Gatekeeper approves one fail-closed bootstrap regeneration for the separately initialized EO-15.1 implementation session.
+The standing generated-evidence classifier remains the first unimplemented EO-15.1 deliverable. A Git commit cannot contain its own future object ID, so binding bootstrap authority to a hash written inside that same publication commit would create another circular gate. The Architecture Gatekeeper therefore approves one fail-closed bootstrap regeneration bound to an immutable publication anchor rather than a self-referential HEAD value.
 
 That session may treat regenerated AI Session Readiness reports as its approved bootstrap baseline only when every condition below is true:
 
-1. the pre-command repository is `FitzpatrickFamilyPlatform` on `main` at exact HEAD `f76f3115e0ceb09c07a89e8d1f39f56f4dcb67a4`;
-2. fetched `origin/main` equals local HEAD with ahead/behind `0/0`;
+1. the pre-command repository is `FitzpatrickFamilyPlatform` on `main` at the fetched `origin/main` publication head with ahead/behind `0/0`;
+2. that publication head has first parent `663f3e251ef253da84e7741fbc8461cb04a54ebd` and its tree contains this version 1.2 decision at `docs/milestones/Milestone_15/EO_15_1_Architecture_Gatekeeper_Baseline_Decision.md`;
 3. the pre-command working tree is clean;
 4. the governed command is exactly `./platform-eap ai-session readiness`;
 5. the result is `READY` or `READY WITH WARNINGS` solely because the two governed report outputs changed, with zero errors;
@@ -84,7 +84,7 @@ That session may treat regenerated AI Session Readiness reports as its approved 
 7. no implementation, configuration, runtime, Registry, infrastructure, customer, authority, continuity, or other repository path changed; and
 8. the generated report hashes are recorded in EO-15.1 completion evidence.
 
-Any failed or ambiguous condition classifies the bootstrap baseline `Dirty` and stops work. This exact-HEAD authorization is consumed by the first qualifying EO-15.1 implementation session. It is not a standing policy, does not apply to a different HEAD, and does not authorize later regenerated evidence after implementation changes.
+Any failed or ambiguous condition classifies the bootstrap baseline `Dirty` and stops work. This publication-bound authorization is consumed by the first qualifying EO-15.1 implementation session. It is not a standing policy, does not apply after another commit advances `main`, and does not authorize later regenerated evidence after implementation changes.
 
 ---
 
@@ -110,7 +110,7 @@ This classification does not alter Git status, declare arbitrary changes clean, 
 |-----------|-------|
 | Authority | Chief Architect / Architecture Gatekeeper |
 | Decision | Approved |
-| Approval scope | Exact one-time EO-15.1 baseline, exact-HEAD bootstrap regeneration, and bounded authority amendment |
+| Approval scope | Exact one-time EO-15.1 baseline, publication-bound bootstrap regeneration, and bounded authority amendment |
 | Publication state | Published |
 
 No personal signature, credential, cryptographic identity, or external identity-provider assertion is claimed.
@@ -136,5 +136,6 @@ A separately initialized Codex Implementation Engineer session may implement the
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Replaced the impossible self-referential bootstrap HEAD hash with an immutable parent-and-tree publication anchor. |
 | 1.1 | Added the exact published-HEAD bootstrap authorization needed to initialize the first EO-15.1 implementation session before the standing generated-evidence classifier exists. |
 | 1.0 | Recorded the exact one-time generated-readiness-evidence baseline approval and authorized a bounded EO-15.1 standing-policy amendment for future implementation. |
