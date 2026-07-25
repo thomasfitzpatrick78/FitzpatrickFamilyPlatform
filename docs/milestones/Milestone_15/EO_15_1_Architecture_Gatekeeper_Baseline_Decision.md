@@ -1,6 +1,6 @@
 # EO-15.1 Architecture Gatekeeper Baseline Decision
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Architecture Gatekeeper Approved; Published
 
@@ -69,6 +69,25 @@ Any drift from the exact approved baseline requires either a clean tree, classif
 
 ---
 
+## One-Time Bootstrap Authorization
+
+Publication of version 1.0 moved the repository from the reviewed pre-publication HEAD to published HEAD `f76f3115e0ceb09c07a89e8d1f39f56f4dcb67a4`. The standing generated-evidence classifier remains the first unimplemented EO-15.1 deliverable, so the Architecture Gatekeeper approves one fail-closed bootstrap regeneration for the separately initialized EO-15.1 implementation session.
+
+That session may treat regenerated AI Session Readiness reports as its approved bootstrap baseline only when every condition below is true:
+
+1. the pre-command repository is `FitzpatrickFamilyPlatform` on `main` at exact HEAD `f76f3115e0ceb09c07a89e8d1f39f56f4dcb67a4`;
+2. fetched `origin/main` equals local HEAD with ahead/behind `0/0`;
+3. the pre-command working tree is clean;
+4. the governed command is exactly `./platform-eap ai-session readiness`;
+5. the result is `READY` or `READY WITH WARNINGS` solely because the two governed report outputs changed, with zero errors;
+6. the only post-command changes are the Markdown and JSON report paths recorded in this decision;
+7. no implementation, configuration, runtime, Registry, infrastructure, customer, authority, continuity, or other repository path changed; and
+8. the generated report hashes are recorded in EO-15.1 completion evidence.
+
+Any failed or ambiguous condition classifies the bootstrap baseline `Dirty` and stops work. This exact-HEAD authorization is consumed by the first qualifying EO-15.1 implementation session. It is not a standing policy, does not apply to a different HEAD, and does not authorize later regenerated evidence after implementation changes.
+
+---
+
 ## Standing-Policy Direction
 
 The Architecture Gatekeeper approves a narrow EO-15.1 authority amendment that makes repository-governed generated-evidence baseline classification the first implementation deliverable.
@@ -91,7 +110,7 @@ This classification does not alter Git status, declare arbitrary changes clean, 
 |-----------|-------|
 | Authority | Chief Architect / Architecture Gatekeeper |
 | Decision | Approved |
-| Approval scope | Exact one-time EO-15.1 baseline and bounded authority amendment |
+| Approval scope | Exact one-time EO-15.1 baseline, exact-HEAD bootstrap regeneration, and bounded authority amendment |
 | Publication state | Published |
 
 No personal signature, credential, cryptographic identity, or external identity-provider assertion is claimed.
@@ -117,4 +136,5 @@ A separately initialized Codex Implementation Engineer session may implement the
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added the exact published-HEAD bootstrap authorization needed to initialize the first EO-15.1 implementation session before the standing generated-evidence classifier exists. |
 | 1.0 | Recorded the exact one-time generated-readiness-evidence baseline approval and authorized a bounded EO-15.1 standing-policy amendment for future implementation. |

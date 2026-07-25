@@ -24,7 +24,7 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform` at `/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| Baseline | Pre-publication HEAD `f6858d7a53014375970afbda6069a21c79a3488b`; the Architecture Gatekeeper has approved the exact two generated AI Session Readiness reports as the one-time EO-15.1 implementation baseline under the published decision and authority amendment. |
+| Baseline | Published HEAD `f76f3115e0ceb09c07a89e8d1f39f56f4dcb67a4`; the Architecture Gatekeeper decision authorizes one fail-closed readiness regeneration at this exact HEAD for the first EO-15.1 implementation session before standing classification exists. |
 | Current milestone | Milestone 15 - Delivery Leverage. |
 | Workstream ID and title | Architecture Integration - Milestone 15 Portfolio and Transition Coordination. |
 | Assigned role | Chief Architect / Architecture Gatekeeper for architecture decisions and reviews; Codex Implementation Engineer for approved repository implementation. |
@@ -36,7 +36,7 @@
 | Active repository changes | None after publication. The publication package contained the two exactly approved generated readiness reports plus the decision, work-package amendment, and required Milestone 15 continuity/portfolio traceability only; no EO-15.1 implementation. |
 | Parallel workstreams | EO-15.1 continuity is active with implementation not started. FFFA customer acceptance and additional Platform implementation remain planned outcomes requiring their own repository authority. |
 | Dependencies | None beyond published permanent governance and the approved Milestone 14 Transition Review. |
-| Integration gates | EO-15.1 uses the published amended work package; Platform implementation requires a separate package; FFFA acceptance remains FFFA-owned; architecture, production, and broader governance changes retain their existing approval gates. |
+| Integration gates | EO-15.1 first satisfies the published exact-HEAD bootstrap conditions, then uses the amended work package; Platform implementation requires a separate package; FFFA acceptance remains FFFA-owned; architecture, production, and broader governance changes retain their existing approval gates. |
 | Unresolved decisions | Exact implementation design for fail-closed generated-evidence attribution; selection and authorization of the next Platform implementation package; FFFA decision after completed customer acceptance; any broader evidence-based governance-promotion proposal. |
 | Risks | Path-only allowlisting could trust user edits; amendment publication could be mistaken for implementation, live authority, or product/architecture approval beyond the published package. |
 | Stop conditions | Conflicting repository authority; lifecycle or governance redesign; unapproved Platform or FFFA implementation; live work; role or automation activation; credentials; deployment; unapproved tag or release. |
@@ -67,5 +67,5 @@ This brief succeeds the closed Milestone 14 Architecture Integration continuity 
 
 | Version | Description |
 |---------|-------------|
-| 1.1 | Published the Architecture Gatekeeper baseline approval and bounded EO-15.1 authority amendment without beginning implementation. |
+| 1.1 | Published the Architecture Gatekeeper baseline approval, exact-HEAD bootstrap authorization, and bounded EO-15.1 authority amendment without beginning implementation. |
 | 1.0 | Activated Milestone 15 Architecture Integration continuity from the approved Milestone 14 transition baseline. |
