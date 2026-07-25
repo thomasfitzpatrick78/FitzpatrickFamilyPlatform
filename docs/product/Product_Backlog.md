@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 4.2
+**Document Version:** 4.3
 
 **Status:** Active
 
@@ -48,7 +48,7 @@ This document defines the initial repository-managed Product Backlog for the Fit
 | EO-PB-021 | High | Engineering Organization | AI collaboration governance | AI Collaboration Governance | Milestone 14 | Completed | EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, and EO-14.8E complete; Architecture Gatekeeper approved; baseline published |
 | EO-PB-022 | High | Engineering Organization | Delivery leverage | EO-15.1 Engineering Lifecycle Transition Review Operationalization | Milestone 15 | Completed | Repository implementation complete, Architecture Gatekeeper approved, and published with fail-closed baseline classifier, six-section Transition Review validator, focused tests, validation evidence, Active standing-policy continuity, and implementation-review record |
 | PLAT-PB-017 | High | Infrastructure | Platform Operations | Platform Operations Domain Architecture | Milestone 14 | Completed | Published PLAT-14.0A baseline `c8f9bc3`; ADR-009 through ADR-011 |
-| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 closeout / Milestone 15 carry-forward candidate | Socket-Capable Privileged Proxy Implementation Review Published; Source Separately Gated | Published fixture-only health/foundation/architecture prerequisites, accepted transport-free Go source, and closed Architecture Gatekeeper-approved transport review; any additional Platform implementation requires a separate work package; no eligible target, socket-capable source, OCI artifact, enforced privileged deployment, credential, live-provider access, consumer, activation, or live authorization |
+| PLAT-PB-013 | High | Infrastructure | Platform Operations | Container Operational Health (Container Metrics Modernization successor) | Milestone 14 closeout / Milestone 15 carry-forward | PLAT-15.1A Published; Repository Implementation Not Started | Published fixture-only health/foundation/architecture prerequisites, accepted transport-free Go source, closed Architecture Gatekeeper-approved transport review, and subordinate PLAT-15.1A authority for future repository-only socket-capable source implementation; no eligible target, implemented socket-capable source, OCI artifact, enforced privileged deployment, credential, live-provider access, consumer, activation, or live authorization |
 | PLAT-PB-014 | High | Infrastructure | Operational excellence | Backup, restore, recovery validation, alerting, and runbooks | Milestone 14 | Planned | PLAT-13.6.2; PLAT-13.6.4 requirements |
 | PLAT-PB-015 | Medium | Infrastructure | Platform health | Platform Health Dashboard | Milestone 14 | Planned | PLAT-PB-013; repository-generated reports |
 | PLAT-PB-016 | High | Shared Services | Authentication boundary | Platform Authentication Boundary for FFFA web access | Milestone 14 | Deferred | FFFA-14.2B; local reverse proxy; human production approval; future FFFA web implementation approval |
@@ -83,13 +83,13 @@ The first vertical slice coordinates the published EO-14.1A Execution Capability
 
 PLAT-14.0A, the PLAT-14.1A specification, the Foundation, and the Architecture Gatekeeper-accepted PLAT-14.1A Option B fixture-only repository vertical slice are published. Exactly five records are migrated as `not_applicable`; authoritative eligible-subject evaluation, remaining migrations, providers, dashboards/APIs, activation, and live work remain separately blocked.
 
-The provider architecture, Contract v1.0, security design, repository-only provider foundation, formal proxy security review, transport-incapable proxy foundation, repository-only deployment configuration foundation, purpose-built proxy architecture/acceptance package, Architecture Gatekeeper-approved and accepted transport-free source foundation, and closed socket-capable implementation review are published under PLAT-PB-013. The review binds single-purpose transport, proxy-owned Docker compatibility, provider-independent downstreams, immutable artifact identity, and separate acceptance gates. Socket-capable source, artifact acceptance, deployment, credentials, named-target observation, consumers, activation, and live work remain blocked. No standalone work identifier is assigned because repository evidence does not establish numbering authority.
+The provider architecture, Contract v1.0, security design, repository-only provider foundation, formal proxy security review, transport-incapable proxy foundation, repository-only deployment configuration foundation, purpose-built proxy architecture/acceptance package, Architecture Gatekeeper-approved and accepted transport-free source foundation, and closed socket-capable implementation review are published under PLAT-PB-013. PLAT-15.1A is the published subordinate work-package identifier for future repository-only socket-capable source implementation; it creates no new Product Backlog capability. The review binds single-purpose transport, proxy-owned Docker compatibility, provider-independent downstreams, immutable artifact identity, and separate acceptance gates. Implementation is `Not Started`; artifact acceptance, deployment, credentials, named-target observation, consumers, activation, and live work remain blocked.
 
 EO-14.8 AI Collaboration Governance, the Architecture Gatekeeper-approved Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the Bravo PLAT-14.1A fixture-only repository implementation are published. Charlie remains unstarted. No automation, role activation, provider, dashboard/API, or live work is authorized.
 
 FFFA detail is owned by the FamilyFinanceAssistant repository; this repository records portfolio traceability to FFFA-14.1 and FFFA-14.2 using Existing FFFA backlog and roadmap governance. FFFA implementation is paused while Chris completes customer acceptance, and the Financial Domain Foundation remains frozen for the rest of Milestone 14 except for separately approved defect fixes.
 
-Milestone 15 adds portfolio traceability for completing FFFA customer acceptance, the published EO-15.1 repository implementation, and separately gated additional Platform implementation. It does not move detailed FFFA authority into this repository or authorize Platform or FFFA implementation by itself.
+Milestone 15 records completing FFFA customer acceptance as a separate High, FFFA-owned outcome, the published EO-15.1 repository implementation, and published PLAT-15.1A future repository authority under PLAT-PB-013. It does not move detailed FFFA authority into this repository or authorize implementation outside either exact work package.
 
 Milestone 15 backlog directions are planned, not approved for implementation by this backlog. EO-15.1 implementation authority came only from its separate governed work package; its Architecture Gatekeeper approval and publication do not authorize any other backlog item.
 
@@ -105,6 +105,7 @@ Milestone 15 backlog directions are planned, not approved for implementation by 
 - [Milestone 14 Portfolio Plan](../milestones/Milestone_14/Milestone_14_Portfolio_Plan.md)
 - [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
 - [EO-15.1 Work Package](../milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md)
+- [PLAT-15.1A Work Package](../milestones/Milestone_15/PLAT_15_1A_Repository_Only_Socket_Capable_Privileged_Proxy_Source_Implementation_Work_Package.md)
 - [Engineering Portfolio Kanban](../portfolio/Engineering_Portfolio_Kanban.md)
 - [AI Collaboration Governance Specification](../engineering-organization/ai-collaboration/AI_Collaboration_Governance_Specification.md)
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
@@ -115,6 +116,7 @@ Milestone 15 backlog directions are planned, not approved for implementation by 
 
 | Version | Description |
 |---------|-------------|
+| 4.3 | Recorded PLAT-15.1A as the published subordinate work package under PLAT-PB-013, with repository implementation Not Started and every artifact, deployment, observation, activation, and live gate closed. |
 | 4.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 while preserving every unrelated backlog gate. |
 | 4.1 | Recorded EO-15.1 repository implementation complete and unpublished at the Architecture Review gate. |
 | 4.0 | Added Milestone 15 delivery-leverage, EO-15.1, FFFA customer acceptance, and separately gated Platform carry-forward planning. |

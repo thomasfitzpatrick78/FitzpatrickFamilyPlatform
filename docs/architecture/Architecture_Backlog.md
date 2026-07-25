@@ -1,6 +1,6 @@
 # Architecture Backlog
 
-**Document Version:** 1.24
+**Document Version:** 1.25
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 | AB-008 | High | Platform runtime architecture options | Candidate | Deferred until Infrastructure operations readiness establishes options and gates. |
 | AB-009 | High | Platform Digital Twin lifecycle state model | Candidate | Future enhancement proposal for explicit states: Planned -> Delivered -> Powered -> BIOS Verified -> OS Installed -> Network Connected -> SSH Verified -> Docker Ready -> Platform Active. Do not implement lifecycle changes in PLAT-13.3. |
 | AB-010 | High | Governed operations and observability | Active | ADR-007 selects governed Prometheus, Node Exporter, cAdvisor, and Grafana target architecture for PLAT-13.6 planning. |
-| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1, the PLAT-14.1A fixture-only slice, migration model v2, provider architecture/security design, repository adapter and proxy foundations, formal security review, repository deployment configuration foundation, purpose-built implementation architecture/security acceptance package, Architecture Gatekeeper-approved transport-free Go source, and closed socket-capable transport review are published. The review preserves provider independence, fixed dispatch, a single-purpose proxy, immutable artifact identity, and separate source/artifact/deployment/observation gates. Five `not_applicable` subjects are completed and 16 remain review-required. |
+| AB-011 | High | Platform Operations bounded context and canonical evidence architecture | Active | Foundation schema 1.1, the PLAT-14.1A fixture-only slice, migration model v2, provider architecture/security design, repository adapter and proxy foundations, formal security review, repository deployment configuration foundation, purpose-built implementation architecture/security acceptance package, Architecture Gatekeeper-approved transport-free Go source, and closed socket-capable transport review are published. PLAT-15.1A is the published subordinate source work package; implementation is Not Started. The transport remains closed, and provider independence, fixed dispatch, a single-purpose proxy, immutable artifact identity, and separate source/artifact/deployment/observation gates remain binding. Five `not_applicable` subjects are completed and 16 remain review-required. |
 | AB-012 | Medium | Secure External and Privileged Provider Integration Standard | Candidate - Remain Backlog | The published review closes one provider's future transport architecture but supplies no accepted socket-capable implementation, real peer-credential evidence, Docker mediation, immutable OCI artifact, independently enforced privileged deployment, named-target evidence, recurring operation, provider replacement, or retirement evidence. Reevaluate in Milestone 15 after at least one approved privileged evidence cycle, preferably a second provider; no promotion is authorized. |
 | AB-002 | High | Home Automation safety model | Candidate | Needed before device or automation workflows. |
 | AB-003 | Medium | AI Services privacy and safety model | Candidate | Required before AI service implementation. |
@@ -46,6 +46,7 @@ This document tracks future architecture topics for the Fitzpatrick Family Platf
 
 | Version | Description |
 |---------|-------------|
+| 1.25 | Recorded PLAT-15.1A publication under AB-011 with implementation Not Started, closed transport unchanged, ADR-012 unimplemented, AB-012 retained in backlog, and every later gate closed. |
 | 1.24 | Recorded publication of the closed socket-capable transport review under AB-011 while retaining AB-012 in backlog and every implementation and operational gate. |
 | 1.23 | Recorded publication of the Architecture Gatekeeper-approved and accepted transport-free privileged-proxy source while leaving AB-012 in backlog and every privileged operational gate blocked. |
 | 1.22 | Added the first transport-free privileged-proxy source review evidence under AB-011 while retaining AB-012 in backlog and every publication, socket, artifact, deployment, and operational gate. |

@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 4.2
+**Document Version:** 4.3
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ Focus: increase Engineering Organization throughput through delivery leverage.
 Planned outcomes:
 
 - Complete FFFA customer acceptance through FFFA-owned evidence and decision authority.
-- Deliver additional Platform implementation only through separately authorized work packages.
+- Advance PLAT-15.1A as the published High, highest-priority Platform implementation package, with repository implementation Not Started.
 - Apply the published EO-15.1 fail-closed baseline and Transition Review mechanisms through authorized future work packages.
 - Reuse AI Collaboration, Execution Capability, automation, Platform Operations, Registry, evidence, and validation governance before expanding it.
 - Preserve architecture, implementation, artifact, deployment, observation, consumer, activation, release, and live-work gates.
@@ -48,7 +48,7 @@ Near-term candidates should build from Infrastructure Registry v1.0:
 
 ## Milestone 15 Planning Streams
 
-Milestone 15 planning is coordinated across EO, PLAT, and FFFA streams. This roadmap records completed EO-15.1 repository implementation under its separate published work-package authority. The remaining streams are planned, not approved for implementation by this roadmap.
+Milestone 15 planning is coordinated across EO, PLAT, and FFFA streams. This roadmap records completed EO-15.1 repository implementation and published PLAT-15.1A future repository authority under their separate work packages. FFFA customer acceptance remains a separate High, FFFA-owned outcome. Work outside those exact packages remains planned, not approved for implementation by this roadmap.
 
 ### EO - Engineering Organization
 
@@ -60,8 +60,8 @@ Milestone 15 planning is coordinated across EO, PLAT, and FFFA streams. This roa
 
 ### PLAT - Shared Platform
 
-- Deliver additional Platform implementation from an existing approved direction.
-- Require a separate governed work package before implementation.
+- Advance PLAT-15.1A under PLAT-PB-013 and AB-011 as the highest-priority Platform implementation package.
+- Treat PLAT-15.1A as `Ready for Repository Implementation; Not Started`; require a separate fetched and synchronized Codex Implementation Engineer initialization before source changes.
 - Preserve the PLAT-14.1A source, artifact, deployment, target, observation, consumer, recurrence, and activation gates.
 - Keep ADR-012 `Implemented: No` until the applicable implementation and acceptance gates are satisfied.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate architecture and human approval.
@@ -125,6 +125,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 - [Milestone 14 Portfolio Plan](../milestones/Milestone_14/Milestone_14_Portfolio_Plan.md)
 - [Milestone 14 Transition Review](../milestones/Milestone_14/Milestone_14_Transition_Review.md)
 - [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
+- [PLAT-15.1A Work Package](../milestones/Milestone_15/PLAT_15_1A_Repository_Only_Socket_Capable_Privileged_Proxy_Source_Implementation_Work_Package.md)
 - [Platform Operations Domain Architecture](../architecture/Platform_Operations_Domain_Architecture.md)
 - [Container Operational Health Specification](../specifications/Container_Operational_Health_Specification.md)
 
@@ -134,6 +135,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 4.3 | Recorded PLAT-15.1A as the published High, highest-priority Platform implementation package under PLAT-PB-013 and AB-011, Not Started, while retaining FFFA acceptance as a separate High outcome. |
 | 4.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 while preserving separate implementation and live-work gates. |
 | 4.1 | Recorded completed, unpublished EO-15.1 repository implementation pending Architecture Gatekeeper review. |
 | 4.0 | Activated Milestone 15 delivery-leverage direction, EO-15.1 future authority, FFFA customer acceptance, and separately gated Platform implementation while preserving the Milestone 14 closeout baseline. |

@@ -1,8 +1,8 @@
 # Privileged Proxy Security Test Specification
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
-**Status:** Architecture Gatekeeper Approved and Published v1.1 Test Gate; Tests Not Executed
+**Status:** Architecture Gatekeeper Approved and Published v1.2 Test Gate; Tests Not Executed
 
 **Milestone:** PLAT-14.1A named prerequisite
 
@@ -10,7 +10,9 @@
 
 ## Purpose
 
-This specification defines the exact positive and negative test evidence required before a future implementation may enter privileged deployment review. Repository-only fixtures must remain socket-, Docker-, network-, credential-, and deployment-incapable. Later isolated integration tests require separate authorization.
+This specification defines the exact positive and negative test evidence required before a future implementation may enter privileged deployment review.
+
+Ordinary repository fixtures remain transport-free and socket-, Docker-, network-, credential-, and deployment-incapable. The only repository socket exception is the expressly defined T-01 through T-12 integration matrix: temporary filesystem Unix sockets with synthetic adapter peers and fake Docker peers inside repository-controlled temporary roots. Those peers are test fixtures only; they do not modify the Production Provider Adapter, touch a real daemon or host socket, create an artifact, or authorize deployment or live work. Any integration beyond T-01 through T-12 requires separate authorization.
 
 ## Common Pass Rule
 
@@ -138,7 +140,7 @@ Future source review and automated checks must prove:
 
 ## Socket-Capable Repository Integration Tests
 
-These tests use temporary filesystem Unix sockets and synthetic peers only. They must fail fast if configured with `/var/run/docker.sock`, `/run/docker.sock`, a rootless Docker socket, or any non-temporary path. They create no OCI artifact and perform no Docker, IP network, credential, deployment, Registry, infrastructure, consumer, EO, or FFFA work.
+These are the only socket-capable repository fixtures authorized by this specification. They use temporary filesystem Unix sockets, temporary synthetic adapter peers, and temporary fake Docker peers only. They must fail fast if configured with `/var/run/docker.sock`, `/run/docker.sock`, a rootless Docker socket, or any non-temporary path. Production Provider Adapter source changes are prohibited. They create no OCI artifact and perform no Docker, IP network, credential, deployment, Registry, infrastructure, consumer, EO, or FFFA work.
 
 | ID | Fixture and condition | Required result |
 |----|-----------------------|-----------------|
@@ -169,5 +171,6 @@ Test evidence records exact source revision, binary/image digest, toolchain and 
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Clarified that ordinary fixtures remain transport-free while only T-01 through T-12 may use temporary Unix-socket synthetic adapter and fake Docker peers, with Production Provider Adapter changes and every real or live path prohibited. |
 | 1.1 | Published mandatory fixture-only socket lifecycle, half-close/EOF, real peer-credential, fake-Docker, fixed-request, parser, leakage, single-purpose, compatibility-ownership, prohibited-capability, fuzz, race, and saturation evidence. |
 | 1.0 | Published positive, negative, static, resource, audit, replay, authority-expansion, disablement, rollback, and supply-chain tests with exact reason and audit expectations. |

@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 4.0
+**Document Version:** 4.1
 
 **Status:** Active
 
@@ -12,11 +12,15 @@ This log records repository-managed governance changes for the Fitzpatrick Famil
 
 ---
 
-## Milestone 15 Initialization
+## Milestone 15 Governance State
 
-Milestone 15 is initialized around delivery leverage, completed FFFA customer acceptance, separately gated additional Platform implementation, EO-15.1 Transition Review operationalization, and reuse before expansion.
+Milestone 15 is active around delivery leverage, incomplete FFFA-owned customer acceptance, published PLAT-15.1A future repository authority, published EO-15.1 Transition Review operationalization, and reuse before expansion.
 
-EO-15.1 is authorized for future repository implementation. This authorization does not modify the Engineering Lifecycle, create a Transition Review template, introduce a lifecycle stage, expand permanent governance, implement Platform or FFFA functionality, activate an AI role or automation, or authorize live work.
+EO-15.1 repository implementation is Architecture Gatekeeper approved and published. Its bounded generated-evidence policy is authoritative after successful publication and post-publication verification. It does not modify the Engineering Lifecycle stages or ordering, create a Transition Review template family, authorize unrelated implementation, activate an AI role or automation, or authorize live work.
+
+The Product Strategy Board selected PLAT-15.1A as the High, highest-priority Platform implementation package in Milestone 15. The Architecture Gatekeeper approved and published its repository-only socket-capable privileged-proxy source boundary under PLAT-PB-013 and AB-011. The source implementation is `Not Started`; publication opens only a separate future Codex Implementation Engineer initialization. ADR-012 remains `Implemented: No`, AB-012 remains `Candidate - Remain Backlog`, and no artifact, deployment, daemon interaction, observation, consumer, recurrence, activation, release, or live gate is opened.
+
+FFFA customer acceptance remains incomplete, High priority, and owned by the FamilyFinanceAssistant repository. PLAT-15.1A does not displace it or create Platform-side finance authority.
 
 The Milestone 14 Transition Review evaluated Capability-First Operationalization and AB-012 and retained both as unpromoted candidates pending repeated approved evidence. No practice is promoted into governance by milestone transition publication.
 
@@ -76,6 +80,7 @@ Milestone 14 records these governance enhancements:
 
 | Version | Description |
 |---------|-------------|
+| 4.1 | Reconciled published EO-15.1 authority, corrected FFFA acceptance to incomplete and FFFA-owned, and recorded Product Strategy Board selection and Architecture Gatekeeper publication of PLAT-15.1A with implementation Not Started and all later gates closed. |
 | 4.0 | Recorded Milestone 14 closeout and Milestone 15 initialization without modifying the Engineering Lifecycle or promoting candidate governance. |
 | 3.13 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable transport review with four binding clarifications while preserving every implementation and operational gate. |
 | 3.12 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free privileged-proxy source while preserving ADR-012, AB-012, and every later authority gate. |
