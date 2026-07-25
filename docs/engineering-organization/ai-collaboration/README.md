@@ -1,8 +1,8 @@
 # AI Collaboration Governance
 
-**Document Version:** 2.0
+**Document Version:** 2.4
 
-**Status:** EO-14.8 Complete; Architecture Gatekeeper Approved; Baseline Published
+**Status:** EO-14.8 Baseline and EO-15.1 Repository Update Published
 
 **Milestone:** EO-14.8
 
@@ -50,10 +50,11 @@ The framework is repository-agnostic. EO-14.8D adds repository-evidence readines
 - Only one Workstream Continuity Brief may be Active for a workstream.
 - The AI Collaboration Steward remains planned until future governed activation.
 - The AI Session Readiness Validator is complete and available through `./platform-eap ai-session readiness`.
+- EO-15.1 publishes `./platform-eap ai-session baseline --work-package <repository-path>` for fail-closed starting-baseline classification, including exact-one work-package permission enforcement, and `./platform-eap milestone transition-review <path>` for placeholder-safe six-section structural validation.
 - EO-14.8E Engineering Metrics integration is complete; the validator and its governed reports remain the readiness source of truth.
 - EO-14.8A, EO-14.8B, EO-14.8C.1, EO-14.8C.2, EO-14.8D, EO-14.8E, and the EO-14.8 parent capability are complete and published as the Architecture Gatekeeper-approved Engineering Organization baseline.
 - Milestone 14 Alpha, Bravo, Charlie, and Architecture Integration continuity is closed and retained under `operational/milestone-14/`.
-- Milestone 15 Architecture Integration and EO-15.1 continuity is Active under `operational/milestone-15/`; EO-15.1 implementation has not started.
+- Milestone 15 Architecture Integration and EO-15.1 continuity remain Active under `operational/milestone-15/`; EO-15.1 records the Architecture Gatekeeper-approved and published standing policy without authorizing implementation by itself.
 - Readiness does not authorize implementation, activation, deployment, release, or live work.
 - Runtime Platform Health dashboard deployment remains future PLAT work and is not implemented by EO-14.8E.
 - Repository evidence remains authoritative over conversation context.
@@ -76,6 +77,10 @@ The framework is repository-agnostic. EO-14.8D adds repository-evidence readines
 
 | Version | Description |
 |---------|-------------|
+| 2.4 | Recorded Architecture Gatekeeper approval and governed publication of the EO-15.1 fail-closed baseline and Transition Review commands. |
+| 2.3 | Recorded fail-closed rejection of duplicate or conflicting generated-evidence permission metadata. |
+| 2.2 | Recorded remediation of production work-package prohibition enforcement and Markdown placeholder-only Transition Review evidence. |
+| 2.1 | Recorded the unpublished EO-15.1 baseline classifier and six-section Transition Review validator pending Architecture Gatekeeper review. |
 | 2.0 | Advanced operational continuity from closed Milestone 14 briefs to active Milestone 15 Architecture Integration and EO-15.1 briefs without activating implementation. |
 | 1.3 | Recorded EO-14.8 capability completion, Architecture Gatekeeper approval, baseline publication, and next Alpha responsibility. |
 | 1.2 | Recorded EO-14.8E Engineering Metrics and repository-side Platform Health integration and parent implementation completion. |

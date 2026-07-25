@@ -1,0 +1,18 @@
+{
+  "capability": "Milestone Transition Review Validation",
+  "status": "PASS",
+  "timestamp": "2026-07-25T22:12:55.671326+00:00",
+  "summary": "Transition Review structure is complete for Milestone 14; approval states remain external to this validation.",
+  "results": [
+    {
+      "severity": "INFO",
+      "message": "Declared review status is Approved Outcome - Published; structural validation does not approve that status.",
+      "path": "docs/milestones/Milestone_14/Milestone_14_Transition_Review.md"
+    },
+    {
+      "severity": "INFO",
+      "message": "All six governed Transition Review sections are present, ordered, and populated; architecture, product, closeout, release, and live approvals remain separate.",
+      "path": "docs/milestones/Milestone_14/Milestone_14_Transition_Review.md"
+    }
+  ]
+}

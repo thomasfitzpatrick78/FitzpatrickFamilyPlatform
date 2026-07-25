@@ -1,6 +1,6 @@
 # Engineering Portfolio Kanban
 
-**Document Version:** 2.1
+**Document Version:** 2.3
 
 **Status:** Active
 
@@ -12,7 +12,7 @@
 
 This repository-native Kanban tracks governed Milestone 15 portfolio work across Engineering Organization, Shared Platform, and the Fitzpatrick Family Financial Assistant.
 
-It records EO-15.1 future-implementation authority and portfolio direction. It does not authorize EO-15.1 implementation, Platform implementation, FFFA implementation, live deployment, or production operations by implication.
+It records EO-15.1 repository publication state and portfolio direction. The completed EO-15.1 implementation is Architecture Gatekeeper approved and published; this record does not authorize Platform implementation, FFFA implementation, release, deployment, activation beyond the published policy, or production operations by implication.
 
 ---
 
@@ -53,7 +53,7 @@ Milestone 14 is complete. Its final detailed Kanban state is retained below as t
 | Work Package | Workstream | Repository | Status | Priority | Dependencies | Approval State | Assigned AI Role | Customer Persona | Customer Impact | Platform Impact | EO Impact | Evidence Required | Deferred Items |
 |--------------|------------|------------|--------|----------|--------------|----------------|------------------|------------------|-----------------|-----------------|-----------|-------------------|----------------|
 | Architecture Integration | Milestone 15 Portfolio and Transition Coordination | FitzpatrickFamilyPlatform | Active | High | Milestone 14 Transition Review and Closeout Package | Active continuity; Architecture Gatekeeper retains architecture authority | Chief Architect / Architecture Gatekeeper; Codex Implementation Engineer | Platform Administrator | Keeps delivery claims and gates trustworthy | Preserves architecture and implementation boundaries | Coordinates delivery leverage without governance expansion | Milestone 15 plan, Kanban, active continuity, Architecture Gatekeeper findings | Product, architecture, implementation, release, or live decisions not separately authorized |
-| EO-15.1 | Engineering Lifecycle Transition Review Operationalization | FitzpatrickFamilyPlatform | Authorized | High | EO-15.1 Architecture Gatekeeper Baseline Decision; approved Milestone 14 Transition Review; existing Engineering Lifecycle, Definition of Done, AI Collaboration Governance, and validation mechanisms | Authorized for future repository implementation; implementation not started. Exact two-report baseline and version 1.1 authority amendment published; fail-closed generated-evidence classification is the first future implementation deliverable. | Codex Implementation Engineer | Platform Administrator | Faster, more consistent initialization and milestone transitions | Reuses repository evidence and validation infrastructure while rejecting ambiguous or unrelated changes | Removes recurring generated-evidence approval friction before operationalizing Transition Review practice | Baseline decision, amended work package, active continuity, focused tests, and validation evidence | Core lifecycle redesign, new template family, governance expansion beyond the bounded classification, Platform/FFFA implementation, live work |
+| EO-15.1 | Engineering Lifecycle Transition Review Operationalization | FitzpatrickFamilyPlatform | Architecture Review; Repository Implementation Published | High | EO-15.1 Architecture Gatekeeper Baseline Decision and Implementation Review; approved Milestone 14 Transition Review; existing Engineering Lifecycle, Definition of Done, AI Collaboration Governance, and validation mechanisms | Repository implementation complete, Architecture Gatekeeper approved, and published. Standing generated-evidence policy is authoritative after successful publication and post-publication verification; it does not authorize implementation by itself. | Codex Implementation Engineer | Platform Administrator | Faster, more consistent initialization and milestone transitions | Reuses repository evidence and validation infrastructure while rejecting ambiguous or unrelated changes | Published fail-closed generated-evidence classification and repeatable six-section Transition Review validation | Baseline decision, implementation review, amended work package, Active continuity, focused tests, Transition Review report, and governed validation evidence | Core lifecycle redesign, new template family, governance expansion beyond the bounded classification, Platform/FFFA implementation, release, deployment, activation beyond the published policy, live work |
 | FFFA Customer Acceptance | Customer-Facing Application | FamilyFinanceAssistant | Planned | High | FFFA-owned acceptance evidence and customer review | Completion remains FFFA-owned; implementation resumption requires later product and architecture decision | Codex Implementation Engineer only under FFFA repository authority | Household Accountant | Completes the primary customer-value gate | No direct Platform implementation | Supplies customer evidence for portfolio decisions | Sanitized acceptance outcome and FFFA repository authority | Platform-side finance implementation or customer data |
 | Additional Platform Implementation | Shared Platform Delivery | FitzpatrickFamilyPlatform | Planned | High | Existing approved architecture and a separate governed work package | No implementation is authorized by the Milestone 15 plan alone | Codex Implementation Engineer after separate authorization | Platform Administrator | Advances reliable household Platform capability | Converts an approved carry-forward direction into bounded implementation | Demonstrates reuse and delivery leverage | Work package, tests, validation, architecture evidence | Artifact, deployment, target, observation, consumer, activation, and live work without separate gates |
 
@@ -126,6 +126,8 @@ Kanban updates must remain repository-native Markdown unless a future approved t
 
 | Version | Description |
 |---------|-------------|
+| 2.3 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 while retaining Architecture Review ownership and every later gate. |
+| 2.2 | Advanced EO-15.1 to Architecture Review with repository implementation complete and unpublished pending Architecture Gatekeeper review. |
 | 2.1 | Published the Architecture Gatekeeper-approved exact generated-evidence baseline and EO-15.1 version 1.1 authority amendment as the first future implementation deliverable without beginning implementation. |
 | 2.0 | Closed the Milestone 14 Kanban baseline, activated Milestone 15 delivery-leverage planning, and recorded EO-15.1 as authorized but unimplemented. |
 | 1.34 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable implementation review while retaining Architecture Review ownership and every later gate. |

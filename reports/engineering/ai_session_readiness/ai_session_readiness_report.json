@@ -1,19 +1,19 @@
 {
   "capability": "AI Session Readiness Validation",
   "command": "./platform-eap ai-session readiness",
-  "readiness": "READY",
-  "generated_at": "2026-07-25T01:46:22.673926+00:00",
+  "readiness": "READY WITH WARNINGS",
+  "generated_at": "2026-07-25T22:13:13.717625+00:00",
   "repository": {
     "name": "FitzpatrickFamilyPlatform",
     "path": "/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform",
     "branch": "main",
-    "head": "f6858d7a53014375970afbda6069a21c79a3488b",
-    "working_tree": "clean outside generated readiness reports"
+    "head": "4dd678509b9deae92154d1fad3ccbbc24daad408",
+    "working_tree": "active source changes"
   },
   "domains": [
     {
       "name": "Repository Identity",
-      "status": "PASS",
+      "status": "PASS WITH WARNINGS",
       "checks": [
         {
           "check_id": "repository.identity",
@@ -32,7 +32,7 @@
         {
           "check_id": "repository.head",
           "severity": "PASS",
-          "message": "Current HEAD: f6858d7a53014375970afbda6069a21c79a3488b",
+          "message": "Current HEAD: 4dd678509b9deae92154d1fad3ccbbc24daad408",
           "evidence": []
         },
         {
@@ -43,9 +43,39 @@
         },
         {
           "check_id": "repository.working-tree",
-          "severity": "PASS",
-          "message": "Working tree is clean outside generated readiness reports.",
-          "evidence": []
+          "severity": "WARNING",
+          "message": "Working tree has active source changes; preserve and reconcile them before editing.",
+          "evidence": [
+            "M docs/engineering-organization/Engineering_Organization_Backlog.md",
+            " M docs/engineering-organization/Engineering_Organization_Roadmap.md",
+            " M docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Framework.md",
+            " M docs/engineering-organization/ai-collaboration/AI_Session_Initialization_Standard.md",
+            " M docs/engineering-organization/ai-collaboration/AI_Session_Readiness_Validator_Specification.md",
+            " M docs/engineering-organization/ai-collaboration/README.md",
+            " M docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_Continuity_Brief.md",
+            " M docs/milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md",
+            " M docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md",
+            " M docs/portfolio/Engineering_Portfolio_Kanban.md",
+            " M docs/product/Product_Backlog.md",
+            " M docs/product/Product_Roadmap.md",
+            " M engineering/README.md",
+            " M engineering/platform_eap/ai_session_readiness.py",
+            " M engineering/platform_eap/cli.py",
+            " M engineering/tests/test_ai_session_readiness.py",
+            " M engineering/tests/test_platform_eap.py",
+            " M reports/engineering/governance/governance_report.json",
+            " M reports/engineering/governance/governance_report.md",
+            " M reports/engineering/repository/repository_report.json",
+            " M reports/engineering/repository/repository_report.md",
+            "?? docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_AI_Session_Completion_Report.md",
+            "?? docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_AI_Session_Initialization_Record.md",
+            "?? docs/milestones/Milestone_15/EO_15_1_Architecture_Gatekeeper_Implementation_Review.md",
+            "?? engineering/platform_eap/baseline_classification.py",
+            "?? engineering/platform_eap/transition_review.py",
+            "?? engineering/tests/test_baseline_classification.py",
+            "?? engineering/tests/test_transition_review.py",
+            "?? reports/engineering/transition_review/"
+          ]
         }
       ]
     },
@@ -486,7 +516,7 @@
         {
           "check_id": "traceability.eo-15.1.milestone",
           "severity": "PASS",
-          "message": "EO-15.1 is traceable through milestone: implementation not started.",
+          "message": "EO-15.1 is traceable through milestone: repository implementation complete.",
           "evidence": [
             "docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md"
           ]
@@ -502,7 +532,7 @@
         {
           "check_id": "traceability.eo-15.1.kanban",
           "severity": "PASS",
-          "message": "EO-15.1 is traceable through kanban: implementation not started.",
+          "message": "EO-15.1 is traceable through kanban: Repository implementation complete.",
           "evidence": [
             "docs/portfolio/Engineering_Portfolio_Kanban.md"
           ]
@@ -534,7 +564,7 @@
         {
           "check_id": "traceability.eo-15.1.backlog",
           "severity": "PASS",
-          "message": "EO-15.1 is traceable through backlog: implementation not started.",
+          "message": "EO-15.1 is traceable through backlog: Repository implementation complete.",
           "evidence": [
             "docs/product/Product_Backlog.md"
           ]
@@ -564,7 +594,7 @@
         {
           "check_id": "parallel.eo-15.1.implementation-state",
           "severity": "PASS",
-          "message": "EO-15.1 preserves its unstarted implementation state.",
+          "message": "EO-15.1 preserves completed repository implementation at the Architecture Review gate.",
           "evidence": [
             "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_Continuity_Brief.md"
           ]
@@ -578,7 +608,7 @@
         {
           "check_id": "parallel.eo-15.1.planning-state",
           "severity": "PASS",
-          "message": "Kanban preserves EO-15.1 as authorized for future implementation and not started.",
+          "message": "Kanban preserves EO-15.1 as repository implementation complete, Architecture Gatekeeper approved, and published.",
           "evidence": [
             "docs/portfolio/Engineering_Portfolio_Kanban.md"
           ]
@@ -617,7 +647,7 @@
         {
           "check_id": "freshness.architecture-integration.verification",
           "severity": "PASS",
-          "message": "Architecture Integration freshness evidence is present: 2026-07-24.",
+          "message": "Architecture Integration freshness evidence is present: 2026-07-25.",
           "evidence": [
             "docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md"
           ]
@@ -650,7 +680,7 @@
         {
           "check_id": "freshness.eo-15.1.stage",
           "severity": "PASS",
-          "message": "EO-15.1 Engineering Lifecycle stage is valid: Specification.",
+          "message": "EO-15.1 Engineering Lifecycle stage is valid: Architecture Review.",
           "evidence": [
             "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_Continuity_Brief.md"
           ]
@@ -666,7 +696,7 @@
         {
           "check_id": "freshness.eo-15.1.verification",
           "severity": "PASS",
-          "message": "EO-15.1 freshness evidence is present: 2026-07-24.",
+          "message": "EO-15.1 freshness evidence is present: 2026-07-25.",
           "evidence": [
             "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_Continuity_Brief.md"
           ]
@@ -691,5 +721,42 @@
     }
   ],
   "errors": [],
-  "warnings": []
+  "warnings": [
+    {
+      "check_id": "repository.working-tree",
+      "severity": "WARNING",
+      "message": "Working tree has active source changes; preserve and reconcile them before editing.",
+      "evidence": [
+        "M docs/engineering-organization/Engineering_Organization_Backlog.md",
+        " M docs/engineering-organization/Engineering_Organization_Roadmap.md",
+        " M docs/engineering-organization/ai-collaboration/AI_Collaboration_Governance_Framework.md",
+        " M docs/engineering-organization/ai-collaboration/AI_Session_Initialization_Standard.md",
+        " M docs/engineering-organization/ai-collaboration/AI_Session_Readiness_Validator_Specification.md",
+        " M docs/engineering-organization/ai-collaboration/README.md",
+        " M docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_Continuity_Brief.md",
+        " M docs/milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md",
+        " M docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md",
+        " M docs/portfolio/Engineering_Portfolio_Kanban.md",
+        " M docs/product/Product_Backlog.md",
+        " M docs/product/Product_Roadmap.md",
+        " M engineering/README.md",
+        " M engineering/platform_eap/ai_session_readiness.py",
+        " M engineering/platform_eap/cli.py",
+        " M engineering/tests/test_ai_session_readiness.py",
+        " M engineering/tests/test_platform_eap.py",
+        " M reports/engineering/governance/governance_report.json",
+        " M reports/engineering/governance/governance_report.md",
+        " M reports/engineering/repository/repository_report.json",
+        " M reports/engineering/repository/repository_report.md",
+        "?? docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_AI_Session_Completion_Report.md",
+        "?? docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_1_AI_Session_Initialization_Record.md",
+        "?? docs/milestones/Milestone_15/EO_15_1_Architecture_Gatekeeper_Implementation_Review.md",
+        "?? engineering/platform_eap/baseline_classification.py",
+        "?? engineering/platform_eap/transition_review.py",
+        "?? engineering/tests/test_baseline_classification.py",
+        "?? engineering/tests/test_transition_review.py",
+        "?? reports/engineering/transition_review/"
+      ]
+    }
+  ]
 }

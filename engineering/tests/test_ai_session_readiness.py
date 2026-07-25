@@ -117,18 +117,22 @@ def test_ai_session_readiness_warns_for_active_source_changes(tmp_path):
     assert any("active source changes" in warning.message for warning in result.warnings)
 
 
-def test_ai_session_readiness_tracks_eo_15_1_authorized_unstarted_state(tmp_path):
+def test_ai_session_readiness_tracks_eo_15_1_published_state(tmp_path):
     root = _ready_fixture(tmp_path)
     kanban = DEFAULT_CONFIGURATION.planning_artifacts["kanban"]
     _replace(
         root,
         kanban,
-        "Authorized for future repository implementation; implementation not started",
-        "Implementation complete",
+        "Repository implementation complete, Architecture Gatekeeper approved, and published",
+        "Implementation state ambiguous",
     )
     result = _validate(root)
     assert result.readiness == NOT_READY
-    assert any("Kanban must preserve EO-15.1 as authorized for future implementation and not started" in message for message in _messages(result))
+    assert any(
+        "Kanban must preserve EO-15.1 as repository implementation complete, Architecture Gatekeeper approved, and published"
+        in message
+        for message in _messages(result)
+    )
 
 
 def test_ai_session_readiness_requires_milestone_15_plan(tmp_path):

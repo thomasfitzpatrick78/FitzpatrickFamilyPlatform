@@ -67,6 +67,7 @@ class WorkstreamRequirement:
     authoritative_tokens: tuple[str, ...]
     required_dependencies: tuple[str, ...]
     planning_tokens: dict[str, tuple[str, ...]]
+    implementation_state: str = "unstarted"
 
 
 @dataclass(frozen=True)
@@ -147,11 +148,12 @@ DEFAULT_CONFIGURATION = ReadinessConfiguration(
             ("Milestone 14 Transition Review", "EO-15.1", "Engineering Lifecycle", "Definition of Done"),
             ("Architecture Integration",),
             {
-                "milestone": ("EO-15.1", "implementation not started"),
-                "kanban": ("EO-15.1", "implementation not started"),
+                "milestone": ("EO-15.1", "repository implementation complete"),
+                "kanban": ("EO-15.1", "Repository implementation complete"),
                 "roadmap": ("EO-15.1", "Transition Review"),
-                "backlog": ("EO-15.1", "implementation not started"),
+                "backlog": ("EO-15.1", "Repository implementation complete"),
             },
+            "review",
         ),
     ),
 )
@@ -624,17 +626,25 @@ class AISessionReadinessValidator:
                         fields.get("Current Engineering Lifecycle stage", ""),
                     ]
                 ).lower()
-                false_start = bool(re.search(r"\bimplementation (?:work )?has started\b", combined))
-                expected_unstarted = requirement.name != "EO-15.1" or (
-                    "implementation has not started" in combined or "implementation not started" in combined
-                )
+                stage = fields.get("Current Engineering Lifecycle stage", "").split(";", 1)[0].strip().rstrip(".")
+                if requirement.implementation_state == "review":
+                    state_ok = bool(re.search(r"repository implementation (?:is )?complete", combined)) and stage == "Architecture Review"
+                    success_message = f"{requirement.name} preserves completed repository implementation at the Architecture Review gate."
+                    error_message = f"{requirement.name} must preserve completed repository implementation at the Architecture Review gate."
+                else:
+                    false_start = bool(re.search(r"\bimplementation (?:work )?has started\b", combined))
+                    state_ok = not false_start and (
+                        requirement.name != "EO-15.1"
+                        or "implementation has not started" in combined
+                        or "implementation not started" in combined
+                    )
+                    success_message = f"{requirement.name} preserves its unstarted implementation state."
+                    error_message = f"{requirement.name} does not preserve its required unstarted implementation state."
                 checks.append(
                     ReadinessCheck(
                         f"parallel.{requirement.name.lower()}.implementation-state",
-                        ERROR if false_start or not expected_unstarted else PASS,
-                        f"{requirement.name} preserves its unstarted implementation state."
-                        if not false_start and expected_unstarted
-                        else f"{requirement.name} does not preserve its required unstarted implementation state.",
+                        PASS if state_ok else ERROR,
+                        success_message if state_ok else error_message,
                         [relative],
                     )
                 )
@@ -721,16 +731,18 @@ class AISessionReadinessValidator:
                 ]
                 planning_state_ok = (
                     len(eo_15_1_rows) == 1
-                    and "| authorized |" in eo_15_1_rows[0]
-                    and "implementation not started" in eo_15_1_rows[0]
+                    and "| architecture review; repository implementation published |" in eo_15_1_rows[0]
+                    and "repository implementation complete" in eo_15_1_rows[0]
+                    and "architecture gatekeeper approved" in eo_15_1_rows[0]
+                    and "published" in eo_15_1_rows[0]
                 )
                 checks.append(
                     ReadinessCheck(
                         "parallel.eo-15.1.planning-state",
                         PASS if planning_state_ok else ERROR,
-                        "Kanban preserves EO-15.1 as authorized for future implementation and not started."
+                        "Kanban preserves EO-15.1 as repository implementation complete, Architecture Gatekeeper approved, and published."
                         if planning_state_ok
-                        else "Kanban must preserve EO-15.1 as authorized for future implementation and not started.",
+                        else "Kanban must preserve EO-15.1 as repository implementation complete, Architecture Gatekeeper approved, and published.",
                         [self.configuration.planning_artifacts["kanban"]],
                     )
                 )

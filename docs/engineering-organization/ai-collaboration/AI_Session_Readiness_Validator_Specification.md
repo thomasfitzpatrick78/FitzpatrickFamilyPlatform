@@ -1,8 +1,8 @@
 # AI Session Readiness Validator Specification
 
-**Document Version:** 1.2
+**Document Version:** 1.6
 
-**Status:** Implemented; Awaiting Architecture Gatekeeper Review
+**Status:** Implemented; Architecture Gatekeeper Approved; Published
 
 **Milestone:** EO-14.8D
 
@@ -27,6 +27,8 @@ EO-14.8D implements a reusable validation engine, Platform EAP routing, structur
 The validator must assess repository readiness for onboarding an AI participant.
 
 The validator must not inspect, score, or validate conversation content.
+
+The companion `./platform-eap ai-session baseline --work-package <repository-path>` command applies the EO-15.1 fail-closed starting-baseline policy before readiness validation. The canonical tracked work package must contain exactly one `**Expected Generated Evidence Baseline:** Permitted` declaration; missing context, invalid or untracked context, missing, invalid, duplicate, or conflicting metadata, and `Prohibited` classify generated evidence `Dirty`. Baseline classification and readiness remain distinct: classification governs whether repository changes may be inherited at session start, while readiness assesses repository orientation evidence and may disclose active in-session source changes as warnings.
 
 ---
 
@@ -77,6 +79,8 @@ Reports record:
 
 Reports use `reports/engineering/ai_session_readiness/` and remain the source evidence consumed by the implemented EO-14.8E metrics integration.
 
+The baseline classifier is read-only and emits human-readable or JSON evidence to standard output. It verifies qualifying readiness reports against current HEAD and reproduces both files byte-for-byte through the governed producer implementation; it does not create a parallel readiness report.
+
 EO-14.8E consumes the governed JSON report through the public Engineering Metrics capability. The validator remains authoritative for readiness calculation. Engineering Metrics and Platform Health visibility must not duplicate validator checks, regenerate the report as a hidden side effect, alter readiness evidence, or remediate findings.
 
 ---
@@ -122,6 +126,10 @@ EO-14.8D includes focused tests for:
 
 | Version | Description |
 |---------|-------------|
+| 1.6 | Recorded Architecture Gatekeeper approval and publication of the EO-15.1 companion baseline-classification boundary. |
+| 1.5 | Required exactly one governed work-package permission declaration and fail-closed rejection of duplicate or conflicting metadata. |
+| 1.4 | Bound `Expected Generated Evidence` to exact opt-in metadata in the canonical tracked work package used by the production command. |
+| 1.3 | Added the EO-15.1 companion baseline-classification boundary and byte-for-byte generated-evidence provenance requirement without changing readiness outcomes. |
 | 1.2 | Recorded EO-14.8E read-only report consumption while retaining validator source-of-truth authority. |
 | 1.1 | Recorded EO-14.8D implementation, report location, validation domains, tests, and non-remediation boundary. |
 | 1.0 | Initial future AI Session Readiness Validator specification. |

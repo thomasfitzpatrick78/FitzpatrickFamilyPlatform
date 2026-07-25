@@ -29,20 +29,20 @@
 | Workstream ID and title | EO-15.1 - Engineering Lifecycle Transition Review Operationalization. |
 | Assigned role | Codex Implementation Engineer. |
 | Objective | First remove the recurring generated-evidence baseline deadlock through a bounded fail-closed repository classification, then operationalize the approved Transition Review through existing repository mechanisms without redesigning the core lifecycle. |
-| Current Engineering Lifecycle stage | Specification; the work package is authorized and implementation has not started. |
+| Current Engineering Lifecycle stage | Architecture Review; the exact EO-15.1 version 1.4 repository implementation is complete and Architecture Gatekeeper approved and published. |
 | Authoritative artifacts | Permanent governance; Engineering Lifecycle; Definition of Done; Milestone 14 Transition Review; Milestone 14 Closeout Package; Milestone 15 Portfolio Plan; Engineering Portfolio Kanban; EO-15.1 work package; EO-15.1 Architecture Gatekeeper Baseline Decision; AI Collaboration Governance. |
-| Completed work and evidence | The approved six-section Transition Review is published, Milestone 14 is closed, Milestone 15 is active, and the EO-15.1 work package authorizes future implementation only. |
-| Current work | Preserve the implementation-not-started boundary and prepare for a separately initialized EO-15.1 implementation session under the amended authority. |
-| Active repository changes | None after publication. The publication package contained the two exactly approved generated readiness reports plus the decision, work-package amendment, and required Milestone 15 continuity/portfolio traceability only; no EO-15.1 implementation. |
+| Completed work and evidence | The fail-closed baseline classifier, exact-one tracked work-package permission enforcement in the production CLI, byte-for-byte governed-producer verification, placeholder-safe six-section Transition Review validator, focused fixture-only and end-to-end CLI tests, usage guidance, and planning/continuity traceability are implemented, Architecture Gatekeeper approved, and published. |
+| Current work | Preserve the published policy and apply it only through authorized future work packages and governed session initialization. |
+| Active repository changes | None after successful publication and post-publication verification. The publication package contains only the reviewed EO-15.1 implementation, tests, evidence, documentation, planning traceability, session records, and approval record. |
 | Parallel workstreams | Architecture Integration is active. FFFA customer acceptance and additional Platform implementation remain separate planned outcomes. |
 | Dependencies | Architecture Integration; EO-15.1 Architecture Gatekeeper Baseline Decision; approved Milestone 14 Transition Review; Milestone 15 Portfolio Plan; existing Engineering Lifecycle, Definition of Done, AI Collaboration Governance, and validation mechanisms. |
-| Integration gates | The first implementation session must satisfy every publication-bound bootstrap condition; future implementation must then make standing baseline classification fail closed, reuse existing mechanisms, pass focused tests and governed validators, and stop if core lifecycle, template-family, broader governance, or architecture expansion is required. |
-| Unresolved decisions | Exact repository implementation design for attributable generated evidence and Transition Review capture within the amended bounded scope; any broader change must return to the Architecture Gatekeeper. |
-| Risks | Path-only allowlisting could misclassify user edits as generated evidence; authorization could be mistaken for completed implementation; or operationalization could drift into lifecycle redesign or a parallel governance system. |
+| Integration gates | Successful governed publication and post-publication verification establish standing classifier authority. Core lifecycle, template-family, broader governance, architecture, release, deployment, activation, and live-work expansion remain separately gated. |
+| Unresolved decisions | None within EO-15.1. No implementation-side architecture or portfolio decision is asserted. |
+| Risks | A future session could supply the wrong work package, inherit a `Dirty` tree, mistake baseline classification for implementation authority, or attempt to broaden the published policy into lifecycle redesign or a parallel governance system. |
 | Stop conditions | Missing or superseded decision/work-package authority; any failed or ambiguous bootstrap condition; publication head does not have the required parent-and-tree anchor; baseline outside the exact one-time approval before policy implementation and publication; any baseline classified `Dirty` afterward; scope expansion; core lifecycle modification; new Transition Review template family; broader governance expansion; Platform or FFFA implementation; live work. |
-| Permitted actions | In a separately initialized future session, implement only the bounded baseline-classification and Transition Review scope, add focused tests, run validation, and update continuity evidence. |
-| Prohibited actions | Implement EO-15.1 before amendment publication; modify the core Engineering Lifecycle stages or ordering; create a Transition Review template family; expand governance beyond the bounded generated-evidence classification; approve product or architecture decisions; perform Platform, FFFA, or live work. |
-| Next gate | Complete AI Session Initialization for a separate Codex Implementation Engineer session under the published EO-15.1 version 1.1 authority. |
+| Permitted actions | Apply the published baseline classifier and Transition Review validator during separately authorized future repository work; preserve their fail-closed boundaries and evidence. |
+| Prohibited actions | Treat baseline classification as implementation authority; modify the core Engineering Lifecycle stages or ordering; create a Transition Review template family; expand governance beyond the bounded generated-evidence classification; approve product or architecture decisions; perform Platform, FFFA, release, deployment, activation beyond the published policy, or live work. |
+| Next gate | Future sessions may apply the published policy only under their own repository-authorized work packages; any material change requires Architecture Gatekeeper re-review. |
 | Last verification date | 2026-07-25. |
 | Superseded brief reference | None. |
 
@@ -50,7 +50,7 @@
 
 ## Continuity Notes
 
-EO-15.1 is repository-authorized and unimplemented. The exact two-report baseline and bounded authority amendment are Architecture Gatekeeper approved and published. This brief preserves future implementation continuity; it is not evidence that implementation has started.
+EO-15.1 repository implementation is complete, Architecture Gatekeeper approved, and published. The one-time bootstrap authorization is consumed and retained as historical evidence. After successful publication and post-publication verification, the standing classifier policy governs qualifying future generated-evidence baselines without authorizing implementation, release, activation, deployment, production, or live work.
 
 ---
 
@@ -67,5 +67,9 @@ EO-15.1 is repository-authorized and unimplemented. The exact two-report baselin
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded Architecture Gatekeeper approval and governed publication while retaining Active continuity for the standing policy and preserving every later gate. |
+| 1.4 | Recorded fail-closed exact-one permission enforcement and the unchanged Architecture Gatekeeper re-review gate. |
+| 1.3 | Recorded bounded remediation of both blocking Gatekeeper findings and advanced the unchanged Architecture Review gate to re-review. |
+| 1.2 | Advanced EO-15.1 to Architecture Review with completed, unpublished repository implementation and preserved every publication, activation, and live-work gate. |
 | 1.1 | Published the exact one-time generated-evidence baseline approval, publication-bound bootstrap authorization, and bounded baseline-classification authority as the first EO-15.1 implementation deliverable. |
 | 1.0 | Activated continuity for the authorized but unimplemented EO-15.1 work package. |

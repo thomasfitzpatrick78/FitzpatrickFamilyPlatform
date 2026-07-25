@@ -1,6 +1,6 @@
 # Engineering Organization Roadmap
 
-**Document Version:** 3.0
+**Document Version:** 3.2
 
 **Status:** Active
 
@@ -37,7 +37,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 - The Engineering Investment Rule is evaluated at milestone planning, review, and closeout.
 - Execution Agent and Operations Analyst remain planned roles until future governance activates them.
 - The AI Collaboration Steward remains limited to its approved review boundary and ongoing automation is not activated. EO-14.8A through EO-14.8E, the parent capability, Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the fixture-only PLAT-14.1A repository slice are published. Charlie remains unstarted. No automation, role activation, provider access, or live work is authorized.
-- EO-15.1 is authorized for future repository implementation; its implementation has not started.
+- EO-15.1 repository implementation is Architecture Gatekeeper approved and published; its standing fail-closed generated-evidence policy is authoritative after successful publication and post-publication verification, without authorizing implementation by itself.
 - Reuse existing lifecycle, governance, contracts, validators, and evidence mechanisms before proposing expansion.
 
 ---
@@ -64,6 +64,8 @@ This document defines the roadmap for the Engineering Organization governed capa
 
 | Version | Description |
 |---------|-------------|
+| 3.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 without opening activation or live-work gates. |
+| 3.1 | Recorded completed, unpublished EO-15.1 repository implementation at the Architecture Review gate. |
 | 3.0 | Added EO-15 delivery leverage and EO-15.1 future implementation authority while preserving the existing governance boundary. |
 | 2.4 | Recorded publication of the Architecture Gatekeeper-accepted PLAT-14.1A repository slice while preserving Charlie, provider, activation, and live-work gates. |
 | 2.3 | Recorded the complete unpublished PLAT-14.1A repository slice while preserving Charlie, provider, activation, and live-work gates. |

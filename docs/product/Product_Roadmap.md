@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 4.0
+**Document Version:** 4.2
 
 **Status:** Active
 
@@ -24,7 +24,7 @@ Planned outcomes:
 
 - Complete FFFA customer acceptance through FFFA-owned evidence and decision authority.
 - Deliver additional Platform implementation only through separately authorized work packages.
-- Operationalize the approved Transition Review through EO-15.1 in a future implementation session.
+- Apply the published EO-15.1 fail-closed baseline and Transition Review mechanisms through authorized future work packages.
 - Reuse AI Collaboration, Execution Capability, automation, Platform Operations, Registry, evidence, and validation governance before expanding it.
 - Preserve architecture, implementation, artifact, deployment, observation, consumer, activation, release, and live-work gates.
 - Retain ADR-012 `Implemented: No`, Capability-First as unpromoted, and AB-012 in backlog until later evidence justifies change.
@@ -48,12 +48,12 @@ Near-term candidates should build from Infrastructure Registry v1.0:
 
 ## Milestone 15 Planning Streams
 
-Milestone 15 planning is coordinated across EO, PLAT, and FFFA streams. These streams are planned, not approved for implementation by this roadmap; only EO-15.1 has a published future-implementation work package.
+Milestone 15 planning is coordinated across EO, PLAT, and FFFA streams. This roadmap records completed EO-15.1 repository implementation under its separate published work-package authority. The remaining streams are planned, not approved for implementation by this roadmap.
 
 ### EO - Engineering Organization
 
-- EO-15.1 Engineering Lifecycle Transition Review Operationalization is authorized for future repository implementation.
-- EO-15.1 implementation has not started.
+- EO-15.1 Engineering Lifecycle Transition Review Operationalization is Architecture Gatekeeper approved and published.
+- The standing generated-evidence policy is authoritative after successful publication and post-publication verification; it does not authorize implementation by itself.
 - AI Collaboration Governance, EO-14.1A, and EO-14.4A remain published reusable foundations; activation remains separate.
 - Delivery-leverage observations must avoid unsupported precision.
 - Existing governance is reused before any expansion proposal.
@@ -134,6 +134,8 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 4.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 while preserving separate implementation and live-work gates. |
+| 4.1 | Recorded completed, unpublished EO-15.1 repository implementation pending Architecture Gatekeeper review. |
 | 4.0 | Activated Milestone 15 delivery-leverage direction, EO-15.1 future authority, FFFA customer acceptance, and separately gated Platform implementation while preserving the Milestone 14 closeout baseline. |
 | 3.18 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable transport review while preserving every source and operational gate. |
 | 3.17 | Recorded Architecture Gatekeeper approval, acceptance, and publication of the transport-free source while preserving every later implementation and operational gate. |

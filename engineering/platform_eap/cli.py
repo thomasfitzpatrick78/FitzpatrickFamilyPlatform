@@ -15,6 +15,11 @@ from engineering.platform_eap.ai_session_readiness import (
     PASS as READINESS_PASS,
     write_readiness_report,
 )
+from engineering.platform_eap.baseline_classification import (
+    DIRTY as DIRTY_BASELINE,
+    GeneratedEvidenceBaselineClassifier,
+)
+from engineering.platform_eap.transition_review import validate_transition_review
 from engineering.platform_eap.execution_capability import (
     ExecutionDataError,
     FindingSeverity,
@@ -1706,6 +1711,72 @@ def ai_session_readiness() -> int:
     return 1 if result.readiness == NOT_READY or result.errors else 0
 
 
+def ai_session_baseline(*, machine: bool = False, work_package_path: str | None = None) -> int:
+    try:
+        result = GeneratedEvidenceBaselineClassifier(
+            ROOT,
+            work_package_path=work_package_path,
+        ).classify()
+    except Exception as exc:
+        print("# AI Session Baseline Classification")
+        print("Status: EXECUTION FAILURE")
+        print(f"Unexpected execution failure: {exc}")
+        return 3
+
+    if machine:
+        print(json.dumps(asdict(result), indent=2, sort_keys=True))
+    else:
+        print("# AI Session Baseline Classification")
+        print(f"Baseline state: {result.state}")
+        print(f"HEAD: {result.head or 'unavailable'}")
+        print(f"Changed paths: {len(result.changed_paths)}")
+        for finding in result.findings:
+            evidence = f" ({', '.join(finding.evidence)})" if finding.evidence else ""
+            print(f"{finding.severity}: {finding.message}{evidence}")
+    return 1 if result.state == DIRTY_BASELINE or result.errors else 0
+
+
+def _parse_ai_session_baseline_arguments(argv: list[str]) -> tuple[bool, str | None]:
+    machine = False
+    work_package_path: str | None = None
+    index = 0
+    while index < len(argv):
+        argument = argv[index]
+        if argument == "--json":
+            if machine:
+                raise ValueError("AI Session baseline argument is duplicated: --json.")
+            machine = True
+            index += 1
+            continue
+        if argument == "--work-package":
+            if work_package_path is not None or index + 1 >= len(argv) or argv[index + 1].startswith("--"):
+                raise ValueError("AI Session baseline requires exactly one value for --work-package.")
+            work_package_path = argv[index + 1]
+            index += 2
+            continue
+        raise ValueError(f"AI Session baseline contains unsupported argument: {argument}.")
+    return machine, work_package_path
+
+
+def transition_review_report(relative: str) -> Report:
+    validation = validate_transition_review(ROOT, relative)
+    results = [CheckResult(item.severity, item.message, item.path) for item in validation.findings]
+    if validation.status == "PASS":
+        summary = (
+            f"Transition Review structure is complete for {validation.milestone or 'the declared milestone'}; "
+            "approval states remain external to this validation."
+        )
+    else:
+        summary = "Transition Review structure is incomplete or invalid."
+    return Report(
+        capability="Milestone Transition Review Validation",
+        status=status_from(results),
+        timestamp=now(),
+        summary=summary,
+        results=results,
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if argv == ["repository", "validate"]:
@@ -1720,6 +1791,17 @@ def main(argv: list[str] | None = None) -> int:
         return run_report("engineering_metrics", engineering_metrics)
     if argv == ["ai-session", "readiness"]:
         return ai_session_readiness()
+    if argv[:2] == ["ai-session", "baseline"]:
+        try:
+            machine, work_package_path = _parse_ai_session_baseline_arguments(argv[2:])
+        except ValueError as exc:
+            print("# AI Session Baseline Classification")
+            print("Status: INVALID ARGUMENTS")
+            print(f"ERROR: {exc}")
+            return 2
+        return ai_session_baseline(machine=machine, work_package_path=work_package_path)
+    if len(argv) == 3 and argv[:2] == ["milestone", "transition-review"]:
+        return run_report("transition_review", lambda: transition_review_report(argv[2]))
     if argv == ["capabilities"]:
         return capabilities()
     if argv and argv[0] == "registry":
@@ -1738,5 +1820,5 @@ def main(argv: list[str] | None = None) -> int:
         return privileged_proxy_cli(argv[1:])
     if argv and argv[0] == "deployment":
         return deployment_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|engineering metrics|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy|privileged-proxy|deployment>")
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|milestone transition-review <path>|engineering metrics|ai-session baseline [--work-package <path>] [--json]|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy|privileged-proxy|deployment>")
     return 2

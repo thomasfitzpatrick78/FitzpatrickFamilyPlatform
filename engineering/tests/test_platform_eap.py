@@ -1367,17 +1367,23 @@ def test_milestone_15_plan_records_approved_delivery_leverage_direction():
     assert "reuse existing governance" in plan.lower()
 
 
-def test_eo_15_1_is_authorized_without_implementation():
+def test_eo_15_1_repository_implementation_is_approved_and_published():
     work_package = read_repo_text(
         "docs/milestones/Milestone_15/"
         "EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md"
     )
-    assert "**Status:** Authorized for Future Repository Implementation" in work_package
-    assert "**Implementation State:** Not Started" in work_package
-    assert "This package authorizes future implementation only" in work_package
+    assert "**Status:** Architecture Gatekeeper Approved; Published" in work_package
+    assert "**Implementation State:** Repository Implementation Complete; Published" in work_package
+    assert "**Expected Generated Evidence Baseline:** Permitted" in work_package
+    assert "standing generated-evidence policy becomes authoritative only after" in work_package
     assert "Modify the Engineering Lifecycle" in work_package
     assert "Create a new Transition Review template" in work_package
     assert "Implement Platform or FFFA functionality" in work_package
+    review = read_repo_text(
+        "docs/milestones/Milestone_15/EO_15_1_Architecture_Gatekeeper_Implementation_Review.md"
+    )
+    assert "**Status:** Architecture Gatekeeper Approved; Published" in review
+    assert "No blocking findings remain" in review
 
 
 def test_milestone_continuity_advances_from_14_to_15():
@@ -1394,4 +1400,4 @@ def test_milestone_continuity_advances_from_14_to_15():
     eo_15_1 = (milestone_15_root / "EO_15_1_Continuity_Brief.md").read_text(encoding="utf-8")
     assert "**Status:** Active" in architecture
     assert "**Status:** Active" in eo_15_1
-    assert "implementation has not started" in eo_15_1
+    assert "Architecture Gatekeeper approved and published" in eo_15_1
