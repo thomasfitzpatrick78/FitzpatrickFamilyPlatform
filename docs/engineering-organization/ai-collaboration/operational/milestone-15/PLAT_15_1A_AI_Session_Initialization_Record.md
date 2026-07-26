@@ -1,10 +1,10 @@
-# PLAT-15.1A Version 1.1 Correction Publication-Preparation AI Session Initialization Record
+# PLAT-15.1A Version 1.1 Replacement Static-Manifest Acceptance Publication-Preparation AI Session Initialization Record
 
 **Originating Template:** [AI Session Initialization Record Template](../../templates/AI_Session_Initialization_Record_Template.md)
 
 **Framework Version:** 1.0
 
-**Status:** Complete
+**Status:** Complete - Go Validation Requirements Satisfied
 
 ---
 
@@ -14,51 +14,55 @@
 |-------|-------|
 | Repository | `FitzpatrickFamilyPlatform`. |
 | Branch | `main`. |
-| HEAD / tree | `332058d6cb94a4983e3b988d192e7809caf92194` / `2e36c29408921c13613ce3348464b5a28a883e15`. |
-| Work package | Repository-only publication preparation for the approved Version 1.1 Gate 2 topology and Ubuntu-sequencing correction. |
-| Assigned roles | Governed repository publication-preparation engineer preserving the Product Strategy Board and Architecture Gatekeeper decisions and validating the exact 18-path inventory. |
+| HEAD / tree | `3033d2553fdd8829e9af7fc14ace0db2aecdb85e` / `e4bd2d00e38f228ee072a7e5946db38e9b4e6ebd`. |
+| Remote state | Local `main`, `origin/main`, `FETCH_HEAD`, and live remote `main` exact; ahead/behind `0/0`. |
+| Work package | Repository-only preparation of the sanitized Version 1.1 replacement static-manifest acceptance-record publication package. |
+| Assigned role | Governed repository publication-preparation engineer preserving the Architecture Gatekeeper decision and every later authority gate. |
 | Session date | 2026-07-26. |
 
 ---
 
-## Mandatory Checks
+## Mandatory Initialization Checks
 
 | Check | Evidence | Result |
 |-------|----------|--------|
-| Repository identity | Permanent repository authority identifies `FitzpatrickFamilyPlatform`; canonical repository root matched its established identity field. | PASS |
+| Repository identity | Permanent repository authority identifies `FitzpatrickFamilyPlatform`; canonical repository root matched. | PASS |
 | Branch, HEAD, and tree | Branch `main`; expected commit and tree exact. | PASS |
-| Initial inventories | Staging empty; working tree contains exactly the approved 18-path Version 1.1 proposal and evidence inventory, with 17 unstaged tracked paths and one authorized untracked suspension record. | PASS |
-| Remote equality | After fetch, local `main`, `origin/main`, `FETCH_HEAD`, and live remote `main` identical; ahead/behind `0/0`. | PASS |
-| Lifecycle | Gate 2 `Not Authorized`; environment `Not Created`; PLAT-15.1A implementation `Not Started`. | PASS |
-| Controlling discrepancy decision | `Acceptance Suspended Pending Revision`; acceptance record `plat15a-static-manifest-acceptance-001` remains immutable historical evidence and execution-ineligible. | PASS |
-| Repository scope | Exact approved 18-path Version 1.1 proposal and evidence inventory only. | PASS |
-| Protected boundary | Protected state must not be inspected or modified; no protected amendment, addendum, redirect resolution, or host action is permitted. | PASS |
-| Portfolio boundary | PLAT-15.1A / PLAT-PB-013 and AB-011 linkage retained; no new backlog identifier; ADR-012 and AB-012 unchanged. | PASS |
-| Publication-preparation authority | Product Strategy Board and Architecture Gatekeeper decisions authorize repository publication preparation only; staging, commit, push, publication, and every protected or execution action remain prohibited. | PASS |
+| Initial inventories | Working tree, staging area, and untracked inventory empty. | PASS |
+| Remote equality | Authorized fetch and live-remote query proved local, tracking, fetched, and live `main` equality; ahead/behind `0/0`. | PASS |
+| Lifecycle | Gate 2 `Not Authorized`; environment `Not Created`; implementation `Not Started`. | PASS |
+| Controlling decision | Architecture Gatekeeper decision `Accept` for replacement acceptance ID `plat15a-static-manifest-acceptance-002`. | PASS |
+| Historical records | Historical acceptance and suspension records must remain byte-unchanged. | PASS |
+| Initial readiness reconciliation | Historical prepublication readiness evidence regenerated from the exact clean published baseline. | PASS - READY; 0 errors; 0 warnings |
+| Authorized repository scope | Exactly one new sanitized acceptance record, three PLAT-15.1A operational records, and twelve governed reports. | PASS - 16 paths |
+| Protected boundary | Protected state must not be inspected or modified. | PASS |
+| Initial Go toolchain gate | No already-available Go executable; the initial publication-preparation authority prohibited download, acquisition, installation, and persistence. | PASS - stopped at separate authority gate |
+| Resumed Go validation | A later, time-bounded authorization permitted one verified temporary Go 1.26.5 validation attempt, with retrieval disabled for repository checks and complete cleanup required. | PASS - exact checks and cleanup complete |
 
 ---
 
-## Authorized Correction
+## Authority and Scope
 
-Version 1.1 must make `HOST_TASK_ROOT` the Gate 2 task root, remove the redundant wrapper, explicitly bind the nested acquisition and sealed containers, and prohibit flattened or semantically equivalent aliases. It must also remove component-specific indexes from Gate 2, place actual retained-inventory generation before index selection, and separate index request/acquisition/acceptance, offline package planning/acceptance, and `.deb` acquisition/acceptance.
+The session may prepare only the exact sanitized acceptance-record publication package. The accepted subject digest and complete-file transport digest remain distinct and non-interchangeable. Acceptance record `plat15a-static-manifest-acceptance-001` and its suspension record remain immutable historical evidence; the historical accepted subject is prohibited from every future addendum.
 
-The existing acceptance record is not edited. Its accepted subject digest is prohibited from future `accepted_static_manifest.sha256` fields. The static manifest remains cryptographically intact but execution-ineligible. Replacement eligibility requires published corrected authority, separately authorized protected amendment, replacement digests, a new review, and a uniquely identified replacement acceptance record.
-
-Both Version 1.1 work packages may be finalized as approved for repository publication and `Not Published`. The suspension record may be finalized as publication-ready and `Not Published`. Separate staging/commit authorization is the next repository gate; push remains later.
+The new record may contain only repository-safe decision state, repository publication identity, sanitized identifiers, permitted digests, non-sensitive counts, and sanitized review results. Personal or machine identity, protected paths or mappings, raw evidence, supporting-evidence digests, private authorization, protected timestamps or filesystem identifiers, credentials, and acquired-artifact data are excluded.
 
 ---
 
 ## Stop Conditions
 
-Stop on repository drift, a protected read or write requirement, unexpected path expansion, lifecycle misstatement, inconsistent gate numbering, schema or validation failure, protected-data leakage, staging, or any implication of publication, protected amendment, redirect resolution, acquisition, mount, installation, VM activity, implementation, deployment, activation, release, or live work.
+Stop on repository drift, protected-state access, an additional changed path, immutable-record drift, validation failure, protected-data leakage, staging, or any implication of addendum preparation, redirect resolution, acquisition, environment or VM creation, Linux execution, implementation, deployment, activation, release, or live work.
+
+The initial session stopped correctly at the separate Go-validation gate. A later time-bounded authority resolved that gate without authorizing staging, commit, push, publication, protected-state access, or any Gate 2 execution activity.
 
 ---
 
 ## Related Documents
 
-- [Version 1.1 Gate 2 Acquisition and Sealing Authorization Package](../../../../milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md)
-- [Version 1.1 Supported-Linux Environment Preparation Work Package](../../../../milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md)
+- [Version 1.1 Replacement Acceptance Record](../../../../milestones/Milestone_15/PLAT_15_1A_Version_1_1_Replacement_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md)
+- [Version 1.1 Gate 2 Authorization Package](../../../../milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md)
 - [Static-Manifest Acceptance Suspension Record](../../../../milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Acceptance_Suspension_Record.md)
+- [Historical Acceptance Record](../../../../milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md)
 - [PLAT-15.1A Continuity Brief](PLAT_15_1A_Continuity_Brief.md)
 
 ---
@@ -67,6 +71,6 @@ Stop on repository drift, a protected read or write requirement, unexpected path
 
 | Version | Description |
 |---------|-------------|
-| 5.1 | Initialized Version 1.1 repository publication preparation from the exact synchronized 18-path proposal baseline; bound the Board/Gatekeeper publication approvals, temporary Go validation authority, suspension finalization, empty-staging requirement, and separate staging/commit next gate. |
-| 5.0 | Initialized the repository-only Version 1.1 discrepancy correction from the exact synchronized baseline; bound the acceptance suspension, corrected topology and Ubuntu sequence, dual Board/Gatekeeper review roles, protected-state prohibition, and unpublished proposal boundary. |
-| 4.0 | Recorded static-manifest acceptance-record publication preparation. |
+| 6.1 | Recorded that a separately authorized, time-bounded exact Go 1.26.5 validation completed with retrieval disabled and full temporary-state cleanup; retained the exact unstaged publication package and every later gate. |
+| 6.0 | Initialized replacement-acceptance publication preparation from the exact published Version 1.1 baseline; bound the distinct acceptance decision and exact 16-path scope; reconciled stale readiness evidence; and recorded the unavailable Go 1.26.5 validation gate without expanding authority. |
+| 5.1 | Initialized Version 1.1 repository publication preparation from the exact synchronized 18-path proposal baseline. |
