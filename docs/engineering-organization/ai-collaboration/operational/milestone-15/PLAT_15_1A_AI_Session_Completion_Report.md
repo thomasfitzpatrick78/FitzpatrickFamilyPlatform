@@ -1,83 +1,45 @@
-# PLAT-15.1A Gate 2 Version 1.0 Publication-Preparation AI Session Completion Report
+# PLAT-15.1A Static-Manifest Acceptance Record Publication-Preparation AI Session Completion Report
 
 **Originating Template:** [AI Session Completion Report Template](../../templates/AI_Session_Completion_Report_Template.md)
 
 **Template Version:** 1.0
 
-**Status:** Version 1.0 Proposed; Product Strategy Board and Architecture Gatekeeper Approved for Repository Publication; Validation Complete; Unstaged and Not Published
+**Status:** Acceptance Record Version 1.0 Publication-Ready; Validation Complete; Unstaged and Not Published; Gate 2 Not Authorized
 
 ---
 
 ## Work Completed
 
-- Completed repository-governed initialization from the exact fetched and synchronized baseline.
-- Corrected the prior prompt-only Go checksum conflict without changing repository authority.
-- Extracted all binding artifact and metadata identities from the Version 1.0 environment-preparation work package.
-- Reconciled those identities against official UTM/GitHub, Canonical/Ubuntu, Go project, and Apple primary-source text metadata reviewed on 2026-07-25; no conflict was identified.
-- Promoted the approved Version 0.2 design to publication-ready Version 1.0 using repository-compatible approval, validation, staging-gate, and Not Published wording.
-- Preserved the static host-authority manifest, separate per-run execution addendum, execution evidence, final sealed inventory, authorization-subject and decision-bearing digests, protected time-bound redirects, and all eight gates without material architecture change.
-- Versioned both protected-local Draft 2020-12 schemas as 1.0 without creating or populating either protected artifact or inventing a digest.
-- Reconciled the exact Go 1.26.5 Darwin/ARM64 validation archive against repository authority and official Go metadata, verified the received SHA-256 before extraction, and used only the permitted official HTTPS delivery redirect.
-- Ran all repository-required Go checks from one validated task-temporary root with local toolchain enforcement, dependency retrieval disabled, task-confined caches/build outputs, and task-confined telemetry state set to off.
-- Revalidated and removed only the exact task-created temporary root, then proved the archive, extracted toolchain, caches, telemetry state, and temporary build outputs absent.
-- Updated the PLAT-15.1A initialization record and Active continuity brief for Version 1.0 publication-preparation state.
+- Completed repository-governed initialization from the exact fetched and synchronized published baseline.
+- Performed the authorized limited read-only revalidation of the final protected static manifest without reading supporting protected evidence.
+- Confirmed the sanitized manifest identity, Version 1.0 schema, embedded and recomputed canonical subject digest, complete-file transport digest, unexpired retention, and empty amendment list.
+- Recorded the Architecture Gatekeeper's explicit `Accept` decision in a new sanitized Version 1.0 repository acceptance record.
+- Preserved the distinction between the accepted canonical subject digest and the separate complete-file transport digest.
+- Updated the PLAT-15.1A initialization record and Active continuity brief for acceptance-record publication preparation.
+- Completed the mandated repository, governance, release, milestone, metrics, readiness, capability, Registry/Digital Twin, privileged-proxy, documentation, JSON, sanitization, hygiene, symlink, lifecycle, exact-scope, whitespace, and temporary Go checks.
+- Removed the exact temporary Go root and proved the archive, toolchain, caches, telemetry state, and matching task roots absent.
+- Retained Gate 2 `Not Authorized` and every per-run, redirect, acquisition, execution, implementation, deployment, activation, release, and live gate as separate.
 
-No acquisition, storage creation, mount, acquired-binary inspection, installation, VM activity, source implementation, publication, deployment, activation, release, or live work occurred.
+No protected state was modified. No per-run addendum or redirect was prepared.
 
 ---
 
-## Decisions and Recommendations
+## Architecture Gatekeeper Decision Recorded
 
-### Product Strategy Board
+| Field | Repository-safe value |
+|-------|-----------------------|
+| Decision | `Accept` |
+| Acceptance state | `Accepted` |
+| Acceptance-record ID | `plat15a-static-manifest-acceptance-001` |
+| Manifest-creation record ID | `plat15a-static-manifest-creation-001` |
+| Sanitized manifest ID | `plat-15-1a-gate-2-static-host-001` |
+| Schema version | `1.0` |
+| Accepted canonical manifest-subject SHA-256 | `46a1110d3e132420c771a8414c32746c418b0f8583ea5a5e99001ce1f491a9e9` |
+| Complete-file transport SHA-256 | `2f0a5ec1602fc4d883958d4c533df6c18a5d6fd3c51bb51a5482c1144add0d6d` |
+| Record publication state | `Not Published` |
+| Gate 2 state | `Not Authorized` |
 
-The package fits existing PLAT-15.1A / PLAT-PB-013 authority and the AB-011 architecture-enablement path. No new Product Backlog identifier is warranted. Decision: **Version 1.0 Approved for Repository Publication**. Separate staging/commit authorization is required, with push/publication still later. This does not authorize protected-manifest creation, Gate 2, or host action.
-
-### Architecture Gatekeeper
-
-Version 1.0 preserves the conformant Version 0.2 architecture and the Version 1.0 environment-preparation boundary. It retains exact-object acquisition, stable canonical origins with protected per-run redirects, offline-first UTM inspection, signed Ubuntu evidence, exact Go/module identity, protected-local authority, read-only seals, evidence separation, and a distinct Gate 3 acceptance decision.
-
-Decision: **Version 1.0 Approved for Repository Publication**. Gate 2 remains `Not Authorized`. The package remains `Proposed` and `Not Published`. The static protected manifest remains `Not Created`; environment remains `Not Created`; PLAT-15.1A repository implementation remains `Not Started` and blocked.
-
-ADR-012 remains `Implemented: No`; the AB-012 row remains `Candidate - Remain Backlog` and byte-unchanged.
-
----
-
-## Official-Source Reconciliation
-
-| Subject | Repository-controlled identity | Primary-source reconciliation | Result |
-|---------|--------------------------------|-------------------------------|--------|
-| UTM | 4.7.5 build 118; official GitHub release artifact and repository-bound size/SHA-256 | UTM GitHub release identifies v4.7.5, source revision `048ca74`, build 118, and `UTM.dmg` as the macOS artifact. Exact signer common name and TeamIdentifier remain acquisition-time evidence by design. | No conflict found |
-| Ubuntu image | Ubuntu Server 24.04.4 LTS ARM64, exact ISO, signed checksums, image-signing fingerprint | Canonical release directory identifies the exact ARM64 server ISO and signed checksum files; Canonical verification guidance identifies the repository-bound CD Image signing fingerprint and signature-first verification. | No conflict found |
-| Go | Go 1.26.5 Linux ARM64, size `63759990`, SHA-256 `fe4789e92b1f33358680864bbe8704289e7bb5fc207d80623c308935bd696d49` | Official Go download metadata and reproducible-build report identify the same archive/hash and a successful Linux ARM64 reproduction. | No conflict found |
-| x/sys | v0.47.0, revision `9e7e939dcafac07e8ab4cffa6e5fc74908413f00`, repository-bound module sums, exact `.info`/`.mod`/`.zip` set | Go project proxy, checksum, VCS, and package metadata remained consistent with the published work package. Transport byte sizes and hashes remain future acquired-object evidence and were not invented. | No conflict found |
-| Ubuntu snapshot | `20260725T000000Z`; `noble`, `noble-updates`, `noble-security`; ARM64 signed metadata/indexes | Canonical documents the timestamped snapshot identifier and `snapshot.ubuntu.com/ubuntu/<timestamp>` behavior. Exact components/indexes remain evidence-derived from the retained installation inventory. | No conflict found |
-| Apple verification | Developer ID, notarization ticket, hardened runtime, entitlements, offline-first Gatekeeper assessment | Apple documents independent Developer ID signing and notarization, stapled tickets, and Gatekeeper behavior. Any online verification remains a new stop gate. | No conflict found |
-
-Primary-source research accessed text metadata only. No Gate 2 artifact or target binary was downloaded or retained. The separately authorized Go validation archive was downloaded into task-temporary storage, verified, executed only as a validation toolchain, and removed with its entire temporary root.
-
----
-
-## Sanitized Protected-Authority State and Later Gates
-
-The named owner/administrator authority, exact host-task root, future installation target, static-manifest creation authority, and Gate 2 authority in principle were supplied as protected authority. Repository evidence retains only sanitized state. No supplied personal or absolute-path value is present in the governed change set.
-
-This resolves the Version 0.1 package-review blockers but does not authorize execution. After separate package publication, later gates must create and accept the static manifest, resolve exact redirects under separate authority, finalize the exact per-run addendum, obtain matching owner and Gatekeeper execution decisions over the same authorization-subject digest, and verify the final decision-bearing addendum digest before any Gate 2 network or filesystem action.
-
-Acquired UTM signer identity and the later retained-package closure remain intentionally evidence-driven. They are blocking only at their specified later gates and must not be guessed.
-
----
-
-## Risks and Warnings
-
-- Publisher, advisory, redirect, certificate, or snapshot metadata may drift before a future authorized acquisition; any drift fails closed.
-- The UTM signer common name and TeamIdentifier cannot become expected values until bounded read-only inspection and Gate 3 acceptance.
-- Offline Gatekeeper tooling may require an Apple endpoint; any such requirement stops and needs separate endpoint-specific authorization.
-- Snapshot components and ARM64 index set depend on the retained installed-package inventory and must not be guessed.
-- User-immutable flags are reversible by the owner and provide tamper resistance rather than irreversible immutability.
-- No-execution evidence is bounded operational evidence, not universal forensic proof.
-- Logical cleanup cannot prove physical erasure from snapshots, wear-leveling, backups, or storage internals.
-- Temporary Go validation depended on the exact approved archive and official delivery path. Identity, checksum, platform, isolation, offline controls, telemetry state, required commands, and exact-target cleanup all passed; any future reuse requires new authority.
-- Repository and release validators report the disclosed active proposal tree as their sole warning.
+Future `accepted_static_manifest.sha256` must bind the accepted canonical subject digest. The complete-file transport SHA-256 remains separate evidence. The values are non-interchangeable.
 
 ---
 
@@ -86,12 +48,28 @@ Acquired UTM signer identity and the later retained-package closure remain inten
 | Field | Evidence |
 |-------|----------|
 | Repository / branch | `FitzpatrickFamilyPlatform` / `main`. |
-| HEAD / tree | `d5d1620f1a767fbfca831ecb705138e4c348156b` / `05013d57fb4706a8611986dbec711ee9ae832f9f`. |
+| HEAD / tree | `fc9d2bd298e478d3ecf5f6f770de1429fc3e9bab` / `51ac7efc3f6f394f33986a321431b108e2a0d7e5`. |
 | Tracking/live state | Local `main`, fetched `origin/main`, `FETCH_HEAD`, and live remote `main` identical; ahead/behind `0/0`. |
-| Initial tree | Exact user-approved 16-path Version 0.2 proposal/review set; empty staging; no unrelated modified or untracked path. |
-| Readiness baseline | `READY WITH WARNINGS`; zero errors and one expected warning for the disclosed active 16-path tree. |
-| Authorized changes | New Gate 2 proposal; existing PLAT-15.1A initialization, continuity, and completion records; required generated validation reports. |
-| Explicitly unchanged | Source, tests, `go.mod`, `go.sum`, ADR-012, AB-012 row, Registry, deployment, operations, FFFA, customer-data, host, environment, VM, activation, release, and live-state artifacts. |
+| Initial tree | Clean working tree; empty staging, unstaged, and untracked inventories. |
+| Authorized documentation | New sanitized acceptance record and existing PLAT-15.1A initialization, continuity, and completion records. |
+| Authorized generated evidence | Required governed repository, governance, release, milestone-closeout, engineering-metrics, and AI-session-readiness reports only. |
+| Explicitly unchanged | Published Gate 2 package, source, tests, `go.mod`, `go.sum`, ADR-012, Architecture Backlog and AB-012, Product Backlog, Portfolio Plan, Kanban, Registry, deployment, operations, FFFA, customer data, environment, and VM artifacts. |
+
+---
+
+## Limited Protected Revalidation
+
+| Check | Result |
+|-------|--------|
+| Sanitized manifest ID and schema Version 1.0 | PASS |
+| Embedded canonical subject digest | PASS |
+| Independently recomputed canonical subject digest | PASS |
+| Complete-file transport digest | PASS |
+| Exact canonical file bytes | PASS |
+| Retention unexpired | PASS |
+| Amendment list empty | PASS |
+| Supporting evidence and protected directories not inspected | PASS |
+| Protected permissions, timestamps, flags, and content unchanged | PASS |
 
 ---
 
@@ -99,46 +77,50 @@ Acquired UTM signer identity and the later retained-package closure remain inten
 
 | Command or check | Result | Notes |
 |------------------|--------|-------|
-| Embedded protected-authority schema parse | PASS | Exactly two JSON blocks; both valid JSON. |
-| Official Go archive reconciliation | PASS | Repository authority and official Go metadata matched Go 1.26.5, Darwin/ARM64, the exact archive filename, size, and SHA-256. |
-| Go archive acquisition and checksum | PASS | One HTTPS redirect to the permitted official delivery host; HTTP 200; received SHA-256 `efb87ff28af9a188d0536ef5d42e63dd52ba8263cd7344a993cc48dd11dedb6a`. |
-| Temporary Go identity | PASS | Exact `go version go1.26.5 darwin/arm64`; no system installation. |
-| `go mod verify` | PASS | `all modules verified`; `GOTOOLCHAIN=local`, `GOPROXY=off`, `GOSUMDB=off`, `GOVCS=*:off`, and `GOENV=off`. |
-| `go test ./...` | PASS | Repository Go tests passed with task-specific caches and retrieval disabled. |
-| `go test -race ./...` | PASS | Darwin/ARM64 repository-source race validation passed; this is not supported-Linux evidence. |
+| Limited protected-manifest digest revalidation | PASS | Sanitized identity, schema version, embedded/recomputed subject digest, complete-file digest, unexpired retention, and empty amendment list matched. |
+| Acceptance-record SHA-256 | PASS | `4bf6d0a05efab89466ee0d164e59b3cb8801b9d0986186add8c8b3c4bc4eb218`. |
+| Official Go archive identity and redirect | PASS | Repository authority matched the exact Go 1.26.5 Darwin/ARM64 archive; the official URL returned one permitted HTTPS redirect with the identical filename. |
+| Go archive checksum before extraction | PASS | `efb87ff28af9a188d0536ef5d42e63dd52ba8263cd7344a993cc48dd11dedb6a`. |
+| Temporary Go identity | PASS | Exact `go version go1.26.5 darwin/arm64`; extracted only in the task-temporary root and installed nowhere. |
+| Temporary Go isolation and telemetry | PASS WITH NOTE | Toolchain, caches, temporary build state, and telemetry remained task-confined; telemetry mode was `off`. The Go telemetry CLI could not redirect its mode-file write, so the documented task override and exact task-local `off` mode record were used. No default telemetry state was created. |
+| `go mod verify` | PASS | `all modules verified`; local toolchain, proxy, sumdb, VCS, environment-file, and retrieval controls applied. |
+| `go test ./...` | PASS | All repository Go packages passed with task-confined caches. |
+| `go test -race ./...` | PASS | Darwin/ARM64 repository-source race validation passed. |
 | `go vet ./...` | PASS | Offline repository-source vet passed. |
-| `go build -trimpath -buildvcs=false ./...` | PASS | Governed build passed; outputs remained temporary and were not retained or published. |
-| Temporary Go telemetry and cleanup | PASS | Telemetry mode file was task-confined and `off`; no local/upload/debug telemetry data existed; the revalidated exact temporary root was removed and proven absent. |
+| `go build -trimpath -buildvcs=false ./...` | PASS | Non-publishing build passed; no output was retained in the repository. |
+| Temporary Go cleanup | PASS | Exact root removed; archive, toolchain, caches, telemetry, build state, and matching task roots proven absent. |
 | `python3 -m pytest -p no:cacheprovider engineering/tests` | PASS - 703 passed | Full governed engineering suite; cache provider disabled. |
-| `./platform-eap repository validate` | PASS WITH WARNINGS - 0 errors, 1 warning | Sole warning is the disclosed active proposal tree. |
+| `./platform-eap repository validate` | PASS WITH WARNINGS - 0 errors, 1 warning | Sole warning is the disclosed active acceptance-record publication tree. |
 | `./platform-eap governance validate` | PASS - 0 errors, 0 warnings | Governed documentation and references validate. |
 | `./platform-eap release readiness` | PASS WITH WARNINGS - 0 errors, 1 warning | Validation only; no release authority. |
 | `./platform-eap milestone closeout` | PASS - 0 errors, 0 warnings | Validation only; Milestone 15 remains active. |
-| `./platform-eap engineering metrics` | PASS WITH WARNINGS - 0 errors, 1 warning | Warning derives from active proposal/readiness evidence. |
+| `./platform-eap engineering metrics` | PASS WITH WARNINGS - 0 errors, 1 warning | Warning derives from active-tree/readiness evidence. |
 | `./platform-eap capabilities` | PASS | PLAT-EAP-1 through PLAT-EAP-15 rendered. |
-| `./platform-eap registry validate` | PASS - 39 records | Read-only validation; no Registry mutation. |
-| `./platform-eap privileged-proxy source validate` | PASS - 0 errors | Existing transport-free source unchanged. |
+| `./platform-eap registry validate` | PASS - 39 records | Read-only Registry validation and Platform Digital Twin integrity validation passed. |
+| `./platform-eap privileged-proxy source validate` | PASS - 0 errors | Existing transport-free repository source unchanged. |
 | `./platform-eap privileged-proxy source static-safety` | PASS - 0 errors | Existing prohibited-capability boundary unchanged. |
 | `./platform-eap ai-session readiness` | READY WITH WARNINGS - 0 errors, 1 warning | All nine domains pass; warning is the disclosed active tree. |
-| Documentation and architecture link audit | PASS - 995 links | All repository-local Markdown targets resolve. |
-| High-confidence secret scan | PASS - 0 matches | Exact 16-path change inventory scanned for private-key and common provider-token signatures. |
-| Protected-data sanitization audit | PASS - 0 matches | Exact supplied protected authority values have no match in the 16-path repository change set. |
-| Repository hygiene audit | PASS | No tracked prohibited cache/metadata path and no task-created prohibited artifact. |
-| Symlink audit | PASS | No repository symlink. |
-| JSON report parse | PASS | Changed generated JSON reports parse successfully. |
-| Lifecycle-state audit | PASS | Version 1.0 is approved for repository publication, remains Proposed and Not Published; Gate 2 Not Authorized; static manifest and Environment Not Created; implementation Not Started. |
+| Documentation and architecture link audit | PASS - 995 links | Every repository-local Markdown target resolves. |
+| Markdown and embedded JSON validation | PASS | Markdown fences balance; both embedded JSON schema blocks parse. |
+| Generated JSON validation | PASS | All seven governed engineering JSON reports parse. Three unchanged malformed JSON negative-test fixtures remain intentionally invalid. |
+| High-confidence secret scan | PASS - 0 matches | Exact 16-path publication tree scanned for private-key and common provider-token signatures. |
+| Protected-data sanitization audit | PASS - 0 matches | No protected identity, location, supporting-evidence digest, private authorization, or reversible mapping exists in the change set. The canonical repository root appears only in its five established identity fields. |
+| Repository hygiene and symlink audits | PASS | No tracked prohibited cache/metadata path and no repository symlink. |
+| Lifecycle and authority audit | PASS | Acceptance record Version 1.0 is publication-ready and Not Published; Gate 2 remains Not Authorized; no later decision is represented. |
+| Exact-scope audit | PASS - 16 paths | Four documentation paths and twelve required generated-report paths only. |
 | `git diff --check` and untracked whitespace audit | PASS | No whitespace error. |
-| ADR-012 and AB-012 audit | PASS | ADR-012 has no diff; AB-012 row is byte-identical to `HEAD`. |
+| Package, ADR-012, and AB-012 audit | PASS | Published Gate 2 package, ADR-012, and Architecture Backlog are unchanged. |
+| Product/portfolio/Kanban and implementation audit | PASS | Product Backlog, Portfolio Plan, Kanban, source, tests, `go.mod`, and `go.sum` are unchanged. |
 | Staging audit | PASS - empty | No path staged. |
 
 ---
 
-## Exact Changed-Path Inventory
+## Changed-Path Boundary
 
 1. `docs/engineering-organization/ai-collaboration/operational/milestone-15/PLAT_15_1A_AI_Session_Completion_Report.md`
 2. `docs/engineering-organization/ai-collaboration/operational/milestone-15/PLAT_15_1A_AI_Session_Initialization_Record.md`
 3. `docs/engineering-organization/ai-collaboration/operational/milestone-15/PLAT_15_1A_Continuity_Brief.md`
-4. `docs/milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md`
+4. `docs/milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md`
 5. `reports/engineering/ai_session_readiness/ai_session_readiness_report.json`
 6. `reports/engineering/ai_session_readiness/ai_session_readiness_report.md`
 7. `reports/engineering/engineering_metrics/engineering_metrics_report.json`
@@ -158,25 +140,22 @@ All 16 paths remain unstaged, uncommitted, and unpublished. No other modified or
 
 ## Next Gate
 
-The next gate is separate staging-and-commit authorization for the exact Version 1.0 publication inventory. That future session must audit and stage only the authorized paths, run `git diff --cached --check`, create exactly the authorized commit, and stop. Push/publication remains a still-later separate authorization. After publication, static protected-manifest creation remains another separately initialized host session.
+If every mandatory validation passes, the next gate is separate staging-and-commit authorization for the exact acceptance-record publication inventory. Push remains a later separate authorization.
 
-No staging, commit, push, tag, or publication is authorized. Even future Gate 2 completion would open only Gate 3 seal acceptance and would not authorize installation, VM creation, package application, Linux execution, PLAT-15.1A implementation, deployment, activation, release, or live work.
+After the acceptance record is separately published, the next protected-work gate is separately authorized preparation of the exact protected per-run execution-authorization addendum and separately governed redirect resolution. Publication does not authorize either action or Gate 2.
 
 ---
 
 ## Prohibited-Action Confirmation
 
-No protected host path was inspected and no protected authority artifact was created. No Gate 2 artifact, executable, installer, disk image, module, package, or environment material was acquired, downloaded, retained, mounted, inspected, launched, or executed. The only binary retrieval and execution was the explicitly authorized task-temporary Go validation toolchain; it was not installed, persisted, or used for implementation, and its exact root was removed. No host administration, environment preparation, VM creation/start/use, package application, source/test/dependency implementation, staging, commit, push, tag, publication, deployment, observation, consumer work, activation, release, FFFA/customer-data work, or live work occurred.
-
-Official web research accessed text metadata only. Repository validation executed existing repository code and the explicitly authorized temporary Go toolchain; it did not execute any Gate 2 material.
+No protected state was modified. No per-run addendum, redirect chain, acquisition object, mount, installation, application execution, VM, source implementation, deployment, activation, release, or live action was created or performed. No path was staged, committed, pushed, tagged, or published. Gate 2 remains `Not Authorized`.
 
 ---
 
 ## Related Documents
 
-- [Gate 2 Acquisition and Sealing Authorization Proposal](../../../../milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md)
-- [Version 1.0 Environment Preparation Work Package](../../../../milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md)
-- [PLAT-15.1A Work Package](../../../../milestones/Milestone_15/PLAT_15_1A_Repository_Only_Socket_Capable_Privileged_Proxy_Source_Implementation_Work_Package.md)
+- [Static Protected-Manifest Architecture Gatekeeper Acceptance Record](../../../../milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md)
+- [Gate 2 Acquisition and Sealing Authorization Package](../../../../milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md)
 - [PLAT-15.1A Initialization Record](PLAT_15_1A_AI_Session_Initialization_Record.md)
 - [PLAT-15.1A Continuity Brief](PLAT_15_1A_Continuity_Brief.md)
 
@@ -186,10 +165,11 @@ Official web research accessed text metadata only. Repository validation execute
 
 | Version | Description |
 |---------|-------------|
-| 3.2 | Recorded publication-ready Version 1.0, repository-compatible approval and Not Published state, exact 16-path inventory, complete repository and temporary offline Go validation, verified Go archive identity/checksum, telemetry-off isolation, exact cleanup proof, protected-data sanitization, unchanged ADR-012/AB-012, separate staging/commit then push gates, and continued closure of protected-manifest creation, Gate 2, host, environment, implementation, deployment, activation, release, and live gates. |
-| 3.1 | Recorded Version 0.2 protected-authority reconciliation, four-artifact separation, non-circular gate sequence, protected time-bound redirects, Board/Gatekeeper approval for repository publication preparation only, sanitized authority state, exact preserved 16-path inventory, and continued closure of publication, protected-manifest creation, Gate 2, host, environment, implementation, deployment, activation, release, and live gates. |
-| 3.0 | Recorded the Version 0.1 Gate 2 authorization proposal, official-source reconciliation, protected-local schema and sealing design, Revise recommendation, four blocking human decisions, exact 16-path unstaged inventory, validation evidence, unavailable Go tool, and confirmation that no acquisition, host, environment, implementation, publication, deployment, activation, release, or live action occurred. |
-| 2.2 | Recorded Board/Gatekeeper approval, version 1.0 binding corrections, successful retrieval-disabled exact Go validation, the exact 21-path publication-preparation package, unchanged ADR-012/AB-012 state, and separate staging/commit then push gates. |
-| 2.1 | Recorded Board portfolio approval, Gatekeeper revision-required decision, version 0.2 architecture resolutions, and the then-blocked Go publication gate. |
-| 2.0 | Recorded the original version 0.1 environment-preparation proposal and validation session. |
+| 4.0 | Prepared the sanitized static-manifest acceptance record, recorded the explicit Gatekeeper acceptance and digest interpretation, retained Not Published and Gate 2 Not Authorized, and bounded validation to the exact repository and temporary Go publication-preparation scope. |
+| 3.2 | Recorded Gate 2 package Version 1.0 publication readiness and bounded Go validation. |
+| 3.1 | Recorded Version 0.2 protected-authority reconciliation and exact gate separation. |
+| 3.0 | Recorded the Version 0.1 Gate 2 package proposal and Gatekeeper review requirements. |
+| 2.2 | Recorded Version 1.0 environment-preparation architecture approval and validation. |
+| 2.1 | Recorded the Gatekeeper revision-required decision. |
+| 2.0 | Recorded the original supported-Linux environment-preparation proposal. |
 | 1.0 | Recorded the earlier PLAT-15.1A source-publication validation session. |

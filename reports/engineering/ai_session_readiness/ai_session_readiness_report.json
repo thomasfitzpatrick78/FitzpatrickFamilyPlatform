@@ -2,12 +2,12 @@
   "capability": "AI Session Readiness Validation",
   "command": "./platform-eap ai-session readiness",
   "readiness": "READY WITH WARNINGS",
-  "generated_at": "2026-07-26T02:55:26.217986+00:00",
+  "generated_at": "2026-07-26T15:12:34.963826+00:00",
   "repository": {
     "name": "FitzpatrickFamilyPlatform",
     "path": "/Users/thomas_fitzpatrick/Documents/FitzpatrickFamilyPlatform",
     "branch": "main",
-    "head": "d5d1620f1a767fbfca831ecb705138e4c348156b",
+    "head": "fc9d2bd298e478d3ecf5f6f770de1429fc3e9bab",
     "working_tree": "active source changes"
   },
   "domains": [
@@ -32,7 +32,7 @@
         {
           "check_id": "repository.head",
           "severity": "PASS",
-          "message": "Current HEAD: d5d1620f1a767fbfca831ecb705138e4c348156b",
+          "message": "Current HEAD: fc9d2bd298e478d3ecf5f6f770de1429fc3e9bab",
           "evidence": []
         },
         {
@@ -59,7 +59,7 @@
             " M reports/engineering/release/release_report.md",
             " M reports/engineering/repository/repository_report.json",
             " M reports/engineering/repository/repository_report.md",
-            "?? docs/milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md"
+            "?? docs/milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md"
           ]
         }
       ]
@@ -725,7 +725,7 @@
         " M reports/engineering/release/release_report.md",
         " M reports/engineering/repository/repository_report.json",
         " M reports/engineering/repository/repository_report.md",
-        "?? docs/milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md"
+        "?? docs/milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md"
       ]
     }
   ]
