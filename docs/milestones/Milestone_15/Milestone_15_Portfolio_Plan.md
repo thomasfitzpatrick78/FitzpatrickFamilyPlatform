@@ -1,6 +1,6 @@
 # Milestone 15 - Delivery Leverage
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 
 **Status:** Active
 
@@ -18,7 +18,7 @@ This plan records the portfolio direction and the separately published EO-15.1 a
 
 EO-15.1 repository implementation is Architecture Gatekeeper approved and published. This planning update records the approved publication state only and makes no new portfolio decision.
 
-PLAT-15.1A is Product Strategy Board selected and Architecture Gatekeeper approved and published as the High, highest-priority Platform implementation package. Its implementation state is `Not Started`; publication opens only a separate future Codex Implementation Engineer initialization.
+PLAT-15.1A is Product Strategy Board selected and Architecture Gatekeeper approved and published as the High, highest-priority Platform implementation package. The Board and Gatekeeper have additionally approved Option A, a task-specific disposable native ARM64 Linux VM, as the supported-Linux prerequisite architecture direction under PLAT-15.1A and PLAT-PB-013. The direction requires a strictly offline guest and separate future environment-preparation authority. The environment is `Not Created`, repository implementation is `Not Started`, and PLAT-15.1A is `Blocked at Supported-Linux Initialization Gate`.
 
 The earlier direction to "Deliver additional Platform implementation" is now resolved specifically to PLAT-15.1A; it is not a continuing generic or unassigned Platform outcome.
 
@@ -46,7 +46,7 @@ Delivery leverage means:
 | Portfolio Pillar | Milestone 15 Outcome | Authority and Boundary |
 |------------------|----------------------|------------------------|
 | Engineering Organization | Remove recurring generated-evidence baseline approval friction, operationalize the approved Transition Review through EO-15.1, and improve delivery leverage through reuse. | EO-15.1 repository implementation is Architecture Gatekeeper approved and published; the standing policy governs qualifying generated evidence after successful post-publication verification without authorizing implementation by itself. |
-| Shared Platform | Advance PLAT-15.1A repository-only socket-capable privileged-proxy source under PLAT-PB-013 and AB-011. | The work package authorizes only future repository implementation after separate initialization. Artifact, deployment, daemon interaction, target, observation, consumer, recurrence, activation, and live gates remain closed. |
+| Shared Platform | Advance PLAT-15.1A repository-only socket-capable privileged-proxy source under PLAT-PB-013 and AB-011 after satisfying its supported-Linux prerequisite. | Option A direction is approved only. Proposal publication does not create or approve the subordinate environment-preparation work package. Environment acquisition, creation, startup, use, source implementation, artifact, deployment, daemon interaction, target, observation, consumer, recurrence, activation, and live gates remain closed. |
 | Customer-Facing Application | Complete FFFA customer acceptance. | Acceptance evidence and detailed implementation authority remain in the FamilyFinanceAssistant repository. Platform portfolio records traceability only. |
 
 ---
@@ -58,7 +58,7 @@ Delivery leverage means:
 | Architecture Integration | Active continuity | Preserve milestone-transition authority, architecture boundaries, and cross-stream integration gates. | Architecture Gatekeeper review of any material architecture or lifecycle claim. |
 | EO-15.1 - Engineering Lifecycle Transition Review Operationalization | Architecture Review; repository implementation complete, approved, and published | Fail-closed generated-evidence baseline classification and six-section Transition Review validation are published through existing repository mechanisms without redesigning the core lifecycle. | Future sessions require their own repository-authorized work packages; material policy changes require re-review. |
 | FFFA customer acceptance | Planned cross-repository outcome | Complete governed customer acceptance and record the product/architecture decision that follows. | FFFA-owned customer acceptance evidence and Product Strategy Board/Architecture Gatekeeper decision. |
-| PLAT-15.1A - Repository-Only Socket-Capable Privileged Proxy Source Implementation | Ready for Repository Implementation; Not Started | Advance PLAT-PB-013 under AB-011 through the published repository-only source boundary. | Separate fetched and synchronized Codex Implementation Engineer AI Session Initialization under PLAT-15.1A; later source returns to Architecture Review. |
+| PLAT-15.1A - Repository-Only Socket-Capable Privileged Proxy Source Implementation | Blocked at Supported-Linux Initialization Gate; Repository Implementation Not Started | Preserve the approved strictly offline disposable native ARM64 Linux VM direction without creating or using an environment. | Governed publication of the approved prerequisite proposal; after successful publication, proposal and review of `PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md`. |
 
 No other Milestone 15 implementation is authorized by this plan.
 
@@ -96,7 +96,8 @@ No other Milestone 15 implementation is authorized by this plan.
 | Milestone 14 transition authority | The approved Transition Review and Closeout Package are the baseline for Milestone 15. |
 | EO-15.1 implementation | Completed in a separate governed session, Architecture Gatekeeper approved, and published; the exact baseline decision remains historical bootstrap evidence and EO-15.1 continuity remains Active for the standing policy. |
 | FFFA acceptance | Remains owned by the FFFA repository and customer review process. |
-| PLAT-15.1A implementation | Requires a separate fetched and synchronized AI Session Initialization under the published PLAT-15.1A work package; no other Platform implementation is authorized. |
+| PLAT-15.1A supported-Linux prerequisite | Option A direction is approved under PLAT-PB-013 and AB-011 with no new backlog identifier. The guest must be strictly offline. Proposal publication does not create or approve the subordinate environment-preparation work package; every host-affecting action remains separately authorized by a named Platform Administrator or host owner. |
+| PLAT-15.1A implementation | Remains Not Started and blocked until the prerequisite proposal, separate exact-manifest environment-preparation work package, authorized environment preparation, environment-readiness acceptance, host-use authorization, and a new fetched and synchronized AI Session Initialization all pass; no other Platform implementation is authorized. |
 | Architecture changes | Require Architecture Gatekeeper approval. |
 | Governance changes | Must demonstrate evidence and need; this plan does not authorize expansion. |
 | Production or live work | Requires separate architecture, runbook, rollback, evidence, and explicit human authorization. |
@@ -136,6 +137,7 @@ Milestone 15 evidence should show:
 - [Milestone 14 Closeout Package](../Milestone_14/Milestone_14_Closeout_Package.md)
 - [EO-15.1 Work Package](EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md)
 - [PLAT-15.1A Work Package](PLAT_15_1A_Repository_Only_Socket_Capable_Privileged_Proxy_Source_Implementation_Work_Package.md)
+- [PLAT-15.1A Supported-Linux Prerequisite Proposal](PLAT_15_1A_Supported_Linux_Validation_Environment_Prerequisite_Proposal.md)
 - [Engineering Portfolio Kanban](../../portfolio/Engineering_Portfolio_Kanban.md)
 - [Product Roadmap](../../product/Product_Roadmap.md)
 - [Product Backlog](../../product/Product_Backlog.md)
@@ -146,6 +148,7 @@ Milestone 15 evidence should show:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Recorded Board and Gatekeeper approval of the strictly offline disposable ARM64 Linux VM direction, retained environment Not Created and repository implementation Not Started, blocked PLAT-15.1A at the supported-Linux gate, and made separate preparation-work-package proposal and review the post-publication next activity. |
 | 1.4 | Recorded Product Strategy Board selection and Architecture Gatekeeper publication of PLAT-15.1A as the High, highest-priority Platform implementation package, Ready for Repository Implementation and Not Started, while preserving FFFA as a separate High outcome and every later gate. |
 | 1.3 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 without changing Milestone 15 portfolio direction. |
 | 1.2 | Recorded completed, unpublished EO-15.1 repository implementation at the Architecture Review gate without making a new portfolio decision. |
