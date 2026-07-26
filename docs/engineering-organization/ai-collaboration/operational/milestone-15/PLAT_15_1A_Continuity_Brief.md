@@ -22,50 +22,42 @@
 
 | Field | Value |
 |-------|-------|
-| Repository | `FitzpatrickFamilyPlatform`. |
-| Branch | `main`. |
-| Baseline | Synchronized local `main`, `origin/main`, `FETCH_HEAD`, and live remote at `fc9d2bd298e478d3ecf5f6f770de1429fc3e9bab`, tree `51ac7efc3f6f394f33986a321431b108e2a0d7e5`, ahead/behind `0/0`, with empty working tree and staging before publication preparation. |
-| Status | Static protected manifest Accepted; sanitized acceptance record Version 1.0 Publication-Ready and Not Published; Gate 2 Not Authorized; Environment Not Created; repository implementation Not Started. |
+| Repository / branch | `FitzpatrickFamilyPlatform` / `main`. |
+| Baseline | Local `main`, `origin/main`, `FETCH_HEAD`, and live remote synchronized at `332058d6cb94a4983e3b988d192e7809caf92194`, tree `2e36c29408921c13613ce3348464b5a28a883e15`, ahead/behind `0/0`; staging empty; working tree exactly the approved 18-path proposal and evidence inventory. |
+| Status | Version 1.1 correction approved by the Product Strategy Board and Architecture Gatekeeper for repository publication and Not Published; sanitized suspension record publication-ready and Not Published; historical static acceptance suspended for execution eligibility; Gate 2 Not Authorized; Environment Not Created; implementation Not Started. |
 | Active milestone | Milestone 15 - Delivery Leverage. |
 | Workstream | PLAT-15.1A - Repository-Only Socket-Capable Privileged Proxy Source Implementation. |
-| Assigned role | Repository publication-preparation engineer recording the completed Architecture Gatekeeper static-manifest acceptance decision and running mandated validation. |
-| Objective | Prepare and validate only the sanitized static-manifest acceptance record and minimum continuity/session evidence without exposing protected data or opening a later gate. |
-| Current Engineering Lifecycle stage | Static-manifest acceptance is complete. The acceptance record is publication-ready, unstaged, uncommitted, and Not Published. Separate staging-and-commit authorization is next; push remains later. Gate 2 remains Not Authorized. |
-| Authoritative artifacts | Permanent governance; published PLAT-15.1A work package; supported-Linux prerequisite direction; Version 1.0 environment-preparation work package; published Gate 2 package Version 1.0; static-manifest acceptance decision; PLAT-PB-013; AB-011; ADR-012; AB-012 row; associated initialization/completion records. |
-| Completed work | Published the Gate 2 package; created and validated the protected static manifest under separate authority; completed Architecture Gatekeeper review with decision `Accept`; revalidated the accepted sanitized identity and two static-manifest digests read-only; and prepared the repository-safe acceptance record. |
-| Active repository changes | New sanitized acceptance record; this continuity brief; PLAT-15.1A initialization/completion evidence; and required repository-generated validation reports. All remain unstaged, uncommitted, and unpublished. |
-| Parallel workstreams | EO-15.1 standing-policy continuity remains Active. FFFA work remains separate and FFFA-owned. No parallel workstream is changed. |
-| Dependencies and integration gates | Acceptance-record staging/commit and push/publication are separate repository gates. Only after record publication may separately authorized preparation of the exact protected per-run addendum and separately governed redirect resolution occur. Matching owner/Gatekeeper execution decisions and final addendum verification remain mandatory before Gate 2. Gate 3 and every later host, VM, implementation, deployment, activation, release, and live gate remain closed. |
-| Unresolved decisions | Separate staging-and-commit authority; later push authority; separately authorized protected per-run addendum preparation; separately governed redirect resolution; exact run inputs and matching execution decisions. |
-| Risks | Repository or protected digest drift; retention expiry; protected amendment; protected-data leakage; redirect and publisher drift; unapproved path expansion; and incorrect interpretation of acceptance as Gate 2 authority. |
-| Stop conditions | Baseline or authority drift; accepted-digest mismatch; expired retention; protected amendment; broader protected read requirement; protected-data leakage; extra repository path; failed mandatory validation or temporary Go cleanup; staging, publication, addendum, redirect, acquisition, execution, VM, implementation, deployment, activation, release, or live implication. |
-| Permitted actions | Minimum sanitized acceptance-record publication preparation, the bounded temporary Go validation procedure, continuity/session updates, and required generated validation evidence. |
-| Prohibited actions | Protected-state modification; per-run addendum preparation; redirect resolution; acquisition; mount; installation; application execution; VM action; source/test/module change; staging; commit; push; publication; deployment; activation; release; FFFA/customer-data work; and live work. |
-| Next gate | Separate staging-and-commit authorization for the exact acceptance-record publication inventory. Push remains a later separate authorization. |
+| Assigned role | Governed repository publication-preparation engineer. |
+| Objective | Finalize and validate the approved Version 1.1 correction and sanitized suspension record for later repository publication without staging or opening any protected or execution gate. |
+| Controlling decision | `Acceptance Suspended Pending Revision` for acceptance record `plat15a-static-manifest-acceptance-001`. The record remains immutable historical evidence; its accepted digest is prohibited from future addenda. |
+| Corrected topology | `HOST_TASK_ROOT` is the Gate 2 task root. Exact nested acquisition and sealed containers and their descendants are mandatory; no redundant wrapper, flattening, alias, or semantic-equivalence exception conforms. |
+| Corrected Ubuntu sequence | Stable artifacts and signed suite metadata; stable seal acceptance; actual retained inventory; separate component-index request/acquisition/acceptance; offline package-plan generation/acceptance; separate `.deb` acquisition/acceptance; readiness and later gates unchanged in substance. |
+| Portfolio state | Remains within PLAT-15.1A / PLAT-PB-013 and AB-011. No new Product Backlog or Architecture Backlog identifier. Additional gates protect Delivery Leverage by avoiding circular or unusable acquisition. |
+| Explicitly unchanged | Historical acceptance record, protected manifest, ADR-012, Architecture Backlog including AB-012, Product Backlog linkage, source, tests, module files, Registry, deployment, operations, FFFA, customer data, environment, and VM state. |
+| Permitted actions | Minimum lifecycle finalization within the exact 18 paths; required generated-report refresh; repository validation; and the authorized task-confined temporary Go 1.26.5 validation with exact cleanup proof. |
+| Prohibited actions | Protected inspection or modification; amendment; per-run addendum; redirect resolution; network use other than Git verification and the exact temporary Go archive; artifact/index/package acquisition; mount; installation; application execution; VM action; implementation; staging; commit; push; deployment; activation; release; or live work. |
+| Unresolved decisions | Separate staging/commit and later push; protected amendment; replacement acceptance; exact per-run stable acquisition; actual inventory and later index/package authorities. |
+| Next gate | Separate staging-and-commit authorization for the exact validated 18-path Version 1.1 publication inventory. Push remains later. |
 | Last verification date | 2026-07-26. |
-| Superseded brief reference | None. |
 
 ---
 
 ## Continuity Notes
 
-The accepted static-manifest subject SHA-256 and the complete-file transport SHA-256 have distinct coverage and are non-interchangeable. A future `accepted_static_manifest.sha256` binds the accepted canonical subject digest. Repository evidence retains only the sanitized manifest identity, schema version, accepted static-manifest hashes, decision state, authorization-record identifiers, and pass/fail review results.
+Version 1.0 gate decisions do not migrate as execution authority. Version 1.1 uses a 22-gate parent lifecycle with an explicit migration table. Stable acquisition authority cannot be reused for component indexes, and component-index authority cannot be reused for package material.
 
-Acceptance does not authorize preparation of a per-run addendum, redirect resolution, Gate 2, or any implementation or live action. The post-publication next gate is separately authorized preparation of exact protected per-run authority and separately governed redirect resolution.
+Replacement of the suspended static acceptance requires corrected published repository authority, a separately authorized protected amendment, replacement subject and file digests, a new Gatekeeper review, and a uniquely identified replacement acceptance record. Publication preparation and later repository publication do not authorize that amendment. No protected state was inspected or changed.
 
-ADR-012 remains `Implemented: No`; AB-012 remains `Candidate - Remain Backlog`. The Gate 2 package, Product Backlog, Portfolio Plan, Kanban, source, tests, module files, Registry, deployment, operations, FFFA, customer data, environment, and VM artifacts remain unchanged.
+ADR-012 remains `Implemented: No`; AB-012 remains `Candidate - Remain Backlog`. Gate 2 remains `Not Authorized`.
 
 ---
 
 ## Related Documents
 
-- [Static Protected-Manifest Architecture Gatekeeper Acceptance Record](../../../../milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md)
-- [Gate 2 Acquisition and Sealing Authorization Package](../../../../milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md)
-- [PLAT-15.1A Initialization Record](PLAT_15_1A_AI_Session_Initialization_Record.md)
-- [PLAT-15.1A Completion Report](PLAT_15_1A_AI_Session_Completion_Report.md)
-- [Milestone 15 Portfolio Plan](../../../../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
-- [Architecture Backlog](../../../../architecture/Architecture_Backlog.md)
-- [Current Architecture State](../../../../architecture/Current_Architecture_State.md)
+- [Version 1.1 Gate 2 Acquisition and Sealing Authorization Package](../../../../milestones/Milestone_15/PLAT_15_1A_Artifact_and_Archive_Metadata_Acquisition_and_Sealing_Authorization_Package.md)
+- [Version 1.1 Supported-Linux Environment Preparation Work Package](../../../../milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md)
+- [Static-Manifest Acceptance Suspension Record](../../../../milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Acceptance_Suspension_Record.md)
+- [Historical Acceptance Record](../../../../milestones/Milestone_15/PLAT_15_1A_Static_Protected_Manifest_Architecture_Gatekeeper_Acceptance_Record.md)
 
 ---
 
@@ -73,13 +65,6 @@ ADR-012 remains `Implemented: No`; AB-012 remains `Candidate - Remain Backlog`. 
 
 | Version | Description |
 |---------|-------------|
-| 1.9 | Recorded explicit static-manifest acceptance, sanitized acceptance-record publication preparation, accepted digest coverage, minimum repository scope, separate staging/commit and push gates, and continued Gate 2 prohibition. |
-| 1.8 | Recorded Gate 2 package Version 1.0 publication preparation and bounded Go validation. |
-| 1.7 | Recorded Version 0.2 protected-authority reconciliation and non-circular gate separation. |
-| 1.6 | Recorded the Version 0.1 Gate 2 package proposal/review state. |
-| 1.5 | Recorded Version 1.0 environment-preparation architecture approval. |
-| 1.4 | Recorded Board portfolio approval and Gatekeeper revision scope. |
-| 1.3 | Recorded the supported-Linux exact-manifest proposal stage. |
-| 1.2 | Recorded the supported-Linux direction and separate exact-manifest gate. |
-| 1.1 | Recorded the failed prerequisite and qualifying generated-evidence baseline. |
-| 1.0 | Activated PLAT-15.1A continuity after work-package publication. |
+| 2.1 | Finalized Version 1.1 publication-preparation continuity: recorded Board/Gatekeeper repository-publication approval, exact 18-path baseline, bounded temporary Go validation, publication-ready suspension state, separate staging/commit next gate, and continued Gate 2 prohibition. |
+| 2.0 | Recorded the Version 1.1 discrepancy correction, acceptance suspension, exact task-root hierarchy, separated Ubuntu index/package authorities, 22-gate migration, portfolio decision, Gatekeeper recommendation, and separate publication-preparation next gate. |
+| 1.9 | Recorded explicit static-manifest acceptance and acceptance-record publication preparation. |

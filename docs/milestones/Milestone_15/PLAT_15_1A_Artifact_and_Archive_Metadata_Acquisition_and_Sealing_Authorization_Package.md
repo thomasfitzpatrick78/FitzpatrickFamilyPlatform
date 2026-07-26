@@ -1,14 +1,14 @@
 # PLAT-15.1A - Artifact and Archive-Metadata Acquisition and Sealing Authorization Package
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Proposed
 
 **Approval State:** Product Strategy Board and Architecture Gatekeeper Approved for Repository Publication
 
-**Product Strategy Board Decision:** Version 0.2 Portfolio Fit Approved; Publication-Ready Version 1.0 Confirmed under PLAT-15.1A / PLAT-PB-013
+**Product Strategy Board Decision:** Version 1.1 Approved for Repository Publication under PLAT-15.1A / PLAT-PB-013 and AB-011; No New Backlog Identifier Warranted; Additional Gates Protect Delivery Leverage
 
-**Architecture Gatekeeper Decision:** Version 0.2 Architecture Approved; Publication-Ready Version 1.0 Applies the Approved Authority Separation and Sequencing
+**Architecture Gatekeeper Decision:** Version 1.1 Approved for Repository Publication
 
 **Publication Readiness:** Validation Complete; Separate Staging/Commit Authorization Required
 
@@ -34,9 +34,9 @@
 
 This proposed subordinate package defines the exact future authority boundary for Gate 2 of the published [PLAT-15.1A Supported-Linux Validation Environment Preparation Work Package](PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md): acquisition of already-bound artifacts and archive metadata, read-only UTM identity inspection, verification, quarantine, and sealing.
 
-Version 1.0 applies the Product Strategy Board- and Architecture Gatekeeper-approved Version 0.2 design and is approved for repository publication. It remains `Not Published` and does not publish or execute itself. It authorizes no present protected-manifest creation, acquisition, download, DNS or HTTPS contact, storage creation, mount, application inspection, installation, execution, VM action, package application, Linux execution, PLAT-15.1A implementation, deployment, activation, release, or live work.
+Version 1.1 corrects the published Version 1.0 path topology and Ubuntu sequencing discrepancy. It remains `Proposed` and `Not Published`, and is approved by the Product Strategy Board and Architecture Gatekeeper for repository publication. This package does not publish or execute itself and authorizes no protected-manifest amendment, acquisition, download, DNS or HTTPS contact, storage creation, mount, application inspection, installation, execution, VM action, package application, Linux execution, PLAT-15.1A implementation, deployment, activation, release, or live work.
 
-After separate publication, a separately initialized host session may create only the static protected host-authority manifest already authorized in protected human authority. The resulting sanitized identifier and digest still require Gatekeeper acceptance. A later exact per-run execution-authorization addendum and explicit execution decision are required before Gate 2 can become authorized. Gate 2, if then authorized, may produce only protected-local acquisition/sealing evidence and a final sealed-inventory manifest plus bounded sanitized repository evidence. Gate 3 remains the separate Architecture Gatekeeper seal-acceptance decision.
+Acceptance record `plat15a-static-manifest-acceptance-001` remains immutable historical repository evidence but is under the controlling decision `Acceptance Suspended Pending Revision`. Its path-boundary PASS result was materially incomplete, and its accepted digest is prohibited from every future `accepted_static_manifest.sha256` field. A corrected static manifest requires separately authorized protected amendment, replacement digests, a new review, and a uniquely identified replacement acceptance record before any per-run addendum can be prepared. Gate 2 remains `Not Authorized`.
 
 ---
 
@@ -51,7 +51,7 @@ After separate publication, a separately initialized host session may create onl
 - Product Strategy Board authority is limited to portfolio fit and this subordinate package boundary.
 - Chief Architect / Architecture Gatekeeper authority covers the acquisition/sealing architecture, later static-manifest acceptance, per-run execution acceptance, identity evidence, residual risk, and Gate 3.
 - Protected human authority has supplied a named host owner and Platform Administrator, an exact host-task root, a future UTM installation target, and authorization in principle for later static-manifest creation and bounded Gate 2 work. Repository evidence records only non-reversible sanitized decision states; it contains no personal identity or absolute host path.
-- `Authorized in principle` is not execution authorization. Gate 2 remains `Not Authorized` until the static-manifest digest is accepted, both execution decisions bind the same exact authorization-subject digest, and the final decision-bearing addendum digest is verified.
+- `Authorized in principle` is not execution authorization. Gate 2 remains `Not Authorized` until a corrected replacement static-manifest digest is accepted, both execution decisions bind the same exact authorization-subject digest, and the final decision-bearing addendum digest is verified.
 
 Conversation approval, protected authority in principle, package approval, repository presence, publication, validation success, a clean baseline, or `READY` does not authorize Gate 2.
 
@@ -59,7 +59,7 @@ Conversation approval, protected authority in principle, package approval, repos
 
 ## Repository-Controlled Identity Register
 
-The values in this section are extracted from the Version 1.0 preparation work package. Official primary-source metadata reviewed on 2026-07-25 did not identify a conflict. Publisher metadata remains research evidence, not possession or verification of an acquired object.
+The values in this section are retained unchanged from the published Version 1.0 preparation authority and the Version 1.1 parent proposal. Official primary-source metadata reviewed on 2026-07-25 did not identify a conflict. Publisher metadata remains research evidence, not possession or verification of an acquired object.
 
 ### UTM
 
@@ -131,11 +131,11 @@ The future protected sealing manifest must record each proxy object's exact resp
 | Architecture | ARM64 |
 | Permitted suites | `noble`, `noble-updates`, and `noble-security` only |
 | Excluded suites | `noble-backports` and every other suite |
-| Required signed metadata | Per-suite `InRelease`, or `Release` plus `Release.gpg` where applicable, and the ARM64 `Packages` indexes referenced by the accepted signed release records |
-| Component rule | Only components proved necessary by the retained installed-package inventory; the component set must not be guessed |
-| Package-material rule | No `.deb` material is authorized by Gate 2; exact retained-package closure is generated at Gate 6 and acquired only under Gate 7 |
+| Required stable signed metadata | Exact per-suite `InRelease`, or `Release` plus `Release.gpg` where applicable; no component-specific `Packages` index |
+| Component rule | Gate 2 does not select a component. The exact component set is proved later from the actual retained installed-package inventory and acquired only under a separate protected authority. |
+| Package-material rule | No `.deb` material is authorized by Gate 2. The offline package plan is generated only after accepted component indexes exist, and exact package material is acquired under a still-later separate gate. |
 
-Gate 2 may seal the signed archive metadata required to calculate the later offline plan. It may not select or acquire package material. Every exact suite/component/index filename, compression form, size, SHA-256, signer fingerprint, and snapshot URL must be derived from and cross-checked against the signed release metadata before the Gate 2 manifest is eligible for Gate 3.
+Gate 2 may seal only the stable signed suite metadata required to verify later component indexes. It may not select or acquire component-specific indexes or package material. The actual retained installed-package inventory is produced only by separately authorized offline VM preparation and may never be inferred from ISO identity, installer defaults, documentation, expected selections, or prior experience.
 
 ---
 
@@ -147,10 +147,10 @@ Gate 2 may seal the signed archive metadata required to calculate the later offl
 | Ubuntu image evidence | Exact ARM64 ISO, `SHA256SUMS`, and `SHA256SUMS.gpg` | Proposed; not authorized |
 | Go | Exact Linux ARM64 archive only | Proposed; not authorized |
 | x/sys | Exact `.info`, `.mod`, `.zip`, and checksum-database lookup record used as metadata | Proposed; not authorized |
-| Ubuntu snapshot | Exact signed suite records and the referenced ARM64 `Packages` indexes required by the proven component set | Proposed; not authorized |
+| Ubuntu snapshot | Exact per-suite signed `InRelease`, or `Release` plus `Release.gpg`, for the bound snapshot; no component-specific `Packages` index | Proposed; not authorized |
 | Gate 2 manifests | Acquisition request, redirect-chain, raw verification, UTM identity, archive-metadata, quarantine, sealed-inventory, no-execution, and completion manifests | Schemas proposed; must be created only under later authority |
 
-No package index may be used to infer authorization for its referenced `.deb` objects. No object outside this inventory is eligible for opportunistic acquisition.
+The Gate 2 inventory contains only deterministic pre-VM objects. It excludes every component-specific ARM64 index, retained installed-package inventory, offline package plan, package-material request, and `.deb` object. No object outside this inventory is eligible for opportunistic acquisition.
 
 ---
 
@@ -167,7 +167,7 @@ Repository authority permits only these stable canonical HTTPS origins for the c
 | `go.dev` | `443` | Exact Go archive request only |
 | `proxy.golang.org` | `443` | Exact x/sys `.info`, `.mod`, and `.zip` objects only |
 | `sum.golang.org` | `443` | Exact x/sys checksum lookup record only |
-| `snapshot.ubuntu.com` | `443` | Exact snapshot signed metadata and accepted ARM64 indexes only |
+| `snapshot.ubuntu.com` | `443` | Exact snapshot signed `InRelease`, or `Release` plus `Release.gpg`, only |
 
 The table is architecture policy, not network authority. DNS may be authorized later only for a canonical hostname above or a destination in the exact protected per-run redirect chain. HTTPS may be authorized only on TCP port 443. No IP literal, alternate port, wildcard host, suffix match, or certificate exception is permitted.
 
@@ -188,27 +188,26 @@ Any required Apple network contact is excluded. If stapled/offline UTM verificat
 
 ## Protected-Local Storage Contract
 
-No storage is created by this proposal. After later approval and named-owner authorization, all Gate 2 paths must be exact children of the protected absolute `HOST_TASK_ROOT` recorded in the static host-authority manifest and activated by exact identity in the per-run addendum. The required relative structure is:
+No storage is created by this proposal. `HOST_TASK_ROOT` is the Gate 2 task root; it is not a retained ancestor container and it must not contain another `gate-2` child. After later approval and named-owner authorization, all Gate 2 paths must be the exact descendants shown below of the protected absolute `HOST_TASK_ROOT` recorded in the corrected static host-authority manifest and activated by exact identity in the per-run addendum. The required relative structure is:
 
 ```text
 HOST_TASK_ROOT/
-  gate-2/
-    acquisition/
-      partial/
-      complete/
-    quarantine/
-    inspection/
-    sealed/
-      artifacts/
-      ubuntu-release-evidence/
-      go-proxy/
-      ubuntu-snapshot-metadata/
-    manifests/
-    evidence/
-    cleanup-staging/
+  acquisition/
+    partial/
+    complete/
+  quarantine/
+  inspection/
+  sealed/
+    artifacts/
+    ubuntu-release-evidence/
+    go-proxy/
+    ubuntu-snapshot-metadata/
+  manifests/
+  evidence/
+  cleanup-staging/
 ```
 
-Every created directory and file, including temporary names, must be enumerated as an exact absolute path before creation. Symlinks, hard-link reuse, aliases, broad roots, home-directory roots, repository roots, shared caches, and paths outside `HOST_TASK_ROOT` are prohibited.
+The corrected static manifest must enumerate `HOST_TASK_ROOT`, both intermediate containers (`acquisition` and `sealed`), and every shown descendant with the exact parent relationship, spelling, case, and hierarchy. A flattened alias, alternate case, additional wrapper, or claim of semantic equivalence is nonconformant. Every created directory, file, temporary filename, staging object, and failure object must be enumerated as an exact absolute path before creation. Symlinks, hard-link reuse, aliases, broad roots, home-directory roots, repository roots, shared caches, and paths outside `HOST_TASK_ROOT` are prohibited. Retained ancestor containers above `HOST_TASK_ROOT` remain organizational paths and must be represented separately from Gate 2 task-created deletion targets.
 
 ### Ownership, Permissions, and Seal State
 
@@ -229,8 +228,8 @@ Gate 2 authority is divided into four non-interchangeable protected artifacts:
 
 | Artifact | Creation point | Authority carried |
 |----------|----------------|-------------------|
-| Static protected host-authority manifest | Later separately initialized host-manifest session after package publication | Host owner, Platform Administrator, exact host/root/installation target, planned child paths, host controls, manifest-creation authorization, lifecycle, and digest only |
-| Per-run Gate 2 execution-authorization addendum | After Gatekeeper accepts the static manifest and exact run inputs exist | One task instance, package publication identity, objects, tools, commands, window, redirects/endpoints, active paths, cleanup, retention, risk acceptance, owner authorization, Gatekeeper execution acceptance, and digest |
+| Static protected host-authority manifest | Corrected only under a later separately authorized protected amendment after Version 1.1 publication | Host owner, Platform Administrator, exact host/root/installation target, exact hierarchical planned paths, retained-container distinction, host controls, manifest-creation authorization, lifecycle, and digest only |
+| Per-run Gate 2 execution-authorization addendum | After Gatekeeper accepts a corrected replacement static manifest and exact stable-run inputs exist | One stable-artifact task instance, Version 1.1 publication identity, deterministic pre-VM objects, tools, commands, window, redirects/endpoints, active paths, cleanup, retention, risk acceptance, owner authorization, Gatekeeper execution acceptance, and digest |
 | Gate 2 execution evidence | Only during the exact authorized run | Acquisition, verification, quarantine, inspection, no-execution, sealing, failure, and cleanup observations |
 | Final sealed-inventory manifest | Only after successful Gate 2 execution | Final object and subordinate-evidence digests eligible for Gate 3 review |
 
@@ -240,14 +239,15 @@ No artifact can stand in for another. The static manifest is valid without a Gat
 
 | Sequence | Gate | Current state | Opens only |
 |----------|------|---------------|------------|
-| 1 | Package architecture approval | Version 1.0 approved for repository publication; Not Published | Eligibility for separately authorized staging and commit, followed by still-separate push/publication authority |
-| 2 | Package publication | Not Authorized | Eligibility for a separately initialized static-manifest session |
-| 3 | Static protected-manifest creation | Not Authorized in this session | A protected static manifest and sanitized identifier/digest for review |
-| 4 | Static-manifest acceptance | Not Authorized | Eligibility to prepare exact per-run authority and separately resolve redirects |
-| 5 | Per-run execution authorization | Not Authorized | One exact task/window after matching owner and Gatekeeper decisions and final addendum-digest verification |
-| 6 | Acquisition and read-only sealing | Gate 2 Not Authorized | Protected execution evidence and, on success, a final sealed inventory |
-| 7 | Gate 2 completion | No execution evidence exists | Eligibility for Gate 3 review only |
-| 8 | Gate 3 seal acceptance | No evidence to review | Eligibility for a separately authorized Gate 4 proposal/action only |
+| 1 | Version 1.1 architecture review | Approved for repository publication; Proposed and Not Published | Eligibility for separately authorized staging and commit only; push remains later |
+| 2 | Version 1.1 package publication | Not Authorized | Corrected repository authority only |
+| 3 | Corrected protected-manifest amendment | Not Authorized | Replacement static manifest and replacement digests for review only |
+| 4 | Replacement static-manifest acceptance | Not Authorized; Version 1.0 acceptance suspended | Eligibility to prepare exact stable-artifact per-run authority and separately resolve redirects |
+| 5 | Stable-artifact per-run execution authorization | Not Authorized | One exact task/window after matching owner and Gatekeeper decisions and final addendum-digest verification |
+| 6 | Stable artifact and signed-release-metadata acquisition and sealing | Gate 2 Not Authorized | Protected execution evidence and, on success, a stable sealed inventory without component indexes or package material |
+| 7 | Gate 2 completion | No execution evidence exists | Eligibility for stable seal review only |
+| 8 | Stable seal acceptance | No evidence to review | Eligibility for separately authorized host installation and offline VM preparation only |
+| 9 | Later component-index authority | Not Authorized and not part of Gate 2 | Exact indexes derived from actual retained inventory under separate owner authorization and Gatekeeper acceptance |
 
 No earlier gate implies or collapses a later gate.
 
@@ -258,7 +258,7 @@ No protected artifact is created or populated in this session. A later separatel
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:fitzpatrick-family-platform:plat-15-1a:gate-2:static-protected-host-authority-manifest:1.0",
+  "$id": "urn:fitzpatrick-family-platform:plat-15-1a:gate-2:static-protected-host-authority-manifest:1.1",
   "title": "PLAT-15.1A Gate 2 Static Protected Host-Authority Manifest",
   "type": "object",
   "additionalProperties": false,
@@ -270,14 +270,16 @@ No protected artifact is created or populated in this session. A later separatel
     "approved_host_identity",
     "host_task_root",
     "utm_installation_target",
-    "planned_child_paths",
+    "path_topology_profile",
+    "retained_ancestor_containers",
+    "planned_paths",
     "host_controls",
     "manifest_creation_authorization",
     "lifecycle_controls",
     "manifest_digest"
   ],
   "properties": {
-    "schema_version": { "const": "1.0" },
+    "schema_version": { "const": "1.1" },
     "manifest_kind": { "const": "plat-15-1a-gate-2-static-protected-host-authority-manifest" },
     "repository_identifier": {
       "type": "object",
@@ -316,9 +318,29 @@ No protected artifact is created or populated in this session. A later separatel
     },
     "host_task_root": { "$ref": "#/$defs/absolute_path" },
     "utm_installation_target": { "$ref": "#/$defs/absolute_path" },
-    "planned_child_paths": {
+    "path_topology_profile": { "const": "plat-15-1a-gate-2-exact-hierarchy-v1.1" },
+    "retained_ancestor_containers": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path_id", "absolute_path", "owner", "group", "mode", "deletion_target"],
+        "properties": {
+          "path_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "absolute_path": { "$ref": "#/$defs/absolute_path" },
+          "owner": { "type": "string", "minLength": 1 },
+          "group": { "type": "string", "minLength": 1 },
+          "mode": { "type": "string", "pattern": "^0[0-7]{3}$" },
+          "deletion_target": { "const": false }
+        }
+      }
+    },
+    "planned_paths": {
+      "type": "array",
+      "minItems": 14,
       "uniqueItems": true,
       "items": {
         "type": "object",
@@ -328,7 +350,7 @@ No protected artifact is created or populated in this session. A later separatel
           "path_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
           "absolute_path": { "$ref": "#/$defs/absolute_path" },
           "parent_path_id": { "type": ["string", "null"] },
-          "purpose": { "enum": ["acquisition-partial", "acquisition-complete", "quarantine", "inspection", "sealed-artifact", "ubuntu-release-evidence", "go-proxy", "ubuntu-snapshot-metadata", "manifest", "evidence", "cleanup-staging"] },
+          "purpose": { "enum": ["task-root", "acquisition", "acquisition-partial", "acquisition-complete", "quarantine", "inspection", "sealed", "sealed-artifact", "ubuntu-release-evidence", "go-proxy", "ubuntu-snapshot-metadata", "manifest", "evidence", "cleanup-staging"] },
           "object_type": { "enum": ["directory", "file"] },
           "owner": { "type": "string", "minLength": 1 },
           "group": { "type": "string", "minLength": 1 },
@@ -413,22 +435,44 @@ No protected artifact is created or populated in this session. A later separatel
 }
 ```
 
-The static schema deliberately contains no task instance, acquisition command, redirect chain, execution window, Gate 2 execution authorization, or Gatekeeper execution acceptance. Its manifest-creation authorization permits creation of that static authority record only.
+Schema validation is conformant only when `planned_paths` contains at least these exact structural bindings; `child-name` is a protected exact final path component, not a repository value:
+
+| Path ID | Purpose | Exact parent path ID | Binding |
+|---------|---------|----------------------|---------|
+| `gate2-task-root` | `task-root` | `null` | `absolute_path` equals `host_task_root` |
+| `acquisition` | `acquisition` | `gate2-task-root` | child-name `acquisition` |
+| `acquisition-partial` | `acquisition-partial` | `acquisition` | child-name `partial` |
+| `acquisition-complete` | `acquisition-complete` | `acquisition` | child-name `complete` |
+| `quarantine` | `quarantine` | `gate2-task-root` | child-name `quarantine` |
+| `inspection` | `inspection` | `gate2-task-root` | child-name `inspection` |
+| `sealed` | `sealed` | `gate2-task-root` | child-name `sealed` |
+| `sealed-artifacts` | `sealed-artifact` | `sealed` | child-name `artifacts` |
+| `ubuntu-release-evidence` | `ubuntu-release-evidence` | `sealed` | child-name `ubuntu-release-evidence` |
+| `go-proxy` | `go-proxy` | `sealed` | child-name `go-proxy` |
+| `ubuntu-snapshot-metadata` | `ubuntu-snapshot-metadata` | `sealed` | child-name `ubuntu-snapshot-metadata` |
+| `manifests` | `manifest` | `gate2-task-root` | child-name `manifests` |
+| `evidence` | `evidence` | `gate2-task-root` | child-name `evidence` |
+| `cleanup-staging` | `cleanup-staging` | `gate2-task-root` | child-name `cleanup-staging` |
+
+Review must prove each binding by exact lexical child derivation and resolved filesystem identity. Case, spelling, and hierarchy are binding; no flattened alias, additional wrapper, or semantic-equivalence exception is permitted. Every additional file, temporary filename, and created object must have its own exact path entry and exact parent ID. Retained ancestor containers are recorded only in `retained_ancestor_containers` as `deletion_target: false`; they must not appear as Gate 2 task-created deletion targets. All Gate 2 deletion targets must be at or below `gate2-task-root`.
+
+The static schema deliberately contains no task instance, acquisition command, redirect chain, execution window, Gate 2 execution authorization, or Gatekeeper execution acceptance. Its manifest-creation authorization permits creation or separately authorized amendment of that static authority record only.
 
 ### Per-Run Gate 2 Execution-Authorization Addendum Schema
 
-After publication and separate acceptance of the static protected-manifest digest, a later session may prepare—but may not execute—the following protected addendum. Every value is exact for one run. The package version and published commit/tree fields cannot be populated from this uncommitted proposal.
+After Version 1.1 publication, separately authorized protected amendment, and acceptance of a corrected replacement static protected-manifest digest, a later session may prepare—but may not execute—the following protected addendum. Every value is exact for one stable-artifact run. Acceptance record `plat15a-static-manifest-acceptance-001` and its accepted digest are suspended for execution eligibility and must not be placed in this addendum. The package version and published commit/tree fields cannot be populated from this uncommitted proposal.
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:fitzpatrick-family-platform:plat-15-1a:gate-2:execution-authorization-addendum:1.0",
+  "$id": "urn:fitzpatrick-family-platform:plat-15-1a:gate-2:execution-authorization-addendum:1.1",
   "title": "PLAT-15.1A Gate 2 Per-Run Execution-Authorization Addendum",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "schema_version",
     "manifest_kind",
+    "authority_phase",
     "addendum_id",
     "accepted_static_manifest",
     "package_authority",
@@ -450,8 +494,9 @@ After publication and separate acceptance of the static protected-manifest diges
     "addendum_digest"
   ],
   "properties": {
-    "schema_version": { "const": "1.0" },
+    "schema_version": { "const": "1.1" },
     "manifest_kind": { "const": "plat-15-1a-gate-2-per-run-execution-authorization-addendum" },
+    "authority_phase": { "const": "stable-artifact-and-signed-release-metadata" },
     "addendum_id": { "type": "string", "pattern": "^gate2-execution-addendum-[0-9]{3}$" },
     "accepted_static_manifest": {
       "type": "object",
@@ -459,9 +504,9 @@ After publication and separate acceptance of the static protected-manifest diges
       "required": ["sanitized_id", "schema_version", "sha256", "gatekeeper_acceptance_record_id"],
       "properties": {
         "sanitized_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-        "schema_version": { "const": "1.0" },
+        "schema_version": { "const": "1.1" },
         "sha256": { "$ref": "#/$defs/sha256" },
-        "gatekeeper_acceptance_record_id": { "type": "string", "minLength": 1 }
+        "gatekeeper_acceptance_record_id": { "type": "string", "minLength": 1, "not": { "const": "plat15a-static-manifest-acceptance-001" } }
       }
     },
     "package_authority": {
@@ -469,7 +514,7 @@ After publication and separate acceptance of the static protected-manifest diges
       "additionalProperties": false,
       "required": ["package_version", "published_commit", "published_tree"],
       "properties": {
-        "package_version": { "const": "1.0" },
+        "package_version": { "const": "1.1" },
         "published_commit": { "$ref": "#/$defs/git_oid" },
         "published_tree": { "$ref": "#/$defs/git_oid" }
       }
@@ -482,9 +527,10 @@ After publication and separate acceptance of the static protected-manifest diges
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["object_id", "repository_identity_reference", "expected_filename", "expected_bytes", "expected_sha256", "acquisition_required"],
+        "required": ["object_id", "object_class", "repository_identity_reference", "expected_filename", "expected_bytes", "expected_sha256", "acquisition_required"],
         "properties": {
           "object_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "object_class": { "enum": ["utm-image", "ubuntu-iso", "ubuntu-image-checksum", "ubuntu-image-checksum-signature", "go-linux-arm64-archive", "xsys-info", "xsys-mod", "xsys-zip", "xsys-sumdb-record", "ubuntu-suite-inrelease", "ubuntu-suite-release", "ubuntu-suite-release-signature"] },
           "repository_identity_reference": { "type": "string", "minLength": 1 },
           "expected_filename": { "type": "string", "minLength": 1 },
           "expected_bytes": { "type": ["integer", "null"], "minimum": 0 },
@@ -679,13 +725,30 @@ After publication and separate acceptance of the static protected-manifest diges
 }
 ```
 
+The `object_class` enum is exhaustive for Gate 2. The inventory may include only the exact UTM DMG; Ubuntu ISO, `SHA256SUMS`, and `SHA256SUMS.gpg`; Go Linux ARM64 archive; x/sys proxy and checksum metadata; and exact per-suite signed `InRelease`, or `Release` plus `Release.gpg`. It must not contain a component-specific ARM64 index, retained installed-package inventory, package plan, package-material request, or `.deb` object.
+
 The addendum uses two non-interchangeable digests. `authorization_subject_digest.sha256` covers the exact run plan with both decision objects and both digest objects omitted; the owner and Gatekeeper decisions must reference that same value. After both decisions exist, `addendum_digest.sha256` covers the entire decision-bearing addendum with only `addendum_digest` omitted. This makes the authorization subject stable before decision, seals the completed record afterward, and creates no self-reference. Any other coverage rule fails closed.
+
+### Separate Later Component-Index Acquisition Authority
+
+Gate 2 authority cannot be reused for component-index acquisition. After stable seal acceptance and separately authorized offline VM base preparation, the actual retained installed-package inventory must be generated from the guest's observed retained state and exported through its own sanitized request gate. A later protected component-index addendum must bind:
+
+- the accepted stable signed-release evidence and snapshot identity;
+- the canonical digest of the actual retained installed-package inventory and its accepted sanitized export record;
+- an exact derivation from each retained package to its required suite and component, with no inferred component;
+- only the exact ARM64 `Packages` index filenames and compression forms for the proved suite/component set;
+- each index's exact size, SHA-256, and snapshot URL as verified against the already accepted signed `Release` or `InRelease` record;
+- one exact task instance, tools, commands, active paths, protected time-bound redirect chains, endpoints, quarantine, cleanup, retention, and residual risk;
+- a stable authorization-subject digest, matching named-owner authorization and Gatekeeper acceptance, and a final decision-bearing addendum digest; and
+- an exhaustive prohibition on `.deb` files and every object not named by that authority.
+
+The sanitized export contains only the minimum non-protected request needed for review. It carries no network authority. Component-index acceptance opens only offline package-plan generation; it does not authorize package-material acquisition.
 
 ### Execution Evidence and Final Sealed Inventory
 
 Gate 2 acquisition, verification, quarantine, read-only UTM inspection, no-execution, sealing, failure, and cleanup evidence is produced only after the final addendum is accepted. The final sealed-inventory manifest is produced only after successful Gate 2 execution and binds every object, subordinate evidence manifest, protected path identifier, permission/flag state, and digest. Neither artifact may be pre-created as evidence, and neither carries execution authority.
 
-Schema validation alone is insufficient. Static-manifest review must prove every planned child is lexically and physically beneath the approved root, no component is a symlink, sharing and cloud synchronization are disabled, the root is not `/`, a home directory, repository root, shared directory, or wildcard expansion, and every deletion target would be task-created. Addendum review must prove exact equality to the accepted static digest, published package identity, current tool identities, current redirect observations, exact window, exact active paths, and both execution decisions.
+Schema validation alone is insufficient. Static-manifest review must prove the exact topology profile and every required intermediate node, parent relationship, case, and hierarchy; every planned descendant is lexically and physically beneath the approved root; no component is a symlink; sharing and cloud synchronization are disabled; the root is not `/`, a home directory, repository root, shared directory, or wildcard expansion; retained ancestor containers are not deletion targets; and every Gate 2 deletion target would be task-created. Addendum review must prove exact equality to a current, unsuspended replacement static digest, the published Version 1.1 package identity, current tool identities, current redirect observations, exact window, exact active paths, exhaustive pre-VM object classes, and both execution decisions.
 
 Repository evidence may retain only non-reversible sanitized identifiers, schema versions, static-manifest and addendum SHA-256 values after their separate acceptance, decision-state descriptions, authorization record identifiers, and pass/fail review results. It must never retain either protected artifact, personal identity, machine identity, absolute path, redirect query, private authorization, or a reversible mapping.
 
@@ -698,8 +761,8 @@ Repository evidence may retain only non-reversible sanitized identifiers, schema
 Before any network or filesystem action, require:
 
 1. this package approved and published;
-2. the static protected host-authority manifest created in a separate initialized host session under the already supplied manifest-creation authority;
-3. Architecture Gatekeeper acceptance of that static manifest's sanitized identifier and exact digest;
+2. the protected static host-authority manifest corrected under a separately authorized amendment against the published Version 1.1 hierarchy;
+3. Architecture Gatekeeper acceptance of that replacement manifest's sanitized identifier and exact digest in a uniquely identified, unsuspended record;
 4. if redirects are required, a separately authorized redirect-resolution-only `HEAD` preflight that receives no artifact bytes and records exact time-bound chains in protected evidence;
 5. a finalized per-run execution-authorization addendum binding the accepted static digest, published package commit/tree, exact task, object inventory, tools, commands, UTC window, canonical URLs, redirect chains, endpoints, active paths, quarantine/cleanup, retention, and residual risk;
 6. owner execution authorization and Architecture Gatekeeper execution acceptance for the same exact authorization-subject digest, followed by verification of the final decision-bearing addendum digest;
@@ -722,7 +785,7 @@ Any missing, expired, inconsistent, or drifted value stops before storage or net
 - Ubuntu ISO: trusted key fingerprint, detached signature over `SHA256SUMS`, exact checksum record, ISO byte count, and ISO SHA-256.
 - Go: official version/file/OS/architecture metadata, byte count, SHA-256, and reproducible-build status.
 - x/sys: exact `.info`, `.mod`, and `.zip`; publication time, tag revision, module sum, `go.mod` sum, and absence of any additional module object. Do not execute `go` to acquire or resolve the module.
-- Ubuntu snapshot: signature chain for every accepted `InRelease` or `Release`/`Release.gpg`, exact snapshot timestamp, suite, component, architecture, index filename, compression form, byte size, and SHA-256 from signed metadata.
+- Ubuntu snapshot: signature chain for every accepted per-suite `InRelease` or `Release`/`Release.gpg`, exact snapshot timestamp, suite, signer fingerprint, and signed metadata digest. Component-specific index selection and acquisition are prohibited in Gate 2.
 
 Verification is repeated after movement into sealed storage. No decompression, extraction, installation, package application, module-cache priming, VM attachment, or source use is part of Gate 2.
 
@@ -813,9 +876,9 @@ Gate 2 is complete and eligible for Gate 3 review only when all of the following
 
 1. the accepted static protected-manifest digest, exact authorization-subject digest, matching owner/Gatekeeper execution decisions, and final decision-bearing addendum digest were valid before action;
 2. only the exact inventory and approved redirect chains were contacted;
-3. every required object is complete and no extra object exists;
+3. every required deterministic pre-VM object is complete and no extra object exists;
 4. all repository-bound sizes, hashes, sums, revisions, signatures, suites, and architecture values match;
-5. every snapshot metadata identity is bound to the signed release record, and no `.deb` was acquired;
+5. every per-suite signed-release identity is bound to the exact snapshot, and no component-specific `Packages` index or `.deb` was acquired;
 6. UTM read-only inspection produced complete signer, requirement, runtime, entitlement, notarization, ticket, Gatekeeper, and mounted-image evidence;
 7. no Apple network verification occurred;
 8. no acquired executable, application, installer, daemon, VM, archive payload, module, ISO, or package ran or was applied;
@@ -840,7 +903,7 @@ At Gate 3, the Architecture Gatekeeper must independently review:
 - quarantine, cleanup, limitations, and residual risks; and
 - the sanitized repository record against the protected evidence.
 
-Gate 3 may accept, reject, or require revision. Acceptance makes only the exact sealed artifacts and metadata eligible for a separately authorized Gate 4 host-preparation proposal/action. It does not authorize installation or any later gate.
+Stable seal review may accept, reject, or require revision. Acceptance makes only the exact stable sealed artifacts and signed-release metadata eligible for separately authorized host installation and offline base preparation. It does not authorize installation, VM activity, retained-inventory export, component-index acquisition, package planning, package-material acquisition, or any later gate.
 
 ---
 
@@ -850,10 +913,11 @@ Gate 3 may accept, reject, or require revision. Acceptance makes only the exact 
 |----------|-----------------------|
 | Named host owner and Platform Administrator | Supplied in protected authority; repository records only sanitized authority identifier `host-owner-authority-001`. |
 | Exact host-task root and future UTM installation target | Supplied in protected authority; no personal identity, host identity, or absolute path is retained in Git. |
-| Static protected-manifest creation | Authorized in principle for a later, separately initialized host-manifest session after package publication. This authority creates only the static manifest. |
+| Historical static protected-manifest acceptance | Acceptance record `plat15a-static-manifest-acceptance-001` remains immutable historical evidence and `Acceptance Suspended Pending Revision` for execution eligibility. Its accepted digest is prohibited from future addenda. |
+| Corrected protected-manifest amendment | Not Authorized. Requires Version 1.1 publication and separate protected authority; replacement digests require a new review and uniquely identified replacement acceptance record. |
 | Gate 2 acquisition and sealing | Authorized in principle only. This is not execution authorization and does not satisfy either per-run execution decision. |
 
-These decisions resolve the Version 0.1 architecture-review blockers without opening Gate 2. Before any Gate 2 action, the actual static-manifest identifier/digest must be accepted, redirect chains must be resolved under separate authority, the exact per-run addendum must be finalized, both the owner and Architecture Gatekeeper must approve the same authorization-subject digest for its exact task and window, and the final decision-bearing addendum digest must verify.
+These repository-safe states do not open Gate 2. Before any Gate 2 action, a corrected replacement static-manifest identifier/digest must be accepted in a uniquely identified record, redirect chains must be resolved under separate authority, the exact stable-artifact per-run addendum must be finalized, both the owner and Architecture Gatekeeper must approve the same authorization-subject digest for its exact task and window, and the final decision-bearing addendum digest must verify.
 
 ---
 
@@ -875,15 +939,15 @@ These decisions resolve the Version 0.1 architecture-review blockers without ope
 
 ## Product Strategy Board Proposal Assessment
 
-The package fits the existing PLAT-15.1A / PLAT-PB-013 priority and AB-011 architecture-enablement path. It creates no new product capability and narrows future supply-chain work into an auditable gate. The supplied protected authority resolved the Version 0.1 portfolio blockers without exposing protected values; Version 0.2 received portfolio approval and Version 1.0 applies the approved design. Product Strategy Board decision: **Approved for repository publication**. Staging/commit and push/publication remain separate governed actions and do not authorize static-manifest creation, Gate 2, or any host action.
+The correction remains within the existing PLAT-15.1A / PLAT-PB-013 priority and AB-011 architecture-enablement path. It creates no new product capability, and no new Product Backlog or Architecture Backlog identifier is warranted. The additional gates protect Delivery Leverage by preventing circular or premature acquisition while preserving each existing readiness, implementation, Linux-validation, evidence-acceptance, teardown, and source-review boundary. Product Strategy Board decision: **Version 1.1 approved for repository publication; no new backlog identifier warranted.** This package remains `Not Published`; staging/commit and push remain separately authorized gates.
 
 ---
 
 ## Architecture Gatekeeper Review
 
-Version 1.0 preserves the conformant Version 0.2 architecture: exact-object acquisition, stable canonical-origin policy, protected and time-bound redirect chains, offline-first UTM identity inspection, signed Ubuntu metadata, exact Go/module identity, protected-local authority, read-only seals, evidence separation, and a distinct Gate 3 decision.
+Version 1.1 preserves exact-object acquisition, stable canonical-origin policy, protected and time-bound redirect chains, offline-first UTM identity inspection, signed Ubuntu metadata, exact Go/module identity, protected-local authority, read-only seals, evidence separation, and separate acceptance decisions. It corrects the root topology, makes intermediate acquisition and sealed containers mandatory, suspends the incomplete Version 1.0 static acceptance for execution eligibility, and separates stable signed-release acquisition from later retained-inventory-driven component-index acquisition.
 
-Architecture Gatekeeper decision: **Approved for repository publication**. The Version 0.1 circularity remains resolved by separating static host authority, per-run execution authority, execution evidence, and final sealed inventory. Static authority remains valid without execution approval; Gate 2 becomes authorized only after package publication, static-manifest creation and acceptance, redirect resolution under separate authority, exact addendum finalization, and matching owner/Gatekeeper execution decisions. The unresolved acquired UTM signer identity and later retained-package closure remain deliberately evidence-driven and are not defects while the approved stop gates remain intact.
+Architecture Gatekeeper decision: **Version 1.1 approved for repository publication**. This approval permits only later repository staging/commit and push through their separate gates; it is not publication, protected amendment, or execution authority. Gate 2 can become authorized only after Version 1.1 publication, separately authorized protected amendment, replacement-manifest acceptance, redirect resolution under separate authority, exact stable-artifact addendum finalization, and matching owner/Gatekeeper execution decisions. Component-index acquisition remains a separate later protected authority after actual retained-inventory export.
 
 ---
 
@@ -891,7 +955,7 @@ Architecture Gatekeeper decision: **Approved for repository publication**. The V
 
 Even successful Gate 2 completion would not authorize installation, VM creation, VM startup, package application, Linux execution, source ingress, PLAT-15.1A source or test implementation, `go.mod` or `go.sum` change, artifact acceptance, deployment, daemon interaction, observation, consumer work, activation, release, or live work.
 
-This Version 1.0 package remains `Proposed`, approved by the Product Strategy Board and Architecture Gatekeeper for repository publication, `Not Published`, and Gate 2 `Not Authorized`.
+This Version 1.1 package remains `Proposed`, approved by the Product Strategy Board and Architecture Gatekeeper for repository publication, `Not Published`, and Gate 2 `Not Authorized`.
 
 ---
 
@@ -914,6 +978,7 @@ This Version 1.0 package remains `Proposed`, approved by the Product Strategy Bo
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Corrected `HOST_TASK_ROOT` to be the Gate 2 task root without a redundant wrapper; required exact nested acquisition and sealed containers and parent bindings; suspended the materially incomplete Version 1.0 static-manifest acceptance for execution eligibility; limited Gate 2 to deterministic pre-VM artifacts and signed suite metadata; separated retained-inventory generation, component-index authority and acceptance, offline package planning, and package-material acquisition; and retained every protected, publication, environment, implementation, deployment, activation, release, and live gate closed. |
 | 1.0 | Promoted the approved Version 0.2 design to publication-ready repository authority; versioned both protected schemas for publication; retained the four-artifact separation, non-circular digest model, protected time-bound redirects, and eight distinct gates; recorded validation-complete publication readiness with separate staging/commit authority required; and kept publication, protected-manifest creation, Gate 2, host, environment, implementation, deployment, activation, release, and live gates closed. |
 | 0.2 | Reconciled protected authority without retaining protected values; separated static host authority, per-run execution authorization, execution evidence, and final sealed inventory; made redirect chains exact, protected, time-bound, and separately resolved before bytes; defined the non-circular gate sequence; and recorded Board/Gatekeeper approval for repository publication preparation only while retaining publication, static-manifest creation, Gate 2, host, environment, implementation, deployment, activation, release, and live gates closed. |
 | 0.1 | Proposed the exact future Gate 2 artifact/archive-metadata acquisition and read-only sealing authority, protected-local JSON schema, canonical/redirect network boundary, verification and quarantine controls, no-execution evidence, Gate 2 acceptance criteria, separate Gate 3 decision, and four blocking named-owner decisions while retaining every host, environment, implementation, publication, deployment, activation, release, and live gate closed. |

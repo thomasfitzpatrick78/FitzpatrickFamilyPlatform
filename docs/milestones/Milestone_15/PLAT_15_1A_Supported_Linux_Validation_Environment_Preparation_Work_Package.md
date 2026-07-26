@@ -1,18 +1,20 @@
 # PLAT-15.1A - Supported-Linux Validation Environment Preparation Work Package
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Proposed
 
-**Approval State:** Product Strategy Board and Architecture Gatekeeper Approved for Repository Publication Preparation
+**Approval State:** Product Strategy Board and Architecture Gatekeeper Approved for Repository Publication
 
-**Product Strategy Board Decision:** Approved for Portfolio Fit under PLAT-15.1A / PLAT-PB-013
+**Product Strategy Board Decision:** Version 1.1 Approved for Repository Publication under PLAT-15.1A / PLAT-PB-013 and AB-011; No New Backlog Identifier Warranted; Additional Gates Protect Delivery Leverage
 
-**Architecture Gatekeeper Decision:** Version 0.2 Architecture and Bounded Acquisition-and-Sealing Amendment Approved; Binding Pre-Publication Corrections Applied in Version 1.0
+**Architecture Gatekeeper Decision:** Version 1.1 Approved for Repository Publication
 
 **Publication Readiness:** Validation Complete; Separate Staging/Commit Authorization Required
 
 **Publication State:** Not Published
+
+**Gate 2 State:** Not Authorized
 
 **Environment State:** Not Created
 
@@ -47,7 +49,7 @@ The Product Strategy Board retains product and portfolio authority. The Chief Ar
 - AB-012 remains `Candidate - Remain Backlog`.
 - The closed privileged-proxy architecture, Production Provider Adapter boundary, and every artifact, deployment, daemon-interaction, observation, consumer, recurrence, activation, release, and live gate remain unchanged.
 - This package creates no Product Backlog identifier and is subordinate to PLAT-15.1A, PLAT-PB-013, and AB-011.
-- The Product Strategy Board approved portfolio fit under existing authority. The Architecture Gatekeeper approved version 0.2’s architecture and bounded acquisition-and-read-only-sealing amendment with binding pre-publication corrections. Version 1.0 applies those corrections and passed the exact Go 1.26.5 gate with retrieval disabled. It remains unstaged and unpublished pending separate staging/commit authority.
+- Published Version 1.0 remains historical repository authority, but its Gate 2 topology and Ubuntu sequencing require correction. Version 1.1 is `Proposed`, approved by the Product Strategy Board and Architecture Gatekeeper for repository publication, and `Not Published`; separate staging/commit authority is next and push remains later. Acceptance record `plat15a-static-manifest-acceptance-001` is immutable historical evidence and `Acceptance Suspended Pending Revision` for execution eligibility. Gate 2 remains `Not Authorized`.
 
 ---
 
@@ -72,7 +74,7 @@ Publisher metadata is research evidence, not proof through possession. Every fut
 | Ubuntu image checksum and signer | Canonical / Ubuntu | `https://cdimage.ubuntu.com/ubuntu/releases/24.04/release/SHA256SUMS`, `https://cdimage.ubuntu.com/ubuntu/releases/24.04/release/SHA256SUMS.gpg`, `https://documentation.ubuntu.com/security/software-integrity/image-verification/` | 2026-07-25 | Signed-checksum verification uses the Ubuntu CD Image Automatic Signing Key fingerprint recorded below. |
 | Ubuntu support lifecycle | Canonical / Ubuntu | `https://documentation.ubuntu.com/release-notes/24.04/` | 2026-07-25 | Ubuntu 24.04 LTS standard security maintenance ends 2029-05-31. |
 | Ubuntu kernel advisory | Canonical / Ubuntu | `https://ubuntu.com/security/notices/USN-8567-1` | 2026-07-25 | The 2026-07-20 notice fixes generic-kernel vulnerabilities in `6.8.0-136.136`; the ISO’s `6.8.0-100.100` kernel is not an acceptable final prepared-state kernel without a Gatekeeper-approved exception. |
-| Ubuntu archive snapshots | Canonical / Ubuntu | `https://snapshot.ubuntu.com/` and `https://ubuntu.com/server/docs/how-to/software/snapshot-service/` | 2026-07-25 | Canonical supports timestamped Ubuntu archive snapshots for reproducible package states. Version 1.0 binds the advisory cutoff and complete retained-package update plan to snapshot `20260725T000000Z`; signed archive metadata and exact package material remain subject to the approved bounded sealing gates below. |
+| Ubuntu archive snapshots | Canonical / Ubuntu | `https://snapshot.ubuntu.com/` and `https://ubuntu.com/server/docs/how-to/software/snapshot-service/` | 2026-07-25 | Canonical supports timestamped Ubuntu archive snapshots for reproducible package states. Version 1.1 binds the advisory cutoff to snapshot `20260725T000000Z`, separates stable signed-release evidence from retained-inventory-derived component indexes, and leaves exact package material to a still-later gate. |
 | Go toolchain identity | Go project | `https://go.dev/dl/?mode=json&include=all`, `https://go.dev/doc/devel/release`, `https://go.dev/rebuild` | 2026-07-25 | Go 1.26.5 is a stable supported security point release; exact Linux ARM64 archive metadata and reproducible-build evidence recorded below. |
 | Go vulnerability process | Go project | `https://go.dev/doc/security/` and `https://go.dev/doc/security/vuln/database` | 2026-07-25 | Advisory state must be refreshed before acquisition and before the execution manifest is accepted. |
 | `golang.org/x/sys` identity | Go project | `https://proxy.golang.org/golang.org/x/sys/@v/v0.47.0.info`, `https://github.com/golang/sys/tree/v0.47.0`, `https://sum.golang.org/lookup/golang.org/x/sys@v0.47.0`, `https://pkg.go.dev/golang.org/x/sys@v0.47.0` | 2026-07-25 | Exact tag revision, publication time, module sums, license, and maintenance origin recorded below. |
@@ -104,7 +106,7 @@ Subject to the unresolved gates below, recommend:
 6. `golang.org/x/sys` `v0.47.0` at source revision `9e7e939dcafac07e8ab4cffa6e5fc74908413f00`.
 7. A VM with no network adapter at any lifecycle stage, no shared directory, no clipboard, no guest agent, no SSH use, no host socket, and no container-runtime surface.
 
-The combination and bounded acquisition-and-sealing architecture are approved for repository publication preparation only. They do not authorize acquisition or preparation. Each future action remains prohibited until this document is separately published and the named host owner separately authorizes that exact gate.
+The combination and corrected bounded acquisition-and-sealing architecture are approved for repository publication only. Version 1.1 remains `Not Published`. It authorizes no acquisition or preparation; each future action remains prohibited until this document is separately published and the named host owner separately authorizes that exact gate.
 
 ---
 
@@ -114,12 +116,14 @@ Canonical public metadata did not independently establish the exact Developer ID
 
 The Architecture Gatekeeper approved the following narrow architecture in version 0.2. Architecture approval is not action authority and authorizes no acquisition, networking, inspection, mounting, installation, execution, VM activity, or later gate in the current session.
 
-1. **Artifact-identity sealing:** after separate named-host authorization, acquire only the exact pre-approved UTM DMG and inspect it read-only without installation or execution. Record its SHA-256, Developer ID chain/common name, TeamIdentifier, designated requirement, notarization/Gatekeeper result, hardened-runtime state, entitlements, mounted-image identity, and absence of execution. A mismatch stops and requires Gatekeeper review.
-2. **Pre-approved material and archive-metadata sealing:** after separate authorization, acquire only the exact Ubuntu ISO, Go archive, x/sys file-proxy objects, signed Canonical `InRelease`, Release, and ARM64 Packages metadata for snapshot `20260725T000000Z`. Verify each already published artifact identity, the Ubuntu image/checksum and archive-key chains, Go/module sums, and every metadata filename, size, SHA-256, signer fingerprint, suite, component, and snapshot URL before any material enters preparation media.
-3. **Offline package-plan sealing:** during separately authorized VM preparation, use the signed snapshot metadata locally with no guest network adapter to calculate `full-upgrade` for every retained installed package. Export only the canonical package request manifest on dedicated request media. It must identify every installed current version, selected version, architecture, pocket/component, canonical snapshot URL, byte size, SHA-256 from the signed index, and complete dependency/pre-dependency closure.
-4. **Package-material sealing:** after a separate named-host authorization, acquire only the exact `.deb` files in the accepted request manifest. Verify every file against its signed-index SHA-256, create the immutable update media, and seal its inventory and digest. No substitution, mirror, PPA, third-party repository, live `apt` fallback, or additional package is allowed.
+1. **Stable artifact and signed-release-metadata acquisition:** after separate named-owner and Gatekeeper execution authorization, acquire only the exact UTM DMG; Ubuntu ISO, `SHA256SUMS`, and `SHA256SUMS.gpg`; Go Linux ARM64 archive; x/sys proxy objects and checksum metadata; and exact per-suite signed `InRelease`, or `Release` plus `Release.gpg`, for snapshot `20260725T000000Z`. No component-specific `Packages` index and no `.deb` file are authorized.
+2. **Stable seal acceptance:** Gatekeeper separately accepts the exact UTM identity, Ubuntu image evidence, Go and module evidence, and per-suite signed Release/InRelease evidence. This acceptance makes no claim that component indexes, actual retained inventory, or package closure exists and opens only separately authorized host installation and offline base preparation.
+3. **Actual retained installed-package inventory:** only during separately authorized offline VM base preparation, generate the inventory from the actual retained installed state. Do not infer it from ISO identity, installer defaults, documentation, expected selections, or prior experience. Export a sanitized inventory request through its own separately authorized gate.
+4. **Component-index request, acquisition, and acceptance:** derive the exact suite/component set only from the actual retained inventory. Under separate owner authorization and Gatekeeper execution acceptance, acquire only the exact ARM64 indexes for that proved set; verify filename, compression form, size, SHA-256, and snapshot URL against the already accepted signed Release/InRelease records. Acquire no package material. Gatekeeper accepts the sealed component-index inventory before package planning.
+5. **Offline package-plan generation and acceptance:** using only the accepted component indexes and actual retained inventory, calculate the complete candidate, dependency, and pre-dependency closure offline with no guest network fallback. Export and separately accept an exact package-material request binding every installed current version, selected version, architecture, suite/component, canonical snapshot URL, byte size, signed-index SHA-256, and dependency reason.
+6. **Package-material acquisition and acceptance:** under a still-later separate owner authorization and Gatekeeper decision, acquire only the exact `.deb` files in the accepted package-material request. Verify every file against its accepted signed-index SHA-256, create immutable update media, and seal its inventory and digest. No substitution, mirror, PPA, third-party repository, live `apt` fallback, or additional package is allowed.
 
-The Architecture Gatekeeper must accept each sealed manifest before the next affected gate. The first two gates do not authorize install, import into a VM, VM creation/start, or source work. The package-material gate does not authorize update execution. All acquired material remains quarantined at exact protected-local targets until its next separately authorized use or teardown.
+Each authority and acceptance is non-interchangeable; no approval or network authorization may cover two acquisition phases. Stable seal acceptance does not authorize component-index acquisition, component-index acceptance does not authorize package planning, package-plan acceptance does not authorize `.deb` acquisition, and package-material acceptance does not authorize update execution. All acquired material remains quarantined at exact protected-local targets until its next separately authorized use or teardown.
 
 ### Acquisition Network Boundary
 
@@ -179,13 +183,14 @@ The approved future static manifest must be immutable, canonical JSON and includ
 | ISO kernel | `linux-image-6.8.0-100-generic` package `6.8.0-100.100` |
 | Security advisory cutoff | `2026-07-25T00:00:00Z`; Canonical snapshot ID `20260725T000000Z` |
 | Allowed suites | `noble`, `noble-updates`, and `noble-security`; only components required by retained installed packages; no `noble-backports`, PPA, or third-party repository |
-| Signed archive metadata | Exact snapshot `InRelease`, Release, Release.gpg where applicable, and ARM64 Packages index files must be verified with the Ubuntu archive keyring and bound by filename, suite, component, size, SHA-256, signer fingerprint, and canonical snapshot URL in the sealed security-baseline manifest |
+| Stable signed archive metadata | Exact per-suite snapshot `InRelease`, or `Release` plus `Release.gpg` where applicable, must be verified with the Ubuntu archive keyring and bound by filename, suite, size, SHA-256, signer fingerprint, and canonical snapshot URL. Gate 2 includes no component-specific `Packages` index. |
+| Later component indexes | Exact ARM64 indexes may be requested only after actual retained-inventory export. Each filename, compression form, size, SHA-256, suite/component, and snapshot URL must verify against accepted signed Release/InRelease evidence under separate owner authorization and Gatekeeper acceptance. |
 | Required complete update | Offline `full-upgrade` of every retained installed package to the candidate from the exact snapshot, including complete dependency and pre-dependency closure; kernel-only remediation is prohibited |
 | Required final kernel | The complete baseline must include `linux-image-6.8.0-136-generic` package `6.8.0-136.136`; `uname -r` must return `6.8.0-136-generic` |
 | Exact package bundle | Generated only through the bounded offline package-plan and package-material sealing gates. The immutable manifest must bind every retained package’s before/after version, architecture, source package, suite/component, canonical snapshot URL, byte size, signed-index SHA-256, dependency reason, and media path. Any missing retained package, dependency, hash, or index binding stops. |
 | Post-update inventory | Canonical `dpkg-query` inventory and per-package status, held-package inventory, removed-package inventory, update-media digest, and `apt-get --simulate full-upgrade` result against the same sealed snapshot. Acceptance requires zero upgrades, installs, removals, held packages, missing dependencies, unauthenticated packages, and repository fallbacks. |
 | Support period | Standard security maintenance through 2029-05-31 |
-| Security limitation | The point-release ISO predates USN-8567-1 and other post-image updates. No environment-readiness acceptance is possible on the ISO package state. Version 1.0 requires the complete signed offline snapshot baseline above, not only kernel `6.8.0-136.136`. Advisory status must be refreshed before each acquisition and readiness acceptance. |
+| Security limitation | The point-release ISO predates USN-8567-1 and other post-image updates. No environment-readiness acceptance is possible on the ISO package state. Version 1.1 requires the complete signed offline snapshot baseline above, not only kernel `6.8.0-136.136`. Advisory status must be refreshed before each acquisition and readiness acceptance. |
 
 ### Go Toolchain
 
@@ -239,7 +244,7 @@ The approved future static manifest must be immutable, canonical JSON and includ
 | Installation selection | No SSH server role; after installation `openssh-server`, container-runtime packages, guest agents, and sharing agents must be absent before readiness |
 | Persistence | Only the exact VM bundle, disks, manifests, and authorized media under `HOST_TASK_ROOT`; no snapshots, clones, saved states, auto-start, or shared caches |
 
-`HOST_TASK_ROOT`, the personal host-owner identity, the UTM installation target, and every absolute child path belong only in the protected local host-action manifest described below. The repository static manifest retains sanitized identifiers and the protected manifest’s SHA-256 digest, never personal names, usernames, home paths, machine identifiers, or absolute host paths. A home directory, repository root, `/`, wildcard, symlinked target, or broad shared directory is never a permitted deletion target.
+`HOST_TASK_ROOT` means the Gate 2 task root itself, never a retained ancestor and never a parent for another redundant `gate-2` wrapper. Its exact nested acquisition and sealed hierarchy is governed by the Version 1.1 Gate 2 package. `HOST_TASK_ROOT`, the personal host-owner identity, the UTM installation target, and every absolute descendant path belong only in the protected local host-action manifest described below. The repository static manifest retains sanitized identifiers and the protected manifest’s SHA-256 digest, never personal names, usernames, home paths, machine identifiers, or absolute host paths. Retained ancestor containers are distinct non-deletion targets. A home directory, repository root, `/`, wildcard, symlinked target, broad shared directory, or flattened alias is never a permitted deletion target or conformant path substitute.
 
 ### Protected Local Host-Action Manifest
 
@@ -269,7 +274,8 @@ Repository evidence may retain only sanitized stable identifiers such as `host-o
 
 - Preparation material and each later source run use separate read-only ISO-9660 media.
 - The preparation ISO may contain only the verified Go archive, exact offline module-proxy entries, static manifest, and their checksums.
-- A separate archive-metadata ISO may contain only the sealed signed Canonical snapshot metadata and package indexes needed to calculate the retained-package update plan.
+- A stable archive-metadata ISO may contain only the accepted per-suite signed Canonical `InRelease`, or `Release` plus `Release.gpg`; it contains no component-specific index.
+- After actual retained-inventory export and separate component-index acquisition/acceptance, a different component-index ISO may contain only the exact accepted ARM64 indexes for the proved suite/component set and their sealed manifest.
 - A separate security-update ISO may contain only the exact accepted `.deb` closure, local file-repository metadata, sealed package manifest, and checksums.
 - A later execution ISO contains a repository archive produced from the exact per-run execution manifest, the manifest itself, and checksums. It contains no `.git`, credentials, secrets, customer data, environment files, caches, sockets, or personal host paths.
 - Media is attached read-only while the VM is stopped, verified in-guest, copied to a VM-local task directory, unmounted, and detached while the VM is stopped before any readiness or Linux validation begins. Failure to prove detachment is a hard stop; no validation command may run with preparation, security-update, toolchain/module, or source ingress media attached.
@@ -281,27 +287,30 @@ Readiness and execution evidence use different, single-use result media. Capacit
 
 | Medium | Evidence byte contract | Bound image |
 |--------|------------------------|-------------|
+| Component-index request | canonical actual retained-package inventory 4 MiB; suite/component derivation 1 MiB; checksums/export metadata 1 MiB | 8 MiB raw FAT16 `PLAT15A_INDEX_REQUEST_001.img`, label `PLAT15IDX` |
 | Package request | canonical retained-package plan 4 MiB; signed-metadata digest inventory 1 MiB; checksums/export metadata 1 MiB | 8 MiB raw FAT16 `PLAT15A_PACKAGE_REQUEST_001.img`, label `PLAT15PKG` |
 | Readiness evidence | readiness manifest 4 MiB; package/isolation inventories 12 MiB; bounded logs 8 MiB; checksums/export metadata 4 MiB | 32 MiB raw FAT16 `PLAT15A_READINESS_RESULTS_001.img`, label `PLAT15RDY` |
 | Execution evidence | execution manifest 4 MiB; T-01 through T-12 logs 12 MiB; Go/race/fuzz logs 16 MiB; Python source-validation logs 8 MiB; isolation/inventory evidence 16 MiB; checksums/export metadata 4 MiB | 64 MiB raw FAT32 `PLAT15A_EXECUTION_RESULTS_001.img`, label `PLAT15EXE` |
 
-- Each image is separately authorized, attached only to the applicable export gate, and contains only its evidence kind under `PLAT15A_PACKAGE_REQUEST/`, `PLAT15A_READINESS/`, or `PLAT15A_EXECUTION/`.
+- Each image is separately authorized, attached only to the applicable export gate, and contains only its evidence kind under `PLAT15A_INDEX_REQUEST/`, `PLAT15A_PACKAGE_REQUEST/`, `PLAT15A_READINESS/`, or `PLAT15A_EXECUTION/`.
 - The guest writes the approved canonical manifest, allowlisted sanitized logs/reports, and `SHA256SUMS`, then unmounts the image, records block-device identity and checksum, and shuts down before host access.
 - The host detaches the image from the stopped VM and mounts it read-only for sanitization verification and copying.
 - Readiness evidence must be exported and host-verified before readiness evidence acceptance. Execution evidence must be exported and host-verified before source-evidence acceptance.
 - A byte-contract overrun, image-capacity change, mixed evidence kind, unexpected file, remount failure, or sanitization failure stops. Capacity changes require a revised evidence contract and Gatekeeper review.
 - Reattachment after host read is prohibited. Any correction uses a new separately authorized medium with a new identifier and export attempt.
-- Media creation must verify the intended FAT type from the on-disk boot sector and a structural read-only reopen. Package-request and readiness media fail if formatted as FAT32; execution media fails unless it is FAT32. Filesystem or capacity substitution requires Gatekeeper review.
+- Media creation must verify the intended FAT type from the on-disk boot sector and a structural read-only reopen. Component-index-request, package-request, and readiness media fail if formatted as FAT32; execution media fails unless it is FAT32. Filesystem or capacity substitution requires Gatekeeper review.
 
 ### Complete Offline Security-Baseline Procedure
 
-1. Install the exact minimal server selection from the verified ISO with no network device and record the canonical retained-package inventory under preparation administration.
-2. Attach the sealed archive-metadata ISO read-only, import only its already verified signed indexes into the local APT state, and calculate a `full-upgrade` plan for every retained package against snapshot `20260725T000000Z`. No network URI may be contacted; any attempted retrieval stops.
-3. Export the exact canonical plan on the dedicated 8 MiB package-request medium, shut down, and complete host sanitization and Gatekeeper plan review before any package-material acquisition.
-4. Following separate acquisition/sealing and Gatekeeper acceptance, attach the immutable security-update ISO read-only. Configure APT to the ISO file repository only, prohibit unauthenticated packages and every network fallback, and execute the accepted complete update under `platprep`.
-5. Record the exact before/after/removed/held inventory, archive signer/index bindings, installed `.deb` hashes, and update results. An unexpected plan change, extra/missing package, held package, dependency substitution, script failure, or hash mismatch stops.
-6. Run an offline same-snapshot `full-upgrade` simulation. It must report zero upgrades, installs, removals, held packages, missing dependencies, and unauthenticated packages.
-7. Unmount and detach all preparation, metadata, update, and installer media while the VM is stopped. Only after detachment proof passes may identity lockdown and readiness validation begin.
+1. Install the exact minimal server selection from the verified ISO with no network device and record the canonical actual retained-package inventory under preparation administration.
+2. Export only that actual inventory and deterministic suite/component derivation on the dedicated 8 MiB component-index-request medium; shut down, host-verify, sanitize, and obtain Gatekeeper request acceptance before any component-index network authority is prepared.
+3. Under separate owner authorization and Gatekeeper execution acceptance, acquire and seal only the exact ARM64 component indexes named by the accepted request. Verify every filename, compression form, size, SHA-256, and snapshot URL against the already accepted signed Release/InRelease evidence. Acquire no `.deb` file.
+4. Obtain separate Gatekeeper acceptance of the sealed component-index inventory, then attach its dedicated read-only ISO while the VM is stopped.
+5. With no guest network adapter or fallback, use only the accepted component indexes and actual retained inventory to calculate the complete `full-upgrade` candidate, dependency, and pre-dependency closure for snapshot `20260725T000000Z`.
+6. Export the exact canonical package-material plan on the dedicated 8 MiB package-request medium, shut down, and complete host sanitization and Gatekeeper plan acceptance before any package-material acquisition.
+7. Under a still-later separate owner authorization and Gatekeeper decision, acquire and seal only the accepted request's exact `.deb` objects; following acceptance, attach the immutable security-update ISO read-only. Configure APT to the ISO file repository only, prohibit unauthenticated packages and every network fallback, and execute the accepted complete update under `platprep`.
+8. Record the exact before/after/removed/held inventory, archive signer/index bindings, installed `.deb` hashes, and update results. An unexpected plan change, extra/missing package, held package, dependency substitution, script failure, or hash mismatch stops. Run an offline same-snapshot `full-upgrade` simulation; it must report zero upgrades, installs, removals, held packages, missing dependencies, and unauthenticated packages.
+9. Unmount and detach all preparation, stable-metadata, component-index, update, and installer media while the VM is stopped. Only after detachment proof passes may identity lockdown and readiness validation begin.
 
 ---
 
@@ -442,23 +451,57 @@ Each row is a separate gate. Approval or success at one row does not imply the n
 
 | Gate | Required decision or authorization | Result opened |
 |------|------------------------------------|---------------|
-| 1. Repository proposal publication | Board/Gatekeeper approvals and binding corrections recorded; exact Go 1.26.5 gate passes; separate staging/commit and push authorizations complete | Repository authority only |
-| 2. Artifact and archive-metadata acquisition/sealing | Gatekeeper has approved the bounded amendment; named host owner separately authorizes exact artifacts/metadata and read-only identity inspection | Sealed artifact and metadata manifests only; no install or VM authority |
-| 3. Gatekeeper seal acceptance | Gatekeeper accepts UTM identity and signed Ubuntu/toolchain/module metadata manifests | Eligibility for exact host preparation only |
+| 1. Version 1.1 repository proposal publication | Separate publication preparation, staging/commit, and push decisions complete | Corrected repository authority only |
+| 2. Stable artifact and signed-release-metadata acquisition/sealing | Replacement static-manifest acceptance plus exact named-owner and Gatekeeper execution authorization for one stable-artifact run | Sealed UTM, Ubuntu image, Go/module, and per-suite signed-release evidence only; no index, package, install, or VM authority |
+| 3. Stable seal acceptance | Gatekeeper accepts UTM identity, Ubuntu image evidence, Go/module evidence, and signed Release/InRelease evidence | Eligibility for exact host preparation only |
 | 4. Host installation and preparation-media creation | Named host owner authorizes exact protected-local paths and commands | Host preparation only |
-| 5. VM creation and offline base preparation | Named host owner authorizes exact VM, devices, disks, start, and preparation-admin use | Base preparation and package-plan generation only |
-| 6. Offline package-request export | Named host owner authorizes dedicated request medium and sanitized exact package-plan export | Exact package-material acquisition request only |
-| 7. Package-material acquisition/sealing | Named host owner authorizes only accepted-manifest `.deb` acquisition; Gatekeeper accepts sealed media inventory | Exact offline security-update material only |
-| 8. Complete offline security update and readiness run | Named host owner authorizes exact update media, preparation, identity lockdown, readiness checks, and dedicated 32 MiB readiness-result medium | Readiness evidence generation/export only |
-| 9. Readiness-evidence export and host verification | Named host owner authorizes export; sanitization, byte contract, checksums, and media lifecycle pass | Readiness evidence eligible for Gatekeeper review |
-| 10. Environment-readiness acceptance | Gatekeeper accepts the already exported exact readiness evidence | Eligibility for new PLAT-15.1A repository initialization |
-| 11. PLAT-15.1A repository implementation initialization | Repository fetch/synchronization and governed initialization pass | Governed host-worktree implementation only; no guest use |
-| 12. Governed repository implementation | Approved role completes exact scoped host-worktree source and host validation; repository remains governed and uncommitted | Eligibility to prepare one per-run source/execution manifest |
-| 13. Offline Linux validation | Separate execution manifest and named host authorization; source media detached before validation | Exact guest validation run only under `platrun` |
-| 14. Execution-evidence export and host verification | Named host owner authorizes dedicated 64 MiB execution-result medium; sanitization, byte contract, checksums, and lifecycle pass | Execution evidence eligible for Gatekeeper review |
-| 15. Source-evidence acceptance | Gatekeeper accepts the already exported source/validation evidence | Source-review eligibility only |
-| 16. Shutdown and teardown | Named host owner authorizes exact stopped VM and protected-local deletion targets | Exact teardown only |
-| 17. Architecture Gatekeeper source review | Gatekeeper reviews governed repository source and accepted evidence | Acceptance, rejection, or revision decision only |
+| 5. VM creation and offline base preparation | Named host owner authorizes exact VM, devices, disks, start, preparation-admin use, and observation of actual retained installed state | Base preparation and actual retained-inventory generation only |
+| 6. Component-index-request export and host verification | Named host owner authorizes the dedicated request medium; actual retained inventory, derivation, sanitization, checksums, and media lifecycle pass | Component-index request eligible for Gatekeeper review only |
+| 7. Component-index acquisition/sealing | Gatekeeper accepts the request; named owner and Gatekeeper separately authorize one exact index-acquisition run | Sealed exact ARM64 indexes for the proved suite/component set only; no `.deb` material |
+| 8. Component-index acceptance | Gatekeeper accepts the sealed index inventory against stable signed-release evidence | Eligibility for offline package-plan generation only |
+| 9. Offline package-plan generation and export | Named host owner authorizes offline calculation from accepted indexes and actual inventory plus dedicated request-medium export | Exact package-material request eligible for Gatekeeper review only |
+| 10. Package-plan acceptance | Gatekeeper accepts the complete candidate, dependency, and pre-dependency closure | Eligibility to prepare exact `.deb` acquisition authority only |
+| 11. Package-material acquisition/sealing | Named owner and Gatekeeper authorize one exact network run for only the accepted request's `.deb` objects | Sealed package material eligible for review only |
+| 12. Package-material acceptance | Gatekeeper accepts every `.deb` against the accepted signed index and sealed-media inventory | Exact offline security-update material only |
+| 13. Complete offline security update and readiness run | Named host owner authorizes exact update media, preparation, identity lockdown, readiness checks, and dedicated 32 MiB readiness-result medium | Readiness evidence generation/export only |
+| 14. Readiness-evidence export and host verification | Named host owner authorizes export; sanitization, byte contract, checksums, and media lifecycle pass | Readiness evidence eligible for Gatekeeper review |
+| 15. Environment-readiness acceptance | Gatekeeper accepts the already exported exact readiness evidence | Eligibility for new PLAT-15.1A repository initialization |
+| 16. PLAT-15.1A repository implementation initialization | Repository fetch/synchronization and governed initialization pass | Governed host-worktree implementation only; no guest use |
+| 17. Governed repository implementation | Approved role completes exact scoped host-worktree source and host validation; repository remains governed and uncommitted | Eligibility to prepare one per-run source/execution manifest |
+| 18. Offline Linux validation | Separate execution manifest and named host authorization; source media detached before validation | Exact guest validation run only under `platrun` |
+| 19. Execution-evidence export and host verification | Named host owner authorizes dedicated 64 MiB execution-result medium; sanitization, byte contract, checksums, and lifecycle pass | Execution evidence eligible for Gatekeeper review |
+| 20. Source-evidence acceptance | Gatekeeper accepts the already exported source/validation evidence | Source-review eligibility only |
+| 21. Shutdown and teardown | Named host owner authorizes exact stopped VM and protected-local deletion targets | Exact teardown only; retained ancestor containers excluded |
+| 22. Architecture Gatekeeper source review | Gatekeeper reviews governed repository source and accepted evidence | Acceptance, rejection, or revision decision only |
+
+---
+
+## Version 1.0 to Version 1.1 Gate Migration
+
+| Version 1.0 gate | Version 1.1 gate or disposition |
+|------------------|---------------------------------|
+| 1. Repository proposal publication | 1. Version 1.1 repository proposal publication |
+| 2. Artifact and archive-metadata acquisition/sealing | 2. Stable artifact and signed-release-metadata acquisition/sealing; component indexes removed |
+| 3. Gatekeeper seal acceptance | 3. Stable seal acceptance; no claim of component indexes or package closure |
+| 4. Host installation and preparation-media creation | 4. Host installation and preparation-media creation |
+| 5. VM creation and offline base preparation | 5. VM creation and offline base preparation; limited to actual retained-inventory generation before package planning |
+| No Version 1.0 equivalent | 6. Component-index-request export and host verification |
+| No Version 1.0 equivalent | 7. Component-index acquisition/sealing |
+| No Version 1.0 equivalent | 8. Component-index acceptance |
+| 6. Offline package-request export | 9. Offline package-plan generation and export plus 10. Package-plan acceptance |
+| 7. Package-material acquisition/sealing | 11. Package-material acquisition/sealing plus 12. Package-material acceptance |
+| 8. Complete offline security update and readiness run | 13. Complete offline security update and readiness run |
+| 9. Readiness-evidence export and host verification | 14. Readiness-evidence export and host verification |
+| 10. Environment-readiness acceptance | 15. Environment-readiness acceptance |
+| 11. PLAT-15.1A repository implementation initialization | 16. PLAT-15.1A repository implementation initialization |
+| 12. Governed repository implementation | 17. Governed repository implementation |
+| 13. Offline Linux validation | 18. Offline Linux validation |
+| 14. Execution-evidence export and host verification | 19. Execution-evidence export and host verification |
+| 15. Source-evidence acceptance | 20. Source-evidence acceptance |
+| 16. Shutdown and teardown | 21. Shutdown and teardown |
+| 17. Architecture Gatekeeper source review | 22. Architecture Gatekeeper source review |
+
+The mapping is authoritative for Version 1.1 cross-references. No Version 1.0 decision migrates as execution authority, and no earlier Version 1.1 gate implies a later gate.
 
 ---
 
@@ -512,14 +555,15 @@ Logical deletion cannot prove physical erasure from APFS snapshots, SSD wear-lev
 ## Unresolved Decisions and Risks
 
 1. Name and authority of the Platform Administrator or host owner.
-2. Exact absolute `HOST_TASK_ROOT`, UTM installation target, and task-created child paths.
+2. Separately authorized correction and acceptance of the protected `HOST_TASK_ROOT` hierarchy and exact task-created descendants; no protected value is inspected or recorded by this proposal.
 3. Exact acquired-artifact Developer ID common name, TeamIdentifier, notarization ticket, designated requirement, and entitlement inventory remain unknown until the separately authorized Gatekeeper-approved artifact-identity sealing gate.
 4. Host macOS version and Apple Virtualization compatibility with UTM 4.7.5 build 118 and Ubuntu 24.04.4 ARM64.
-5. Exact retained-package closure, URLs, redirect chains, sizes, SHA-256 values, and signed snapshot-index bindings are deliberately generated and sealed at the approved later gates rather than inferred before the base inventory exists.
+5. Actual retained inventory, exact required component set, index URLs and redirect chains, index sizes and SHA-256 values, package closure, and `.deb` identities are deliberately generated and accepted at their separate later gates rather than inferred before the base inventory exists.
 6. Completion and later evidence acceptance of snapshot `20260725T000000Z` complete retained-package `full-upgrade` plus no-change proof for the February point-release ISO.
 7. Exact raw-disk filenames and UTM machine identifier, which can be generated only during authorized creation and must be captured before readiness.
 8. Future advisory drift for UTM, Ubuntu, Go, and x/sys between this research date and any acquisition or execution.
-9. Separate staging/commit authorization, followed later by separate push authorization and fetched equality proof.
+9. Replacement static-manifest digests, a new uniquely identified acceptance record, and proof that the suspended Version 1.0 digest is absent from every future addendum.
+10. Separate publication preparation, staging/commit authorization, followed later by separate push authorization and fetched equality proof.
 
 Each item is blocking for the gate it affects. None may be filled by inference during execution.
 
@@ -527,26 +571,26 @@ Each item is blocking for the gate it affects. None may be filled by inference d
 
 ## Product Strategy Board Decision
 
-The Product Strategy Board approved portfolio fit under existing PLAT-15.1A / PLAT-PB-013 authority. No new Product Backlog identifier is warranted. PLAT-15.1A remains blocked and its repository implementation remains Not Started. This decision supports version 1.0 repository publication preparation only and does not authorize staging, publication, acquisition, environment preparation, VM activity, implementation, validation, deployment, activation, release, or live work.
+The Product Strategy Board confirms that the Version 1.1 correction remains within existing PLAT-15.1A / PLAT-PB-013 authority and AB-011. No new Product Backlog or Architecture Backlog identifier is warranted. The added gates protect Delivery Leverage by preventing unusable component acquisition, preserving exact provenance, and avoiding rework from an inferred package inventory; they are not avoidable process. PLAT-15.1A remains blocked and implementation remains `Not Started`. Product Strategy Board decision: **Version 1.1 approved for repository publication**. The package remains `Not Published`; staging/commit and push remain separate gates.
 
 ---
 
 ## Architecture Gatekeeper Decision
 
-The Architecture Gatekeeper approves:
+The Architecture Gatekeeper finds the corrected proposal decision-ready because it preserves:
 
 - UTM 4.7.5 build 118 with Apple Virtualization and zero guest network devices;
-- the bounded acquisition-and-read-only-sealing architecture;
+- bounded stable artifact and signed-release acquisition separate from retained-inventory-driven component-index acquisition;
 - Canonical snapshot `20260725T000000Z` with complete retained-package offline updating;
 - governed host-worktree implementation followed by guest-only `platrun` validation;
 - mandatory detachment of every ingress medium before validation;
 - separate readiness and execution evidence exports before their corresponding acceptance gates;
 - protected-local host authority/path data with sanitized repository identifiers and digest only; and
-- the revised 17-gate lifecycle.
+- the revised 22-gate lifecycle and explicit Version 1.0 migration mapping.
 
-Version 1.0 additionally applies the binding pre-publication corrections: FAT16 for the 8 MiB and 32 MiB media, a Git-aware host-only versus offline guest validation split, exact guest executable/package closure, canonical-and-approved-redirect-only acquisition networking, and stapled/offline UTM notarization verification before any separately authorized Apple network check.
+Version 1.1 additionally makes `HOST_TASK_ROOT` the Gate 2 task root without a redundant wrapper, mandates exact intermediate-container parent bindings, limits Gate 2 inventory to deterministic pre-VM objects, and separates actual retained inventory, component indexes, offline package planning, and `.deb` acquisition into non-interchangeable gates.
 
-This approval authorizes repository publication preparation only. It does not authorize staging, commit, push, acquisition, networking, UTM DMG mounting or inspection, installation, package retrieval, VM creation/use, implementation, Linux execution, deployment, activation, release, or live work.
+Architecture Gatekeeper decision: **Version 1.1 approved for repository publication**. Version 1.1 remains `Proposed` and `Not Published`; approval opens only separately authorized staging/commit and later push. It does not authorize protected amendment, staging, commit, push, acquisition, networking, UTM DMG mounting or inspection, installation, package retrieval, VM creation/use, implementation, Linux execution, deployment, activation, release, or live work.
 
 ---
 
@@ -554,8 +598,8 @@ This approval authorizes repository publication preparation only. It does not au
 
 This proposal may advance to publication only after:
 
-- the exact Go 1.26.5 repository checks pass under separately valid toolchain authority (satisfied with retrieval disabled);
-- the version 1.0 Board and Gatekeeper decisions and binding corrections remain recorded without implying host action;
+- applicable repository checks pass; exact Go 1.26.5 checks run only if that exact toolchain is already available without acquisition;
+- the Version 1.1 Board and Gatekeeper repository-publication approvals remain recorded without implying publication or host action;
 - status remains environment `Not Created`, implementation `Not Started`, and PLAT-15.1A blocked;
 - repository-mandated validations and exact path audit pass;
 - a separate publication package is authorized, staged, committed, and pushed through distinct approvals.
@@ -566,7 +610,7 @@ Even after publication, acquisition and every host action remain separately unau
 
 ## Publication and Later Gates
 
-This document is architecture-approved for repository publication preparation and currently `Not Published`. Its presence does not create acquisition or preparation authority.
+This Version 1.1 document is approved for repository publication and is currently `Proposed` and `Not Published`. Its presence does not create publication, protected amendment, acquisition, or preparation authority.
 
 Publication requires only the exact validated repository changes under separate staging/commit authorization and later separate push authorization. Publication would not authorize acquisition, installation, VM creation/startup, preparation, readiness execution, PLAT-15.1A implementation, Linux validation, evidence acceptance, export, shutdown, teardown, deployment, activation, release, or live work.
 
@@ -576,6 +620,7 @@ Publication requires only the exact validated repository changes under separate 
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Corrected the Gate 2 root topology; suspended the incomplete Version 1.0 static-manifest acceptance for execution eligibility; separated stable signed-release acquisition from actual retained-inventory generation, component-index request/acquisition/acceptance, offline package-plan generation/acceptance, and later `.deb` acquisition/acceptance; expanded the lifecycle to 22 distinct gates; added the Version 1.0 migration mapping; retained portfolio linkage; and kept protected, publication, environment, implementation, deployment, activation, release, and live gates closed. |
 | 1.0 | Recorded Board and Gatekeeper approval plus the approved sealing architecture; applied FAT16 to the 8 MiB/32 MiB media, separated host-only repository validation from guest Linux validation, bound guest executables and signed Ubuntu package closure, constrained acquisition to canonical/approved redirect destinations, required stapled/offline UTM notarization evidence first, retained the 17 gates, recorded successful exact Go 1.26.5 validation with retrieval disabled, and kept staging/commit and push separately authorized. |
 | 0.2 | Recorded Board portfolio approval and Gatekeeper revision-required state; requested bounded acquisition-and-sealing gates for UTM signer and complete Ubuntu snapshot security closure; separated host-worktree implementation from guest validation; made ingress detachment mandatory; separated and capacity-bound readiness/execution evidence media; placed both exports before acceptance; protected personal host/path data locally; and retained exact Go 1.26.5 validation as a publication blocker. |
 | 0.1 | Proposed UTM 4.7.5 Apple Virtualization with Ubuntu 24.04.4 ARM64, required offline kernel 6.8.0-136.136, Go 1.26.5, x/sys v0.47.0, strict no-network/no-sharing isolation, separate manifests and transfer media, preparation-only administration, bounded execution identity, evidence and teardown contracts, and explicit unresolved approval gates. |
