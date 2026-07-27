@@ -1,0 +1,377 @@
+{
+  "subject_id": "charlie-eo14-2a-synthetic-fixture-consumer-subject-v1",
+  "subject_version": "1.0",
+  "status": "proposed_not_authorized",
+  "prepared_at": "2026-07-26",
+  "repository_publication_target": "docs/milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json",
+  "repository": {
+    "name": "FitzpatrickFamilyPlatform",
+    "checkout_resolution": "Resolve the authoritative checkout locally; no absolute path is part of this publishable subject.",
+    "branch": "main",
+    "baseline_head": "797a658397acde849c0f604b1893dcb1f834c162",
+    "tracking_reference": "origin/main",
+    "observed_ahead": 0,
+    "observed_behind": 0,
+    "remote_fetch_performed": false,
+    "baseline_requirement": "Implementation may initialize only from this exact clean baseline or from a later clean baseline explicitly reaccepted by the Architecture Gatekeeper."
+  },
+  "initiative": {
+    "candidate_id": "EO-14.2A",
+    "workstream": "Charlie - Operations Intelligence",
+    "lifecycle_state": "unstarted",
+    "role": "Codex Implementation Engineer",
+    "decision_authority": "Chief Architect / Architecture Gatekeeper",
+    "objective": "Implement a passive, repository-only, deterministic consumer that interprets governed PLAT-14.1A synthetic Operational Health Assessment fixtures without recalculating or replacing their authoritative health conclusions."
+  },
+  "current_authority_boundary": {
+    "board_disposition": "Preparation of this exact Architecture Review subject only.",
+    "implementation_authorized": false,
+    "repository_mutation_authorized": false,
+    "publication_authorized": false,
+    "commit_authorized": false,
+    "push_authorized": false,
+    "activation_authorized": false,
+    "live_work_authorized": false,
+    "next_gate": "Architecture Gatekeeper acceptance or required changes for this exact subject."
+  },
+  "binding_repository_evidence": [
+    {
+      "path": "docs/specifications/Platform_Operational_Evidence_and_Health_Contract_Specification.md",
+      "sha256": "1dd3a7f0ceb0629b8a5128777d23b3d3a145f390dfc92490dbecd80b01f775fb"
+    },
+    {
+      "path": "docs/specifications/Container_Operational_Health_Specification.md",
+      "sha256": "3267a64668af7f68d63d1ac329e857bfda9105f8a6a11b892af5256ab8562475"
+    },
+    {
+      "path": "docs/engineering-organization/Operations_Analyst_Specification.md",
+      "sha256": "5a141671b9fde092553817b3c10411a4054b61d1e37c56535f344a252b1e86d3"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/operational/milestone-14/Charlie_Continuity_Brief.md",
+      "sha256": "9a7382429673b7682a711747f36ef37b8fa50849481626c47c6112a5fc471216"
+    },
+    {
+      "path": "docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md",
+      "sha256": "79b338957170712b484b740d01a6812096130d5280d0759a3ee04cdb82080a23"
+    },
+    {
+      "path": "docs/portfolio/Engineering_Portfolio_Kanban.md",
+      "sha256": "62756f3029b5a28aba0b4e7759dc98c864779b85795c48c72fc20505dce7f597"
+    },
+    {
+      "path": "engineering/platform_eap/container_health.py",
+      "sha256": "91ed5d182c9699a1df697f704bdf97742d2597d7b8e8b8c6946ee8e713e2eb11"
+    },
+    {
+      "path": "engineering/platform_eap/container_health_io.py",
+      "sha256": "73a07c83a4a14aab0d719f1dae18d67301107a366cc90038ee0bf02a0f37d731"
+    },
+    {
+      "path": "engineering/tests/fixtures/container_health/assessments/healthy.json",
+      "sha256": "6bb08659677ef8a32f7f692025878911d67c0bdad96d161b5179252675cabe20"
+    },
+    {
+      "path": "engineering/tests/fixtures/container_health/eo/contract-integration.json",
+      "sha256": "d7ed16943fd125008efc100885981dfb647241a245ce22d152910b541ae8cbfb"
+    }
+  ],
+  "required_reuse": {
+    "source_model": "engineering.platform_eap.container_health.OperationalHealthAssessment",
+    "source_parser": "engineering.platform_eap.container_health_io.assessment_from_dict",
+    "source_serializer": "engineering.platform_eap.container_health_io.assessment_to_dict",
+    "source_validator": "engineering.platform_eap.container_health.validate_assessment",
+    "source_presentation_check": "engineering.platform_eap.container_health.assessment_presentation_findings",
+    "prohibition": "The implementation must not duplicate, fork, weaken, or change the PLAT-14.1A assessment model, parser, serializer, validation, health policy, confidence policy, precedence, reason-code catalog, or freshness calculation."
+  },
+  "proposed_changed_path_allowlist": {
+    "charlie_owned_paths": [
+      "docs/milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json",
+      "docs/specifications/Operations_Intelligence_Interpretation_Contract_Specification.md",
+      "docs/engineering-organization/Operations_Analyst_Container_Health_Interpretation_Procedure.md",
+      "docs/engineering-organization/Operations_Analyst_Specification.md",
+      "docs/milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Work_Package.md",
+      "engineering/platform_eap/operations_intelligence.py",
+      "engineering/platform_eap/operations_intelligence_io.py",
+      "engineering/platform_eap/operations_intelligence_rendering.py",
+      "engineering/tests/fixtures/operations_intelligence/interpretation-cases-v1.json",
+      "engineering/tests/fixtures/operations_intelligence/current-healthy-request-v1.json",
+      "engineering/tests/fixtures/operations_intelligence/expected-interpretations-v1.json",
+      "engineering/tests/fixtures/operations_intelligence/expected-current-healthy-v1.json",
+      "engineering/tests/fixtures/operations_intelligence/expected-current-healthy-v1.md",
+      "engineering/tests/test_operations_intelligence.py"
+    ],
+    "architecture_integration_owned_paths": [
+      "engineering/platform_eap/cli.py",
+      "docs/engineering-organization/Engineering_Organization_Roadmap.md",
+      "docs/engineering-organization/Engineering_Organization_Backlog.md",
+      "docs/portfolio/Engineering_Portfolio_Kanban.md",
+      "docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md",
+      "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_14_2A_Charlie_Continuity_Brief.md"
+    ],
+    "integration_rule": "Charlie may state the required CLI hook and traceability changes but may not concurrently edit an Architecture Integration-owned path. Each such path requires an explicit integration lease or a serialized Architecture Integration change after all overlapping Alpha changes are reconciled.",
+    "all_other_paths": "prohibited"
+  },
+  "input_contract": {
+    "contract_name": "operations-intelligence-interpretation-request-v1",
+    "required_keys": [
+      "activation_status",
+      "assessment",
+      "fixture_only",
+      "live_changes_occurred",
+      "model_execution_occurred",
+      "presented_at",
+      "provider_access_occurred",
+      "request_contract_version",
+      "request_id",
+      "runtime_activation_occurred"
+    ],
+    "optional_keys": [],
+    "unknown_keys": "rejected",
+    "field_rules": {
+      "request_contract_version": "Exact string 1.0.",
+      "request_id": "Nonempty stable identifier containing only lower-case ASCII letters, digits, and hyphens.",
+      "presented_at": "Timezone-aware RFC3339 UTC timestamp ending in Z.",
+      "assessment": "Either null or an inline JSON object parsed only by assessment_from_dict and checked by validate_assessment.",
+      "fixture_only": "Must be true.",
+      "activation_status": "Must be not_activated.",
+      "provider_access_occurred": "Must be false.",
+      "runtime_activation_occurred": "Must be false.",
+      "model_execution_occurred": "Must be false.",
+      "live_changes_occurred": "Must be false."
+    },
+    "unsafe_envelope_behavior": "Reject before interpretation with exit code 2 and produce no interpretation result."
+  },
+  "pass_through_contract": {
+    "valid_source_rule": "For a valid assessment, source_assessment must equal assessment_to_dict(parsed_assessment) field-for-field and value-for-value. No source field may be omitted, renamed, rewritten, summarized, rescored, or recomputed.",
+    "fields": [
+      "assessment_id",
+      "contract_version",
+      "subject_id",
+      "registry_reference",
+      "evidence_profile_type",
+      "evidence_profile_version",
+      "policy_manifest_id",
+      "policy_manifest_version",
+      "policy_versions",
+      "health_policy_version",
+      "assessment_confidence_policy_version",
+      "reconciliation_id",
+      "reconciliation_result",
+      "evidence_ids",
+      "evidence_summary",
+      "health_status",
+      "assessment_confidence",
+      "reason_codes",
+      "critical_findings",
+      "noncritical_findings",
+      "evaluated_at",
+      "valid_until",
+      "fixture_only",
+      "activation_status"
+    ],
+    "invalid_source_rule": "For a parse-invalid or validation-invalid assessment, source_assessment is null, source status is not interpreted, and only bounded validation findings are emitted. The unvalidated payload is not copied to the output."
+  },
+  "consumer_state_contract": {
+    "enum": [
+      "current",
+      "noncurrent",
+      "unavailable",
+      "invalid"
+    ],
+    "precedence": [
+      "If assessment is null, unavailable.",
+      "If assessment parsing or published validation fails, invalid.",
+      "If valid_until is present and presented_at is later than valid_until, noncurrent and include ASSESSMENT_EXPIRED.",
+      "Otherwise, current. Equality with valid_until is current. A valid not_evaluated assessment with no valid_until is current as a source record but is not converted into health."
+    ],
+    "boundary": "Consumer state is presentation metadata only. It never changes source health_status, assessment_confidence, freshness, validity, reasons, findings, or evidence."
+  },
+  "recommendation_contract": {
+    "output_categories": [
+      "investigate",
+      "no_immediate_recommendation",
+      "obtain_governed_assessment",
+      "reevaluate",
+      "review_evidence",
+      "review_policy",
+      "review_provider_limitation"
+    ],
+    "recommendation_fields": [
+      "basis_evidence_ids",
+      "basis_reason_codes",
+      "category",
+      "recommendation_id",
+      "summary"
+    ],
+    "precedence": [
+      "invalid: review_evidence using consumer validation findings only; no source health recommendation.",
+      "unavailable: obtain_governed_assessment; do not synthesize not_evaluated.",
+      "noncurrent: reevaluate; do not present or recommend from the stored health as current.",
+      "current unhealthy or any critical finding: investigate.",
+      "current degraded: investigate.",
+      "current insufficient_evidence with PROVIDER_LIMITATION_APPLIES: review_provider_limitation.",
+      "current insufficient_evidence with other reason codes: review_evidence.",
+      "current not_evaluated with SUBJECT_NOT_ACTIVE: review_policy.",
+      "current healthy with ADVISORY_TELEMETRY_PARTIAL or RESOURCE_EVIDENCE_STALE: review_evidence while explicitly preserving healthy source status.",
+      "other current healthy: no_immediate_recommendation."
+    ],
+    "basis_rule": "Every source-derived recommendation must cite the exact source reason codes and all source evidence_ids supporting the source assessment. Consumer-only invalid, unavailable, or expired recommendations use an empty source basis and cite the applicable consumer finding in the summary.",
+    "prohibited_inferences": [
+      "numeric score",
+      "trend",
+      "threshold",
+      "urgency",
+      "probability",
+      "prediction",
+      "root cause",
+      "remediation command",
+      "provider reachability as subject health"
+    ]
+  },
+  "output_contract": {
+    "contract_name": "operations-intelligence-interpretation-v1",
+    "required_keys": [
+      "activation_status",
+      "consumer_findings",
+      "consumer_state",
+      "fixture_only",
+      "interpretation_contract_version",
+      "interpretation_id",
+      "limitations",
+      "presented_at",
+      "recommendations",
+      "request_id",
+      "source_assessment",
+      "source_validation_findings"
+    ],
+    "optional_keys": [],
+    "unknown_keys": "rejected",
+    "field_rules": {
+      "interpretation_contract_version": "Exact string 1.0.",
+      "interpretation_id": "Deterministic operations-intelligence- prefix plus the first 20 lower-case hexadecimal characters of SHA-256 over canonical sorted-key UTF-8 request JSON.",
+      "source_assessment": "Full canonical published assessment dictionary or null under the pass-through contract.",
+      "source_validation_findings": "Stable severity, code, and message records sorted by severity, code, and message.",
+      "consumer_findings": "Stable severity, code, and message records sorted by severity, code, and message.",
+      "recommendations": "Stable list ordered by the recommendation precedence and then category; recommendation_id is recommendation-01, recommendation-02, and so on.",
+      "limitations": "Sorted unique bounded disclosures only.",
+      "fixture_only": "Always true.",
+      "activation_status": "Always not_activated."
+    }
+  },
+  "cli_contract": {
+    "command_root": "platform-eap operations-intelligence",
+    "commands": [
+      {
+        "syntax": "./platform-eap operations-intelligence interpret <request-path>",
+        "behavior": "Read one request only from engineering/tests/fixtures/operations_intelligence, validate it strictly, and emit deterministic interpretation JSON to stdout without writing a file."
+      },
+      {
+        "syntax": "./platform-eap operations-intelligence interpretation validate <interpretation-path>",
+        "behavior": "Read one interpretation only from engineering/tests/fixtures/operations_intelligence, validate the output contract, and emit PASS or bounded findings without writing a file."
+      },
+      {
+        "syntax": "./platform-eap operations-intelligence interpretation render <interpretation-path>",
+        "behavior": "Read one valid interpretation only from engineering/tests/fixtures/operations_intelligence and emit deterministic sanitized Markdown to stdout without writing a file."
+      }
+    ],
+    "path_boundary": "Reject absolute paths, symlinks, path traversal, non-files, and paths outside engineering/tests/fixtures/operations_intelligence.",
+    "exit_codes": {
+      "0": "Valid command and valid domain result, including current, noncurrent, unavailable, or invalid consumer state.",
+      "2": "Malformed JSON, unsafe path, unsafe request envelope, invalid arguments, I/O failure, or invalid interpretation document.",
+      "3": "Unsupported request, assessment, or interpretation contract version."
+    },
+    "shared_path_rule": "Charlie specifies this hook, but engineering/platform_eap/cli.py is Architecture Integration-owned and must be changed only in a serialized integration phase."
+  },
+  "fixture_contract": {
+    "case_catalog": "engineering/tests/fixtures/operations_intelligence/interpretation-cases-v1.json",
+    "case_ids": [
+      "current-healthy",
+      "expired-stored-healthy",
+      "unhealthy-unexpected-exit",
+      "unhealthy-declared-subject-absent",
+      "degraded-critical-memory-pressure",
+      "insufficient-lifecycle-evidence-missing",
+      "insufficient-provider-limitation",
+      "insufficient-identity-ambiguity",
+      "partial-advisory-telemetry-no-health-escalation",
+      "not-evaluated-subject-inactive",
+      "assessment-unavailable",
+      "assessment-malformed-or-unknown-field",
+      "assessment-unsupported-contract-or-policy-version",
+      "unsafe-fixture-metadata-claims-activation-or-access"
+    ],
+    "canonical_cli_request": "engineering/tests/fixtures/operations_intelligence/current-healthy-request-v1.json",
+    "expected_machine_catalog": "engineering/tests/fixtures/operations_intelligence/expected-interpretations-v1.json",
+    "expected_cli_machine_output": "engineering/tests/fixtures/operations_intelligence/expected-current-healthy-v1.json",
+    "expected_cli_markdown_output": "engineering/tests/fixtures/operations_intelligence/expected-current-healthy-v1.md",
+    "source_fixture_rule": "The current-healthy case must embed the exact logical object from engineering/tests/fixtures/container_health/assessments/healthy.json at SHA-256 6bb08659677ef8a32f7f692025878911d67c0bdad96d161b5179252675cabe20. Other assessment cases are sanitized deterministic mutations that must pass the unchanged published parser and validator unless the case explicitly tests invalid input.",
+    "safety_rule": "No fixture may name a production subject, customer, credential, protected path, reachable endpoint, or live provider target."
+  },
+  "test_contract": {
+    "focused_test_path": "engineering/tests/test_operations_intelligence.py",
+    "required_proofs": [
+      "All fourteen cases produce the exact expected state, recommendations, findings, and deterministic ordering.",
+      "Every valid source assessment round-trips through assessment_to_dict unchanged in source_assessment.",
+      "Source health_status, assessment_confidence, freshness, valid_until, reasons, findings, reconciliation, policy versions, and evidence references are never rewritten.",
+      "Expired stored healthy is noncurrent and never rendered as current Healthy.",
+      "Unavailable does not synthesize not_evaluated.",
+      "Parse-invalid and validation-invalid assessments expose no interpreted source status.",
+      "Provider limitation never becomes subject health.",
+      "Advisory partial telemetry creates no health escalation.",
+      "Unknown input and output keys, unsafe paths, symlinks, traversal, unsupported versions, activation, access, model execution, and live-work claims fail closed.",
+      "CLI JSON and Markdown output are byte-for-byte deterministic and stdout-only.",
+      "The three new capability modules import no socket, subprocess, requests, urllib, http, docker, prometheus_client, model, or plugin surface and call no file-writing or mutation API.",
+      "No PLAT-14.1A source module, fixture, policy, Registry record, provider adapter, proxy, deployment, dashboard, or FFFA path changes."
+    ]
+  },
+  "acceptance_gates": [
+    "Architecture Gatekeeper accepts the exact subject digest, candidate initiative identity, baseline or explicitly reaccepted successor baseline, authoritative evidence hashes, ownership split, allowlist, contracts, non-goals, and stop conditions.",
+    "A separately initialized Charlie session proves a clean, non-diverged, authority-consistent baseline before any implementation.",
+    "Architecture Integration confirms no concurrent Alpha ownership of shared paths and grants an explicit serialized integration lease before any shared path changes.",
+    "python3 -m pytest -p no:cacheprovider engineering/tests/test_operations_intelligence.py passes.",
+    "python3 -m pytest -p no:cacheprovider engineering/tests passes.",
+    "./platform-eap repository validate and ./platform-eap governance validate pass.",
+    "AI Session Readiness is run only under the published generated-evidence baseline policy; any unclassified generated change stops the session.",
+    "Literal changed paths equal a subset of the exact allowlist, with shared paths changed only under the integration lease; git diff --check passes.",
+    "A requirement audit proves exact source pass-through, deterministic schemas, no source recalculation, no live/provider/model/command activity, and no false precision.",
+    "Architecture Gatekeeper performs implementation review before publication; commit and push require a separate publication authorization and remote-equality proof."
+  ],
+  "deferred_mappings": [
+    "Final production-provider provenance, provider-failure, limitation, coverage, and named-target mappings pending separately accepted Bravo evidence.",
+    "Comparison or trend interpretation across multiple compatible assessments.",
+    "PLAT-14.3A dashboard consumer mappings and no-data presentation.",
+    "EO-14.3A Engineering Metrics mappings.",
+    "Any authoritative service, live provider, runtime, alert, notification, remediation, runbook, or operational activation mapping."
+  ],
+  "non_goals": [
+    "Recalculate, replace, amend, or independently summarize authoritative health, confidence, reconciliation, freshness, validity, reason codes, findings, or evidence.",
+    "Create another health assessment, consumer-summary source of truth, policy engine, score, trend system, threshold, urgency, probability, prediction, or root-cause engine.",
+    "Modify PLAT-14.1A source logic, schemas, policies, fixtures, Registry data, provider adapters, proxy code, deployment configuration, dashboard, or APIs.",
+    "Access providers, network, runtime, production, protected locations, customer data, credentials, dashboards, APIs, or live infrastructure.",
+    "Execute commands, remediation, runbooks, alerts, notifications, scheduling, dispatch, persistence, background work, or model inference from the capability.",
+    "Activate the Operations Analyst, Execution Agent, automation, consumer, provider, or any runtime behavior.",
+    "Implement EO-14.3A, PLAT-14.3A, final provider mappings, or unrelated Milestone 15 work.",
+    "Commit, push, release, deploy, publish, or promote lifecycle state under this proposal."
+  ],
+  "stop_conditions": [
+    "Repository identity, branch, clean state, tracking equality, authority, baseline, or any binding evidence hash is absent, ambiguous, drifted, dirty, behind, diverged, or materially different.",
+    "Charlie authority remains absent or contradictory, or the Architecture Gatekeeper has not accepted this exact subject.",
+    "A changed path is outside the exact allowlist, or Charlie attempts a shared path without an Architecture Integration lease.",
+    "Alpha concurrently owns or has unreconciled changes to a shared path.",
+    "Implementation requires modifying container_health.py, container_health_io.py, PLAT policy, reason-code, assessment, Registry, provider, proxy, deployment, dashboard, or FFFA artifacts.",
+    "The published parser or validator cannot support a case without duplication, weakening, special-casing, or source recalculation.",
+    "A recommendation requires evidence not present in the authoritative assessment or requires invented telemetry, precision, trend, urgency, probability, prediction, root cause, or remediation.",
+    "A final provider, named-target, dashboard, metrics, live, or operational mapping is needed.",
+    "Network, subprocess, command execution, file writing, persistence, credentials, customer data, protected access, runtime, provider access, production, activation, or live work is required.",
+    "A validator changes an unapproved path or generated evidence cannot be classified under published policy.",
+    "Focused or governed validation fails, or deterministic fixture output differs from the accepted contract."
+  ],
+  "completion_state": {
+    "before_acceptance": "Charlie remains unstarted; Architecture Review only.",
+    "after_subject_acceptance": "Acceptance may authorize only a separately bounded publication step that places these exact subject bytes at repository_publication_target and performs accepted integration-owned traceability changes. Charlie implementation remains unstarted until that publication is committed, pushed, and remote equality is proved.",
+    "after_subject_publication": "The published subject becomes repository authority for a separately initialized implementation session only if the Gatekeeper decision explicitly grants that delayed effect and all baseline and integration gates pass.",
+    "after_implementation": "Implementation remains unpublished and unactivated pending separate Architecture Gatekeeper implementation review and publication authorization.",
+    "provider_and_live_state": "Deferred and unauthorized in every state of this subject."
+  }
+}

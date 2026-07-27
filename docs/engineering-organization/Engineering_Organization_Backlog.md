@@ -1,6 +1,6 @@
 # Engineering Organization Backlog
 
-**Document Version:** 3.2
+**Document Version:** 3.3
 
 **Status:** Active
 
@@ -26,6 +26,7 @@ This document defines the governed backlog for the Engineering Organization capa
 | EO-BL-006 | Evaluate Engineering Memory indexing options. | Improves retrieval of durable repository knowledge. | Candidate. |
 | EO-14.1 | Execution Agent Specification. | Defines future live-execution authority, gates, evidence, handoffs, and stop conditions. | EO-14.1A repository implementation published; role activation remains separately planned. |
 | EO-14.2 | Operations Analyst Specification. | Turns telemetry and runbook evidence into governed recommendations without production authority. | Specified for Milestone 14 review. |
+| EO-14.2A | Charlie Synthetic-Fixture Consumer. | Adds deterministic recommendation-only interpretation of published PLAT-14.1A synthetic assessments without recalculating health or opening provider/live mappings. | Exact authorization subject published with delayed effect; implementation unstarted until publication commit, push, and remote equality are proved, then a separate initialized session is required. |
 | EO-14.3 | Engineering Metrics v2. | Measures organizational capability and effectiveness with practical repository evidence. | Specified for Milestone 14 review. |
 | EO-14.4 | Governed Automation Framework. | Makes automation approval, scope, lifecycle, and evidence boundaries explicit. | EO-14.4A Option B repository implementation published; automation activation remains separately planned. |
 | EO-14.5 | Capability Maturity Assessment. | Applies the maturity model at a governed review cadence. | Deferred candidate; partially informed by Engineering Metrics v2. |
@@ -59,6 +60,7 @@ Backlog items that create new governance shall be promoted only when the practic
 - [AI Collaboration Governance Specification](ai-collaboration/AI_Collaboration_Governance_Specification.md)
 - [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
 - [EO-15.1 Work Package](../milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md)
+- [EO-14.2A Synthetic-Fixture Consumer Authorization Subject](../milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json)
 
 ---
 
@@ -66,6 +68,7 @@ Backlog items that create new governance shall be promoted only when the practic
 
 | Version | Description |
 |---------|-------------|
+| 3.3 | Published the accepted EO-14.2A synthetic-fixture consumer subject with delayed effect while retaining unstarted implementation and every later provider/live, integration, activation, and publication gate. |
 | 3.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 while preserving all later gates. |
 | 3.1 | Recorded completed, unpublished EO-15.1 repository implementation pending Architecture Gatekeeper review. |
 | 3.0 | Added authorized, unimplemented EO-15.1 Transition Review operationalization for Milestone 15 delivery leverage. |

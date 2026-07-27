@@ -1,6 +1,6 @@
 # Engineering Organization Roadmap
 
-**Document Version:** 3.2
+**Document Version:** 3.3
 
 **Status:** Active
 
@@ -21,7 +21,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 | EO-13.0 | Organization foundation | Vision, roles, capability model, delivery model, workspace model, backlog, roadmap, memory concept, and pattern library starter. |
 | EO-13.1 | Governance evolution | Manifesto, AI role catalog, Engineering Investment Rule, closeout evolution, maturity model, principles, and milestone transition templates. |
 | EO-14 | Governed operationalization | Published AI Collaboration Governance, EO-14.1A, EO-14.4A, bounded Bravo Foundation, and fixture-only PLAT-14.1A repository baselines; Charlie remains unstarted. |
-| EO-15 | Delivery leverage | Operationalize the approved Transition Review through EO-15.1, reuse existing governance and contracts, and reduce repeated milestone-transition friction without unsupported throughput precision. |
+| EO-15 | Delivery leverage | Operationalize the approved Transition Review through EO-15.1, publish the accepted EO-14.2A bounded synthetic-fixture consumer authority without starting implementation, reuse existing governance and contracts, and reduce repeated milestone-transition friction without unsupported throughput precision. |
 | Near Term | Evidence and review hardening | Architecture review checklist, workstream closeout evidence, and impact assessment usage in milestone planning. |
 | Mid Term | Practice promotion | Promote proven repeated workstream practices into governed standards, templates, or validators. |
 | Later | Cross-repository operating model | Evaluate which Engineering Organization practices should become portfolio-level or reusable across repositories. |
@@ -38,6 +38,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 - Execution Agent and Operations Analyst remain planned roles until future governance activates them.
 - The AI Collaboration Steward remains limited to its approved review boundary and ongoing automation is not activated. EO-14.8A through EO-14.8E, the parent capability, Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the fixture-only PLAT-14.1A repository slice are published. Charlie remains unstarted. No automation, role activation, provider access, or live work is authorized.
 - EO-15.1 repository implementation is Architecture Gatekeeper approved and published; its standing fail-closed generated-evidence policy is authoritative after successful publication and post-publication verification, without authorizing implementation by itself.
+- The exact EO-14.2A synthetic-fixture consumer authorization subject is published with delayed effect. Charlie remains unstarted until commit, push, and remote-equality proof complete; the subject authorizes only a later separately initialized repository-only implementation and leaves provider/live, dashboard, metrics, trend, activation, and publication gates closed.
 - Reuse existing lifecycle, governance, contracts, validators, and evidence mechanisms before proposing expansion.
 
 ---
@@ -57,6 +58,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 - [Engineering Lifecycle](../governance/Engineering_Lifecycle.md)
 - [Milestone 15 Portfolio Plan](../milestones/Milestone_15/Milestone_15_Portfolio_Plan.md)
 - [EO-15.1 Work Package](../milestones/Milestone_15/EO_15_1_Engineering_Lifecycle_Transition_Review_Operationalization_Work_Package.md)
+- [EO-14.2A Synthetic-Fixture Consumer Authorization Subject](../milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json)
 
 ---
 
@@ -64,6 +66,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 
 | Version | Description |
 |---------|-------------|
+| 3.3 | Published the accepted EO-14.2A synthetic-fixture consumer subject with delayed effect while keeping Charlie implementation unstarted and all provider/live, integration, activation, and implementation-publication gates closed. |
 | 3.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 without opening activation or live-work gates. |
 | 3.1 | Recorded completed, unpublished EO-15.1 repository implementation at the Architecture Review gate. |
 | 3.0 | Added EO-15 delivery leverage and EO-15.1 future implementation authority while preserving the existing governance boundary. |
