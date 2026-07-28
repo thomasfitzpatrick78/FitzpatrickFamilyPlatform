@@ -1,0 +1,147 @@
+{
+  "model_version": "eo-goal-delivery-v1",
+  "definition": "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Goal.json",
+  "snapshot_id": "milestone-15-goal-oriented-parallel-delivery-pilot-snapshot-20260727-02",
+  "observed_at": "2026-07-27T23:59:21Z",
+  "goal_state": "active",
+  "workstream_observations": [
+    {
+      "workstream_id": "alpha-goal-delivery",
+      "authority_state": "authorized",
+      "coordination_state": "active",
+      "active_item_id": "alpha-version-1-1-seven-path-repository-application",
+      "completed_acceptance_requirement_ids": [],
+      "evidence_references": [
+        "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md"
+      ],
+      "blocking_issue_ids": [],
+      "next_best_action": "Apply and validate the exact accepted Alpha seven-path patch under its separate authority, then stop before staging for a separate decision.",
+      "integration_evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md"
+      ]
+    },
+    {
+      "workstream_id": "bravo-plat15a-gate2",
+      "authority_state": "authorized",
+      "coordination_state": "active",
+      "active_item_id": "bravo-little-snitch-ls-q0-resolution",
+      "completed_acceptance_requirement_ids": [],
+      "evidence_references": [
+        "docs/milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md"
+      ],
+      "blocking_issue_ids": [],
+      "next_best_action": "Resolve only the conditionally authorized official-primary LS-Q0 distribution and license metadata, stopping before any object link or byte retrieval.",
+      "integration_evidence_references": []
+    },
+    {
+      "workstream_id": "charlie-eo14-2a-publication",
+      "authority_state": "closed",
+      "coordination_state": "complete",
+      "active_item_id": null,
+      "completed_acceptance_requirement_ids": [
+        "pilot-charlie-published"
+      ],
+      "evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_14_2A_Charlie_Continuity_Brief.md",
+        "docs/milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json"
+      ],
+      "blocking_issue_ids": [],
+      "next_best_action": "No Charlie action remains; exact publication and local, tracking, and live remote equality are complete.",
+      "integration_evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md"
+      ]
+    },
+    {
+      "workstream_id": "operating-model-adoption",
+      "authority_state": "authorized",
+      "coordination_state": "active",
+      "active_item_id": "decision24-adoption-publication-package-preparation",
+      "completed_acceptance_requirement_ids": [],
+      "evidence_references": [
+        "docs/engineering-organization/Owner_Engineering_Organization_Interaction_Brief.md",
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+      ],
+      "blocking_issue_ids": [],
+      "next_best_action": "Seal the exact outside-repository adoption publication package and return it for a separate repository-application decision.",
+      "integration_evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md"
+      ]
+    }
+  ],
+  "dependency_observations": [
+    {
+      "dependency_id": "dependency-charlie-report-restoration-risk",
+      "status": "satisfied",
+      "checked_at": "2026-07-27T23:59:21Z",
+      "valid_until": "2026-07-28T23:59:21Z",
+      "evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+      ],
+      "limitation": "The restoration risk was accepted, the exact Charlie commit was published, and local, tracking, and live remote equality were proved."
+    },
+    {
+      "dependency_id": "dependency-charlie-before-alpha-publication",
+      "status": "satisfied",
+      "checked_at": "2026-07-27T23:59:21Z",
+      "valid_until": "2026-07-28T00:59:21Z",
+      "evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md"
+      ],
+      "limitation": "Charlie equality is complete at b5ecc7dde4cf581a6c1bfc02b7ee7361c95279fd; Alpha still requires its own exact application, validation, staging, commit, push, and equality gates."
+    },
+    {
+      "dependency_id": "dependency-alpha-corrected-base",
+      "status": "satisfied",
+      "checked_at": "2026-07-27T23:59:21Z",
+      "valid_until": "2026-07-28T23:59:21Z",
+      "evidence_references": [
+        "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md"
+      ],
+      "limitation": "The exact Alpha Version 1.1 package is accepted for seven-path repository application only; all later staging, commit, push, implementation, and activation gates remain separate."
+    },
+    {
+      "dependency_id": "dependency-adoption-work-package-acceptance",
+      "status": "satisfied",
+      "checked_at": "2026-07-27T23:59:21Z",
+      "valid_until": "2026-07-28T23:59:21Z",
+      "evidence_references": [
+        "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md",
+        "docs/engineering-organization/Owner_Engineering_Organization_Interaction_Brief.md"
+      ],
+      "limitation": "Decision 24 accepts the exact Version 1.1 adoption package only for outside-repository publication-package preparation and return for a separate application decision."
+    },
+    {
+      "dependency_id": "dependency-bravo-residual-authority",
+      "status": "unsatisfied",
+      "checked_at": "2026-07-27T23:59:21Z",
+      "valid_until": "2026-07-28T23:59:21Z",
+      "evidence_references": [
+        "docs/milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md"
+      ],
+      "limitation": "Only conditionally authorized official-primary LS-Q0 textual metadata resolution is open; object-link access, byte retrieval, acquisition, protected, target, host-control, and Gate 2 actions remain closed."
+    }
+  ],
+  "open_decision_cards": [
+    {
+      "decision": "Accept and authorize application of the exact adoption publication package after Alpha remote equality and fresh repository revalidation.",
+      "recommendation": "Approve only the exact five-path adoption publication package application, isolated validation, generated-report classification, and return of the unstaged result for a separate staging decision.",
+      "evidence": "Decision 24 bindings, Charlie equality, accepted Alpha post-Charlie target bytes, exact five target hashes, narrow goal and snapshot rebind, isolated tests, validator preclassification, manifest, and audit must all match.",
+      "authority_gained": "After Alpha remote equality and exact clean-baseline proof, apply only the bound five-path package, verify paths and targets, run only preclassified isolated validation, and stop before governed-repository staging.",
+      "authority_not_gained": "No initiative assignment, implementation, staging, commit, push, goal or task operation, model invocation, runtime dispatch, protected action, activation, production, release, customer, or live work.",
+      "expiry_or_invalidation": "Any Alpha result, baseline, path, target, generated-report classification, authority, or package digest drift requires regeneration.",
+      "response_form": "Approve the exact sealed adoption publication package by its work-package target, four governance targets, patch, manifest, and audit hashes, authorizing only post-Alpha exact application and unstaged validation under every recorded stop condition."
+    }
+  ],
+  "completion_evidence_by_requirement": [],
+  "unresolved_issues": [
+    "issue-alpha-publication-application-and-remote-equality-incomplete",
+    "issue-adoption-publication-package-application-not-authorized",
+    "issue-bravo-residual-authority-closed",
+    "issue-passive-capability-not-implemented-or-published",
+    "issue-session-independent-recovery-not-yet-proved",
+    "issue-external-codex-coordination-is-not-repository-capability-dispatch"
+  ],
+  "activation_occurred": false,
+  "dispatch_occurred": false,
+  "live_changes_occurred": false
+}

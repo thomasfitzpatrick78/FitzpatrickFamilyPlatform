@@ -1,4 +1,4 @@
-# Goal-Oriented Parallel Delivery Passive Capability — Exact Governed Work Package
+# Goal-Oriented Parallel Delivery Operating-Model Adoption — Exact Governed Work Package
 
 **Document Version:** 1.1
 **Status:** Prepared Outside Repository; Proposed for Product Board and Architecture Gatekeeper Acceptance; Not Published
@@ -7,103 +7,124 @@
 **Milestone:** Milestone 15
 **Governed Repository:** `FitzpatrickFamilyPlatform`
 **Target Repository Path:** `docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md`
-**Accepted Architecture Subject:** `Alpha_Goal_Delivery_Proposed_Governed_Work_Package_Subject.json`
-**Accepted Subject SHA-256:** `da3da4646fd32bb13aaa7804b2007935bfdf53e66d48e6d019e0313fa9c816ad`
-**Architecture Decision State:** Accepted for conversion into this exact work-package artifact only
-**Expected Generated Evidence Baseline:** Prohibited unless a later accepted repository version expressly changes this value under EO-15.1
+**Accepted Adoption Subject SHA-256:** `c349b2e699ba14482c0f670eeadf560683f1f0804f10eea03c0c0feb43bc0b40`
+**Corrected Passive-Capability Version 1.1 Base SHA-256:** `2262a2fa5902e2e8058286c463ac0410266f63267d6139c9d3f047655bd6707b`
+**Accepted Transition-Prompt Version 1.1 SHA-256:** `02ee21a513be8961cb17c7c1fdb9d5621eeeca4710a5e688749cce2c0d60794d`
+**Accepted Prompt-Amendment Subject Version 1.1 File SHA-256:** `62166ff4e459894ba38729c119ccd7cba270ff18106d1f2beb79c67b8d3370b3`
+**Accepted Prompt-Amendment Subject Version 1.1 Internal SHA-256:** `e9b99763f42ea3b15c1743f3dfb854ac1fe36b423669b2218f87566214d97c53`
+**Expected Generated Evidence Baseline:** Prohibited unless a later exact accepted version changes this value under EO-15.1
 
 ## 1. Purpose
 
-This proposed work package converts the accepted Alpha architecture subject into a repository-ready authority artifact for a passive goal-delivery capability.
+This work package integrates the accepted Goal-Oriented Parallel Delivery passive capability with the operating-model adaptations demonstrated by the Milestone 15 Alpha, Bravo, Charlie, and Architecture Integration pilot.
 
-The capability would make a portfolio outcome, separately authorized workstream bindings, authority envelopes, dependency freshness and timing, blocked-stream reallocation advice, exact decision cards, integration handoffs, and requirement-level completion audits machine-checkable. It would not create or operate work. Codex goals and tasks remain an external coordination surface. Repository artifacts remain the authority and evidence surface.
+It makes the following outcome governable and testable:
 
-This file is currently outside the governed repository. It is not published authority, does not assign an initiative identifier, and authorizes no repository edit, implementation, staging, commit, push, pilot, Codex goal or task action under this package, scheduling, dispatch, persistence, model invocation, protected or network action, activation, production, release, or live work.
+- a durable outcome goal coordinates several independently authorized workstreams;
+- workstream authority remains separate and non-transferable;
+- dependencies are checked just in time;
+- a blocker triggers same-turn eligibility recomputation and continued progress in unaffected lanes;
+- decision-bound packages are atomically sealed;
+- the Owner receives compact material decisions instead of orchestrating engineering steps;
+- repository artifacts, not chat or model memory, are sufficient to recover current work;
+- generated evidence is safe for Git; and
+- completion is audited requirement by requirement.
 
-## 2. Objective and Delivery-Leverage Outcome
+This package extends the corrected Version 1.1 passive-capability base. It does not replace EO-14.1A execution semantics, EO-14.4A automation semantics, AI Collaboration governance, Architecture Integration ownership, human approval authority, or the Engineering Lifecycle.
 
-Add a passive repository-governed validation surface that reduces owner prompt burden and prevents known dependency checks from becoming late blockers while preserving every existing authority boundary.
+Decision 21 Version 1.1 narrowly incorporates the accepted reusable chat-to-Codex transition prompt into the existing Owner interaction brief target. It adds no repository path and changes no non-prompt architecture, authority, ownership, lifecycle, prohibition, or stop semantic. The Version 1.0 prompt and amendment-subject bindings are superseded and not accepted.
 
-The intended organizational outcome is:
+This file is outside the governed repository. It authorizes no repository edit, initiative assignment, implementation, staging, commit, push, operational goal/task use, scheduling, dispatch, persistence, model invocation, protected/network action, production, release, customer, or live work.
 
-- one durable outcome can reference several independently authorized workstreams without lending authority between them;
-- dependency freshness, need-by points, and latest-safe-check time are deterministic and reviewable;
-- blocked work exposes other independently eligible work without dispatching it;
-- material decisions render as a seven-field exact card;
-- completion is audited against acceptance evidence rather than prompt or artifact count; and
-- EO-14.1A execution semantics, EO-14.4A automation semantics, repository-first authority, Architecture Integration, and all closed operational gates remain unchanged.
+## 2. Delivery-Leverage Outcome
+
+The package must measurably:
+
+1. reduce Owner prompt and reconstruction burden;
+2. prevent known dependencies from becoming avoidably late blockers;
+3. increase throughput by keeping independently eligible lanes active;
+4. reduce evidence and approval rework through atomic package sealing;
+5. reduce privacy risk by eliminating personal and absolute checkout paths from generated Git evidence; and
+6. make a fresh session able to recover the goal and next gate from repository artifacts.
+
+Pilot exit metrics are sanitized counts and durations only. No prompt text, personal name, personal path, customer data, credential, protected value, or detailed local report enters Git.
 
 ## 3. Binding Authority and Hierarchy
 
-This proposed package is subordinate to permanent governance and current approved milestone and architecture artifacts. When authority conflicts, the repository hierarchy remains:
+Authority order remains:
 
 1. permanent governance;
 2. approved milestone and architecture artifacts;
-3. an approved and published specification or work package;
-4. an Active Workstream Continuity Brief; and
-5. chat, Codex goal, Codex task, or other conversation context.
+3. approved and published specifications or work packages;
+4. Active continuity and goal/snapshot evidence; and
+5. chat, Codex goal/task state, model memory, or other conversation context.
 
-The accepted subject digest binds the architecture, exact paths, ownership split, model, CLI, fixtures, tests, non-goals, stop conditions, and gates in this version. The subject itself remains outside the repository and is evidence of the accepted preparation decision, not future implementation authority.
+The Product Board accepted the operating outcome through `goal-delivery-operating-model-adoption-board-acceptance-001`. The Architecture Gatekeeper accepted the architecture for exact work-package preparation through `goal-delivery-operating-model-adoption-gatekeeper-acceptance-001`. Both decisions bind the adoption subject, Owner brief, inspect-and-adapt evidence, constraints, prohibitions, and stop conditions.
 
-No goal, task, workstream membership, structurally valid decision reference, `READY`, passing validator, clean tree, or another stream's approval creates, transfers, authenticates, or widens authority.
+The Product Board separately accepted the prompt amendment through `goal-delivery-transition-prompt-amendment-board-acceptance-002`, and the Architecture Gatekeeper independently accepted it through `goal-delivery-transition-prompt-amendment-gatekeeper-acceptance-002`. Those Decision 21 Version 1.1 decisions bind the exact transition prompt, amendment subject, parent adoption package, unchanged 36-path boundary, narrow prompt-only changes, and all preserved prohibitions and stop conditions.
 
-## 4. Baseline Rules
+Those decisions authorize this outside-repository preparation only. A valid goal, complete decision reference, passing test, `READY` result, external Codex goal, agent membership, or another workstream decision never creates, authenticates, lends, or widens authority.
 
-### 4.1 Publication-preparation baseline
+## 4. Architecture — Extend Existing Capabilities
 
-This exact outside-repository artifact was prepared against:
+### 4.1 Passive goal-delivery capability
 
-- repository `FitzpatrickFamilyPlatform`;
-- branch `main`;
-- local `HEAD` `797a658397acde849c0f604b1893dcb1f834c162`;
-- locally cached `origin/main` equal to that `HEAD`; and
-- ahead/behind `0/0` with a clean worktree and staging area.
+Retain the corrected Version 1.1 architecture:
 
-Alpha performed no network fetch while preparing this artifact and makes no fresh live-remote claim.
+- `goal_delivery_capability.py` owns immutable models, deterministic validation, eligibility, timing, and completion audits;
+- `goal_delivery_io.py` owns strict repository-contained JSON loading and serialization;
+- `goal_delivery_rendering.py` owns deterministic decision-card and handoff Markdown;
+- the CLI exposes only passive validation, evaluation, rendering, and audit commands; and
+- all outputs remain standard output with no repository, process, network, environment, or protected side effect.
 
-Before any repository publication action, Architecture Integration must independently prove the repository is still clean, nondiverged, and at this exact publication-preparation baseline. Any drift, dirty state, new untracked path, changed tracking state, authority change, or material repository difference stops publication and requires explicit rebind or regeneration.
+### 4.2 Repository goal continuity
 
-### 4.2 Implementation baseline
+Add repository-governed operational goal and snapshot artifacts. For every snapshot, the existing `definition` field is exactly one repository-relative regular-file reference string to the exact goal definition. The IO layer must resolve, contain-check, nonsymlink-check, load, and validate that definition before validating the snapshot. It must reject an embedded object, absolute path, traversal, symlink escape, repository mismatch, branch mismatch, and baseline mismatch.
 
-Publication necessarily creates a later repository commit, so `797a658397acde849c0f604b1893dcb1f834c162` is not implementation initialization authority.
+This canonical reference form avoids duplicating the full goal definition in every snapshot while retaining the accepted `GoalSnapshot` field inventory. Fixtures and operational targets must use the same representation; the implementation may not accept an ambiguous union of embedded and referenced definitions.
 
-Implementation may initialize only after:
+### 4.3 AI Session integration
 
-1. this exact work package is accepted for publication and published through its separate gates;
-2. the permanent initiative identifier is assigned and recorded by the proper authority;
-3. a publication record identifies the exact clean synchronized commit containing this package;
-4. Architecture Integration has resolved all shared-path ownership and sequencing;
-5. a separately authorized AI Session Initialization binds the implementation session to that exact post-publication commit; and
-6. no higher authority has superseded or contradicted the package.
+AI Session Initialization must identify the active goal and snapshot when the approved work package declares Goal-Oriented Delivery required. Readiness validates that:
 
-Any implementation baseline must be clean, current, synchronized, and exact. A later clean head does not silently rebind this package.
+- both artifacts are tracked regular nonsymlink files inside the repository;
+- their model, repository, branch, baseline, authority references, workstreams, dependencies, active changes, and next gate reconcile with the work package and continuity;
+- the snapshot is current under its supplied evidence validity windows; and
+- conversation content is not required to recover authority or state.
 
-## 5. Architecture Decision — Extend, Do Not Replace
+Readiness remains evidence only. It does not create goals, operate tasks, dispatch agents, update snapshots, authenticate human decisions, or authorize implementation or live work.
 
-The implementation shape is three new passive companion modules:
+### 4.4 Generated-evidence hygiene
 
-- `engineering/platform_eap/goal_delivery_capability.py`;
-- `engineering/platform_eap/goal_delivery_io.py`; and
-- `engineering/platform_eap/goal_delivery_rendering.py`.
+`ai_session_readiness.py` must emit:
 
-Architecture Integration may expose the capability through `./platform-eap delivery-goal` only within the accepted shared-path boundary.
+- sanitized repository identity by name;
+- repository-relative tracked paths; and
+- no personal name or absolute checkout path in Markdown or JSON.
 
-Portfolio-goal semantics must not be added to `automation_capability.py`. EO-14.4A owns one approved automation flow and its lifecycle. A portfolio goal spans several separately authorized workstreams. Embedding the goal into EO-14.4A would risk making a workstream appear to inherit an automation's scope, approvals, or transition eligibility.
+Absolute paths may be used transiently inside validation logic but must not appear in repository-managed output or stable findings. Focused tests must exercise multiple checkout roots and prove byte-identical sanitized identity output where all repository-relative evidence is otherwise equal.
 
-The companion capability must:
+### 4.5 Owner interaction contract
 
-- reuse public EO-14.1A `ValidationFinding`, `FindingSeverity`, repository-path, timestamp, secret-content, assignment IO, and assignment validation interfaces;
-- use EO-14.4A strict definition IO and `validate_automation_definition` for referenced automation definitions;
-- require referenced EO-14.4A repository scope to remain a subset of its workstream authority envelope;
-- require referenced EO-14.1A assignments to match repository identity, baseline, and repository scope;
-- avoid private imports, subclassing, alternate assignment/completion models, or alternate automation lifecycle/approval models; and
-- treat workstream coordination state as advisory portfolio state, not an EO-14.4A lifecycle state or an authority source.
+The Owner brief is governed operating guidance. The Owner supplies outcomes, priority, value judgment, and material decisions. Codex owns routine decomposition, just-in-time checks, parallel coordination, same-turn replanning, evidence, and continued work inside authority. ChatGPT supports strategy, product, architecture, and inspect-and-adapt work. Neither conversation surface becomes repository authority.
 
-## 6. Exact Changed-Path Allowlist and Ownership
+The Owner brief must include the accepted reusable transition prompt and optional one-line changed-direction form. The prompt requires applicable `AGENTS.md` and repository-instruction discovery, repository-first recovery and current-state revalidation, persistent-goal use only as coordination state, explicit delegation of independently eligible work to subagents or parallel agents, collection of results in the main task, serialized write-heavy and shared-path work, same-turn replanning, requirement-level authoritative completion evidence, and the smallest seven-field material decision card.
 
-All paths not listed in this section are prohibited.
+Until governed goal and snapshot recovery is available, the brief may include the exact accepted interim pilot form. That bridge expires when the governed goal, snapshot, decision ledger, and continuity bundle are published and normally recoverable. Neither prompt form grants authority, operates a goal or task, invokes a model, or activates repository capability behavior.
 
-### 6.1 Alpha-owned paths — exactly 15
+### 4.6 No operational activation
+
+The repository capability remains passive. It does not create or operate Codex goals/tasks, invoke models, select work, schedule, dispatch, wait, monitor, poll, persist runtime state, change infrastructure, acquire artifacts, access protected systems, or perform production or live work.
+
+Using the published operating model as human and Codex process guidance is distinct from activating runtime coordination. Any automated integration or operational goal/task action under the capability requires a later exact package and decision.
+
+For the goal and snapshot models, `activation_occurred`, `dispatch_occurred`, and `live_changes_occurred` describe effects caused by the repository capability itself. The current Owner-authorized use of external Codex coordination surfaces is contextual evidence, not capability activation or capability dispatch, and it cannot be used to imply repository runtime authority.
+
+## 5. Exact Changed-Path Allowlist and Ownership
+
+All unlisted paths are prohibited. The implementation package contains exactly 36 repository paths.
+
+### 5.1 Codex Implementation Engineer-owned capability paths — 19
 
 1. `docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md`
 2. `docs/engineering-organization/Goal_Oriented_Parallel_Delivery_Specification.md`
@@ -116,256 +137,332 @@ All paths not listed in this section are prohibited.
 9. `engineering/platform_eap/goal_delivery_capability.py`
 10. `engineering/platform_eap/goal_delivery_io.py`
 11. `engineering/platform_eap/goal_delivery_rendering.py`
-12. `engineering/tests/test_goal_delivery_capability.py`
-13. `engineering/tests/fixtures/goal_delivery/valid_definition.json`
-14. `engineering/tests/fixtures/goal_delivery/valid_snapshot.json`
-15. `engineering/tests/fixtures/goal_delivery/awaiting_decision_snapshot.json`
+12. `engineering/platform_eap/ai_session_readiness.py`
+13. `engineering/tests/test_goal_delivery_capability.py`
+14. `engineering/tests/test_ai_session_readiness.py`
+15. `engineering/tests/fixtures/goal_delivery/valid_definition.json`
+16. `engineering/tests/fixtures/goal_delivery/valid_snapshot.json`
+17. `engineering/tests/fixtures/goal_delivery/awaiting_decision_snapshot.json`
+18. `docs/engineering-organization/Owner_Engineering_Organization_Interaction_Brief.md`
+19. `docs/engineering-organization/Engineering_Memory_Concept.md`
 
-### 6.2 Architecture Integration-owned shared paths — exactly 9
+### 5.2 Architecture Integration-owned shared paths — 17
 
 1. `engineering/platform_eap/cli.py`
-2. `docs/engineering-organization/Engineering_Organization_Roadmap.md`
-3. `docs/engineering-organization/Engineering_Organization_Backlog.md`
-4. `docs/portfolio/Engineering_Portfolio_Kanban.md`
-5. `docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md`
-6. `docs/engineering-organization/ai-collaboration/Workstream_Continuity_Brief_Specification.md`
-7. `docs/engineering-organization/ai-collaboration/templates/Workstream_Continuity_Brief_Template.md`
-8. `docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md`
-9. `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Continuity_Brief.md`
+2. `docs/engineering-organization/Engineering_Organization_Vision.md`
+3. `docs/engineering-organization/AI_Role_Catalog.md`
+4. `docs/engineering-organization/Human_Role_Catalog.md`
+5. `docs/engineering-organization/Engineering_Organization_Roadmap.md`
+6. `docs/engineering-organization/Engineering_Organization_Backlog.md`
+7. `docs/portfolio/Engineering_Portfolio_Kanban.md`
+8. `docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md`
+9. `docs/engineering-organization/ai-collaboration/AI_Session_Initialization_Standard.md`
+10. `docs/engineering-organization/ai-collaboration/AI_Session_Completion_Standard.md`
+11. `docs/engineering-organization/ai-collaboration/Workstream_Continuity_Brief_Specification.md`
+12. `docs/engineering-organization/ai-collaboration/templates/Workstream_Continuity_Brief_Template.md`
+13. `docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md`
+14. `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Continuity_Brief.md`
+15. `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Goal.json`
+16. `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Snapshot.json`
+17. `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md`
 
-Alpha may specify and test the required CLI hook and traceability content. Architecture Integration owns all changes to the nine shared paths and must sequence them against Charlie and every other active workstream before edit or staging. No shared path may be treated as concurrently Alpha-owned.
+The five documents listed in section 5.1 items 4–8 are capability specifications owned for implementation drafting by the Codex Implementation Engineer. Architecture Integration must nevertheless review their consistency with shared lifecycle and role semantics before staging.
 
-## 7. Passive Model Contract
+No path may be edited concurrently by both owners. Charlie publication must be committed, pushed, fetched, and proved remotely equal before any Alpha or adoption shared-path repository application.
 
-The stable candidate model version is `eo-goal-delivery-v1`. All domain records are frozen value objects.
+## 6. Exact Prepared Repository Targets
 
-### 7.1 Bounded enums
+The outside-repository preparation package binds these exact proposed target artifacts:
 
-| Enum | Values |
-|---|---|
-| Goal state | `proposed`, `active`, `awaiting_decision`, `blocked`, `integrating`, `completed`, `cancelled` |
-| Authority state | `proposed`, `authorized`, `suspended`, `closed` |
-| Authority-decision status | `accepted`, `rejected`, `superseded`, `expired` |
-| Workstream coordination state | `proposed`, `pending`, `eligible`, `active`, `awaiting_decision`, `blocked`, `integrating`, `complete` |
-| Dependency kind | `repository`, `toolchain`, `environment`, `protected_authority`, `data_dependent_authority`, `external_event`, `integration`, `human_decision` |
-| Dependency status | `unknown`, `unsatisfied`, `satisfied`, `unavailable`, `expired` |
-| Decision recommendation | `approve`, `reject`, `regenerate`, `defer` |
+| Target repository path | Prepared source | SHA-256 |
+|---|---|---|
+| `docs/engineering-organization/Owner_Engineering_Organization_Interaction_Brief.md` | `Target_Bytes_v1/docs/engineering-organization/Owner_Engineering_Organization_Interaction_Brief.md` | `d84bd7b3e9091449e6c40db61446787edf348ef54015cd7be4c0e61d97187c21` |
+| `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Goal.json` | `Target_Bytes_v1/docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Goal.json` | `a7211fffba1dde92e7593a7992067f6809c72747063984aefe410d73aa69b9f6` |
+| `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Snapshot.json` | `Target_Bytes_v1/docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Snapshot.json` | `83c8a2a88a66729cd6a118dcbc3522d7c777328f7a2cbbb00a96d7a610328204` |
+| `docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md` | `Target_Bytes_v1/docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md` | `838a874518187d58a274624e7ed7e485e059e86c411e811943ab9642cd76f2d3` |
 
-### 7.2 Required records and fields
+These prepared bytes are proposed targets only. The Owner brief and inspect-and-adapt bytes may become current repository evidence only after exact package acceptance, application, validation, staging, commit, push, fetch, and local/tracking/live remote equality proof.
 
-| Record | Exact fields |
-|---|---|
-| `GoalAcceptanceRequirement` | `requirement_id`, `statement`, `required_evidence_types`, `required_evidence_references` |
-| `AuthorityDecisionReference` | `decision_id`, `human_authority`, `subject_sha256`, `decision_status`, `decided_at`, `governing_artifact_reference` |
-| `AuthorityEnvelope` | `workstream_id`, `assigned_role`, `work_package_references`, `authority_decision_references`, `owned_repository_paths`, `owned_artifact_classes`, `permitted_actions`, `approval_required_actions`, `prohibited_actions`, `required_checks`, `publication_authority`, `stop_conditions`, `integration_return` |
-| `WorkstreamDefinition` | `workstream_id`, `title`, `objective`, `acceptance_requirement_ids`, `authority_envelope`, `dependency_ids`, `automation_definition_references`, `execution_assignment_references` |
-| `DependencyDefinition` | `dependency_id`, `kind`, `description`, `dependent_workstream_ids`, `prerequisite_workstream_ids`, `evidence_source_references`, `freshness_seconds`, `need_by_at`, `verification_duration_seconds`, `decision_allowance_seconds`, `execution_margin_seconds` |
-| `GoalDefinition` | `model_version`, `goal_id`, `name`, `outcome`, `governing_artifact_references`, `repository_identity`, `branch`, `baseline_head`, `acceptance_requirements`, `workstreams`, `dependencies`, `wip_limit_per_stream`, `minimum_parallel_streams`, `completion_gate`, `prohibited_actions` |
-| `DependencyObservation` | `dependency_id`, `status`, `checked_at`, `valid_until`, `evidence_references`, `limitation` |
-| `WorkstreamObservation` | `workstream_id`, `authority_state`, `coordination_state`, `active_item_id`, `completed_acceptance_requirement_ids`, `evidence_references`, `blocking_issue_ids`, `next_best_action`, `integration_evidence_references` |
-| `DecisionSubject` | `decision_id`, `workstream_id`, `human_authority`, `subject_id`, `subject_sha256` |
-| `GoalSnapshot` | `model_version`, `definition`, `snapshot_id`, `observed_at`, `goal_state`, `workstream_observations`, `dependency_observations`, `open_decision_cards`, `completion_evidence_by_requirement`, `unresolved_issues`, `activation_occurred`, `dispatch_occurred`, `live_changes_occurred` |
-| `PortfolioEligibilityDecision` | `coordination_eligible_workstream_ids`, `blocked_workstream_ids`, `late_dependency_ids`, `stale_dependency_ids`, `findings`, `recommended_next_gate`, `advisory_only` |
-| `DecisionCard` | `decision`, `recommendation`, `evidence`, `authority_gained`, `authority_not_gained`, `expiry_or_invalidation`, `response_form` |
-| `CompletionAudit` | `complete`, `requirement_evidence`, `missing_requirement_ids`, `incomplete_workstream_ids`, `findings`, `next_gate`, `advisory_only` |
+The goal and snapshot are schema-complete bootstrap proposals prepared against baseline `797a658397acde849c0f604b1893dcb1f834c162`. Charlie publication necessarily changes the future application baseline, and snapshot evidence validity changes with time. Therefore an authorized application package must regenerate and rebind only their baseline, observation times, validity windows, current workstream/dependency state, evidence references, issues, and next decision after Charlie remote equality. It may not change the accepted outcome, requirements, authority model, record shapes, prohibitions, or completion gate without a new Product Board and Architecture Gatekeeper decision.
 
-### 7.3 Timing rule
+Decision 24 publication-package preparation performs that narrow rebind against exact Charlie equality baseline `b5ecc7dde4cf581a6c1bfc02b7ee7361c95279fd` and snapshot observation `2026-07-27T23:59:21Z`. The work-package publication target is serialized after the accepted Alpha Version 1.1 target SHA-256 `2262a2fa5902e2e8058286c463ac0410266f63267d6139c9d3f047655bd6707b`. No accepted outcome, requirement, authority semantic, record shape, prohibition, completion gate, path, or ownership boundary changes.
 
-The exact timing calculation is:
+## 7. Required Specification and Policy Changes
 
-`latest_safe_check_at = need_by_at - verification_duration_seconds - decision_allowance_seconds - execution_margin_seconds`
+### Engineering Organization Vision
 
-Every timestamp and duration is supplied input. The capability has no clock, timer, polling, scheduling, sleep, monitor, reminder, or wait behavior.
+Add the durable goal as the coordination unit and identify reduced Owner orchestration and session-independent recovery as success measures.
 
-## 8. Validation and Advisory Evaluation Contract
+### AI and Human Role Catalogs
 
-The implementation must fail closed and deterministically:
+Preserve all existing authority boundaries while adding:
 
-1. Reject unsupported versions, unknown or missing fields, duplicate IDs, dangling references, self-dependencies, dependency cycles, unsafe or absolute paths, symlink escape, secret-like content, external URLs, executable directives, malformed timestamps, nonpositive freshness, negative timing allowances, and invalid baseline heads.
-2. Reject authority-envelope path overlap, referenced automation/assignment scope widening, repository mismatch, and baseline mismatch.
-3. Reject `authorized`, `eligible`, `active`, `integrating`, or `complete` claims without a work-package reference and structurally complete authority-decision reference. Structural completeness is not authenticated human approval.
-4. Exclude `proposed`, `suspended`, and `closed` workstreams from coordination eligibility even when dependencies are satisfied.
-5. Treat evidence checked after `valid_until` as stale or expired, never current.
-6. Report lateness when `observed_at` is after `latest_safe_check_at` and no current satisfied observation exists.
-7. Return every independently coordination-eligible workstream in stable workstream-ID order. Never select, dispatch, activate, schedule, or mutate one.
-8. Enforce `wip_limit_per_stream` equal to one in v1. Treat `minimum_parallel_streams` only as an advisory flow target.
-9. Fail when `activation_occurred`, `dispatch_occurred`, or `live_changes_occurred` is true.
-10. Pass completion only when every acceptance requirement has its required evidence, every required workstream is complete, and no unresolved issue remains. The audit remains advisory and closes no milestone, automation, workstream, release, or Codex goal.
+- Owner outcome/value/material-decision responsibilities;
+- ChatGPT strategy and workshop support as non-authoritative working context;
+- Codex goal coordination, just-in-time checks, same-turn replanning, and evidence duties inside approved envelopes; and
+- an explicit rule that the Owner is not the routine delivery orchestrator.
 
-## 9. Strict IO, CLI, and Rendering Contract
+### Parallel Workstream Delivery Model
 
-Strict JSON must reject unknown fields and serialize as UTF-8 with two-space indentation, `ensure_ascii=false`, and one trailing newline.
+Evolve “one Codex task per workstream” into:
 
-Required CLI commands are exactly:
+- one durable goal per approved outcome;
+- one authority envelope and at most one active item per workstream;
+- multiple agents/tasks only as execution surfaces subordinate to the goal and separate authority;
+- Architecture Integration serialization for shared paths; and
+- automatic continuation inside current authority until a material decision or genuine external blocker.
 
-```text
-./platform-eap delivery-goal definition validate <repository-json-path>
-./platform-eap delivery-goal snapshot validate <repository-json-path>
-./platform-eap delivery-goal eligibility evaluate <repository-json-path>
-./platform-eap delivery-goal decision-card render <repository-json-path> <decision-id>
-./platform-eap delivery-goal handoff render <repository-json-path>
-./platform-eap delivery-goal completion audit <repository-json-path>
-```
+### Engineering Workspace and Memory
 
-Every input and referenced artifact must resolve to a regular nonsymlink file inside the repository. Validation emits bounded text; eligibility and completion audit emit stable JSON; decision cards and handoffs emit deterministic Markdown. All output is standard output only.
+Add the repository goal, snapshot, decision ledger, dependency observations, and completion evidence as durable Engineering Memory. Conversation history and model memory remain optional aids, never required inputs.
 
-Exit codes are:
+### AI Session Standards and Continuity
 
-- `0`: pass or advisory decision allowed;
-- `1`: validation or advisory-decision failure;
-- `2`: invalid usage; and
-- `3`: unexpected internal failure.
+Initialization identifies and validates active goal/snapshot evidence. Completion updates or proposes snapshot, evidence, decisions, unresolved issues, and next gate. Continuity briefs reference the goal and snapshot instead of duplicating authority or relying on a prompt transcript.
 
-There is no output-file option and no repository, process, network, protected-local, environment, or external side effect.
+### Governed Automation
 
-## 10. Fixture Contract
+Clarify that EO-14.4A automation remains one approved automation flow. Goal coordination remains advisory portfolio state and may reference automations only through existing strict validation and subset authority checks.
 
-Fixtures must be sanitized, fictitious, and repository-relative. They may contain no personal names, absolute paths, credentials, customer data, protected values, network locations, or executable instructions.
+## 8. Passive Model Amendments
 
-- `valid_definition.json`: two independently authorized synthetic workstreams and one dependency with complete passive authority references.
-- `valid_snapshot.json`: one active and one independently coordination-eligible workstream with current evidence.
-- `awaiting_decision_snapshot.json`: one exact seven-field decision-card input while another workstream remains coordination eligible.
+Retain every Version 1.1 record and enum. Add no runtime lifecycle or agent registry.
 
-Fixtures are contract evidence only. They do not assert real approval, authorize a stream, or create a Codex goal or task.
+The implementation must additionally validate:
 
-## 11. Required Focused Tests
+1. an operational snapshot's canonical repository-relative `definition` reference and rejection of embedded or ambiguous representations;
+2. required goal/snapshot references declared by a governed work package;
+3. exact decision references without treating structural validity as human-authentication proof;
+4. current dependency observations and latest-safe-check calculation;
+5. every active workstream has one active item at most;
+6. every blocked or awaiting-decision stream coexists with a stable list of all independently eligible streams;
+7. shared-path overlaps and lease conflicts fail closed;
+8. completion evidence is mapped to every acceptance requirement;
+9. activation, dispatch, and live-change flags remain false; and
+10. all output contains sanitized repository identity and repository-relative evidence only.
 
-Focused coverage must prove:
+The three passive-state flags cover effects of the repository capability. They do not deny or conceal separately authorized coordination performed through an external Codex surface, and external coordination does not satisfy, authenticate, or activate the repository capability.
 
-1. immutable models, strict byte-stable JSON round trips, unknown-field rejection, and bounded enums;
-2. goal membership alone never yields authority or coordination eligibility;
-3. proposed, suspended, and closed streams remain ineligible;
-4. incomplete authority references fail closed and are never described as authenticated approval;
-5. overlap, traversal, absolute paths, symlinks, secret-like values, external URLs, executable directives, scope widening, repository mismatch, and baseline mismatch fail;
-6. unknown, self, direct-cycle, and transitive-cycle dependencies fail;
-7. only current satisfied evidence supports advisory eligibility;
-8. exact latest-safe-check boundary behavior and lateness one second after it;
-9. a blocked stream exposes every other independently eligible stream in stable order without dispatch or mutation;
-10. one active item per stream and advisory-only minimum parallelism;
-11. exactly seven complete decision-card fields while another eligible stream remains available;
-12. EO-14.4A references use existing strict IO/validation and remain inside envelope scope;
-13. EO-14.1A assignment references use existing public IO/validation without semantic duplication;
-14. completion fails for every missing requirement, incomplete stream, unresolved issue, or missing evidence type/reference;
-15. true activation, dispatch, or live-change flags fail closed;
-16. every CLI command enforces repository-contained regular-file input, stable output, documented exit codes, and zero repository mutation; and
-17. existing EO-14.1A, EO-14.4A, AI-session readiness, and container-health suites remain unchanged and passing.
+## 9. Atomic Package-Sealing Contract
 
-Required focused invocation:
+Every decision-bound external package must:
 
-```text
-python3 -m pytest -p no:cacheprovider engineering/tests/test_goal_delivery_capability.py
-```
+1. finish all substantive target artifacts;
+2. stop all writers;
+3. run semantic, schema, path, privacy, applicability, and test checks;
+4. compute target hashes;
+5. produce manifest and audit;
+6. compute manifest and audit hashes;
+7. produce the decision card last;
+8. independently recompute every bound hash; and
+9. reject any later write unless the package is explicitly superseded and rebound.
 
-Required governed suite:
+Tests must demonstrate that a manifest or audit changed after decision-card creation causes exact binding failure.
 
-```text
-python3 -m pytest -p no:cacheprovider engineering/tests
-```
+## 10. Validator-Output Preflight Contract
 
-The implementation session must also run Repository Validation, Governance Validation, and AI Session Readiness and reconcile every generated artifact before publication preparation.
+Before an authorized repository application runs a validator, the package must classify every potentially modified tracked report and pre-authorize exactly one outcome:
 
-## 12. Roles and Ownership
+- include and reconcile exact generated evidence;
+- run only in an isolated projection and keep reports outside the governed diff; or
+- stop before the mutating validator.
 
-| Decision or action | Required authority |
-|---|---|
-| Assign permanent initiative ID and confirm portfolio outcome/priority | Product Strategy Board |
-| Accept architecture, exact package, scope, contracts, residual risk, and completion evidence | Chief Architect / Architecture Gatekeeper |
-| Implement accepted Alpha-owned paths after published authority and initialization | Codex Implementation Engineer |
-| Own, sequence, and integrate the nine shared paths | Architecture Integration |
-| Stage, commit, push, merge, tag, or publish | Separate exact repository publication authority |
-| Activate a pilot, create/operate goals or tasks under this capability, deploy, release, or perform live work | Later separate authority under existing governance |
+Current report restoration and later report publication require separate exact decisions. A passing validator never authorizes its generated paths for staging.
 
-The separately Board-authorized preparation coordination goal is external to this package. It creates no repository authority and is not activated, modified, or operated by implementation of this package.
+## 11. Required Tests
 
-## 13. Explicit Non-Goals and Prohibitions
+In addition to every corrected Version 1.1 test, focused coverage must prove:
 
-- Modify, subclass, duplicate, or reinterpret EO-14.1A execution models or EO-14.4A automation models, lifecycle, transitions, approvals, authority, or activation status.
-- Create a scheduler, clock, timer, polling loop, monitor, reminder, queue, registry, database, persistence layer, retry worker, background process, resident controller, task dispatcher, or cross-task runtime.
-- Create or operate a Codex goal or task as an effect of this package, invoke a model, or choose product or architecture decisions autonomously.
-- Authenticate approval from prose or claim structural validation proves authority.
-- Execute assignments, mutate repositories from the capability, write reports or files, contact networks, access protected-local evidence, acquire artifacts, create environments, or perform Linux validation.
-- Implement PLAT-15.1A source, Charlie Operations Intelligence behavior, provider mappings, dashboards, APIs, notifications, remediation, deployment, activation, release, production, customer-data, or live work.
-- Extend AI Session Readiness in this package; consumption of goal snapshots is deferred.
-- Commit, push, merge, tag, publish, pilot, or activate without separate exact authority.
-- Treat publication of this package as implementation completion or operational readiness.
+1. repository goal and snapshot strict parsing and byte-stable serialization;
+2. canonical repository-relative snapshot definition handling and rejection of embedded or ambiguous forms;
+3. repository containment, traversal, symlink, branch, baseline, and identity failures;
+4. exact authority references are structurally required but not authenticated by the validator;
+5. goal membership never transfers authority;
+6. one active item per workstream;
+7. blocked-lane same-turn eligibility returns every unaffected eligible lane without dispatch;
+8. dependency latest-safe-check timing and stale evidence behavior;
+9. completion fails until every acceptance requirement has authoritative evidence;
+10. atomic sealing detects any post-card artifact change;
+11. AI Session Readiness requires declared goal continuity and reconciles work package, goal, snapshot, Git state, and continuity;
+12. AI Session Readiness emits no personal name or absolute checkout path from different synthetic checkout roots;
+13. generated Markdown and JSON use sanitized repository identity and repository-relative paths;
+14. Owner brief and inspect-and-adapt target artifacts have required sections and no forbidden content;
+15. the Owner brief carries the exact accepted recommended prompt and optional changed-direction form;
+16. the interim pilot form is exact and carries its governed-recovery expiry condition;
+17. applicable `AGENTS.md` and repository-instruction discovery is required before work;
+18. the persistent Codex goal is coordination state and never authority;
+19. independently eligible work is explicitly delegated and collected in the main task while shared-path writes remain serialized;
+20. completion requires requirement-level authoritative evidence and no unresolved material issue;
+21. incomplete recovery or authority produces the smallest exact seven-field decision card;
+22. activation, dispatch, persistence, model invocation, protected, network, production, release, customer, and live-work behavior remain absent; and
+23. all new CLI commands remain standard-output-only and leave the repository byte-identical.
 
-## 14. Stop Conditions
+## 12. Validation Plan
+
+An authorized implementation must run, in a correctly named isolated projection first:
+
+1. focused goal-delivery and AI-readiness tests;
+2. `python3 -m pytest -p no:cacheprovider engineering/tests`;
+3. strict goal-definition and snapshot validation against the exact proposed targets;
+4. eligibility evaluation and decision-card rendering;
+5. completion audit proving the current pilot is not falsely complete;
+6. a sanitized-output scan for personal names, absolute paths, credentials, customer data, protected values, external URLs, and executable directives;
+7. Repository Validation;
+8. Governance Validation;
+9. AI Session Readiness;
+10. applicable Engineering Metrics and capability validation;
+11. Markdown-link and tracked-artifact hygiene checks;
+12. literal changed-path and target-hash audit;
+13. `git diff --check`; and
+14. after separately authorized staging, `git diff --cached --check`.
+
+Any mutating validator output must follow the preflight contract. Validation results are evidence, never implementation, staging, publication, activation, release, or live-work authority.
+
+## 13. Fresh-Session Recovery Acceptance Test
+
+A reviewer starts from a clean, synchronized repository and receives only:
+
+- repository location;
+- the command to perform governed initialization; and
+- the assigned governed role.
+
+The reviewer must recover, without prior chat history or model memory:
+
+- the goal outcome and acceptance requirements;
+- current workstreams and separate authority envelopes;
+- current Git and shared-path state;
+- dependency observations and latest-safe checks;
+- accepted and missing decisions;
+- completed and missing evidence;
+- prohibited actions and stop conditions; and
+- the exact next material gate.
+
+The reviewer records a sanitized recovery audit. Any required prompt transcript, inaccessible conversation, personal path, unstated approval, or memory-only fact fails the test.
+
+## 14. Owner Interaction Acceptance
+
+The published operating model must make the following normal behavior explicit:
+
+- the Owner states outcomes, value, priority, constraints, and material decisions;
+- ChatGPT facilitates strategy, product, architecture, and inspect-and-adapt work;
+- Codex executes and coordinates authorized engineering work, checks dependencies, replans, validates, and continues;
+- the reusable transition prompt requires repository-first recovery, applicable `AGENTS.md`, explicit delegation of independently eligible work, main-task integration, and serialization of write-heavy or shared-path work;
+- the persistent Codex goal remains coordination state and not authority;
+- the optional Owner addition contains only changed outcome, priority, constraint, or exact decision information;
+- the interim pilot form expires when normal governed goal and snapshot recovery is available;
+- the Owner is not responsible for routine task decomposition, dependency timing, agent coordination, state reconstruction, or continuation prompts; and
+- Codex stops only for material human authority, scope expansion, destructive/high-impact action, or a genuine external dependency.
+
+## 15. Pilot Measures and Completion Audit
+
+The inspect-and-adapt artifact records sanitized:
+
+- material Owner-decision count;
+- “continue-only” prompt count;
+- decision wait time;
+- late dependency count;
+- blocked streams with eligible alternatives;
+- eligible-lane continuation rate;
+- binding-drift regenerations;
+- safety-review stops caused by insufficient risk language;
+- chat-history reconstruction events; and
+- acceptance requirements with authoritative evidence.
+
+The completion audit remains advisory. It cannot close the goal, milestone, release, or pilot by itself.
+
+## 16. Explicit Non-Goals and Prohibitions
+
+- Assign `CANDIDATE-EO-15.2` or any permanent initiative identifier by implication.
+- Replace or reinterpret EO-14.1A participant, role, assignment, execution, validation, evidence, completion, or handoff semantics.
+- Replace or reinterpret EO-14.4A automation lifecycle, approvals, transitions, or activation state.
+- Create a generalized agent runtime, participant registry, discovery mechanism, plugin framework, autonomous work selection, or dynamic authority system.
+- Treat a structurally valid decision reference as authenticated human approval.
+- Treat chat history, Codex goal state, or model memory as authority.
+- Create or operate goals/tasks, schedule, dispatch, wait, poll, monitor, persist runtime state, or invoke a model as an effect of the repository capability.
+- Access credentials, protected systems, customer data, production, or live infrastructure.
+- Implement Charlie behavior or PLAT-15.1A Gate 2 under this package.
+- Stage, commit, push, merge, tag, publish, activate, deploy, release, or perform live work without separate exact authority.
+
+## 17. Stop Conditions
 
 Stop and return an exact decision card if:
 
-- the publication-preparation baseline is dirty, behind, diverged, changed, or materially different;
-- the permanent initiative ID, role, Product Board decision, Architecture Review, work-package acceptance, publication authority, implementation authority, or Gatekeeper decision is absent, ambiguous, contradictory, expired, or superseded;
-- a required change lies outside the exact allowlist;
-- an Alpha-owned path conflicts with an active workstream;
-- Architecture Integration has not disposed a shared-path ownership or sequencing conflict;
-- implementation would duplicate or reinterpret EO-14.1A or EO-14.4A semantics;
-- structural validation, goal membership, `READY`, a passing validator, or a clean tree would need to be treated as authenticated approval or action authority;
-- persistence, scheduling, dispatch, model invocation, executable content, credentials, protected access, network access, customer data, production behavior, activation, release, or live work becomes necessary;
-- tests require invented approval, unsupported evidence, personal data, protected data, or external systems;
-- generated evidence contains sensitive, absolute-path, customer, protected, or local-only material; or
-- publication, implementation, commit, push, pilot, activation, or an adjacent stream action is requested without its separate exact authority.
+- the corrected Version 1.1 base digest is absent or changes;
+- the accepted transition-prompt or Version 1.1 amendment-subject file or internal digest is absent or changes;
+- a Version 1.0 prompt or amendment-subject binding is treated as accepted or operative;
+- the adoption subject or any prepared target hash changes;
+- Charlie publication and remote equality are incomplete before shared-path application;
+- a path falls outside the 36-path allowlist or ownership is ambiguous;
+- repository, branch, baseline, tracking, active changes, or shared-path lease differs from the accepted initialization;
+- the candidate is represented as assigned or implementation-ready;
+- goal membership, a validator, chat context, or another stream is used to infer authority;
+- the snapshot requires conversation history to recover state;
+- generated evidence contains a personal name or absolute checkout path;
+- a mutating validator has no pre-authorized output disposition;
+- atomic sealing is incomplete or a bound artifact changes after the decision card;
+- any test or validator has a blocking error;
+- runtime dispatch, persistence, scheduling, model invocation, protected/network/customer/production/release/live behavior becomes necessary; or
+- publication, implementation, staging, commit, push, activation, or an adjacent workstream action is requested without separate authority.
 
-## 15. Acceptance Gates
+## 18. Acceptance and Delivery Gates
 
-### Gate A — Exact work-package acceptance
+### Gate A — Exact consolidated work-package acceptance
 
-The Product Board must accept the outcome and ownership model. The Architecture Gatekeeper must accept this exact artifact digest, architecture, allowlist, contracts, tests, non-goals, stops, and gates. The permanent initiative identifier must be assigned separately or this package must continue to identify it only as an unapproved candidate.
+The Product Board accepts the operating outcome, Owner interaction, accepted Version 1.1 transition prompt, and Delivery Leverage. The Architecture Gatekeeper accepts this exact package digest, corrected base digest, prompt-amendment bindings, 36-path allowlist, architecture, contracts, tests, targets, non-goals, and stops. Acceptance authorizes only the effect explicitly stated.
 
-Passing Gate A authorizes only what the decision explicitly states. Recommended next authority is repository publication-package initialization, not implementation.
+### Gate B — Repository publication-package preparation
 
-### Gate B — Governed repository publication
+After Charlie remote equality and a clean synchronized baseline, prepare one exact repository publication package for the accepted work package and permitted governance targets. Reconcile every shared path and generated report before mutation.
 
-Before repository mutation:
+### Gate C — Work-package publication
 
-1. independently reverify exact baseline and authority;
-2. bind the accepted artifact digest and target repository path;
-3. prove the initial publication changed-path allowlist and Architecture Integration disposition;
-4. create only the accepted repository artifact and exact authorized traceability changes;
-5. run required documentation, governance, and repository validation;
-6. reconcile generated evidence;
-7. prove exact changed and staged paths plus staged whitespace; and
-8. obtain separate commit and later push authority.
+Apply, validate, stage, commit, push, fetch, and prove local/tracking/live equality through separate exact gates. Publication does not assign the candidate or authorize implementation.
 
-Commit, push, and remote-equality proof remain separate. Publication is not claimed until a permitted push is followed by fetch and exact local/tracking/live equality proof.
+### Gate D — Initiative assignment and implementation initialization
 
-### Gate C — Implementation initialization
+The Product Board assigns a permanent initiative identifier and status through an explicit portfolio decision. A separate fetched and synchronized AI Session Initialization binds the exact post-publication commit, role, paths, tests, authority, and stop conditions.
 
-Implementation remains closed until the published package, permanent initiative ID, exact post-publication baseline, clean synchronized state, role assignment, shared-path sequencing, and a separately authorized AI Session Initialization all exist.
+### Gate E — Capability implementation
 
-### Gate D — Implementation and validation
+The Codex Implementation Engineer changes only the 19 owned paths. Architecture Integration changes only the 17 shared paths under separate sequencing. No concurrent shared-path edit is permitted.
 
-The Codex Implementation Engineer may change only Alpha-owned paths. Architecture Integration alone changes shared paths. Focused and governed tests, validations, evidence reconciliation, changed-path audit, and requirement-level evidence are mandatory.
+### Gate F — Validation and Architecture Gatekeeper acceptance
 
-### Gate E — Architecture Gatekeeper implementation acceptance
+Run all focused, governed, privacy, continuity, fresh-session, and completion tests. The Gatekeeper reviews the exact diff and evidence. Acceptance does not authorize publication unless stated.
 
-The Gatekeeper reviews the exact source diff, tests, reuse boundaries, unresolved risks, and requirement audit. Acceptance does not authorize publication unless stated separately.
+### Gate G — Implementation publication
 
-### Gate F — Implementation publication
+Stage, commit, push, fetch, and remote-equality proof remain separate exact gates.
 
-Staging, commit, push, fetch, and remote-equality proof are separate gates. No pilot or activation follows by implication.
+### Gate H — Operating-model effectiveness and fresh-session proof
 
-### Gate G — Later pilot decision
+After implementation publication, perform the fresh-session recovery test and inspect-and-adapt measures. The Owner brief and goal continuity become current process guidance only as stated by their published lifecycle fields.
 
-Any pilot use, goal/task creation or operation under the repository capability, scheduling, dispatch, persistence, integration into AI Session Readiness, deployment, activation, release, production, or live work requires a later separately approved package and decision.
+### Gate I — Later operational-use or activation decision
 
-## 16. Definition of Done for a Future Implementation
+Any automatic goal/task creation or operation, scheduling, dispatch, persistence, model invocation, integration into a runtime service, protected access, production action, release, or live work requires a later exact package and approval.
 
-Future implementation is ready for Gatekeeper source review only when:
+## 19. Definition of Done
 
-- all accepted subject and package requirements map to exact changed-path and test evidence;
-- only the 15 Alpha-owned and Architecture Integration-disposed shared paths changed;
-- EO-14.1A and EO-14.4A contracts remain authoritative and unchanged in semantics;
-- every required focused and governed test passes without cache artifacts;
-- Repository Validation, Governance Validation, and AI Session Readiness pass under current authority;
-- generated evidence is reconciled and sanitized;
-- no runtime, scheduling, dispatch, persistence, model, protected, network, customer, production, activation, release, or live behavior exists;
-- repository status and next gate are truthful; and
-- the Gatekeeper receives exact diff, path, test, finding, risk, and evidence references.
+The consolidated implementation is complete for review only when:
 
-Definition of Done is evidence for review. It is never publication, activation, release, or live-work authority.
+- every one of the 36 paths matches the accepted target or specified implementation contract;
+- every focused and governed test passes;
+- goal and snapshot targets validate;
+- a blocked lane exposes independently eligible lanes without dispatch;
+- dependency timing and stale evidence behavior are deterministic;
+- generated evidence contains no personal name or absolute checkout path;
+- the Owner brief and role catalogs preserve human authority and remove routine Owner orchestration;
+- a fresh session recovers the exact goal without chat history;
+- atomic sealing and mutating-validator preflight are proved;
+- every acceptance requirement has a truthful evidence status;
+- no runtime activation or live behavior exists; and
+- repository status and next gate are exact.
 
-## 17. Current Decision Boundary
+Definition of Done is evidence for review. It is not publication, initiative assignment, activation, release, goal completion, or live-work authority.
 
-The only completed action represented by this version is conversion of accepted subject SHA-256 `da3da4646fd32bb13aaa7804b2007935bfdf53e66d48e6d019e0313fa9c816ad` into this outside-repository exact work-package artifact.
+## 20. Current Decision Boundary
 
-The next material decision is whether the Product Board and Architecture Gatekeeper accept the exact artifact for governed repository publication-package initialization. Until that exact decision is recorded, this artifact remains proposed, outside the repository, not published, and not implementation authority.
+The only completed action represented by this version is exact outside-repository work-package and target preparation under Decisions 11, 12, and 21 Version 1.1.
+
+The next material decision is whether the Product Board and Architecture Gatekeeper accept the atomically sealed package, corrected base digest, target hashes, and 36-path implementation boundary for later repository publication-package preparation only.

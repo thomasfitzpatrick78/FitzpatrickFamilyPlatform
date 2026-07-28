@@ -1,0 +1,536 @@
+{
+  "model_version": "eo-goal-delivery-v1",
+  "goal_id": "milestone-15-goal-oriented-parallel-delivery-pilot",
+  "name": "Milestone 15 Goal-Oriented Parallel Delivery Pilot",
+  "outcome": "Move separately authorized Alpha, Bravo, and Charlie outcomes toward accepted software and evidence while institutionalizing repository-first goal delivery, just-in-time dependency checks, same-turn replanning, compact Owner decisions, and session-independent continuity.",
+  "governing_artifact_references": [
+    "docs/governance/Permanent_Project_Operating_Model.md",
+    "docs/engineering-organization/Engineering_Organization_Vision.md",
+    "docs/engineering-organization/Parallel_Workstream_Delivery_Model.md",
+    "docs/engineering-organization/Engineering_Memory_Concept.md",
+    "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md",
+    "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+  ],
+  "repository_identity": "FitzpatrickFamilyPlatform",
+  "branch": "main",
+  "baseline_head": "b5ecc7dde4cf581a6c1bfc02b7ee7361c95279fd",
+  "acceptance_requirements": [
+    {
+      "requirement_id": "pilot-charlie-published",
+      "statement": "The accepted Charlie authorization subject and serialized traceability are published with remote equality proved, or a later exact decision truthfully changes that outcome.",
+      "required_evidence_types": [
+        "commit",
+        "push",
+        "remote_equality",
+        "requirement_audit"
+      ],
+      "required_evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_14_2A_Charlie_Continuity_Brief.md",
+        "docs/milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json"
+      ]
+    },
+    {
+      "requirement_id": "pilot-alpha-capability-published",
+      "statement": "The Goal-Oriented Parallel Delivery passive capability and operating-model adoption changes are implemented, validated, accepted, and published under their exact gates.",
+      "required_evidence_types": [
+        "work_package",
+        "implementation",
+        "tests",
+        "validation",
+        "architecture_acceptance",
+        "publication"
+      ],
+      "required_evidence_references": [
+        "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md",
+        "docs/engineering-organization/Goal_Oriented_Parallel_Delivery_Specification.md"
+      ]
+    },
+    {
+      "requirement_id": "pilot-bravo-next-gate",
+      "statement": "Bravo reaches the next truthful PLAT-15.1A Gate 2 decision without bypassing acquisition, trust, protected-action, offline-UTM, or supported-Linux gates.",
+      "required_evidence_types": [
+        "design_basis",
+        "synthetic_validation",
+        "residual_gap_audit",
+        "decision_card"
+      ],
+      "required_evidence_references": [
+        "docs/milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md",
+        "docs/milestones/Milestone_15/PLAT_15_1A_Repository_Only_Socket_Capable_Privileged_Proxy_Source_Implementation_Work_Package.md"
+      ]
+    },
+    {
+      "requirement_id": "pilot-repository-first-recovery",
+      "statement": "A fresh session recovers goal authority, workstream state, dependencies, evidence, and next gate from repository artifacts without prior chat history or model memory.",
+      "required_evidence_types": [
+        "fresh_session_test",
+        "goal_validation",
+        "snapshot_validation",
+        "continuity_audit"
+      ],
+      "required_evidence_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Goal.json",
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Snapshot.json"
+      ]
+    },
+    {
+      "requirement_id": "pilot-owner-interaction-adopted",
+      "statement": "The Owner, ChatGPT, and Codex interaction contract is a governed artifact and the Owner is not required to perform routine decomposition, dependency timing, agent coordination, state reconstruction, or continuation prompting.",
+      "required_evidence_types": [
+        "governed_brief",
+        "role_catalog",
+        "operating_model",
+        "pilot_metrics"
+      ],
+      "required_evidence_references": [
+        "docs/engineering-organization/Owner_Engineering_Organization_Interaction_Brief.md",
+        "docs/engineering-organization/AI_Role_Catalog.md",
+        "docs/engineering-organization/Human_Role_Catalog.md"
+      ]
+    },
+    {
+      "requirement_id": "pilot-evidence-hygiene",
+      "statement": "Generated repository evidence contains no personal name or absolute checkout path and uses sanitized repository identity and repository-relative evidence.",
+      "required_evidence_types": [
+        "focused_tests",
+        "repository_scan",
+        "validator_output"
+      ],
+      "required_evidence_references": [
+        "engineering/platform_eap/ai_session_readiness.py",
+        "engineering/tests/test_ai_session_readiness.py"
+      ]
+    }
+  ],
+  "workstreams": [
+    {
+      "workstream_id": "alpha-goal-delivery",
+      "title": "Alpha Goal-Oriented Parallel Delivery Capability and Adoption",
+      "objective": "Correct, govern, implement, validate, and publish the passive capability and adopted operating model without assigning the candidate or activating runtime coordination.",
+      "acceptance_requirement_ids": [
+        "pilot-alpha-capability-published",
+        "pilot-repository-first-recovery",
+        "pilot-owner-interaction-adopted",
+        "pilot-evidence-hygiene"
+      ],
+      "authority_envelope": {
+        "workstream_id": "alpha-goal-delivery",
+        "assigned_role": "Codex Implementation Engineer after each exact gate",
+        "work_package_references": [
+          "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md"
+        ],
+        "authority_decision_references": [
+          {
+            "decision_id": "alpha-goal-delivery-evidence-rebind-owner-auth-001",
+            "human_authority": "Owner",
+            "subject_sha256": "812c7d4151960e97865c107a1883e087d55e96a5a410f950debf54533e8a94cf",
+            "decision_status": "accepted",
+            "decided_at": "2026-07-27T17:25:06Z",
+            "governing_artifact_reference": "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+          },
+          {
+            "decision_id": "goal-delivery-operating-model-adoption-gatekeeper-acceptance-001",
+            "human_authority": "Architecture Gatekeeper",
+            "subject_sha256": "c349b2e699ba14482c0f670eeadf560683f1f0804f10eea03c0c0feb43bc0b40",
+            "decision_status": "accepted",
+            "decided_at": "2026-07-27T17:25:06Z",
+            "governing_artifact_reference": "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+          }
+        ],
+        "owned_repository_paths": [],
+        "owned_artifact_classes": [
+          "outside_repository_work_package_preparation",
+          "outside_repository_publication_package_preparation"
+        ],
+        "permitted_actions": [
+          "prepare exact outside-repository artifacts",
+          "run synthetic and isolated validation",
+          "return exact decision evidence"
+        ],
+        "approval_required_actions": [
+          "repository edit",
+          "implementation",
+          "staging",
+          "commit",
+          "push",
+          "pilot operation",
+          "activation"
+        ],
+        "prohibited_actions": [
+          "initiative assignment",
+          "authority transfer",
+          "runtime dispatch",
+          "scheduling",
+          "persistence",
+          "model invocation",
+          "protected action",
+          "production",
+          "release",
+          "live work"
+        ],
+        "required_checks": [
+          "exact binding validation",
+          "semantic equivalence",
+          "path ownership reconciliation",
+          "whitespace check",
+          "test and validator evidence",
+          "atomic package sealing"
+        ],
+        "publication_authority": false,
+        "stop_conditions": [
+          "binding drift",
+          "unassigned candidate represented as assigned",
+          "shared-path conflict",
+          "repository mutation without exact authority",
+          "activation implied by passive evidence"
+        ],
+        "integration_return": "Architecture Integration exact package review"
+      },
+      "dependency_ids": [
+        "dependency-charlie-before-alpha-publication",
+        "dependency-alpha-corrected-base",
+        "dependency-adoption-work-package-acceptance"
+      ],
+      "automation_definition_references": [],
+      "execution_assignment_references": []
+    },
+    {
+      "workstream_id": "bravo-plat15a-gate2",
+      "title": "Bravo PLAT-15.1A Gate 2 Resolution",
+      "objective": "Prepare a non-executable seven-control resolution package while preserving all acquisition, trust, protected-action, offline-UTM, and supported-Linux gates.",
+      "acceptance_requirement_ids": [
+        "pilot-bravo-next-gate"
+      ],
+      "authority_envelope": {
+        "workstream_id": "bravo-plat15a-gate2",
+        "assigned_role": "Codex Implementation Engineer for outside-repository synthetic preparation only",
+        "work_package_references": [
+          "docs/milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md",
+          "docs/milestones/Milestone_15/PLAT_15_1A_Repository_Only_Socket_Capable_Privileged_Proxy_Source_Implementation_Work_Package.md"
+        ],
+        "authority_decision_references": [
+          {
+            "decision_id": "plat15a-gate2-correction-package-gatekeeper-acceptance-001",
+            "human_authority": "Architecture Gatekeeper",
+            "subject_sha256": "5bd7b8e50c2580c7dc3e8ad4b4e486263de7df6c6ed8343dd7b64883f5efc81c",
+            "decision_status": "accepted",
+            "decided_at": "2026-07-27T17:25:06Z",
+            "governing_artifact_reference": "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+          }
+        ],
+        "owned_repository_paths": [],
+        "owned_artifact_classes": [
+          "outside_repository_non_executable_resolution_package",
+          "synthetic_test_evidence"
+        ],
+        "permitted_actions": [
+          "prepare non-executable proposal artifacts",
+          "run synthetic tests under hard network and process blocks"
+        ],
+        "approval_required_actions": [
+          "documentation retrieval",
+          "acquisition",
+          "provisioning",
+          "host control",
+          "protected action",
+          "Gate 2 execution",
+          "repository mutation"
+        ],
+        "prohibited_actions": [
+          "network access",
+          "byte retrieval",
+          "hash claim over unretrieved bytes",
+          "installation",
+          "key handling",
+          "verifier execution",
+          "target action",
+          "Gate 2 execution",
+          "live work"
+        ],
+        "required_checks": [
+          "seven-resolution coverage",
+          "hard network and process blocks",
+          "residual-gap audit",
+          "atomic package sealing"
+        ],
+        "publication_authority": false,
+        "stop_conditions": [
+          "real identity assumed",
+          "provider assumed",
+          "external action required",
+          "protected or target state required",
+          "binding drift"
+        ],
+        "integration_return": "Architecture Gatekeeper design-basis review"
+      },
+      "dependency_ids": [
+        "dependency-bravo-residual-authority"
+      ],
+      "automation_definition_references": [],
+      "execution_assignment_references": []
+    },
+    {
+      "workstream_id": "charlie-eo14-2a-publication",
+      "title": "Charlie EO-14.2A Publication",
+      "objective": "Publish the exact accepted Charlie subject and serialized traceability without starting Charlie implementation.",
+      "acceptance_requirement_ids": [
+        "pilot-charlie-published"
+      ],
+      "authority_envelope": {
+        "workstream_id": "charlie-eo14-2a-publication",
+        "assigned_role": "Architecture Integration",
+        "work_package_references": [
+          "docs/milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json"
+        ],
+        "authority_decision_references": [
+          {
+            "decision_id": "charlie-eo14-2a-generated-report-hygiene-restore-stage-auth-001",
+            "human_authority": "Owner",
+            "subject_sha256": "e44e790a860e0e08f732eb7cdbc37918e58608ebe563363f6c6549f892a32222",
+            "decision_status": "accepted",
+            "decided_at": "2026-07-27T17:25:06Z",
+            "governing_artifact_reference": "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+          }
+        ],
+        "owned_repository_paths": [
+          "docs/engineering-organization/Engineering_Organization_Backlog.md",
+          "docs/engineering-organization/Engineering_Organization_Roadmap.md",
+          "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_14_2A_Charlie_Continuity_Brief.md",
+          "docs/milestones/Milestone_15/EO_14_2A_Synthetic_Fixture_Consumer_Authorization_Subject.json",
+          "docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md",
+          "docs/portfolio/Engineering_Portfolio_Kanban.md"
+        ],
+        "owned_artifact_classes": [
+          "publication_only_governance",
+          "serialized_traceability"
+        ],
+        "permitted_actions": [
+          "restore six generated reports after explicit risk acknowledgment",
+          "stage exact six publication paths",
+          "return staged evidence"
+        ],
+        "approval_required_actions": [
+          "report restoration risk acknowledgment",
+          "commit",
+          "push",
+          "implementation"
+        ],
+        "prohibited_actions": [
+          "validator rerun",
+          "source or test edit",
+          "commit",
+          "push",
+          "implementation",
+          "provider or live work"
+        ],
+        "required_checks": [
+          "exact twelve-path precondition",
+          "six-report restoration hashes",
+          "six staged target hashes",
+          "staged whitespace check"
+        ],
+        "publication_authority": false,
+        "stop_conditions": [
+          "risk acknowledgment absent",
+          "path or hash drift",
+          "thirteenth path",
+          "validator output changes",
+          "staged scope mismatch"
+        ],
+        "integration_return": "Owner and Architecture Gatekeeper commit decision"
+      },
+      "dependency_ids": [
+        "dependency-charlie-report-restoration-risk"
+      ],
+      "automation_definition_references": [],
+      "execution_assignment_references": []
+    },
+    {
+      "workstream_id": "operating-model-adoption",
+      "title": "Engineering Organization Operating-Model Adoption",
+      "objective": "Prepare the exact repository-first operating-model amendment, Owner interaction brief, goal continuity, validator hygiene, and inspect-and-adapt artifacts.",
+      "acceptance_requirement_ids": [
+        "pilot-repository-first-recovery",
+        "pilot-owner-interaction-adopted",
+        "pilot-evidence-hygiene"
+      ],
+      "authority_envelope": {
+        "workstream_id": "operating-model-adoption",
+        "assigned_role": "Engineering Organization Advisor and Codex Implementation Engineer for preparation only",
+        "work_package_references": [
+          "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md"
+        ],
+        "authority_decision_references": [
+          {
+            "decision_id": "goal-delivery-operating-model-adoption-board-acceptance-001",
+            "human_authority": "Product Board",
+            "subject_sha256": "c349b2e699ba14482c0f670eeadf560683f1f0804f10eea03c0c0feb43bc0b40",
+            "decision_status": "accepted",
+            "decided_at": "2026-07-27T17:25:06Z",
+            "governing_artifact_reference": "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+          }
+        ],
+        "owned_repository_paths": [],
+        "owned_artifact_classes": [
+          "outside_repository_adoption_work_package",
+          "outside_repository_goal_continuity_targets",
+          "outside_repository_owner_brief"
+        ],
+        "permitted_actions": [
+          "prepare exact proposed repository artifacts",
+          "audit existing governance extension points",
+          "return exact decision package"
+        ],
+        "approval_required_actions": [
+          "repository edit",
+          "implementation",
+          "publication",
+          "goal operation under the capability",
+          "activation"
+        ],
+        "prohibited_actions": [
+          "initiative assignment",
+          "repository mutation",
+          "runtime dispatch",
+          "scheduling",
+          "persistence",
+          "model invocation",
+          "production",
+          "release",
+          "live work"
+        ],
+        "required_checks": [
+          "repository-first authority audit",
+          "path ownership audit",
+          "session-independent recovery design",
+          "personal-path hygiene design",
+          "non-activation proof"
+        ],
+        "publication_authority": false,
+        "stop_conditions": [
+          "existing authority conflict",
+          "shared-path lease conflict",
+          "memory becomes authority",
+          "Owner routine orchestration remains required",
+          "activation implied"
+        ],
+        "integration_return": "Product Board and Architecture Gatekeeper exact work-package decision"
+      },
+      "dependency_ids": [
+        "dependency-alpha-corrected-base",
+        "dependency-adoption-work-package-acceptance"
+      ],
+      "automation_definition_references": [],
+      "execution_assignment_references": []
+    }
+  ],
+  "dependencies": [
+    {
+      "dependency_id": "dependency-charlie-report-restoration-risk",
+      "kind": "human_decision",
+      "description": "Direct acknowledgment that restoring the six reports replaces current generated validation evidence with older tracked HEAD contents while external evidence remains authoritative for the completed run.",
+      "dependent_workstream_ids": [
+        "charlie-eo14-2a-publication"
+      ],
+      "prerequisite_workstream_ids": [],
+      "evidence_source_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Goal_Oriented_Parallel_Delivery_Pilot_Inspect_and_Adapt.md"
+      ],
+      "freshness_seconds": 86400,
+      "need_by_at": "2026-07-27T17:25:06Z",
+      "verification_duration_seconds": 300,
+      "decision_allowance_seconds": 0,
+      "execution_margin_seconds": 300
+    },
+    {
+      "dependency_id": "dependency-charlie-before-alpha-publication",
+      "kind": "integration",
+      "description": "Charlie publication commit, push, and remote-equality proof precede Alpha repository application on shared traceability paths.",
+      "dependent_workstream_ids": [
+        "alpha-goal-delivery"
+      ],
+      "prerequisite_workstream_ids": [
+        "charlie-eo14-2a-publication"
+      ],
+      "evidence_source_references": [
+        "docs/engineering-organization/ai-collaboration/operational/milestone-15/Architecture_Integration_Continuity_Brief.md"
+      ],
+      "freshness_seconds": 3600,
+      "need_by_at": "2026-07-28T17:25:06Z",
+      "verification_duration_seconds": 600,
+      "decision_allowance_seconds": 3600,
+      "execution_margin_seconds": 600
+    },
+    {
+      "dependency_id": "dependency-alpha-corrected-base",
+      "kind": "integration",
+      "description": "The whitespace-clean Version 1.1 package must be atomically sealed before the adoption amendment binds its corrected base digest.",
+      "dependent_workstream_ids": [
+        "operating-model-adoption"
+      ],
+      "prerequisite_workstream_ids": [
+        "alpha-goal-delivery"
+      ],
+      "evidence_source_references": [
+        "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md"
+      ],
+      "freshness_seconds": 86400,
+      "need_by_at": "2026-07-28T17:25:06Z",
+      "verification_duration_seconds": 600,
+      "decision_allowance_seconds": 3600,
+      "execution_margin_seconds": 600
+    },
+    {
+      "dependency_id": "dependency-adoption-work-package-acceptance",
+      "kind": "human_decision",
+      "description": "Product Board and Architecture Gatekeeper must accept the exact consolidated adoption work package before repository publication preparation or implementation.",
+      "dependent_workstream_ids": [
+        "alpha-goal-delivery",
+        "operating-model-adoption"
+      ],
+      "prerequisite_workstream_ids": [
+      ],
+      "evidence_source_references": [
+        "docs/milestones/Milestone_15/Goal_Oriented_Parallel_Delivery_Passive_Capability_Work_Package.md"
+      ],
+      "freshness_seconds": 86400,
+      "need_by_at": "2026-07-28T17:25:06Z",
+      "verification_duration_seconds": 600,
+      "decision_allowance_seconds": 3600,
+      "execution_margin_seconds": 600
+    },
+    {
+      "dependency_id": "dependency-bravo-residual-authority",
+      "kind": "human_decision",
+      "description": "Any documentation retrieval, acquisition, provisioning, host-control, protected, target, redirect, or Gate 2 action requires a later exact decision after the non-executable package is sealed.",
+      "dependent_workstream_ids": [
+        "bravo-plat15a-gate2"
+      ],
+      "prerequisite_workstream_ids": [],
+      "evidence_source_references": [
+        "docs/milestones/Milestone_15/PLAT_15_1A_Supported_Linux_Validation_Environment_Preparation_Work_Package.md"
+      ],
+      "freshness_seconds": 86400,
+      "need_by_at": "2026-07-28T17:25:06Z",
+      "verification_duration_seconds": 900,
+      "decision_allowance_seconds": 3600,
+      "execution_margin_seconds": 900
+    }
+  ],
+  "wip_limit_per_stream": 1,
+  "minimum_parallel_streams": 2,
+  "completion_gate": "Every acceptance requirement has its required authoritative evidence, every required workstream is complete, no unresolved issue remains, and activation_occurred, dispatch_occurred, and live_changes_occurred are all false unless a later exact activation package supersedes this passive pilot boundary.",
+  "prohibited_actions": [
+    "authority transfer between workstreams",
+    "autonomous product or architecture decision",
+    "goal membership treated as authorization",
+    "chat or model memory treated as repository authority",
+    "runtime dispatch",
+    "scheduling",
+    "persistent agent state",
+    "model invocation as an effect of the repository capability",
+    "protected or production action without exact authority",
+    "customer-data access",
+    "release or live work without exact authority"
+  ]
+}
