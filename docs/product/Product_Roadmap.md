@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 4.3
+**Document Version:** 4.4
 
 **Status:** Active
 
@@ -23,7 +23,7 @@ Focus: increase Engineering Organization throughput through delivery leverage.
 Planned outcomes:
 
 - Complete FFFA customer acceptance through FFFA-owned evidence and decision authority.
-- Advance PLAT-15.1A as the published High, highest-priority Platform implementation package, with repository implementation Not Started.
+- Advance PLAT-15.1A as the published High, highest-priority Platform implementation package, with its Version 1.1 22-gate environment package published, Gate 1 complete, Gate 2 Not Authorized, Environment Not Created, and repository implementation Not Started; temporarily sequence the bounded PLAT-13.6.3 dashboard-value recovery slice first.
 - Apply the published EO-15.1 fail-closed baseline and Transition Review mechanisms through authorized future work packages.
 - Reuse AI Collaboration, Execution Capability, automation, Platform Operations, Registry, evidence, and validation governance before expanding it.
 - Preserve architecture, implementation, artifact, deployment, observation, consumer, activation, release, and live-work gates.
@@ -61,7 +61,7 @@ Milestone 15 planning is coordinated across EO, PLAT, and FFFA streams. This roa
 ### PLAT - Shared Platform
 
 - Advance PLAT-15.1A under PLAT-PB-013 and AB-011 as the highest-priority Platform implementation package.
-- Treat PLAT-15.1A as `Ready for Repository Implementation; Not Started`; require a separate fetched and synchronized Codex Implementation Engineer initialization before source changes.
+- Treat PLAT-15.1A as `Blocked at Supported-Linux Initialization Gate; Repository Implementation Not Started`; its Version 1.1 environment package is published, Gate 1 is complete, Gate 2 is Not Authorized, and a separate fetched and synchronized Codex Implementation Engineer initialization remains required before source changes.
 - Preserve the PLAT-14.1A source, artifact, deployment, target, observation, consumer, recurrence, and activation gates.
 - Keep ADR-012 `Implemented: No` until the applicable implementation and acceptance gates are satisfied.
 - Keep live Grafana, Prometheus, OpenTelemetry, Docker, Beelink, backup, restore, alerting, and production work behind separate architecture and human approval.
@@ -135,6 +135,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 4.4 | Reconciled the current PLAT-15.1A Version 1.1 publication and gate state and recorded the temporary bounded PLAT-13.6.3 dashboard-value recovery sequence without changing permanent priority. |
 | 4.3 | Recorded PLAT-15.1A as the published High, highest-priority Platform implementation package under PLAT-PB-013 and AB-011, Not Started, while retaining FFFA acceptance as a separate High outcome. |
 | 4.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 while preserving separate implementation and live-work gates. |
 | 4.1 | Recorded completed, unpublished EO-15.1 repository implementation pending Architecture Gatekeeper review. |

@@ -23,31 +23,31 @@
 | Field | Value |
 |-------|-------|
 | Repository / branch | `FitzpatrickFamilyPlatform` / `main`. |
-| Published baseline | Local `main`, `origin/main`, `FETCH_HEAD`, and live remote synchronized at `3033d2553fdd8829e9af7fc14ace0db2aecdb85e`, tree `e4bd2d00e38f228ee072a7e5946db38e9b4e6ebd`, ahead/behind `0/0`; initial repository clean. |
-| Status | Replacement static-manifest decision `Accept`; acceptance record `plat15a-static-manifest-acceptance-002` prepared, fully validated, and `Not Published`; Gate 2 Not Authorized; Environment Not Created; implementation Not Started. |
+| Published baseline | Decision 41 accepted local, tracking, and live-remote equality at `311fd6d1ac19c3702d1db46da04fafe04b1457a8`, tree `60aa4b662d6575de02fedfbbee770790aa5f0db0`; current local and cached tracking state remain equal with ahead/behind `0/0` and a clean repository. |
+| Status | Version 1.1 environment package and sanitized replacement acceptance published; Gate 1 complete; Gate 2 Not Authorized; Environment Not Created; implementation Not Started; bounded PLAT-13.6.3 dashboard-value recovery temporarily sequenced first without changing permanent PLAT priority. |
 | Active milestone | Milestone 15 - Delivery Leverage. |
 | Workstream | PLAT-15.1A - Repository-Only Socket-Capable Privileged Proxy Source Implementation. |
-| Assigned role | Governed repository publication-preparation engineer. |
-| Objective | Prepare and validate the exact sanitized 16-path replacement-acceptance publication package while preserving all protected and execution gates. |
-| Controlling acceptance | `plat15a-static-manifest-acceptance-002` accepts only the Version 1.1 sanitized identity and subject digest. The complete-file digest is separate transport evidence. |
+| Assigned role | Unassigned until a separate exact resumption and initialization decision. |
+| Objective | Preserve the published Version 1.1 22-gate authority and current stop state until the temporary dashboard-value recovery slice completes and a separate exact PLAT resumption decision is made. |
+| Controlling acceptance | Published `plat15a-static-manifest-acceptance-002` accepts only the Version 1.1 sanitized identity and subject digest. The complete-file digest is separate transport evidence. |
 | Historical chain | `plat15a-static-manifest-acceptance-001` and its suspension record remain immutable historical evidence; the historical accepted subject remains prohibited from every future addendum. |
 | Corrected topology | `HOST_TASK_ROOT` is the Gate 2 task root; the exact 23-entry inventory and all 14 mandatory Version 1.1 topology bindings passed independent review. No protected path is retained here. |
-| Explicitly unchanged | Historical acceptance and suspension records; both Version 1.1 work packages; ADR-012; Architecture Backlog including AB-012; Product Backlog; Portfolio Plan; Kanban; source; tests; module files; Registry; deployment; operations; FFFA; customer data; environment; and VM state. |
-| Permitted actions | Exact 16-path sanitized publication preparation, governed report regeneration, safe repository validation, and the completed separately authorized time-bounded Go 1.26.5 validation. |
+| Explicitly unchanged | Historical acceptance and suspension records; both Version 1.1 work packages; ADR-012; AB-012; source; tests; module files; Registry; deployment; operations; FFFA; customer data; environment; and VM state. Current-state planning and continuity wording may change only through a separate exact repository-application decision. |
+| Permitted actions | Read-only orientation and separately authorized outside-repository preparation only. This brief creates no Gate 2, host, environment, source, or repository-mutation authority. |
 | Prohibited actions | Protected inspection or modification; addendum creation; redirect resolution; target-artifact acquisition; mount; installation; application or Linux execution; VM activity; implementation; staging; commit; push; deployment; activation; release; or live work. |
-| Current blocker | None within publication-package validation; staging and commit remain separately gated. |
-| Next authorization | Separate staging-and-commit authorization for the exact validated 16-path publication package. Push remains later. |
-| Last verification date | 2026-07-26. |
+| Current blocker | Supported-Linux environment does not exist and Gate 2 remains Not Authorized. The temporary dashboard-value recovery slice is sequenced first. |
+| Next authorization | After dashboard-value recovery, a separate Product Board/Owner and Architecture Gatekeeper decision must resume PLAT-15.1A and bind the exact current Gate 2 subject before any stable-artifact or environment action. |
+| Last verification date | 2026-07-29. |
 
 ---
 
 ## Continuity Notes
 
-The replacement acceptance decision satisfies the Version 1.1 static-manifest review requirement but does not create execution authority. Only after separate repository publication could a separately authorized session become eligible to prepare an exact protected per-run stable-artifact addendum and separately governed redirect-resolution authority.
+The replacement acceptance decision satisfies the Version 1.1 static-manifest review requirement and is published, but does not create execution authority. Gate 1 publication is complete. A separately authorized session may become eligible to use an exact protected per-run stable-artifact subject only after a fresh baseline and subject reconciliation and an exact Gate 2 activation decision.
 
 The terminal amendment assertion was reconciled as a non-authoritative directory-link-count diagnostic defect. The authoritative amendment completed and passed independent review. This repository-safe continuity record contains no protected identity, path, mapping, raw evidence, private authorization, or supporting-evidence digest.
 
-Gate 2 remains `Not Authorized`; the environment remains `Not Created`; implementation remains `Not Started`. ADR-012 remains `Implemented: No`; AB-012 remains `Candidate - Remain Backlog`.
+Gate 2 remains `Not Authorized`; the environment remains `Not Created`; implementation remains `Not Started`. ADR-012 remains `Implemented: No`; AB-012 remains `Candidate - Remain Backlog`. Radio Silence is not a Docker-container metrics dependency and remains parked outside this workstream under Decision 49B.
 
 ---
 
@@ -64,6 +64,7 @@ Gate 2 remains `Not Authorized`; the environment remains `Not Created`; implemen
 
 | Version | Description |
 |---------|-------------|
+| 2.4 | Reconciled the published Version 1.1 and Decision 41 equality state, completed Gate 1, unauthorized Gate 2, temporary dashboard-value recovery sequencing, and the next exact PLAT resumption gate. |
 | 2.3 | Recorded successful exact Go 1.26.5 validation, exclusive-use and retrieval-control proof, complete temporary-state cleanup, publication-package readiness, and the separate staging-and-commit next gate. |
 | 2.2 | Recorded the distinct Version 1.1 replacement acceptance, exact 16-path publication-preparation scope, immutable historical chain, closed execution gates, and unavailable Go 1.26.5 validation blocker. |
 | 2.1 | Finalized Version 1.1 correction publication-preparation continuity and retained separate publication and protected gates. |
