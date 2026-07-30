@@ -23,21 +23,21 @@
 | Field | Value |
 |-------|-------|
 | Repository / branch | `FitzpatrickFamilyPlatform` / `main`. |
-| Published baseline | Decision 41 accepted local, tracking, and live-remote equality at `311fd6d1ac19c3702d1db46da04fafe04b1457a8`, tree `60aa4b662d6575de02fedfbbee770790aa5f0db0`; current local and cached tracking state remain equal with ahead/behind `0/0` and a clean repository. |
-| Status | Version 1.1 environment package and sanitized replacement acceptance published; Gate 1 complete; Gate 2 Not Authorized; Environment Not Created; implementation Not Started; bounded PLAT-13.6.3 dashboard-value recovery temporarily sequenced first without changing permanent PLAT priority. |
+| Published baseline | Decision 54B accepted local, tracking, and live-remote equality at `2ec6a00620cef3144397d4e5d6b07f3e3a62ce2c`; Decision 56 read-only revalidation found current local HEAD and cached `origin/main` equal at that commit, tree `88571b47e91a1129eca2ad99258995d816993bea`, ahead/behind `0/0`, with a clean repository. No live-remote refresh was authorized or performed by Decision 56. |
+| Status | Version 1.1 environment package and sanitized replacement acceptance published; Gate 1 complete; Gate 2 Not Authorized; Environment Not Created; implementation Not Started; Decision 56 accepted the bounded PLAT-13.6.3 dashboard-value result and restored PLAT-15.1A as the primary Platform preparation sequence. |
 | Active milestone | Milestone 15 - Delivery Leverage. |
 | Workstream | PLAT-15.1A - Repository-Only Socket-Capable Privileged Proxy Source Implementation. |
 | Assigned role | Unassigned until a separate exact resumption and initialization decision. |
-| Objective | Preserve the published Version 1.1 22-gate authority and current stop state until the temporary dashboard-value recovery slice completes and a separate exact PLAT resumption decision is made. |
+| Objective | Convert the accepted but non-executable stable Gate 2 preparation chain into one current, independently accepted execution candidate before generating any volatile redirect evidence. |
 | Controlling acceptance | Published `plat15a-static-manifest-acceptance-002` accepts only the Version 1.1 sanitized identity and subject digest. The complete-file digest is separate transport evidence. |
 | Historical chain | `plat15a-static-manifest-acceptance-001` and its suspension record remain immutable historical evidence; the historical accepted subject remains prohibited from every future addendum. |
 | Corrected topology | `HOST_TASK_ROOT` is the Gate 2 task root; the exact 23-entry inventory and all 14 mandatory Version 1.1 topology bindings passed independent review. No protected path is retained here. |
 | Explicitly unchanged | Historical acceptance and suspension records; both Version 1.1 work packages; ADR-012; AB-012; source; tests; module files; Registry; deployment; operations; FFFA; customer data; environment; and VM state. Current-state planning and continuity wording may change only through a separate exact repository-application decision. |
 | Permitted actions | Read-only orientation and separately authorized outside-repository preparation only. This brief creates no Gate 2, host, environment, source, or repository-mutation authority. |
 | Prohibited actions | Protected inspection or modification; addendum creation; redirect resolution; target-artifact acquisition; mount; installation; application or Linux execution; VM activity; implementation; staging; commit; push; deployment; activation; release; or live work. |
-| Current blocker | Supported-Linux environment does not exist and Gate 2 remains Not Authorized. The temporary dashboard-value recovery slice is sequenced first. |
-| Next authorization | After dashboard-value recovery, a separate Product Board/Owner and Architecture Gatekeeper decision must resume PLAT-15.1A and bind the exact current Gate 2 subject before any stable-artifact or environment action. |
-| Last verification date | 2026-07-29. |
+| Current blocker | Gate 2 has no current accepted executable stable package. The accepted Version 1.1 protected-manifest topology must be reconciled with the later derived-path contract; concrete protected path and command bindings, a revalidated time budget, and the GnuPG/Ubuntu one-key verification chain remain unresolved. The Decision 13 integrated candidate is reusable evidence only and still treats the now-parked preventive host-egress provider as a hard blocker. |
+| Next authorization | Separately accept the Decision 56B just-in-time continuation package and authorize only the exact stable-resolution preparation lane it identifies. Gate 2 execution, protected-manifest access, object acquisition, redirects, target access, environment action, and implementation remain separate later decisions. |
+| Last verification date | 2026-07-30. |
 
 ---
 
@@ -64,6 +64,7 @@ Gate 2 remains `Not Authorized`; the environment remains `Not Created`; implemen
 
 | Version | Description |
 |---------|-------------|
+| 2.5 | Recorded Decision 56 dashboard-value acceptance and primary-sequence restoration, current `2ec6a00` cached equality, the exact stable Gate 2 preparation blocker, and Radio Silence's exclusion from the dependency chain. |
 | 2.4 | Reconciled the published Version 1.1 and Decision 41 equality state, completed Gate 1, unauthorized Gate 2, temporary dashboard-value recovery sequencing, and the next exact PLAT resumption gate. |
 | 2.3 | Recorded successful exact Go 1.26.5 validation, exclusive-use and retrieval-control proof, complete temporary-state cleanup, publication-package readiness, and the separate staging-and-commit next gate. |
 | 2.2 | Recorded the distinct Version 1.1 replacement acceptance, exact 16-path publication-preparation scope, immutable historical chain, closed execution gates, and unavailable Go 1.26.5 validation blocker. |
