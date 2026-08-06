@@ -1,6 +1,6 @@
 # Product Roadmap
 
-**Document Version:** 4.5
+**Document Version:** 4.6
 
 **Status:** Active
 
@@ -114,6 +114,12 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 ---
 
+## EO-15.2 Delivery-Leverage Roadmap Amendment
+
+Milestone 15 includes the assigned EO-15.2 umbrella as Engineering Organization delivery leverage. Phase A is intended to reduce Owner decision burden and accelerate governed Platform and application delivery. FFFA adopts through a separate thin profile. Phase B remains future passive capability work.
+
+---
+
 ## Related Documents
 
 - [Product Backlog](Product_Backlog.md)
@@ -135,6 +141,7 @@ Deferred initiatives remain in backlog until requirements and architecture are a
 
 | Version | Description |
 |---------|-------------|
+| 4.6 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 4.5 | Recorded successful bounded PLAT-13.6.3 dashboard-value recovery, ended its temporary sequencing override, restored PLAT-15.1A as the primary Platform preparation sequence, and retained Gate 2 Not Authorized. |
 | 4.4 | Reconciled the current PLAT-15.1A Version 1.1 publication and gate state and recorded the temporary bounded PLAT-13.6.3 dashboard-value recovery sequence without changing permanent priority. |
 | 4.3 | Recorded PLAT-15.1A as the published High, highest-priority Platform implementation package under PLAT-PB-013 and AB-011, Not Started, while retaining FFFA acceptance as a separate High outcome. |

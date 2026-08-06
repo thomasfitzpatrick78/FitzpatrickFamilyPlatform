@@ -1,6 +1,6 @@
 # Human Role Catalog
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -32,6 +32,12 @@ AI roles may produce analysis, implementation, documentation, and evidence. Huma
 
 ---
 
+## EO-15.2 Human Decision Boundary
+
+The Owner, Product Strategy Board, and Architecture Gatekeeper decide material outcome, priority, architecture, exception, protected-data, destructive, publication, production, release, and risk matters. They are not required to approve routine task decomposition, safe local sequencing, each validation, each specialist result, conforming bounded repair, evidence capture, or continuation inside an accepted conditional bundle.
+
+---
+
 ## Related Documents
 
 - [AI Role Catalog](AI_Role_Catalog.md)
@@ -45,4 +51,5 @@ AI roles may produce analysis, implementation, documentation, and evidence. Huma
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial human role catalog. |

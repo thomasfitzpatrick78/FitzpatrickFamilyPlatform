@@ -1,6 +1,6 @@
 # AI Session Initialization Standard
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 
 **Status:** Architecture Gatekeeper Approved; Published
 
@@ -102,6 +102,14 @@ Readiness outcomes must not use a percentage score.
 
 ---
 
+## EO-15.2 Conditional-Bundle Initialization
+
+When EO-15.2 applies, initialization also records the bundle identity and digest, risk tier, repositories and branches, baseline and remote-freshness requirement, allowed and excluded paths, publication inclusions, main writer, specialist lanes, generated-evidence disposition, repair budget, expiry, invalidation predicates, and exact next material gate.
+
+The main task performs this reconciliation. A specialist performs only its bounded lane attestation.
+
+---
+
 ## Related Documents
 
 - [AI Collaboration Governance Capability Charter](AI_Collaboration_Governance_Capability_Charter.md)
@@ -117,6 +125,7 @@ Readiness outcomes must not use a percentage score.
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.4 | Recorded Architecture Gatekeeper approval and publication of the fail-closed baseline classification standard. |
 | 1.3 | Required exactly one governed permission declaration and classified duplicate or conflicting work-package metadata `Dirty`. |
 | 1.2 | Required canonical tracked work-package context and exact governed opt-in metadata before the production classifier may return `Expected Generated Evidence`. |

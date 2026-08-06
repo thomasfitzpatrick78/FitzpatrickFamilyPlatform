@@ -1,6 +1,6 @@
 # Engineering Principles
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -78,6 +78,16 @@ The Engineering Organization is itself improved through measured capability evol
 
 ---
 
+## EO-15.2 Risk-Tiered Delivery Principles
+
+- Preserve distinct evidence for every lifecycle phase without requiring a separate Owner decision when outcome, scope, risk, authority, and intended effect remain unchanged.
+- Continue automatically through accepted Tier 0 and Tier 1 work and explicitly bundled Tier 2 work.
+- Require fresh pre-action human approval for Tier 3 product, architecture, protected-data, destructive, publication, production, release, and live actions.
+- Present only material Owner decisions in plain language with the recommendation first and two or three genuine options scored High, Medium, or Low for commercial architecture, maintainability, and code quality.
+- Use one accountable main writer and bounded read-only specialists; assignment and evidence never transfer authority.
+
+---
+
 ## Related Documents
 
 - [Engineering Organization Manifesto](../engineering-organization/Engineering_Organization_Manifesto.md)
@@ -92,4 +102,5 @@ The Engineering Organization is itself improved through measured capability evol
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial governed engineering principles. |

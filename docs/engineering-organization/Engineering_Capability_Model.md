@@ -1,6 +1,6 @@
 # Engineering Capability Model
 
-**Document Version:** 1.8
+**Document Version:** 1.9
 
 **Status:** Active
 
@@ -47,6 +47,14 @@ This document defines the capability model for the AI-operated Engineering Organ
 
 ---
 
+## EO-15.2 Capability Addition
+
+Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption is a Phase A governed capability. Its reference implementation is the canonical specification, conditional-bundle contract, repository instructions, three read-only specialist profiles, focused validation, and repository-specific adoption evidence.
+
+The passive machine-checkable Goal-Oriented capability remains Phase B future work and is not activated by Phase A.
+
+---
+
 ## Related Documents
 
 - [Engineering Organization Roadmap](Engineering_Organization_Roadmap.md)
@@ -63,6 +71,7 @@ This document defines the capability model for the AI-operated Engineering Organ
 
 | Version | Description |
 |---------|-------------|
+| 1.9 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.8 | Recorded publication of the closed socket-capable transport review without promoting AB-012 or authorizing source, artifact, deployment, target, or operation. |
 | 1.7 | Recorded publication of the Architecture Gatekeeper-approved and accepted transport-free source without promoting AB-012 or authorizing sockets, artifacts, deployment, targets, or operation. |
 | 1.6 | Added transport-free privileged source-conformance evidence to the existing acceptance-design capability without promoting AB-012 or authorizing publication, sockets, artifacts, deployment, or operation. |

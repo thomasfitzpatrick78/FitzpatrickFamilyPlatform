@@ -1,6 +1,6 @@
 # Product Backlog
 
-**Document Version:** 4.7
+**Document Version:** 4.8
 
 **Status:** Active
 
@@ -95,6 +95,12 @@ Milestone 15 backlog directions are planned, not approved for implementation by 
 
 ---
 
+## EO-15.2 Backlog Traceability Amendment
+
+EO-15.2 is the assigned Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption initiative. Phase A is exact package preparation pending Architecture Gatekeeper review and separate implementation authority. Phase B is retained future work. This entry grants no implementation or publication authority.
+
+---
+
 ## Related Documents
 
 - [Capability Model](Capability_Model.md)
@@ -118,6 +124,7 @@ Milestone 15 backlog directions are planned, not approved for implementation by 
 
 | Version | Description |
 |---------|-------------|
+| 4.8 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 4.7 | Recorded accepted bounded dashboard-value recovery, ended the temporary sequencing override, restored PLAT-15.1A as the primary Platform preparation sequence, and retained every Gate 2 and implementation boundary. |
 | 4.6 | Reconciled PLAT-PB-013 to the published PLAT-15.1A Version 1.1 22-gate package, completed Gate 1, unauthorized Gate 2, unchanged Not Created/Not Started states, and temporary dashboard-value recovery sequencing. |
 | 4.5 | Recorded Board/Gatekeeper approval of version 1.0 preparation architecture under PLAT-PB-013/AB-011, successful exact Go validation, separate publication gates, and environment/implementation/artifact/deployment/activation/live authority absent. |

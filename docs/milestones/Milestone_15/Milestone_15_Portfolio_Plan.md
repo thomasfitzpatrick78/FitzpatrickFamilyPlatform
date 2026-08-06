@@ -1,6 +1,6 @@
 # Milestone 15 - Delivery Leverage
 
-**Document Version:** 2.0
+**Document Version:** 2.1
 
 **Status:** Active
 
@@ -143,6 +143,19 @@ Milestone 15 evidence should show:
 
 ---
 
+## EO-15.2 Portfolio Amendment
+
+Upon governed publication, this section is the current lifecycle statement for the earlier unassigned Goal-Oriented candidate. EO-15.2 is assigned as the Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption umbrella.
+
+- Phase A adopts conditional authority, one main writer, up to three read-only specialists, bounded repair, plain-language material decisions, and separate FFFA adoption.
+- Phase B retains the passive Goal-Oriented design under later gates.
+- The prior pilot is read-only coordination evidence only and is not delivery success.
+- The first applied pilot after Phase A publication must drive meaningful PLAT-15.1A delivery recovery under separate exact authority.
+
+This amendment grants no repository implementation, publication, Phase B, protected/customer-data, PLAT-15.1A Gate 2+, VM/Linux, production, release, activation, or live-work authority.
+
+---
+
 ## Related Documents
 
 - [Milestone 14 Transition Review](../Milestone_14/Milestone_14_Transition_Review.md)
@@ -163,6 +176,7 @@ Milestone 15 evidence should show:
 
 | Version | Description |
 |---------|-------------|
+| 2.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 2.0 | Recorded accepted bounded dashboard-value recovery, ended Decision 50's temporary sequencing override, restored PLAT-15.1A as the primary Platform preparation sequence, and retained Gate 2 Not Authorized. |
 | 1.9 | Reconciled current PLAT-15.1A state to the published Version 1.1 22-gate package and sanitized acceptance, completed Gate 1, unauthorized Gate 2, unchanged Not Created/Not Started states, and temporary dashboard-value recovery sequencing. |
 | 1.8 | Serialized the exact unassigned-candidate Goal-Oriented Parallel Delivery passive-capability work-package publication target after Charlie while preserving absent initiative assignment, unstarted implementation, shared-path ownership, and every later gate. |

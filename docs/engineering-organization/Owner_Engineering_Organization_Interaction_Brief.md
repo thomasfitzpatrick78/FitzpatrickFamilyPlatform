@@ -1,9 +1,9 @@
 # Owner Brief — Goal-Oriented Engineering Organization
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 **Status:** Prepared repository target; effective only after exact governed publication and remote-equality proof
 **Milestone:** Milestone 15
-**Capability:** Goal-Oriented Parallel Delivery
+**Capability:** EO-15.2 Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption
 
 ## Purpose
 
@@ -179,6 +179,16 @@ The operating model is successful when:
 - the passive capability is implemented, validated, accepted, and published; and
 - any operational activation remains separately governed.
 
+## EO-15.2 Owner Interaction Amendment
+
+The governed capability is `EO-15.2 — Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption`.
+
+Codex continues automatically through accepted Tier 0 and Tier 1 work and expressly bundled Tier 2 work. It returns only for an unbundled Tier 2 action, Tier 3 action, or invalidated bundle.
+
+The Owner-facing card uses plain language: decision, why it matters, recommendation first, two or three scored options, what happens next, and one exact short reply. Technical evidence, authority, paths, hashes, expiry, and recovery appear in an audit appendix. This amendment supersedes the seven-field technical card as the Owner-facing layer.
+
+---
+
 ## Related Documents
 
 - `Engineering_Organization_Vision.md`
@@ -195,5 +205,6 @@ The operating model is successful when:
 
 | Version | Description |
 |---|---|
+| 1.2 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.1 | Added the reusable repository-first chat-to-Codex transition prompt, optional changed-direction form, and expiring interim pilot bridge without changing authority or lifecycle semantics. |
 | 1.0 | Defined the Owner, ChatGPT, Codex, repository-first continuity, compact decision, generated-evidence hygiene, and activation contracts from the Milestone 15 pilot. |

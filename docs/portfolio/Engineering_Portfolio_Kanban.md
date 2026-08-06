@@ -1,6 +1,6 @@
 # Engineering Portfolio Kanban
 
-**Document Version:** 3.0
+**Document Version:** 3.1
 
 **Status:** Active
 
@@ -127,10 +127,19 @@ Kanban updates must remain repository-native Markdown unless a future approved t
 
 ---
 
+## EO-15.2 Kanban Amendment
+
+Upon governed publication, the assigned umbrella EO-15.2 supersedes the earlier `ID unassigned` candidate state. Phase A is at exact package Architecture Review until separately accepted. Phase B remains future and unimplemented. FFFA adoption and PLAT-15.1A retain separate repository and execution authority.
+
+No Phase A implementation, publication, Phase B work, customer-data access, PLAT-15.1A protected action, release, activation, or live work is authorized by this Kanban amendment.
+
+---
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 3.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 3.0 | Recorded Decision 56 acceptance of the bounded dashboard-value recovery outcome, ended the temporary sequencing override, restored PLAT-15.1A as the primary Platform preparation sequence, and retained Gate 2 Not Authorized. |
 | 2.9 | Reconciled current PLAT-15.1A state to the published Version 1.1 22-gate package, completed Gate 1, unauthorized Gate 2, Environment Not Created, implementation Not Started, and temporary dashboard-value recovery sequencing. |
 | 2.8 | Serialized the exact unassigned-candidate Goal-Oriented Parallel Delivery passive-capability work-package publication target after Charlie while preserving absent initiative assignment, unstarted implementation, shared-path ownership, and every later gate. |

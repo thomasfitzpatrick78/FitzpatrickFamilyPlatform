@@ -1,6 +1,6 @@
 # Permanent Project Operating Model
 
-**Document Version:** 1.2
+**Document Version:** 1.3
 
 **Status:** Active
 
@@ -156,6 +156,14 @@ Engineering Organization Evolution
 
 ---
 
+## EO-15.2 Conditional Authority Operating Model
+
+One main Codex task coordinates an approved outcome. Role separation does not require task separation. Up to three namespaced read-only specialists may inspect independent lanes from a parent turn in live read-only permission mode, while one main task remains the sole same-checkout writer and integrates every result. Workspace-write phases run without subagents because the parent turn's permission choice can override a custom agent's declared sandbox.
+
+An accepted conditional bundle may authorize automatic progression through exact reversible local work, validation, two repair cycles, and evidence. Technical lifecycle stages and evidence remain distinct, but they do not each create a new Owner permission. Tier 3 product, architecture, protected-data, destructive, protected-branch, production, release, and live decisions remain human pre-action gates.
+
+---
+
 ## Related Documents
 
 - [Engineering Organization Foundation](../engineering-organization/README.md)
@@ -172,6 +180,7 @@ Engineering Organization Evolution
 
 | Version | Description |
 |---------|-------------|
+| 1.3 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.2 | Added EO-13.1 three-pillar portfolio model, Engineering Investment Rule, and Engineering Organization Evolution lifecycle requirement. |
 | 1.1 | Added Engineering Organization governance layer and authority boundary. |
 | 1.0 | Initial Platform operating model. |

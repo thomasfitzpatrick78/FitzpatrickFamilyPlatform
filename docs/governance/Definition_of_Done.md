@@ -1,6 +1,6 @@
 # Definition of Done
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 
 **Status:** Active
 
@@ -81,6 +81,14 @@ Every milestone closeout package must include:
 
 ---
 
+## EO-15.2 Conditional-Bundle Completion
+
+Applicable work is also complete only when the accepted bundle, exact target inventory, risk tiers, validation, generated-evidence disposition, specialist results, one-writer proof, repair count, invalidation status, and per-phase evidence reconcile. Completion requires zero unapproved Tier 3 actions and no unresolved material issue.
+
+A read-only assessment is not required to satisfy implementation, commit, push, release, or conversation-transition criteria that do not apply to it. Passing evidence never widens authority.
+
+---
+
 ## Related Documents
 
 - [Engineering Lifecycle](Engineering_Lifecycle.md)
@@ -95,6 +103,7 @@ Every milestone closeout package must include:
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.4 | Added AI-assisted work completion expectations for session initialization, authority confirmation, completion, and continuity treatment. |
 | 1.3 | Added Engineering Investment Rule, milestone closeout evidence, and Engineering Organization Evolution completion criteria. |
 | 1.2 | Added privileged infrastructure integration completion expectation. |

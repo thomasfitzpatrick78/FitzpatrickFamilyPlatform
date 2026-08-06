@@ -1,6 +1,6 @@
 # Engineering Organization Roadmap
 
-**Document Version:** 3.4
+**Document Version:** 3.5
 
 **Status:** Active
 
@@ -44,6 +44,12 @@ This document defines the roadmap for the Engineering Organization governed capa
 
 ---
 
+## EO-15.2 Assignment Amendment
+
+Upon governed publication, this section supersedes earlier current-state statements that `CANDIDATE-EO-15.2` is unassigned. EO-15.2 is the assigned Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption umbrella. Phase A adopts conditional authority and read-only specialists. Phase B retains the prior passive Goal-Oriented design under later gates. Publication of this traceability does not itself authorize implementation, activation, PLAT-15.1A execution, or live work.
+
+---
+
 ## Related Documents
 
 - [Portfolio Strategy](Portfolio_Strategy.md)
@@ -68,6 +74,7 @@ This document defines the roadmap for the Engineering Organization governed capa
 
 | Version | Description |
 |---------|-------------|
+| 3.5 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 3.4 | Recorded the exact unassigned-candidate Goal-Oriented Parallel Delivery passive-capability work package as accepted for delayed-effect publication after Charlie while preserving absent initiative assignment, unstarted implementation, shared-path serialization, and every later gate. |
 | 3.3 | Published the accepted EO-14.2A synthetic-fixture consumer subject with delayed effect while keeping Charlie implementation unstarted and all provider/live, integration, activation, and implementation-publication gates closed. |
 | 3.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 without opening activation or live-work gates. |

@@ -1,6 +1,6 @@
 # Parallel Workstream Delivery Model
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Active
 
@@ -47,6 +47,19 @@ Architecture Review Return
 
 ---
 
+## EO-15.2 Main-Task and Specialist Model
+
+This section supersedes the one-chat-per-workstream rule for EO-15.2-governed work.
+
+- Use one main Codex task per approved outcome.
+- Keep each workstream or specialist lane inside its own exact authority and scope.
+- Use no more than three concurrent `governed_explorer`, `governed_validator`, or `governed_reviewer` specialists, and spawn them only from a parent turn in live read-only permission mode.
+- Require the main task to collect and reconcile every result and remain the sole shared-checkout writer.
+- Continue automatically inside an accepted conditional bundle until a material decision, invalidation, or genuine external dependency occurs.
+- Serialize shared paths. Any later independent writer requires a dedicated worktree, branch, owner, path lease, and integration order.
+
+---
+
 ## Related Documents
 
 - [AI Role Catalog](AI_Role_Catalog.md)
@@ -61,5 +74,6 @@ Architecture Review Return
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.1 | Added future Workstream Continuity Brief relationship for AI Collaboration Governance. |
 | 1.0 | Initial parallel workstream delivery model. |

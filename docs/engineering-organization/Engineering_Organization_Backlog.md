@@ -1,6 +1,6 @@
 # Engineering Organization Backlog
 
-**Document Version:** 3.4
+**Document Version:** 3.5
 
 **Status:** Active
 
@@ -45,6 +45,17 @@ Backlog items that create new governance shall be promoted only when the practic
 
 ---
 
+## EO-15.2 Backlog Amendment
+
+Upon governed publication, EO-15.2 replaces the unassigned candidate entry with one umbrella initiative:
+
+- Phase A: Risk-Tiered Conditional Authority and Governed Subagent Adoption — exact package prepared; implementation separately gated.
+- Phase B: Passive Goal-Oriented Capability — retained, unimplemented, and separately gated after Phase A evidence.
+
+The prior work package remains historical evidence and transfers no authority.
+
+---
+
 ## Related Documents
 
 - [Engineering Organization Roadmap](Engineering_Organization_Roadmap.md)
@@ -70,6 +81,7 @@ Backlog items that create new governance shall be promoted only when the practic
 
 | Version | Description |
 |---------|-------------|
+| 3.5 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 3.4 | Recorded the exact unassigned-candidate Goal-Oriented Parallel Delivery passive-capability work package as accepted for delayed-effect publication after Charlie without assigning an initiative or authorizing implementation. |
 | 3.3 | Published the accepted EO-14.2A synthetic-fixture consumer subject with delayed effect while retaining unstarted implementation and every later provider/live, integration, activation, and publication gate. |
 | 3.2 | Recorded Architecture Gatekeeper approval and governed publication of EO-15.1 while preserving all later gates. |

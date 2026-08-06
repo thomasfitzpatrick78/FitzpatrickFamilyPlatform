@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "bundle_id": "REPLACE_WITH_UNIQUE_ID",
+  "status": "Proposed",
+  "outcome": {
+    "plain_language_result": "REPLACE",
+    "organizational_or_customer_value": "REPLACE",
+    "acceptance_criteria": ["REPLACE"]
+  },
+  "authority": {
+    "decision_references": [
+      {
+        "artifact": "REPLACE_WITH_REPOSITORY_RELATIVE_DECISION_PATH",
+        "sha256": "REPLACE_WITH_64_LOWERCASE_HEX",
+        "decision_date": "REPLACE_WITH_DATE",
+        "approved_effect": "REPLACE"
+      }
+    ],
+    "authority_gained": ["REPLACE"],
+    "authority_not_gained": ["REPLACE"],
+    "fresh_tier_3_approval": false,
+    "tier_3_approval_evidence": []
+  },
+  "repositories": [
+    {
+      "name": "REPLACE",
+      "required_baseline": "REPLACE_WITH_FULL_COMMIT",
+      "branch": "REPLACE",
+      "tracking_branch": "REPLACE",
+      "live_remote_equality_required": true,
+      "allowed_paths": ["REPLACE"],
+      "excluded_paths": ["REPLACE"]
+    }
+  ],
+  "tiers": {
+    "tier_0_actions": ["read", "search", "analyze"],
+    "tier_1_actions": [],
+    "tier_2_actions": [],
+    "tier_3_actions": []
+  },
+  "publication": {
+    "staging_included": false,
+    "local_commit_included": false,
+    "push_included": false,
+    "draft_pull_request_included": false,
+    "protected_branch_included": false,
+    "merge_included": false,
+    "release_included": false,
+    "tier_2_recovery": []
+  },
+  "ownership": {
+    "main_writer": "REPLACE",
+    "maximum_concurrent_specialists": 3,
+    "specialists": [
+      {"role": "governed_explorer", "mode": "read-only", "lane": "REPLACE"},
+      {"role": "governed_validator", "mode": "read-only", "lane": "REPLACE"},
+      {"role": "governed_reviewer", "mode": "read-only", "lane": "REPLACE"}
+    ],
+    "worktrees": [],
+    "branches": [],
+    "shared_path_leases": []
+  },
+  "validation": {
+    "commands": [],
+    "working_directories": [],
+    "expected_results": [],
+    "generated_evidence": []
+  },
+  "repair_policy": {
+    "maximum_cycles_for_same_failure": 2,
+    "repairable_paths": [],
+    "invariants": [
+      "no new path",
+      "no architecture or public-contract change",
+      "no authority or risk-tier change",
+      "no validation weakening"
+    ]
+  },
+  "evidence": {
+    "per_phase": [],
+    "completion": [],
+    "sanitization": [
+      "no personal name",
+      "no absolute checkout path",
+      "no credential",
+      "no customer or protected value",
+      "no prompt text"
+    ]
+  },
+  "invalidation_triggers": [
+    "baseline drift",
+    "ambiguous pre-existing changes",
+    "out-of-scope or new path",
+    "shared-path collision or second writer",
+    "specialist write or more than three specialists",
+    "protected or customer data",
+    "architecture, public-contract, destructive, production, live, or unapproved publication need",
+    "unclassified generated evidence",
+    "missing acceptance criteria",
+    "third same-failure attempt",
+    "fresh-task recovery failure",
+    "expiry"
+  ],
+  "expiry": "REPLACE_WITH_UTC_TIMESTAMP_OR_COMPLETION_CONDITION",
+  "completion_condition": "REPLACE"
+}

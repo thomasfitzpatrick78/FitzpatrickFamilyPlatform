@@ -1,6 +1,6 @@
 # Development Workflow
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -43,8 +43,17 @@ python3 -m pytest engineering/tests
 
 ---
 
+## EO-15.2 Conditional Workflow
+
+An accepted conditional bundle activates each included phase automatically when its predicates pass. One main writer applies exact targets. Read-only specialists may inspect independent lanes. Validation outputs are preclassified, two repair cycles are permitted on exact repairable paths, and evidence is sealed before material review.
+
+Separate Owner acknowledgment is not required between conforming discovery, application, validation, repair, evidence, or cross-repository technical dependencies. Tier 3 actions remain fresh pre-action decisions.
+
+---
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial Platform development workflow. |

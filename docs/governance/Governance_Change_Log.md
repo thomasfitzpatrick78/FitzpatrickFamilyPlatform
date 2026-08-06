@@ -1,6 +1,6 @@
 # Governance Change Log
 
-**Document Version:** 4.1
+**Document Version:** 4.2
 
 **Status:** Active
 
@@ -76,10 +76,17 @@ Milestone 14 records these governance enhancements:
 
 ---
 
+## EO-15.2 Governance Amendment
+
+EO-15.2 adopts Risk-Tiered Conditional Phase Bundles, one main same-checkout writer, up to three read-only specialists, two bounded repair cycles, automatic continuation inside a valid bundle, generated-evidence preclassification, and material-decision-only Owner cards. Phase B passive Goal-Oriented capability work remains separately gated.
+
+---
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 4.2 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 4.1 | Reconciled published EO-15.1 authority, corrected FFFA acceptance to incomplete and FFFA-owned, and recorded Product Strategy Board selection and Architecture Gatekeeper publication of PLAT-15.1A with implementation Not Started and all later gates closed. |
 | 4.0 | Recorded Milestone 14 closeout and Milestone 15 initialization without modifying the Engineering Lifecycle or promoting candidate governance. |
 | 3.13 | Recorded Architecture Gatekeeper approval and publication of the closed socket-capable transport review with four binding clarifications while preserving every implementation and operational gate. |

@@ -1,6 +1,6 @@
 # AI Collaboration Lifecycle
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -110,6 +110,14 @@ Readiness outcomes must not use a percentage score.
 
 ---
 
+## EO-15.2 Main-Task Lifecycle
+
+The main task performs complete governed initialization once. Each specialist receives a bounded lane envelope and attests to relevant identity, scope, prohibitions, evidence, and stop conditions without repeating full orientation.
+
+Each phase records entry, result, validation, and exit evidence. Passing phases continue automatically. The same failure permits two repair cycles. Drift, conflict, protected data, material change, or a third attempt invalidates the bundle and returns one material Owner card.
+
+---
+
 ## Related Documents
 
 - [AI Collaboration Governance Capability Charter](AI_Collaboration_Governance_Capability_Charter.md)
@@ -125,4 +133,5 @@ Readiness outcomes must not use a percentage score.
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial AI Collaboration Lifecycle specification. |

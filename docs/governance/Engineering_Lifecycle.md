@@ -1,6 +1,6 @@
 # Engineering Lifecycle
 
-**Document Version:** 1.4
+**Document Version:** 1.5
 
 **Status:** Active
 
@@ -156,6 +156,14 @@ The AI Collaboration Lifecycle does not replace this Engineering Lifecycle. It g
 
 ---
 
+## EO-15.2 Lifecycle Overlay
+
+The lifecycle is executed through risk-tiered conditional bundles. Tier 0 observation, exact Tier 1 reversible local delivery, and explicitly bundled Tier 2 non-production work continue automatically while entry and exit predicates pass. Evidence is recorded for every phase without turning every phase into an Owner gate.
+
+Architecture or public-contract deviation, protected data, destructive action, protected/default-branch publication, production, release, deployment, activation, and live work are Tier 3 and require fresh explicit approval. The same failure permits at most two bounded repair cycles before a material decision.
+
+---
+
 ## Related Documents
 
 - [Permanent Project Operating Model](Permanent_Project_Operating_Model.md)
@@ -173,6 +181,7 @@ The AI Collaboration Lifecycle does not replace this Engineering Lifecycle. It g
 
 | Version | Description |
 |---------|-------------|
+| 1.5 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.4 | Added AI Collaboration Lifecycle relationship without replacing the Engineering Lifecycle. |
 | 1.3 | Added EO-13.1 lifecycle stages, Engineering Investment Rule, controlled execution, and Engineering Organization Evolution. |
 | 1.2 | Added privileged infrastructure integration lifecycle requirements. |

@@ -1,6 +1,6 @@
 # Cross-Repository Governance
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Active
 
@@ -39,6 +39,12 @@ Cross-repository coordination is required when:
 
 ---
 
+## EO-15.2 Cross-Repository Adoption
+
+The Platform owns the canonical shared operating policy. Another repository adopts only an exact published title, semantic version, SHA-256, and acceptance state through its own profile, decision, validation, and publication. Platform approval or success never transfers authority or activates another repository. FFFA retains exclusive Finance, customer-data, workbook, validation-output, and release authority.
+
+---
+
 ## Related Documents
 
 - [Portfolio Integration](Portfolio_Integration.md)
@@ -50,4 +56,5 @@ Cross-repository coordination is required when:
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial Platform cross-repository governance. |

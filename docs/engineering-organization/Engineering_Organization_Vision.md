@@ -1,6 +1,6 @@
 # Engineering Organization Vision
 
-**Document Version:** 1.1
+**Document Version:** 1.2
 
 **Status:** Active
 
@@ -44,6 +44,14 @@ The Fitzpatrick Family Financial Assistant is the flagship customer-facing appli
 
 ---
 
+## EO-15.2 Delivery-Leverage Intent
+
+The Engineering Organization owns routine decomposition, sequencing, specialist coordination, validation, bounded repair, evidence, and continuation inside accepted authority. The Owner concentrates on material product, architecture, risk, privacy, publication, production, and value decisions.
+
+Success requires zero continuation-only prompts, materially fewer Owner decisions, fresh-task repository recovery, meaningful delivery advancement, and preserved Tier 3 safety. A coordination exercise without delivery is not success.
+
+---
+
 ## Related Documents
 
 - [Engineering Capability Model](Engineering_Capability_Model.md)
@@ -59,5 +67,6 @@ The Fitzpatrick Family Financial Assistant is the flagship customer-facing appli
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.1 | Aligned vision to EO-13.1 governed capability and three-pillar portfolio language. |
 | 1.0 | Initial Engineering Organization vision. |

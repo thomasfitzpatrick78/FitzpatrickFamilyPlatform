@@ -1,6 +1,6 @@
 # AI Role Catalog
 
-**Document Version:** 2.2
+**Document Version:** 2.3
 
 **Status:** Active
 
@@ -264,6 +264,14 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 ---
 
+## EO-15.2 Specialist Profiles and Main-Task Authority
+
+The Codex Implementation Engineer may exercise routine reversible technical judgment and up to two same-failure repair cycles only inside an accepted conditional bundle. The main task is the accountable integrator and sole shared-checkout writer.
+
+`governed_explorer`, `governed_validator`, and `governed_reviewer` are bounded read-only specialist profiles subordinate to the main task. They run only from parent turns in live read-only permission mode. They do not become independent governance roles, cannot approve or widen authority, and cannot write, publish, or access protected systems. Their assignment and results are evidence only.
+
+---
+
 ## Related Documents
 
 - [Engineering Organization Manifesto](Engineering_Organization_Manifesto.md)
@@ -282,6 +290,7 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 | Version | Description |
 |---------|-------------|
+| 2.3 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 2.2 | Added planned AI Collaboration Steward governance role for EO-14.8B. |
 | 2.1 | Linked planned Execution Agent and Operations Analyst roles to EO-14 governing specifications. |
 | 2.0 | Replaced initial delivery-team catalog with approved governed AI roles, authority boundaries, lifecycle states, and escalation conditions. |

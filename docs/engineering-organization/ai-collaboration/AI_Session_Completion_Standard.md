@@ -1,6 +1,6 @@
 # AI Session Completion Standard
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 
 **Status:** Draft for Architecture Gatekeeper Review
 
@@ -43,6 +43,12 @@ Session completion is not milestone closeout, release closeout, or approval of t
 
 ---
 
+## EO-15.2 Completion Content
+
+Completion also records bundle and phase outcomes, actions by tier, all specialist results and reconciliation, repair-cycle history, consumed and remaining authority, generated-evidence disposition, invalidation state, exact changed paths, per-phase evidence, unresolved material issues, and the next material gate. It must identify whether another fresh task can recover without task history.
+
+---
+
 ## Related Documents
 
 - [AI Collaboration Governance Capability Charter](AI_Collaboration_Governance_Capability_Charter.md)
@@ -58,4 +64,5 @@ Session completion is not milestone closeout, release closeout, or approval of t
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial AI Session Completion Standard. |

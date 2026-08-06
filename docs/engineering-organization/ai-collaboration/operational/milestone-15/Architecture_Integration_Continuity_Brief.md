@@ -2,7 +2,7 @@
 
 **Originating Template:** [Workstream Continuity Brief Template](../../templates/Workstream_Continuity_Brief_Template.md)
 
-**Framework Version:** 1.0
+**Framework Version:** 1.4
 
 **Status:** Active
 
@@ -56,6 +56,14 @@ Publication effectiveness is conditional. Pre-publication lease and application 
 
 ---
 
+## EO-15.2 Continuity Amendment
+
+Upon governed publication, EO-15.2 is the assigned phased umbrella. The prior Goal-Oriented work package and pilot remain unchanged historical Phase B evidence. Phase A exact package preparation is at Architecture Review; implementation and publication remain unauthorized until their separate decisions.
+
+Architecture Integration owns shared-path sequencing. One main writer applies exact targets; specialists remain read-only. FFFA adoption and PLAT-15.1A execution retain separate authority. The next material gate is review of the sealed Phase A package.
+
+---
+
 ## Related Documents
 
 - [Milestone 14 Transition Review](../../../../milestones/Milestone_14/Milestone_14_Transition_Review.md)
@@ -73,6 +81,7 @@ Publication effectiveness is conditional. Pre-publication lease and application 
 
 | Version | Description |
 |---------|-------------|
+| 1.4 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.3 | Serialized the exact Charlie-then-Alpha publication order, recorded Alpha's unassigned-candidate delayed-effect boundary, and preserved every later initiative, implementation, pilot, activation, production, and live-work gate. |
 | 1.2 | Reconciled published EO-15.1 authority, recorded PLAT-15.1A selection and work-package publication, resolved the next Platform package decision, retained Architecture Review and Not Started source state, and preserved all later gates. |
 | 1.1 | Published the Architecture Gatekeeper baseline approval, publication-bound bootstrap authorization, and bounded EO-15.1 authority amendment without beginning implementation. |
