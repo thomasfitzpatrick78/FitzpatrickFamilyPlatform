@@ -53,10 +53,10 @@ This section supersedes the one-chat-per-workstream rule for EO-15.2-governed wo
 
 - Use one main Codex task per approved outcome.
 - Keep each workstream or specialist lane inside its own exact authority and scope.
-- Use no more than three concurrent `governed_explorer`, `governed_validator`, or `governed_reviewer` specialists, and spawn them only from a parent turn in live read-only permission mode.
+- Use no more than three concurrent specialists. They default to read-only.
 - Require the main task to collect and reconcile every result and remain the sole shared-checkout writer.
-- Continue automatically inside an accepted conditional bundle until a material decision, invalidation, or genuine external dependency occurs.
-- Serialize shared paths. Any later independent writer requires a dedicated worktree, branch, owner, path lease, and integration order.
+- Continue automatically inside an accepted Bounded Outcome Envelope until acceptance, a material stop, or a genuine external dependency occurs.
+- Serialize shared paths. An envelope may assign at most one writer specialist in a dedicated worktree and branch with non-overlapping owned roots and main-task integration.
 
 ---
 

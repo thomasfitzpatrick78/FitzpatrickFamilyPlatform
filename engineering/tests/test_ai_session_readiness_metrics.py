@@ -229,4 +229,7 @@ def test_engineering_metrics_cli_remains_successful_with_unknown_evidence(tmp_pa
     assert "# Engineering Metrics" in output
     assert "Status: PASS WITH WARNINGS" in output
     assert "run ./platform-eap ai-session readiness" in output
+    assert not (tmp_path / "reports" / "engineering_metrics").exists()
+    result = cli.main(["engineering", "metrics", "--write-report"])
+    assert result == 0
     assert (tmp_path / "reports" / "engineering_metrics" / "engineering_metrics_report.json").is_file()

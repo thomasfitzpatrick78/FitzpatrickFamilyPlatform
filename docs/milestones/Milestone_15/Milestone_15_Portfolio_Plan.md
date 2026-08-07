@@ -152,7 +152,9 @@ Upon governed publication, this section is the current lifecycle statement for t
 - The prior pilot is read-only coordination evidence only and is not delivery success.
 - The first applied pilot after Phase A publication must drive meaningful PLAT-15.1A delivery recovery under separate exact authority.
 
-This amendment grants no repository implementation, publication, Phase B, protected/customer-data, PLAT-15.1A Gate 2+, VM/Linux, production, release, activation, or live-work authority.
+The later approved bounded-outcome amendment activates Phase B repository capability and its exact 30-path publication contract. It governs accepted results through material-decision-only stops while preserving the Phase A record. The same Owner outcome separately authorizes PLAT-15.1A completion under Decision 111 and the approved offline UTM Linux environment. It grants no customer data, deployment, activation, release, production, destructive action, or live work.
+
+On publication, routine implementation, diagnosis, justified repair, validation, deterministic evidence, staging, commit, push, fetch, and equality proof cease to be separate Owner gates when included in an accepted outcome. Architecture, security, customer-data boundary, cost, production scope, required tools, public contracts or protected/live scope, and approved-outcome changes remain material decisions.
 
 ---
 

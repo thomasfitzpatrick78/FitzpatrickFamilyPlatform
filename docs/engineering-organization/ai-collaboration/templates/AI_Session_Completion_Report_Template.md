@@ -42,6 +42,19 @@ TBD.
 
 TBD.
 
+## Bounded-Outcome Evidence
+
+| Field | Value |
+|-------|-------|
+| Acceptance criteria | TBD |
+| Material-condition assessments | TBD |
+| Internal root-cause reassessments | TBD |
+| Scope-delta audit | TBD |
+| Generated output paths and hashes | TBD |
+| Child-subject consumption | TBD |
+| Included publication and remote equality | TBD |
+| Owner return | One plain-language outcome; technical evidence second. |
+
 ---
 
 ## Unresolved Decisions
@@ -106,4 +119,5 @@ TBD.
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added bounded-outcome completion evidence and one-return requirement. |
 | 1.0 | Initial reusable AI Session Completion Report template. |

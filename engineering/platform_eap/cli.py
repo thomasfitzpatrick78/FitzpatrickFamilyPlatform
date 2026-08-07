@@ -155,6 +155,21 @@ from engineering.platform_eap.privileged_proxy_source import (
     supply_chain_summary as privileged_proxy_source_supply_chain,
     validate_source as validate_privileged_proxy_source,
 )
+from engineering.platform_eap.outcome_envelope import validate_envelope
+from engineering.platform_eap.outcome_envelope_io import (
+    OutcomeEnvelopeDataError,
+    envelope_sha256,
+    load_outcome_envelope,
+)
+from engineering.platform_eap.governance_state import (
+    validate_authority_index,
+    validate_delivery_state,
+)
+from engineering.platform_eap.governance_state_io import (
+    GovernanceStateDataError,
+    governance_state_sha256,
+    load_governance_state,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 REPORT_ROOT = ROOT / "reports" / "engineering"
@@ -1597,6 +1612,58 @@ def privileged_proxy_cli(argv: list[str]) -> int:
     return 2
 
 
+def outcome_envelope_cli(argv: list[str]) -> int:
+    usage = "Usage: platform-eap outcome-envelope <validate|digest> <repository-relative-path>"
+    if len(argv) != 2 or argv[0] not in {"validate", "digest"}:
+        print(usage)
+        return 2
+    try:
+        envelope = load_outcome_envelope(argv[1], ROOT)
+        if argv[0] == "digest":
+            print(envelope_sha256(envelope))
+            return 0
+        findings = validate_envelope(envelope)
+    except OutcomeEnvelopeDataError as exc:
+        print("# Bounded Outcome Envelope Validation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 2
+    print("# Bounded Outcome Envelope Validation")
+    print(f"Status: {'FAIL' if findings else 'PASS'}")
+    print(f"Errors: {len(findings)}")
+    for finding in findings:
+        reference = f" ({finding.path})" if finding.path else ""
+        print(f"ERROR: {finding.code}: {finding.message}{reference}")
+    return 1 if findings else 0
+
+
+def governance_state_cli(argv: list[str]) -> int:
+    usage = "Usage: platform-eap governance-state <authority-index|delivery-state> <validate|digest> <repository-relative-path>"
+    if len(argv) != 3 or argv[0] not in {"authority-index", "delivery-state"} or argv[1] not in {"validate", "digest"}:
+        print(usage)
+        return 2
+    try:
+        value = load_governance_state(argv[2], ROOT)
+        if argv[1] == "digest":
+            print(governance_state_sha256(value))
+            return 0
+        validator = validate_authority_index if argv[0] == "authority-index" else validate_delivery_state
+        findings = validator(value)
+    except GovernanceStateDataError as exc:
+        print("# Governance State Validation")
+        print("Status: FAIL")
+        print(f"ERROR: {exc}")
+        return 2
+    print("# Governance State Validation")
+    print(f"Interface: {argv[0]}")
+    print(f"Status: {'FAIL' if findings else 'PASS'}")
+    print(f"Errors: {len(findings)}")
+    for finding in findings:
+        reference = f" ({finding.path})" if finding.path else ""
+        print(f"ERROR: {finding.code}: {finding.message}{reference}")
+    return 1 if findings else 0
+
+
 def _print_deployment_findings(title: str, findings: tuple[object, ...]) -> int:
     errors = [finding for finding in findings if getattr(finding, "severity", None) == DeploymentFindingSeverity.ERROR]
     warnings = [finding for finding in findings if getattr(finding, "severity", None) == DeploymentFindingSeverity.WARNING]
@@ -1669,9 +1736,10 @@ def now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def run_report(name: str, builder: Callable[[], Report]) -> int:
+def run_report(name: str, builder: Callable[[], Report], *, persist: bool = False) -> int:
     report = builder()
-    write_report(name, report)
+    if persist:
+        write_report(name, report)
     print(f"# {report.capability}")
     print(f"Status: {report.status}")
     print(report.summary)
@@ -1779,16 +1847,20 @@ def transition_review_report(relative: str) -> Report:
 
 def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
+    persist_report = False
+    if argv and argv[-1] == "--write-report":
+        persist_report = True
+        argv = argv[:-1]
     if argv == ["repository", "validate"]:
-        return run_report("repository", repository_validate)
+        return run_report("repository", repository_validate, persist=persist_report)
     if argv == ["governance", "validate"]:
-        return run_report("governance", governance_validate)
+        return run_report("governance", governance_validate, persist=persist_report)
     if argv == ["release", "readiness"]:
-        return run_report("release", release_readiness)
+        return run_report("release", release_readiness, persist=persist_report)
     if argv == ["milestone", "closeout"]:
-        return run_report("milestone_closeout", milestone_closeout)
+        return run_report("milestone_closeout", milestone_closeout, persist=persist_report)
     if argv == ["engineering", "metrics"]:
-        return run_report("engineering_metrics", engineering_metrics)
+        return run_report("engineering_metrics", engineering_metrics, persist=persist_report)
     if argv == ["ai-session", "readiness"]:
         return ai_session_readiness()
     if argv[:2] == ["ai-session", "baseline"]:
@@ -1801,7 +1873,7 @@ def main(argv: list[str] | None = None) -> int:
             return 2
         return ai_session_baseline(machine=machine, work_package_path=work_package_path)
     if len(argv) == 3 and argv[:2] == ["milestone", "transition-review"]:
-        return run_report("transition_review", lambda: transition_review_report(argv[2]))
+        return run_report("transition_review", lambda: transition_review_report(argv[2]), persist=persist_report)
     if argv == ["capabilities"]:
         return capabilities()
     if argv and argv[0] == "registry":
@@ -1818,7 +1890,11 @@ def main(argv: list[str] | None = None) -> int:
         return proxy_cli(argv[1:])
     if argv and argv[0] == "privileged-proxy":
         return privileged_proxy_cli(argv[1:])
+    if argv and argv[0] == "outcome-envelope":
+        return outcome_envelope_cli(argv[1:])
+    if argv and argv[0] == "governance-state":
+        return governance_state_cli(argv[1:])
     if argv and argv[0] == "deployment":
         return deployment_cli(argv[1:])
-    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|milestone transition-review <path>|engineering metrics|ai-session baseline [--work-package <path>] [--json]|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy|privileged-proxy|deployment>")
+    print("Usage: platform-eap <repository validate|governance validate|release readiness|milestone closeout|milestone transition-review <path>|engineering metrics|ai-session baseline [--work-package <path>] [--json]|ai-session readiness|capabilities|registry|execution|automation|container-health|provider|proxy|privileged-proxy|outcome-envelope|governance-state|deployment>")
     return 2

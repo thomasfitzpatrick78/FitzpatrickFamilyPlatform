@@ -1,0 +1,150 @@
+{
+  "action_classes": [
+    "read",
+    "implement",
+    "diagnose",
+    "repair",
+    "validate",
+    "generate_evidence",
+    "stage",
+    "commit",
+    "publish",
+    "fetch_and_prove_equality"
+  ],
+  "authority": {
+    "authority_gained": [
+      "Implement and publish Platform bounded-outcome governance, then continue to the separately validated FFFA implementation without continuation-only Owner prompts.",
+      "Make routine design and repair decisions inside the approved architecture and outcome."
+    ],
+    "authority_not_gained": [
+      "No merge, release, production, deployment, customer-data access, destructive action, or live work.",
+      "No authority to overwrite or discard preserved PLAT-15.1A work."
+    ],
+    "decision_references": [
+      {
+        "approved_effect": "Approve the Cross-Repository Bounded-Outcome Governance Consolidation implementation and protected publication sequence.",
+        "artifact": "docs/milestones/Milestone_15/EO_15_2_Cross_Repository_Bounded_Outcome_Governance_Consolidation_Acceptance_Record.md",
+        "decision_date": "2026-08-07T00:00:00Z",
+        "sha256": "b60dca418f3a0b05fd51192e3701423fce334439f50925cd95fff81509cb6bee"
+      }
+    ]
+  },
+  "completion": {
+    "condition": "Platform governance validations pass, publication is complete, live remote equality is proved, and the FFFA handoff state is durable.",
+    "owner_return": "one_plain_language_outcome",
+    "publication_evidence_required": true
+  },
+  "envelope_id": "eo-15.2-platform-governance-consolidation",
+  "evidence": {
+    "output_classes": [
+      "no_repository_write",
+      "isolated_temporary_output"
+    ],
+    "report_roots": [],
+    "sanitization": [
+      "no_personal_name",
+      "no_absolute_checkout_path",
+      "no_credential",
+      "no_customer_or_protected_value",
+      "no_prompt_text"
+    ]
+  },
+  "expiry_policy": {
+    "automatic_revalidation": true,
+    "expires_at": "2027-08-07T23:59:59Z",
+    "hard_window_reasons": []
+  },
+  "material_stop_conditions": [
+    "architecture",
+    "public_contract",
+    "security",
+    "privacy",
+    "customer_data_boundary",
+    "cost",
+    "production_scope",
+    "release",
+    "destructive_action",
+    "required_tools",
+    "approved_outcome"
+  ],
+  "outcome": {
+    "acceptance_criteria": [
+      "Exactly one governance model is active for new Platform work.",
+      "A fresh task recovers authority, current state, and next action without task history.",
+      "Routine repairs and included publication steps require no continuation prompt.",
+      "One isolated writer lane is permitted only with a dedicated worktree and non-overlapping owned roots.",
+      "All focused and repository governance validations pass without tracked volatile report changes.",
+      "Protected Platform publication and live remote equality are proved."
+    ],
+    "organizational_or_customer_value": "Increase engineering throughput and reduce Owner micro-decisions while preserving architecture, safety, and durable continuity.",
+    "plain_language_result": "Replace competing phase-by-phase governance with one repository-driven bounded outcome for new work."
+  },
+  "ownership": {
+    "main_writer": "Codex main integrator",
+    "main_writer_active_roots": [
+      "AGENTS.md",
+      "docs/engineering-organization",
+      "docs/governance",
+      "docs/milestones/Milestone_15",
+      "docs/portfolio",
+      "engineering/platform_eap",
+      "engineering/tests"
+    ],
+    "maximum_concurrent_specialists": 3,
+    "specialists_read_only": true,
+    "writer_worktrees": []
+  },
+  "repair_policy": {
+    "blind_retry_prohibited": true,
+    "child_subjects_replay_protected": true,
+    "same_failure_reassessment_after": 2,
+    "scope_delta_audit_required": true
+  },
+  "repositories": [
+    {
+      "branch": "main",
+      "excluded_roots": [
+        ".git",
+        "engineering/privileged_proxy",
+        "reports"
+      ],
+      "live_remote_equality_required": true,
+      "name": "FitzpatrickFamilyPlatform",
+      "owned_roots": [
+        "AGENTS.md",
+        "docs/engineering-organization",
+        "docs/governance",
+        "docs/milestones/Milestone_15",
+        "docs/portfolio",
+        "engineering/platform_eap",
+        "engineering/tests"
+      ],
+      "required_baseline": "92f4bf8b935853e6c0bc107d8dc82fbc4d41dab3",
+      "tracking_branch": "origin/main"
+    }
+  ],
+  "schema_version": "2.0",
+  "status": "Accepted",
+  "tier_3_checkpoints": [
+    {
+      "action_class": "publish",
+      "checkpoint_id": "platform-protected-publication",
+      "decision_sha256": "b60dca418f3a0b05fd51192e3701423fce334439f50925cd95fff81509cb6bee",
+      "expires_at": "2027-08-07T23:59:59Z",
+      "subject": "Validated Platform governance commit published to the protected default branch and proved equal to the live remote."
+    }
+  ],
+  "validation": {
+    "acceptance_evidence": [
+      "Focused schema and governance tests",
+      "Repository governance validation",
+      "Fresh-task recovery and worktree-isolation checks",
+      "Commit, push, fetch, and live remote equality"
+    ],
+    "commands": [
+      "PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -p no:cacheprovider engineering/tests/test_outcome_envelope.py engineering/tests/test_governance_state.py",
+      "./platform-eap governance validate"
+    ],
+    "fresh_task_recovery_required": true
+  }
+}

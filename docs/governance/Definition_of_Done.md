@@ -81,11 +81,11 @@ Every milestone closeout package must include:
 
 ---
 
-## EO-15.2 Conditional-Bundle Completion
+## Bounded-Outcome Completion
 
-Applicable work is also complete only when the accepted bundle, exact target inventory, risk tiers, validation, generated-evidence disposition, specialist results, one-writer proof, repair count, invalidation status, and per-phase evidence reconcile. Completion requires zero unapproved Tier 3 actions and no unresolved material issue.
+Applicable new work is complete only when the accepted outcome criteria pass; changed paths and hashes, validation, evidence disposition, specialist reconciliation, writer-worktree isolation, repair reassessments, publication evidence, and Delivery State reconcile. Completion requires no unresolved material stop and no excluded action.
 
-A read-only assessment is not required to satisfy implementation, commit, push, release, or conversation-transition criteria that do not apply to it. Passing evidence never widens authority.
+A read-only assessment is not required to satisfy actions that do not apply to it. Passing evidence never widens authority. Historical Phase A work retains its exact original completion contract.
 
 ---
 

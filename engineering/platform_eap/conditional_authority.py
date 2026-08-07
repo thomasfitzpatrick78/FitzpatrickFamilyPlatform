@@ -9,6 +9,8 @@ from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Any
 
+from engineering.platform_eap.outcome_envelope import OutcomeFinding, validate_envelope
+
 
 TOP_LEVEL_KEYS = {
     "schema_version", "bundle_id", "status", "outcome", "authority",
@@ -311,6 +313,12 @@ def validate_bundle(bundle: Any) -> list[str]:
     _rfc3339_utc(bundle.get("expiry"), "expiry", errors)
     _nonempty_string(bundle.get("completion_condition"), "completion_condition", errors)
     return errors
+
+
+def validate_phase_b_outcome_envelope(envelope: Any) -> tuple[OutcomeFinding, ...]:
+    """Validate Phase B without changing Phase A bundle interpretation."""
+
+    return validate_envelope(envelope)
 
 
 def load_repository_bundle(path_text: str, repository_root: Path) -> Any:

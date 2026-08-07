@@ -43,9 +43,9 @@ Session completion is not milestone closeout, release closeout, or approval of t
 
 ---
 
-## EO-15.2 Completion Content
+## Historical EO-15.2 Phase A Completion Content
 
-Completion also records bundle and phase outcomes, actions by tier, all specialist results and reconciliation, repair-cycle history, consumed and remaining authority, generated-evidence disposition, invalidation state, exact changed paths, per-phase evidence, unresolved material issues, and the next material gate. It must identify whether another fresh task can recover without task history.
+For already-bound Phase A work, completion retains the package's exact record. New work records current state in DeliveryState v1 rather than creating duplicative initialization, completion, continuity, and goal snapshots.
 
 ---
 
@@ -60,9 +60,16 @@ Completion also records bundle and phase outcomes, actions by tier, all speciali
 
 ---
 
+## Bounded-Outcome Completion
+
+Completion records the acceptance criteria, all material-condition assessments, internal root-cause reassessments, scope deltas, deterministic outputs and hashes, consumed child subjects, exact changed paths, validation, publication evidence, and local/tracking/live equality. It returns one plain-language result to the Owner with technical evidence second.
+
+A final architecture-conformance report is evidence. It becomes a new Owner decision only when a material deviation is found. Routine passing checks, repairs, staging, commit, push, fetch, and equality proof do not create continuation prompts when included in the envelope.
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added bounded-outcome completion, scope-delta, child-subject, publication, and one-return evidence. |
 | 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial AI Session Completion Standard. |

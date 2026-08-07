@@ -150,13 +150,13 @@ Append only when something changed after the latest governed snapshot:
 
 The Owner does not need to paste a chat transcript, path inventory, test history, hash ledger, or technical work plan when those facts already belong in governed continuity.
 
-### Interim pilot form
+### Retired interim pilot form
 
-Until the repository-governed goal and snapshot are published, use this temporary form:
+The following form is historical evidence and must not be used for new work:
 
 > Continue the active governed engineering outcome for `<repository identity>` using the latest atomically sealed pilot decision and acceptance artifacts in `<external coordination location>`. First verify their exact hashes and independently revalidate the governed repository. Treat those external artifacts as temporary evidence only to the extent explicitly accepted; repository authority and each workstream's exact decisions remain controlling. Use the persistent Codex goal as coordination state, not authority. Explicitly delegate independently eligible workstreams to Codex subagents or parallel agents, preserve serialized shared-path writes, use just-in-time dependency checks and same-turn replanning, keep the main task focused on integrated evidence and decisions, and stop at the smallest material human gate with the seven-field decision card. Do not ask me to reconstruct prior chats. This prompt grants no additional authority.
 
-The interim form is a bridge, not the target operating model. It expires when the governed goal, snapshot, decision ledger, and continuity bundle are published and recoverable through normal session initialization.
+The interim form expired when AuthorityIndex v1, BoundedOutcomeEnvelope v2, and DeliveryState v1 became recoverable through root initialization.
 
 ## Generated-Evidence Hygiene
 

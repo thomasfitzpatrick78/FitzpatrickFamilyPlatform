@@ -266,9 +266,9 @@ The catalog separates architecture decisions, product decisions, repository impl
 
 ## EO-15.2 Specialist Profiles and Main-Task Authority
 
-The Codex Implementation Engineer may exercise routine reversible technical judgment and up to two same-failure repair cycles only inside an accepted conditional bundle. The main task is the accountable integrator and sole shared-checkout writer.
+The Codex Implementation Engineer may exercise routine technical judgment inside an accepted Bounded Outcome Envelope. After two failures of the same kind it performs an internal root-cause reassessment, prohibits an unchanged retry, and may continue a newly justified in-boundary repair. The main task is the accountable integrator and sole shared-checkout writer.
 
-`governed_explorer`, `governed_validator`, and `governed_reviewer` are bounded read-only specialist profiles subordinate to the main task. They run only from parent turns in live read-only permission mode. They do not become independent governance roles, cannot approve or widen authority, and cannot write, publish, or access protected systems. Their assignment and results are evidence only.
+`governed_explorer`, `governed_validator`, and `governed_reviewer` remain bounded specialist profiles subordinate to the main task. Specialists default to read-only. One accepted lane may write only in its dedicated worktree, branch, and non-overlapping owned roots; it cannot publish. Specialists do not become independent governance roles, cannot approve or widen authority, and cannot access protected systems. Their assignment and results are evidence only.
 
 ---
 

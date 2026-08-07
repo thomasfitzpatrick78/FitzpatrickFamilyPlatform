@@ -34,7 +34,7 @@ AI roles may produce analysis, implementation, documentation, and evidence. Huma
 
 ## EO-15.2 Human Decision Boundary
 
-The Owner, Product Strategy Board, and Architecture Gatekeeper decide material outcome, priority, architecture, exception, protected-data, destructive, publication, production, release, and risk matters. They are not required to approve routine task decomposition, safe local sequencing, each validation, each specialist result, conforming bounded repair, evidence capture, or continuation inside an accepted conditional bundle.
+The Owner, Product Strategy Board, and Architecture Gatekeeper decide material outcome, priority, architecture, public-contract, security, privacy, customer-data, cost, production, release, destructive-action, required-tool, and residual-risk changes. They are not required to approve routine task decomposition, safe local sequencing, each validation, each specialist result, conforming repair, evidence capture, or included commit and publication steps inside an accepted bounded outcome. When the Owner performs multiple roles, one material decision card covers all perspectives.
 
 ---
 

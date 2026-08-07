@@ -1,10 +1,12 @@
 # EO-15.2 Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption — Phase A Work Package
 
-**Document Version:** 1.0
-**Status:** Prepared Target; Implementation Not Authorized
+**Document Version:** 3.0
+**Status:** Historical Phase A Package; Cross-Repository Consolidation Supersedes Its Prospective Rules
 **Milestone:** Milestone 15
 **Initiative:** EO-15.2
-**Phase:** A
+**Phase:** B, preserving historical Phase A behavior
+
+> Historical manifests, evidence, and Phase A interpretations remain unchanged. For new work, the accepted cross-repository consolidation record, Bounded Outcome Envelope v2, Authority Index, and Delivery State control.
 
 ## Outcome
 
@@ -29,11 +31,17 @@ Phase A includes:
 - a separate FFFA thin adoption package; and
 - prepared evidence and future implementation authority without continuation microgates.
 
-Phase A excludes the passive Goal-Oriented runtime/schema/CLI implementation retained for Phase B.
+Phase A remains historical. The approved Phase B amendment implements a bounded-outcome schema, validator, CLI, fixtures, tests, governance reconciliation, and current-state evidence without adding runtime dispatch, scheduling, persistence, autonomous model invocation, deployment, production, or live work.
 
-## Exact Platform Target Inventory
+## Phase B Bounded-Outcome Amendment
 
-Only paths listed by the separately accepted Platform manifest may change. The inventory includes:
+Owner approval of Option A, proposal SHA-256 `fa4168f58d9d2997a4538568a7656542f323e4cadd1dbdde08b2f3c1d9b4d44c`, authorizes the exact 30-path implementation and publication contract. It makes the approved outcome the authority unit and supersedes current-state rules that made routine technical continuation, a third justified repair, deterministic evidence, expiry revalidation, lifecycle transitions, and mechanical publication separate Owner gates.
+
+The implementation preserves historical Phase A package interpretation, one accountable writer, read-only specialists, unknown-change safeguards, real supported-Linux evidence, customer/protected-data separation, installer signature enforcement, and retained material stops. It does not authorize global Codex configuration, repository `.codex` changes, historical-record rewriting, customer data, deployment, activation, release, production, destructive action, or live work.
+
+## Historical Exact Platform Target Inventory
+
+The following inventory is retained only to interpret its earlier package. It is not an advance-file-list requirement for new bounded outcomes.
 
 ### New targets
 
@@ -133,9 +141,9 @@ The exact implementation package must run:
 
 ## Stop Conditions
 
-Stop on baseline or authority drift, ambiguous existing changes, an unlisted path, a specialist write, a second same-checkout writer, more than three specialists, third repair cycle, protected/customer data, unclassified generated evidence, architecture/public-contract change, destructive/live/production need, PLAT-15.1A protected action need, validation failure after repair, or publication without exact authority.
+Stop for the Owner on ambiguous or user-owned changes, authority or ownership conflict, or a material change to architecture, security, customer-data boundary, cost, production scope, required tools, public contract or protected/live scope, or the approved outcome. Two failures of the same kind trigger internal reassessment and prohibit an unchanged retry; attempt count alone is not an Owner gate. Deterministic outputs inside approved report roots and included publication phases are evidence, not separate decisions.
 
-## Definition of Done for Architecture Review
+## Definition of Done for Phase B Publication
 
 - Separate Platform and FFFA targets and manifests are complete.
 - The parent manifest binds both without transferring authority.
@@ -144,4 +152,7 @@ Stop on baseline or authority drift, ambiguous existing changes, an unlisted pat
 - Static checks pass.
 - The Option A supersession and Phase B boundary are explicit.
 - No governed repository or global configuration was changed during preparation.
-- One Architecture Gatekeeper decision subject is sealed last.
+- The exact 30 governance paths are the only governance paths staged.
+- Phase A tests and interpretation remain unchanged; Phase B fixtures pass.
+- Full Platform and PLAT-15.1A validation passes, including real supported-Linux evidence where required.
+- One governance commit and protected publication are proved equal locally, in tracking state, and on the live remote.

@@ -46,6 +46,10 @@ This template is not an operational instance until copied into an approved works
 | Parallel workstreams and dependencies reconciled | TBD | TBD |
 | Current lifecycle stage declared | TBD | TBD |
 | Contradictions reconciled or escalated | TBD | TBD |
+| Bounded-outcome envelope and decision hashes, when applicable | TBD | TBD |
+| Owned roots, excluded roots, action classes, and protected checkpoints | TBD | TBD |
+| Expiry revalidation and child-lease state | TBD | TBD |
+| Material stop conditions and current assessment | TBD | TBD |
 
 ---
 
@@ -85,4 +89,5 @@ TBD.
 
 | Version | Description |
 |---------|-------------|
+| 1.1 | Added Phase B bounded-outcome, scope, expiry, child-lease, and material-stop initialization fields. |
 | 1.0 | Initial reusable AI Session Initialization Record template. |

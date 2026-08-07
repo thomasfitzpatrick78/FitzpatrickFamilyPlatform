@@ -1,5 +1,7 @@
 # Material Owner Decision Card
 
+Use this card only when an accepted outcome encounters a material architecture, public-contract, security, privacy, customer-data, cost, production, release, destructive-action, required-tool, or approved-outcome change. Do not use it for routine design, diagnosis, repair, checks, evidence, staging, commit, push, fetch, or equality.
+
 **Decision:** `<one plain sentence>`
 
 ## Why It Matters
@@ -9,6 +11,8 @@
 ## Recommendation
 
 `<recommended option first and why>`
+
+This single card combines the Product Board view of value and priority with the Architecture Gatekeeper view of architecture, maintainability, quality, and risk when the Owner performs both roles.
 
 ## Options
 

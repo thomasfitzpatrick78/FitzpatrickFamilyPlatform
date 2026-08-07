@@ -7,6 +7,11 @@ from enum import Enum
 from pathlib import Path, PurePosixPath
 from typing import Sequence
 
+from engineering.platform_eap.outcome_envelope import (
+    ContinuationAssessment,
+    assess_continuation,
+)
+
 
 MODEL_VERSION = "eo-14.1a-v1"
 
@@ -554,3 +559,20 @@ def validate_completion_package(
     if not any(finding.severity == FindingSeverity.ERROR for finding in findings):
         findings.append(_finding(FindingSeverity.INFO, "completion.valid", "Completion package is valid and does not authorize its recommended next gate.", "completion"))
     return findings
+
+
+def evaluate_bounded_outcome_continuation(
+    *,
+    acceptance_complete: bool,
+    material_changes: Sequence[str] = (),
+    same_failure_count: int = 0,
+    correction_changed: bool = True,
+) -> ContinuationAssessment:
+    """Apply the Phase B material-decision rule to an execution checkpoint."""
+
+    return assess_continuation(
+        acceptance_complete=acceptance_complete,
+        material_changes=material_changes,
+        same_failure_count=same_failure_count,
+        correction_changed=correction_changed,
+    )

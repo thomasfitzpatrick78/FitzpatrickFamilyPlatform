@@ -1,0 +1,113 @@
+{
+  "action_classes": [
+    "read",
+    "implement",
+    "diagnose",
+    "repair",
+    "validate",
+    "generate_evidence"
+  ],
+  "authority": {
+    "authority_gained": [
+      "Bounded engineering may continue through acceptance without continuation-only Owner prompts."
+    ],
+    "authority_not_gained": [
+      "No customer data, production, destructive, deployment, release, or live-work authority is implied."
+    ],
+    "decision_references": [
+      {
+        "approved_effect": "Approve the exact outcome and material boundaries.",
+        "artifact": "docs/path/to/approved-decision.md",
+        "decision_date": "2030-01-01T00:00:00Z",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ]
+  },
+  "completion": {
+    "condition": "Every acceptance criterion passes and any included publication is proved equal to the live remote.",
+    "owner_return": "one_plain_language_outcome",
+    "publication_evidence_required": false
+  },
+  "envelope_id": "replace-with-approved-outcome-id",
+  "evidence": {
+    "output_classes": [
+      "no_repository_write",
+      "isolated_temporary_output"
+    ],
+    "report_roots": [],
+    "sanitization": [
+      "no_personal_name",
+      "no_absolute_checkout_path",
+      "no_credential",
+      "no_customer_or_protected_value",
+      "no_prompt_text"
+    ]
+  },
+  "expiry_policy": {
+    "automatic_revalidation": true,
+    "expires_at": "2030-01-02T00:00:00Z",
+    "hard_window_reasons": []
+  },
+  "material_stop_conditions": [
+    "architecture",
+    "public_contract",
+    "security",
+    "privacy",
+    "customer_data_boundary",
+    "cost",
+    "production_scope",
+    "release",
+    "destructive_action",
+    "required_tools",
+    "approved_outcome"
+  ],
+  "outcome": {
+    "acceptance_criteria": [
+      "Replace with an objective and verifiable result."
+    ],
+    "organizational_or_customer_value": "Replace with the value delivered.",
+    "plain_language_result": "Replace with the approved result."
+  },
+  "ownership": {
+    "main_writer": "one accountable main task",
+    "main_writer_active_roots": [
+      "docs/approved-workstream"
+    ],
+    "maximum_concurrent_specialists": 3,
+    "specialists_read_only": true,
+    "writer_worktrees": []
+  },
+  "repair_policy": {
+    "blind_retry_prohibited": true,
+    "child_subjects_replay_protected": true,
+    "same_failure_reassessment_after": 2,
+    "scope_delta_audit_required": true
+  },
+  "repositories": [
+    {
+      "branch": "main",
+      "excluded_roots": [
+        "customer-data"
+      ],
+      "live_remote_equality_required": true,
+      "name": "replace-with-repository",
+      "owned_roots": [
+        "docs/approved-workstream"
+      ],
+      "required_baseline": "0000000000000000000000000000000000000000",
+      "tracking_branch": "origin/main"
+    }
+  ],
+  "schema_version": "2.0",
+  "status": "Accepted",
+  "tier_3_checkpoints": [],
+  "validation": {
+    "acceptance_evidence": [
+      "Record exact commands, results, paths, and hashes after execution."
+    ],
+    "commands": [
+      "Replace with the governed validation command."
+    ],
+    "fresh_task_recovery_required": true
+  }
+}

@@ -78,7 +78,9 @@ The Engineering Organization is itself improved through measured capability evol
 
 ---
 
-## EO-15.2 Risk-Tiered Delivery Principles
+## Historical EO-15.2 Phase A Risk-Tiered Delivery Principles
+
+These clauses interpret already-bound Phase A packages only. They are superseded prospectively by the Bounded-Outcome Principles below.
 
 - Preserve distinct evidence for every lifecycle phase without requiring a separate Owner decision when outcome, scope, risk, authority, and intended effect remain unchanged.
 - Continue automatically through accepted Tier 0 and Tier 1 work and explicitly bundled Tier 2 work.
@@ -98,9 +100,20 @@ The Engineering Organization is itself improved through measured capability evol
 
 ---
 
+## Bounded-Outcome Principles
+
+- Govern the approved result and its material boundaries, not every routine technical step.
+- Continue automatically inside a valid envelope; never ask the Owner merely to continue.
+- Escalate material changes, unknown ownership, conflicts, protected data, or unapproved live impact—not attempt count alone.
+- Reassess root cause after repeated failure and prohibit unchanged blind retries.
+- Treat deterministic reports and one-use child subjects as governed evidence classes, not new authority.
+- Keep one accountable main integrator and shared-checkout writer. Permit at most one additional writer only in an accepted dedicated worktree with non-overlapping owned roots, and preserve all user-owned changes.
+- Present Owner decisions in plain language with genuine evaluated options only when a material choice exists.
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 4.3 | Added bounded-outcome and material-decision-only engineering principles. |
 | 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial governed engineering principles. |

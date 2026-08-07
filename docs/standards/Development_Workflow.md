@@ -41,13 +41,17 @@ python3 -m pytest engineering/tests
 ./platform-eap capabilities
 ```
 
+Validation reports to the terminal by default and does not change tracked report files. Add `--write-report` only when a milestone, release, or accepted Bounded Outcome Envelope explicitly requires a durable snapshot.
+
 ---
 
-## EO-15.2 Conditional Workflow
+## Historical EO-15.2 Phase A Conditional Workflow
 
-An accepted conditional bundle activates each included phase automatically when its predicates pass. One main writer applies exact targets. Read-only specialists may inspect independent lanes. Validation outputs are preclassified, two repair cycles are permitted on exact repairable paths, and evidence is sealed before material review.
+This workflow remains only for already-bound Phase A packages.
 
-Separate Owner acknowledgment is not required between conforming discovery, application, validation, repair, evidence, or cross-repository technical dependencies. Tier 3 actions remain fresh pre-action decisions.
+## Bounded-Outcome Workflow for New Work
+
+Read the Authority Index, accepted Bounded Outcome Envelope, and Delivery State. Continue through included implementation, diagnosis, newly justified repair, validation, evidence, commit, publication, fetch, and equality without continuation-only prompts. Stop only for a governed material boundary change, unknown ownership, conflict, or protected information.
 
 ---
 

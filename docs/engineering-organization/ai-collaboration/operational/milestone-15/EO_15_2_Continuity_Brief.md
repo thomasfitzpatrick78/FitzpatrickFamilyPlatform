@@ -1,29 +1,31 @@
 # EO-15.2 Continuity Brief
 
-**Document Version:** 1.0
-**Status:** Prepared Target; Not Active Until Governed Publication
+**Document Version:** 2.1
+**Status:** Historical Continuity Snapshot; Superseded by AuthorityIndex v1 and DeliveryState v1
+
+> Do not use this snapshot as current-state authority. Read `EO_15_2_Authority_Index.json`, the referenced Bounded Outcome Envelope, and `EO_15_2_Delivery_State.json`.
 
 | Field | Current target state |
 |---|---|
 | Initiative | EO-15.2 — Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption |
-| Phase | A — conditional authority and read-only specialist adoption |
+| Phase | B — bounded-outcome authority, preserving historical Phase A bundles |
 | Outcome | Reduce Owner microdecisions and increase delivery throughput without weakening material safety gates. |
-| Lifecycle | Exact package prepared; implementation not authorized. |
-| Authority | Version 2 and Option A decisions authorize package preparation only. |
+| Lifecycle | Exact 30-path Option A repository implementation and publication authorized. |
+| Authority | Owner-approved proposal SHA-256 `fa4168f58d9d2997a4538568a7656542f323e4cadd1dbdde08b2f3c1d9b4d44c`. |
 | Main writer | One Codex Implementation Engineer after separate authority. |
 | Specialist lanes | `governed_explorer`, `governed_validator`, `governed_reviewer`; read-only parent turn; maximum three. |
-| Repair budget | Two cycles for the same failure on manifest-listed repairable paths. |
-| Generated evidence | No-write or isolated by default; exact tracked outputs require explicit manifest inclusion. |
-| Platform baseline at preparation | `cd10a35765bf5fa9e602aba2b59f6817d9327f05` |
+| Repair policy | After two same-failure attempts, perform internal reassessment; prohibit unchanged retry; continue a newly justified conforming correction unless a material stop exists. |
+| Generated evidence | Governed deterministic output classes may write only to approved report roots; exact paths and hashes are recorded after generation. |
+| Platform baseline at implementation | `92f4bf8b935853e6c0bc107d8dc82fbc4d41dab3` |
 | FFFA baseline at preparation | `436dcf5f87fd40e6f5e8cab4b3bf9321fe27f6ae` |
-| Phase B | Passive Goal-Oriented capability retained, unimplemented, separately gated. |
+| Phase B | Bounded-outcome validator and evidence model implemented; runtime dispatch, persistence, scheduling, and autonomous model invocation remain excluded. |
 | Prior pilot | Conflict-free read-only investigation only; not delivery success. |
 | First applied pilot | PLAT-15.1A delivery recovery under a separate accepted bundle after Phase A publication. |
-| Next material gate | Architecture Gatekeeper review of the sealed exact Phase A package. |
+| Next material gate | Only a material deviation from the approved outcome; otherwise complete validation, publication, and remote-equality evidence automatically. |
 
 ## Stop Conditions
 
-Stop on baseline or authority drift, unlisted paths, ownership conflict, specialist write, more than two same-failure repairs, protected/customer data, unclassified generated evidence, architecture/public-contract change, PLAT-15.1A protected action, publication, production, release, activation, or live work without exact authority.
+Stop on ambiguous user changes, authority or ownership conflict, or a material architecture, security, customer-data, cost, production, required-tool, public-contract/protected-live, or approved-outcome change. Included validation, conforming repair, evidence regeneration, staging, commit, publication, fetch, and equality proof continue automatically.
 
 ## Fresh-Task Recovery
 

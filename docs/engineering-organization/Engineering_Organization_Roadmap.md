@@ -39,14 +39,14 @@ This document defines the roadmap for the Engineering Organization governed capa
 - The AI Collaboration Steward remains limited to its approved review boundary and ongoing automation is not activated. EO-14.8A through EO-14.8E, the parent capability, Alpha EO-14.1A and EO-14.4A repository implementations, the bounded Bravo Foundation implementation, and the fixture-only PLAT-14.1A repository slice are published. Charlie remains unstarted. No automation, role activation, provider access, or live work is authorized.
 - EO-15.1 repository implementation is Architecture Gatekeeper approved and published; its standing fail-closed generated-evidence policy is authoritative after successful publication and post-publication verification, without authorizing implementation by itself.
 - The exact EO-14.2A synthetic-fixture consumer authorization subject is published with delayed effect. Charlie remains unstarted until commit, push, and remote-equality proof complete; the subject authorizes only a later separately initialized repository-only implementation and leaves provider/live, dashboard, metrics, trend, activation, and publication gates closed.
-- The exact Goal-Oriented Parallel Delivery passive-capability work package is accepted for publication with delayed effect. Its digest-bound header and current-boundary language remain immutable preparation-state provenance; this roadmap, the backlog, Kanban, Milestone 15 plan, and continuity records state the current publication lifecycle after repository application. `CANDIDATE-EO-15.2` remains unassigned; publication creates no implementation authority, and a later initiative assignment, status amendment, synchronized initialization, shared-path lease, implementation review, publication, pilot, activation, and live-work decision remain separate.
+- Historical Goal-Oriented Parallel Delivery preparation remains provenance only. It does not define current authority or require separate technical continuation decisions.
 - Reuse existing lifecycle, governance, contracts, validators, and evidence mechanisms before proposing expansion.
 
 ---
 
 ## EO-15.2 Assignment Amendment
 
-Upon governed publication, this section supersedes earlier current-state statements that `CANDIDATE-EO-15.2` is unassigned. EO-15.2 is the assigned Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption umbrella. Phase A adopts conditional authority and read-only specialists. Phase B retains the prior passive Goal-Oriented design under later gates. Publication of this traceability does not itself authorize implementation, activation, PLAT-15.1A execution, or live work.
+EO-15.2 is the active Bounded-Outcome Governance and Governed Subagent Adoption initiative. Phase A remains historical for already-bound packages. Bounded Outcome Envelope v2 is the sole model for new work, with AuthorityIndex v1 and DeliveryState v1 providing durable recovery. Publication of governance does not itself authorize merge, release, production, deployment, customer-data access, destructive action, or live work.
 
 ---
 

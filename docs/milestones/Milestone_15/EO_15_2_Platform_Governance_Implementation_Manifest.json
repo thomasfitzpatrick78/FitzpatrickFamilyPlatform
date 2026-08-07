@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "repository": "FitzpatrickFamilyPlatform",
+  "baseline": "92f4bf8b935853e6c0bc107d8dc82fbc4d41dab3",
+  "generated_at": "2026-08-07T00:00:00Z",
+  "scope": "Cross-Repository Bounded-Outcome Governance Consolidation - Platform phase",
+  "manifest_self_excluded": true,
+  "validations": [
+    "743 Platform engineering tests passed",
+    "governance validation passed with 0 errors and 0 warnings",
+    "repository validation passed with 0 errors and 1 expected active-tree warning",
+    "git diff --check passed"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "66ee00ceeccad8ad86446232945c2374f81ecb253e65e2d75fbb47a5299d2323"
+    },
+    {
+      "path": "docs/engineering-organization/AI_Role_Catalog.md",
+      "sha256": "819c87c49fac84d8d27e22ff65a7f81ef94601eed91bd7547973d6a602219e3f"
+    },
+    {
+      "path": "docs/engineering-organization/Engineering_Organization_Roadmap.md",
+      "sha256": "150636a632f5974cc77f76a4a57b612dcafd7f4099e2879d6e5ce74ce432a2d9"
+    },
+    {
+      "path": "docs/engineering-organization/Human_Role_Catalog.md",
+      "sha256": "4b83ef55847a99a258aa73a1e07d7e6ea01e89da8d289acd7879e1a86bffee77"
+    },
+    {
+      "path": "docs/engineering-organization/Owner_Engineering_Organization_Interaction_Brief.md",
+      "sha256": "42b3406024f2d8922ceb1bc366c671719e3fe536e957350af5a34573e5af8848"
+    },
+    {
+      "path": "docs/engineering-organization/Parallel_Workstream_Delivery_Model.md",
+      "sha256": "10cd8d84f0adc4e3b6c253e37bbc9062bed61d42735f50ccbc4714939dea0a23"
+    },
+    {
+      "path": "docs/engineering-organization/Risk_Tiered_Goal_Oriented_Delivery_and_Governed_Subagent_Adoption_Specification.md",
+      "sha256": "853cdd836ce6029c9fb0329103290c0bb9610e920f3076729a6f7a36dae22216"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/AI_Collaboration_Lifecycle.md",
+      "sha256": "c10c53a5f65014cbd5b5dbecf1f731805b6a0627d0e8b0b4b44175ef82a176c2"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/AI_Session_Completion_Standard.md",
+      "sha256": "1f972e3bf9f783da8b02d0ea181c2a31c195d36a878655521efa4c55fe602ec0"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/AI_Session_Initialization_Standard.md",
+      "sha256": "5bf96eb5fd3c07c08088fd800f345f159d019b6aae80788b32651d403d3a993c"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/Bounded_Outcome_Envelope_Standard.md",
+      "sha256": "8d27ab5699b0b4ae75b990aaa5fc9657578a015c3b964e840cd239e8ff48b0f3"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/EO_15_2_Clause_Disposition_Register.md",
+      "sha256": "5cdc69f149e7080c27b557a0f683918fe9910c8cc8e347f6bba2a125a1262e87"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/Governance_State_Interface_Standard.md",
+      "sha256": "36efdf5ae6f3b08a987a81d042c91c9b2b8914aeb1ad6211d981686e4609cb63"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Authority_Index.json",
+      "sha256": "c2ede0c31a47446b8a0a7ae803a5092a6fe72702a548da3b19636bac714ef5dc"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Bounded_Outcome_Envelope.json",
+      "sha256": "df5c7f0962d214c8697bb8e1f2ed0385e2e604295db6c5c2cffb3047c348eae6"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Continuity_Brief.md",
+      "sha256": "cbc21932c8853a12fd42d494461aac559165c6cc8cebf9ae908ab3f660c343dc"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Delivery_State.json",
+      "sha256": "a17eeb28da30fc9b58e2796efe3ced12d9514c179ca4e109f49c353bd3255adb"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/templates/AI_Session_Completion_Report_Template.md",
+      "sha256": "7d2d9c1387fbb47c39263dfe7c64805645ba54ded68176bcbede4a5259ef60f6"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/templates/AI_Session_Initialization_Record_Template.md",
+      "sha256": "e7c3436e5bc85a2cc7878dd0c0aae38888c6cb57fb13569ad6700fa7525cb011"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/templates/Authority_Index_Template.json",
+      "sha256": "fad9a8be444fd16a8f98d17df69127ff5c43ebbebae140ec3d64f9e91c7a5673"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/templates/Bounded_Outcome_Envelope_Template.json",
+      "sha256": "1f6d02c0b6f90df07127061494943d7aa8a7806956a609b3af711418c30a3808"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/templates/Delivery_State_Template.json",
+      "sha256": "05087c00c1be25dc8dee9514f6e437c30c51080a3269dcb01ccda27d8bae987a"
+    },
+    {
+      "path": "docs/engineering-organization/ai-collaboration/templates/Material_Owner_Decision_Card_Template.md",
+      "sha256": "e6583141f8370d74d4469b6499b9cb4313d9120514b73ba69ea45ec9bfcc828a"
+    },
+    {
+      "path": "docs/governance/Definition_of_Done.md",
+      "sha256": "f68158305d014dc6584310a4f6e35b5936bcb25fb9e5f79f39dbc158981656e7"
+    },
+    {
+      "path": "docs/governance/Engineering_Lifecycle.md",
+      "sha256": "c4f9a05a449e7d84fdf0ad456c2ed0cc52b1622630a0f321bea65646387ec157"
+    },
+    {
+      "path": "docs/governance/Engineering_Principles.md",
+      "sha256": "98e9cd70173822e11eda4df614f6377f2851ba7efe49ce32c0e2d2e3c099f30e"
+    },
+    {
+      "path": "docs/governance/Governance_Change_Log.md",
+      "sha256": "405c25a1e2235854880c424ab1e2aab29746bc1b81cae1c56230b03133ac345c"
+    },
+    {
+      "path": "docs/governance/Permanent_Project_Operating_Model.md",
+      "sha256": "38e3fe8d1bc02d7f796a27e1e449452fc6a12c16bef9cc135f9bc0a1097e1878"
+    },
+    {
+      "path": "docs/milestones/Milestone_15/EO_15_2_Cross_Repository_Bounded_Outcome_Governance_Consolidation_Acceptance_Record.md",
+      "sha256": "b60dca418f3a0b05fd51192e3701423fce334439f50925cd95fff81509cb6bee"
+    },
+    {
+      "path": "docs/milestones/Milestone_15/EO_15_2_Risk_Tiered_Goal_Oriented_Delivery_and_Governed_Subagent_Adoption_Work_Package.md",
+      "sha256": "464bbafb9883fd92f8adb2f5b8265a8b345a242ef0d9a301dc2758d1b5b90634"
+    },
+    {
+      "path": "docs/milestones/Milestone_15/Milestone_15_Portfolio_Plan.md",
+      "sha256": "c6a510cc53b042b9a01d00ded1138c29dd654fd4ef92dcb2e2605d836c3e021e"
+    },
+    {
+      "path": "docs/portfolio/Engineering_Portfolio_Kanban.md",
+      "sha256": "a139f6a12c950315f539446dd584ede9ca76244a20e2a28da64287a139959cb4"
+    },
+    {
+      "path": "docs/standards/Development_Workflow.md",
+      "sha256": "f0c454c94ae3465cbbdc36962fd2cdacf44689f8979ac07b4da8520e6be078ad"
+    },
+    {
+      "path": "engineering/platform_eap/cli.py",
+      "sha256": "e7185915b17a688d4c90503444482100cdaea356ea91a3df3eebe471a472646a"
+    },
+    {
+      "path": "engineering/platform_eap/conditional_authority.py",
+      "sha256": "c0a871ef27b1436900bb054f75854d31a2db688c270e91e96615e40848ee19fa"
+    },
+    {
+      "path": "engineering/platform_eap/execution_capability.py",
+      "sha256": "0155885b8d9802578dc6c4a42fceffd94545d7feab0085416d05f24e4e800a4d"
+    },
+    {
+      "path": "engineering/platform_eap/governance_state.py",
+      "sha256": "9bf3922d05a37170ddba9c991080df36aee213a456de430d64929ad6516f9cec"
+    },
+    {
+      "path": "engineering/platform_eap/governance_state_io.py",
+      "sha256": "78c0bce3f86144eca14d2142379746db516e5ffca7bb1d25a976892099653176"
+    },
+    {
+      "path": "engineering/platform_eap/outcome_envelope.py",
+      "sha256": "75397645c549dbbf1fdde8f0d5f4c621fcc07ed773b45bbae7a137379751e5fc"
+    },
+    {
+      "path": "engineering/platform_eap/outcome_envelope_io.py",
+      "sha256": "e394c5ba42e546c4489889e8ec550946f00b8d7b4871c7df1b8aa73a4874cc2a"
+    },
+    {
+      "path": "engineering/tests/fixtures/outcome_envelope/invalid_scope_expansion.json",
+      "sha256": "3feaa68f7444e286947a889cbf31d8b3f1e7f17a2aaf4d78fa432d7c592ade45"
+    },
+    {
+      "path": "engineering/tests/fixtures/outcome_envelope/material_change_stop.json",
+      "sha256": "c849aea9fefb4cb7a524d4c166bc36dfeb10573d932442e37190d33d805bf46a"
+    },
+    {
+      "path": "engineering/tests/fixtures/outcome_envelope/valid_outcome_envelope.json",
+      "sha256": "6fe694116ac45b0a9f35d141b6c14751fc95c1fffdcd890b0b8d7dce865ccab4"
+    },
+    {
+      "path": "engineering/tests/test_ai_session_readiness_metrics.py",
+      "sha256": "f03107ecdd70c3e36ab6885f154ef3ef9c463307a800fbd87a75e460cff88aeb"
+    },
+    {
+      "path": "engineering/tests/test_governance_state.py",
+      "sha256": "737d527ed334cda0959810992772ff737d733716371002c286f216f4866bb60b"
+    },
+    {
+      "path": "engineering/tests/test_outcome_envelope.py",
+      "sha256": "5c6248c84a0ef3d874ca516ab1d2bd9344f3b1900a9c078af5d486977516a8ee"
+    },
+    {
+      "path": "engineering/tests/test_transition_review.py",
+      "sha256": "819eb86d1b6397360c8b9526301945c0d219005249bbfff8856d83fc06233fc0"
+    }
+  ]
+}

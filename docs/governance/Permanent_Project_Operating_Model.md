@@ -158,9 +158,9 @@ Engineering Organization Evolution
 
 ## EO-15.2 Conditional Authority Operating Model
 
-One main Codex task coordinates an approved outcome. Role separation does not require task separation. Up to three namespaced read-only specialists may inspect independent lanes from a parent turn in live read-only permission mode, while one main task remains the sole same-checkout writer and integrates every result. Workspace-write phases run without subagents because the parent turn's permission choice can override a custom agent's declared sandbox.
+One main Codex task coordinates an approved outcome, integrates every result, and remains the sole shared-checkout writer. Role separation does not require task separation. Up to three specialists may inspect independent lanes. An accepted bounded-outcome envelope may assign at most one specialist as a writer only in a dedicated worktree and branch with non-overlapping owned roots; the main task retains integration and publication.
 
-An accepted conditional bundle may authorize automatic progression through exact reversible local work, validation, two repair cycles, and evidence. Technical lifecycle stages and evidence remain distinct, but they do not each create a new Owner permission. Tier 3 product, architecture, protected-data, destructive, protected-branch, production, release, and live decisions remain human pre-action gates.
+Historical Phase A conditional bundles retain their original interpretation. They do not define prospective governance for new work.
 
 ---
 
@@ -176,10 +176,17 @@ An accepted conditional bundle may authorize automatic progression through exact
 
 ---
 
+## Bounded-Outcome Operating Rule
+
+An accepted bounded-outcome envelope may authorize a complete delivery sequence across implementation, diagnosis, conforming repair, validation, evidence, and expressly included publication. The accountable main task continues without continuation-only Owner prompts while repository state, scope, invariants, and material boundaries remain conforming.
+
+Routine technical phases are evidence checkpoints, not new authority gates. Human review resumes only for a material change to architecture, a public contract, security, privacy, customer-data boundary, cost, production, release, destructive action, required tools, or the approved outcome. Unknown user changes and ambiguous ownership remain hard stops.
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 4.3 | Added the bounded-outcome operating rule and material-decision-only continuation. |
 | 1.3 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.2 | Added EO-13.1 three-pillar portfolio model, Engineering Investment Rule, and Engineering Organization Evolution lifecycle requirement. |
 | 1.1 | Added Engineering Organization governance layer and authority boundary. |

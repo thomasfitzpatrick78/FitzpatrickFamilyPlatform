@@ -1,0 +1,27 @@
+{
+  "active_workstreams": [
+    {
+      "delivery_state": "docs/path/to/Delivery_State.json",
+      "outcome_envelope": "docs/path/to/Bounded_Outcome_Envelope.json",
+      "status": "Accepted",
+      "workstream_id": "replace-with-workstream-id"
+    }
+  ],
+  "effective_governance": {
+    "effective_from": "replace-with-publication-reference",
+    "model_id": "bounded_outcome_v2",
+    "schema_major": 2,
+    "standard_path": "docs/engineering-organization/ai-collaboration/Bounded_Outcome_Envelope_Standard.md",
+    "status": "Active"
+  },
+  "historical_authority": [],
+  "recovery_order": [
+    "AGENTS.md",
+    "docs/path/to/Authority_Index.json",
+    "docs/path/to/Bounded_Outcome_Envelope.json",
+    "docs/path/to/Delivery_State.json"
+  ],
+  "repository": "replace-with-repository",
+  "repository_overlays": [],
+  "schema_version": "1.0"
+}

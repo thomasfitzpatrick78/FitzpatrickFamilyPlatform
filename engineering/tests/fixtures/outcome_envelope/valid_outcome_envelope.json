@@ -1,0 +1,25 @@
+{
+  "action_classes": ["read", "implement", "diagnose", "repair", "validate", "generate_evidence", "stage", "commit", "publish", "fetch_and_prove_equality"],
+  "authority": {
+    "authority_gained": ["Implement, validate, repair, and publish the accepted repository outcome."],
+    "authority_not_gained": ["No production, deployment, release, customer-data, or live-work authority."],
+    "decision_references": [{"approved_effect": "Approve the bounded outcome and included protected publication.", "artifact": "docs/decisions/approved.md", "decision_date": "2026-08-06T12:00:00Z", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}]
+  },
+  "completion": {"condition": "Tests pass and local, tracking, and live branch heads are equal.", "owner_return": "one_plain_language_outcome", "publication_evidence_required": true},
+  "envelope_id": "eo-15.2-valid-outcome",
+  "evidence": {
+    "output_classes": ["no_repository_write", "isolated_temporary_output", "deterministic_tracked_report", "sealed_child_subject"],
+    "report_roots": ["reports/engineering/ai_session_readiness"],
+    "sanitization": ["no_personal_name", "no_absolute_checkout_path", "no_credential", "no_customer_or_protected_value", "no_prompt_text"]
+  },
+  "expiry_policy": {"automatic_revalidation": true, "expires_at": "2030-08-06T23:59:59Z", "hard_window_reasons": ["protected branch publication lease"]},
+  "material_stop_conditions": ["architecture", "public_contract", "security", "privacy", "customer_data_boundary", "cost", "production_scope", "release", "destructive_action", "required_tools", "approved_outcome"],
+  "outcome": {"acceptance_criteria": ["All governed validations pass.", "Remote equality is proved."], "organizational_or_customer_value": "Fewer Owner interruptions with retained material controls.", "plain_language_result": "Finish the approved repository outcome without routine continuation decisions."},
+  "ownership": {"main_writer": "Codex main task", "main_writer_active_roots": [], "maximum_concurrent_specialists": 3, "specialists_read_only": true, "writer_worktrees": []},
+  "repair_policy": {"blind_retry_prohibited": true, "child_subjects_replay_protected": true, "same_failure_reassessment_after": 2, "scope_delta_audit_required": true},
+  "repositories": [{"branch": "main", "excluded_roots": ["customer-data"], "live_remote_equality_required": true, "name": "FitzpatrickFamilyPlatform", "owned_roots": ["docs/engineering-organization/ai-collaboration", "engineering/platform_eap", "engineering/tests", "reports/engineering/ai_session_readiness"], "required_baseline": "92f4bf8b935853e6c0bc107d8dc82fbc4d41dab3", "tracking_branch": "origin/main"}],
+  "schema_version": "2.0",
+  "status": "Accepted",
+  "tier_3_checkpoints": [{"action_class": "publish", "checkpoint_id": "protected-publication", "decision_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "expires_at": "2030-08-06T23:59:59Z", "subject": "exact validated main-branch publication"}],
+  "validation": {"acceptance_evidence": ["test results", "remote equality"], "commands": ["python3 -m pytest -p no:cacheprovider engineering/tests"], "fresh_task_recovery_required": true}
+}

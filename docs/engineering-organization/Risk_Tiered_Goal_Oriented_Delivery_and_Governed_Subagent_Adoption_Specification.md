@@ -1,9 +1,11 @@
 # Risk-Tiered Goal-Oriented Delivery and Governed Subagent Adoption Specification
 
-**Document Version:** 1.0
-**Status:** Prepared Target; Not Effective Until Governed Publication
+**Document Version:** 1.1
+**Status:** Historical Phase A Authority; Superseded for New Work
 **Initiative:** EO-15.2
-**Phase:** A
+**Phase:** A — historical
+
+> This document remains authoritative only for work already bound to a Phase A conditional bundle. New work uses the active Bounded Outcome Envelope v2 standard and the Authority Index. Nothing here overrides that prospective model.
 
 ## Purpose
 

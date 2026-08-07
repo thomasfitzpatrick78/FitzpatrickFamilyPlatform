@@ -102,9 +102,9 @@ Readiness outcomes must not use a percentage score.
 
 ---
 
-## EO-15.2 Conditional-Bundle Initialization
+## Historical EO-15.2 Phase A Conditional-Bundle Initialization
 
-When EO-15.2 applies, initialization also records the bundle identity and digest, risk tier, repositories and branches, baseline and remote-freshness requirement, allowed and excluded paths, publication inclusions, main writer, specialist lanes, generated-evidence disposition, repair budget, expiry, invalidation predicates, and exact next material gate.
+For already-bound Phase A work, initialization records the historical bundle identity and its exact controls. New work does not create a conditional bundle.
 
 The main task performs this reconciliation. A specialist performs only its bounded lane attestation.
 
@@ -121,10 +121,17 @@ The main task performs this reconciliation. A specialist performs only its bound
 
 ---
 
+## Bounded-Outcome Initialization
+
+For new work, initialization reads root instructions, AuthorityIndex v1, the accepted BoundedOutcomeEnvelope v2, and DeliveryState v1 without task-history reconstruction. It verifies decision references, repository baselines, owned and excluded roots, allowed actions, checkpoints, validation, evidence classes, ownership lanes, repair history, expiry policy, and material stop conditions. An expired envelope is automatically revalidated; unchanged conditions may receive a renewed child lease.
+
+An attributable active tree created by the same envelope does not invalidate initialization. Ambiguous pre-existing or user-owned changes, conflicts, authority drift, or changed material inputs still stop.
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added fresh-task bounded-outcome recovery, expiry revalidation, and attributable-tree reconciliation. |
 | 1.5 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.4 | Recorded Architecture Gatekeeper approval and publication of the fail-closed baseline classification standard. |
 | 1.3 | Required exactly one governed permission declaration and classified duplicate or conflicting work-package metadata `Dirty`. |

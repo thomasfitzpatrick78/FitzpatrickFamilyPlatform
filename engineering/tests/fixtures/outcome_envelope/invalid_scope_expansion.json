@@ -1,0 +1,21 @@
+{
+  "action_classes": ["read", "implement", "validate"],
+  "authority": {
+    "authority_gained": ["Implement inside one owned root."],
+    "authority_not_gained": ["No customer-data access."],
+    "decision_references": [{"approved_effect": "Approve bounded implementation.", "artifact": "docs/decisions/bounded.md", "decision_date": "2026-08-06T12:00:00Z", "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}]
+  },
+  "completion": {"condition": "Validation passes.", "owner_return": "one_plain_language_outcome", "publication_evidence_required": false},
+  "envelope_id": "eo-15.2-invalid-scope",
+  "evidence": {"output_classes": ["no_repository_write"], "report_roots": [], "sanitization": ["no_personal_name", "no_absolute_checkout_path", "no_credential", "no_customer_or_protected_value", "no_prompt_text"]},
+  "expiry_policy": {"automatic_revalidation": true, "expires_at": "2030-08-06T23:59:59Z", "hard_window_reasons": []},
+  "material_stop_conditions": ["architecture", "public_contract", "security", "privacy", "customer_data_boundary", "cost", "production_scope", "release", "destructive_action", "required_tools", "approved_outcome"],
+  "outcome": {"acceptance_criteria": ["Reject overlapping excluded scope."], "organizational_or_customer_value": "Prevents accidental authority expansion.", "plain_language_result": "Demonstrate fail-closed scope validation."},
+  "ownership": {"main_writer": "Codex main task", "main_writer_active_roots": [], "maximum_concurrent_specialists": 0, "specialists_read_only": true, "writer_worktrees": []},
+  "repair_policy": {"blind_retry_prohibited": true, "child_subjects_replay_protected": true, "same_failure_reassessment_after": 2, "scope_delta_audit_required": true},
+  "repositories": [{"branch": "main", "excluded_roots": ["engineering/platform_eap/private"], "live_remote_equality_required": false, "name": "FitzpatrickFamilyPlatform", "owned_roots": ["engineering/platform_eap"], "required_baseline": "92f4bf8b935853e6c0bc107d8dc82fbc4d41dab3", "tracking_branch": "origin/main"}],
+  "schema_version": "2.0",
+  "status": "Accepted",
+  "tier_3_checkpoints": [],
+  "validation": {"acceptance_evidence": ["scope validation"], "commands": ["python3 -m pytest -p no:cacheprovider engineering/tests/test_outcome_envelope.py"], "fresh_task_recovery_required": true}
+}

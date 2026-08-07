@@ -1,0 +1,27 @@
+{
+  "active_changes": [],
+  "authority": {
+    "authority_index": "docs/path/to/Authority_Index.json",
+    "decision_record": "docs/path/to/approved-decision.md"
+  },
+  "baseline": {
+    "branch": "main",
+    "head": "0000000000000000000000000000000000000000",
+    "live_remote_verified": false,
+    "tracking_branch": "origin/main"
+  },
+  "blockers": [],
+  "completed_work": [],
+  "evidence": [],
+  "next_action": "Replace with the next in-boundary action.",
+  "outcome": {
+    "envelope_path": "docs/path/to/Bounded_Outcome_Envelope.json",
+    "outcome_id": "replace-with-outcome-id",
+    "status": "Accepted"
+  },
+  "repair_assessments": [],
+  "repository": "replace-with-repository",
+  "schema_version": "1.0",
+  "subagent_lanes": [],
+  "updated_at": "2030-01-01T00:00:00Z"
+}

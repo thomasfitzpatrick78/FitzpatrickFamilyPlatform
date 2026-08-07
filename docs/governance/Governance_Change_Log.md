@@ -78,7 +78,9 @@ Milestone 14 records these governance enhancements:
 
 ## EO-15.2 Governance Amendment
 
-EO-15.2 adopts Risk-Tiered Conditional Phase Bundles, one main same-checkout writer, up to three read-only specialists, two bounded repair cycles, automatic continuation inside a valid bundle, generated-evidence preclassification, and material-decision-only Owner cards. Phase B passive Goal-Oriented capability work remains separately gated.
+EO-15.2 first adopted Risk-Tiered Conditional Phase Bundles, one main same-checkout writer, and bounded read-only specialists. The bounded-outcome amendment retains that historical Phase A behavior and implements Phase B as an approved-result envelope with owned roots, classified outputs, internal repair reassessment, replay-protected child leases, automatic expiry revalidation, included publication evidence, and material-decision-only Owner returns.
+
+The amendment supersedes current-state rules that made exact action/path enumeration, a third technical attempt, deterministic report generation, administrative expiry, routine phase transitions, and mechanical publication steps separate Owner gates. It preserves unknown-change safeguards, one accountable main integrator, at most one isolated non-overlapping writer lane, real supported-Linux evidence, installer signature enforcement, customer and protected-data separation, and human control of material architecture, public-contract, security, privacy, customer-data, cost, production, release, destructive-action, required-tool, and approved-outcome changes. Historical decisions remain immutable.
 
 ---
 
@@ -86,6 +88,7 @@ EO-15.2 adopts Risk-Tiered Conditional Phase Bundles, one main same-checkout wri
 
 | Version | Description |
 |---------|-------------|
+| 4.3 | Implemented the EO-15.2 bounded-outcome amendment across the 15 candidate rule families without changing historical evidence. |
 | 4.2 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 4.1 | Reconciled published EO-15.1 authority, corrected FFFA acceptance to incomplete and FFFA-owned, and recorded Product Strategy Board selection and Architecture Gatekeeper publication of PLAT-15.1A with implementation Not Started and all later gates closed. |
 | 4.0 | Recorded Milestone 14 closeout and Milestone 15 initialization without modifying the Engineering Lifecycle or promoting candidate governance. |

@@ -110,11 +110,13 @@ Readiness outcomes must not use a percentage score.
 
 ---
 
-## EO-15.2 Main-Task Lifecycle
+## Historical EO-15.2 Phase A Main-Task Lifecycle
+
+This section applies only to work already bound under Phase A.
 
 The main task performs complete governed initialization once. Each specialist receives a bounded lane envelope and attests to relevant identity, scope, prohibitions, evidence, and stop conditions without repeating full orientation.
 
-Each phase records entry, result, validation, and exit evidence. Passing phases continue automatically. The same failure permits two repair cycles. Drift, conflict, protected data, material change, or a third attempt invalidates the bundle and returns one material Owner card.
+Each phase records entry, result, validation, and exit evidence. Passing phases continue automatically. The historical package's exact repair and invalidation rules remain unchanged.
 
 ---
 
@@ -129,9 +131,16 @@ Each phase records entry, result, validation, and exit evidence. Passing phases 
 
 ---
 
+## Phase B Bounded-Outcome Lifecycle
+
+Phase B preserves historical Phase A bundles and makes an accepted outcome envelope the sole model for new work. The main task owns integration and is the sole shared-checkout writer. Up to three specialists may investigate genuinely independent lanes; an envelope may designate at most one writer in a dedicated non-overlapping worktree. Results, tools, and passing checks cannot create authority.
+
+The main task continues through included phases until acceptance is complete or a material stop is found. Technical failures are diagnosed and repaired within owned roots, with a mandatory internal reassessment after two failures of the same kind. Fresh-root initialization, deterministic evidence regeneration, and post-publication equality are automated conformance checks rather than Owner continuation gates.
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 1.2 | Added Phase B bounded-outcome continuation and material Owner stops while preserving Phase A history. |
 | 1.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.0 | Initial AI Collaboration Lifecycle specification. |

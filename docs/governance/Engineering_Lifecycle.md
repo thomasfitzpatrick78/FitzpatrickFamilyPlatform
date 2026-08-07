@@ -156,11 +156,13 @@ The AI Collaboration Lifecycle does not replace this Engineering Lifecycle. It g
 
 ---
 
-## EO-15.2 Lifecycle Overlay
+## Historical EO-15.2 Phase A Lifecycle Overlay
+
+This overlay remains only for already-bound Phase A packages. The Bounded-Outcome Lifecycle Overlay below is the sole prospective model.
 
 The lifecycle is executed through risk-tiered conditional bundles. Tier 0 observation, exact Tier 1 reversible local delivery, and explicitly bundled Tier 2 non-production work continue automatically while entry and exit predicates pass. Evidence is recorded for every phase without turning every phase into an Owner gate.
 
-Architecture or public-contract deviation, protected data, destructive action, protected/default-branch publication, production, release, deployment, activation, and live work are Tier 3 and require fresh explicit approval. The same failure permits at most two bounded repair cycles before a material decision.
+Architecture or public-contract deviation, protected data, destructive action, protected/default-branch publication, production, release, deployment, activation, and live work retain the exact approval requirements of the historical bundle that bound them.
 
 ---
 
@@ -177,10 +179,17 @@ Architecture or public-contract deviation, protected data, destructive action, p
 
 ---
 
+## Bounded-Outcome Lifecycle Overlay
+
+For an accepted bounded-outcome envelope, lifecycle stages remain distinct evidence phases but do not require separate Owner decisions. The main task may implement, diagnose, perform newly justified repairs, validate, generate classified evidence, stage, commit, publish when expressly included, fetch, and prove equality until acceptance is complete.
+
+After two failures of the same kind, the lifecycle requires an internal root-cause reassessment and prohibits an unchanged retry. Expiry requires automatic material-condition revalidation. Architecture conformance at completion becomes a decision only when it identifies a material deviation.
+
 ## Revision History
 
 | Version | Description |
 |---------|-------------|
+| 4.3 | Added the bounded-outcome lifecycle overlay, internal repair reassessment, and evidence-phase publication sequence. |
 | 1.5 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 1.4 | Added AI Collaboration Lifecycle relationship without replacing the Engineering Lifecycle. |
 | 1.3 | Added EO-13.1 lifecycle stages, Engineering Investment Rule, controlled execution, and Engineering Organization Evolution. |

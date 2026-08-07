@@ -121,12 +121,14 @@ def test_transition_review_rejects_unsafe_or_noncanonical_path(tmp_path):
     assert any("safe repository-relative" in finding.message for finding in result.findings)
 
 
-def test_transition_review_cli_writes_existing_report_evidence(tmp_path, monkeypatch, capsys):
+def test_transition_review_cli_writes_only_when_explicitly_requested(tmp_path, monkeypatch, capsys):
     _write(tmp_path, _review())
     monkeypatch.setattr(cli, "ROOT", tmp_path)
     monkeypatch.setattr(cli, "REPORT_ROOT", tmp_path / "reports" / "engineering")
     assert cli.main(["milestone", "transition-review", RELATIVE]) == 0
     assert "Status: PASS" in capsys.readouterr().out
     report_root = tmp_path / "reports/engineering/transition_review"
+    assert not report_root.exists()
+    assert cli.main(["milestone", "transition-review", RELATIVE, "--write-report"]) == 0
     assert (report_root / "transition_review_report.md").is_file()
     assert (report_root / "transition_review_report.json").is_file()

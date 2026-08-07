@@ -129,9 +129,9 @@ Kanban updates must remain repository-native Markdown unless a future approved t
 
 ## EO-15.2 Kanban Amendment
 
-Upon governed publication, the assigned umbrella EO-15.2 supersedes the earlier `ID unassigned` candidate state. Phase A is at exact package Architecture Review until separately accepted. Phase B remains future and unimplemented. FFFA adoption and PLAT-15.1A retain separate repository and execution authority.
+EO-15.2 is assigned and Phase A remains historical. Option A is approved for the exact 30-path Phase B bounded-outcome implementation and publication contract. The main task is the sole writer and continues through validation and included publication without continuation-only prompts. Runtime dispatch, scheduling, persistence, autonomous model invocation, customer data, deployment, production, release, activation, and live work remain excluded.
 
-No Phase A implementation, publication, Phase B work, customer-data access, PLAT-15.1A protected action, release, activation, or live work is authorized by this Kanban amendment.
+PLAT-15.1A is separately authorized through bounded implementation, supported-Linux validation, justified repair, and publication under Decision 111. The approved UTM/Ubuntu environment remains offline and is used only for native Linux acceptance evidence. The work stops only for a retained material condition.
 
 ---
 
@@ -139,6 +139,7 @@ No Phase A implementation, publication, Phase B work, customer-data access, PLAT
 
 | Version | Description |
 |---------|-------------|
+| 3.2 | Activated the approved Phase B bounded-outcome implementation and Decision 111 PLAT-15.1A delivery sequence with material-decision-only stops. |
 | 3.1 | Added EO-15.2 risk-tiered conditional authority and governed subagent adoption. |
 | 3.0 | Recorded Decision 56 acceptance of the bounded dashboard-value recovery outcome, ended the temporary sequencing override, restored PLAT-15.1A as the primary Platform preparation sequence, and retained Gate 2 Not Authorized. |
 | 2.9 | Reconciled current PLAT-15.1A state to the published Version 1.1 22-gate package, completed Gate 1, unauthorized Gate 2, Environment Not Created, implementation Not Started, and temporary dashboard-value recovery sequencing. |

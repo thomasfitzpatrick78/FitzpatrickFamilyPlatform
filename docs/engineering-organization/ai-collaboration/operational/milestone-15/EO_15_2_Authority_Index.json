@@ -1,0 +1,42 @@
+{
+  "active_workstreams": [
+    {
+      "delivery_state": "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Delivery_State.json",
+      "outcome_envelope": "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Bounded_Outcome_Envelope.json",
+      "status": "Accepted",
+      "workstream_id": "eo-15.2-platform-governance-consolidation"
+    }
+  ],
+  "effective_governance": {
+    "effective_from": "EO-15.2 bounded-outcome governance publication",
+    "model_id": "bounded_outcome_v2",
+    "schema_major": 2,
+    "standard_path": "docs/engineering-organization/ai-collaboration/Bounded_Outcome_Envelope_Standard.md",
+    "status": "Active"
+  },
+  "historical_authority": [
+    {
+      "disposition": "Historical Only",
+      "path": "docs/engineering-organization/Risk_Tiered_Goal_Oriented_Delivery_and_Governed_Subagent_Adoption_Specification.md",
+      "replacement": "docs/engineering-organization/ai-collaboration/Bounded_Outcome_Envelope_Standard.md"
+    },
+    {
+      "disposition": "Historical Only",
+      "path": "docs/engineering-organization/ai-collaboration/templates/Risk_Tiered_Conditional_Phase_Bundle_Template.json",
+      "replacement": "docs/engineering-organization/ai-collaboration/templates/Bounded_Outcome_Envelope_Template.json"
+    }
+  ],
+  "recovery_order": [
+    "AGENTS.md",
+    "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Authority_Index.json",
+    "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Bounded_Outcome_Envelope.json",
+    "docs/engineering-organization/ai-collaboration/operational/milestone-15/EO_15_2_Delivery_State.json",
+    "docs/governance/Engineering_Principles.md"
+  ],
+  "repository": "FitzpatrickFamilyPlatform",
+  "repository_overlays": [
+    "docs/governance/Engineering_Principles.md",
+    "docs/governance/Permanent_Project_Operating_Model.md"
+  ],
+  "schema_version": "1.0"
+}
